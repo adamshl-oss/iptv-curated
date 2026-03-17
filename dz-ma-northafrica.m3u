@@ -1,7 +1,7 @@
 #EXTM3U
 # Algérie & Maroc
-# Generated 2026-03-16 22:22
-# 16 channels
+# Generated 2026-03-16 22:26
+# 30 channels
 
 
 # ── Algérie — TV Publique ──
@@ -13,18 +13,52 @@ http://5.253.46.190:8000/play/a0em/index.m3u8
 http://5.253.46.190:8000/play/a0en/index.m3u8
 #EXTINF:-1 tvg-name="TV5 Coran" group-title="Algérie — TV Publique",TV5 Coran
 http://5.253.46.190:8000/play/a0eo/index.m3u8
-#EXTINF:-1 tvg-name="TV6" group-title="Algérie — TV Publique",TV6
+#EXTINF:-1 tvg-name="TV6 El-Chebabia" group-title="Algérie — TV Publique",TV6 El-Chebabia
 http://5.253.46.190:8000/play/a0ep/index.m3u8
-#EXTINF:-1 tvg-name="TV7 El Maarifa" group-title="Algérie — TV Publique",TV7 El Maarifa
+#EXTINF:-1 tvg-name="TV7 El-Maarifa" group-title="Algérie — TV Publique",TV7 El-Maarifa
 http://5.253.46.190:8000/play/a0eq/index.m3u8
-#EXTINF:-1 tvg-name="TV8 Edhakira" group-title="Algérie — TV Publique",TV8 Edhakira
+#EXTINF:-1 tvg-name="TV8 El-Dhakira" group-title="Algérie — TV Publique",TV8 El-Dhakira
 http://5.253.46.190:8000/play/a0er/index.m3u8
-#EXTINF:-1 tvg-name="TV9" group-title="Algérie — TV Publique",TV9
+#EXTINF:-1 tvg-name="TV9 El-Barlamaniya" group-title="Algérie — TV Publique",TV9 El-Barlamaniya
 http://5.253.46.190:8000/play/a0es/index.m3u8
 #EXTINF:-1 tvg-name="Berbère TV" group-title="Algérie — TV Publique",Berbère TV
 http://5.253.46.190:8000/play/a0fi/index.m3u8
 #EXTINF:-1 tvg-name="Chebab TV" group-title="Algérie — TV Publique",Chebab TV
 http://5.253.46.190:8000/play/a0fj/index.m3u8
+#EXTINF:-1 tvg-name="Amou Yazid TV" group-title="Algérie — TV Publique",Amou Yazid TV
+http://mkstream.servehttp.com:1940/AmouYazid/ay1/playlist.m3u8
+
+# ── Maroc — TV Publique ──
+#EXTINF:-1 tvg-name="Al Aoula HD" group-title="Maroc — TV Publique",Al Aoula HD
+http://5.253.46.190:8000/play/a0ab/index.m3u8
+#EXTINF:-1 tvg-name="2M HD" group-title="Maroc — TV Publique",2M HD
+http://5.253.46.190:8000/play/a0e9/index.m3u8
+#EXTINF:-1 tvg-name="Arryadia HD" group-title="Maroc — TV Publique",Arryadia HD
+http://5.253.46.190:8000/play/a0bi/index.m3u8
+#EXTINF:-1 tvg-name="Al Maghribia HD" group-title="Maroc — TV Publique",Al Maghribia HD
+http://5.253.46.190:8000/play/a0af/index.m3u8
+#EXTINF:-1 tvg-name="Tamazight TV HD" group-title="Maroc — TV Publique",Tamazight TV HD
+http://5.253.46.190:8000/play/a0ah/index.m3u8
+#EXTINF:-1 tvg-name="Assadissa HD" group-title="Maroc — TV Publique",Assadissa HD
+http://5.253.46.190:8000/play/a0ag/index.m3u8
+#EXTINF:-1 tvg-name="Athaqafia HD" group-title="Maroc — TV Publique",Athaqafia HD
+http://5.253.46.190:8000/play/a0ae/index.m3u8
+#EXTINF:-1 tvg-name="Laâyoune TV HD" group-title="Maroc — TV Publique",Laâyoune TV HD
+http://5.253.46.190:8000/play/a0ac/index.m3u8
+#EXTINF:-1 tvg-name="Télé Maroc" group-title="Maroc — TV Publique",Télé Maroc
+http://5.253.46.190:8000/play/a0cb/index.m3u8
+
+# ── Maroc — Privé ──
+#EXTINF:-1 tvg-name="Medi1 TV Maghreb" group-title="Maroc — Privé",Medi1 TV Maghreb
+https://streaming2.medi1tv.com/live/smil:medi1tv.smil/playlist.m3u8
+#EXTINF:-1 tvg-name="Medi1 TV Arabic" group-title="Maroc — Privé",Medi1 TV Arabic
+https://streaming2.medi1tv.com/live/smil:medi1ar.smil/playlist.m3u8
+#EXTINF:-1 tvg-name="Medi1 TV Afrique" group-title="Maroc — Privé",Medi1 TV Afrique
+https://cdn.live.easybroadcast.io/abr_corp/83_medi1tv-afrique_tm7tu45/playlist_dvr.m3u8
+#EXTINF:-1 tvg-name="Chada TV" group-title="Maroc — Privé",Chada TV
+https://chadatv.vedge.infomaniak.com/livecast/chadatv/playlist.m3u8
+#EXTINF:-1 tvg-name="MBC 5" group-title="Maroc — Privé",MBC 5
+https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-5/ee6b000cee0629411b666ab26cb13e9b/index.m3u8
 
 # ── Info Arabe ──
 #EXTINF:-1 tvg-name="Al Jazeera Arabic" group-title="Info Arabe",Al Jazeera Arabic
@@ -37,7 +71,3 @@ https://dwamdstream103.akamaized.net/hls/live/2015526/dwstream103/index.m3u8
 https://tv-trtarabi.medya.trt.com.tr/master.m3u8
 #EXTINF:-1 tvg-name="France 24 FR" group-title="Info Arabe",France 24 FR
 https://live.france24.com/hls/live/2037179/F24_FR_HI_HLS/master_5000.m3u8
-
-# ── Maroc ──
-#EXTINF:-1 tvg-name="Chada TV" group-title="Maroc",Chada TV
-https://chadatv.vedge.infomaniak.com/livecast/chadatv/playlist.m3u8
