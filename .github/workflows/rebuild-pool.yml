@@ -1,0 +1,42 @@
+name: Rebuild candidate pool
+
+on:
+  schedule:
+    - cron: "30 4 * * 0"   # Sundays at 04:30 UTC (weekly)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install ffmpeg + jq
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg jq
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: chmod +x scripts/test_stream.sh scripts/rebuild_pool.py
+
+      - name: Rebuild candidate pool
+        run: python3 scripts/rebuild_pool.py
+
+      - name: Commit & push if pool changed
+        run: |
+          if ! git diff --quiet -- candidates_pool.jsonl; then
+            git config user.name  "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add candidates_pool.jsonl
+            git commit -m "Weekly pool rebuild: refreshed backup URLs from aggregators"
+            git push
+          else
+            echo "Pool unchanged."
+          fi
