@@ -1,0 +1,45 @@
+name: Refresh playlists
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"   # every 6 hours
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install ffmpeg + jq
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg jq
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Make scripts executable
+        run: chmod +x scripts/test_stream.sh scripts/refresh.py
+
+      - name: Refresh playlists
+        run: python3 scripts/refresh.py
+
+      - name: Commit & push if changed
+        run: |
+          if ! git diff --quiet -- claude-*.m3u; then
+            git config user.name  "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add claude-usa.m3u claude-france.m3u claude-algeria.m3u
+            git commit -m "Auto-refresh: verified streams, dropped dead URLs ($(date -u +%FT%TZ))"
+            git push
+          else
+            echo "No changes; streams all still playing."
+          fi

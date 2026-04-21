@@ -1,0 +1,89 @@
+#!/usr/bin/env bash
+# 5-gate stream tester. Prints single-line result: PASS|FAIL|<url>|<reason>|<codec>|<res>|<bitrate>
+# Usage: test_stream.sh <hls_url> [user_agent]
+# Exit 0 = PASS, non-zero = FAIL.
+
+set -u
+URL="${1:-}"
+UA="${2:-Mozilla/5.0 (Macintosh; Intel Mac OS X 15_4) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15}"
+TIMEOUT=10
+TMPD="$(mktemp -d)"
+trap 'rm -rf "$TMPD"' EXIT
+
+fail() {
+  echo "FAIL|${URL}|$1|||"
+  exit 1
+}
+
+pass() {
+  echo "PASS|${URL}|ok|$1|$2|$3"
+  exit 0
+}
+
+# Gate 1: HTTP status + headers
+HEAD=$(curl -sI -L --max-time "$TIMEOUT" -A "$UA" "$URL" 2>/dev/null)
+CODE=$(echo "$HEAD" | grep -E "^HTTP" | tail -1 | awk '{print $2}')
+[ -z "$CODE" ] && fail "no_response"
+[ "$CODE" -lt 200 ] || [ "$CODE" -ge 400 ] && fail "http_$CODE"
+
+# Gate 2: Fetch manifest, verify HLS or stream
+BODY=$(curl -sL --max-time "$TIMEOUT" -A "$UA" "$URL" 2>/dev/null | head -c 65536)
+[ -z "$BODY" ] && fail "empty_body"
+
+IS_HLS=0
+echo "$BODY" | head -1 | grep -q "#EXTM3U" && IS_HLS=1
+
+# If master playlist, resolve to a media playlist
+PLAY_URL="$URL"
+if [ "$IS_HLS" -eq 1 ] && echo "$BODY" | grep -q "#EXT-X-STREAM-INF"; then
+  # Pick highest bandwidth variant
+  VARIANT=$(echo "$BODY" | awk '
+    /#EXT-X-STREAM-INF/ {
+      match($0, /BANDWIDTH=[0-9]+/);
+      bw = substr($0, RSTART+10, RLENGTH-10)+0;
+      getline line;
+      if (bw > maxbw) { maxbw = bw; best = line }
+    }
+    END { print best }
+  ')
+  if [ -n "$VARIANT" ]; then
+    case "$VARIANT" in
+      http*) PLAY_URL="$VARIANT" ;;
+      /*)    PLAY_URL="$(echo "$URL" | sed -E 's|^(https?://[^/]+).*|\1|')${VARIANT}" ;;
+      *)     BASE="$(echo "$URL" | sed -E 's|/[^/]*$|/|')"; PLAY_URL="${BASE}${VARIANT}" ;;
+    esac
+    MEDIA=$(curl -sL --max-time "$TIMEOUT" -A "$UA" "$PLAY_URL" 2>/dev/null | head -c 65536)
+    [ -z "$MEDIA" ] && fail "variant_empty"
+    BODY="$MEDIA"
+  fi
+fi
+
+# Gate 3: ffprobe — verify it's a real video stream with codec info
+PROBE=$(ffprobe -v quiet -print_format json -show_streams -show_format -user_agent "$UA" -timeout 10000000 "$PLAY_URL" 2>/dev/null)
+[ -z "$PROBE" ] && fail "ffprobe_empty"
+
+VCODEC=$(echo "$PROBE" | jq -r '[.streams[]|select(.codec_type=="video")][0].codec_name // empty' 2>/dev/null)
+ACODEC=$(echo "$PROBE" | jq -r '[.streams[]|select(.codec_type=="audio")][0].codec_name // empty' 2>/dev/null)
+WIDTH=$(echo "$PROBE" | jq -r '[.streams[]|select(.codec_type=="video")][0].width // empty' 2>/dev/null)
+HEIGHT=$(echo "$PROBE" | jq -r '[.streams[]|select(.codec_type=="video")][0].height // empty' 2>/dev/null)
+BITRATE=$(echo "$PROBE" | jq -r '.format.bit_rate // empty' 2>/dev/null)
+
+[ -z "$VCODEC" ] && fail "no_video_codec"
+[ -z "$ACODEC" ] && fail "no_audio_codec"
+
+# Gate 4: Download actual playable data (≥3s equiv). Use ffmpeg to read 3s real playback.
+ffmpeg -hide_banner -loglevel error -user_agent "$UA" -rw_timeout 8000000 -t 3 -i "$PLAY_URL" -f null - >"$TMPD/ff.err" 2>&1
+FFRC=$?
+if [ "$FFRC" -ne 0 ]; then
+  REASON=$(head -1 "$TMPD/ff.err" | tr -d '\n' | tr '|' ':' | cut -c1-80)
+  fail "ffmpeg_rc${FFRC}:${REASON}"
+fi
+
+# Gate 5: Re-probe (second look to catch intermittent/redirect-only streams)
+PROBE2=$(ffprobe -v quiet -print_format json -show_streams -user_agent "$UA" -timeout 8000000 "$PLAY_URL" 2>/dev/null)
+V2=$(echo "$PROBE2" | jq -r '[.streams[]|select(.codec_type=="video")][0].codec_name // empty' 2>/dev/null)
+[ -z "$V2" ] && fail "reprobe_failed"
+
+RES="${WIDTH}x${HEIGHT}"
+[ -z "$BITRATE" ] && BITRATE="?"
+pass "${VCODEC}/${ACODEC}" "$RES" "$BITRATE"
