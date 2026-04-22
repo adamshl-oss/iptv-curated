@@ -50,13 +50,28 @@ def rewrite_tokenized(url):
     return url
 
 def parse_m3u(path):
+    """Parse M3U. Entries inside YT-LIVE-BEGIN/END markers are excluded from refresh
+    (they're owned by refresh_youtube.py and must survive this workflow untouched)."""
     header = "#EXTM3U"
     entries = []
+    yt_block = []  # preserved as-is
     with path.open() as f:
         lines = [l.rstrip("\n") for l in f]
     i = 0
+    in_yt = False
     while i < len(lines):
         ln = lines[i]
+        if ln.strip() == "#---YT-LIVE-BEGIN---":
+            in_yt = True
+            # capture the full block
+            while i < len(lines):
+                yt_block.append(lines[i])
+                if lines[i].strip() == "#---YT-LIVE-END---":
+                    break
+                i += 1
+            in_yt = False
+            i += 1
+            continue
         if ln.startswith("#EXTINF"):
             extinf = ln
             j = i + 1
@@ -69,7 +84,7 @@ def parse_m3u(path):
         elif ln.startswith("#EXTM3U"):
             header = ln
         i += 1
-    return header, entries
+    return header, entries, yt_block
 
 def extinf_name(ext):
     m = re.search(r',(.*)$', ext)
@@ -83,12 +98,15 @@ def test_url(url):
     except Exception:
         return "EXC"
 
-def write_m3u(path, header, entries):
+def write_m3u(path, header, entries, yt_block=None):
     with path.open("w") as f:
         f.write(header + "\n")
         for ext, url in entries:
             f.write(ext + "\n")
             f.write(url + "\n")
+        if yt_block:
+            for ln in yt_block:
+                f.write(ln + "\n")
 
 # -------------------- pool loading --------------------
 
@@ -127,7 +145,7 @@ def find_backups(channel_name, pool):
 
 def process(path, pool):
     print(f"\n=== {path.name} ===", flush=True)
-    header, entries = parse_m3u(path)
+    header, entries, yt_block = parse_m3u(path)
     # Rewrite any leftover tokenized URLs to permalinks
     entries = [(e, rewrite_tokenized(u)) for e, u in entries]
 
@@ -183,7 +201,7 @@ def process(path, pool):
         order[ext] = i
     kept.sort(key=lambda x: order.get(x[0], 9_999_999))
 
-    write_m3u(path, header, kept)
+    write_m3u(path, header, kept, yt_block)
     print(f"Result: {len(kept)} kept ({len(survived)} unchanged + {swapped} swapped), {dropped} dropped",
           flush=True)
     return len(kept), len(entries), swapped, dropped

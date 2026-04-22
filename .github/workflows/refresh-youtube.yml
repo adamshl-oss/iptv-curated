@@ -1,0 +1,46 @@
+name: Refresh YouTube lives
+
+on:
+  schedule:
+    - cron: "0 */2 * * *"   # every 2 hours (tokens last 2-6h)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: playlist-write
+  cancel-in-progress: false
+
+jobs:
+  refresh-yt:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install ffmpeg + yt-dlp + jq
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg jq
+          pip install -U yt-dlp
+
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+
+      - run: chmod +x scripts/test_stream.sh scripts/refresh_youtube.py
+
+      - name: Refresh YouTube live URLs
+        run: python3 scripts/refresh_youtube.py
+
+      - name: Commit & push if changed
+        run: |
+          if ! git diff --quiet -- claudette-*.m3u; then
+            git config user.name  "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add claudette-usa.m3u claudette-france.m3u claudette-algeria.m3u
+            git commit -m "Auto-refresh YouTube lives ($(date -u +%FT%TZ))"
+            git push
+          else
+            echo "No changes; YouTube URLs already fresh."
+          fi
