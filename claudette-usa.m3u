@@ -1,8 +1,10 @@
 #EXTM3U
+#EXTINF:-1 tvg-chno="2" group-title="Local Broadcast",NBC 5 Chicago
+https://prodamdlim.akamaized.net/out/v1/359371aad858489ca6b529632df936ca/2bb150785d0e46878b849fb4f8add1c9/d81eee37923941738ba5c009f69b18ec/index.m3u8
 #EXTINF:-1 tvg-chno="3" group-title="Local Broadcast",CBS 2 Chicago
 https://chicad94bd07.airspace-cdn.cbsivideo.com/live/manifest.m3u8
-#EXTINF:-1 tvg-chno="5" group-title="Local Broadcast",WGN CW 9 Chicago
-http://23.237.104.106:8080/USA_WGN/index.m3u8
+#EXTINF:-1 tvg-chno="4" group-title="Local Broadcast",FOX 32 Chicago
+https://aegis-cloudfront-1.tubi.video/3600d45a-dfbf-4878-9ca1-2e2bc9077fed/index.m3u8
 #EXTINF:-1 tvg-chno="10" group-title="Local Broadcast",ION Television
 https://tvpass.org/live/IONTVEast/hd
 #EXTINF:-1 tvg-chno="11" group-title="Local Broadcast",Localish
@@ -11,6 +13,8 @@ https://dnmfq3sh1jipj.cloudfront.net/DisneyLocalish.m3u8
 https://pb-0n3n2ej0w8pl9.akamaized.net/ABCNewsLive_Disney.m3u8
 #EXTINF:-1 tvg-chno="14" group-title="News",CBS News 24/7
 https://lineup.cbsivideo.com/playout/8877a7d5-b094-4ac8-bc72-75a5fed68e5b/index.m3u8
+#EXTINF:-1 tvg-chno="15" group-title="News",NBC News NOW
+https://pb-o6czxr182vtiv.akamaized.net/master.m3u8
 #EXTINF:-1 tvg-chno="16" group-title="News",CNN
 https://turnerlive.warnermediacdn.com/hls/live/586495/cnngo/cnn_slate/VIDEO_0_3564000.m3u8
 #EXTINF:-1 tvg-chno="17" group-title="News",HLN
@@ -19,21 +23,22 @@ https://tvpass.org/live/HLN/hd
 https://radiovid.foxnews.com/hls/live/661547/RADIOVID/index.m3u8
 #EXTINF:-1 tvg-chno="19" group-title="News",Fox Business Network
 https://tvpass.org/live/FoxBusiness/hd
+#EXTINF:-1 tvg-chno="20" group-title="News",Fox Weather
+https://pb-hum8cczphcrpf.akamaized.net/FOX_Weather.m3u8
 #EXTINF:-1 tvg-chno="21" group-title="News",MSNBC
-https://tvpass.org/live/MSNBC/hd
+http://41.205.93.154/MSNBC/index.m3u8
 #EXTINF:-1 tvg-chno="22" group-title="News",CNBC
 https://amg14891-amg14891c5-amgplt0020.playout.now3.amagi.tv/playlist.m3u8
-<<<<<<< Updated upstream
 #EXTINF:-1 tvg-chno="25" group-title="News",Bloomberg Television
 https://bloomberg.com/media-manifest/streams/qt.m3u8
-=======
->>>>>>> Stashed changes
 #EXTINF:-1 tvg-id="BloombergOriginals.us@US" tvg-chno="26" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Bloomberg_Originals.png" group-title="News",Bloomberg Originals
 https://bloomberg.com/media-manifest/streams/qt.m3u8
 #EXTINF:-1 tvg-chno="28" group-title="News",Newsmax
 https://amg00217-newsmax-newsmax-zeasn-022k9.amagi.tv/playlist.m3u8
 #EXTINF:-1 tvg-chno="29" group-title="News",Scripps News
 https://aegis-cloudfront-1.tubi.video/7e1c26b7-7975-4240-9a4f-480eaa8f3ea4/playlist.m3u8
+#EXTINF:-1 tvg-chno="30" group-title="News",Cheddar News
+https://aegis-cloudfront-1.tubi.video/27ff1997-507a-41c4-8433-08875fe5f40f/playlist.m3u8
 #EXTINF:-1 tvg-chno="31" group-title="News",The Weather Channel
 https://tvpass.org/live/TheWeatherChannel/hd
 #EXTINF:-1 tvg-id="LiveNOWfromFOX.us@SD" tvg-chno="32" tvg-logo="https://i.imgur.com/1JnyzHv.png" group-title="News",LiveNOW from FOX
@@ -42,8 +47,12 @@ https://pb-k5p02dtnr2162.akamaized.net/LiveNOW_from_FOX.m3u8
 https://tvpass.org/live/CSPAN/hd
 #EXTINF:-1 tvg-chno="34" group-title="News",C-SPAN 2
 https://tvpass.org/live/CSPAN2/hd
+#EXTINF:-1 tvg-chno="37" group-title="News",Court TV
+https://pb-2rv53xe17yzvq.akamaized.net/Court_TV_US.m3u8
 #EXTINF:-1 tvg-chno="38" group-title="Sports",ESPN
 https://tvpass.org/live/ESPN/hd
+#EXTINF:-1 tvg-chno="41" group-title="Sports",ESPNEWS
+https://tvpass.org/live/ESPNews/hd
 #EXTINF:-1 tvg-chno="42" group-title="Sports",SEC Network
 https://tvpass.org/live/SECN/hd
 #EXTINF:-1 tvg-chno="43" group-title="Sports",ACC Network
@@ -56,11 +65,10 @@ https://tvpass.org/live/FoxSports2/hd
 https://tvpass.org/live/BTN/hd
 #EXTINF:-1 tvg-chno="47" group-title="Sports",CBS Sports Network
 https://tvpass.org/live/CBSSportsNetworkUSA/hd
-<<<<<<< Updated upstream
+#EXTINF:-1 tvg-chno="48" group-title="Sports",NBC Sports
+https://xumo-xumoent-vc-122-sjv70.fast.nbcuni.com/live/master.m3u8
 #EXTINF:-1 tvg-chno="49" group-title="Sports",Golf Channel
 https://tvpass.org/live/GolfChannel/hd
-=======
->>>>>>> Stashed changes
 #EXTINF:-1 tvg-chno="50" group-title="Sports",Tennis Channel
 https://tvpass.org/live/TennisChannel/hd
 #EXTINF:-1 tvg-chno="51" group-title="Sports",NFL Network
@@ -76,7 +84,7 @@ https://tvpass.org/live/TNTEast/hd
 #EXTINF:-1 tvg-chno="57" group-title="Entertainment",TBS
 https://tvpass.org/live/TBSEast/hd
 #EXTINF:-1 tvg-chno="59" group-title="Entertainment",USA
-https://tvpass.org/live/USANetworkEast/hd
+http://23.237.104.106:8080/USA_PARAMOUNT_NETWORK/index.m3u8
 #EXTINF:-1 tvg-chno="60" group-title="Entertainment",FX
 https://tvpass.org/live/FXEast/hd
 #EXTINF:-1 tvg-chno="61" group-title="Entertainment",FXX
@@ -99,6 +107,12 @@ https://pb-amiq9wz02dhco.akamaized.net/playlist.m3u8
 https://xumo-xumoent-vc-114-x0p7i.fast.nbcuni.com/live/master.m3u8
 #EXTINF:-1 tvg-chno="73" group-title="Entertainment",E!
 https://pb-5kduxc2en4kdz.akamaized.net/Intervention_by_AE.m3u8
+#EXTINF:-1 tvg-chno="74" group-title="Entertainment",Oxygen True Crime
+https://tvpass.org/live/OxygenEast/hd
+#EXTINF:-1 tvg-chno="75" group-title="Entertainment",Paramount Network
+http://23.237.104.106:8080/USA_PARAMOUNT_NETWORK/index.m3u8
+#EXTINF:-1 tvg-chno="76" group-title="Entertainment",TV Land
+https://tvpass.org/live/tv-land-eastern/hd
 #EXTINF:-1 tvg-chno="78" group-title="Entertainment",Comedy Central
 http://23.237.104.106:8080/USA_COMEDY_CENTRAL/index.m3u8
 #EXTINF:-1 tvg-chno="79" group-title="Entertainment",MTV
@@ -113,6 +127,8 @@ https://tvpass.org/live/BETEast/hd
 https://tvpass.org/live/BETHerEast/hd
 #EXTINF:-1 tvg-chno="86" group-title="Entertainment",GSN
 https://tvpass.org/live/game-show-network-east/hd
+#EXTINF:-1 tvg-chno="87" group-title="Entertainment",Bounce TV
+https://pb-xp0ozx9lyqeiv.akamaized.net/BounceXL_US.m3u8
 #EXTINF:-1 tvg-id="Comet.us@SD" tvg-chno="88" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Comet_logo.svg/960px-Comet_logo.svg.png" group-title="Entertainment",Comet
 https://fast-channels.sinclairstoryline.com/COMET/index.m3u8
 #EXTINF:-1 tvg-id="Charge.us@SD" tvg-chno="89" tvg-logo="https://i.imgur.com/1rxmu2u.png" group-title="Entertainment",Charge!
@@ -123,6 +139,8 @@ https://tvpass.org/live/HGTVEast/hd
 https://tvpass.org/live/FoodNetworkEast/hd
 #EXTINF:-1 tvg-chno="96" group-title="Lifestyle",Cooking Channel
 https://tvpass.org/live/CookingChannel/hd
+#EXTINF:-1 tvg-chno="97" group-title="Lifestyle",TLC
+https://live-fi.tvkaista.net/tlc/live.m3u8?src=freetv
 #EXTINF:-1 tvg-chno="98" group-title="Lifestyle",Travel Channel
 https://tvpass.org/live/TravelChannelEast/hd
 #EXTINF:-1 tvg-chno="100" group-title="Lifestyle",OWN: Oprah Winfrey Network
@@ -133,6 +151,8 @@ https://tastemade-tdint-rakuten.amagi.tv/playlist.m3u8
 https://tvpass.org/live/FYIEast/hd
 #EXTINF:-1 tvg-id="HSN.us@East" tvg-chno="105" tvg-logo="https://i.imgur.com/rnZN7rD.png" group-title="Lifestyle",HSN
 https://qvc-amd-live.akamaized.net/hls/live/2034113/lshsn1us/master.m3u8
+#EXTINF:-1 tvg-chno="106" group-title="Lifestyle",QVC
+https://qvc-amd-live.akamaized.net/hls/live/2034113/lsqvc1uscln/master.m3u8
 #EXTINF:-1 tvg-chno="108" group-title="Documentary",Discovery
 https://svs.itworkscdn.net/asharqdiscoverylive/asharqd.smil/playlist_dvr.m3u8
 #EXTINF:-1 tvg-chno="111" group-title="Documentary",Science
@@ -160,15 +180,15 @@ https://tvpass.org/live/HallmarkMoviesMysteriesEast/hd
 #EXTINF:-1 tvg-id="DoveChannel.us@SD" tvg-chno="129" group-title="Movies",Dove Channel
 https://linear-896.frequency.stream/dist/cineverse/896/hls/master/playlist.m3u8
 #EXTINF:-1 tvg-chno="130" group-title="Kids & Family",Disney Channel
-https://tvpass.org/live/DisneyChannelEast/hd
+http://151.80.18.177:86/Disney_Junior_HD/index.m3u8
 #EXTINF:-1 tvg-chno="131" group-title="Kids & Family",Disney Junior
-https://tvpass.org/live/DisneyJuniorEast/hd
+http://151.80.18.177:86/Disney_Junior_HD/index.m3u8
 #EXTINF:-1 tvg-chno="132" group-title="Kids & Family",Disney XD
 http://23.237.104.106:8080/USA_DISNEY_XD/index.m3u8
 #EXTINF:-1 tvg-chno="133" group-title="Kids & Family",Freeform
 https://tvpass.org/live/FreeformEast/hd
 #EXTINF:-1 tvg-chno="134" group-title="Kids & Family",Nickelodeon
-http://151.80.18.177:86/Nickelodeon_Junior/index.m3u8
+http://23.237.104.106:8080/USA_NICKELODEON/index.m3u8
 #EXTINF:-1 tvg-chno="135" group-title="Kids & Family",Nick Jr.
 https://tvpass.org/live/NickJrEast/hd
 #EXTINF:-1 tvg-chno="136" group-title="Kids & Family",Nicktoons

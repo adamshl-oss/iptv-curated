@@ -17,10 +17,16 @@ https://raw.githubusercontent.com/Paradise-91/ParaTV/main/streams/t18/t18-dm.m3u
 https://raw.githubusercontent.com/Paradise-91/ParaTV/main/streams/lequipe/la-chaine-l-equipe-en-direct-dm.m3u8
 #EXTINF:-1 tvg-chno="60" group-title="Séries et Divertissements",National Geographic
 http://103.157.248.140:8000/play/a012/index.m3u8
+#EXTINF:-1 tvg-chno="64" group-title="Séries et Divertissements",TLC
+https://live-fi.tvkaista.net/tlc/live.m3u8?src=freetv
+#EXTINF:-1 tvg-chno="67" group-title="Séries et Divertissements",Boomerang
+https://tvpass.org/live/Boomerang/hd
 #EXTINF:-1 tvg-chno="69" group-title="Séries et Divertissements",Enquêtes de choc
 https://fastmedia-enquetesdechoc-rakuten.amagi.tv/playlist.m3u8
 #EXTINF:-1 tvg-chno="72" group-title="Séries et Divertissements",SYFY
 https://tvpass.org/live/SyfyEast/hd
+#EXTINF:-1 tvg-chno="84" group-title="Séries et Divertissements",MTV
+https://tvpass.org/live/MTVEast/hd
 #EXTINF:-1 tvg-chno="94" group-title="Séries et Divertissements",GONG
 https://amg01596-gongnetworks-gong-ono-vh5f2.amagi.tv/1080p-vtt/index.m3u8
 #EXTINF:-1 tvg-chno="116" group-title="Cinéma",Top Sci-Fi
@@ -29,16 +35,18 @@ https://amg00609-amg00609c5-rakuten-uk-3764.playouts.now.amagi.tv/master.m3u8
 https://rpn.bozztv.com/gusa/gusa-tvsdriveinmovie/index.m3u8
 #EXTINF:-1 tvg-chno="125" group-title="Cinéma",Ciné Nanar+
 https://zylo-cinenanar-rakuten.amagi.tv/playlist.m3u8
+#EXTINF:-1 tvg-chno="135" group-title="Cinéma",Paramount+
+http://23.237.104.106:8080/USA_PARAMOUNT_NETWORK/index.m3u8
+#EXTINF:-1 tvg-chno="141" group-title="Jeunesse",Nickelodeon Junior
+http://151.80.18.177:86/Nickelodeon_Junior/index.m3u8
 #EXTINF:-1 tvg-chno="145" group-title="Jeunesse",Cartoon Network
 http://23.237.104.106:8080/USA_CARTOON_NETWORK/index.m3u8
 #EXTINF:-1 tvg-chno="147" group-title="Jeunesse",Nickelodeon
-<<<<<<< Updated upstream
-http://151.80.18.177:86/Nickelodeon_FR/index.m3u8
+http://23.237.104.106:8080/USA_NICKELODEON/index.m3u8
+#EXTINF:-1 tvg-chno="152" group-title="Jeunesse",NickToons
+https://tvpass.org/live/NicktoonsEast/hd
 #EXTINF:-1 tvg-chno="159" group-title="Informations Françaises",CNews Prime
 https://raw.githubusercontent.com/Paradise-91/ParaTV/main/streams/canalplus/cnews-prime-dm.m3u8
-=======
-http://23.237.104.106:8080/USA_NICKELODEON/index.m3u8
->>>>>>> Stashed changes
 #EXTINF:-1 tvg-chno="161" group-title="Informations Françaises",BFM Business
 https://live-cdn-stream-euw1.bfmb.bct.nextradiotv.com/master.m3u8
 #EXTINF:-1 tvg-chno="164" group-title="Informations Françaises",Euronews
@@ -59,6 +67,8 @@ https://a-cdn.klowdtv.com/live2/nautical_720p/playlist.m3u8
 https://raw.githubusercontent.com/Paradise-91/ParaTV/main/streams/lequipe/my-new-video-title-dm.m3u8
 #EXTINF:-1 tvg-chno="191" group-title="Sport Thématique",Fuel TV
 https://amg01074-fueltv-amg01074c1-stirr-us-4214.playouts.now.amagi.tv/playlist.m3u8
+#EXTINF:-1 tvg-chno="203" group-title="Découverte",Le Figaro TV
+https://figarotv-live.freecaster.com/live/freecaster/figarotv.m3u8
 #EXTINF:-1 tvg-chno="215" group-title="Découverte",Travel Channel
 https://tvpass.org/live/TravelChannelEast/hd
 #EXTINF:-1 tvg-chno="241" group-title="Style de Vie / Pratique",Fashion TV
@@ -74,9 +84,11 @@ https://lotus.stingray.com/manifest/djazz-djaads-montreal/samsungtvplus/master.m
 #EXTINF:-1 tvg-chno="266" group-title="Musique",Stingray Classica
 https://lotus.stingray.com/manifest/classica-cla008-montreal/samsungtvplus/master.m3u8
 #EXTINF:-1 tvg-chno="284" group-title="Musique",Generations TV
-https://edge11.vedge.infomaniak.com/livecast/ik:generation-tv/manifest.m3u8
+https://event.vedge.infomaniak.com/livecast/ik:generation-tv/manifest.m3u8
 #EXTINF:-1 tvg-chno="285" group-title="Musique",TRACE Urban
 https://lightning-traceurban-samsungau.amagi.tv/playlist.m3u8
+#EXTINF:-1 tvg-chno="290" group-title="Musique",TRACE Gospel
+https://channels.trace.plus/Traceprod/GOSPEL_FR/.m3u8
 #EXTINF:-1 tvg-chno="294" group-title="Musique",TRACE Latina
 https://amg01131-tracetv-tracelatina-glewed-vtnk7.amagi.tv/playlist.m3u8
 #EXTINF:-1 tvg-chno="297" group-title="Musique",Madras FM TV
@@ -85,11 +97,8 @@ https://edge17.vedge.infomaniak.com/livecast/ik:madrasfmtv/manifest.m3u8
 https://pb-0yvknepz2ngjh.akamaized.net/playlist.m3u8
 #EXTINF:-1 tvg-chno="343" group-title="Infos et News",France 24 Español
 https://live.france24.com/hls/live/2037220-b/F24_ES_HI_HLS/master_5000.m3u8
-<<<<<<< Updated upstream
 #EXTINF:-1 tvg-chno="351" group-title="Infos et News",Newsmax
 https://amg00217-newsmax-newsmax-zeasn-022k9.amagi.tv/playlist.m3u8
-=======
->>>>>>> Stashed changes
 #EXTINF:-1 tvg-id="CNNInternationalEurope.us" tvg-chno="354" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/united-states/cnn-us.png" group-title="Infos et News",CNN International
 https://turnerlive.warnermediacdn.com/hls/live/586495/cnngo/cnn_slate/VIDEO_0_3564000.m3u8
 #EXTINF:-1 tvg-chno="355" group-title="Infos et News",Fox News
@@ -110,15 +119,12 @@ https://edge-a3.evrideo.tv/8f37c9f0-fe22-44f4-b64a-76ad11730daf_1000026630_HLS/m
 https://edge13.vedge.infomaniak.com/livecast/ik:kalactv/chunklist_w280736538.m3u8
 #EXTINF:-1 tvg-chno="440" group-title="Étrangères",Espace TV
 https://edge11.vedge.infomaniak.com/livecast/ik:espacetv/manifest.m3u8
+#EXTINF:-1 tvg-chno="443" group-title="Étrangères",TVT
+http://69.64.57.208/tvt/playlist.m3u8
 #EXTINF:-1 tvg-chno="448" group-title="Étrangères",Sen TV
 http://69.64.57.208/sentv/playlist.m3u8
-<<<<<<< Updated upstream
-#EXTINF:-1 tvg-id="RTBGo.bn@SD" tvg-chno="450" tvg-logo="https://i.imgur.com/CGlzsD5.png" group-title="Étrangères",RTB
-https://d1211whpimeups.cloudfront.net/smil:rtbgo/playlist.m3u8
-=======
 #EXTINF:-1 tvg-chno="451" group-title="Étrangères",Bénin TV
 https://strhls.streamakaci.tv/ortb/ortb1-multi/playlist.m3u8
->>>>>>> Stashed changes
 #EXTINF:-1 tvg-chno="452" group-title="Étrangères",TFM
 http://69.64.57.208/tfm/playlist.m3u8
 #EXTINF:-1 tvg-chno="453" group-title="Étrangères",Canal 2 International
@@ -131,6 +137,8 @@ http://69.64.57.208:8080/rti1/playlist.m3u8
 http://69.64.57.208/rtg/playlist.m3u8
 #EXTINF:-1 tvg-chno="465" group-title="Étrangères",ORTM
 http://69.64.57.208/tm2/playlist.m3u8
+#EXTINF:-1 tvg-chno="466" group-title="Étrangères",2STV
+http://69.64.57.208/2stv/playlist.m3u8
 #EXTINF:-1 tvg-chno="467" group-title="Étrangères",RTS
 http://69.64.57.208/rts1/playlist.m3u8
 #EXTINF:-1 tvg-id="SharjahTV.ae@SD" tvg-chno="479" tvg-logo="https://i.imgur.com/Oz2bPOt.png" group-title="Étrangères",Sharjah TV
@@ -149,6 +157,8 @@ https://crtvg-europa.flumotion.cloud/playlist.m3u8
 https://raw.githubusercontent.com/BellezaEmporium/IPTV_Exception/master/channels/ve/telesur.m3u8
 #EXTINF:-1 tvg-id="24HorasCanarias.es@SD" tvg-chno="538" tvg-logo="https://i.ibb.co/21sXZ3GT/24h.png" group-title="Étrangères",Canal 24 Horas
 https://ztnr.rtve.es/ztnr/5473142.m3u8
+#EXTINF:-1 tvg-chno="547" group-title="Étrangères",Kuwait TV
+https://kwtktv1ta.cdn.mangomolo.com/ktv1/smil:ktv1.stream.smil/chunklist.m3u8
 #EXTINF:-1 tvg-id="Alarabiya.ae@SD" tvg-chno="549" tvg-logo="https://shahid.mbc.net/mediaObject/a4c125db-ede8-4970-9eed-963948c78651?height=auto&width=512&croppingPoint=&version=1&type=png" group-title="Étrangères",Al Arabiya News Channel
 https://live.alarabiya.net/alarabiapublish/alarabiya.smil/playlist.m3u8
 #EXTINF:-1 tvg-id="AlArabyTV.qa@SD" tvg-chno="560" tvg-logo="https://i.imgur.com/YMqWEe4.png" group-title="Étrangères",Al Araby
@@ -177,37 +187,42 @@ https://dwamdstream102.akamaized.net/hls/live/2015525/dwstream102/master.m3u8
 https://dash4.antik.sk/live/test_pro_sieben_tizen/playlist.m3u8
 #EXTINF:-1 tvg-chno="636" group-title="Étrangères",V+ TVI
 https://video-auth2.iol.pt/live_vmais/live_vmais/edge_servers/vmais-720p/playlist.m3u8
+#EXTINF:-1 tvg-chno="640" group-title="Étrangères",Nour Al Koddas
+https://svs.itworkscdn.net/nour1satlive/livestream/playlist.m3u8
 #EXTINF:-1 tvg-id="AlJadeed.lb@SD" tvg-chno="646" tvg-logo="https://i.imgur.com/CfxR8o3.png" group-title="Étrangères",Al Jadeed
 http://185.9.2.18/chid_391/mono.m3u8
+#EXTINF:-1 tvg-id="RoyaTV.jo@SD" tvg-chno="650" tvg-logo="https://i.imgur.com/WX80rty.png" group-title="Étrangères",Roya TV
+https://royatv-live.daioncdn.net/royatv/royatv.m3u8
 #EXTINF:-1 tvg-id="AlMayadeenTV.lb@SD" tvg-chno="651" tvg-logo="https://i.imgur.com/GtQOKeW.png" group-title="Étrangères",Al Mayadeen TV
 https://mdnlv.cdn.octivid.com/almdn/smil:mpegts.stream.smil/playlist.m3u8
+#EXTINF:-1 tvg-chno="652" group-title="Étrangères",Oman TV
+https://partneta.cdn.mgmlcdn.com/omantv/smil:omantv.stream.smil/chunklist.m3u8
 #EXTINF:-1 tvg-id="SudanTV.sd@SD" tvg-chno="667" tvg-logo="https://i.imgur.com/XUPAYAA.png" group-title="Étrangères",Sudan TV
 https://cdn-globecast.akamaized.net/live/eds/sudan_tv/hls_roku/index.m3u8
+#EXTINF:-1 tvg-chno="680" group-title="Étrangères",Ennahar TV
+http://185.9.2.18/chid_1289/mpegts
 #EXTINF:-1 tvg-id="Aflam.sa@SD" tvg-chno="689" tvg-logo="https://i.imgur.com/cTLj7Yt.png" group-title="Étrangères",ART Aflam 1
 https://shd-amg-fast.edgenextcdn.net/tx001/playlist.m3u8
 #EXTINF:-1 tvg-chno="696" group-title="Étrangères",Espreso
 https://dash4.antik.sk/live/test_espresso/playlist.m3u8
 #EXTINF:-1 tvg-id="SilkWay.kz@SD" tvg-chno="697" tvg-logo="https://i.imgur.com/SJNDksF.png" group-title="Étrangères",Silk Way
 https://dash2.antik.sk/live/test_qazaq_tv_tizen/playlist.m3u8
-#EXTINF:-1 tvg-id="CanalTV3.co@SD" tvg-chno="709" tvg-logo="https://i.imgur.com/pyeBDpg.jpeg" group-title="Étrangères",TV3
-https://streaming.telenetdigital.net.co:8086/canal3tv/stream.m3u8
+#EXTINF:-1 tvg-id="DimTV.tr@SD" tvg-chno="698" tvg-logo="https://i.imgur.com/X4QFDhk.png" group-title="Étrangères",DIM
+https://live.artidijitalmedya.com/artidijital_dimtv/dimtv/playlist.m3u8
+#EXTINF:-1 tvg-chno="709" group-title="Étrangères",TV3
+http://185.9.2.18/chid_347/mpegts
 #EXTINF:-1 tvg-id="CCTV4America.cn" tvg-chno="721" tvg-logo="https://i.imgur.com/1TPiRqR.png" group-title="Étrangères",CCTV-4
 https://global.cgtn.cicc.media.caton.cloud/master/cgtn-america.m3u8
 #EXTINF:-1 tvg-chno="723" group-title="Étrangères",CGTN Français
 https://amg01314-cgtn-amg01314c2-rakuten-us-1319.playouts.now.amagi.tv/cgtn-fr-rakuten/playlist.m3u8
-<<<<<<< Updated upstream
-#EXTINF:-1 tvg-id="ZeeTV.in@SD" tvg-chno="784" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_ZEE_TV/images/LOGO_HD/LOGO_HD_image.png" group-title="Étrangères",Zee TV
-http://103.229.254.25:7001/play/a0cs/index.m3u8
-#EXTINF:-1 tvg-id="TVZoom.br@SD" tvg-chno="796" tvg-logo="https://i.imgur.com/jCGrjf5.png" group-title="Étrangères",Zoom
-https://cdn.jmvstream.com/w/LVW-9730/LVW9730_LmUwslM8jt/playlist.m3u8
+#EXTINF:-1 tvg-chno="736" group-title="Étrangères",KBS
+https://liveh12.vtvprime.vn/hls/KBS/03.m3u8
+#EXTINF:-1 tvg-chno="901" group-title="Locales",TV7
+https://tv7.live-kd.com/live/tv7/livestream/playlist.m3u8
 #EXTINF:-1 tvg-chno="905" group-title="Locales",Brionnais TV
 https://stream2.mandarine.media/brionnaistv/brionnaistv/playlist.m3u8
-#EXTINF:-1 tvg-chno="918" group-title="Locales",TLC
-https://live-fi.tvkaista.net/tlc/live.m3u8?src=freetv
 #EXTINF:-1 tvg-chno="921" group-title="Locales",Vosges TV
 https://vosgestv.live-kd.com/live/vosgestv/vosgestv/playlist.m3u8
-=======
->>>>>>> Stashed changes
 #EXTINF:-1 tvg-id="TVR.cl@SD" tvg-chno="927" tvg-logo="https://i.postimg.cc/prDRDZw3/TVR-Logo.png" group-title="Locales",TVR
 https://unlimited1-us.dps.live/tvr/tvr.smil/playlist.m3u8
 #EXTINF:-1 tvg-chno="931" group-title="Locales",Fusion TV
@@ -218,3 +233,5 @@ https://edge13.vedge.infomaniak.com/livecast/ik:adhtv/manifest.m3u8
 https://live.matele.be/hls/live.m3u8
 #EXTINF:-1 tvg-id="CannesLerinsTV.fr@SD" tvg-chno="940" tvg-logo="https://i.imgur.com/atlgnum.png" group-title="Locales",Cannes Lérins TV
 https://vdo2.pro-fhi.net:3628/live/uppodsfqlive.m3u8
+#EXTINF:-1 tvg-chno="946" group-title="Locales",TéléPaese
+https://srv.webtvmanager.fr:3970/live/viatelepaeselive.m3u8
