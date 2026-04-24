@@ -1,4 +1,8 @@
 #EXTM3U
+#EXTINF:-1 tvg-chno="2" group-title="Généralistes TNT",France 2
+http://69.64.57.208/france2/mono.m3u8
+#EXTINF:-1 tvg-chno="5" group-title="Généralistes TNT",France 5
+http://69.64.57.208/france5/mono.m3u8
 #EXTINF:-1 tvg-chno="7" group-title="Généralistes TNT",Arte
 https://dash4.antik.sk/live/test_arte_avc_25p/playlist.m3u8
 #EXTINF:-1 tvg-chno="13" group-title="Généralistes TNT",BFM TV
@@ -11,8 +15,8 @@ https://raw.githubusercontent.com/Paradise-91/ParaTV/main/streams/canalplus/csta
 https://raw.githubusercontent.com/Paradise-91/ParaTV/main/streams/t18/t18-dm.m3u8
 #EXTINF:-1 tvg-chno="21" group-title="Généralistes TNT",La chaîne L'Equipe
 https://raw.githubusercontent.com/Paradise-91/ParaTV/main/streams/lequipe/la-chaine-l-equipe-en-direct-dm.m3u8
-#EXTINF:-1 tvg-chno="60" group-title="Séries et Divertissements",National Geographic
-http://103.157.248.140:8000/play/a012/index.m3u8
+#EXTINF:-1 tvg-chno="64" group-title="Séries et Divertissements",TLC
+https://live-fi.tvkaista.net/tlc/live.m3u8?src=freetv
 #EXTINF:-1 tvg-chno="67" group-title="Séries et Divertissements",Boomerang
 https://tvpass.org/live/Boomerang/hd
 #EXTINF:-1 tvg-chno="69" group-title="Séries et Divertissements",Enquêtes de choc
@@ -31,14 +35,14 @@ https://rpn.bozztv.com/gusa/gusa-tvsdriveinmovie/index.m3u8
 https://zylo-cinenanar-rakuten.amagi.tv/playlist.m3u8
 #EXTINF:-1 tvg-chno="135" group-title="Cinéma",Paramount+
 http://23.237.104.106:8080/USA_PARAMOUNT_NETWORK/index.m3u8
+#EXTINF:-1 tvg-chno="141" group-title="Jeunesse",Nickelodeon Junior
+http://151.80.18.177:86/Nickelodeon_Junior/index.m3u8
 #EXTINF:-1 tvg-chno="145" group-title="Jeunesse",Cartoon Network
 http://23.237.104.106:8080/USA_CARTOON_NETWORK/index.m3u8
 #EXTINF:-1 tvg-chno="147" group-title="Jeunesse",Nickelodeon
 http://23.237.104.106:8080/USA_NICKELODEON/index.m3u8
 #EXTINF:-1 tvg-chno="152" group-title="Jeunesse",NickToons
 https://tvpass.org/live/NicktoonsEast/hd
-#EXTINF:-1 tvg-chno="159" group-title="Informations Françaises",CNews Prime
-https://raw.githubusercontent.com/Paradise-91/ParaTV/main/streams/canalplus/cnews-prime-dm.m3u8
 #EXTINF:-1 tvg-chno="161" group-title="Informations Françaises",BFM Business
 https://live-cdn-stream-euw1.bfmb.bct.nextradiotv.com/master.m3u8
 #EXTINF:-1 tvg-chno="164" group-title="Informations Françaises",Euronews
@@ -59,8 +63,6 @@ https://a-cdn.klowdtv.com/live2/nautical_720p/playlist.m3u8
 https://raw.githubusercontent.com/Paradise-91/ParaTV/main/streams/lequipe/my-new-video-title-dm.m3u8
 #EXTINF:-1 tvg-chno="191" group-title="Sport Thématique",Fuel TV
 https://amg01074-fueltv-amg01074c1-stirr-us-4214.playouts.now.amagi.tv/playlist.m3u8
-#EXTINF:-1 tvg-chno="203" group-title="Découverte",Le Figaro TV
-https://figarotv-live.freecaster.com/live/freecaster/figarotv.m3u8
 #EXTINF:-1 tvg-chno="215" group-title="Découverte",Travel Channel
 https://tvpass.org/live/TravelChannelEast/hd
 #EXTINF:-1 tvg-chno="241" group-title="Style de Vie / Pratique",Fashion TV
@@ -76,23 +78,19 @@ https://lotus.stingray.com/manifest/djazz-djaads-montreal/samsungtvplus/master.m
 #EXTINF:-1 tvg-chno="266" group-title="Musique",Stingray Classica
 https://lotus.stingray.com/manifest/classica-cla008-montreal/samsungtvplus/master.m3u8
 #EXTINF:-1 tvg-chno="284" group-title="Musique",Generations TV
-https://edge11.vedge.infomaniak.com/livecast/ik:generation-tv/manifest.m3u8
+https://event.vedge.infomaniak.com/livecast/ik:generation-tv/manifest.m3u8
 #EXTINF:-1 tvg-chno="285" group-title="Musique",TRACE Urban
 https://lightning-traceurban-samsungau.amagi.tv/playlist.m3u8
 #EXTINF:-1 tvg-chno="290" group-title="Musique",TRACE Gospel
 https://channels.trace.plus/Traceprod/GOSPEL_FR/.m3u8
 #EXTINF:-1 tvg-chno="294" group-title="Musique",TRACE Latina
 https://amg01131-tracetv-tracelatina-glewed-vtnk7.amagi.tv/playlist.m3u8
-#EXTINF:-1 tvg-chno="297" group-title="Musique",Madras FM TV
-https://edge17.vedge.infomaniak.com/livecast/ik:madrasfmtv/manifest.m3u8
 #EXTINF:-1 tvg-chno="298" group-title="Musique",Vibes TV
 https://pb-0yvknepz2ngjh.akamaized.net/playlist.m3u8
 #EXTINF:-1 tvg-chno="343" group-title="Infos et News",France 24 Español
 https://live.france24.com/hls/live/2037220-b/F24_ES_HI_HLS/master_5000.m3u8
 #EXTINF:-1 tvg-chno="351" group-title="Infos et News",Newsmax
 https://amg00217-newsmax-newsmax-zeasn-022k9.amagi.tv/playlist.m3u8
-#EXTINF:-1 tvg-id="CNNInternationalEurope.us" tvg-chno="354" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/united-states/cnn-us.png" group-title="Infos et News",CNN International
-https://turnerlive.warnermediacdn.com/hls/live/586495/cnngo/cnn_slate/VIDEO_0_3564000.m3u8
 #EXTINF:-1 tvg-chno="355" group-title="Infos et News",Fox News
 https://radiovid.foxnews.com/hls/live/661547/RADIOVID/index.m3u8
 #EXTINF:-1 tvg-chno="356" group-title="Infos et News",Bloomberg TV
@@ -111,6 +109,8 @@ https://edge-a3.evrideo.tv/8f37c9f0-fe22-44f4-b64a-76ad11730daf_1000026630_HLS/m
 https://edge13.vedge.infomaniak.com/livecast/ik:kalactv/chunklist_w280736538.m3u8
 #EXTINF:-1 tvg-chno="440" group-title="Étrangères",Espace TV
 https://edge11.vedge.infomaniak.com/livecast/ik:espacetv/manifest.m3u8
+#EXTINF:-1 tvg-chno="443" group-title="Étrangères",TVT
+http://69.64.57.208/tvt/playlist.m3u8
 #EXTINF:-1 tvg-chno="448" group-title="Étrangères",Sen TV
 http://69.64.57.208/sentv/playlist.m3u8
 #EXTINF:-1 tvg-chno="451" group-title="Étrangères",Bénin TV
@@ -121,12 +121,12 @@ http://69.64.57.208/tfm/playlist.m3u8
 http://69.64.57.208/canal2international/playlist.m3u8
 #EXTINF:-1 tvg-chno="454" group-title="Étrangères",CRTV
 http://69.64.57.208/crtv/playlist.m3u8
-#EXTINF:-1 tvg-chno="461" group-title="Étrangères",RTI 1
-http://69.64.57.208:8080/rti1/playlist.m3u8
 #EXTINF:-1 tvg-chno="463" group-title="Étrangères",RTG
 http://69.64.57.208/rtg/playlist.m3u8
 #EXTINF:-1 tvg-chno="465" group-title="Étrangères",ORTM
 http://69.64.57.208/tm2/playlist.m3u8
+#EXTINF:-1 tvg-chno="466" group-title="Étrangères",2STV
+http://69.64.57.208/2stv/playlist.m3u8
 #EXTINF:-1 tvg-chno="467" group-title="Étrangères",RTS
 http://69.64.57.208/rts1/playlist.m3u8
 #EXTINF:-1 tvg-id="SharjahTV.ae@SD" tvg-chno="479" tvg-logo="https://i.imgur.com/Oz2bPOt.png" group-title="Étrangères",Sharjah TV
@@ -135,6 +135,8 @@ https://live.kwikmotion.com/smc1live/smc1tv.smil/playlist.m3u8
 https://cdn.live.easybroadcast.io/abr_corp/83_medi1tv-afrique_tm7tu45/playlist.m3u8
 #EXTINF:-1 tvg-id="AlSunnahAlNabawiyahTV.sa@SD" tvg-chno="501" tvg-logo="https://i.imgur.com/S6LcTJv.png" group-title="Étrangères",Sunnah TV
 https://cdn-globecast.akamaized.net/live/eds/saudi_sunnah/hls_roku/index.m3u8
+#EXTINF:-1 tvg-id="TVPPolonia.pl@SD" tvg-chno="502" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/TVP_Polonia_Logo_2020.svg/960px-TVP_Polonia_Logo_2020.svg.png" group-title="Étrangères",TVP Polonia
+https://lowa8026-cmyk.github.io/tvpvod/399723.m3u8
 #EXTINF:-1 tvg-id="ArirangTV.kr" tvg-chno="514" tvg-logo="https://i.imgur.com/RuHZ6Dx.png" group-title="Étrangères",Arirang
 http://amdlive.ctnd.com.edgesuite.net/arirang_1ch/smil:arirang_1ch.smil/playlist.m3u8
 #EXTINF:-1 tvg-id="GaliciaTVEuropa.es@SD" tvg-chno="527" tvg-logo="https://i.imgur.com/dvkzH8n.png" group-title="Étrangères",Galicia TV
@@ -163,6 +165,8 @@ https://tv-trtworld.medya.trt.com.tr/master.m3u8
 https://ciner.daioncdn.net/bloomberght/bloomberght.m3u8
 #EXTINF:-1 tvg-chno="593" group-title="Étrangères",TRT 1
 https://tv-trt1.medya.trt.com.tr/master.m3u8
+#EXTINF:-1 tvg-chno="595" group-title="Étrangères",TRT Cocuk
+https://tv-trtcocuk.medya.trt.com.tr/master.m3u8
 #EXTINF:-1 tvg-chno="596" group-title="Étrangères",Kanal 7 Avrupa
 https://livetv.radyotvonline.net/kanal7live/kanal7avr/playlist.m3u8
 #EXTINF:-1 tvg-chno="617" group-title="Étrangères",DW-TV
@@ -171,8 +175,6 @@ https://dwamdstream102.akamaized.net/hls/live/2015525/dwstream102/master.m3u8
 https://dash4.antik.sk/live/test_pro_sieben_tizen/playlist.m3u8
 #EXTINF:-1 tvg-chno="640" group-title="Étrangères",Nour Al Koddas
 https://svs.itworkscdn.net/nour1satlive/livestream/playlist.m3u8
-#EXTINF:-1 tvg-id="AlJadeed.lb@SD" tvg-chno="646" tvg-logo="https://i.imgur.com/CfxR8o3.png" group-title="Étrangères",Al Jadeed
-http://185.9.2.18/chid_391/mono.m3u8
 #EXTINF:-1 tvg-id="RoyaTV.jo@SD" tvg-chno="650" tvg-logo="https://i.imgur.com/WX80rty.png" group-title="Étrangères",Roya TV
 https://royatv-live.daioncdn.net/royatv/royatv.m3u8
 #EXTINF:-1 tvg-id="AlMayadeenTV.lb@SD" tvg-chno="651" tvg-logo="https://i.imgur.com/GtQOKeW.png" group-title="Étrangères",Al Mayadeen TV
@@ -181,14 +183,12 @@ https://mdnlv.cdn.octivid.com/almdn/smil:mpegts.stream.smil/playlist.m3u8
 https://partneta.cdn.mgmlcdn.com/omantv/smil:omantv.stream.smil/chunklist.m3u8
 #EXTINF:-1 tvg-id="SudanTV.sd@SD" tvg-chno="667" tvg-logo="https://i.imgur.com/XUPAYAA.png" group-title="Étrangères",Sudan TV
 https://cdn-globecast.akamaized.net/live/eds/sudan_tv/hls_roku/index.m3u8
-#EXTINF:-1 tvg-chno="680" group-title="Étrangères",Ennahar TV
-http://185.9.2.18/chid_1289/playlist.m3u8
 #EXTINF:-1 tvg-id="Aflam.sa@SD" tvg-chno="689" tvg-logo="https://i.imgur.com/cTLj7Yt.png" group-title="Étrangères",ART Aflam 1
 https://shd-amg-fast.edgenextcdn.net/tx001/playlist.m3u8
 #EXTINF:-1 tvg-chno="696" group-title="Étrangères",Espreso
 https://dash4.antik.sk/live/test_espresso/playlist.m3u8
-#EXTINF:-1 tvg-chno="709" group-title="Étrangères",TV3
-http://185.9.2.18/chid_347/mpegts
+#EXTINF:-1 tvg-id="SilkWay.kz@SD" tvg-chno="697" tvg-logo="https://i.imgur.com/SJNDksF.png" group-title="Étrangères",Silk Way
+https://dash2.antik.sk/live/test_qazaq_tv_tizen/playlist.m3u8
 #EXTINF:-1 tvg-id="CCTV4America.cn" tvg-chno="721" tvg-logo="https://i.imgur.com/1TPiRqR.png" group-title="Étrangères",CCTV-4
 https://global.cgtn.cicc.media.caton.cloud/master/cgtn-america.m3u8
 #EXTINF:-1 tvg-chno="723" group-title="Étrangères",CGTN Français
@@ -203,13 +203,21 @@ https://stream2.mandarine.media/brionnaistv/brionnaistv/playlist.m3u8
 https://vosgestv.live-kd.com/live/vosgestv/vosgestv/playlist.m3u8
 #EXTINF:-1 tvg-id="TVR.cl@SD" tvg-chno="927" tvg-logo="https://i.postimg.cc/prDRDZw3/TVR-Logo.png" group-title="Locales",TVR
 https://unlimited1-us.dps.live/tvr/tvr.smil/playlist.m3u8
-#EXTINF:-1 tvg-chno="931" group-title="Locales",Fusion TV
-https://edge20.vedge.infomaniak.com/livecast/ik:fusiontv/manifest.m3u8
-#EXTINF:-1 tvg-chno="935" group-title="Locales",Alpe d'Huez TV
-https://edge13.vedge.infomaniak.com/livecast/ik:adhtv/manifest.m3u8
-#EXTINF:-1 tvg-id="CannesLerinsTV.fr@SD" tvg-chno="940" tvg-logo="https://i.imgur.com/atlgnum.png" group-title="Locales",Cannes Lérins TV
-https://vdo2.pro-fhi.net:3628/live/uppodsfqlive.m3u8
+#EXTINF:-1 tvg-chno="937" group-title="Locales",MATÉLÉ
+https://live.matele.be/hls/live.m3u8
 #EXTINF:-1 tvg-chno="946" group-title="Locales",TéléPaese
 https://srv.webtvmanager.fr:3970/live/viatelepaeselive.m3u8
 #---YT-LIVE-BEGIN---
+#EXTINF:-1 tvg-chno="358" group-title="Infos et News",DW English
+https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1777030144/ei/oP_qaduqM6_pybgP7pDGqQI/ip/2600:1702:7775:0:bcff:8d9c:9296:7b48/id/LuKwFajn37U.92/itag/301/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D299/rqh/1/hls_chunk_host/rr1---sn-bvvbaxivnuxq5uu-vgq6.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/bui/AUUZDGKPcBIR5HRX0ozPdw8RGgAVXOAY25D2hPGk3Gqz5geZPW43hcvGxmD8xPDQvXvWjlAfsEKsFOs1/spc/jlWavUBcDI5ZF4rTxoTbwB5xHP6u4Hlxil_ne9g4RFGldtkUZg/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2906250/met/1777008545,/mh/sz/mm/44/mn/sn-bvvbaxivnuxq5uu-vgq6/ms/lva/mv/m/mvi/1/pl/42/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565116,51565682/mt/1777008030/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRAIgRnNZUuo8hGQiYsa4ycoMW7O_Y9u43nn17jgcTGNsNlkCIE0x_6knVApYdkO5m98A1CMhzMBzPRdS0E0DbO2AA3Zu/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRAIgIrewdkaXJuLn9H37czY2uH5VDqr4djzvI_gUgMDA82cCIDY8aMMs5ry7yejXeaz2OiBkIBtuuf6xn-6pvJ4aivsM/playlist/index.m3u8
+#EXTINF:-1 tvg-chno="360" group-title="Infos et News",Al Jazeera English
+https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1777030146/ei/ov_qaY6iJ_eJlu8PhsemoAU/ip/2600:1702:7775:0:bcff:8d9c:9296:7b48/id/gCNeDWCI0vo.4/itag/96/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D137/rqh/1/hls_chunk_host/rr1---sn-bvvbaxivnuxq5uu-vgq6.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/gcr/us/bui/AUUZDGIPVU6huZevBuFORCaAod8OKrRv8EZnKo2K54yItQIyF_2xUjqwX_4qvBxh9UdxZnuEncrMp4Dh/spc/jlWavYuIkLD1zE6Tqz-K_1Q7tBCEo6GShEDuj2LoVYjKBovJVQ/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2906250/met/1777008547,/mh/Dn/mm/44/mn/sn-bvvbaxivnuxq5uu-vgq6/ms/lva/mv/m/mvi/1/pl/42/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565115,51565681/mt/1777008030/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,gcr,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRQIgXhZZk8FvuQ-1a6LrMeRyoyFA9Qe2OSjW1GQH8FEAwaACIQCfFYbk6hb2mdG_ZK2fuD2dw-zm9ordTn6l8T43EJjeDg%3D%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRQIhAIeCADgJBlX81pas5VfZENJd70iWNNVIHRUZ_4Law5IrAiBav82KjbNvAE4-WoES5JEi-5sp_5Zc1FjNbNEnEnczPg%3D%3D/playlist/index.m3u8
+#EXTINF:-1 tvg-chno="361" group-title="Infos et News",Africanews Français
+https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1777030145/ei/of_qabvIDtveybgPxtfhiQ8/ip/2600:1702:7775:0:bcff:8d9c:9296:7b48/id/NQjabLGdP5g.8/itag/95/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D136/rqh/1/hls_chunk_host/rr3---sn-bvvbaxivnuxq5uu-vgq6.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/bui/AUUZDGJ_B_xD5HdACnIim-MLiGwCqO9e88h1FY46YwYv-14Mh0xvSnWForkhy0WG3qD5cNPCdyKH8j3Z/spc/jlWavbwkm03xPWLYLhQHpZ4OB9jIJZNfcynMvRIPr9CaWF--3A/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2732500/met/1777008545,/mh/9s/mm/44/mn/sn-bvvbaxivnuxq5uu-vgq6/ms/lva/mv/m/mvi/3/pl/42/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565115,51565681/mt/1777008268/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRQIhANZ2x1AwiE8ZPfA4yofN-rCHFhMC_SMOQ5rU_VOoSoaAAiBgAbzIv04fKSJ-Bc3KwpPLHURmxhnCkB1G3pjhFdzfjQ%3D%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRQIgTrnT46vtyOt108WuFzlanXxdgwAk6eiwMQIYDO2UwJsCIQCz4ZBLDU3uoGYcFkCZ7nfIDkjx5aOBCia4Nwokqh49RA%3D%3D/playlist/index.m3u8
+#EXTINF:-1 tvg-chno="166" group-title="Informations Françaises",France 24 English
+https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1777030150/ei/pv_qaeaXN6TP1AGe_YmpDw/ip/2600:1702:7775:0:bcff:8d9c:9296:7b48/id/Ap-UM1O9RBU.4/itag/96/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D137/rqh/1/hls_chunk_host/rr3---sn-bvvbaxivnuxq5uu-vgq6.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/bui/AUUZDGL5oFup-hznYUscp7NbOYM0_JyJsXEzOgHK2mG7f7frVmyUsTVx7SJfklMoT2x3z50gQUZX5GpW/spc/jlWavY7fB9SHVHfYqZWkh8utHkeRpuMye_9r4zKxA7jP_KCw-g/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2906250/met/1777008551,/mh/vf/mm/44/mn/sn-bvvbaxivnuxq5uu-vgq6/ms/lva/mv/m/mvi/3/pl/42/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565115,51565682/mt/1777008030/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRQIgJlie02BMMgKXv0ZmTfd_KTFLVDTtGHCKwEao6lW-zBICIQDKy-xisQ53YjguwstjXta1XAyFfSSTCpQQRQ8KZCO9EQ%3D%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRgIhALMeDO83LjPa3UNvZpB1u9QjE6smX8k-MvVL2BjjCypOAiEAySMN30NSIE4h39KRypLuMWXXY_UsYymqz_NOMHdEdyc%3D/playlist/index.m3u8
+#EXTINF:-1 tvg-chno="163" group-title="Informations Françaises",Euronews English
+https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1777030153/ei/qf_qafylCfeJlu8PhsemoAU/ip/2600:1702:7775:0:bcff:8d9c:9296:7b48/id/pykpO5kQJ98.5/itag/95/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D136/rqh/1/hls_chunk_host/rr1---sn-bvvbaxivnuxq5uu-vgq6.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/gcr/us/bui/AUUZDGLv7TRhW1Sm59YC9BeT68dqrGzinFYhZY7cCVLcKaSxx19aojeDkwuxBr01a2K8Ds-vqqKfgkSr/spc/jlWavTTVIYMfxnewW9KzP5WyRbUrTn17UHzEN7PaVIdqn4W0QA/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2732500/met/1777008553,/mh/PN/mm/44/mn/sn-bvvbaxivnuxq5uu-vgq6/ms/lva/mv/m/mvi/1/pl/42/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565115,51565682/mt/1777008268/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,gcr,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRgIhANTMGYrQx9Mu7sVRxfOCRdlB-VIO-XBvshbfjzORE9f6AiEA5Plgc6xnflsWpllMVJ8ogqVDvesagFjw2HfWPeFaLuc%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRAIgDdN3P1TnW-1ApdbRstQwmzJMEZEva6f7IkETv1o3iN4CIH0V1npy4bS4W5HHw68dpXT0myj7Tt3Hyy34a494M9_D/playlist/index.m3u8
+#EXTINF:-1 tvg-chno="722" group-title="Étrangères",CGTN
+https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1777030153/ei/qf_qaY7cBfLGybgPyq7d4A4/ip/2600:1702:7775:0:bcff:8d9c:9296:7b48/id/CPFG8witrc0.1/itag/96/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D137/rqh/1/hls_chunk_host/rr4---sn-bvvbaxivnuxq5uu-vgq6.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/bui/AUUZDGKLGHfAPtN0QSeXYvgBzNP2v4XBXMdoYJWFtKd1NTQu1rysf8L8vlfjSajg1Vkc2cZebSyyFM35/spc/jlWavYpMnX-uupzjRREJTWXTP0e13E9tuYhJ2ZDBv8dCqQ16eg/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2906250/met/1777008553,/mh/zC/mm/44/mn/sn-bvvbaxivnuxq5uu-vgq6/ms/lva/mv/m/mvi/4/pl/42/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565115,51565682/mt/1777008030/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRAIgDNuJ4_Z8UikWau4KKRpgZrtrJwi-neR4n1mxwm1G0IECIA1oA75Q6_kw0a8DsbNcummJ6FUaKon86wr3-m0hmXb9/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRQIhAJr9Vt9UI1biJCwNbwbfTN7lKme2m_b_C_GZuhVUgGzMAiAnwF-thNNseeRUX3SnMS9DzZwAJLU2p6rgy5mip5n2MQ%3D%3D/playlist/index.m3u8
 #---YT-LIVE-END---

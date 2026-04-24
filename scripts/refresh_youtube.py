@@ -25,20 +25,25 @@ BEGIN = "#---YT-LIVE-BEGIN---"
 END   = "#---YT-LIVE-END---"
 
 def resolve_youtube(handle):
-    """yt-dlp --get-url → returns HLS URL or None."""
-    try:
-        p = subprocess.run(
-            ["yt-dlp", "--no-warnings", "--no-playlist", "--skip-download",
-             "-f", "best[protocol=m3u8_native]/best",
-             "--get-url", handle],
-            capture_output=True, text=True, timeout=TIMEOUT
-        )
-        url = (p.stdout or "").strip().splitlines()[-1] if p.stdout else ""
-        if url.startswith("http"):
-            return url
-        return None
-    except Exception:
-        return None
+    """yt-dlp --get-url → returns HLS URL or None.
+    Tries multiple extractor clients since YouTube blocks some datacenter IPs
+    when using the default 'web' client."""
+    for client in ("android", "ios", "tv_embedded", "web"):
+        try:
+            p = subprocess.run(
+                ["yt-dlp", "--no-warnings", "--no-playlist", "--skip-download",
+                 "--extractor-args", f"youtube:player_client={client}",
+                 "-f", "best[protocol=m3u8_native]/best",
+                 "--get-url", handle],
+                capture_output=True, text=True, timeout=TIMEOUT
+            )
+            if p.returncode == 0:
+                url = (p.stdout or "").strip().splitlines()[-1] if p.stdout else ""
+                if url.startswith("http"):
+                    return url
+        except Exception:
+            pass
+    return None
 
 def verify_stream(url):
     try:
