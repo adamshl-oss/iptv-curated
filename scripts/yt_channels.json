@@ -1,19 +1,156 @@
 [
-  {"name": "Sky News",              "handle": "https://www.youtube.com/@SkyNews/live",              "playlist": "usa",     "chno": 23, "group": "News"},
-  {"name": "DW News",               "handle": "https://www.youtube.com/@DWNews/live",               "playlist": "usa",     "chno": 35, "group": "News"},
-  {"name": "Al Jazeera English",    "handle": "https://www.youtube.com/@aljazeeraenglish/live",     "playlist": "usa",     "chno": 36, "group": "News"},
-  {"name": "Africanews",            "handle": "https://www.youtube.com/@africanews/live",           "playlist": "usa",     "chno": 40, "group": "News"},
-  {"name": "France 24 English",     "handle": "https://www.youtube.com/channel/UCQfwfsi5VrQ8yKZ-UWmAEFg/live", "playlist": "usa", "chno": 30, "group": "News"},
-  {"name": "Euronews English",      "handle": "https://www.youtube.com/@euronews/live",             "playlist": "usa",     "chno": 53, "group": "News"},
-  {"name": "CGTN",                  "handle": "https://www.youtube.com/@CGTN/live",                 "playlist": "usa",     "chno": 133,"group": "News"},
-
-  {"name": "Sky News",              "handle": "https://www.youtube.com/@SkyNews/live",              "playlist": "france",  "chno": 353,"group": "Infos et News"},
-  {"name": "DW English",            "handle": "https://www.youtube.com/@DWNews/live",               "playlist": "france",  "chno": 358,"group": "Infos et News"},
-  {"name": "Al Jazeera English",    "handle": "https://www.youtube.com/@aljazeeraenglish/live",     "playlist": "france",  "chno": 360,"group": "Infos et News"},
-  {"name": "Africanews Français",   "handle": "https://www.youtube.com/@africanews/live",           "playlist": "france",  "chno": 361,"group": "Infos et News"},
-  {"name": "France 24 English",     "handle": "https://www.youtube.com/channel/UCQfwfsi5VrQ8yKZ-UWmAEFg/live", "playlist": "france", "chno": 166, "group": "Informations Françaises"},
-  {"name": "Euronews English",      "handle": "https://www.youtube.com/@euronews/live",             "playlist": "france",  "chno": 163,"group": "Informations Françaises"},
-  {"name": "CGTN",                  "handle": "https://www.youtube.com/@CGTN/live",                 "playlist": "france",  "chno": 722,"group": "Étrangères"},
-
-  {"name": "Al Magharibia",         "handle": "https://www.youtube.com/@AlmagharibiaTv/live",       "playlist": "algeria", "chno": 10, "group": "Privée Info (Diaspora)"}
+  {
+    "name": "Sky News",
+    "handle": "https://www.youtube.com/@SkyNews/live",
+    "playlist": "usa",
+    "chno": 23,
+    "group": "News"
+  },
+  {
+    "name": "DW News",
+    "handle": "https://www.youtube.com/@DWNews/live",
+    "playlist": "usa",
+    "chno": 35,
+    "group": "News"
+  },
+  {
+    "name": "Al Jazeera English",
+    "handle": "https://www.youtube.com/@aljazeeraenglish/live",
+    "playlist": "usa",
+    "chno": 36,
+    "group": "News"
+  },
+  {
+    "name": "Africanews",
+    "handle": "https://www.youtube.com/@africanews/live",
+    "playlist": "usa",
+    "chno": 40,
+    "group": "News"
+  },
+  {
+    "name": "France 24 English",
+    "handle": "https://www.youtube.com/channel/UCQfwfsi5VrQ8yKZ-UWmAEFg/live",
+    "playlist": "usa",
+    "chno": 30,
+    "group": "News"
+  },
+  {
+    "name": "Euronews English",
+    "handle": "https://www.youtube.com/@euronews/live",
+    "playlist": "usa",
+    "chno": 53,
+    "group": "News"
+  },
+  {
+    "name": "CGTN",
+    "handle": "https://www.youtube.com/@CGTN/live",
+    "playlist": "usa",
+    "chno": 133,
+    "group": "News"
+  },
+  {
+    "name": "Sky News",
+    "handle": "https://www.youtube.com/@SkyNews/live",
+    "playlist": "france",
+    "chno": 353,
+    "group": "Infos et News"
+  },
+  {
+    "name": "DW English",
+    "handle": "https://www.youtube.com/@DWNews/live",
+    "playlist": "france",
+    "chno": 358,
+    "group": "Infos et News"
+  },
+  {
+    "name": "Al Jazeera English",
+    "handle": "https://www.youtube.com/@aljazeeraenglish/live",
+    "playlist": "france",
+    "chno": 360,
+    "group": "Infos et News"
+  },
+  {
+    "name": "Africanews Français",
+    "handle": "https://www.youtube.com/@africanews/live",
+    "playlist": "france",
+    "chno": 361,
+    "group": "Infos et News"
+  },
+  {
+    "name": "France 24 English",
+    "handle": "https://www.youtube.com/channel/UCQfwfsi5VrQ8yKZ-UWmAEFg/live",
+    "playlist": "france",
+    "chno": 166,
+    "group": "Informations Françaises"
+  },
+  {
+    "name": "Euronews English",
+    "handle": "https://www.youtube.com/@euronews/live",
+    "playlist": "france",
+    "chno": 163,
+    "group": "Informations Françaises"
+  },
+  {
+    "name": "CGTN",
+    "handle": "https://www.youtube.com/@CGTN/live",
+    "playlist": "france",
+    "chno": 722,
+    "group": "Étrangères"
+  },
+  {
+    "name": "Al Magharibia",
+    "handle": "https://www.youtube.com/@AlmagharibiaTv/live",
+    "playlist": "algeria",
+    "chno": 10,
+    "group": "Privée Info (Diaspora)"
+  },
+  {
+    "name": "Sky News",
+    "handle": "https://www.youtube.com/@SkyNews/live",
+    "playlist": "us-news",
+    "chno": 22,
+    "group": "International News"
+  },
+  {
+    "name": "DW News",
+    "handle": "https://www.youtube.com/@DWNews/live",
+    "playlist": "us-news",
+    "chno": 23,
+    "group": "International News"
+  },
+  {
+    "name": "Al Jazeera English",
+    "handle": "https://www.youtube.com/@aljazeeraenglish/live",
+    "playlist": "us-news",
+    "chno": 24,
+    "group": "International News"
+  },
+  {
+    "name": "Africanews",
+    "handle": "https://www.youtube.com/@africanews/live",
+    "playlist": "us-news",
+    "chno": 25,
+    "group": "International News"
+  },
+  {
+    "name": "France 24 English",
+    "handle": "https://www.youtube.com/channel/UCQfwfsi5VrQ8yKZ-UWmAEFg/live",
+    "playlist": "us-news",
+    "chno": 26,
+    "group": "International News"
+  },
+  {
+    "name": "Euronews English",
+    "handle": "https://www.youtube.com/@euronews/live",
+    "playlist": "us-news",
+    "chno": 27,
+    "group": "International News"
+  },
+  {
+    "name": "CGTN",
+    "handle": "https://www.youtube.com/@CGTN/live",
+    "playlist": "us-news",
+    "chno": 28,
+    "group": "International News"
+  }
 ]

@@ -94,7 +94,7 @@ def main():
         channels = json.load(f)
 
     print(f"Resolving {len(channels)} YouTube live handles...", flush=True)
-    by_playlist = {"usa": [], "france": [], "algeria": []}
+    by_playlist = {"usa": [], "france": [], "algeria": [], "us-news": []}
 
     with cf.ThreadPoolExecutor(max_workers=PARALLEL) as ex:
         results = list(ex.map(process_channel, channels))

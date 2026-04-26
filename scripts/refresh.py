@@ -17,7 +17,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 TEST = str(ROOT / "scripts" / "test_stream.sh")
 POOL = ROOT / "candidates_pool.jsonl"
-PLAYLISTS = ["claudette-usa.m3u", "claudette-france.m3u", "claudette-algeria.m3u"]
+PLAYLISTS = ["claudette-usa.m3u", "claudette-france.m3u", "claudette-algeria.m3u", "claudette-us-news.m3u"]
 PARALLEL = 3      # low to avoid tvpass.org rate limits
 TIMEOUT = 22
 
