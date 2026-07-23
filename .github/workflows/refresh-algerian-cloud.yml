@@ -4,6 +4,12 @@ on:
   schedule:
     - cron: "*/20 * * * *"
   workflow_dispatch:
+    inputs:
+      force_refresh:
+        description: "Resolve new official URLs even when current ones are fresh"
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: write
@@ -35,6 +41,12 @@ jobs:
 
       - name: Refresh official dynamic feeds
         run: python3 scripts/refresh_algerian_cloud.py
+        env:
+          FORCE_REFRESH: ${{ inputs.force_refresh || 'false' }}
+
+      - name: Smoke-test both restored manifests
+        continue-on-error: true
+        run: python3 scripts/check_algerian_cloud.py
 
       - name: Commit and push if changed
         run: |

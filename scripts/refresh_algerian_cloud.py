@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import html
 import json
+import os
 import re
 import subprocess
 import time
@@ -132,8 +133,13 @@ def choose_url(
     existing: str | None,
     resolver,
     minimum_remaining: int,
+    force_refresh: bool = False,
 ) -> str:
-    if existing and url_expiry(existing) > time.time() + minimum_remaining:
+    if (
+        not force_refresh
+        and existing
+        and url_expiry(existing) > time.time() + minimum_remaining
+    ):
         print(f"{channel}: retained current cloud URL")
         return existing
     try:
@@ -169,17 +175,20 @@ def render(almagharibia: str, ennahar: str) -> str:
 def main() -> None:
     text = PLAYLIST.read_text()
     existing = current_urls(text)
+    force_refresh = os.environ.get("FORCE_REFRESH", "").lower() == "true"
     almagharibia = choose_url(
         "Almagharibia",
         existing.get("Almagharibia TV"),
         resolve_almagharibia,
         minimum_remaining=3600,
+        force_refresh=force_refresh,
     )
     ennahar = choose_url(
         "Ennahar",
         existing.get("Ennahar TV"),
         resolve_ennahar,
         minimum_remaining=1200,
+        force_refresh=force_refresh,
     )
     block = render(almagharibia, ennahar)
     pattern = re.compile(re.escape(BEGIN) + r".*?" + re.escape(END), re.DOTALL)
