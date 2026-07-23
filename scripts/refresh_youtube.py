@@ -30,13 +30,27 @@ def resolve_youtube(handle):
     when using the default 'web' client."""
     for client in ("default", "web_safari", "android_vr"):
         try:
+            command = [
+                "yt-dlp", "--no-warnings", "--no-playlist", "--skip-download",
+                "--js-runtimes", "node",
+                "--remote-components", "ejs:github",
+            ]
+            if server_home := os.environ.get("BGUTIL_SERVER_HOME"):
+                command.extend(
+                    [
+                        "--extractor-args",
+                        f"youtubepot-bgutilscript:server_home={server_home}",
+                    ]
+                )
+            command.extend(
+                [
+                    "--extractor-args", f"youtube:player_client={client}",
+                    "-f", "best[protocol=m3u8_native]/best",
+                    "--get-url", handle,
+                ]
+            )
             p = subprocess.run(
-                ["yt-dlp", "--no-warnings", "--no-playlist", "--skip-download",
-                 "--js-runtimes", "node",
-                 "--remote-components", "ejs:github",
-                 "--extractor-args", f"youtube:player_client={client}",
-                 "-f", "best[protocol=m3u8_native]/best",
-                 "--get-url", handle],
+                command,
                 capture_output=True, text=True, timeout=TIMEOUT
             )
             if p.returncode == 0:

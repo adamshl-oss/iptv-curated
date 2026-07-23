@@ -31,6 +31,7 @@ ALMAGHARIBIA_HOME_API = (
 )
 ENNAHAR_PLAYER = "https://live.dzsecurity.net/live/player/ennahartv"
 ENNAHAR_REFERER = "https://www.ennaharonline.com/live/"
+ENNAHAR_YOUTUBE_LIVE = "https://www.youtube.com/@ennahartvonline/live"
 
 
 def current_urls(text: str) -> dict[str, str]:
@@ -73,23 +74,34 @@ def official_almagharibia_video_id() -> str:
     return match.group(1)
 
 
-def resolve_almagharibia() -> str:
-    video_id = official_almagharibia_video_id()
-    completed = subprocess.run(
+def resolve_youtube_hls(target: str) -> str:
+    command = [
+        "yt-dlp",
+        "--no-warnings",
+        "--no-playlist",
+        "--skip-download",
+        "--js-runtimes",
+        "node",
+        "--remote-components",
+        "ejs:github",
+    ]
+    if server_home := os.environ.get("BGUTIL_SERVER_HOME"):
+        command.extend(
+            [
+                "--extractor-args",
+                f"youtubepot-bgutilscript:server_home={server_home}",
+            ]
+        )
+    command.extend(
         [
-            "yt-dlp",
-            "--no-warnings",
-            "--no-playlist",
-            "--skip-download",
-            "--js-runtimes",
-            "node",
-            "--remote-components",
-            "ejs:github",
             "--format",
             "best[protocol*=m3u8]",
             "--get-url",
-            f"https://www.youtube.com/watch?v={video_id}",
-        ],
+            target,
+        ]
+    )
+    completed = subprocess.run(
+        command,
         check=True,
         capture_output=True,
         text=True,
@@ -101,7 +113,12 @@ def resolve_almagharibia() -> str:
     return url
 
 
-def resolve_ennahar() -> str:
+def resolve_almagharibia() -> str:
+    video_id = official_almagharibia_video_id()
+    return resolve_youtube_hls(f"https://www.youtube.com/watch?v={video_id}")
+
+
+def resolve_ennahar_site() -> str:
     response = browser_requests.get(
         ENNAHAR_PLAYER,
         headers={
@@ -126,6 +143,20 @@ def resolve_ennahar() -> str:
     if url_expiry(url) <= time.time() + 900:
         raise RuntimeError("Official Ennahar player returned an expiring URL")
     return url
+
+
+def resolve_ennahar() -> str:
+    """Prefer Ennahar's official YouTube live, then its official site CDN."""
+    try:
+        return resolve_youtube_hls(ENNAHAR_YOUTUBE_LIVE)
+    except Exception as youtube_error:
+        try:
+            return resolve_ennahar_site()
+        except Exception as site_error:
+            raise RuntimeError(
+                f"official YouTube unavailable ({youtube_error}); "
+                f"official site unavailable ({site_error})"
+            ) from site_error
 
 
 def choose_url(

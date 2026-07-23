@@ -37,12 +37,20 @@ jobs:
           node-version: "24"
 
       - name: Install stream tools
-        run: pip install -U "yt-dlp[default]" curl_cffi
+        run: |
+          pip install -U "yt-dlp[default]" curl_cffi bgutil-ytdlp-pot-provider
+          git clone --depth 1 --branch 1.3.1 \
+            https://github.com/Brainicism/bgutil-ytdlp-pot-provider.git \
+            "$RUNNER_TEMP/bgutil-ytdlp-pot-provider"
+          cd "$RUNNER_TEMP/bgutil-ytdlp-pot-provider/server"
+          npm ci
+          npx tsc
 
       - name: Refresh official dynamic feeds
         run: python3 scripts/refresh_algerian_cloud.py
         env:
           FORCE_REFRESH: ${{ inputs.force_refresh || 'false' }}
+          BGUTIL_SERVER_HOME: ${{ runner.temp }}/bgutil-ytdlp-pot-provider/server
 
       - name: Smoke-test both restored manifests
         continue-on-error: true
