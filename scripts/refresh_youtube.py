@@ -28,10 +28,12 @@ def resolve_youtube(handle):
     """yt-dlp --get-url → returns HLS URL or None.
     Tries multiple extractor clients since YouTube blocks some datacenter IPs
     when using the default 'web' client."""
-    for client in ("android", "ios", "tv_embedded", "web"):
+    for client in ("default", "web_safari", "android_vr"):
         try:
             p = subprocess.run(
                 ["yt-dlp", "--no-warnings", "--no-playlist", "--skip-download",
+                 "--js-runtimes", "node",
+                 "--remote-components", "ejs:github",
                  "--extractor-args", f"youtube:player_client={client}",
                  "-f", "best[protocol=m3u8_native]/best",
                  "--get-url", handle],

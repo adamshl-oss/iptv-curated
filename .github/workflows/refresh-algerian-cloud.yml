@@ -1,0 +1,50 @@
+name: Refresh Algerian cloud channels
+
+on:
+  schedule:
+    - cron: "*/20 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: playlist-write
+  cancel-in-progress: false
+
+jobs:
+  refresh-algerian-cloud:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up Node for YouTube challenges
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - name: Install stream tools
+        run: pip install -U "yt-dlp[default]" curl_cffi
+
+      - name: Refresh official dynamic feeds
+        run: python3 scripts/refresh_algerian_cloud.py
+
+      - name: Commit and push if changed
+        run: |
+          if ! git diff --quiet -- algerian-tv-july-2026.m3u; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add algerian-tv-july-2026.m3u
+            git commit -m "Refresh official Algerian cloud feeds ($(date -u +%FT%TZ))"
+            git pull --rebase
+            git push
+          else
+            echo "Dynamic Algerian cloud URLs are still fresh."
+          fi

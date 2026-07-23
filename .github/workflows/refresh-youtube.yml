@@ -19,14 +19,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install ffmpeg + yt-dlp + jq
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+
+      - name: Set up Node for YouTube challenges
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - name: Install ffmpeg + current YouTube challenge support
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y ffmpeg jq
-          pip install -U yt-dlp
-
-      - uses: actions/setup-python@v5
-        with: { python-version: "3.11" }
+          pip install -U "yt-dlp[default]"
 
       - run: chmod +x scripts/test_stream.sh scripts/refresh_youtube.py
 
