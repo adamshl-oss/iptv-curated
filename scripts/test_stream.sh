@@ -20,21 +20,24 @@ pass() {
   exit 0
 }
 
-# Gate 1: HTTP status + headers
-HEAD=$(curl -sI -L --max-time "$TIMEOUT" -A "$UA" "$URL" 2>/dev/null)
-CODE=$(echo "$HEAD" | grep -E "^HTTP" | tail -1 | awk '{print $2}')
-[ -z "$CODE" ] && fail "no_response"
+# Gate 1: Fetch content with GET. Many valid HLS origins reject HEAD requests.
+curl -sL --max-time "$TIMEOUT" -A "$UA" \
+  -o "$TMPD/body" -w '%{http_code}\n%{url_effective}\n' \
+  "$URL" >"$TMPD/fetch" 2>/dev/null
+CODE=$(sed -n '1p' "$TMPD/fetch")
+EFFECTIVE_URL=$(sed -n '2p' "$TMPD/fetch")
+[ -z "$CODE" ] || [ "$CODE" = "000" ] && fail "no_response"
 [ "$CODE" -lt 200 ] || [ "$CODE" -ge 400 ] && fail "http_$CODE"
 
-# Gate 2: Fetch manifest, verify HLS or stream
-BODY=$(curl -sL --max-time "$TIMEOUT" -A "$UA" "$URL" 2>/dev/null | head -c 65536)
+# Gate 2: Verify HLS or stream content.
+BODY=$(head -c 65536 "$TMPD/body")
 [ -z "$BODY" ] && fail "empty_body"
 
 IS_HLS=0
 echo "$BODY" | head -1 | grep -q "#EXTM3U" && IS_HLS=1
 
 # If master playlist, resolve to a media playlist
-PLAY_URL="$URL"
+PLAY_URL="${EFFECTIVE_URL:-$URL}"
 if [ "$IS_HLS" -eq 1 ] && echo "$BODY" | grep -q "#EXT-X-STREAM-INF"; then
   # Pick highest bandwidth variant
   VARIANT=$(echo "$BODY" | awk '
@@ -49,8 +52,8 @@ if [ "$IS_HLS" -eq 1 ] && echo "$BODY" | grep -q "#EXT-X-STREAM-INF"; then
   if [ -n "$VARIANT" ]; then
     case "$VARIANT" in
       http*) PLAY_URL="$VARIANT" ;;
-      /*)    PLAY_URL="$(echo "$URL" | sed -E 's|^(https?://[^/]+).*|\1|')${VARIANT}" ;;
-      *)     BASE="$(echo "$URL" | sed -E 's|/[^/]*$|/|')"; PLAY_URL="${BASE}${VARIANT}" ;;
+      /*)    PLAY_URL="$(echo "$PLAY_URL" | sed -E 's|^(https?://[^/]+).*|\1|')${VARIANT}" ;;
+      *)     BASE="$(echo "$PLAY_URL" | sed -E 's|/[^/]*$|/|')"; PLAY_URL="${BASE}${VARIANT}" ;;
     esac
     MEDIA=$(curl -sL --max-time "$TIMEOUT" -A "$UA" "$PLAY_URL" 2>/dev/null | head -c 65536)
     [ -z "$MEDIA" ] && fail "variant_empty"

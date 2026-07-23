@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Refresh the two official Algerian feeds that do not have permanent HLS URLs.
+"""Refresh official Algerian feeds that do not have permanent HLS URLs.
 
 The generated URLs are committed to the public playlist by GitHub Actions. A
 previous URL is retained if a broadcaster is temporarily unavailable so one
@@ -32,6 +32,8 @@ ALMAGHARIBIA_HOME_API = (
 ENNAHAR_PLAYER = "https://live.dzsecurity.net/live/player/ennahartv"
 ENNAHAR_REFERER = "https://www.ennaharonline.com/live/"
 ENNAHAR_YOUTUBE_LIVE = "https://www.youtube.com/@ennahartvonline/live"
+ECHOROUK_PLAYER = "https://live.dzsecurity.net/live/player/echorouktv"
+ECHOROUK_REFERER = "https://www.echoroukonline.com/live"
 
 
 def current_urls(text: str) -> dict[str, str]:
@@ -118,45 +120,67 @@ def resolve_almagharibia() -> str:
     return resolve_youtube_hls(f"https://www.youtube.com/watch?v={video_id}")
 
 
-def resolve_ennahar_site() -> str:
+def resolve_dzsecurity_site(
+    player_url: str,
+    referer: str,
+    channel_path: str,
+) -> str:
     response = browser_requests.get(
-        ENNAHAR_PLAYER,
+        player_url,
         headers={
-            "Referer": ENNAHAR_REFERER,
-            "Origin": "https://www.ennaharonline.com",
+            "Referer": referer,
+            "Origin": re.match(r"https?://[^/]+", referer).group(0),
         },
         impersonate="safari",
         timeout=25,
     )
     response.raise_for_status()
     match = re.search(
-        r"(?:https?:)?//hls-distrib-rlb1\.dzsecurity\.net/live/EnnaharTV/"
+        r"(?:https?:)?//hls-distrib-[a-z0-9-]+\.dzsecurity\.net/live/"
+        + re.escape(channel_path)
+        + r"/"
         r"playlist\.m3u8\?e=\d+(?:&|&amp;)token=[A-Za-z0-9_-]+",
         response.text,
     )
     if not match:
-        raise RuntimeError("Official Ennahar player did not expose a signed HLS URL")
+        raise RuntimeError("Official player did not expose a signed HLS URL")
 
     url = html.unescape(match.group(0))
     if url.startswith("//"):
         url = "https:" + url
     if url_expiry(url) <= time.time() + 900:
-        raise RuntimeError("Official Ennahar player returned an expiring URL")
+        raise RuntimeError("Official player returned an expiring URL")
     return url
 
 
+def resolve_ennahar_site() -> str:
+    return resolve_dzsecurity_site(
+        ENNAHAR_PLAYER,
+        ENNAHAR_REFERER,
+        "EnnaharTV",
+    )
+
+
+def resolve_echorouk() -> str:
+    return resolve_dzsecurity_site(
+        ECHOROUK_PLAYER,
+        ECHOROUK_REFERER,
+        "EchoroukTV",
+    )
+
+
 def resolve_ennahar() -> str:
-    """Prefer Ennahar's official YouTube live, then its official site CDN."""
+    """Prefer Ennahar's full linear channel, with official YouTube as fallback."""
     try:
-        return resolve_youtube_hls(ENNAHAR_YOUTUBE_LIVE)
-    except Exception as youtube_error:
+        return resolve_ennahar_site()
+    except Exception as site_error:
         try:
-            return resolve_ennahar_site()
-        except Exception as site_error:
+            return resolve_youtube_hls(ENNAHAR_YOUTUBE_LIVE)
+        except Exception as youtube_error:
             raise RuntimeError(
-                f"official YouTube unavailable ({youtube_error}); "
-                f"official site unavailable ({site_error})"
-            ) from site_error
+                f"official site unavailable ({site_error}); "
+                f"official YouTube unavailable ({youtube_error})"
+            ) from youtube_error
 
 
 def choose_url(
@@ -184,7 +208,7 @@ def choose_url(
         raise
 
 
-def render(almagharibia: str, ennahar: str) -> str:
+def render(almagharibia: str, echorouk: str, ennahar: str) -> str:
     return "\n".join(
         [
             BEGIN,
@@ -193,6 +217,12 @@ def render(almagharibia: str, ennahar: str) -> str:
             'group-title="Algeria — Cloud Verified",'
             "Almagharibia TV (Official Cloud Live)",
             almagharibia,
+            '#EXTINF:-1 tvg-id="EchoroukTV.dz" '
+            'tvg-logo="https://i0.wp.com/echoroukonline.com/'
+            'ech-logo-icon.png?w=192&quality=100" '
+            'group-title="Algeria — Cloud Verified",'
+            "Echorouk TV (Official Cloud Live)",
+            echorouk,
             '#EXTINF:-1 tvg-id="EnnaharTV.dz" '
             'tvg-logo="https://i.imgur.com/C0TCA1s.png" '
             'group-title="Algeria — Cloud Verified",'
@@ -214,6 +244,13 @@ def main() -> None:
         minimum_remaining=3600,
         force_refresh=force_refresh,
     )
+    echorouk = choose_url(
+        "Echorouk",
+        existing.get("Echorouk TV"),
+        resolve_echorouk,
+        minimum_remaining=1200,
+        force_refresh=force_refresh,
+    )
     ennahar = choose_url(
         "Ennahar",
         existing.get("Ennahar TV"),
@@ -221,12 +258,12 @@ def main() -> None:
         minimum_remaining=1200,
         force_refresh=force_refresh,
     )
-    block = render(almagharibia, ennahar)
+    block = render(almagharibia, echorouk, ennahar)
     pattern = re.compile(re.escape(BEGIN) + r".*?" + re.escape(END), re.DOTALL)
     if not pattern.search(text):
         raise RuntimeError("Dynamic Algerian playlist markers are missing")
     PLAYLIST.write_text(pattern.sub(block, text))
-    print("Updated algerian-tv-july-2026.m3u with 2 dynamic cloud channels")
+    print("Updated algerian-tv-july-2026.m3u with 3 dynamic cloud channels")
 
 
 if __name__ == "__main__":

@@ -52,8 +52,7 @@ jobs:
           FORCE_REFRESH: ${{ inputs.force_refresh || 'false' }}
           BGUTIL_SERVER_HOME: ${{ runner.temp }}/bgutil-ytdlp-pot-provider/server
 
-      - name: Smoke-test both restored manifests
-        continue-on-error: true
+      - name: Smoke-test restored manifests
         run: python3 scripts/check_algerian_cloud.py
 
       - name: Commit and push if changed
