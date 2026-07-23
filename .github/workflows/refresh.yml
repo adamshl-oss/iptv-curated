@@ -32,13 +32,17 @@ jobs:
       - name: Refresh playlists
         run: python3 scripts/refresh.py
 
+      - name: Maintain the IPTVX French cloud alias
+        run: cp claudette-france.m3u claude-france.m3u
+
       - name: Commit & push if changed
         run: |
-          if ! git diff --quiet -- "claudette-*.m3u"; then
+          git add claudette-usa.m3u claudette-france.m3u claudette-algeria.m3u claudette-us-news.m3u claude-france.m3u
+          if ! git diff --cached --quiet; then
             git config user.name  "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add claudette-usa.m3u claudette-france.m3u claudette-algeria.m3u claudette-us-news.m3u
             git commit -m "Auto-refresh: verified streams, dropped dead URLs ($(date -u +%FT%TZ))"
+            git pull --rebase
             git push
           else
             echo "No changes; streams all still playing."
