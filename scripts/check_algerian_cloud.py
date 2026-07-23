@@ -8,6 +8,7 @@ import sys
 from pathlib import Path
 from urllib.parse import urljoin
 
+from curl_cffi.const import CurlHttpVersion
 from curl_cffi import requests as browser_requests
 
 
@@ -34,6 +35,7 @@ def smoke_test(name: str, url: str) -> bool:
         response = browser_requests.get(
             url,
             impersonate="safari",
+            http_version=CurlHttpVersion.V1_1,
             allow_redirects=True,
             timeout=20,
         )
@@ -54,6 +56,7 @@ def smoke_test(name: str, url: str) -> bool:
             media_response = browser_requests.get(
                 urljoin(manifest_url, variants[-1]),
                 impersonate="safari",
+                http_version=CurlHttpVersion.V1_1,
                 allow_redirects=True,
                 timeout=20,
             )
@@ -72,8 +75,8 @@ def smoke_test(name: str, url: str) -> bool:
             raise RuntimeError("media manifest has no live segments")
         segment_response = browser_requests.get(
             urljoin(manifest_url, segments[-1]),
-            headers={"Range": "bytes=0-65535"},
             impersonate="safari",
+            http_version=CurlHttpVersion.V1_1,
             allow_redirects=True,
             timeout=20,
         )
