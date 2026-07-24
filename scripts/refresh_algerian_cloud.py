@@ -23,6 +23,7 @@ from curl_cffi import requests as browser_requests
 
 ROOT = Path(__file__).resolve().parent.parent
 PLAYLIST = ROOT / "algerian-tv-july-2026.m3u"
+PLAYLIST_ALIAS = ROOT / "algerian-tv-july-2026-v2.m3u"
 STREAMS = ROOT / "streams"
 BEGIN = "#---ALGERIA-CLOUD-DYNAMIC-BEGIN---"
 END = "#---ALGERIA-CLOUD-DYNAMIC-END---"
@@ -247,6 +248,23 @@ def render_playlist_block() -> str:
             'group-title="Algeria — Cloud Live",'
             "TV2 / Canal Algérie (1080p)",
             "http://185.9.2.18/chid_347/index.m3u8",
+            '#EXTINF:-1 tvg-id="TV6.dz" '
+            'tvg-logo="https://upload.wikimedia.org/wikipedia/commons/'
+            'thumb/7/72/Logo_de_TV6_Alg%C3%A9rie_%282020%29.svg/'
+            '512px-Logo_de_TV6_Alg%C3%A9rie_%282020%29.svg.png" '
+            'group-title="Algeria — Cloud Live",'
+            "TV6 Algérie (Cloud Live)",
+            "https://t.freetv.fun/live/tv6.m3u8",
+            '#EXTINF:-1 tvg-id="EchoroukTV.dz" '
+            'tvg-logo="https://i.imgur.com/HFjG3g1.png" '
+            'group-title="Algeria — Cloud Live",'
+            "Echorouk TV (Official Cloud Live)",
+            f"{PAGES_ROOT}/streams/echorouk.m3u8",
+            '#EXTINF:-1 tvg-id="EnnaharTV.dz" '
+            'tvg-logo="https://i.imgur.com/C0TCA1s.png" '
+            'group-title="Algeria — Cloud Live",'
+            "Ennahar TV (Official Cloud Live)",
+            f"{PAGES_ROOT}/streams/ennahar.m3u8",
             '#EXTINF:-1 tvg-id="AmouYazidTV.dz" '
             'tvg-logo="https://i.imgur.com/L8UPGPC.png" '
             'group-title="Algeria — Cloud Live",'
@@ -317,7 +335,9 @@ def main() -> None:
     pattern = re.compile(re.escape(BEGIN) + r".*?" + re.escape(END), re.DOTALL)
     if not pattern.search(text):
         raise RuntimeError("Dynamic Algerian playlist markers are missing")
-    PLAYLIST.write_text(pattern.sub(block, text))
+    updated = pattern.sub(block, text)
+    PLAYLIST.write_text(updated)
+    PLAYLIST_ALIAS.write_text(updated)
     print("Updated 3 stable Algerian cloud wrappers")
 
 
