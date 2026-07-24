@@ -238,33 +238,53 @@ def render_playlist_block() -> str:
             'group-title="Algeria — Cloud Live",'
             "AL24 News (Cloud HD)",
             f"{RELAY_ROOT}/api/free/al24",
-            '#EXTINF:-1 tvg-id="ElHeddafTV.dz" '
-            'tvg-logo="https://i.imgur.com/cDkIDIA.png" '
+            '#EXTINF:-1 tvg-id="TV1.dz" '
             'group-title="Algeria — Cloud Live",'
-            "El Heddaf TV (Cloud Live)",
-            f"{RELAY_ROOT}/api/free/elheddaf",
+            "TV1 / Programme National (Cloud Live)",
+            f"{RELAY_ROOT}/api/free/tv1",
             '#EXTINF:-1 tvg-id="TV2.dz" '
             'tvg-logo="https://i.imgur.com/VEb631f.png" '
             'group-title="Algeria — Cloud Live",'
             "TV2 / Canal Algérie (1080p)",
             "http://185.9.2.18/chid_347/index.m3u8",
+            '#EXTINF:-1 tvg-id="TV3.dz" '
+            'group-title="Algeria — Cloud Live",'
+            "TV3 / A3 (Cloud Live)",
+            f"{RELAY_ROOT}/api/free/tv3",
+            '#EXTINF:-1 tvg-id="TV4.dz" '
+            'group-title="Algeria — Cloud Live",'
+            "TV4 Tamazight (Cloud Live)",
+            f"{RELAY_ROOT}/api/free/tv4",
+            '#EXTINF:-1 tvg-id="TV5.dz" '
+            'group-title="Algeria — Cloud Live",'
+            "TV5 Coran (Cloud Live)",
+            f"{RELAY_ROOT}/api/free/tv5",
             '#EXTINF:-1 tvg-id="TV6.dz" '
             'tvg-logo="https://upload.wikimedia.org/wikipedia/commons/'
             'thumb/7/72/Logo_de_TV6_Alg%C3%A9rie_%282020%29.svg/'
             '512px-Logo_de_TV6_Alg%C3%A9rie_%282020%29.svg.png" '
             'group-title="Algeria — Cloud Live",'
             "TV6 Algérie (Cloud Live)",
-            "https://t.freetv.fun/live/tv6.m3u8",
-            '#EXTINF:-1 tvg-id="EchoroukTV.dz" '
+            f"{RELAY_ROOT}/api/free/tv6",
+            '#EXTINF:-1 tvg-id="EchoroukNews.dz" '
             'tvg-logo="https://i.imgur.com/HFjG3g1.png" '
             'group-title="Algeria — Cloud Live",'
-            "Echorouk TV (Official Cloud Live)",
-            f"{PAGES_ROOT}/streams/echorouk.m3u8",
+            "Echorouk News (Cloud Live)",
+            f"{RELAY_ROOT}/api/free/echorouknews",
             '#EXTINF:-1 tvg-id="EnnaharTV.dz" '
             'tvg-logo="https://i.imgur.com/C0TCA1s.png" '
             'group-title="Algeria — Cloud Live",'
-            "Ennahar TV (Official Cloud Live)",
-            f"{PAGES_ROOT}/streams/ennahar.m3u8",
+            "Ennahar TV (Cloud Live)",
+            f"{RELAY_ROOT}/api/free/ennahar",
+            '#EXTINF:-1 tvg-id="ElHeddafTV.dz" '
+            'tvg-logo="https://i.imgur.com/cDkIDIA.png" '
+            'group-title="Algeria — Cloud Live",'
+            "El Heddaf TV (Cloud Live)",
+            f"{RELAY_ROOT}/api/free/elheddaf",
+            '#EXTINF:-1 tvg-id="ElBilad.dz" '
+            'group-title="Algeria — Cloud Live",'
+            "El Bilad TV (Cloud Live)",
+            f"{RELAY_ROOT}/api/free/elbilad",
             '#EXTINF:-1 tvg-id="AmouYazidTV.dz" '
             'tvg-logo="https://i.imgur.com/L8UPGPC.png" '
             'group-title="Algeria — Cloud Live",'
@@ -308,24 +328,8 @@ def main() -> None:
         minimum_remaining=3600,
         force_refresh=force_refresh,
     )
-    echorouk = refresh_or_keep(
-        "Echorouk",
-        current_wrapper_url("echorouk"),
-        resolve_echorouk,
-        minimum_remaining=1200,
-        force_refresh=force_refresh,
-    )
-    ennahar = refresh_or_keep(
-        "Ennahar",
-        current_wrapper_url("ennahar"),
-        resolve_ennahar,
-        minimum_remaining=1200,
-        force_refresh=force_refresh,
-    )
     refreshed = {
         "almagharibia": almagharibia,
-        "echorouk": echorouk,
-        "ennahar": ennahar,
     }
     for slug, target in refreshed.items():
         if target:
@@ -338,7 +342,7 @@ def main() -> None:
     updated = pattern.sub(block, text)
     PLAYLIST.write_text(updated)
     PLAYLIST_ALIAS.write_text(updated)
-    print("Updated 3 stable Algerian cloud wrappers")
+    print("Updated 13-channel Algerian cloud playlist")
 
 
 if __name__ == "__main__":

@@ -1,38 +1,36 @@
 #!/usr/bin/env python3
-"""Smoke-test dynamic Algerian HLS manifests without exposing their URLs."""
+"""Smoke-test the published Algerian HLS lineup and live media segments."""
 
 from __future__ import annotations
 
 import re
 import sys
-from pathlib import Path
 from urllib.parse import urljoin
 
 from curl_cffi.const import CurlHttpVersion
 from curl_cffi import requests as browser_requests
 
 
-ROOT = Path(__file__).resolve().parent.parent
-STREAMS = ROOT / "streams"
+RELAY_ROOT = "https://algerian-tv-relay-2026.espiiem.chatgpt.site"
 CHANNELS = {
-    "Almagharibia TV": "almagharibia",
-    "Echorouk TV": "echorouk",
-    "Ennahar TV": "ennahar",
+    "AL24 News": f"{RELAY_ROOT}/api/free/al24",
+    "TV1": f"{RELAY_ROOT}/api/free/tv1",
+    "TV2": "http://185.9.2.18/chid_347/index.m3u8",
+    "TV3": f"{RELAY_ROOT}/api/free/tv3",
+    "TV4": f"{RELAY_ROOT}/api/free/tv4",
+    "TV5": f"{RELAY_ROOT}/api/free/tv5",
+    "TV6": f"{RELAY_ROOT}/api/free/tv6",
+    "Echorouk News": f"{RELAY_ROOT}/api/free/echorouknews",
+    "Ennahar TV": f"{RELAY_ROOT}/api/free/ennahar",
+    "El Heddaf TV": f"{RELAY_ROOT}/api/free/elheddaf",
+    "El Bilad TV": f"{RELAY_ROOT}/api/free/elbilad",
+    "Amou Yazid TV": f"{RELAY_ROOT}/api/free/amouyazid",
+    "Almagharibia TV": f"{RELAY_ROOT}/api/youtube/almagharibia",
 }
 
 
 def dynamic_urls() -> dict[str, str]:
-    found: dict[str, str] = {}
-    for channel, slug in CHANNELS.items():
-        path = STREAMS / f"{slug}.m3u8"
-        if not path.exists():
-            continue
-        for line in reversed(path.read_text().splitlines()):
-            line = line.strip()
-            if line and not line.startswith("#"):
-                found[channel] = line
-                break
-    return found
+    return CHANNELS
 
 
 def smoke_test(name: str, url: str) -> bool:
