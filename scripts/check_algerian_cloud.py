@@ -13,20 +13,25 @@ from curl_cffi import requests as browser_requests
 
 
 ROOT = Path(__file__).resolve().parent.parent
-PLAYLIST = ROOT / "algerian-tv-july-2026.m3u"
-CHANNELS = ("Almagharibia TV", "Echorouk TV", "Ennahar TV")
+STREAMS = ROOT / "streams"
+CHANNELS = {
+    "Almagharibia TV": "almagharibia",
+    "Echorouk TV": "echorouk",
+    "Ennahar TV": "ennahar",
+}
 
 
 def dynamic_urls() -> dict[str, str]:
-    lines = PLAYLIST.read_text().splitlines()
     found: dict[str, str] = {}
-    for index, line in enumerate(lines):
-        if not line.startswith("#EXTINF") or index + 1 >= len(lines):
+    for channel, slug in CHANNELS.items():
+        path = STREAMS / f"{slug}.m3u8"
+        if not path.exists():
             continue
-        name = line.rsplit(",", 1)[-1]
-        for channel in CHANNELS:
-            if name.startswith(channel):
-                found[channel] = lines[index + 1].strip()
+        for line in reversed(path.read_text().splitlines()):
+            line = line.strip()
+            if line and not line.startswith("#"):
+                found[channel] = line
+                break
     return found
 
 

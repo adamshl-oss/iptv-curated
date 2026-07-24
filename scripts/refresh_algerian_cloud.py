@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Refresh official Algerian feeds that do not have permanent HLS URLs.
+"""Refresh official Algerian feeds behind stable GitHub Pages HLS URLs.
 
-The generated URLs are committed to the public playlist by GitHub Actions. A
-previous URL is retained if a broadcaster is temporarily unavailable so one
-failed refresh never deletes a channel from IPTVX.
+IPTV clients cache the top-level M3U for days, while broadcaster signatures
+often expire in hours.  The top-level playlist therefore contains only stable
+GitHub Pages wrapper URLs; this job refreshes the signed child URLs inside
+those wrappers.
 """
 
 from __future__ import annotations
@@ -22,8 +23,10 @@ from curl_cffi import requests as browser_requests
 
 ROOT = Path(__file__).resolve().parent.parent
 PLAYLIST = ROOT / "algerian-tv-july-2026.m3u"
+STREAMS = ROOT / "streams"
 BEGIN = "#---ALGERIA-CLOUD-DYNAMIC-BEGIN---"
 END = "#---ALGERIA-CLOUD-DYNAMIC-END---"
+PAGES_ROOT = "https://adamshl-oss.github.io/iptv-curated"
 
 ALMAGHARIBIA_HOME_API = (
     "https://api.prd.awraas.tv/api/v1/"
@@ -36,20 +39,15 @@ ECHOROUK_PLAYER = "https://live.dzsecurity.net/live/player/echorouktv"
 ECHOROUK_REFERER = "https://www.echoroukonline.com/live"
 
 
-def current_urls(text: str) -> dict[str, str]:
-    match = re.search(
-        re.escape(BEGIN) + r"(.*?)" + re.escape(END), text, re.DOTALL
-    )
-    if not match:
-        return {}
-
-    found: dict[str, str] = {}
-    lines = [line.strip() for line in match.group(1).splitlines() if line.strip()]
-    for index, line in enumerate(lines):
-        if line.startswith("#EXTINF") and index + 1 < len(lines):
-            name = line.rsplit(",", 1)[-1]
-            found[name.split(" (", 1)[0]] = lines[index + 1]
-    return found
+def current_wrapper_url(slug: str) -> str | None:
+    path = STREAMS / f"{slug}.m3u8"
+    if not path.exists():
+        return None
+    for line in reversed(path.read_text().splitlines()):
+        line = line.strip()
+        if line and not line.startswith("#"):
+            return line
+    return None
 
 
 def url_expiry(url: str) -> int:
@@ -202,13 +200,13 @@ def choose_url(
         print(f"{channel}: refreshed from official source")
         return resolved
     except Exception as exc:
-        if existing:
-            print(f"{channel}: refresh failed; retained previous URL ({exc})")
+        if existing and url_expiry(existing) > time.time() + 900:
+            print(f"{channel}: refresh failed; retained still-valid URL ({exc})")
             return existing
         raise
 
 
-def render(almagharibia: str, echorouk: str, ennahar: str) -> str:
+def render_playlist_block() -> str:
     return "\n".join(
         [
             BEGIN,
@@ -216,54 +214,75 @@ def render(almagharibia: str, echorouk: str, ennahar: str) -> str:
             'tvg-logo="https://i.imgur.com/XE6OWcb.png" '
             'group-title="Algeria — Cloud Verified",'
             "Almagharibia TV (Official Cloud Live)",
-            almagharibia,
+            f"{PAGES_ROOT}/streams/almagharibia.m3u8",
             '#EXTINF:-1 tvg-id="EchoroukTV.dz" '
             'tvg-logo="https://i0.wp.com/echoroukonline.com/'
             'ech-logo-icon.png?w=192&quality=100" '
             'group-title="Algeria — Cloud Verified",'
             "Echorouk TV (Official Cloud Live)",
-            echorouk,
+            f"{PAGES_ROOT}/streams/echorouk.m3u8",
             '#EXTINF:-1 tvg-id="EnnaharTV.dz" '
             'tvg-logo="https://i.imgur.com/C0TCA1s.png" '
             'group-title="Algeria — Cloud Verified",'
             "Ennahar TV (Official Cloud Live)",
-            ennahar,
+            f"{PAGES_ROOT}/streams/ennahar.m3u8",
             END,
         ]
     )
 
 
+def write_wrapper(slug: str, target: str) -> None:
+    STREAMS.mkdir(exist_ok=True)
+    (STREAMS / f"{slug}.m3u8").write_text(
+        "\n".join(
+            [
+                "#EXTM3U",
+                "#EXT-X-VERSION:3",
+                (
+                    "#EXT-X-STREAM-INF:BANDWIDTH=2200000,"
+                    'RESOLUTION=1280x720,CODECS="avc1.640029,mp4a.40.2"'
+                ),
+                target,
+                "",
+            ]
+        )
+    )
+
+
 def main() -> None:
     text = PLAYLIST.read_text()
-    existing = current_urls(text)
     force_refresh = os.environ.get("FORCE_REFRESH", "").lower() == "true"
     almagharibia = choose_url(
         "Almagharibia",
-        existing.get("Almagharibia TV"),
+        current_wrapper_url("almagharibia"),
         resolve_almagharibia,
         minimum_remaining=3600,
         force_refresh=force_refresh,
     )
     echorouk = choose_url(
         "Echorouk",
-        existing.get("Echorouk TV"),
+        current_wrapper_url("echorouk"),
         resolve_echorouk,
         minimum_remaining=1200,
         force_refresh=force_refresh,
     )
     ennahar = choose_url(
         "Ennahar",
-        existing.get("Ennahar TV"),
+        current_wrapper_url("ennahar"),
         resolve_ennahar,
         minimum_remaining=1200,
         force_refresh=force_refresh,
     )
-    block = render(almagharibia, echorouk, ennahar)
+    write_wrapper("almagharibia", almagharibia)
+    write_wrapper("echorouk", echorouk)
+    write_wrapper("ennahar", ennahar)
+
+    block = render_playlist_block()
     pattern = re.compile(re.escape(BEGIN) + r".*?" + re.escape(END), re.DOTALL)
     if not pattern.search(text):
         raise RuntimeError("Dynamic Algerian playlist markers are missing")
     PLAYLIST.write_text(pattern.sub(block, text))
-    print("Updated algerian-tv-july-2026.m3u with 3 dynamic cloud channels")
+    print("Updated 3 stable Algerian cloud wrappers")
 
 
 if __name__ == "__main__":

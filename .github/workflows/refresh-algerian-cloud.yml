@@ -60,10 +60,10 @@ jobs:
 
       - name: Commit and push if changed
         run: |
-          if ! git diff --quiet -- algerian-tv-july-2026.m3u; then
+          if ! git diff --quiet -- algerian-tv-july-2026.m3u streams/; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add algerian-tv-july-2026.m3u
+            git add algerian-tv-july-2026.m3u streams/
             git commit -m "Refresh official Algerian cloud feeds ($(date -u +%FT%TZ))"
             git pull --rebase
             git push
