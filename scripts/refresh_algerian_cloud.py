@@ -27,6 +27,7 @@ STREAMS = ROOT / "streams"
 BEGIN = "#---ALGERIA-CLOUD-DYNAMIC-BEGIN---"
 END = "#---ALGERIA-CLOUD-DYNAMIC-END---"
 PAGES_ROOT = "https://adamshl-oss.github.io/iptv-curated"
+RELAY_ROOT = "https://algerian-tv-relay-2026.espiiem.chatgpt.site"
 
 ALMAGHARIBIA_HOME_API = (
     "https://api.prd.awraas.tv/api/v1/"
@@ -231,22 +232,31 @@ def render_playlist_block() -> str:
     return "\n".join(
         [
             BEGIN,
+            '#EXTINF:-1 tvg-id="AL24News.dz" '
+            'tvg-logo="https://i.imgur.com/vyVEXYL.png" '
+            'group-title="Algeria — Cloud Live",'
+            "AL24 News (Cloud HD)",
+            f"{RELAY_ROOT}/api/free/al24",
+            '#EXTINF:-1 tvg-id="ElHeddafTV.dz" '
+            'tvg-logo="https://i.imgur.com/cDkIDIA.png" '
+            'group-title="Algeria — Cloud Live",'
+            "El Heddaf TV (Cloud Live)",
+            f"{RELAY_ROOT}/api/free/elheddaf",
+            '#EXTINF:-1 tvg-id="TV2.dz" '
+            'tvg-logo="https://i.imgur.com/VEb631f.png" '
+            'group-title="Algeria — Cloud Live",'
+            "TV2 / Canal Algérie (1080p)",
+            "http://185.9.2.18/chid_347/index.m3u8",
+            '#EXTINF:-1 tvg-id="AmouYazidTV.dz" '
+            'tvg-logo="https://i.imgur.com/L8UPGPC.png" '
+            'group-title="Algeria — Cloud Live",'
+            "Amou Yazid TV (Cloud 1080p)",
+            f"{RELAY_ROOT}/api/free/amouyazid",
             '#EXTINF:-1 tvg-id="AlmagharibiaTV.uk" '
             'tvg-logo="https://i.imgur.com/XE6OWcb.png" '
-            'group-title="Algeria — Cloud Verified",'
+            'group-title="Algeria — Cloud Live",'
             "Almagharibia TV (Official Cloud Live)",
-            f"{PAGES_ROOT}/streams/almagharibia.m3u8",
-            '#EXTINF:-1 tvg-id="EchoroukTV.dz" '
-            'tvg-logo="https://i0.wp.com/echoroukonline.com/'
-            'ech-logo-icon.png?w=192&quality=100" '
-            'group-title="Algeria — Cloud Verified",'
-            "Echorouk TV (Official Cloud Live)",
-            f"{PAGES_ROOT}/streams/echorouk.m3u8",
-            '#EXTINF:-1 tvg-id="EnnaharTV.dz" '
-            'tvg-logo="https://i.imgur.com/C0TCA1s.png" '
-            'group-title="Algeria — Cloud Verified",'
-            "Ennahar TV (Official Cloud Live)",
-            f"{PAGES_ROOT}/streams/ennahar.m3u8",
+            f"{RELAY_ROOT}/api/youtube/almagharibia",
             END,
         ]
     )
