@@ -206,6 +206,27 @@ def choose_url(
         raise
 
 
+def refresh_or_keep(
+    channel: str,
+    existing: str | None,
+    resolver,
+    minimum_remaining: int,
+    force_refresh: bool,
+) -> str | None:
+    """Refresh one channel without preventing the others from publishing."""
+    try:
+        return choose_url(
+            channel,
+            existing,
+            resolver,
+            minimum_remaining,
+            force_refresh,
+        )
+    except Exception as exc:
+        print(f"::warning::{channel} refresh unavailable ({exc})")
+        return existing
+
+
 def render_playlist_block() -> str:
     return "\n".join(
         [
@@ -252,30 +273,35 @@ def write_wrapper(slug: str, target: str) -> None:
 def main() -> None:
     text = PLAYLIST.read_text()
     force_refresh = os.environ.get("FORCE_REFRESH", "").lower() == "true"
-    almagharibia = choose_url(
+    almagharibia = refresh_or_keep(
         "Almagharibia",
         current_wrapper_url("almagharibia"),
         resolve_almagharibia,
         minimum_remaining=3600,
         force_refresh=force_refresh,
     )
-    echorouk = choose_url(
+    echorouk = refresh_or_keep(
         "Echorouk",
         current_wrapper_url("echorouk"),
         resolve_echorouk,
         minimum_remaining=1200,
         force_refresh=force_refresh,
     )
-    ennahar = choose_url(
+    ennahar = refresh_or_keep(
         "Ennahar",
         current_wrapper_url("ennahar"),
         resolve_ennahar,
         minimum_remaining=1200,
         force_refresh=force_refresh,
     )
-    write_wrapper("almagharibia", almagharibia)
-    write_wrapper("echorouk", echorouk)
-    write_wrapper("ennahar", ennahar)
+    refreshed = {
+        "almagharibia": almagharibia,
+        "echorouk": echorouk,
+        "ennahar": ennahar,
+    }
+    for slug, target in refreshed.items():
+        if target:
+            write_wrapper(slug, target)
 
     block = render_playlist_block()
     pattern = re.compile(re.escape(BEGIN) + r".*?" + re.escape(END), re.DOTALL)
