@@ -16,6 +16,7 @@ import re
 import subprocess
 import time
 from pathlib import Path
+from urllib.parse import urlparse
 from urllib.request import Request, urlopen
 
 from curl_cffi import requests as browser_requests
@@ -115,9 +116,75 @@ def resolve_youtube_hls(target: str) -> str:
     return url
 
 
+def resolve_youtube_player_hls(video_id: str) -> str:
+    body = json.dumps(
+        {
+            "videoId": video_id,
+            "context": {
+                "client": {
+                    "clientName": "ANDROID",
+                    "clientVersion": "20.10.38",
+                    "androidSdkVersion": 30,
+                    "hl": "en",
+                    "gl": "US",
+                }
+            },
+        }
+    ).encode()
+    last_error = "YouTube player API did not return a live HLS manifest"
+    for attempt in range(1, 9):
+        try:
+            request = Request(
+                "https://www.youtube.com/youtubei/v1/player",
+                data=body,
+                headers={
+                    "Content-Type": "application/json",
+                    "User-Agent": (
+                        "com.google.android.youtube/20.10.38 "
+                        "(Linux; U; Android 11) gzip"
+                    ),
+                },
+            )
+            with urlopen(request, timeout=8) as response:
+                payload = json.load(response)
+            url = payload.get("streamingData", {}).get("hlsManifestUrl", "")
+            parsed = urlparse(url)
+            host = parsed.hostname or ""
+            if (
+                payload.get("playabilityStatus", {}).get("status") == "OK"
+                and parsed.scheme == "https"
+                and (
+                    host == "manifest.googlevideo.com"
+                    or host.endswith(".googlevideo.com")
+                )
+                and url_expiry(url) > time.time() + 900
+            ):
+                return url
+            last_error = (
+                payload.get("playabilityStatus", {}).get("reason")
+                or last_error
+            )
+        except Exception as error:
+            last_error = str(error)
+        if attempt < 8:
+            time.sleep(attempt * 0.15)
+    raise RuntimeError(last_error)
+
+
 def resolve_almagharibia() -> str:
     video_id = official_almagharibia_video_id()
-    return resolve_youtube_hls(f"https://www.youtube.com/watch?v={video_id}")
+    try:
+        return resolve_youtube_player_hls(video_id)
+    except Exception as player_error:
+        try:
+            return resolve_youtube_hls(
+                f"https://www.youtube.com/watch?v={video_id}"
+            )
+        except Exception as extractor_error:
+            raise RuntimeError(
+                "Official YouTube resolvers failed: "
+                f"player={player_error}; yt-dlp={extractor_error}"
+            ) from extractor_error
 
 
 def resolve_dzsecurity_site(
