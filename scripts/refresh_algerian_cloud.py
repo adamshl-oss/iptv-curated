@@ -266,11 +266,10 @@ def render_playlist_block() -> str:
             'group-title="Algeria — Cloud Live",'
             "TV6 Algérie (Cloud Live)",
             f"{RELAY_ROOT}/api/free/tv6",
-            '#EXTINF:-1 tvg-id="EchoroukNews.dz" '
-            'tvg-logo="https://i.imgur.com/HFjG3g1.png" '
+            '#EXTINF:-1 tvg-id="TV7.dz" '
             'group-title="Algeria — Cloud Live",'
-            "Echorouk News (Cloud Live)",
-            f"{RELAY_ROOT}/api/free/echorouknews",
+            "TV7 El Maarifa (Cloud Live)",
+            f"{RELAY_ROOT}/api/free/tv7",
             '#EXTINF:-1 tvg-id="EnnaharTV.dz" '
             'tvg-logo="https://i.imgur.com/C0TCA1s.png" '
             'group-title="Algeria — Cloud Live",'
