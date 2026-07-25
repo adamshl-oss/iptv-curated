@@ -25,7 +25,7 @@
       "tvg_id": "France2.fr",
       "official_url": "https://www.france.tv/france-2/direct.html",
       "status": "geo_restricted",
-      "reason": "France.tv exposes an SSAI manifest, but its media segments return 403 from the US. Free TV's exact France 2 service (201) was also audited: every tested HLS audio/video rendition is SAMPLE-AES/FairPlay encrypted and its player requires account and TV-rights tokens for the license request. Molotov Basic carries the exact channel, but its current public state marks it unavailable from the US; channel APIs require an authenticated session and Molotov confirms its delivery uses DRM.",
+      "reason": "France.tv exposes an SSAI manifest, but its media segments return 403 from the US. Free TV's exact France 2 service (201) was also audited: every tested HLS audio/video rendition is SAMPLE-AES/FairPlay encrypted and its player requires account and TV-rights tokens for the license request. Molotov Basic carries the exact channel, but its current public state marks it unavailable from the US; channel APIs require an authenticated session and Molotov confirms its delivery uses DRM. Licensed Swiss provider netplus carries exact France 2, but its HLS origin completes TLS and then returns no HTTP response from the US; Teleboy and Salt likewise require Swiss service/account access.",
       "publish": false
     },
     {
@@ -34,7 +34,7 @@
       "tvg_id": "France3.fr",
       "official_url": "https://www.france.tv/france-3/direct.html",
       "status": "geo_restricted",
-      "reason": "France.tv exposes an SSAI manifest, but its media segments return 403 from the US. Free TV's exact France 3 service (202) was also audited: every tested HLS audio/video rendition is SAMPLE-AES/FairPlay encrypted and its player requires account and TV-rights tokens for the license request. Molotov Basic carries the exact channel, but its current public state marks it unavailable from the US; channel APIs require an authenticated session and Molotov confirms its delivery uses DRM.",
+      "reason": "France.tv exposes an SSAI manifest, but its media segments return 403 from the US. Free TV's exact France 3 service (202) was also audited: every tested HLS audio/video rendition is SAMPLE-AES/FairPlay encrypted and its player requires account and TV-rights tokens for the license request. Molotov Basic carries the exact channel, but its current public state marks it unavailable from the US; channel APIs require an authenticated session and Molotov confirms its delivery uses DRM. Licensed Swiss provider netplus carries exact France 3, but its HLS origin completes TLS and then returns no HTTP response from the US; Teleboy and Salt likewise require Swiss service/account access.",
       "publish": false
     },
     {
@@ -43,7 +43,7 @@
       "tvg_id": "M6.fr",
       "official_url": "https://www.m6.fr/m6/direct",
       "status": "drm_protected",
-      "reason": "M6+ and Free TV's exact M6 service (613) both deliver protected playback. Free TV's current master is public, but every tested audio/video rendition is SAMPLE-AES/FairPlay encrypted and the player requires account and TV-rights tokens for its license request. Molotov distributes M6 only in paid offers; its current US-facing page marks the channel unavailable, its API requires authentication, and Molotov confirms its delivery uses DRM. An ordinary IPTVX M3U entry cannot decode these sources.",
+      "reason": "M6+ and Free TV's exact M6 service (613) both deliver protected playback. Free TV's current master is public, but every tested audio/video rendition is SAMPLE-AES/FairPlay encrypted and the player requires account and TV-rights tokens for its license request. Molotov distributes M6 only in paid offers; its current US-facing page marks the channel unavailable, its API requires authentication, and Molotov confirms its delivery uses DRM. Swiss providers netplus and Salt carry M6 CH/M6 Suisse rather than the exact French feed and require subscriber access. An ordinary IPTVX M3U entry cannot decode these sources.",
       "publish": false
     },
     {
@@ -52,7 +52,7 @@
       "tvg_id": "France5.fr",
       "official_url": "https://www.france.tv/france-5/direct.html",
       "status": "geo_restricted",
-      "reason": "France.tv exposes an SSAI manifest, but its media segments return 403 from the US. Free TV's exact France 5 service (203) was also audited: every tested HLS audio/video rendition is SAMPLE-AES/FairPlay encrypted and its player requires account and TV-rights tokens for the license request. Molotov Basic carries the exact channel, but its current public state marks it unavailable from the US; channel APIs require an authenticated session and Molotov confirms its delivery uses DRM.",
+      "reason": "France.tv exposes an SSAI manifest, but its media segments return 403 from the US. Free TV's exact France 5 service (203) was also audited: every tested HLS audio/video rendition is SAMPLE-AES/FairPlay encrypted and its player requires account and TV-rights tokens for the license request. Molotov Basic carries the exact channel, but its current public state marks it unavailable from the US; channel APIs require an authenticated session and Molotov confirms its delivery uses DRM. Licensed Swiss provider netplus carries exact France 5, but its HLS origin completes TLS and then returns no HTTP response from the US; Teleboy and Salt likewise require Swiss service/account access.",
       "publish": false
     },
     {
@@ -111,7 +111,7 @@
       "tvg_id": "W9.fr",
       "official_url": "https://www.m6.fr/w9/direct",
       "status": "drm_protected",
-      "reason": "M6+ and Free TV's exact W9 service (373) both deliver protected playback. Free TV's current master is public, but every tested audio/video rendition is SAMPLE-AES/FairPlay encrypted and the player requires account and TV-rights tokens for its license request. Molotov distributes W9 only in paid offers; its current US-facing page marks the channel unavailable, its API requires authentication, and Molotov confirms its delivery uses DRM. An ordinary IPTVX M3U entry cannot decode these sources.",
+      "reason": "M6+ and Free TV's exact W9 service (373) both deliver protected playback. Free TV's current master is public, but every tested audio/video rendition is SAMPLE-AES/FairPlay encrypted and the player requires account and TV-rights tokens for its license request. Molotov distributes W9 only in paid offers; its current US-facing page marks the channel unavailable, its API requires authentication, and Molotov confirms its delivery uses DRM. Swiss provider netplus carries W9 CH rather than the exact French feed and its media origin is inaccessible from the US. An ordinary IPTVX M3U entry cannot decode these sources.",
       "publish": false
     },
     {
@@ -142,7 +142,7 @@
       "tvg_id": "6ter.fr",
       "official_url": "https://www.m6.fr/6ter/direct",
       "status": "drm_protected",
-      "reason": "M6+ and Free TV's exact 6ter service (995) both deliver protected playback. Free TV's current master is public, but every tested audio/video rendition is SAMPLE-AES/FairPlay encrypted and the player requires account and TV-rights tokens for its license request. Molotov distributes 6ter only in paid offers; its current US-facing page marks the channel unavailable, its API requires authentication, and Molotov confirms its delivery uses DRM. An ordinary IPTVX M3U entry cannot decode these sources.",
+      "reason": "M6+ and Free TV's exact 6ter service (995) both deliver protected playback. Free TV's current master is public, but every tested audio/video rendition is SAMPLE-AES/FairPlay encrypted and the player requires account and TV-rights tokens for its license request. Molotov distributes 6ter only in paid offers; its current US-facing page marks the channel unavailable, its API requires authentication, and Molotov confirms its delivery uses DRM. Swiss provider netplus carries 6Ter CH rather than the exact French feed and its media origin is inaccessible from the US. An ordinary IPTVX M3U entry cannot decode these sources.",
       "publish": false
     },
     {
@@ -197,7 +197,7 @@
       "tvg_id": "CanalPlus.fr",
       "official_url": "https://www.canalplus.com/chaines/canal-plus",
       "status": "paid_drm",
-      "reason": "The full linear channel requires a paid CANAL+ entitlement and DRM. Free TV exposes only a CANAL+ fallback service (1024), not an entitlement-free full linear feed; its HLS is SAMPLE-AES/FairPlay and its DASH is Widevine-protected. Molotov's catalog entry likewise does not expose an entitlement-free full linear source and its channel API requires authentication. No legitimate direct IPTVX-compatible M3U source exists.",
+      "reason": "The full linear channel requires a paid CANAL+ entitlement and DRM. Free TV exposes only a CANAL+ fallback service (1024), not an entitlement-free full linear feed; its HLS is SAMPLE-AES/FairPlay and its DASH is Widevine-protected. Molotov's catalog entry likewise does not expose an entitlement-free full linear source and its channel API requires authentication. netplus explicitly separates CANAL+ free-view windows from its paid full CANAL+ package. No legitimate direct IPTVX-compatible M3U source exists.",
       "publish": false
     },
     {
@@ -206,7 +206,7 @@
       "tvg_id": "CStar.fr",
       "official_url": "https://www.canalplus.com/chaines/cstar",
       "status": "geo_restricted",
-      "reason": "CStar's official Dailymotion live x5gv5v0 is explicitly geo-restricted outside its licensed territories. Free TV's exact CStar service (678) was also audited, but every tested HLS audio/video rendition is SAMPLE-AES/FairPlay encrypted and its player requires account and TV-rights tokens for the license request. Molotov Basic carries the exact channel, but its current public state marks it unavailable from the US; channel APIs require an authenticated session and Molotov confirms its delivery uses DRM. The previously published signed Dailymotion rendition expired and was removed rather than left as a dead channel.",
+      "reason": "CStar's official Dailymotion live x5gv5v0 is explicitly geo-restricted outside its licensed territories. Free TV's exact CStar service (678) was also audited, but every tested HLS audio/video rendition is SAMPLE-AES/FairPlay encrypted and its player requires account and TV-rights tokens for the license request. Molotov Basic carries the exact channel, but its current public state marks it unavailable from the US; channel APIs require an authenticated session and Molotov confirms its delivery uses DRM. Licensed Swiss provider netplus carries exact CStar, but its HLS origin completes TLS and then returns no HTTP response from the US; Teleboy and Salt likewise require Swiss service/account access. The previously published signed Dailymotion rendition expired and was removed rather than left as a dead channel.",
       "publish": false
     },
     {
