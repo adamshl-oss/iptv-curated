@@ -24,7 +24,7 @@ As of the latest 2026-07-25 audit, twelve exact top-20 channels pass every gate:
 - #7 ARTE — 1080p through an always-on current-master resolver
 - #8 TMC — 720p through an always-on current-master resolver
 - #9 BFMTV — 540p
-- #11 LCI — 720p through an always-on token-refresh relay
+- #11 LCI — 720p through a maintained official-CDN token resolver
 - #12 TFX — 720p through an always-on current-master resolver
 - #14 RMC Découverte — 1080p
 - #15 RMC Story — 1080p
@@ -42,6 +42,6 @@ Canonical playlist:
 
 The GitHub Actions refresh resolves expiring official live URLs and refuses to
 publish any update unless every included channel passes a real decode test.
-The LCI relay obtains fresh official TF1 tokens, while the TF1-family resolver
-selects the newest signed official master on every channel start. Neither the
-playlist nor Apple TV depends on this Mac remaining online.
+The LCI and TF1-family resolvers select fresh signed official masters without
+depending on this Mac. The playlist remains usable on Apple TV while this Mac
+is offline.
