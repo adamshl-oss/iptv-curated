@@ -76,9 +76,11 @@
       "name": "ARTE",
       "tvg_id": "ARTE.fr",
       "official_url": "https://www.arte.tv/fr/direct/",
-      "status": "geo_restricted",
-      "reason": "Official ARTE API returns ERROR_GEOLOCATION and no streams for a US viewer.",
-      "publish": false
+      "status": "verified_cloud_resolver",
+      "reason": "The always-on cloud endpoint resolves the current ParaTV-maintained master for ARTE's unmodified official non-DRM CDN feed; the ARTE watermark and official schedule matched, and three consecutive 1080p audio/video decodes passed.",
+      "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/tf1/arte/live.m3u8",
+      "min_height": 720,
+      "publish": true
     },
     {
       "rank": 8,

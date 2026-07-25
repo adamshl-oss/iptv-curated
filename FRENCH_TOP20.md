@@ -17,10 +17,11 @@ The public playlist intentionally contains only the audited target channels
 that meet every rule. DRM, paid, geo-restricted, viewer-IP-bound, dead, and
 unauthorized candidates remain documented but are never inserted as filler.
 
-As of the latest 2026-07-25 audit, eleven exact top-20 channels pass every gate:
+As of the latest 2026-07-25 audit, twelve exact top-20 channels pass every gate:
 
 - #1 TF1 — 720p through an always-on current-master resolver
 - #6 CNEWS — 1080p
+- #7 ARTE — 1080p through an always-on current-master resolver
 - #8 TMC — 720p through an always-on current-master resolver
 - #9 BFMTV — 540p
 - #11 LCI — 720p through an always-on token-refresh relay
