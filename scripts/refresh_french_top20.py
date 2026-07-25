@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+import re
 import subprocess
 from pathlib import Path
 
@@ -25,15 +26,12 @@ def resolve(channel: dict[str, object]) -> str:
     if not isinstance(resolver, dict) or resolver.get("type") != "yt_dlp":
         raise RuntimeError(f"{channel['name']}: no supported stream resolver")
     page_url = str(resolver.get("url", ""))
-    requested_format = str(resolver.get("format", "best"))
     completed = subprocess.run(
         [
             "yt-dlp",
             "--no-warnings",
             "--skip-download",
             "--get-url",
-            "--format",
-            requested_format,
             "--socket-timeout",
             "20",
             page_url,
@@ -51,7 +49,20 @@ def resolve(channel: dict[str, object]) -> str:
     if completed.returncode != 0 or not urls:
         detail = (completed.stderr or completed.stdout).strip()
         raise RuntimeError(f"{channel['name']}: resolver failed: {detail}")
-    return urls[0]
+    resolved = urls[0]
+    preferred_live_filename = str(resolver.get("preferred_live_filename", ""))
+    if preferred_live_filename:
+        resolved, replacements = re.subn(
+            r"/live-[^/?]+\.m3u8",
+            f"/{preferred_live_filename}",
+            resolved,
+            count=1,
+        )
+        if replacements != 1:
+            raise RuntimeError(
+                f"{channel['name']}: could not select preferred live rendition"
+            )
+    return resolved
 
 
 def playback_test(name: str, url: str, min_height: int) -> str:
