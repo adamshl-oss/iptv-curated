@@ -50,11 +50,11 @@ if [ "$IS_HLS" -eq 1 ] && echo "$BODY" | grep -q "#EXT-X-STREAM-INF"; then
     END { print best }
   ')
   if [ -n "$VARIANT" ]; then
-    case "$VARIANT" in
-      http*) PLAY_URL="$VARIANT" ;;
-      /*)    PLAY_URL="$(echo "$PLAY_URL" | sed -E 's|^(https?://[^/]+).*|\1|')${VARIANT}" ;;
-      *)     BASE="$(echo "$PLAY_URL" | sed -E 's|/[^/]*$|/|')"; PLAY_URL="${BASE}${VARIANT}" ;;
-    esac
+    # Resolve every relative form correctly, including ../../ paths used by
+    # MediaTailor/CloudFront manifests.
+    PLAY_URL=$(python3 -c \
+      'from urllib.parse import urljoin; import sys; print(urljoin(sys.argv[1], sys.argv[2]))' \
+      "$PLAY_URL" "$VARIANT")
     MEDIA=$(curl -sL --max-time "$TIMEOUT" -A "$UA" "$PLAY_URL" 2>/dev/null | head -c 65536)
     [ -z "$MEDIA" ] && fail "variant_empty"
     BODY="$MEDIA"

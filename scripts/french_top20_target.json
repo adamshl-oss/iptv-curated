@@ -1,0 +1,203 @@
+{
+  "name": "French TV — Audience Top 20 — July 2026",
+  "methodology": {
+    "ranking": "2025 annual Médiamétrie audience share",
+    "ranking_source": "https://www.ozap.com/actu/audiences-annuelles-2025-tf1-toujours-solide-leader-france-2-redescend-de-son-nuage-w9-et-canal-en-forme-record-historique-pour-arte/653093",
+    "lineup_source": "https://www.arcom.fr/television-et-video-la-demande/la-numerotation-des-chaines",
+    "publication_rule": "Exact live linear channel, real decode, no loop, and playable from a cloud-hosted M3U without this Mac",
+    "last_manual_audit": "2026-07-25"
+  },
+  "channels": [
+    {
+      "rank": 1,
+      "name": "TF1",
+      "tvg_id": "TF1.fr",
+      "official_url": "https://www.tf1.fr/tf1/direct",
+      "status": "unavailable_in_cloud_m3u",
+      "reason": "Official TF1 delivery API returns 403 from the US; public candidates found were unauthorized restreams.",
+      "publish": false
+    },
+    {
+      "rank": 2,
+      "name": "France 2",
+      "tvg_id": "France2.fr",
+      "official_url": "https://www.france.tv/france-2/direct.html",
+      "status": "geo_restricted",
+      "reason": "Official page exposes an SSAI manifest, but its media segments return 403 from the US.",
+      "publish": false
+    },
+    {
+      "rank": 3,
+      "name": "France 3",
+      "tvg_id": "France3.fr",
+      "official_url": "https://www.france.tv/france-3/direct.html",
+      "status": "geo_restricted",
+      "reason": "Official page exposes an SSAI manifest, but its media segments return 403 from the US.",
+      "publish": false
+    },
+    {
+      "rank": 4,
+      "name": "M6",
+      "tvg_id": "M6.fr",
+      "official_url": "https://www.m6.fr/m6/direct",
+      "status": "drm_protected",
+      "reason": "Official HLS uses FairPlay skd keys and cannot be decoded by an ordinary IPTVX M3U entry.",
+      "publish": false
+    },
+    {
+      "rank": 5,
+      "name": "France 5",
+      "tvg_id": "France5.fr",
+      "official_url": "https://www.france.tv/france-5/direct.html",
+      "status": "geo_restricted",
+      "reason": "Official page exposes an SSAI manifest, but its media segments return 403 from the US.",
+      "publish": false
+    },
+    {
+      "rank": 6,
+      "name": "CNEWS",
+      "tvg_id": "CNews.fr",
+      "logo": "https://i.imgur.com/sSNhk2g.png",
+      "official_url": "https://www.cnews.fr/le-direct",
+      "status": "verified_dynamic",
+      "reason": "Official CNEWS Dailymotion live; signed HLS is regenerated in GitHub Actions and decode-tested before publication.",
+      "resolver": {
+        "type": "yt_dlp",
+        "url": "https://www.dailymotion.com/video/x3b68jn"
+      },
+      "publish": true
+    },
+    {
+      "rank": 7,
+      "name": "ARTE",
+      "tvg_id": "ARTE.fr",
+      "official_url": "https://www.arte.tv/fr/direct/",
+      "status": "geo_restricted",
+      "reason": "Official ARTE API returns ERROR_GEOLOCATION and no streams for a US viewer.",
+      "publish": false
+    },
+    {
+      "rank": 8,
+      "name": "TMC",
+      "tvg_id": "TMC.fr",
+      "official_url": "https://www.tf1.fr/tmc/direct",
+      "status": "unavailable_in_cloud_m3u",
+      "reason": "Official TF1 delivery API returns 403 from the US; public candidates found were unauthorized restreams.",
+      "publish": false
+    },
+    {
+      "rank": 9,
+      "name": "BFMTV",
+      "tvg_id": "BFMTV.fr",
+      "logo": "https://i.imgur.com/YJCcczD.png",
+      "official_url": "https://www.rmcbfmplay.com/direct/bfmtv",
+      "status": "verified_static",
+      "reason": "Broadcaster CDN HLS passed repeated ffprobe and ffmpeg decode tests.",
+      "stream_url": "https://live-cdn-stream-euw1.bfmtv.bct.nextradiotv.com/master.m3u8",
+      "publish": true
+    },
+    {
+      "rank": 10,
+      "name": "W9",
+      "tvg_id": "W9.fr",
+      "official_url": "https://www.m6.fr/w9/direct",
+      "status": "drm_protected",
+      "reason": "Official HLS uses FairPlay skd keys and cannot be decoded by an ordinary IPTVX M3U entry.",
+      "publish": false
+    },
+    {
+      "rank": 11,
+      "name": "LCI",
+      "tvg_id": "LCI.fr",
+      "official_url": "https://www.tf1.fr/lci/direct",
+      "status": "viewer_ip_bound",
+      "reason": "Official HLS is non-DRM but its short-lived JWT embeds the requesting IP, so a GitHub-generated URL cannot play on Apple TV.",
+      "publish": false
+    },
+    {
+      "rank": 12,
+      "name": "TFX",
+      "tvg_id": "TFX.fr",
+      "official_url": "https://www.tf1.fr/tfx/direct",
+      "status": "unavailable_in_cloud_m3u",
+      "reason": "Official TF1 delivery API returns 403 from the US; public candidates found were unauthorized restreams.",
+      "publish": false
+    },
+    {
+      "rank": 13,
+      "name": "6ter",
+      "tvg_id": "6ter.fr",
+      "official_url": "https://www.m6.fr/6ter/direct",
+      "status": "drm_protected",
+      "reason": "Official HLS uses FairPlay skd keys and cannot be decoded by an ordinary IPTVX M3U entry.",
+      "publish": false
+    },
+    {
+      "rank": 14,
+      "name": "RMC Découverte",
+      "tvg_id": "RMCDecouverte.fr",
+      "logo": "https://upload.wikimedia.org/wikipedia/fr/thumb/b/b3/RMC_D%C3%A9couverte_logo_2017.svg/512px-RMC_D%C3%A9couverte_logo_2017.svg.png",
+      "official_url": "https://www.rmcbfmplay.com/direct/rmc_decouverte",
+      "status": "verified_static",
+      "reason": "Public distribution HLS passed 1080p decode; on-screen branding and current programme matched RMC's official live schedule.",
+      "stream_url": "https://d16zzycxcd0m0r.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-hixvx5kymecr9/RMC_Decouverte_FR.m3u8",
+      "publish": true
+    },
+    {
+      "rank": 15,
+      "name": "RMC Story",
+      "tvg_id": "RMCStory.fr",
+      "logo": "https://upload.wikimedia.org/wikipedia/fr/thumb/4/43/Logo_RMC_Story_2025.png/512px-Logo_RMC_Story_2025.png",
+      "official_url": "https://www.rmcbfmplay.com/direct/rmc_story",
+      "status": "verified_static",
+      "reason": "Public distribution HLS passed 1080p decode; on-screen branding and current programme matched RMC's official live schedule.",
+      "stream_url": "https://d15aro46bnpfm8.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-fqkqiax1078up/RMC_Story_FR.m3u8",
+      "publish": true
+    },
+    {
+      "rank": 16,
+      "name": "TF1 Séries Films",
+      "tvg_id": "TF1SeriesFilms.fr",
+      "official_url": "https://www.tf1.fr/tf1-series-films/direct",
+      "status": "unavailable_in_cloud_m3u",
+      "reason": "Official TF1 delivery API returns 403 from the US; public candidates found were unauthorized restreams.",
+      "publish": false
+    },
+    {
+      "rank": 17,
+      "name": "L'Équipe",
+      "tvg_id": "LEquipe.fr",
+      "official_url": "https://www.lequipe.fr/lachainelequipe/",
+      "status": "geo_restricted",
+      "reason": "Official Dailymotion and TF1+ live delivery are restricted to France/territories; the formerly public CloudFront feed is dead.",
+      "publish": false
+    },
+    {
+      "rank": 18,
+      "name": "Canal+",
+      "tvg_id": "CanalPlus.fr",
+      "official_url": "https://www.canalplus.com/chaines/canal-plus",
+      "status": "paid_drm",
+      "reason": "The full linear channel requires a paid CANAL+ entitlement and DRM; no legitimate direct M3U source exists.",
+      "publish": false
+    },
+    {
+      "rank": 19,
+      "name": "CStar",
+      "tvg_id": "CStar.fr",
+      "official_url": "https://www.canalplus.com/chaines/cstar",
+      "status": "geo_restricted",
+      "reason": "Official Dailymotion live is owner-restricted outside its permitted countries and is unavailable from the US.",
+      "publish": false
+    },
+    {
+      "rank": 20,
+      "name": "RMC Life",
+      "tvg_id": "RMCLife.fr",
+      "official_url": "https://www.rmcbfmplay.com/direct/rmc_life",
+      "status": "account_required",
+      "reason": "RMC+ marks its live player as authenticated; public candidates found were private restreams or obsolete Chérie 25 feeds.",
+      "publish": false
+    }
+  ]
+}
