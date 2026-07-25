@@ -10,7 +10,7 @@
   "latest_audit": {
     "checked_at": "2026-07-25T18:38:37Z",
     "source_rotation": "Official EPTV, Echorouk, Ennahar, Samira+, TDA satellite roster, broadcaster apps and sites, official YouTube/Dailymotion lives, maintained public resolvers, and licensed FAST/OTT catalogs",
-    "published_regression": "All eleven retained non-TV6 channels passed 3/3 audio/video, quality, and moving-frame gates. Almagharibia's official dynamic relay later reproduced intermittent cold-resolver 502s, so its published target was replaced by the already automated GitHub Pages HLS wrapper; that public wrapper passed a fresh 3/3 1080p audio/video and moving-frame gate. TV6 failed two complete three-attempt gates and remains quarantined, leaving 12 healthy published channels.",
+    "published_regression": "All eleven retained non-TV6 channels passed 3/3 audio/video, quality, and moving-frame gates. Almagharibia's original single-path resolver reproduced intermittent cold 502s, so its cloud endpoint was rebuilt to consume the 20-minute GitHub Pages wrapper first and independently race the official YouTube resolver as fallback. The repaired public endpoint passed 10/10 manifest requests followed by 3/3 1080p audio/video and moving-frame attempts. TV6 failed two complete three-attempt gates and remains quarantined, leaving 12 healthy published channels.",
     "unpublished_exact_channels": [
       "Samira TV",
       "Echorouk TV",
@@ -29,7 +29,7 @@
       "Echorouk's separate official live-news page generated a fresh signed Echorouk News HLS URL, but three independent requests from the US likewise returned no media response. The only responsive alternative belonged to an unverified third-party distributor, so it was rejected despite returning HTTP 200.",
       "TV6 failed two complete three-attempt public gates: timeout, TLS/no-response, malformed 0p video, and corrupt H.264/PPS evidence recurred. The former official HTA hostname also failed DNS resolution in seven parallel source probes, so TV6 was quarantined without deleting its target or source history.",
       "No exact, current, publicly authorized non-DRM linear feed was found for El Hayat TV, El Watania TV, TV8 Adhakira, or TV9 El Barlamaniya. Their official identities and search history remain in this registry rather than being discarded.",
-      "Almagharibia's direct cloud wrapper is refreshed every 20 minutes by GitHub Actions from the live identity exposed by the broadcaster's official app. Its replacement public endpoint passed three consecutive 1080p H.264/AAC decode and moving-frame attempts and no longer depends on the intermittent Sites resolver."
+      "Almagharibia's direct cloud wrapper is refreshed every 20 minutes by GitHub Actions from the live identity exposed by the broadcaster's official app. The public relay now tries that wrapper first and independently races the official YouTube player resolver if the wrapper is rejected by its egress. The layered endpoint passed ten consecutive manifest fetches and three consecutive 1080p H.264/AAC decode and moving-frame attempts."
     ],
     "result": "No newly viable exact channel qualified; TV6 was quarantined after repeat persistent failure, leaving 12 of the 20 durable targets published."
   },
@@ -258,8 +258,8 @@
       "tvg_id": "AlmagharibiaTV.uk",
       "official_url": "https://almagharibia.tv/",
       "status": "verified_official_dynamic",
-      "reason": "The broadcaster's official app exposes its current official YouTube live identity; GitHub Actions refreshes the public Pages HLS wrapper every 20 minutes without relying on this Mac.",
-      "stream_url": "https://adamshl-oss.github.io/iptv-curated/streams/almagharibia.m3u8",
+      "reason": "The broadcaster's official app exposes its current official YouTube live identity; the public relay consumes the 20-minute GitHub Pages refresh and falls back to an independent official-player resolve without relying on this Mac.",
+      "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/youtube/almagharibia",
       "min_height": 540,
       "publish": true
     }
