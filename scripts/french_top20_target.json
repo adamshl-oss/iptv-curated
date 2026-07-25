@@ -8,9 +8,9 @@
     "last_manual_audit": "2026-07-25"
   },
   "latest_audit": {
-    "checked_at": "2026-07-25T20:33:37Z",
-    "source_rotation": "ParaTV commits d42c867a and a89024f, current France Télévisions SSAI/simulcast outputs, M6/W9/6ter resolver paths and M6+ distribution, CANAL+ live distribution, official CStar Dailymotion metadata, official broadcaster pages, authorized OTT/FAST catalogs, and maintained public resolvers",
-    "published_regression": "GitHub Actions run 30176402576 passed the complete resolver gate, all 36 independent local-playlist audio/video/moving-frame attempts, canonical/alias parity, publication visibility, and—after the mandatory full-gate retry—all 36 public GitHub Pages attempts. The official-CDN ARTE relay was pinned to its stable 720p rendition and independently passed 3/3 before the cloud run. IPTVX was force-reloaded and sustained changing ARTE preview plus RMC Story preview/full-player playback.",
+    "checked_at": "2026-07-25T22:14:38Z",
+    "source_rotation": "ParaTV stream commit 6b2595ee, current France Télévisions SSAI wrappers and media segments, current M6/W9/CStar/Canal+ wrappers, official Dailymotion owner metadata, current Molotov operator pages, the iptv-org index, official broadcaster pages, and licensed OTT/FAST/operator catalogs",
+    "published_regression": "GitHub Actions run 30177214642 passed the resolver gate, canonical/alias identity and ordering, all 36 independent local-playlist audio/video/moving-frame attempts, publication visibility, and all 36 public GitHub Pages attempts. IPTVX was force-reloaded from the cloud URL, displayed all 12 verified identities, and ARTE produced visibly different current frames over a sustained 21-second preview.",
     "unpublished_exact_channels": [
       "France 2",
       "France 3",
@@ -22,6 +22,10 @@
       "CStar"
     ],
     "evidence": [
+      "ParaTV advanced to stream commit 6b2595ee at 21:26 UTC. France 2's refreshed exact wrapper timed out; France 3 and France 5 returned current 720p media playlists but their live media segments again returned HTTP 403.",
+      "The refreshed exact M6 and W9 wrappers returned no decodable video. The current index still exposes no exact authorized 6ter source except private-IP or territory/account-bound delivery, which was rejected.",
+      "The CStar wrapper decoded only 848x480 and relies on a token that conflicts with Dailymotion's current owner-controlled geo restriction. It was rejected both for being below the normal 540p floor and because publishing it would bypass the owner's territory decision.",
+      "The current Canal+ wrapper did not decode and remains an open/en-clair candidate rather than the exact full paid linear service. No inexact substitution was published.",
       "ParaTV advanced through commit d42c867a at 20:26 UTC and a89024f at 21:25 UTC. The France 2, France 3, and France 5 wrappers retained the same current sources: their manifests and AES-128 keys return 200, but every tested current media segment returns 403. This is fresh current evidence, not a stale failure.",
       "Official CStar Dailymotion metadata for x5gv5v0 still returns owner-controlled DM007 geo restriction and HTTP 403. The ParaTV token was intentionally rejected because publishing it would bypass that explicit territory decision.",
       "The current M6 and W9 resolver paths return HTTP 403. The latest maintained lineup exposes no exact portable M6 source; W9 and 6ter remain available only through territory/account-bound licensed services or inexact Swiss variants, not an authorized non-DRM IPTVX feed.",

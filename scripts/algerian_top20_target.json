@@ -8,9 +8,9 @@
     "last_manual_audit": "2026-07-25"
   },
   "latest_audit": {
-    "checked_at": "2026-07-25T20:33:37Z",
-    "source_rotation": "Official broadcaster websites and app stores, EPTV's current official YouTube roster, Echorouk site and YouTube lives, El Watania's first-party embedded Ant Media player, current ParaTV and iptv-org resolvers, TDA carriage, and licensed OTT/FAST catalogs",
-    "published_regression": "GitHub Actions run 30173846777 passed canonical/alias parity and all 36 local-copy plus all 36 public Apple-TV-path playback attempts for the 12 published channels. The forced IPTVX reload retained all 12 identities, and the repaired Almagharibia relay sustained changing video after the reload. TV6 remains quarantined rather than forgotten.",
+    "checked_at": "2026-07-25T22:14:38Z",
+    "source_rotation": "Current official Echorouk pages and YouTube lives, EPTV's official TV6/TV8/TV9 YouTube handles, Samira+ app and website state, El Hayat's official live handle, El Watania's first-party Ant Media HLS, TDA satellite carriage, current Molotov operator pages, the iptv-org index, and maintained public resolvers",
+    "published_regression": "GitHub Actions run 30177215477 passed dynamic-feed refresh, canonical/alias identity and ordering, all 36 independent local-playlist audio/video/moving-frame attempts, publication visibility, and all 36 public Apple-TV-path attempts. IPTVX was force-reloaded from the cloud URL, displayed all 12 verified identities, and Almagharibia produced visibly different current frames over a sustained 21-second preview. TV6 remains quarantined rather than forgotten.",
     "unpublished_exact_channels": [
       "Samira TV",
       "Echorouk TV",
@@ -22,6 +22,11 @@
       "TV9 El Barlamaniya"
     ],
     "evidence": [
+      "TDA's current official roster still confirms Samira TV, Echorouk TV, Echorouk News, El Hayat TV, and El Watania TV in the private HD/SD bouquet and TV6, TV8, and TV9 in the public bouquet; this preserves their high-priority target status but provides satellite parameters rather than IPTV delivery.",
+      "Echorouk TV and Echorouk News official player endpoints returned HTTP 403 in this fresh pass. Their current Molotov operator pages confirm both exact channels are available only in a paid option, which cannot be converted into a portable IPTVX URL without credentials/DRM.",
+      "Samira+'s official listing still advertises international 24/7 HD live viewing, but the official website returned HTTP 500 and exposed no portable public HLS. The app/account service remains a recovery path, not a publishable M3U source.",
+      "The exact El Watania first-party 1080p HLS failed three new independent attempts: one reprobe failure and two no-response failures. It remains recorded but unpublished because it would stall on Apple TV.",
+      "The exact official TV6, TV8, TV9, and El Hayat YouTube handles were all checked again and none was live. Echorouk News still exposed only an upcoming event that had not begun.",
       "Kantar Africascope 2025 ranks Samira TV and Echorouk TV first and second among channels watched in Algeria; El Heddaf TV, Ennahar TV, and ENTV Programme National also appear in its current top ten.",
       "Télédiffusion d’Algérie's current official satellite roster confirms Samira TV, Echorouk TV, Echorouk News, El Hayat TV, and El Watania TV as carried Algerian services alongside the already-published private channels and the EPTV public bouquet.",
       "Samira's official Samira+ app advertises international 24/7 HD live viewing, but the current public website exposes only app-store launch paths; no stable public non-DRM manifest suitable for IPTVX was available in this audit.",
