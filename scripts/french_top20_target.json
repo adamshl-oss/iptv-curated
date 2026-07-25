@@ -13,9 +13,11 @@
       "name": "TF1",
       "tvg_id": "TF1.fr",
       "official_url": "https://www.tf1.fr/tf1/direct",
-      "status": "unavailable_in_cloud_m3u",
-      "reason": "Official TF1 delivery API returns 403 from the US; public candidates found were unauthorized restreams.",
-      "publish": false
+      "status": "verified_cloud_resolver",
+      "reason": "The always-on cloud endpoint resolves the current ParaTV-maintained master for TF1's unmodified official non-DRM CDN feed; exact branding/programme identity and three consecutive 720p audio/video decodes passed.",
+      "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/tf1/tf1/live.m3u8",
+      "min_height": 720,
+      "publish": true
     },
     {
       "rank": 2,
@@ -83,9 +85,11 @@
       "name": "TMC",
       "tvg_id": "TMC.fr",
       "official_url": "https://www.tf1.fr/tmc/direct",
-      "status": "unavailable_in_cloud_m3u",
-      "reason": "Official TF1 delivery API returns 403 from the US; public candidates found were unauthorized restreams.",
-      "publish": false
+      "status": "verified_cloud_resolver",
+      "reason": "The always-on cloud endpoint resolves the current ParaTV-maintained master for TMC's unmodified official non-DRM CDN feed; exact on-screen branding and three consecutive 720p audio/video decodes passed.",
+      "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/tf1/tmc/live.m3u8",
+      "min_height": 720,
+      "publish": true
     },
     {
       "rank": 9,
@@ -124,9 +128,11 @@
       "name": "TFX",
       "tvg_id": "TFX.fr",
       "official_url": "https://www.tf1.fr/tfx/direct",
-      "status": "unavailable_in_cloud_m3u",
-      "reason": "Official TF1 delivery API returns 403 from the US; public candidates found were unauthorized restreams.",
-      "publish": false
+      "status": "verified_cloud_resolver",
+      "reason": "The always-on cloud endpoint resolves the current ParaTV-maintained master for TFX's unmodified official non-DRM CDN feed; exact channel identity and three consecutive 720p audio/video decodes passed.",
+      "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/tf1/tfx/live.m3u8",
+      "min_height": 720,
+      "publish": true
     },
     {
       "rank": 13,
@@ -166,9 +172,11 @@
       "name": "TF1 Séries Films",
       "tvg_id": "TF1SeriesFilms.fr",
       "official_url": "https://www.tf1.fr/tf1-series-films/direct",
-      "status": "unavailable_in_cloud_m3u",
-      "reason": "Official TF1 delivery API returns 403 from the US; public candidates found were unauthorized restreams.",
-      "publish": false
+      "status": "verified_cloud_resolver",
+      "reason": "The always-on cloud endpoint resolves the current ParaTV-maintained master for TF1 Séries Films' unmodified official non-DRM CDN feed; exact on-screen branding and three consecutive 720p audio/video decodes passed.",
+      "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/tf1/tf1-series-films/live.m3u8",
+      "min_height": 720,
+      "publish": true
     },
     {
       "rank": 17,
