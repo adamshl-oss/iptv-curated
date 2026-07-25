@@ -69,13 +69,19 @@ def resolve(channel: dict[str, object]) -> str:
 def playback_test(name: str, url: str, min_height: int) -> str:
     last_reason = "unknown failure"
     for attempt in range(1, 4):
-        completed = subprocess.run(
-            [str(TEST), url],
-            capture_output=True,
-            text=True,
-            timeout=TEST_TIMEOUT_SECONDS,
-            check=False,
-        )
+        try:
+            completed = subprocess.run(
+                [str(TEST), url],
+                capture_output=True,
+                text=True,
+                timeout=TEST_TIMEOUT_SECONDS,
+                check=False,
+            )
+        except subprocess.TimeoutExpired:
+            last_reason = f"attempt {attempt} timed out"
+            if attempt < 3:
+                time.sleep(attempt * 2)
+            continue
         output = (completed.stdout or completed.stderr).strip()
         fields = output.split("|")
         if completed.returncode == 0 and fields and fields[0] == "PASS":
