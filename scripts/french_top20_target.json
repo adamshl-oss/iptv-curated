@@ -119,9 +119,9 @@
       "name": "LCI",
       "tvg_id": "LCI.fr",
       "official_url": "https://www.tf1.fr/lci/direct",
-      "status": "verified_cloud_resolver",
-      "reason": "ParaTV's maintained resolver publishes the unmodified official TF1 CDN master and refreshes its signed token before expiry; the direct master passed three consecutive 720p audio/video decodes after the segment relay became intermittent.",
-      "stream_url": "https://raw.githubusercontent.com/Paradise-91/ParaTV/main/streams/J7iXWrazYBAO/hyOcHzpGBLDmZlNk.m3u8",
+      "status": "verified_cloud_relay",
+      "reason": "The hardened always-on cloud relay obtains a fresh signed official TF1 CDN master, retries transient upstream failures, and buffers each complete segment; it passed three consecutive public 720p H.264/AAC decodes without depending on this Mac.",
+      "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/lci/live.m3u8",
       "min_height": 540,
       "publish": true
     },
