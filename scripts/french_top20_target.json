@@ -63,8 +63,10 @@
       "reason": "Official CNEWS Dailymotion live; signed HLS is regenerated in GitHub Actions and decode-tested before publication.",
       "resolver": {
         "type": "yt_dlp",
-        "url": "https://www.dailymotion.com/video/x3b68jn"
+        "url": "https://www.dailymotion.com/video/x3b68jn",
+        "format": "hls-4"
       },
+      "min_height": 720,
       "publish": true
     },
     {
@@ -94,6 +96,7 @@
       "status": "verified_static",
       "reason": "Broadcaster CDN HLS passed repeated ffprobe and ffmpeg decode tests.",
       "stream_url": "https://live-cdn-stream-euw1.bfmtv.bct.nextradiotv.com/master.m3u8",
+      "min_height": 540,
       "publish": true
     },
     {
@@ -141,6 +144,7 @@
       "status": "verified_static",
       "reason": "Public distribution HLS passed 1080p decode; on-screen branding and current programme matched RMC's official live schedule.",
       "stream_url": "https://d16zzycxcd0m0r.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-hixvx5kymecr9/RMC_Decouverte_FR.m3u8",
+      "min_height": 720,
       "publish": true
     },
     {
@@ -152,6 +156,7 @@
       "status": "verified_static",
       "reason": "Public distribution HLS passed 1080p decode; on-screen branding and current programme matched RMC's official live schedule.",
       "stream_url": "https://d15aro46bnpfm8.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-fqkqiax1078up/RMC_Story_FR.m3u8",
+      "min_height": 720,
       "publish": true
     },
     {

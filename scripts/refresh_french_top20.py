@@ -25,12 +25,15 @@ def resolve(channel: dict[str, object]) -> str:
     if not isinstance(resolver, dict) or resolver.get("type") != "yt_dlp":
         raise RuntimeError(f"{channel['name']}: no supported stream resolver")
     page_url = str(resolver.get("url", ""))
+    requested_format = str(resolver.get("format", "best"))
     completed = subprocess.run(
         [
             "yt-dlp",
             "--no-warnings",
             "--skip-download",
             "--get-url",
+            "--format",
+            requested_format,
             "--socket-timeout",
             "20",
             page_url,
@@ -51,7 +54,7 @@ def resolve(channel: dict[str, object]) -> str:
     return urls[0]
 
 
-def playback_test(name: str, url: str) -> str:
+def playback_test(name: str, url: str, min_height: int) -> str:
     completed = subprocess.run(
         [str(TEST), url],
         capture_output=True,
@@ -66,6 +69,14 @@ def playback_test(name: str, url: str) -> str:
         raise RuntimeError(f"{name}: playback validation failed: {reason}")
     codec = fields[3] if len(fields) > 3 else "unknown"
     resolution = fields[4] if len(fields) > 4 else "unknown"
+    try:
+        height = int(resolution.rsplit("x", 1)[-1])
+    except (ValueError, IndexError):
+        raise RuntimeError(f"{name}: could not verify resolution: {resolution}")
+    if height < min_height:
+        raise RuntimeError(
+            f"{name}: decoded at {resolution}; minimum is {min_height}p"
+        )
     return f"{codec} {resolution}"
 
 
@@ -106,7 +117,7 @@ def main() -> None:
     for channel in published:
         name = str(channel["name"])
         url = resolve(channel)
-        detail = playback_test(name, url)
+        detail = playback_test(name, url, int(channel.get("min_height", 540)))
         urls[name] = url
         print(f"PASS\t#{channel['rank']}\t{name}\t{detail}")
 
