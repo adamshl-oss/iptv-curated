@@ -19,8 +19,11 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parent.parent
-PLAYLIST = ROOT / "french-tv-july-2026-v3.m3u"
-PLAYLIST_ALIASES = [ROOT / "french-tv-july-2026-v2.m3u"]
+PLAYLIST = ROOT / "french-tv-july-2026-v4.m3u"
+PLAYLIST_ALIASES = [
+    ROOT / "french-tv-july-2026-v2.m3u",
+    ROOT / "french-tv-july-2026-v3.m3u",
+]
 SOURCES = ROOT / "scripts" / "french_sources.json"
 POOL = ROOT / "candidates_pool.jsonl"
 TEST = ROOT / "scripts" / "test_stream.sh"
