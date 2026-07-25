@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 5-gate stream tester. Prints single-line result: PASS|FAIL|<url>|<reason>|<codec>|<res>|<bitrate>
+# 6-gate stream tester. Prints single-line result: PASS|FAIL|<url>|<reason>|<codec>|<res>|<bitrate>
 # Usage: test_stream.sh <hls_url> [user_agent]
 # Exit 0 = PASS, non-zero = FAIL.
 
@@ -82,6 +82,8 @@ BITRATE=$(echo "$PROBE" | jq -r '.format.bit_rate // empty' 2>/dev/null)
 
 [ -z "$VCODEC" ] && fail "no_video_codec"
 [ -z "$ACODEC" ] && fail "no_audio_codec"
+[ -z "$WIDTH" ] || [ -z "$HEIGHT" ] && fail "no_video_dimensions"
+[ "$WIDTH" -le 0 ] || [ "$HEIGHT" -le 0 ] && fail "invalid_video_dimensions_${WIDTH}x${HEIGHT}"
 
 # Gate 4: Download actual playable data (≥3s equiv). Use ffmpeg to read 3s real playback.
 ffmpeg -hide_banner -loglevel error -user_agent "$UA" \
@@ -99,6 +101,28 @@ PROBE2=$(ffprobe -v quiet -print_format json -show_streams \
   -timeout 8000000 "$PLAY_URL" 2>/dev/null)
 V2=$(echo "$PROBE2" | jq -r '[.streams[]|select(.codec_type=="video")] | max_by(.height // 0) | .codec_name // empty' 2>/dev/null)
 [ -z "$V2" ] && fail "reprobe_failed"
+
+# Gate 6: Sample separated frames. A manifest, audio bed, or one frozen frame
+# must not qualify as a healthy linear channel.
+ffmpeg -hide_banner -loglevel error -user_agent "$UA" \
+  "${HLS_ARGS[@]}" -rw_timeout 8000000 \
+  -t 8 -i "$PLAY_URL" -an -vf "fps=1,scale=160:-2" \
+  -f framemd5 "$TMPD/motion.md5" >"$TMPD/motion.err" 2>&1
+MOTION_RC=$?
+if [ "$MOTION_RC" -ne 0 ]; then
+  REASON=$(head -1 "$TMPD/motion.err" | tr -d '\n' | tr '|' ':' | cut -c1-80)
+  fail "motion_rc${MOTION_RC}:${REASON}"
+fi
+FRAMES=$(awk -F, '!/^#/ { count += 1 } END { print count + 0 }' "$TMPD/motion.md5")
+UNIQUE_FRAMES=$(
+  awk -F, '!/^#/ { gsub(/[[:space:]]/, "", $6); if ($6 != "") print $6 }' \
+    "$TMPD/motion.md5" |
+    sort -u |
+    wc -l |
+    tr -d ' '
+)
+[ "$FRAMES" -lt 3 ] && fail "insufficient_frames_${FRAMES}"
+[ "$UNIQUE_FRAMES" -lt 2 ] && fail "frozen_video_${UNIQUE_FRAMES}_unique"
 
 RES="${WIDTH}x${HEIGHT}"
 [ -z "$BITRATE" ] && BITRATE="?"

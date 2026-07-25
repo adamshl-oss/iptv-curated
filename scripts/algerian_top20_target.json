@@ -1,0 +1,266 @@
+{
+  "name": "Algerian TV — Major Top 20 — July 2026",
+  "methodology": {
+    "ranking": "Major Algerian national and private channels, ordered first by Kantar Africascope 2025 viewing evidence and then by current national carriage and public-service prominence",
+    "audience_source": "https://www.kantar.com/fr/Inspirations/Publicite-Medias-et-RP/2026-Africascope-Maghreb-2025",
+    "carriage_source": "https://www.tda.dz/diffusionSatelitaire",
+    "publication_rule": "Exact live linear channel, three real audio/video decode passes, moving current programming, and cloud-hosted Apple-compatible delivery that does not depend on this Mac",
+    "last_manual_audit": "2026-07-25"
+  },
+  "latest_audit": {
+    "checked_at": "2026-07-25T18:38:37Z",
+    "source_rotation": "Official EPTV, Echorouk, Ennahar, Samira+, TDA satellite roster, broadcaster apps and sites, official YouTube/Dailymotion lives, maintained public resolvers, and licensed FAST/OTT catalogs",
+    "published_regression": "Eleven retained channels passed 3/3 audio/video, quality, and moving-frame gates. Almagharibia passed 2/3 after one transient 502, then passed a fresh 3/3 confirmation. TV6 failed two complete three-attempt gates and was quarantined, leaving 12 healthy published channels.",
+    "unpublished_exact_channels": [
+      "Samira TV",
+      "Echorouk TV",
+      "El Hayat TV",
+      "El Watania TV",
+      "Echorouk News",
+      "TV6 Algérie",
+      "TV8 Adhakira",
+      "TV9 El Barlamaniya"
+    ],
+    "evidence": [
+      "Kantar Africascope 2025 ranks Samira TV and Echorouk TV first and second among channels watched in Algeria; El Heddaf TV, Ennahar TV, and ENTV Programme National also appear in its current top ten.",
+      "Télédiffusion d’Algérie's current official satellite roster confirms Samira TV, Echorouk TV, Echorouk News, El Hayat TV, and El Watania TV as carried Algerian services alongside the already-published private channels and the EPTV public bouquet.",
+      "Samira's official Samira+ app advertises international 24/7 HD live viewing, but the current public website exposes only app-store launch paths; no stable public non-DRM manifest suitable for IPTVX was available in this audit.",
+      "Echorouk's official live page generated a current signed Echorouk TV HLS URL, but three independent requests from the US terminated at the CDN without returning media. No geo-bypass was attempted and the channel remains unpublished.",
+      "Echorouk's separate official live-news page generated a fresh signed Echorouk News HLS URL, but three independent requests from the US likewise returned no media response. The only responsive alternative belonged to an unverified third-party distributor, so it was rejected despite returning HTTP 200.",
+      "TV6 failed two complete three-attempt public gates: timeout, TLS/no-response, malformed 0p video, and corrupt H.264/PPS evidence recurred. The former official HTA hostname also failed DNS resolution in seven parallel source probes, so TV6 was quarantined without deleting its target or source history.",
+      "No exact, current, publicly authorized non-DRM linear feed was found for El Hayat TV, El Watania TV, TV8 Adhakira, or TV9 El Barlamaniya. Their official identities and search history remain in this registry rather than being discarded."
+    ],
+    "result": "No newly viable exact channel qualified; TV6 was quarantined after repeat persistent failure, leaving 12 of the 20 durable targets published."
+  },
+  "channels": [
+    {
+      "rank": 1,
+      "name": "Samira TV",
+      "tvg_id": "SamiraTV.dz",
+      "official_url": "https://www.samiratv.tv/",
+      "status": "official_app_only",
+      "reason": "Kantar Africascope 2025 ranks Samira TV first in Algeria and the official Samira+ app advertises international 24/7 HD live viewing, but no stable public non-DRM HLS endpoint passed the publication gate.",
+      "publish": false
+    },
+    {
+      "rank": 2,
+      "name": "Echorouk TV",
+      "tvg_id": "EchoroukTV.dz",
+      "official_url": "https://www.echoroukonline.com/live",
+      "status": "official_cdn_unreachable",
+      "reason": "The official player produced a fresh signed HLS URL, but three US playback attempts reached the CDN and ended without an HTTP/media response. Unverified restreams were rejected.",
+      "publish": false
+    },
+    {
+      "rank": 3,
+      "name": "El Heddaf TV",
+      "playlist_order": 10,
+      "playlist_name": "El Heddaf TV (Cloud Live)",
+      "tvg_id": "ElHeddafTV.dz",
+      "official_url": "https://www.elheddaf.com/",
+      "status": "verified_cloud",
+      "reason": "Exact live channel retained from the verified lineup behind an always-on public endpoint.",
+      "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/elheddaf",
+      "min_height": 540,
+      "publish": true
+    },
+    {
+      "rank": 4,
+      "name": "Ennahar TV",
+      "playlist_order": 9,
+      "playlist_name": "Ennahar TV (Cloud Live)",
+      "tvg_id": "EnnaharTV.dz",
+      "official_url": "https://www.ennaharonline.com/live/",
+      "status": "verified_cloud",
+      "reason": "Exact live channel retained from the verified lineup behind an always-on public endpoint.",
+      "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/ennahar",
+      "min_height": 540,
+      "publish": true
+    },
+    {
+      "rank": 5,
+      "name": "TV1 / Programme National",
+      "playlist_order": 2,
+      "playlist_name": "TV1 / Programme National (Cloud Live)",
+      "tvg_id": "TV1.dz",
+      "official_url": "https://entv.dz/",
+      "status": "verified_cloud",
+      "reason": "Exact EPTV flagship service retained from the verified lineup behind an always-on public endpoint.",
+      "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv1",
+      "min_height": 540,
+      "publish": true
+    },
+    {
+      "rank": 6,
+      "name": "TV3 / A3",
+      "playlist_order": 4,
+      "playlist_name": "TV3 / A3 (Cloud Live)",
+      "tvg_id": "TV3.dz",
+      "official_url": "https://entv.dz/",
+      "status": "verified_cloud",
+      "reason": "Exact EPTV service retained from the verified lineup behind an always-on public endpoint.",
+      "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv3",
+      "min_height": 540,
+      "publish": true
+    },
+    {
+      "rank": 7,
+      "name": "TV2 / Canal Algérie",
+      "playlist_order": 3,
+      "playlist_name": "TV2 / Canal Algérie (1080p)",
+      "tvg_id": "TV2.dz",
+      "official_url": "https://entv.dz/",
+      "status": "verified_direct",
+      "reason": "Exact EPTV international service retained from the verified lineup; source provenance remains under review and it is subject to the same recurring three-pass quarantine gate.",
+      "stream_url": "http://185.9.2.18/chid_347/index.m3u8",
+      "min_height": 720,
+      "publish": true
+    },
+    {
+      "rank": 8,
+      "name": "AL24 News",
+      "playlist_order": 1,
+      "playlist_name": "AL24 News (Cloud HD)",
+      "tvg_id": "AL24News.dz",
+      "official_url": "https://al24news.dz/",
+      "status": "verified_cloud",
+      "reason": "Exact Algerian international news channel retained from the verified lineup behind an always-on public endpoint.",
+      "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/al24",
+      "min_height": 540,
+      "publish": true
+    },
+    {
+      "rank": 9,
+      "name": "El Bilad TV",
+      "playlist_order": 11,
+      "playlist_name": "El Bilad TV (Cloud Live)",
+      "tvg_id": "ElBilad.dz",
+      "official_url": "https://www.elbilad.net/",
+      "status": "verified_cloud",
+      "reason": "Exact live channel retained from the verified lineup behind an always-on public endpoint.",
+      "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/elbilad",
+      "min_height": 540,
+      "publish": true
+    },
+    {
+      "rank": 10,
+      "name": "El Hayat TV",
+      "tvg_id": "ElHayatTV.dz",
+      "status": "no_authorized_public_feed",
+      "reason": "Current official TDA carriage confirms the exact channel, but no public authorized non-DRM linear manifest passed the publication gate.",
+      "publish": false
+    },
+    {
+      "rank": 11,
+      "name": "El Watania TV",
+      "tvg_id": "ElWataniaTV.dz",
+      "status": "no_authorized_public_feed",
+      "reason": "Current official TDA carriage and the Algerian Ministry media directory confirm the exact channel, but no public authorized non-DRM linear manifest passed the publication gate.",
+      "publish": false
+    },
+    {
+      "rank": 12,
+      "name": "Echorouk News",
+      "tvg_id": "EchoroukNews.dz",
+      "official_url": "https://www.echoroukonline.com/live",
+      "status": "official_cdn_unreachable",
+      "reason": "The official live-news player produced a fresh signed HLS URL, but three US playback attempts reached the CDN and ended without an HTTP/media response. A responsive third-party manifest was rejected because its distribution rights could not be established.",
+      "publish": false
+    },
+    {
+      "rank": 13,
+      "name": "TV4 Tamazight",
+      "playlist_order": 5,
+      "playlist_name": "TV4 Tamazight (Cloud Live)",
+      "tvg_id": "TV4.dz",
+      "official_url": "https://entv.dz/",
+      "status": "verified_cloud",
+      "reason": "Exact EPTV Tamazight service retained from the verified lineup behind an always-on public endpoint.",
+      "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv4",
+      "min_height": 540,
+      "publish": true
+    },
+    {
+      "rank": 14,
+      "name": "TV5 Coran",
+      "playlist_order": 6,
+      "playlist_name": "TV5 Coran (Cloud Live)",
+      "tvg_id": "TV5.dz",
+      "official_url": "https://entv.dz/",
+      "status": "verified_cloud",
+      "reason": "Exact EPTV Quran service retained from the verified lineup behind an always-on public endpoint.",
+      "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv5",
+      "min_height": 540,
+      "publish": true
+    },
+    {
+      "rank": 15,
+      "name": "TV6 Algérie",
+      "playlist_order": 7,
+      "playlist_name": "TV6 Algérie (Cloud Live)",
+      "tvg_id": "TV6.dz",
+      "official_url": "https://entv.dz/",
+      "status": "quarantined_persistent_failure",
+      "reason": "Two complete three-attempt gates reproduced timeout, TLS/no-response, malformed 0p video, and corrupt H.264/PPS failures at the public relay. The former official HTA endpoint no longer resolves. Keep searching official EPTV/HTA, satellite metadata, and authorized OTT sources.",
+      "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv6",
+      "min_height": 540,
+      "publish": false
+    },
+    {
+      "rank": 16,
+      "name": "TV7 El Maarifa",
+      "playlist_order": 8,
+      "playlist_name": "TV7 El Maarifa (Cloud Live)",
+      "tvg_id": "TV7.dz",
+      "official_url": "https://entv.dz/",
+      "status": "verified_cloud",
+      "reason": "Exact EPTV education service retained from the verified lineup behind an always-on public endpoint.",
+      "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv7",
+      "min_height": 540,
+      "publish": true
+    },
+    {
+      "rank": 17,
+      "name": "TV8 Adhakira",
+      "tvg_id": "TV8.dz",
+      "official_url": "https://entv.dz/",
+      "status": "no_authorized_public_feed",
+      "reason": "The exact EPTV channel is a durable target, but no current public authorized non-DRM linear manifest passed the publication gate.",
+      "publish": false
+    },
+    {
+      "rank": 18,
+      "name": "TV9 El Barlamaniya",
+      "tvg_id": "TV9.dz",
+      "official_url": "https://www.entv.dz/ar/tv9",
+      "status": "no_authorized_public_feed",
+      "reason": "EPTV's official channel page confirms the exact parliamentary service, but no current public authorized non-DRM linear manifest passed the publication gate.",
+      "publish": false
+    },
+    {
+      "rank": 19,
+      "name": "Amou Yazid TV",
+      "playlist_order": 12,
+      "playlist_name": "Amou Yazid TV (Cloud 1080p)",
+      "tvg_id": "AmouYazidTV.dz",
+      "status": "verified_cloud",
+      "reason": "Exact live channel retained from the verified lineup behind an always-on public endpoint.",
+      "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/amouyazid",
+      "min_height": 720,
+      "publish": true
+    },
+    {
+      "rank": 20,
+      "name": "Almagharibia TV",
+      "playlist_order": 13,
+      "playlist_name": "Almagharibia TV (Official Cloud Live)",
+      "tvg_id": "AlmagharibiaTV.uk",
+      "official_url": "https://almagharibia.tv/",
+      "status": "verified_official_dynamic",
+      "reason": "The broadcaster's official app exposes its current official YouTube live identity; the cloud endpoint resolves the live feed without relying on this Mac.",
+      "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/youtube/almagharibia",
+      "min_height": 540,
+      "publish": true
+    }
+  ]
+}

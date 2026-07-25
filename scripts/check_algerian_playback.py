@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate target identity, public count, and real playback for French top 20."""
+"""Validate Algerian target identity, alias parity, and real playback."""
 
 from __future__ import annotations
 
@@ -13,23 +13,18 @@ from urllib.request import Request, urlopen
 
 
 ROOT = Path(__file__).resolve().parent.parent
-REGISTRY = ROOT / "scripts" / "french_top20_target.json"
+REGISTRY = ROOT / "scripts" / "algerian_top20_target.json"
 TEST = ROOT / "scripts" / "test_stream.sh"
-DEFAULT_PLAYLIST = (
-    "https://adamshl-oss.github.io/iptv-curated/"
-    "french-tv-top20-july-2026.m3u"
-)
-DEFAULT_ALIAS = (
-    "https://adamshl-oss.github.io/iptv-curated/"
-    "french-tv-july-2026-v5.m3u"
-)
+PAGES_ROOT = "https://adamshl-oss.github.io/iptv-curated"
+DEFAULT_PLAYLIST = f"{PAGES_ROOT}/algerian-tv-july-2026.m3u"
+DEFAULT_ALIAS = f"{PAGES_ROOT}/algerian-tv-july-2026-v2.m3u"
 
 
 def read(source: str) -> str:
     if source.startswith(("http://", "https://")):
         separator = "&" if "?" in source else "?"
         request = Request(
-            f"{source}{separator}health={int(time.time())}",
+            f"{source}{separator}health={time.time_ns()}",
             headers={"Cache-Control": "no-cache", "User-Agent": "Mozilla/5.0"},
         )
         with urlopen(request, timeout=25) as response:
@@ -95,7 +90,14 @@ def check(entry: tuple[str, str, int]) -> tuple[str, bool, str]:
 
 def main() -> int:
     target = json.loads(REGISTRY.read_text())["channels"]
-    expected = [str(channel["name"]) for channel in target if channel.get("publish") is True]
+    published = sorted(
+        (channel for channel in target if channel.get("publish") is True),
+        key=lambda channel: channel["playlist_order"],
+    )
+    expected = [
+        str(channel.get("playlist_name", channel["name"]))
+        for channel in published
+    ]
     if len(target) != 20 or [channel["rank"] for channel in target] != list(range(1, 21)):
         print("FAIL\ttarget registry is not exactly ranks 1-20")
         return 1
@@ -119,9 +121,10 @@ def main() -> int:
             print(f"PASS\talias parity\t{len(actual)} identical entries")
 
     minimums = {
-        str(channel["name"]): int(channel.get("min_height", 540))
-        for channel in target
-        if channel.get("publish") is True
+        str(channel.get("playlist_name", channel["name"])): int(
+            channel.get("min_height", 540)
+        )
+        for channel in published
     }
     checks = [(name, url, minimums[name]) for name, url in actual if name in minimums]
     with futures.ThreadPoolExecutor(max_workers=4) as executor:

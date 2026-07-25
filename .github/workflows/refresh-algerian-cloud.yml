@@ -21,7 +21,7 @@ concurrency:
 jobs:
   refresh-algerian-cloud:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 20
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -54,10 +54,12 @@ jobs:
           FORCE_REFRESH: ${{ inputs.force_refresh || 'false' }}
           BGUTIL_SERVER_HOME: ${{ runner.temp }}/bgutil-ytdlp-pot-provider/server
 
-      - name: Verify real playback for every published channel
+      - name: Verify target identity, alias parity, and local playback
+        id: local_check
+        continue-on-error: true
         run: |
           chmod +x scripts/test_stream.sh scripts/check_algerian_playback.sh
-          scripts/check_algerian_playback.sh
+          python3 scripts/check_algerian_playback.py algerian-tv-july-2026.m3u algerian-tv-july-2026-v2.m3u
 
       - name: Commit and push if changed
         run: |
@@ -70,4 +72,48 @@ jobs:
             git push
           else
             echo "Dynamic Algerian cloud URLs are still fresh."
+          fi
+
+      - name: Wait for both public cloud copies
+        run: |
+          for playlist in \
+            algerian-tv-july-2026.m3u \
+            algerian-tv-july-2026-v2.m3u; do
+            local_hash="$(sha256sum "$playlist" | cut -d' ' -f1)"
+            public_url="https://adamshl-oss.github.io/iptv-curated/$playlist"
+            matched=false
+            for attempt in $(seq 1 24); do
+              remote_hash="$(
+                curl -fsSL "${public_url}?sync=$(date -u +%s%N)" |
+                  sha256sum |
+                  cut -d' ' -f1
+              )"
+              if [ "$remote_hash" = "$local_hash" ]; then
+                echo "Public $playlist is current."
+                matched=true
+                break
+              fi
+              sleep 10
+            done
+            if [ "$matched" != true ]; then
+              echo "Public $playlist did not update within four minutes."
+              exit 1
+            fi
+          done
+
+      - name: Verify the public Apple TV playlist and alias
+        id: public_check
+        continue-on-error: true
+        run: python3 scripts/check_algerian_playback.py
+
+      - name: Enforce complete published-playlist health
+        if: always()
+        env:
+          LOCAL_OUTCOME: ${{ steps.local_check.outcome }}
+          PUBLIC_OUTCOME: ${{ steps.public_check.outcome }}
+        run: |
+          if [ "$LOCAL_OUTCOME" != "success" ] ||
+             [ "$PUBLIC_OUTCOME" != "success" ]; then
+            echo "At least one Algerian channel failed the complete playback gate."
+            exit 1
           fi

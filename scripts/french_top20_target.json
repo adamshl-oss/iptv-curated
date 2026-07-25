@@ -8,8 +8,9 @@
     "last_manual_audit": "2026-07-25"
   },
   "latest_audit": {
-    "checked_at": "2026-07-25T18:08:37Z",
-    "source_rotation": "France Télévisions/M6/CANAL+ HbbTV and DVB-I discovery, FRANSAT/TNTSAT, Free TV/OQEE, Orange TV, SFR TV, Bouygues B.tv, CANAL+ TV+, and ParaTV",
+    "checked_at": "2026-07-25T18:38:37Z",
+    "source_rotation": "Fresh ParaTV/France Télévisions SSAI and simulcast outputs, current M6+ account/Apple TV terms, CANAL+ live distribution, netplus Switzerland, official broadcaster pages, and maintained public resolvers",
+    "published_regression": "All 12 published channels passed all 36 independent audio/video decode attempts at or above their quality floors; every attempt also produced multiple distinct separated frame hashes.",
     "unpublished_exact_channels": [
       "France 2",
       "France 3",
@@ -21,13 +22,11 @@
       "CStar"
     ],
     "evidence": [
-      "The current Free TV web application exposes exact HLS masters for France 2, France 3, France 5, M6, W9, 6ter, and CStar, but three live renditions from every master declare SAMPLE-AES with com.apple.streamingkeydelivery. The same current application bundle routes playback through Free's FairPlay license endpoint and subscription-rights checks, so IPTVX cannot decode them.",
-      "Free's current Canal+ service is only an entitlement fallback, not an open full linear feed; its tested HLS renditions are also SAMPLE-AES/FairPlay. Free's own support requires CANAL+ account activation and states that CANAL+ La Chaîne cannot be used with its Apple TV 4K box.",
-      "CANAL+ TV+ currently offers all TNT channels for 2 EUR/month on Apple TV and other supported devices, but lists only CANAL+ en clair rather than the exact full Canal+ channel and keeps viewing inside the authenticated CANAL+ application.",
-      "FRANSAT supplies the exact free TNT services by encrypted satellite and its 2026 security update requires compatible card/module hardware. FRANSAT Connect provides guide, receiver control, replay, and VOD; it does not expose the live satellite signal as a public IPTV stream.",
-      "Current Orange TV, SFR TV, and Bouygues B.tv catalogs carry the exact free-TNT targets but bind live playback to eligible subscriber accounts and their official apps or receivers; no public non-DRM manifest was exposed.",
-      "No French broadcaster or regulator production DVB-I service list exposing the missing exact channels as public broadband streams was found; current HbbTV material describes receiver-bound interactive services rather than portable IPTV feeds.",
-      "ParaTV remains at commit dbb54b13: France 2, France 3, France 5, M6, and W9 yield no decodable media, full Canal+ is an unavailable placeholder, and no 6ter resolver exists. CStar still decodes only through a signed token that would bypass the owner's US territory restriction, so it remains intentionally unpublished."
+      "ParaTV changed to commit 9563460c at 18:26 UTC during this run. Its newly signed France 2, France 3, and France 5 simulcast renditions still return HTTP 403 at the media-manifest boundary from the US; the alternate SSAI media playlists return 200 but every tested current segment returns 403. This is fresh evidence, not a stale failure.",
+      "ParaTV's refreshed CStar wrapper contains a current signed Dailymotion rendition, but Dailymotion's owner-controlled endpoint independently states that x5gv5v0 is unavailable in the United States. Publishing the resolver token would bypass that explicit territory decision, so it remains rejected.",
+      "M6+'s July 2026 terms confirm that live M6, W9, and 6ter are free within M6+ but require an M6+ account and supported application, including the Apple TV app. The refreshed resolver set still exposes no portable authorized non-DRM manifest for IPTVX, while the exact M6/W9/6ter netplus feeds remain marked and enforced as Switzerland-only.",
+      "CANAL+'s current Apple TV and channel pages continue to place the exact full Canal+ service inside the authenticated paid CANAL+ application. The only open resolver is Canal+ en clair, which is not the exact full linear target.",
+      "The refreshed resolver exposes no new exact M6 or W9 source outside licensed account-bound services and still has no 6ter resolver. France 2, France 3, France 5, M6, W9, 6ter, full Canal+, and CStar therefore remain unpublished rather than being replaced by inexact, DRM, or geo-bypassed variants."
     ],
     "result": "No newly viable legal exact non-DRM feed was found; the published playlist remains 12 of 20."
   },

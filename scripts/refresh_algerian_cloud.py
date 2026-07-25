@@ -259,13 +259,6 @@ def render_playlist_block() -> str:
             'group-title="Algeria — Cloud Live",'
             "TV5 Coran (Cloud Live)",
             f"{RELAY_ROOT}/api/free/tv5",
-            '#EXTINF:-1 tvg-id="TV6.dz" '
-            'tvg-logo="https://upload.wikimedia.org/wikipedia/commons/'
-            'thumb/7/72/Logo_de_TV6_Alg%C3%A9rie_%282020%29.svg/'
-            '512px-Logo_de_TV6_Alg%C3%A9rie_%282020%29.svg.png" '
-            'group-title="Algeria — Cloud Live",'
-            "TV6 Algérie (Cloud Live)",
-            f"{RELAY_ROOT}/api/free/tv6",
             '#EXTINF:-1 tvg-id="TV7.dz" '
             'group-title="Algeria — Cloud Live",'
             "TV7 El Maarifa (Cloud Live)",
@@ -341,7 +334,7 @@ def main() -> None:
     updated = pattern.sub(block, text)
     PLAYLIST.write_text(updated)
     PLAYLIST_ALIAS.write_text(updated)
-    print("Updated 13-channel Algerian cloud playlist")
+    print("Updated 12-channel Algerian cloud playlist")
 
 
 if __name__ == "__main__":
