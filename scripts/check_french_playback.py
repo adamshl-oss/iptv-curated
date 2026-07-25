@@ -14,7 +14,7 @@ from urllib.request import Request, urlopen
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_PLAYLIST = (
     "https://adamshl-oss.github.io/iptv-curated/"
-    "french-tv-july-2026-v2.m3u"
+    "french-tv-july-2026-v3.m3u"
 )
 TEST = ROOT / "scripts" / "test_stream.sh"
 EXPECTED_CHANNELS = 32

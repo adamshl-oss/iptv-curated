@@ -37,14 +37,14 @@ jobs:
       - name: Verify every candidate entry with real playback
         id: local_check
         continue-on-error: true
-        run: python3 scripts/check_french_playback.py french-tv-july-2026-v2.m3u
+        run: python3 scripts/check_french_playback.py french-tv-july-2026-v3.m3u
 
       - name: Commit and push verified failovers
         run: |
-          if ! git diff --quiet -- french-tv-july-2026-v2.m3u; then
+          if ! git diff --quiet -- french-tv-july-2026-v2.m3u french-tv-july-2026-v3.m3u; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add french-tv-july-2026-v2.m3u
+            git add french-tv-july-2026-v2.m3u french-tv-july-2026-v3.m3u
             git commit -m "Refresh French cloud feeds ($(date -u +%FT%TZ))"
             git pull --rebase
             git push
@@ -54,8 +54,8 @@ jobs:
 
       - name: Wait for the public cloud copy
         run: |
-          local_hash="$(sha256sum french-tv-july-2026-v2.m3u | cut -d' ' -f1)"
-          public_url="https://adamshl-oss.github.io/iptv-curated/french-tv-july-2026-v2.m3u"
+          local_hash="$(sha256sum french-tv-july-2026-v3.m3u | cut -d' ' -f1)"
+          public_url="https://adamshl-oss.github.io/iptv-curated/french-tv-july-2026-v3.m3u"
           for attempt in $(seq 1 24); do
             remote_hash="$(
               curl -fsSL "${public_url}?sync=$(date -u +%s)" |

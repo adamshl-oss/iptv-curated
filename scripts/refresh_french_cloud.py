@@ -19,7 +19,8 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parent.parent
-PLAYLIST = ROOT / "french-tv-july-2026-v2.m3u"
+PLAYLIST = ROOT / "french-tv-july-2026-v3.m3u"
+PLAYLIST_ALIASES = [ROOT / "french-tv-july-2026-v2.m3u"]
 SOURCES = ROOT / "scripts" / "french_sources.json"
 POOL = ROOT / "candidates_pool.jsonl"
 TEST = ROOT / "scripts" / "test_stream.sh"
@@ -153,7 +154,12 @@ def render(header: str, entries: list[tuple[str, str]]) -> str:
 
 
 def main() -> None:
-    header, entries = parse_playlist(PLAYLIST.read_text())
+    original = (
+        PLAYLIST.read_text()
+        if PLAYLIST.exists()
+        else PLAYLIST_ALIASES[0].read_text()
+    )
+    header, entries = parse_playlist(original)
     if len(entries) != EXPECTED_CHANNELS:
         raise RuntimeError(
             f"French playlist has {len(entries)} entries; "
@@ -205,8 +211,12 @@ def main() -> None:
             print(f"PASS\t{name}\t{detail}")
 
     updated = render(header, updated_entries)
-    if updated != PLAYLIST.read_text():
-        PLAYLIST.write_text(updated)
+    changed = False
+    for target in [PLAYLIST, *PLAYLIST_ALIASES]:
+        if not target.exists() or target.read_text() != updated:
+            target.write_text(updated)
+            changed = True
+    if changed:
         print(f"Updated French playlist with {swapped} verified failover(s)")
     else:
         print("French playlist sources are unchanged")
