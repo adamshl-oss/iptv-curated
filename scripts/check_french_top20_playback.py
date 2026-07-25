@@ -27,7 +27,7 @@ DEFAULT_ALIAS = (
 TF1_RELAY_PREFIX = (
     "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/"
 )
-TF1_RELAY_GATE = threading.Lock()
+TF1_RELAY_GATE = threading.Semaphore(2)
 
 
 def read(source: str) -> str:
@@ -66,8 +66,10 @@ def check(entry: tuple[str, str, int]) -> tuple[str, bool, str]:
         try:
             # A single playback test deliberately fetches the master several
             # times (curl, ffprobe, ffmpeg, re-probe, and motion decode).
-            # Serialise this shared resolver family so the health check itself
-            # cannot create a burst that upstream mistakes for abuse.
+            # Limit this shared resolver family to two concurrent channels so
+            # the health check itself cannot create an upstream abuse burst,
+            # while both local and public gates still finish inside the cloud
+            # runner's time budget.
             relay_gate = TF1_RELAY_GATE if url.startswith(TF1_RELAY_PREFIX) else None
             if relay_gate is None:
                 completed = subprocess.run(
