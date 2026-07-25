@@ -62,7 +62,9 @@ if [ "$IS_HLS" -eq 1 ] && echo "$BODY" | grep -q "#EXT-X-STREAM-INF"; then
 fi
 
 # Gate 3: ffprobe — verify it's a real video stream with codec info
-PROBE=$(ffprobe -v quiet -print_format json -show_streams -show_format -user_agent "$UA" -timeout 10000000 "$PLAY_URL" 2>/dev/null)
+PROBE=$(ffprobe -v quiet -print_format json -show_streams -show_format \
+  -user_agent "$UA" -allowed_extensions ALL -extension_picky 0 \
+  -timeout 10000000 "$PLAY_URL" 2>/dev/null)
 [ -z "$PROBE" ] && fail "ffprobe_empty"
 
 VCODEC=$(echo "$PROBE" | jq -r '[.streams[]|select(.codec_type=="video")][0].codec_name // empty' 2>/dev/null)
@@ -75,7 +77,9 @@ BITRATE=$(echo "$PROBE" | jq -r '.format.bit_rate // empty' 2>/dev/null)
 [ -z "$ACODEC" ] && fail "no_audio_codec"
 
 # Gate 4: Download actual playable data (≥3s equiv). Use ffmpeg to read 3s real playback.
-ffmpeg -hide_banner -loglevel error -user_agent "$UA" -rw_timeout 8000000 -t 3 -i "$PLAY_URL" -f null - >"$TMPD/ff.err" 2>&1
+ffmpeg -hide_banner -loglevel error -user_agent "$UA" \
+  -allowed_extensions ALL -extension_picky 0 -rw_timeout 8000000 \
+  -t 3 -i "$PLAY_URL" -f null - >"$TMPD/ff.err" 2>&1
 FFRC=$?
 if [ "$FFRC" -ne 0 ]; then
   REASON=$(head -1 "$TMPD/ff.err" | tr -d '\n' | tr '|' ':' | cut -c1-80)
@@ -83,7 +87,9 @@ if [ "$FFRC" -ne 0 ]; then
 fi
 
 # Gate 5: Re-probe (second look to catch intermittent/redirect-only streams)
-PROBE2=$(ffprobe -v quiet -print_format json -show_streams -user_agent "$UA" -timeout 8000000 "$PLAY_URL" 2>/dev/null)
+PROBE2=$(ffprobe -v quiet -print_format json -show_streams \
+  -user_agent "$UA" -allowed_extensions ALL -extension_picky 0 \
+  -timeout 8000000 "$PLAY_URL" 2>/dev/null)
 V2=$(echo "$PROBE2" | jq -r '[.streams[]|select(.codec_type=="video")][0].codec_name // empty' 2>/dev/null)
 [ -z "$V2" ] && fail "reprobe_failed"
 
