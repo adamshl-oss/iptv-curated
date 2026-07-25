@@ -70,6 +70,7 @@ fi
 
 # Gate 3: ffprobe — verify it's a real video stream with codec info
 PROBE=$(ffprobe -v quiet -print_format json -show_streams -show_format \
+  -probesize 5000000 -analyzeduration 5000000 -read_intervals "%+4" \
   -user_agent "$UA" "${HLS_ARGS[@]}" \
   -timeout 10000000 "$PLAY_URL" 2>/dev/null)
 [ -z "$PROBE" ] && fail "ffprobe_empty"
@@ -97,6 +98,7 @@ fi
 
 # Gate 5: Re-probe (second look to catch intermittent/redirect-only streams)
 PROBE2=$(ffprobe -v quiet -print_format json -show_streams \
+  -probesize 3000000 -analyzeduration 3000000 -read_intervals "%+3" \
   -user_agent "$UA" "${HLS_ARGS[@]}" \
   -timeout 8000000 "$PLAY_URL" 2>/dev/null)
 V2=$(echo "$PROBE2" | jq -r '[.streams[]|select(.codec_type=="video")] | max_by(.height // 0) | .codec_name // empty' 2>/dev/null)
