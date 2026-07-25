@@ -8,8 +8,8 @@
     "last_manual_audit": "2026-07-25"
   },
   "latest_audit": {
-    "checked_at": "2026-07-25T17:38:37Z",
-    "source_rotation": "Orange Caraïbe, CANAL+ Réunion, Vini/CANAL+ Polynesia, Zeop Réunion, Plex, Pluto TV, Rakuten TV, TCL Channel, iptv-org, and ParaTV",
+    "checked_at": "2026-07-25T18:08:37Z",
+    "source_rotation": "France Télévisions/M6/CANAL+ HbbTV and DVB-I discovery, FRANSAT/TNTSAT, Free TV/OQEE, Orange TV, SFR TV, Bouygues B.tv, CANAL+ TV+, and ParaTV",
     "unpublished_exact_channels": [
       "France 2",
       "France 3",
@@ -21,12 +21,13 @@
       "CStar"
     ],
     "evidence": [
-      "Orange Caraïbe's 2026-07-02 lineup carries exact France 2, France 3, France 5, M6, W9, 6ter, and CStar, but Orange states that its TV service requires an eligible territorial Livebox/Open Internet subscription and supplied decoder; CANAL+ is a separate paid package.",
-      "Vini/CANAL+ Polynesia carries France 2, France 3, France 5, M6, W9, 6ter, and the full CANAL+ service, but direct viewing is through an authenticated CANAL+ subscription and compatible app or decoder.",
-      "Zeop Réunion's current 2026 plan carries exact France 2, France 3, France 5, 6ter, and CStar inside its subscriber TV offer; M6 and W9 are explicitly J+1 delayed variants and therefore fail the exact-live-channel rule.",
-      "Fresh official FAST catalog searches for Plex, Pluto TV, Rakuten TV, and TCL Channel produced no exact target channel listing.",
-      "iptv-org's current exact target entries remain private-IP, UDP, untrusted restream, or dead official-CDN paths and were rejected.",
-      "ParaTV commit dbb54b13, generated 2026-07-25T17:26:32Z, still yields no decodable audio/video for France 2, France 3, France 5, M6, or W9; full Canal+ remains an unavailable placeholder and no 6ter resolver exists. Its CStar wrapper still decodes, but using its signed token would bypass the owner-declared US territory restriction, so CStar remains intentionally unpublished."
+      "The current Free TV web application exposes exact HLS masters for France 2, France 3, France 5, M6, W9, 6ter, and CStar, but three live renditions from every master declare SAMPLE-AES with com.apple.streamingkeydelivery. The same current application bundle routes playback through Free's FairPlay license endpoint and subscription-rights checks, so IPTVX cannot decode them.",
+      "Free's current Canal+ service is only an entitlement fallback, not an open full linear feed; its tested HLS renditions are also SAMPLE-AES/FairPlay. Free's own support requires CANAL+ account activation and states that CANAL+ La Chaîne cannot be used with its Apple TV 4K box.",
+      "CANAL+ TV+ currently offers all TNT channels for 2 EUR/month on Apple TV and other supported devices, but lists only CANAL+ en clair rather than the exact full Canal+ channel and keeps viewing inside the authenticated CANAL+ application.",
+      "FRANSAT supplies the exact free TNT services by encrypted satellite and its 2026 security update requires compatible card/module hardware. FRANSAT Connect provides guide, receiver control, replay, and VOD; it does not expose the live satellite signal as a public IPTV stream.",
+      "Current Orange TV, SFR TV, and Bouygues B.tv catalogs carry the exact free-TNT targets but bind live playback to eligible subscriber accounts and their official apps or receivers; no public non-DRM manifest was exposed.",
+      "No French broadcaster or regulator production DVB-I service list exposing the missing exact channels as public broadband streams was found; current HbbTV material describes receiver-bound interactive services rather than portable IPTV feeds.",
+      "ParaTV remains at commit dbb54b13: France 2, France 3, France 5, M6, and W9 yield no decodable media, full Canal+ is an unavailable placeholder, and no 6ter resolver exists. CStar still decodes only through a signed token that would bypass the owner's US territory restriction, so it remains intentionally unpublished."
     ],
     "result": "No newly viable legal exact non-DRM feed was found; the published playlist remains 12 of 20."
   },
