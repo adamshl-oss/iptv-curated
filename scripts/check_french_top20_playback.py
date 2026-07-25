@@ -7,6 +7,7 @@ import concurrent.futures as futures
 import json
 import subprocess
 import sys
+import threading
 import time
 from pathlib import Path
 from urllib.request import Request, urlopen
@@ -23,6 +24,10 @@ DEFAULT_ALIAS = (
     "https://adamshl-oss.github.io/iptv-curated/"
     "french-tv-july-2026-v5.m3u"
 )
+TF1_RELAY_PREFIX = (
+    "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/"
+)
+TF1_RELAY_GATE = threading.Lock()
 
 
 def read(source: str) -> str:
@@ -59,13 +64,28 @@ def check(entry: tuple[str, str, int]) -> tuple[str, bool, str]:
     passed = 0
     for attempt in range(1, 4):
         try:
-            completed = subprocess.run(
-                [str(TEST), url],
-                capture_output=True,
-                text=True,
-                timeout=70,
-                check=False,
-            )
+            # A single playback test deliberately fetches the master several
+            # times (curl, ffprobe, ffmpeg, re-probe, and motion decode).
+            # Serialise this shared resolver family so the health check itself
+            # cannot create a burst that upstream mistakes for abuse.
+            relay_gate = TF1_RELAY_GATE if url.startswith(TF1_RELAY_PREFIX) else None
+            if relay_gate is None:
+                completed = subprocess.run(
+                    [str(TEST), url],
+                    capture_output=True,
+                    text=True,
+                    timeout=70,
+                    check=False,
+                )
+            else:
+                with relay_gate:
+                    completed = subprocess.run(
+                        [str(TEST), url],
+                        capture_output=True,
+                        text=True,
+                        timeout=70,
+                        check=False,
+                    )
         except subprocess.TimeoutExpired:
             results.append(f"{attempt}:timeout")
         else:
