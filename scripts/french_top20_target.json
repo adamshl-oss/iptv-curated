@@ -119,10 +119,11 @@
       "name": "LCI",
       "tvg_id": "LCI.fr",
       "official_url": "https://www.tf1.fr/lci/direct",
-      "status": "quarantined_iptvx_stall",
-      "reason": "The official TF1 CDN relay passed repeated H.264/AAC decodes, including a 30-second public test, but IPTVX reproducibly rendered a current live frame and then turned black after 10–15 seconds across repeated force-reloaded app tests. It is quarantined until an Apple-player-compatible cloud delivery path is available.",
+      "status": "verified_cloud_apple_relay",
+      "reason": "The always-on relay converts TF1's current official non-DRM CDN delivery into short, stable Apple-player URLs. Three public 576p H.264/AAC decode gates, a continuous 45-second cloud decode, a current LCI-branded frame, and sustained changing video in both IPTVX preview and full-player modes passed without the former 10–15-second stall.",
+      "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/lci/live.m3u8",
       "min_height": 540,
-      "publish": false
+      "publish": true
     },
     {
       "rank": 12,
