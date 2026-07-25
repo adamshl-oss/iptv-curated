@@ -7,6 +7,29 @@
     "publication_rule": "Exact live linear channel, real decode, no loop, and playable from a cloud-hosted M3U without this Mac",
     "last_manual_audit": "2026-07-25"
   },
+  "latest_audit": {
+    "checked_at": "2026-07-25T17:38:37Z",
+    "source_rotation": "Orange Caraïbe, CANAL+ Réunion, Vini/CANAL+ Polynesia, Zeop Réunion, Plex, Pluto TV, Rakuten TV, TCL Channel, iptv-org, and ParaTV",
+    "unpublished_exact_channels": [
+      "France 2",
+      "France 3",
+      "M6",
+      "France 5",
+      "W9",
+      "6ter",
+      "Canal+",
+      "CStar"
+    ],
+    "evidence": [
+      "Orange Caraïbe's 2026-07-02 lineup carries exact France 2, France 3, France 5, M6, W9, 6ter, and CStar, but Orange states that its TV service requires an eligible territorial Livebox/Open Internet subscription and supplied decoder; CANAL+ is a separate paid package.",
+      "Vini/CANAL+ Polynesia carries France 2, France 3, France 5, M6, W9, 6ter, and the full CANAL+ service, but direct viewing is through an authenticated CANAL+ subscription and compatible app or decoder.",
+      "Zeop Réunion's current 2026 plan carries exact France 2, France 3, France 5, 6ter, and CStar inside its subscriber TV offer; M6 and W9 are explicitly J+1 delayed variants and therefore fail the exact-live-channel rule.",
+      "Fresh official FAST catalog searches for Plex, Pluto TV, Rakuten TV, and TCL Channel produced no exact target channel listing.",
+      "iptv-org's current exact target entries remain private-IP, UDP, untrusted restream, or dead official-CDN paths and were rejected.",
+      "ParaTV commit dbb54b13, generated 2026-07-25T17:26:32Z, still yields no decodable audio/video for France 2, France 3, France 5, M6, or W9; full Canal+ remains an unavailable placeholder and no 6ter resolver exists. Its CStar wrapper still decodes, but using its signed token would bypass the owner-declared US territory restriction, so CStar remains intentionally unpublished."
+    ],
+    "result": "No newly viable legal exact non-DRM feed was found; the published playlist remains 12 of 20."
+  },
   "channels": [
     {
       "rank": 1,
