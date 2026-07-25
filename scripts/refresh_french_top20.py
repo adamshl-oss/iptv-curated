@@ -6,6 +6,7 @@ from __future__ import annotations
 import json
 import re
 import subprocess
+import time
 from pathlib import Path
 
 
@@ -66,29 +67,37 @@ def resolve(channel: dict[str, object]) -> str:
 
 
 def playback_test(name: str, url: str, min_height: int) -> str:
-    completed = subprocess.run(
-        [str(TEST), url],
-        capture_output=True,
-        text=True,
-        timeout=TEST_TIMEOUT_SECONDS,
-        check=False,
-    )
-    output = (completed.stdout or completed.stderr).strip()
-    fields = output.split("|")
-    if completed.returncode != 0 or not fields or fields[0] != "PASS":
-        reason = fields[2] if len(fields) > 2 else output or "unknown failure"
-        raise RuntimeError(f"{name}: playback validation failed: {reason}")
-    codec = fields[3] if len(fields) > 3 else "unknown"
-    resolution = fields[4] if len(fields) > 4 else "unknown"
-    try:
-        height = int(resolution.rsplit("x", 1)[-1])
-    except (ValueError, IndexError):
-        raise RuntimeError(f"{name}: could not verify resolution: {resolution}")
-    if height < min_height:
-        raise RuntimeError(
-            f"{name}: decoded at {resolution}; minimum is {min_height}p"
+    last_reason = "unknown failure"
+    for attempt in range(1, 4):
+        completed = subprocess.run(
+            [str(TEST), url],
+            capture_output=True,
+            text=True,
+            timeout=TEST_TIMEOUT_SECONDS,
+            check=False,
         )
-    return f"{codec} {resolution}"
+        output = (completed.stdout or completed.stderr).strip()
+        fields = output.split("|")
+        if completed.returncode == 0 and fields and fields[0] == "PASS":
+            codec = fields[3] if len(fields) > 3 else "unknown"
+            resolution = fields[4] if len(fields) > 4 else "unknown"
+            try:
+                height = int(resolution.rsplit("x", 1)[-1])
+            except (ValueError, IndexError):
+                raise RuntimeError(
+                    f"{name}: could not verify resolution: {resolution}"
+                )
+            if height < min_height:
+                raise RuntimeError(
+                    f"{name}: decoded at {resolution}; minimum is {min_height}p"
+                )
+            return f"{codec} {resolution}"
+        last_reason = fields[2] if len(fields) > 2 else output or last_reason
+        if attempt < 3:
+            time.sleep(attempt * 2)
+    raise RuntimeError(
+        f"{name}: playback validation failed after 3 attempts: {last_reason}"
+    )
 
 
 def render(channels: list[dict[str, object]], urls: dict[str, str]) -> str:

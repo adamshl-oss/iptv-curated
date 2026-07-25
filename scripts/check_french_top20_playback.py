@@ -51,22 +51,28 @@ def entries(text: str) -> list[tuple[str, str]]:
 
 def check(entry: tuple[str, str]) -> tuple[str, bool, str]:
     name, url = entry
-    try:
-        completed = subprocess.run(
-            [str(TEST), url],
-            capture_output=True,
-            text=True,
-            timeout=70,
-            check=False,
-        )
-    except subprocess.TimeoutExpired:
-        return name, False, "timeout"
-    output = (completed.stdout or completed.stderr).strip()
-    fields = output.split("|")
-    if completed.returncode == 0 and fields and fields[0] == "PASS":
-        media = " ".join(fields[3:5]) if len(fields) >= 5 else "decoded"
-        return name, True, media
-    return name, False, fields[2] if len(fields) > 2 else output
+    last_detail = "unknown failure"
+    for attempt in range(1, 4):
+        try:
+            completed = subprocess.run(
+                [str(TEST), url],
+                capture_output=True,
+                text=True,
+                timeout=70,
+                check=False,
+            )
+        except subprocess.TimeoutExpired:
+            last_detail = "timeout"
+        else:
+            output = (completed.stdout or completed.stderr).strip()
+            fields = output.split("|")
+            if completed.returncode == 0 and fields and fields[0] == "PASS":
+                media = " ".join(fields[3:5]) if len(fields) >= 5 else "decoded"
+                return name, True, media
+            last_detail = fields[2] if len(fields) > 2 else output
+        if attempt < 3:
+            time.sleep(attempt * 2)
+    return name, False, f"{last_detail} after 3 attempts"
 
 
 def main() -> int:
