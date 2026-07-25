@@ -286,7 +286,10 @@ def render_playlist_block() -> str:
             'tvg-logo="https://i.imgur.com/XE6OWcb.png" '
             'group-title="Algeria — Cloud Live",'
             "Almagharibia TV (Official Cloud Live)",
-            f"{RELAY_ROOT}/api/youtube/almagharibia",
+            (
+                "https://adamshl-oss.github.io/iptv-curated/"
+                "streams/almagharibia.m3u8"
+            ),
             END,
         ]
     )
