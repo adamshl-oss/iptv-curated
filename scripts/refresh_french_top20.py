@@ -93,7 +93,7 @@ def playback_test(name: str, url: str, min_height: int) -> str:
 
 def render(channels: list[dict[str, object]], urls: dict[str, str]) -> str:
     lines = [
-        '#EXTM3U url-tvg="https://iptv-org.github.io/epg/guides/fr.xml"',
+        "#EXTM3U",
         "# France audience top 20 audited individually on 2026-07-25.",
         "# Only exact linear channels that pass cloud-independent playback are published.",
     ]
