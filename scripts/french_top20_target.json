@@ -113,9 +113,11 @@
       "name": "LCI",
       "tvg_id": "LCI.fr",
       "official_url": "https://www.tf1.fr/lci/direct",
-      "status": "viewer_ip_bound",
-      "reason": "Official HLS is non-DRM but its short-lived JWT embeds the requesting IP, so a GitHub-generated URL cannot play on Apple TV.",
-      "publish": false
+      "status": "verified_cloud_relay",
+      "reason": "Official TF1 HLS is non-DRM but its JWT is viewer-IP-bound; the always-on cloud relay refreshes that token per request and passed independent audio/video decode tests.",
+      "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/lci/live.m3u8",
+      "min_height": 540,
+      "publish": true
     },
     {
       "rank": 12,
@@ -173,9 +175,11 @@
       "name": "L'Équipe",
       "tvg_id": "LEquipe.fr",
       "official_url": "https://www.lequipe.fr/lachainelequipe/",
-      "status": "geo_restricted",
-      "reason": "Official Dailymotion and TF1+ live delivery are restricted to France/territories; the formerly public CloudFront feed is dead.",
-      "publish": false
+      "status": "verified_licensed_distribution",
+      "reason": "The exact linear channel is carried by Samsung TV Plus; its public licensed-distribution HLS passed repeated 1080p audio/video decode and identity checks.",
+      "stream_url": "https://jmp2.uk/stvp-FR200016Y5",
+      "min_height": 720,
+      "publish": true
     },
     {
       "rank": 18,
@@ -191,18 +195,22 @@
       "name": "CStar",
       "tvg_id": "CStar.fr",
       "official_url": "https://www.canalplus.com/chaines/cstar",
-      "status": "geo_restricted",
-      "reason": "Official Dailymotion live is owner-restricted outside its permitted countries and is unavailable from the US.",
-      "publish": false
+      "status": "verified_dynamic",
+      "reason": "The refreshed public master resolves CStar's official Dailymotion live x5gv5v0; current audio/video and on-screen CStar identity passed decode checks.",
+      "stream_url": "https://raw.githubusercontent.com/Paradise-91/ParaTV/main/streams/canalplus/cstar-dm.m3u8",
+      "min_height": 450,
+      "publish": true
     },
     {
       "rank": 20,
       "name": "RMC Life",
       "tvg_id": "RMCLife.fr",
       "official_url": "https://www.rmcbfmplay.com/direct/rmc_life",
-      "status": "account_required",
-      "reason": "RMC+ marks its live player as authenticated; public candidates found were private restreams or obsolete Chérie 25 feeds.",
-      "publish": false
+      "status": "verified_licensed_distribution",
+      "reason": "The exact RMC Life linear channel is carried by Samsung TV Plus; its public licensed-distribution HLS passed repeated 1080p audio/video decode and identity checks.",
+      "stream_url": "https://jmp2.uk/stvp-FR4000003O1",
+      "min_height": 720,
+      "publish": true
     }
   ]
 }

@@ -39,10 +39,13 @@ BODY=$(head -c 65536 "$TMPD/body")
 
 IS_HLS=0
 echo "$BODY" | head -1 | grep -q "#EXTM3U" && IS_HLS=1
+HAS_SEPARATE_AUDIO=0
+echo "$BODY" | grep -q '#EXT-X-MEDIA:TYPE=AUDIO' && HAS_SEPARATE_AUDIO=1
 
-# If master playlist, resolve to a media playlist
+# If the master has muxed audio, resolve its best variant. Keep masters with a
+# separate audio rendition intact so ffprobe/ffmpeg can validate both tracks.
 PLAY_URL="${EFFECTIVE_URL:-$URL}"
-if [ "$IS_HLS" -eq 1 ] && echo "$BODY" | grep -q "#EXT-X-STREAM-INF"; then
+if [ "$IS_HLS" -eq 1 ] && [ "$HAS_SEPARATE_AUDIO" -eq 0 ] && echo "$BODY" | grep -q "#EXT-X-STREAM-INF"; then
   # Pick highest bandwidth variant
   VARIANT=$(echo "$BODY" | awk '
     /#EXT-X-STREAM-INF/ {
@@ -71,10 +74,10 @@ PROBE=$(ffprobe -v quiet -print_format json -show_streams -show_format \
   -timeout 10000000 "$PLAY_URL" 2>/dev/null)
 [ -z "$PROBE" ] && fail "ffprobe_empty"
 
-VCODEC=$(echo "$PROBE" | jq -r '[.streams[]|select(.codec_type=="video")][0].codec_name // empty' 2>/dev/null)
+VCODEC=$(echo "$PROBE" | jq -r '[.streams[]|select(.codec_type=="video")] | max_by(.height // 0) | .codec_name // empty' 2>/dev/null)
 ACODEC=$(echo "$PROBE" | jq -r '[.streams[]|select(.codec_type=="audio")][0].codec_name // empty' 2>/dev/null)
-WIDTH=$(echo "$PROBE" | jq -r '[.streams[]|select(.codec_type=="video")][0].width // empty' 2>/dev/null)
-HEIGHT=$(echo "$PROBE" | jq -r '[.streams[]|select(.codec_type=="video")][0].height // empty' 2>/dev/null)
+WIDTH=$(echo "$PROBE" | jq -r '[.streams[]|select(.codec_type=="video")] | max_by(.height // 0) | .width // empty' 2>/dev/null)
+HEIGHT=$(echo "$PROBE" | jq -r '[.streams[]|select(.codec_type=="video")] | max_by(.height // 0) | .height // empty' 2>/dev/null)
 BITRATE=$(echo "$PROBE" | jq -r '.format.bit_rate // empty' 2>/dev/null)
 
 [ -z "$VCODEC" ] && fail "no_video_codec"
@@ -94,7 +97,7 @@ fi
 PROBE2=$(ffprobe -v quiet -print_format json -show_streams \
   -user_agent "$UA" "${HLS_ARGS[@]}" \
   -timeout 8000000 "$PLAY_URL" 2>/dev/null)
-V2=$(echo "$PROBE2" | jq -r '[.streams[]|select(.codec_type=="video")][0].codec_name // empty' 2>/dev/null)
+V2=$(echo "$PROBE2" | jq -r '[.streams[]|select(.codec_type=="video")] | max_by(.height // 0) | .codec_name // empty' 2>/dev/null)
 [ -z "$V2" ] && fail "reprobe_failed"
 
 RES="${WIDTH}x${HEIGHT}"
