@@ -16,7 +16,7 @@ The public playlist intentionally contains only the audited target channels
 that meet every rule. DRM, paid, geo-restricted, viewer-IP-bound, dead, and
 unauthorized candidates remain documented but are never inserted as filler.
 
-As of the 2026-07-25 audit, eight exact top-20 channels pass every gate:
+As of the latest 2026-07-25 audit, seven exact top-20 channels pass every gate:
 
 - #6 CNEWS — 1080p
 - #9 BFMTV — 540p
@@ -24,8 +24,11 @@ As of the 2026-07-25 audit, eight exact top-20 channels pass every gate:
 - #14 RMC Découverte — 1080p
 - #15 RMC Story — 1080p
 - #17 L'Équipe — 1080p through Samsung TV Plus
-- #19 CStar — 480p from its official Dailymotion live
 - #20 RMC Life — 1080p through Samsung TV Plus
+
+CStar previously passed at 480p, but its official Dailymotion live is now
+geo-restricted from the United States and its last signed rendition expired.
+It was removed immediately instead of leaving a dead item in IPTVX.
 
 Canonical playlist:
 
