@@ -17,14 +17,13 @@ The public playlist intentionally contains only the audited target channels
 that meet every rule. DRM, paid, geo-restricted, viewer-IP-bound, dead, and
 unauthorized candidates remain documented but are never inserted as filler.
 
-As of the latest 2026-07-25 audit, twelve exact top-20 channels pass every gate:
+As of the latest 2026-07-25 audit, eleven exact top-20 channels pass every gate:
 
 - #1 TF1 — 720p through an always-on current-master resolver
 - #6 CNEWS — 1080p
 - #7 ARTE — 1080p through an always-on current-master resolver
 - #8 TMC — 720p through an always-on current-master resolver
 - #9 BFMTV — 540p
-- #11 LCI — 720p through a hardened always-on token-refresh relay
 - #12 TFX — 720p through an always-on current-master resolver
 - #14 RMC Découverte — 1080p
 - #15 RMC Story — 1080p
@@ -36,13 +35,16 @@ CStar previously passed at 480p, but its official Dailymotion live is now
 geo-restricted from the United States and its last signed rendition expired.
 It was removed immediately instead of leaving a dead item in IPTVX.
 
+LCI's official CDN relay passes conventional HLS decoders, but repeated IPTVX
+tests rendered a current live frame and then stalled to black after 10–15
+seconds. It is quarantined until a cloud delivery path passes sustained
+playback through Apple's player.
+
 Canonical playlist:
 
 `https://adamshl-oss.github.io/iptv-curated/french-tv-top20-july-2026.m3u`
 
 The GitHub Actions refresh resolves expiring official live URLs and refuses to
 publish any update unless every included channel passes a real decode test.
-The hardened LCI relay and TF1-family resolvers select fresh signed official
-masters without depending on this Mac. The LCI relay retries transient upstream
-failures and buffers complete segments before delivery. The playlist remains
-usable on Apple TV while this Mac is offline.
+The TF1-family resolvers select fresh signed official masters without depending
+on this Mac. The playlist remains usable on Apple TV while this Mac is offline.
