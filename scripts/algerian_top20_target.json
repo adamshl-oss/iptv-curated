@@ -8,9 +8,9 @@
     "last_manual_audit": "2026-07-25"
   },
   "latest_audit": {
-    "checked_at": "2026-07-25T18:38:37Z",
-    "source_rotation": "Official EPTV, Echorouk, Ennahar, Samira+, TDA satellite roster, broadcaster apps and sites, official YouTube/Dailymotion lives, maintained public resolvers, and licensed FAST/OTT catalogs",
-    "published_regression": "All eleven retained non-TV6 channels passed 3/3 audio/video, quality, and moving-frame gates. Almagharibia's original single-path resolver reproduced intermittent cold 502s, so its cloud endpoint was rebuilt to consume the 20-minute GitHub Pages wrapper first and independently race the official YouTube resolver as fallback. The repaired public endpoint passed 10/10 manifest requests followed by 3/3 1080p audio/video and moving-frame attempts. GitHub Actions run 30173395978 then passed canonical/alias parity and all 36 local-copy plus all 36 public Apple-TV-path playback attempts. A final forced IPTVX cloud reload showed all 12 published identities, and Almagharibia sustained changing video in preview and full-player modes. TV6 failed two complete three-attempt gates and remains quarantined, leaving 12 healthy published channels.",
+    "checked_at": "2026-07-25T20:33:37Z",
+    "source_rotation": "Official broadcaster websites and app stores, EPTV's current official YouTube roster, Echorouk site and YouTube lives, El Watania's first-party embedded Ant Media player, current ParaTV and iptv-org resolvers, TDA carriage, and licensed OTT/FAST catalogs",
+    "published_regression": "GitHub Actions run 30173846777 passed canonical/alias parity and all 36 local-copy plus all 36 public Apple-TV-path playback attempts for the 12 published channels. The forced IPTVX reload retained all 12 identities, and the repaired Almagharibia relay sustained changing video after the reload. TV6 remains quarantined rather than forgotten.",
     "unpublished_exact_channels": [
       "Samira TV",
       "Echorouk TV",
@@ -28,8 +28,12 @@
       "Echorouk's official live page generated a current signed Echorouk TV HLS URL, but three independent requests from the US terminated at the CDN without returning media. No geo-bypass was attempted and the channel remains unpublished.",
       "Echorouk's separate official live-news page generated a fresh signed Echorouk News HLS URL, but three independent requests from the US likewise returned no media response. The only responsive alternative belonged to an unverified third-party distributor, so it was rejected despite returning HTTP 200.",
       "TV6 failed two complete three-attempt public gates: timeout, TLS/no-response, malformed 0p video, and corrupt H.264/PPS evidence recurred. The former official HTA hostname also failed DNS resolution in seven parallel source probes, so TV6 was quarantined without deleting its target or source history.",
-      "No exact, current, publicly authorized non-DRM linear feed was found for El Hayat TV, El Watania TV, TV8 Adhakira, or TV9 El Barlamaniya. Their official identities and search history remain in this registry rather than being discarded.",
-      "Almagharibia's direct cloud wrapper is refreshed every 20 minutes by GitHub Actions from the live identity exposed by the broadcaster's official app. The public relay now tries that wrapper first and independently races the official YouTube player resolver if the wrapper is rejected by its egress. The layered endpoint passed ten consecutive manifest fetches, three consecutive 1080p H.264/AAC decode and moving-frame attempts, the complete public GitHub Actions playback gate, and sustained changing video in IPTVX preview and full-player modes."
+      "El Watania's official website now embeds a first-party live player whose exact HLS endpoint decoded current 1920x1080 H.264/AAC video with the El Watania watermark and a current Algeria-time clock. It is not yet publishable: two complete three-attempt gates returned no-response or motion timeouts, and decoding 30 seconds of media took 88 seconds, which would visibly stall on Apple TV.",
+      "Samira+'s current official Google Play and App Store listings still advertise an international 24/7 HD live service, but the website exposes only account/app launch paths and the official Samira YouTube channel was not live during this run.",
+      "Echorouk TV and Echorouk News each failed a fresh three-attempt gate at the official CDN. Neither official YouTube channel had a playable live broadcast; Echorouk News exposed only an upcoming event that had not begun.",
+      "EPTV's current official site exposes YouTube identities for TV6, TV8, and TV9. All three exact official channels were checked and none was currently live; the previously failed TV6 HLS path remains quarantined.",
+      "No exact, current, publicly authorized non-DRM linear feed was found for El Hayat TV, TV8 Adhakira, or TV9 El Barlamaniya. Their official identities and search history remain in this registry rather than being discarded.",
+      "Almagharibia's direct cloud wrapper is refreshed every 20 minutes by GitHub Actions from the live identity exposed by the broadcaster's official app. The public relay now tries that wrapper first and independently races the official YouTube player resolver if the wrapper is rejected by its egress. The layered endpoint passed the complete public GitHub Actions playback gate and sustained changing video after a fresh IPTVX playlist reload."
     ],
     "result": "No newly viable exact channel qualified; TV6 was quarantined after repeat persistent failure, leaving 12 of the 20 durable targets published."
   },
@@ -155,8 +159,9 @@
       "rank": 11,
       "name": "El Watania TV",
       "tvg_id": "ElWataniaTV.dz",
-      "status": "no_authorized_public_feed",
-      "reason": "Current official TDA carriage and the Algerian Ministry media directory confirm the exact channel, but no public authorized non-DRM linear manifest passed the publication gate.",
+      "official_url": "https://elwataniatv.dz/",
+      "status": "official_hls_unstable",
+      "reason": "The official website now embeds an exact 1080p H.264/AAC live HLS feed, and a current frame matched the El Watania watermark and live Algeria-time clock. The source failed two complete three-attempt playback gates and required 88 seconds to deliver 30 seconds of media, so it remains unpublished until sustained Apple-compatible playback is real-time and reliable.",
       "publish": false
     },
     {

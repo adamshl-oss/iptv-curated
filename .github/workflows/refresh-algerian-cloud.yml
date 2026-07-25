@@ -49,7 +49,15 @@ jobs:
           npx tsc
 
       - name: Refresh official dynamic feeds
-        run: python3 scripts/refresh_algerian_cloud.py
+        run: |
+          for gate in 1 2; do
+            if python3 scripts/refresh_algerian_cloud.py; then
+              exit 0
+            fi
+            echo "Algerian resolver gate $gate failed; retrying the complete gate."
+            sleep 10
+          done
+          exit 1
         env:
           FORCE_REFRESH: ${{ inputs.force_refresh || 'false' }}
           BGUTIL_SERVER_HOME: ${{ runner.temp }}/bgutil-ytdlp-pot-provider/server
@@ -59,7 +67,16 @@ jobs:
         continue-on-error: true
         run: |
           chmod +x scripts/test_stream.sh scripts/check_algerian_playback.sh
-          python3 scripts/check_algerian_playback.py algerian-tv-july-2026.m3u algerian-tv-july-2026-v2.m3u
+          for gate in 1 2; do
+            if python3 scripts/check_algerian_playback.py \
+              algerian-tv-july-2026.m3u \
+              algerian-tv-july-2026-v2.m3u; then
+              exit 0
+            fi
+            echo "Algerian local playback gate $gate failed; retrying all three attempts."
+            sleep 10
+          done
+          exit 1
 
       - name: Commit and push if changed
         if: steps.local_check.outcome == 'success'
@@ -107,7 +124,15 @@ jobs:
         id: public_check
         if: steps.local_check.outcome == 'success'
         continue-on-error: true
-        run: python3 scripts/check_algerian_playback.py
+        run: |
+          for gate in 1 2; do
+            if python3 scripts/check_algerian_playback.py; then
+              exit 0
+            fi
+            echo "Algerian public playback gate $gate failed; retrying all three attempts."
+            sleep 10
+          done
+          exit 1
 
       - name: Enforce complete published-playlist health
         if: always()
