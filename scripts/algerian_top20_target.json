@@ -8,9 +8,9 @@
     "last_manual_audit": "2026-07-25"
   },
   "latest_audit": {
-    "checked_at": "2026-07-25T22:14:38Z",
-    "source_rotation": "Current official Echorouk pages and YouTube lives, EPTV's official TV6/TV8/TV9 YouTube handles, Samira+ app and website state, El Hayat's official live handle, El Watania's first-party Ant Media HLS, TDA satellite carriage, current Molotov operator pages, the iptv-org index, and maintained public resolvers",
-    "published_regression": "GitHub Actions run 30177215477 passed dynamic-feed refresh, canonical/alias identity and ordering, all 36 independent local-playlist audio/video/moving-frame attempts, publication visibility, and all 36 public Apple-TV-path attempts. IPTVX was force-reloaded from the cloud URL, displayed all 12 verified identities, and Almagharibia produced visibly different current frames over a sustained 21-second preview. TV6 remains quarantined rather than forgotten.",
+    "checked_at": "2026-07-25T22:44:38Z",
+    "source_rotation": "EPTV's current official app metadata and official TV6/TV8/TV9 YouTube handles, current Echorouk pages and live handles, Samira+ app and website state, El Hayat's official live handle, El Watania's first-party Ant Media HLS, TDA satellite carriage, the iptv-org index, and maintained public resolvers",
+    "published_regression": "GitHub Actions run 30178159660 passed dynamic-feed refresh, canonical/alias identity and ordering, all 36 independent local-playlist audio/video/moving-frame attempts, publication visibility, and all 36 public Apple-TV-path attempts. IPTVX was force-reloaded from the public cloud URL, displayed all 12 verified identities, and Almagharibia produced visibly different current frames over a sustained 21-second preview. TV6 remains quarantined rather than forgotten.",
     "unpublished_exact_channels": [
       "Samira TV",
       "Echorouk TV",
@@ -38,7 +38,12 @@
       "Echorouk TV and Echorouk News each failed a fresh three-attempt gate at the official CDN. Neither official YouTube channel had a playable live broadcast; Echorouk News exposed only an upcoming event that had not begun.",
       "EPTV's current official site exposes YouTube identities for TV6, TV8, and TV9. All three exact official channels were checked and none was currently live; the previously failed TV6 HLS path remains quarantined.",
       "No exact, current, publicly authorized non-DRM linear feed was found for El Hayat TV, TV8 Adhakira, or TV9 El Barlamaniya. Their official identities and search history remain in this registry rather than being discarded.",
-      "Almagharibia's direct cloud wrapper is refreshed every 20 minutes by GitHub Actions from the live identity exposed by the broadcaster's official app. The public relay now tries that wrapper first and independently races the official YouTube player resolver if the wrapper is rejected by its egress. The layered endpoint passed the complete public GitHub Actions playback gate and sustained changing video after a fresh IPTVX playlist reload."
+      "Almagharibia's direct cloud wrapper is refreshed every 20 minutes by GitHub Actions from the live identity exposed by the broadcaster's official app. The public relay now tries that wrapper first and independently races the official YouTube player resolver if the wrapper is rejected by its egress. The layered endpoint passed the complete public GitHub Actions playback gate and sustained changing video after a fresh IPTVX playlist reload.",
+      "EPTV's current official Android app, updated 2026-04-20, describes real-time news, articles, photos, and video rather than live linear channel delivery; it supplied no portable official TV6, TV8, or TV9 feed.",
+      "Fresh official live-handle checks found no active broadcast for TV6, TV8, TV9, or El Hayat. Echorouk News still exposed only an upcoming event that had not begun.",
+      "Samira+'s official website returned HTTP 500, while the current official Echorouk TV and Echorouk News player endpoints returned HTTP 403. No account token, private restream, or geo-bypass path was used.",
+      "El Watania's exact first-party HLS failed all three fresh independent attempts with no media response, so it remains a preserved recovery target rather than an Apple TV-visible dead entry.",
+      "The fresh research and the complete cloud regression found no newly viable exact channel; all 12 published channels remained healthy, TV6 remained quarantined, and no additional channel was removed."
     ],
     "result": "No newly viable exact channel qualified; TV6 was quarantined after repeat persistent failure, leaving 12 of the 20 durable targets published."
   },
