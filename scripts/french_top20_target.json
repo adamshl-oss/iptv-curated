@@ -8,9 +8,9 @@
     "last_manual_audit": "2026-07-25"
   },
   "latest_audit": {
-    "checked_at": "2026-07-26T01:20:32Z",
-    "source_rotation": "ParaTV stream commit 45b4484 and playlist commit 1891ab8; current France Télévisions direct and SSAI wrappers; exact current official M6, W9, and 6ter manifests; current Canal+ and CStar resolvers; official France.tv, M6+, CANAL+, and Dailymotion surfaces; the freshly cloned iptv-org France index; and licensed OTT/FAST/operator catalogs",
-    "published_regression": "GitHub Actions run 30181080852 passed the resolver gate, canonical/alias identity and ordering, all 36 independent local-playlist audio/video/moving-frame attempts, publication visibility, and all 36 public GitHub Pages attempts. IPTVX was restarted, loaded the public cloud playlist, displayed all 12 verified identities, and ARTE produced visibly different current frames 12 seconds apart.",
+    "checked_at": "2026-07-26T02:06:25Z",
+    "source_rotation": "ParaTV stream commit 0ddcaa66ea and playlist commit 2f618068b5; current France Télévisions direct and SSAI wrappers; exact official M6, W9, and 6ter live pages and FairPlay manifests; current Canal+ full/en-clair resolvers; official CStar Dailymotion; iptv-org France commit 0fbfb0a190; and current Orange, Free TV, Samsung TV Plus, Arcom, HbbTV, and DVB-I discovery surfaces",
+    "published_regression": "GitHub Actions run 30183066801 passed the resolver gate, canonical/alias identity and ordering, all 36 independent local-playlist audio/video/moving-frame attempts, publication visibility, and all 36 public GitHub Pages attempts. IPTVX force-reloaded the public playlist, retained all 12 identities, and LCI produced sustained visibly changing current video for 15 seconds through the Apple-facing relay.",
     "unpublished_exact_channels": [
       "France 2",
       "France 3",
@@ -43,7 +43,11 @@
       "The fresh expansion pass found no newly viable exact legal non-DRM target. The complete repaired cloud regression and forced IPTVX reload retained all 12 published channels with no quarantine.",
       "Fresh ParaTV checks found no decodable media in the exact France 2, France 3, and France 5 wrappers. The current iptv-org candidates for those channels, M6, 6ter, and CStar were private-IP restreams and were rejected.",
       "The official M6, W9, and 6ter HLS masters remain SAMPLE-AES/FairPlay protected. W9's former clear official 6cloud path returned HTTP 403 on three attempts; full Canal+ remains paid/DRM, while the open resolver exposes only the inexact Canal+ en clair window.",
-      "CStar's maintained Dailymotion wrapper decoded only 848x480 and conflicts with the owner's explicit territory restriction. No geo-bypass, private restream, DRM feed, or inexact substitute was published."
+      "CStar's maintained Dailymotion wrapper decoded only 848x480 and conflicts with the owner's explicit territory restriction. No geo-bypass, private restream, DRM feed, or inexact substitute was published.",
+      "ParaTV advanced to stream commit 0ddcaa66ea and playlist commit 2f618068b5. All six current France 2, France 3, and France 5 direct/SSAI variants again exposed no decodable media; the nested live media requests returned HTTP 403.",
+      "The current exact official M6, W9, and 6ter masters returned HTTP 200 but declared SAMPLE-AES with com.apple.streamingkeydelivery and skd:// FairPlay keys. W9's former clear 6cloud renditions returned HTTP 403 on three attempts.",
+      "Official CStar Dailymotion x5gv5v0 remained owner-geo-restricted, while the maintained wrapper remained below the 540p quality floor. Full Canal+ remained authenticated/paid; only the inexact Canal+ en clair window was publicly resolvable.",
+      "The current iptv-org index, Orange and Free operator catalogs, Samsung TV Plus FAST lineup, and Arcom/HbbTV/DVB-I discovery surfaces produced no newly authorized portable exact feed. No target was substituted, bypassed, or silently forgotten."
     ],
     "result": "No newly viable legal exact non-DRM feed was found; the published playlist remains 12 of 20."
   },
