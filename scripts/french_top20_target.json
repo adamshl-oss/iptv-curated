@@ -8,9 +8,9 @@
     "last_manual_audit": "2026-07-25"
   },
   "latest_audit": {
-    "checked_at": "2026-07-26T04:12:09Z",
-    "source_rotation": "ParaTV commit b3599f4cec; current France Télévisions direct and SSAI wrappers; exact official M6, W9, and 6ter FairPlay manifests plus former clear W9 path; full Canal+ and en-clair resolvers; official CStar Dailymotion; current iptv-org commit a00f8a7550; current schumijo/netplus operator wrappers; and fresh authorized FAST/operator discovery surfaces",
-    "published_regression": "GitHub Actions run 30186605696 passed the resolver gate, canonical/alias identity and ordering, all 36 independent local-playlist audio/video/moving-frame attempts, publication visibility for both GitHub Pages copies, and all 36 public Apple-TV-path attempts. Every channel again delivered H.264/AAC moving video at its required quality: TF1/ARTE/TMC/TFX/TF1 Séries Films at 720p, CNEWS/RMC Découverte/RMC Story/L'Équipe/RMC Life at 1080p, BFMTV at 540p, and LCI at 576p. No published French channel was repaired, removed, or quarantined.",
+    "checked_at": "2026-07-26T05:03:46Z",
+    "source_rotation": "ParaTV commit b3599f4cec; current France Télévisions direct and SSAI wrappers; exact official M6, W9, and 6ter FairPlay manifests plus former clear W9 path; full Canal+ and en-clair resolvers; official CStar Dailymotion; current iptv-org commit a00f8a7550; current schumijo commit 094c07b; and fresh authorized FAST/operator discovery surfaces",
+    "published_regression": "GitHub Actions run 30188075328 passed the resolver gate, canonical/alias identity and ordering, all 36 independent local-playlist audio/video/moving-frame attempts, publication visibility for both GitHub Pages copies, and all 36 public Apple-TV-path attempts. Every channel delivered moving video at its required quality: TF1/ARTE/TMC/TFX/TF1 Séries Films at 720p, CNEWS/RMC Découverte/RMC Story/L'Équipe/RMC Life at 1080p, BFMTV at 540p, and LCI at 576p. The preceding run 30187790550 saw a transient 0/3 TF1 resolver failure; the same public endpoint immediately passed 3/3 from the Apple-facing path and then passed every gate in the complete rerun, so no healthy channel was quarantined.",
     "unpublished_exact_channels": [
       "France 2",
       "France 3",
@@ -58,9 +58,16 @@
       "ParaTV advanced to commit b3599f4cec, but the only changed files were three L'Équipe backup wrappers and no unpublished target source changed. Fresh France 2, France 3, and France 5 strict probes again stalled on protected media; full Canal+ and CStar wrappers returned variant_empty.",
       "The exact official M6, W9, and 6ter masters again returned current content declaring SAMPLE-AES and FairPlay key delivery. W9's former clear official path returned HTTP 403 on all three fresh attempts, and official CStar Dailymotion x5gv5v0 again reported owner-controlled geo restriction.",
       "Current iptv-org commit a00f8a7550 remained unchanged and offered only private-IP/unverified exact candidates. Fresh schumijo entries for M6, W9, and 6ter were Swiss operator delivery rather than authorized portable exact French feeds; no full Canal+ source appeared.",
-      "Run 30186605696 independently repeated all 36 local-cloud and all 36 public Apple-TV-path moving-media attempts with canonical/alias parity. The published French lineup remains exactly 12 healthy channels."
+      "Run 30186605696 independently repeated all 36 local-cloud and all 36 public Apple-TV-path moving-media attempts with canonical/alias parity. The published French lineup remains exactly 12 healthy channels.",
+      "ParaTV and iptv-org remained at b3599f4cec and a00f8a7550. Schumijo advanced to 094c07b, but its only changed target-adjacent file was for TéléNantes; no source for any of the eight unpublished exact French targets changed.",
+      "Fresh exact France 2, France 3, and France 5 SSAI media playlists returned current manifests, but the first live segment returned HTTP 403 on all three attempts for each channel. Their official pages supplied no portable non-DRM alternative.",
+      "Fresh official M6, W9, and 6ter masters returned HTTP 200 on three attempts but each declared SAMPLE-AES with com.apple.streamingkeydelivery and skd:// FairPlay delivery. W9's former clear official 6cloud path returned HTTP 403 on all three attempts.",
+      "Official CStar Dailymotion x5gv5v0 returned owner-controlled DM007 geo restriction on three attempts. Full Canal+ remained paid/DRM, while the playable public resolver was only Canal+ en clair rather than the exact full linear target.",
+      "The exact maintained alternatives for France 2, France 5, M6, and 6ter remained private-IP restreams and were rejected. No geo-bypass, DRM source, loop, private restream, or inexact substitute was published.",
+      "The first run 30187790550 failed TF1's resolver gate 0/3 during a transient relay event. The exact public TF1 endpoint immediately passed three 720p H.264/AAC moving-media attempts, and run 30188075328 then passed TF1 plus every other published channel 3/3 locally and 3/3 through the public Apple-TV path.",
+      "Run 30188075328 completed successfully with 12 identical canonical/alias entries, all 36 local and all 36 public moving-media attempts passing, and both public GitHub Pages copies current. The cache-busted public canonical and alias remained byte-identical after the workflow."
     ],
-    "result": "No newly viable legal exact non-DRM feed was found. All 12 published channels passed complete outside-cloud and public Apple-TV-path regressions; the playlist remains 12 of 20."
+    "result": "No newly viable legal exact non-DRM feed was found. All 12 published channels passed complete outside-cloud and public Apple-TV-path regressions after a transient TF1 retry; the playlist remains 12 of 20."
   },
   "channels": [
     {

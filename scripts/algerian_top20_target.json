@@ -8,9 +8,9 @@
     "last_manual_audit": "2026-07-25"
   },
   "latest_audit": {
-    "checked_at": "2026-07-26T04:42:58Z",
+    "checked_at": "2026-07-26T05:04:00Z",
     "source_rotation": "Samira TV's official site and Samira+ app surfaces; exact Echorouk TV, Echorouk News, and El Hayat official players and YouTube identities; El Watania's first-party Ant Media HLS; EPTV's exact TV6, TV8, and TV9 pages and YouTube identities; Almagharibia's current official app/YouTube live plus its Apple-facing relay; current iptv-org commit a00f8a7550; and fresh TDA/operator discovery surfaces",
-    "published_regression": "GitHub Actions run 30187908850 passed all 33 local-cloud and all 33 public Apple-TV-path attempts for the 11-item last-known-good lineup, then passed Almagharibia's three outside-cloud recovery gates (nine independent 720p H.264/AAC moving-media decodes) plus a sustained 45-second cloud decode. The immediate same-cycle home/Apple-facing qualification then passed Almagharibia 3/3 plus another sustained 45-second decode. Finally, the complete 12-item candidate lineup passed exact canonical/alias parity and all 36 local moving-media attempts on its first gate, qualifying Almagharibia for republication.",
+    "published_regression": "After Almagharibia was restored, GitHub Actions run 30188252633 passed 12-entry canonical/alias parity, all 36 local-cloud moving-media attempts, publication visibility for both GitHub Pages copies, all 36 public Apple-TV-path attempts, nine additional outside-cloud Almagharibia 720p H.264/AAC decodes, and a sustained 45-second cloud decode. IPTVX then force-reloaded the public playlist, displayed all 12 identities, and showed changing current Almagharibia video in both preview and full-player modes.",
     "unpublished_exact_channels": [
       "Samira TV",
       "Echorouk TV",
@@ -79,9 +79,14 @@
       "Fresh official-source checks found Samira's main site healthy but Samira+ still HTTP 500; the exact Echorouk TV, Echorouk News, and El Hayat players returned HTTP 403 on three attempts each, and none of their exact official YouTube identities was live.",
       "EPTV's exact TV6, TV8, and TV9 pages returned HTTP 200 on three attempts each, but every exact official YouTube live identity remained inactive. The current iptv-org Algerian playlist contained no exact candidate for any unpublished target.",
       "El Watania's exact first-party five-segment HLS index improved to 0.69–0.75-second responses, but the three strict moving-media attempts failed with reprobe/no-response errors and the sustained 45-second decode timed out. It remains unpublished rather than recreating an Apple TV stall.",
-      "Almagharibia's exact official app still exposed live YouTube broadcast Qtw0ktz04kM. Run 30187908850 passed nine outside-cloud 720p H.264/AAC decodes plus 45 seconds sustained; the immediate home/Apple-facing route then passed 3/3 plus 45 seconds sustained, and the complete 12-item candidate playlist passed all 36 local attempts. This same-cycle split-path recovery cleared the prior quarantine gate."
+      "Almagharibia's exact official app still exposed live YouTube broadcast Qtw0ktz04kM. Run 30187908850 passed nine outside-cloud 720p H.264/AAC decodes plus 45 seconds sustained; the immediate home/Apple-facing route then passed 3/3 plus 45 seconds sustained, and the complete 12-item candidate playlist passed all 36 local attempts. This same-cycle split-path recovery cleared the prior quarantine gate.",
+      "Fresh probes found Samira TV's main official site healthy while samira.plus returned HTTP 500. Exact Echorouk TV, Echorouk News, and El Hayat player endpoints returned HTTP 403 on three attempts each, and none of their exact official YouTube identities was live.",
+      "EPTV's exact TV6, TV8, and TV9 pages returned HTTP 200 on three attempts each, but their official live handles were inactive. The current iptv-org Algeria playlist supplied no authorized exact candidate for any of the eight unpublished targets.",
+      "El Watania's exact first-party HLS index improved to three fast HTTP 200 responses, but its strict gate returned reprobe failure followed by two no-response failures and its sustained 45-second decode timed out. It remains unpublished to avoid an Apple TV stall.",
+      "Final post-publication run 30188252633 passed 12-entry canonical/alias parity, every channel 3/3 locally and 3/3 through the public Apple-TV path, then gave Almagharibia nine more outside-cloud 720p moving-media passes and a sustained 45-second decode.",
+      "A cache-busted public fetch found both Algerian GitHub Pages copies byte-identical at 12 entries. IPTVX force-reloaded the cloud group, displayed all 12 exact identities including Almagharibia, and showed visibly different branded frames 12 seconds apart in both preview and full-player modes; the live on-screen clock matched current GMT."
     ],
-    "result": "All 12 published channels are healthy. Almagharibia cleared the outside-cloud, home/Apple-facing, sustained, and complete-lineup gates in the same cycle and was restored; the remaining eight exact recovery targets stay preserved."
+    "result": "All 12 published channels are healthy. Almagharibia is restored and passed complete local, public Apple-TV-path, outside-cloud stress, sustained decode, and IPTVX playback gates; the remaining eight exact recovery targets stay preserved."
   },
   "channels": [
     {
