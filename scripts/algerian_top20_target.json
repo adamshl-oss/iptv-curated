@@ -8,9 +8,9 @@
     "last_manual_audit": "2026-07-25"
   },
   "latest_audit": {
-    "checked_at": "2026-07-26T00:23:08Z",
+    "checked_at": "2026-07-26T01:20:32Z",
     "source_rotation": "EPTV's current official TV6/TV8/TV9 pages and exact YouTube handles; Samira TV's restored official site and verified YouTube identity; Echorouk TV and News official pages, players, and exact YouTube identities; El Hayat and El Watania exact official handles; the current public relay inventory with frame-level identity inspection; first-party HLS, maintained public resolvers, and current public indexes",
-    "published_regression": "GitHub Actions run 30181080819 passed dynamic-feed refresh, canonical/alias identity and ordering, all 36 independent local-playlist audio/video/moving-frame attempts, publication visibility, and all 36 public Apple-TV-path attempts. A technically healthy exact TV8 candidate was deliberately withheld because its unaffiliated YCN distribution provenance could not establish broadcaster authorization.",
+    "published_regression": "GitHub Actions run 30181657925 passed dynamic-feed refresh, canonical/alias identity and ordering, all 36 independent local-playlist audio/video/moving-frame attempts, publication visibility, and all 36 public Apple-TV-path attempts. IPTVX was restarted and displayed all 12 identities. Almagharibia then passed three strict 720p H.264/AAC gates, a continuous 45-second public decode, 20-second changing preview playback, and 20-second changing full-player playback after its Apple-facing HLS was repaired.",
     "unpublished_exact_channels": [
       "Samira TV",
       "Echorouk TV",
@@ -52,7 +52,10 @@
       "Fresh checks of the exact official TV6, TV8, TV9, Echorouk TV, Echorouk News, El Hayat, Samira TV, and El Watania YouTube identities found none currently live. Samira's official site, EPTV pages, Echorouk's official live page, and El Watania's site exposed no new portable public manifest.",
       "The source formerly labelled TV6 resumed decoding at 1920x1080 H.264/AAC and passed three strict moving-media attempts, but two separated current frames visibly carried EPTV's El Dhakira watermark and exact TV8 programming. It was rejected as TV6 and the false route was removed.",
       "The technically exact TV8 candidate passed three additional strict six-gate tests, five current-segment fetches, a 45-second content decode, two visibly different current frames, and a complete 39-attempt candidate-lineup gate. It was nevertheless withheld because the unaffiliated YCN distribution host supplied no evidence of EPTV authorization; exact identity and technical health do not override the legal-source gate.",
-      "Echorouk TV, Echorouk News, and the signed TV6 recovery path each returned cloud 5xx on three fresh probes. Current public indexes and maintained resolvers produced no other exact legally portable Algerian candidate."
+      "Echorouk TV, Echorouk News, and the signed TV6 recovery path each returned cloud 5xx on three fresh probes. Current public indexes and maintained resolvers produced no other exact legally portable Algerian candidate.",
+      "An IPTVX regression exposed Almagharibia rendering one frame and then stalling even though conventional decoders passed. The relay was repaired by selecting a fixed 720p H.264/AAC rendition, parsing YouTube's path-based signature expiry correctly, and replacing oversized signed segment URLs with short Apple-compatible relay paths while removing nonstandard ad-cue tags.",
+      "The repaired Almagharibia endpoint passed three strict moving-media gates, a continuous 45-second public decode, and 20 seconds each of visibly changing current video in IPTVX preview and full-player modes. It remains published and no verified channel was lost.",
+      "The recovered feed previously labelled TV6 was visually proven to be exact TV8 El Dhakira and was never allowed to remain under the false TV6 identity. The exact TV8 source was also withdrawn after its unaffiliated distribution host could not establish broadcaster authorization; both targets and all evidence remain preserved for future official-source recovery."
     ],
     "result": "No newly viable authorized exact channel qualified; the published lineup remains 12 of 20, with TV6 and the technically healthy but provenance-rejected TV8 preserved as separate recovery targets."
   },
@@ -279,9 +282,9 @@
       "tvg_id": "AlmagharibiaTV.uk",
       "official_url": "https://almagharibia.tv/",
       "status": "verified_official_dynamic",
-      "reason": "The broadcaster's official app exposes its current official YouTube live identity; the public relay consumes the 20-minute GitHub Pages refresh and falls back to an independent official-player resolve without relying on this Mac.",
+      "reason": "The broadcaster's official app exposes its current official YouTube live identity; the public relay consumes the 20-minute GitHub Pages refresh, falls back to an independent official-player resolve, and serves a fixed 720p rendition through short Apple-compatible segment paths without relying on this Mac.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/youtube/almagharibia",
-      "min_height": 540,
+      "min_height": 720,
       "publish": true
     }
   ]

@@ -8,9 +8,9 @@
     "last_manual_audit": "2026-07-25"
   },
   "latest_audit": {
-    "checked_at": "2026-07-25T23:14:38Z",
-    "source_rotation": "ParaTV stream commit 45b4484 and playlist commit 1891ab8; current France Télévisions direct and SSAI wrappers; the exact current official M6, W9, and 6ter live-page manifests; current Canal+ and CStar resolvers; official France.tv, M6+, CANAL+, and Dailymotion distribution surfaces; the iptv-org index; and licensed OTT/FAST/operator catalogs",
-    "published_regression": "GitHub Actions run 30180208384 passed the resolver gate, canonical/alias identity and ordering, all 36 independent local-playlist audio/video/moving-frame attempts, publication visibility, and all 36 public GitHub Pages attempts after the shared relay's manifest refreshes were coalesced and the checker was bounded to two concurrent channels from that source family. IPTVX was force-reloaded from the public cloud URL, displayed all 12 verified identities, and ARTE produced visibly different current frames 12 seconds apart.",
+    "checked_at": "2026-07-26T01:20:32Z",
+    "source_rotation": "ParaTV stream commit 45b4484 and playlist commit 1891ab8; current France Télévisions direct and SSAI wrappers; exact current official M6, W9, and 6ter manifests; current Canal+ and CStar resolvers; official France.tv, M6+, CANAL+, and Dailymotion surfaces; the freshly cloned iptv-org France index; and licensed OTT/FAST/operator catalogs",
+    "published_regression": "GitHub Actions run 30181080852 passed the resolver gate, canonical/alias identity and ordering, all 36 independent local-playlist audio/video/moving-frame attempts, publication visibility, and all 36 public GitHub Pages attempts. IPTVX was restarted, loaded the public cloud playlist, displayed all 12 verified identities, and ARTE produced visibly different current frames 12 seconds apart.",
     "unpublished_exact_channels": [
       "France 2",
       "France 3",
@@ -40,7 +40,10 @@
       "The exact current official M6, W9, and 6ter live pages each exposed an HTTP 200 HLS master, but every master declared SAMPLE-AES with com.apple.streamingkeydelivery and skd:// FairPlay key delivery. They cannot be decoded by an ordinary IPTVX M3U entry.",
       "CStar's official Dailymotion live remained owner-geo-restricted; the maintained wrapper remained only 848x480 and conflicted with that owner restriction. The current Canal+ resolver exposed only Canal+ en clair rather than the exact full paid linear service. No bypass or inexact substitute was published.",
       "The first cloud run, 30179071480, exposed artificial 502s when the audit opened several TF1-family masters in parallel. The individual relay returned 15 of 15 fresh HTTP 200 responses; production relay version 23 then coalesced 20-second index/master refreshes, passed a 20-request concurrent burst at 20 of 20 HTTP 200, and the audit checker was bounded to two concurrent channels for this source family.",
-      "The fresh expansion pass found no newly viable exact legal non-DRM target. The complete repaired cloud regression and forced IPTVX reload retained all 12 published channels with no quarantine."
+      "The fresh expansion pass found no newly viable exact legal non-DRM target. The complete repaired cloud regression and forced IPTVX reload retained all 12 published channels with no quarantine.",
+      "Fresh ParaTV checks found no decodable media in the exact France 2, France 3, and France 5 wrappers. The current iptv-org candidates for those channels, M6, 6ter, and CStar were private-IP restreams and were rejected.",
+      "The official M6, W9, and 6ter HLS masters remain SAMPLE-AES/FairPlay protected. W9's former clear official 6cloud path returned HTTP 403 on three attempts; full Canal+ remains paid/DRM, while the open resolver exposes only the inexact Canal+ en clair window.",
+      "CStar's maintained Dailymotion wrapper decoded only 848x480 and conflicts with the owner's explicit territory restriction. No geo-bypass, private restream, DRM feed, or inexact substitute was published."
     ],
     "result": "No newly viable legal exact non-DRM feed was found; the published playlist remains 12 of 20."
   },
