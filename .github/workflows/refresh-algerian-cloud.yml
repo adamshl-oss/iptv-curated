@@ -162,7 +162,7 @@ jobs:
           candidate="https://livesstream.work.gd:5443/WebRTCApp/streams/stream.m3u8"
           echo "El Watania outside-cloud three-attempt recovery gate"
           for attempt in 1 2 3; do
-            scripts/test_stream.sh \
+            timeout 105 scripts/test_stream.sh \
               "${candidate}?cloud_probe=$(date -u +%s%N)-${attempt}"
           done
           echo "El Watania sustained 45-second outside-cloud decode"
