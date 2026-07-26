@@ -35,6 +35,12 @@ ALMAGHARIBIA_HOME_API = (
     "https://api.prd.awraas.tv/api/v1/"
     "54450f8d-22d7-4942-adc6-4d30505c24a8/1/home"
 )
+YOUTUBE_PLAYER_ENDPOINTS = (
+    "https://www.youtube.com/youtubei/v1/player",
+    "https://youtubei.googleapis.com/youtubei/v1/player",
+    "https://music.youtube.com/youtubei/v1/player",
+    "https://www.youtube-nocookie.com/youtubei/v1/player",
+)
 ENNAHAR_PLAYER = "https://live.dzsecurity.net/live/player/ennahartv"
 ENNAHAR_REFERER = "https://www.ennaharonline.com/live/"
 ENNAHAR_YOUTUBE_LIVE = "https://www.youtube.com/@ennahartvonline/live"
@@ -135,7 +141,9 @@ def resolve_youtube_player_hls(video_id: str) -> str:
     for attempt in range(1, 9):
         try:
             request = Request(
-                "https://www.youtube.com/youtubei/v1/player",
+                YOUTUBE_PLAYER_ENDPOINTS[
+                    (attempt - 1) % len(YOUTUBE_PLAYER_ENDPOINTS)
+                ],
                 data=body,
                 headers={
                     "Content-Type": "application/json",
@@ -143,6 +151,10 @@ def resolve_youtube_player_hls(video_id: str) -> str:
                         "com.google.android.youtube/20.10.38 "
                         "(Linux; U; Android 11) gzip"
                     ),
+                    "X-YouTube-Client-Name": "3",
+                    "X-YouTube-Client-Version": "20.10.38",
+                    "Origin": "https://www.youtube.com",
+                    "Referer": "https://www.youtube.com/",
                 },
             )
             with urlopen(request, timeout=8) as response:
