@@ -8,9 +8,9 @@
     "last_manual_audit": "2026-07-25"
   },
   "latest_audit": {
-    "checked_at": "2026-07-25T22:44:38Z",
-    "source_rotation": "ParaTV stream commits 9adcbd07 and 7b0d3072, current France Télévisions SSAI wrappers and media segments, current M6/W9/Canal+/CStar wrappers, official France.tv/M6+/CANAL+ app distribution metadata, official Dailymotion owner metadata, the iptv-org index, and licensed OTT/FAST/operator catalogs",
-    "published_regression": "GitHub Actions run 30178158756 passed the resolver gate, canonical/alias identity and ordering, all 36 independent local-playlist audio/video/moving-frame attempts, publication visibility, and all 36 public GitHub Pages attempts. IPTVX was force-reloaded from the public cloud URL, displayed all 12 verified identities, and ARTE produced visibly different current frames over a sustained 20-second preview.",
+    "checked_at": "2026-07-25T23:14:38Z",
+    "source_rotation": "ParaTV stream commit 45b4484 and playlist commit 1891ab8; current France Télévisions direct and SSAI wrappers; the exact current official M6, W9, and 6ter live-page manifests; current Canal+ and CStar resolvers; official France.tv, M6+, CANAL+, and Dailymotion distribution surfaces; the iptv-org index; and licensed OTT/FAST/operator catalogs",
+    "published_regression": "GitHub Actions run 30180208384 passed the resolver gate, canonical/alias identity and ordering, all 36 independent local-playlist audio/video/moving-frame attempts, publication visibility, and all 36 public GitHub Pages attempts after the shared relay's manifest refreshes were coalesced and the checker was bounded to two concurrent channels from that source family. IPTVX was force-reloaded from the public cloud URL, displayed all 12 verified identities, and ARTE produced visibly different current frames 12 seconds apart.",
     "unpublished_exact_channels": [
       "France 2",
       "France 3",
@@ -35,7 +35,12 @@
       "Fresh exact M6 and W9 wrappers exposed no decodable video, the current maintained tree still contains no exact 6ter resolver, and the full Canal+ wrapper exposed no decodable exact paid linear service.",
       "The official France.tv app confirms exact France 2, France 3, and France 5 live delivery but explicitly limits some video by legal territory; M6+ confirms exact M6, W9, and 6ter live delivery inside its app/account service; and CANAL+ confirms account/subscription-bound live delivery. None supplied an authorized portable non-DRM HLS URL for IPTVX.",
       "Official CStar Dailymotion x5gv5v0 remains owner-geo-restricted. No proxy, VPN, or third-party token was used, and the channel remains unpublished.",
-      "The fresh research and the complete cloud regression found no newly viable exact legal non-DRM target; all 12 published channels remained healthy and no channel was quarantined."
+      "The fresh research and the complete cloud regression found no newly viable exact legal non-DRM target; all 12 published channels remained healthy and no channel was quarantined.",
+      "ParaTV advanced to stream commit 45b4484 and playlist commit 1891ab8 at 23:25–23:26 UTC. Fresh exact France 2, France 3, and France 5 direct wrappers had no decodable video; their SSAI variants still stalled at protected media delivery rather than yielding an Apple-compatible stream.",
+      "The exact current official M6, W9, and 6ter live pages each exposed an HTTP 200 HLS master, but every master declared SAMPLE-AES with com.apple.streamingkeydelivery and skd:// FairPlay key delivery. They cannot be decoded by an ordinary IPTVX M3U entry.",
+      "CStar's official Dailymotion live remained owner-geo-restricted; the maintained wrapper remained only 848x480 and conflicted with that owner restriction. The current Canal+ resolver exposed only Canal+ en clair rather than the exact full paid linear service. No bypass or inexact substitute was published.",
+      "The first cloud run, 30179071480, exposed artificial 502s when the audit opened several TF1-family masters in parallel. The individual relay returned 15 of 15 fresh HTTP 200 responses; production relay version 23 then coalesced 20-second index/master refreshes, passed a 20-request concurrent burst at 20 of 20 HTTP 200, and the audit checker was bounded to two concurrent channels for this source family.",
+      "The fresh expansion pass found no newly viable exact legal non-DRM target. The complete repaired cloud regression and forced IPTVX reload retained all 12 published channels with no quarantine."
     ],
     "result": "No newly viable legal exact non-DRM feed was found; the published playlist remains 12 of 20."
   },
