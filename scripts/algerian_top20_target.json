@@ -8,9 +8,9 @@
     "last_manual_audit": "2026-07-25"
   },
   "latest_audit": {
-    "checked_at": "2026-07-26T02:06:25Z",
+    "checked_at": "2026-07-26T02:23:08Z",
     "source_rotation": "Current official TV6/TV8/TV9, Samira TV, Echorouk TV, Echorouk News, El Hayat, and El Watania YouTube identities; TDA's current public/private roster; EPTV's current site and app; Samira TV's official site and Samira+ app/support surfaces; Echorouk's official signed live players; El Watania's first-party HLS; iptv-org Algeria; maintained public resolvers; and production cloud egress tests",
-    "published_regression": "GitHub Actions run 30183067345 initially passed canonical/alias identity and ordering plus all 36 local and 36 public moving-media attempts for 12 entries. IPTVX then exposed an expired-wrapper black screen. Production relay version 32 restored 20 seconds of changing IPTVX playback and passed a 30-request burst, but independent cloud run 30184092989 subsequently failed Almagharibia at 0/3 in two complete gates. The persistently split-path channel was quarantined under the agreed rule; a complete 11-channel post-quarantine public gate follows.",
+    "published_regression": "GitHub Actions run 30183067345 initially passed canonical/alias identity and ordering plus all 36 local and 36 public moving-media attempts for 12 entries. IPTVX then exposed an expired-wrapper black screen. Production relay version 32 restored 20 seconds of changing IPTVX playback and passed a 30-request burst, but independent cloud run 30184092989 subsequently failed Almagharibia at 0/3 in two complete gates. The persistently split-path channel was quarantined. Post-quarantine run 30184398260 passed canonical/alias parity, all 33 local moving-media attempts, publication visibility, and all 33 public Apple-TV-path attempts for the remaining 11 entries.",
     "unpublished_exact_channels": [
       "Samira TV",
       "Echorouk TV",
