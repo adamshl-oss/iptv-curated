@@ -8,9 +8,9 @@
     "last_manual_audit": "2026-07-25"
   },
   "latest_audit": {
-    "checked_at": "2026-07-26T07:49:19Z",
+    "checked_at": "2026-07-26T08:28:00Z",
     "source_rotation": "Samira TV's official site and newly recovered Samira+ landing service; exact Echorouk TV, Echorouk News, and El Hayat official players and YouTube identities; El Watania's broadcaster-embedded first-party Ant Media HLS and current iptv-org entry; EPTV's exact TV6, TV8, and TV9 pages and YouTube identities; Almagharibia's official app/YouTube live plus Apple-facing relay; current iptv-org commit a00f8a7550; and current TDA/operator discovery surfaces",
-    "published_regression": "Forced GitHub Actions run 30193222059 passed the complete 12-entry canonical/alias regression with all 36 local and all 36 cache-busted public Apple-TV-path moving-media attempts, nine additional Almagharibia 1280x720 H.264/AAC decodes, and its sustained 45-second cloud test. El Watania separately failed all three Mac-side and all three outside-cloud recovery attempts, so it remained safely withheld. IPTVX force-reloaded all 12 identities and sustained visibly changing current Ennahar video in preview and full-player modes.",
+    "published_regression": "Forced GitHub Actions run 30193620004 passed the complete 12-entry canonical/alias regression with all 36 local and all 36 cache-busted public Apple-TV-path moving-media attempts, nine additional Almagharibia 1280x720 H.264/AAC decodes, and its sustained 45-second cloud test. El Watania separately failed all three outside-cloud recovery attempts, so it remained safely withheld. IPTVX force-reloaded all 12 identities and sustained visibly changing current Ennahar video in preview and full-player modes.",
     "unpublished_exact_channels": [
       "Samira TV",
       "Echorouk TV",
@@ -22,6 +22,13 @@
       "TV9 El Barlamaniya"
     ],
     "evidence": [
+      "Forced run 30193620004 passed canonical/alias parity, every published Algerian channel 3/3 locally and 3/3 through the cache-busted public Apple-TV path, then gave Almagharibia nine additional 1280x720 H.264/AAC moving-media passes plus 45 seconds of sustained cloud playback.",
+      "El Watania's exact broadcaster-embedded first-party HLS failed all three fresh outside-cloud attempts in run 30193620004 with no media response. It remains a preserved recovery target but stays outside the Apple TV playlist.",
+      "Samira TV, Samira+, Echorouk, El Hayat, El Watania, and EPTV's exact TV6, TV8, and TV9 official pages all remained online. Samira+ exposed only official App Store and Google Play launch paths, with no web HLS, DASH, or public live API.",
+      "The exact Echorouk TV, Echorouk News, and El Hayat official players each returned HTTP 403 on all three fresh attempts. Their official YouTube identities were inactive, except Echorouk News still exposed only an upcoming event that had not begun.",
+      "EPTV's exact TV6, TV8, and TV9 official YouTube live identities were inactive. TV6 remains correctly quarantined: its former route was visually proven to be TV8 and no exact authorized replacement appeared.",
+      "Both cache-busted public Algerian copies remained identical at 12 entries. IPTVX force-reloaded the source, displayed all 12 exact identities, and Ennahar showed visibly different current branded frames in preview and sustained full-player modes.",
+      "No newly viable exact authorized non-DRM Algerian feed qualified. All eight unpublished exact targets remain preserved for fresh recovery rather than being replaced by private restreams, loops, DRM, geo-bypass paths, or inexact identities.",
       "Forced run 30193222059 passed canonical/alias parity, every published Algerian channel 3/3 locally and 3/3 through the cache-busted public Apple-TV path, then gave Almagharibia nine additional 1280x720 H.264/AAC moving-media passes plus 45 seconds of sustained cloud playback.",
       "El Watania's exact broadcaster-embedded first-party HLS failed three fresh Mac-side attempts and all three outside-cloud attempts in run 30193222059 with no media response. It remains a preserved recovery target but stays outside the Apple TV playlist.",
       "Samira's main official site and samira.plus both returned HTTP 200. The recovered Samira+ surface is an official static App Store/Google Play landing page with no web HLS, DASH, or public live API; the exact official YouTube identity was not live.",

@@ -8,9 +8,9 @@
     "last_manual_audit": "2026-07-25"
   },
   "latest_audit": {
-    "checked_at": "2026-07-26T07:49:19Z",
-    "source_rotation": "ParaTV commit fa3bbae25ce8; schumijo commit 2c8761559618; current iptv-org commit a00f8a7550 and Free-TV commit a3ab401e; exact official France Télévisions and M6+ pages/manifests; full Canal+ and en-clair service surfaces; official CStar Dailymotion; and current authorized FAST/operator discovery surfaces",
-    "published_regression": "GitHub Actions run 30192770257 refreshed CNEWS and passed all 12 channels 3/3 in the local-cloud gate. Its first cache-busted public Apple-TV-path gate caught one temporary CNEWS 480p rendition while the other two attempts were 1080p; the mandated complete retry then passed all 12 channels 3/3 at their quality thresholds, with canonical/alias parity. IPTVX force-reloaded all 12 identities and sustained visibly changing current TFX video in preview and full-player modes.",
+    "checked_at": "2026-07-26T08:28:00Z",
+    "source_rotation": "ParaTV commit 90e36e904897; schumijo commit 2c8761559618; current iptv-org commit a00f8a7550 and Free-TV commit a3ab401e; exact official France Télévisions and M6+ pages/manifests; full Canal+ and en-clair service surfaces; official CStar Dailymotion; and current authorized FAST/operator discovery surfaces",
+    "published_regression": "GitHub Actions run 30194061908 refreshed the signed cloud URLs and passed the complete 12-entry canonical/alias regression with all 36 local-cloud and all 36 cache-busted public Apple-TV-path moving-media attempts on their first complete gates. IPTVX force-reloaded all 12 identities and sustained visibly changing current TFX video in preview and full-player modes.",
     "unpublished_exact_channels": [
       "France 2",
       "France 3",
@@ -22,6 +22,14 @@
       "CStar"
     ],
     "evidence": [
+      "Run 30194061908 passed 12-entry canonical/alias parity, all 36 local-cloud moving-media attempts, publication visibility for both cloud copies, and all 36 cache-busted public Apple-TV-path attempts on the first complete gates.",
+      "An earlier scheduled run, 30192849546, also passed all 36 local attempts but checked out an older queued commit and correctly failed before publication when its signed-URL refresh conflicted with a newer refresh commit. It did not alter either public playlist; the immediate current-head run 30194061908 published and verified cleanly.",
+      "ParaTV advanced to 90e36e904897 with fresh CNEWS, CNEWS Prime, CStar, and L'Équipe resolver maintenance; schumijo remained at 2c8761559618, while iptv-org and Free-TV remained at a00f8a7550 and a3ab401e. CStar was the only unpublished exact target touched by the new maintained commit.",
+      "The rotated exact CStar wrapper decoded H.264/AAC moving media on all three strict attempts, but only at 848x480. Official Dailymotion metadata still returned the owner's DM007 territory restriction and no authorized qualities from the audit region, so the wrapper was rejected below the 540p floor and because republishing its territory token would bypass the owner's explicit restriction.",
+      "Fresh strict checks failed all three current ParaTV backup-wrapper attempts for each of France 2, France 3, and France 5 with no decodable video. Their official pages remained online but supplied no portable non-DRM alternative.",
+      "M6, W9, and 6ter official live pages remained online inside M6+; no account-independent portable non-DRM source appeared, and W9's former clear official 6cloud path returned HTTP 403 on all three fresh attempts. Full Canal+ remained paid/account-bound rather than an exact open linear feed.",
+      "Both cache-busted public French copies remained identical at 12 entries. IPTVX force-reloaded the source, displayed all 12 exact identities, and TFX showed visibly different current branded frames in preview and sustained full-player modes.",
+      "No newly viable exact legal non-DRM source qualified for France 2, France 3, M6, France 5, W9, 6ter, full Canal+, or CStar. No published French channel was lost.",
       "Run 30192770257 passed 12-entry canonical/alias parity and all 36 local-cloud moving-media attempts. It refreshed CNEWS to a current official Dailymotion signed URL and published that identical update to both public playlist copies.",
       "The first public gate passed 35 of 36 attempts: CNEWS decoded at 1920x1080 twice but temporarily selected a 480p rendition once, below its 720p floor. The required full retry passed CNEWS 3/3 at 1920x1080 and every other channel 3/3, so no persistent failure or quarantine was warranted.",
       "ParaTV advanced to fa3bbae25ce8, but its only changes were L'Équipe playlist maintenance. Schumijo advanced to 2c8761559618 with only L'Équipe, JDG, Tennis Channel, and Eurosport maintenance; iptv-org and Free-TV remained at a00f8a7550 and a3ab401e. No missing exact target gained a new maintained source.",
