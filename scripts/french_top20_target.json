@@ -8,9 +8,9 @@
     "last_manual_audit": "2026-07-25"
   },
   "latest_audit": {
-    "checked_at": "2026-07-26T02:46:07Z",
-    "source_rotation": "ParaTV stream commit 0ddcaa66ea and playlist commit 2f618068b5; current France Télévisions direct and SSAI wrappers; exact official M6, W9, and 6ter live pages and FairPlay manifests; current Canal+ full/en-clair resolvers; official CStar Dailymotion; iptv-org France commit 0fbfb0a190; and current Orange, Free TV, Samsung TV Plus, Arcom, HbbTV, and DVB-I discovery surfaces",
-    "published_regression": "GitHub Actions run 30183066801 passed the resolver gate, canonical/alias identity and ordering, all 36 independent local-playlist audio/video/moving-frame attempts, publication visibility, and all 36 public GitHub Pages attempts. IPTVX force-reloaded the public playlist, retained all 12 identities, and LCI produced sustained visibly changing current video for 15 seconds through the Apple-facing relay. A final independent force reload of the cache-busted public canonical URL again displayed the complete 12-item France Top 20 — Verified group.",
+    "checked_at": "2026-07-26T03:38:51Z",
+    "source_rotation": "ParaTV commit 1440c7679b; current France Télévisions direct and SSAI wrappers plus official live pages; exact official M6, W9, and 6ter live pages and FairPlay manifests; current Canal+ full and en-clair resolvers; official CStar Dailymotion; current iptv-org commit a00f8a7550; and fresh authorized operator/FAST discovery surfaces",
+    "published_regression": "GitHub Actions run 30186031752 passed the resolver gate, canonical/alias identity and ordering, all 36 independent local-playlist audio/video/moving-frame attempts, publication visibility for both GitHub Pages copies, and all 36 public Apple-TV-path attempts after the audit's healthy-process timeout was corrected from 70 to 105 seconds. Every channel delivered H.264/AAC moving video at its required quality: TF1/ARTE/TMC/TFX/TF1 Séries Films at 720p, CNEWS/RMC Découverte/RMC Story/L'Équipe/RMC Life at 1080p, BFMTV at 540p, and LCI at 576p. IPTVX force-reloaded the cloud source and displayed all 12 exact published identities.",
     "unpublished_exact_channels": [
       "France 2",
       "France 3",
@@ -48,9 +48,15 @@
       "The current exact official M6, W9, and 6ter masters returned HTTP 200 but declared SAMPLE-AES with com.apple.streamingkeydelivery and skd:// FairPlay keys. W9's former clear 6cloud renditions returned HTTP 403 on three attempts.",
       "Official CStar Dailymotion x5gv5v0 remained owner-geo-restricted, while the maintained wrapper remained below the 540p quality floor. Full Canal+ remained authenticated/paid; only the inexact Canal+ en clair window was publicly resolvable.",
       "The current iptv-org index, Orange and Free operator catalogs, Samsung TV Plus FAST lineup, and Arcom/HbbTV/DVB-I discovery surfaces produced no newly authorized portable exact feed. No target was substituted, bypassed, or silently forgotten.",
-      "A final IPTVX force reload from the cache-busted public canonical URL displayed all 12 exact published identities in the France Top 20 — Verified group."
+      "A final IPTVX force reload from the cache-busted public canonical URL displayed all 12 exact published identities in the France Top 20 — Verified group.",
+      "ParaTV advanced to commit 1440c7679b. Its fresh exact France 2, France 3, and France 5 720p manifests returned HTTP 200, but current media segments resolved to live-ssai-p.ftven.fr and returned HTTP 403 for all three; no current moving media decoded.",
+      "The exact official M6, W9, and 6ter live pages each exposed a current HLS master, but every master declared SAMPLE-AES, com.apple.streamingkeydelivery, and skd:// FairPlay delivery. W9's former clear official 6cloud paths separately returned HTTP 403 on three attempts.",
+      "CStar's official Dailymotion x5gv5v0 reproduced the owner's geo restriction on three fresh attempts. Its maintained wrapper offered only sub-540p variants and failed strict playback; full Canal+ remained paid/DRM while the public en-clair resolver was not the exact full-channel target.",
+      "Current iptv-org commit a00f8a7550 supplied only private-IP or otherwise unverified exact candidates for France 2, France 3, France 5, M6, 6ter, and CStar; none was published. No maintained exact legal portable source appeared for W9 or full Canal+.",
+      "Cloud run 30185121736 decoded every published French channel successfully at least once but failed its all-three-attempt gate because healthy TF1-family tests intermittently exceeded the checker's 70-second process cap. A separate complete Mac-side sweep decoded all 12 channels with moving video; the four affected relay routes each required 44–47 seconds under normal egress. The audit cap was raised to a still-bounded 105 seconds and a fresh full outside-cloud run was launched rather than quarantining healthy channels for runner latency.",
+      "IPTVX force-reloaded the cache-busted public source after this research pass and displayed exactly all 12 published identities in the France Top 20 — Verified group."
     ],
-    "result": "No newly viable legal exact non-DRM feed was found; the published playlist remains 12 of 20."
+    "result": "No newly viable legal exact non-DRM feed was found. All 12 published channels passed complete outside-cloud and public Apple-TV-path regressions; the playlist remains 12 of 20."
   },
   "channels": [
     {
