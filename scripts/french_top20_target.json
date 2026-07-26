@@ -8,9 +8,9 @@
     "last_manual_audit": "2026-07-25"
   },
   "latest_audit": {
-    "checked_at": "2026-07-26T07:20:00Z",
-    "source_rotation": "ParaTV commit 4dee794fcac5 with freshly rotated stream wrappers; schumijo commit 290f12f9db18; current iptv-org commit a00f8a7550 and Free-TV commit a3ab401e; exact official France Télévisions and M6+ pages/manifests; full Canal+ and en-clair service surfaces; official CStar Dailymotion; and fresh authorized FAST/operator discovery surfaces",
-    "published_regression": "After run 30191183644 exposed intermittent relay 5xx under concurrent audit load, production relay version 33 added bounded upstream retries and shared edge caching for the TF1 family. A 20-request production burst passed 20/20, and GitHub Actions run 30192058571 then passed all 12 channels 3/3 in both the local-cloud and cache-busted public Apple-TV-path gates, with canonical/alias parity. IPTVX force-reloaded all 12 identities and sustained visibly changing current TFX video in preview and full-player modes.",
+    "checked_at": "2026-07-26T07:49:19Z",
+    "source_rotation": "ParaTV commit fa3bbae25ce8; schumijo commit 2c8761559618; current iptv-org commit a00f8a7550 and Free-TV commit a3ab401e; exact official France Télévisions and M6+ pages/manifests; full Canal+ and en-clair service surfaces; official CStar Dailymotion; and current authorized FAST/operator discovery surfaces",
+    "published_regression": "GitHub Actions run 30192770257 refreshed CNEWS and passed all 12 channels 3/3 in the local-cloud gate. Its first cache-busted public Apple-TV-path gate caught one temporary CNEWS 480p rendition while the other two attempts were 1080p; the mandated complete retry then passed all 12 channels 3/3 at their quality thresholds, with canonical/alias parity. IPTVX force-reloaded all 12 identities and sustained visibly changing current TFX video in preview and full-player modes.",
     "unpublished_exact_channels": [
       "France 2",
       "France 3",
@@ -22,6 +22,14 @@
       "CStar"
     ],
     "evidence": [
+      "Run 30192770257 passed 12-entry canonical/alias parity and all 36 local-cloud moving-media attempts. It refreshed CNEWS to a current official Dailymotion signed URL and published that identical update to both public playlist copies.",
+      "The first public gate passed 35 of 36 attempts: CNEWS decoded at 1920x1080 twice but temporarily selected a 480p rendition once, below its 720p floor. The required full retry passed CNEWS 3/3 at 1920x1080 and every other channel 3/3, so no persistent failure or quarantine was warranted.",
+      "ParaTV advanced to fa3bbae25ce8, but its only changes were L'Équipe playlist maintenance. Schumijo advanced to 2c8761559618 with only L'Équipe, JDG, Tennis Channel, and Eurosport maintenance; iptv-org and Free-TV remained at a00f8a7550 and a3ab401e. No missing exact target gained a new maintained source.",
+      "Fresh strict checks again failed all three current ParaTV backup-wrapper attempts for each of France 2, France 3, and France 5 with no decodable video. Their official pages remained online but supplied no portable non-DRM alternative.",
+      "The current ParaTV CStar wrapper decoded three times at only 848x480 while official Dailymotion metadata still returned owner-controlled DM007 geo restriction. It was rejected below the 540p floor and because publishing its territory token would bypass the owner's explicit restriction.",
+      "M6, W9, and 6ter official live pages remained online inside M6+; no account-independent portable non-DRM source appeared, and W9's former clear official 6cloud path returned HTTP 403 on all three fresh attempts. Full Canal+ remained paid/account-bound rather than an exact open linear feed.",
+      "Both cache-busted public French copies remained identical at 12 entries. IPTVX force-reloaded the source, displayed all 12 exact identities, and TFX showed visibly different current branded frames in preview and sustained full-player modes.",
+      "No newly viable exact legal non-DRM source qualified for France 2, France 3, M6, France 5, W9, 6ter, full Canal+, or CStar. No published French channel was lost.",
       "Run 30191183644 resolved every published channel successfully, but its first complete local gate saw transient relay 5xx on TFX and TF1 Séries Films; the second gate recovered TF1 Séries Films to 3/3 while TFX passed 2/3 and failed one top-level relay request. TFX immediately passed three independent 1280x720 H.264/AAC moving-media attempts outside that concurrent runner, proving the feed itself was live.",
       "Production relay version 33 now retries the official maintained TF1-family resolver and master fetches three times with hard timeouts, coalesces in-flight work, and shares validated masters through a short 90-second edge cache. The exact source allowlist and channel-identity checks remain enforced.",
       "The deployed repair passed 20/20 simultaneous HTTP 200 requests across TF1, TMC, TFX, TF1 Séries Films, and ARTE. TFX then rendered clearly changing current branded frames in IPTVX preview and sustained full-player modes.",
@@ -88,7 +96,7 @@
       "Run 30188075328 completed successfully with 12 identical canonical/alias entries, all 36 local and all 36 public moving-media attempts passing, and both public GitHub Pages copies current. The cache-busted public canonical and alias remained byte-identical after the workflow.",
       "IPTVX reopened the public French source, displayed all 12 exact identities in the France Top 20 — Verified group, and rendered visibly different current TF1 frames 12 seconds apart in both preview and full-player modes."
     ],
-    "result": "The TF1-family relay was hardened after a concurrent-audit 5xx regression, and all 12 published channels now pass the complete outside-cloud, public Apple-TV-path, and forced IPTVX playback regressions. No new exact legal feed qualified, so the playlist remains 12 of 20."
+    "result": "All 12 published French channels pass the complete outside-cloud, cache-busted public Apple-TV-path, and forced IPTVX playback regressions. A transient CNEWS quality downgrade cleared on the mandatory full retry; no new exact legal feed qualified, so the playlist remains 12 of 20."
   },
   "channels": [
     {
