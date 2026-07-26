@@ -161,10 +161,17 @@ jobs:
         run: |
           candidate="https://livesstream.work.gd:5443/WebRTCApp/streams/stream.m3u8"
           echo "El Watania outside-cloud three-attempt recovery gate"
+          failures=0
           for attempt in 1 2 3; do
-            timeout 105 scripts/test_stream.sh \
-              "${candidate}?cloud_probe=$(date -u +%s%N)-${attempt}"
+            if ! timeout 105 scripts/test_stream.sh \
+              "${candidate}?cloud_probe=$(date -u +%s%N)-${attempt}"; then
+              failures=$((failures + 1))
+            fi
           done
+          if [ "$failures" -ne 0 ]; then
+            echo "El Watania failed $failures/3 outside-cloud attempts."
+            exit 1
+          fi
           echo "El Watania sustained 45-second outside-cloud decode"
           timeout 90 ffmpeg -hide_banner -loglevel error \
             -rw_timeout 10000000 \
