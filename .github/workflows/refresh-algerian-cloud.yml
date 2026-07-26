@@ -134,6 +134,27 @@ jobs:
           done
           exit 1
 
+      - name: Probe quarantined Almagharibia recovery
+        if: ${{ inputs.force_refresh == true && steps.public_check.outcome == 'success' }}
+        continue-on-error: true
+        run: |
+          candidate="https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/youtube/almagharibia"
+          for gate in 1 2 3; do
+            echo "Almagharibia outside-cloud recovery gate $gate/3"
+            for attempt in 1 2 3; do
+              scripts/test_stream.sh \
+                "${candidate}?cloud_probe=$(date -u +%s%N)-${gate}-${attempt}"
+            done
+          done
+          echo "Almagharibia sustained 45-second cloud decode"
+          timeout 90 ffmpeg -hide_banner -loglevel error \
+            -rw_timeout 10000000 \
+            -t 45 \
+            -i "${candidate}?cloud_probe=$(date -u +%s%N)-sustained" \
+            -map 0:v:0 -map 0:a:0 \
+            -f null -
+          echo "Almagharibia passed all three outside-cloud recovery gates."
+
       - name: Enforce complete published-playlist health
         if: always()
         env:
