@@ -155,6 +155,25 @@ jobs:
             -f null -
           echo "Almagharibia passed all three outside-cloud stress gates."
 
+      - name: Probe unpublished El Watania recovery candidate
+        if: ${{ inputs.force_refresh == true && steps.public_check.outcome == 'success' }}
+        continue-on-error: true
+        run: |
+          candidate="https://livesstream.work.gd:5443/WebRTCApp/streams/stream.m3u8"
+          echo "El Watania outside-cloud three-attempt recovery gate"
+          for attempt in 1 2 3; do
+            scripts/test_stream.sh \
+              "${candidate}?cloud_probe=$(date -u +%s%N)-${attempt}"
+          done
+          echo "El Watania sustained 45-second outside-cloud decode"
+          timeout 90 ffmpeg -hide_banner -loglevel error \
+            -rw_timeout 10000000 \
+            -t 45 \
+            -i "${candidate}?cloud_probe=$(date -u +%s%N)-sustained" \
+            -map 0:v:0 -map 0:a:0 \
+            -f null -
+          echo "El Watania passed its outside-cloud recovery gate."
+
       - name: Enforce complete published-playlist health
         if: always()
         env:
