@@ -19,7 +19,7 @@ CHANNELS = {
     "TV3": f"{RELAY_ROOT}/api/free/tv3",
     "TV4": f"{RELAY_ROOT}/api/free/tv4",
     "TV5": f"{RELAY_ROOT}/api/free/tv5",
-    "TV6": f"{RELAY_ROOT}/api/free/tv6",
+    "TV8": f"{RELAY_ROOT}/api/free/tv8",
     "TV7": f"{RELAY_ROOT}/api/free/tv7",
     "Ennahar TV": f"{RELAY_ROOT}/api/free/ennahar",
     "El Heddaf TV": f"{RELAY_ROOT}/api/free/elheddaf",

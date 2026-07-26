@@ -8,9 +8,9 @@
     "last_manual_audit": "2026-07-25"
   },
   "latest_audit": {
-    "checked_at": "2026-07-25T23:14:38Z",
-    "source_rotation": "Samira TV's restored official website, current Samira+ Google Play listing, app API and official CDN/DNS paths; EPTV's official TV6/TV8/TV9 handles; Echorouk's official pages, players, and live handles; El Hayat and El Watania official handles; El Watania's first-party Ant Media HLS; the current iptv-org index; and maintained public resolvers",
-    "published_regression": "GitHub Actions run 30179072274 passed dynamic-feed refresh, canonical/alias identity and ordering, all 36 independent local-playlist audio/video/moving-frame attempts, publication visibility, and all 36 public Apple-TV-path attempts. IPTVX was force-reloaded from the public cloud URL, displayed all 12 verified identities, and Almagharibia produced visibly different current frames 12 seconds apart. TV6 remains quarantined rather than forgotten.",
+    "checked_at": "2026-07-26T00:23:08Z",
+    "source_rotation": "EPTV's current official TV6/TV8/TV9 pages and exact YouTube handles; Samira TV's restored official site and verified YouTube identity; Echorouk TV and News official pages, players, and exact YouTube identities; El Hayat and El Watania exact official handles; the current public relay inventory with frame-level identity inspection; first-party HLS, maintained public resolvers, and current public indexes",
+    "published_regression": "Baseline GitHub Actions run 30181080819 passed the complete 12-channel cloud regression immediately before expansion. The corrected 13-channel candidate playlist then passed canonical/alias parity and all 39 local public-endpoint audio/video/moving-frame attempts. TV8's dedicated production endpoint passed an additional three strict 1080p gates after relay deployment; the new public GitHub Pages gate is recorded by the subsequent publication workflow.",
     "unpublished_exact_channels": [
       "Samira TV",
       "Echorouk TV",
@@ -18,7 +18,6 @@
       "El Watania TV",
       "Echorouk News",
       "TV6 Algérie",
-      "TV8 Adhakira",
       "TV9 El Barlamaniya"
     ],
     "evidence": [
@@ -48,9 +47,13 @@
       "EPTV's exact official TV6, TV8, and TV9 YouTube handles, El Hayat's official handle, Echorouk News, and El Watania were each checked again and none had an active exact live broadcast. The current iptv-org index exposed no legal exact candidate for any of the eight unpublished targets.",
       "Echorouk TV and Echorouk News official player endpoints each returned HTTP 403 on three fresh attempts. No private restream, stolen token, or geo-bypass path was used.",
       "El Watania's exact first-party 1080p H.264/AAC HLS transiently passed three quick probes, but every strict moving-media test returned no_response; three manifest GETs needed 10.6–11.2 seconds for only 262 bytes, and 15 seconds of requested decoding did not complete after two minutes. It remains unpublished because Apple TV would stall.",
-      "The complete public cloud regression found no failing published Algerian item. IPTVX showed all 12 expected identities after a forced cloud reload, and Almagharibia sustained visibly changing current video."
+      "The complete public cloud regression found no failing published Algerian item. IPTVX showed all 12 expected identities after a forced cloud reload, and Almagharibia sustained visibly changing current video.",
+      "Fresh checks of the exact official TV6, TV8, TV9, Echorouk TV, Echorouk News, El Hayat, Samira TV, and El Watania YouTube identities found none currently live. Samira's official site, EPTV pages, Echorouk's official live page, and El Watania's site exposed no new portable public manifest.",
+      "The source formerly labelled TV6 resumed decoding at 1920x1080 H.264/AAC and passed three strict moving-media attempts, but two separated current frames visibly carried EPTV's El Dhakira watermark and exact TV8 programming. It was rejected as TV6, the false route was removed, and the source was reassigned only after exact TV8 identity verification.",
+      "The new correctly named TV8 production endpoint passed three additional strict six-gate tests, five current-segment fetches, a 45-second content decode, and two visibly different current frames. The complete 13-channel local gate then passed 39 of 39 public-endpoint audio/video/motion attempts with exact alias parity.",
+      "Echorouk TV, Echorouk News, and the signed TV6 recovery path each returned cloud 5xx on three fresh probes. France-independent public indexes and maintained resolvers produced no other exact legally portable Algerian candidate."
     ],
-    "result": "No newly viable exact channel qualified; TV6 was quarantined after repeat persistent failure, leaving 12 of the 20 durable targets published."
+    "result": "TV8 Adhakira newly qualified under its exact identity, expanding the verified lineup to 13 of 20; TV6 remains quarantined and preserved as a separate exact recovery target."
   },
   "channels": [
     {
@@ -217,20 +220,17 @@
     {
       "rank": 15,
       "name": "TV6 Algérie",
-      "playlist_order": 7,
       "playlist_name": "TV6 Algérie (Cloud Live)",
       "tvg_id": "TV6.dz",
       "official_url": "https://entv.dz/",
-      "status": "quarantined_persistent_failure",
-      "reason": "Two complete three-attempt gates reproduced timeout, TLS/no-response, malformed 0p video, and corrupt H.264/PPS failures at the public relay. The former official HTA endpoint no longer resolves. Keep searching official EPTV/HTA, satellite metadata, and authorized OTT sources.",
-      "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv6",
-      "min_height": 540,
+      "status": "quarantined_identity_mismatch",
+      "reason": "The former /api/free/tv6 recovery source resumed decoding, but current-frame inspection identified the on-screen EPTV El Dhakira watermark and exact TV8 programming rather than TV6. The false TV6 route was removed. Keep searching official EPTV/HTA, satellite metadata, and authorized OTT sources for the exact TV6 service.",
       "publish": false
     },
     {
       "rank": 16,
       "name": "TV7 El Maarifa",
-      "playlist_order": 8,
+      "playlist_order": 7,
       "playlist_name": "TV7 El Maarifa (Cloud Live)",
       "tvg_id": "TV7.dz",
       "official_url": "https://entv.dz/",
@@ -243,11 +243,15 @@
     {
       "rank": 17,
       "name": "TV8 Adhakira",
+      "playlist_order": 8,
+      "playlist_name": "TV8 Adhakira (Cloud 1080p)",
       "tvg_id": "TV8.dz",
       "official_url": "https://entv.dz/",
-      "status": "no_authorized_public_feed",
-      "reason": "The exact EPTV channel is a durable target, but no current public authorized non-DRM linear manifest passed the publication gate.",
-      "publish": false
+      "status": "verified_cloud",
+      "reason": "The recovered 1080p H.264/AAC feed passed three strict six-gate moving-media tests and a sustained 45-second content decode. Two separated current frames visibly carried EPTV's El Dhakira watermark and changing exact TV8 programming. It is published through a correctly named always-on cloud endpoint and remains subject to the recurring public three-pass gate.",
+      "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv8",
+      "min_height": 720,
+      "publish": true
     },
     {
       "rank": 18,
