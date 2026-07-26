@@ -155,12 +155,12 @@ jobs:
             -f null -
           echo "Almagharibia passed all three outside-cloud stress gates."
 
-      - name: Probe unpublished El Watania recovery candidate
+      - name: Stress-test El Watania sustained cloud path
         if: ${{ inputs.force_refresh == true && steps.public_check.outcome == 'success' }}
         continue-on-error: true
         run: |
           candidate="https://livesstream.work.gd:5443/WebRTCApp/streams/stream.m3u8"
-          echo "El Watania outside-cloud three-attempt recovery gate"
+          echo "El Watania outside-cloud three-attempt stress gate"
           failures=0
           for attempt in 1 2 3; do
             if ! timeout 105 scripts/test_stream.sh \
@@ -179,7 +179,7 @@ jobs:
             -i "${candidate}?cloud_probe=$(date -u +%s%N)-sustained" \
             -map 0:v:0 -map 0:a:0 \
             -f null -
-          echo "El Watania passed its outside-cloud recovery gate."
+          echo "El Watania passed its sustained outside-cloud stress gate."
 
       - name: Enforce complete published-playlist health
         if: always()

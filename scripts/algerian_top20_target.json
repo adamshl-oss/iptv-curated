@@ -8,9 +8,9 @@
     "last_manual_audit": "2026-07-25"
   },
   "latest_audit": {
-    "checked_at": "2026-07-26T05:04:00Z",
-    "source_rotation": "Samira TV's official site and Samira+ app surfaces; exact Echorouk TV, Echorouk News, and El Hayat official players and YouTube identities; El Watania's first-party Ant Media HLS; EPTV's exact TV6, TV8, and TV9 pages and YouTube identities; Almagharibia's current official app/YouTube live plus its Apple-facing relay; current iptv-org commit a00f8a7550; and fresh TDA/operator discovery surfaces",
-    "published_regression": "After Almagharibia was restored, GitHub Actions run 30188252633 passed 12-entry canonical/alias parity, all 36 local-cloud moving-media attempts, publication visibility for both GitHub Pages copies, all 36 public Apple-TV-path attempts, nine additional outside-cloud Almagharibia 720p H.264/AAC decodes, and a sustained 45-second cloud decode. IPTVX then force-reloaded the public playlist, displayed all 12 identities, and showed changing current Almagharibia video in both preview and full-player modes.",
+    "checked_at": "2026-07-26T05:53:00Z",
+    "source_rotation": "Samira TV's recovered official site and Samira+ app/API surfaces; exact Echorouk TV, Echorouk News, and El Hayat official players and YouTube identities; El Watania's first-party Ant Media HLS embedded by the broadcaster; EPTV's exact TV6, TV8, and TV9 pages and YouTube identities; Almagharibia's current official app/YouTube live plus its Apple-facing relay; current iptv-org commit a00f8a7550; and fresh TDA/operator discovery surfaces",
+    "published_regression": "GitHub Actions run 30189829220 passed the complete 12-entry canonical/alias regression with all 36 local and all 36 cache-busted public Apple-TV-path moving-media attempts, nine additional Almagharibia decodes, and its sustained cloud test. The same outside-cloud runner then passed El Watania's three strict 1080p H.264/AAC attempts and a sustained 45-second media decode after the Mac-side 3/3 plus 45-second gate and current-frame identity checks.",
     "unpublished_exact_channels": [
       "Samira TV",
       "Echorouk TV",
@@ -22,6 +22,9 @@
       "TV9 El Barlamaniya"
     ],
     "evidence": [
+      "El Watania's exact first-party HLS is embedded directly by elwataniatv.dz. It recovered to three fast manifest probes, three strict 1920x1080 H.264/AAC moving-media passes, a sustained 45-second Mac-side decode, and two visibly different current El Watania-branded frames whose Algeria-time clock advanced normally.",
+      "Outside-cloud run 30189829220 independently repeated all three strict El Watania playback attempts plus a sustained 45-second media decode. This cleared the prior intermittent-stall evidence and qualified the exact channel for a 13-item candidate lineup and Apple-player publication gate.",
+      "The immediate complete 13-item same-cycle gate then failed El Watania 0/3 with three no-response results while every existing channel passed 3/3. It was rolled back before publication; the exact source and recovery history remain preserved behind a permanent bounded outside-cloud probe.",
       "TDA's current official roster still confirms Samira TV, Echorouk TV, Echorouk News, El Hayat TV, and El Watania TV in the private HD/SD bouquet and TV6, TV8, and TV9 in the public bouquet; this preserves their high-priority target status but provides satellite parameters rather than IPTV delivery.",
       "Echorouk TV and Echorouk News official player endpoints returned HTTP 403 in this fresh pass. Their current Molotov operator pages confirm both exact channels are available only in a paid option, which cannot be converted into a portable IPTVX URL without credentials/DRM.",
       "Samira+'s official listing still advertises international 24/7 HD live viewing, but the official website returned HTTP 500 and exposed no portable public HLS. The app/account service remains a recovery path, not a publishable M3U source.",
@@ -86,7 +89,7 @@
       "Final post-publication run 30188252633 passed 12-entry canonical/alias parity, every channel 3/3 locally and 3/3 through the public Apple-TV path, then gave Almagharibia nine more outside-cloud 720p moving-media passes and a sustained 45-second decode.",
       "A cache-busted public fetch found both Algerian GitHub Pages copies byte-identical at 12 entries. IPTVX force-reloaded the cloud group, displayed all 12 exact identities including Almagharibia, and showed visibly different branded frames 12 seconds apart in both preview and full-player modes; the live on-screen clock matched current GMT."
     ],
-    "result": "All 12 published channels are healthy. Almagharibia is restored and passed complete local, public Apple-TV-path, outside-cloud stress, sustained decode, and IPTVX playback gates; the remaining eight exact recovery targets stay preserved."
+    "result": "All 12 published channels are healthy. El Watania recovered on isolated Mac and outside-cloud tests but failed the immediate complete-lineup gate 0/3, so it was safely withheld; all eight exact recovery targets remain preserved."
   },
   "channels": [
     {
@@ -211,8 +214,8 @@
       "name": "El Watania TV",
       "tvg_id": "ElWataniaTV.dz",
       "official_url": "https://elwataniatv.dz/",
-      "status": "official_hls_unstable",
-      "reason": "The official website now embeds an exact 1080p H.264/AAC live HLS feed, and a current frame matched the El Watania watermark and live Algeria-time clock. The source failed two complete three-attempt playback gates and required 88 seconds to deliver 30 seconds of media, so it remains unpublished until sustained Apple-compatible playback is real-time and reliable.",
+      "status": "official_hls_intermittent",
+      "reason": "The broadcaster's official website embeds this exact 1080p live endpoint. Isolated Mac and outside-cloud 3/3 plus 45-second gates passed with current branded moving frames, but the immediate complete 13-item same-cycle gate failed 0/3 with no response. It remains unpublished until both network paths pass consecutively in the same cycle.",
       "publish": false
     },
     {
