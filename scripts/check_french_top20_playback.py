@@ -28,6 +28,11 @@ TF1_RELAY_PREFIX = (
     "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/"
 )
 TF1_RELAY_GATE = threading.Semaphore(2)
+# A healthy live test performs two probes plus 11 seconds of decoded media and
+# normally needs about 45 seconds through the Apple-facing relay. GitHub egress
+# can add more than 25 seconds without the stream itself failing, so keep the
+# per-attempt cap above that observed healthy range while retaining a hard bound.
+PLAYBACK_TEST_TIMEOUT_SECONDS = 105
 
 
 def read(source: str) -> str:
@@ -76,7 +81,7 @@ def check(entry: tuple[str, str, int]) -> tuple[str, bool, str]:
                     [str(TEST), url],
                     capture_output=True,
                     text=True,
-                    timeout=70,
+                    timeout=PLAYBACK_TEST_TIMEOUT_SECONDS,
                     check=False,
                 )
             else:
@@ -85,7 +90,7 @@ def check(entry: tuple[str, str, int]) -> tuple[str, bool, str]:
                         [str(TEST), url],
                         capture_output=True,
                         text=True,
-                        timeout=70,
+                        timeout=PLAYBACK_TEST_TIMEOUT_SECONDS,
                         check=False,
                     )
         except subprocess.TimeoutExpired:
