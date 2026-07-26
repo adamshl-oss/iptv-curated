@@ -8,9 +8,9 @@
     "last_manual_audit": "2026-07-25"
   },
   "latest_audit": {
-    "checked_at": "2026-07-26T05:53:00Z",
-    "source_rotation": "ParaTV commit 8b50426bc35d; current France Télévisions direct and SSAI wrappers; exact official M6, W9, and 6ter M6+ manifests plus former clear W9 path; full Canal+ and en-clair resolvers; official CStar Dailymotion; current iptv-org commit a00f8a7550; current schumijo commit f4f3a2ed3a33; Free-TV commit a3ab401e; and fresh authorized FAST/operator discovery surfaces",
-    "published_regression": "GitHub Actions run 30189081758 passed the resolver gate, canonical/alias identity and ordering, all 36 independent local-playlist audio/video/moving-frame attempts, publication visibility for both GitHub Pages copies, and all 36 cache-busted public Apple-TV-path attempts. IPTVX then force-reloaded the public source, displayed exactly all 12 identities, and sustained current TF1 TFOU programming in preview and full-player modes.",
+    "checked_at": "2026-07-26T06:27:00Z",
+    "source_rotation": "ParaTV commit 1c2670aefc8b with freshly regenerated France Télévisions direct/backup wrappers; exact official M6, W9, and 6ter M6+ manifests plus both former clear W9 paths; full Canal+ and en-clair resolvers; official CStar Dailymotion plus schumijo's freshly rotated signed resolver at commit 70d90625aa9f; current iptv-org commit a00f8a7550; Free-TV commit a3ab401e; and fresh authorized FAST/operator discovery surfaces",
+    "published_regression": "GitHub Actions run 30190347097 passed the resolver gate and refreshed the dynamic cloud URLs, then passed 12-entry canonical/alias identity and ordering, a complete 36-attempt local moving-media gate, publication visibility for both GitHub Pages copies, and all 36 cache-busted public Apple-TV-path attempts. IPTVX force-reloaded the public source, displayed exactly all 12 identities, and sustained visibly changing current TF1 TFOU programming in both preview and full-player modes.",
     "unpublished_exact_channels": [
       "France 2",
       "France 3",
@@ -22,6 +22,12 @@
       "CStar"
     ],
     "evidence": [
+      "ParaTV advanced to commit 1c2670aefc8b and regenerated the exact France 2, France 3, and France 5 backup wrappers. Each exposed a current signed 1280x720 France Télévisions master, but all three strict moving-media attempts failed for every channel because the selected live child returned HTTP 403 and no video codec could be decoded.",
+      "The current exact M6, W9, and 6ter M6+ masters were fetched three times each and still declare SAMPLE-AES FairPlay with com.apple.streamingkeydelivery and skd:// keys. Both former clear W9 6cloud paths returned HTTP 403 on all three attempts.",
+      "Schumijo advanced to commit 70d90625aa9f and rotated its signed exact CStar Dailymotion resolver. The new URL returned HTTP 403 on all three strict attempts, matching Dailymotion's current owner-controlled geo restriction. ParaTV's CStar wrapper remains sub-540p and territory-token dependent, so neither was published.",
+      "Full Canal+ remains authenticated/paid; the only currently moving public resolver is Canal+ en clair rather than the exact full linear target. No DRM, geo-bypass, private-IP restream, or inexact substitute was accepted for any of the eight unpublished channels.",
+      "Run 30190347097 refreshed the cloud playlist and passed all 12 channels 3/3 in a complete local rerun plus all 12 channels 3/3 through the cache-busted public Apple-TV path. LCI had one isolated empty-output attempt in the first local gate, then passed the full 3/3 rerun and the public 3/3 gate; it was correctly retained because the failure did not persist.",
+      "Both public French GitHub Pages copies were byte-identical at 12 entries after publication. IPTVX force-reloaded the source, displayed all 12 exact identities, and TF1 showed visibly different current TFOU frames 12 seconds apart in both preview and full-player modes.",
       "ParaTV advanced to commit 8b50426bc35d, but its only changes were L'Équipe playlist and backup-wrapper maintenance; iptv-org remained at a00f8a7550, while schumijo advanced to f4f3a2ed3a33 with only L'Équipe, JDG, and Eurosport changes. No missing exact target gained a new maintained source.",
       "Fresh exact France 2, France 3, and France 5 720p SSAI manifests each returned HTTP 200, but their first current live segment returned HTTP 403 on all three attempts. Their official pages exposed no portable non-DRM alternative.",
       "M6+, W9, and 6ter each exposed a current exact official HTTP 200 master, but all three declared SAMPLE-AES FairPlay with com.apple.streamingkeydelivery and skd:// keys. W9's former clear official 6cloud path separately returned HTTP 403 on three attempts.",
@@ -75,7 +81,7 @@
       "Run 30188075328 completed successfully with 12 identical canonical/alias entries, all 36 local and all 36 public moving-media attempts passing, and both public GitHub Pages copies current. The cache-busted public canonical and alias remained byte-identical after the workflow.",
       "IPTVX reopened the public French source, displayed all 12 exact identities in the France Top 20 — Verified group, and rendered visibly different current TF1 frames 12 seconds apart in both preview and full-player modes."
     ],
-    "result": "No newly viable legal exact non-DRM feed was found. All 12 published channels passed complete outside-cloud, public Apple-TV-path, and forced IPTVX playback regressions; the playlist remains 12 of 20."
+    "result": "No newly viable legal exact non-DRM feed was found. All 12 published channels passed the complete outside-cloud, public Apple-TV-path, and forced IPTVX playback regressions; the playlist remains 12 of 20."
   },
   "channels": [
     {
