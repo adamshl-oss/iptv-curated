@@ -8,9 +8,9 @@
     "last_manual_audit": "2026-07-25"
   },
   "latest_audit": {
-    "checked_at": "2026-07-26T08:28:00Z",
-    "source_rotation": "ParaTV commit 90e36e904897; schumijo commit 2c8761559618; current iptv-org commit a00f8a7550 and Free-TV commit a3ab401e; exact official France Télévisions and M6+ pages/manifests; full Canal+ and en-clair service surfaces; official CStar Dailymotion; and current authorized FAST/operator discovery surfaces",
-    "published_regression": "GitHub Actions run 30194061908 refreshed the signed cloud URLs and passed the complete 12-entry canonical/alias regression with all 36 local-cloud and all 36 cache-busted public Apple-TV-path moving-media attempts on their first complete gates. IPTVX force-reloaded all 12 identities and sustained visibly changing current TFX video in preview and full-player modes.",
+    "checked_at": "2026-07-26T09:02:28Z",
+    "source_rotation": "ParaTV commit b9512d0b5226; schumijo commit 9d268dcdc6a9; current iptv-org commit a00f8a7550 and Free-TV commit a3ab401e; exact official France Télévisions and M6+ pages/manifests; current full Canal+ live and en-clair service surfaces; official CStar Dailymotion; and current authorized FAST/operator discovery surfaces",
+    "published_regression": "GitHub Actions run 30194765878 refreshed the signed cloud URLs and passed the complete 12-entry canonical/alias regression with all 36 local-cloud and all 36 cache-busted public Apple-TV-path moving-media attempts on their first complete gates. IPTVX force-reloaded all 12 identities and sustained visibly changing current CNEWS video in preview and full-player modes.",
     "unpublished_exact_channels": [
       "France 2",
       "France 3",
@@ -22,6 +22,12 @@
       "CStar"
     ],
     "evidence": [
+      "Run 30194765878 passed 12-entry canonical/alias parity, all 36 local-cloud moving-media attempts, publication visibility for both cloud copies, and all 36 cache-busted public Apple-TV-path attempts on the first complete gates. Every entry delivered H.264/AAC at or above its required resolution.",
+      "ParaTV advanced to b9512d0b5226 and regenerated exact France 2, France 3, France 5, and CStar wrappers. The three direct France Télévisions wrappers failed 0/3 with no video codec, while all three SSAI variants timed out 0/3 under the bounded 70-second gate; schumijo advanced to 9d268dcdc6a9 with only L'Équipe, JDG, and tennis maintenance.",
+      "The newly rotated exact CStar wrapper decoded H.264/AAC moving media 3/3 but only at 848x480. Official Dailymotion x5gv5v0 returned current DM007 owner geo-restriction metadata and no authorized qualities 3/3, so the candidate was rejected below the 540p floor and without republishing a territory token.",
+      "France 2, France 3, France 5, M6, W9, 6ter, and CStar official pages remained online. The former Canal+ exact-channel URL now returns HTTP 404; the current /live/ surface is online but the full linear channel remains entitlement-bound, while only its clear windows are public.",
+      "Both cache-busted public French copies remained identical at 12 entries. IPTVX force-reloaded the source, displayed all 12 exact identities, and CNEWS showed visibly different live frames in both preview and sustained full-player modes.",
+      "No newly viable exact legal non-DRM source qualified for France 2, France 3, M6, France 5, W9, 6ter, full Canal+, or CStar. No published French channel was lost or quarantined.",
       "Run 30194061908 passed 12-entry canonical/alias parity, all 36 local-cloud moving-media attempts, publication visibility for both cloud copies, and all 36 cache-busted public Apple-TV-path attempts on the first complete gates.",
       "An earlier scheduled run, 30192849546, also passed all 36 local attempts but checked out an older queued commit and correctly failed before publication when its signed-URL refresh conflicted with a newer refresh commit. It did not alter either public playlist; the immediate current-head run 30194061908 published and verified cleanly.",
       "ParaTV advanced to 90e36e904897 with fresh CNEWS, CNEWS Prime, CStar, and L'Équipe resolver maintenance; schumijo remained at 2c8761559618, while iptv-org and Free-TV remained at a00f8a7550 and a3ab401e. CStar was the only unpublished exact target touched by the new maintained commit.",
@@ -104,7 +110,7 @@
       "Run 30188075328 completed successfully with 12 identical canonical/alias entries, all 36 local and all 36 public moving-media attempts passing, and both public GitHub Pages copies current. The cache-busted public canonical and alias remained byte-identical after the workflow.",
       "IPTVX reopened the public French source, displayed all 12 exact identities in the France Top 20 — Verified group, and rendered visibly different current TF1 frames 12 seconds apart in both preview and full-player modes."
     ],
-    "result": "All 12 published French channels pass the complete outside-cloud, cache-busted public Apple-TV-path, and forced IPTVX playback regressions. A transient CNEWS quality downgrade cleared on the mandatory full retry; no new exact legal feed qualified, so the playlist remains 12 of 20."
+    "result": "All 12 published French channels pass the complete outside-cloud, cache-busted public Apple-TV-path, and forced IPTVX playback regressions. Newly rotated France Télévisions wrappers still failed, CStar remained sub-540p and owner-restricted, and no new exact legal feed qualified, so the playlist remains 12 of 20."
   },
   "channels": [
     {
@@ -294,7 +300,7 @@
       "rank": 18,
       "name": "Canal+",
       "tvg_id": "CanalPlus.fr",
-      "official_url": "https://www.canalplus.com/chaines/canal-plus",
+      "official_url": "https://www.canalplus.com/live/",
       "status": "paid_drm",
       "reason": "The full linear channel requires a paid CANAL+ entitlement and DRM. Free TV exposes only a CANAL+ fallback service (1024), not an entitlement-free full linear feed; its HLS is SAMPLE-AES/FairPlay and its DASH is Widevine-protected. Molotov's catalog entry likewise does not expose an entitlement-free full linear source and its channel API requires authentication. netplus and current French operator catalogs explicitly separate CANAL+ free-view windows from the paid full CANAL+ service, while POST Luxembourg and Zattoo's current lineups do not provide the full channel. ParaTV's full-channel resolver currently serves only an unavailable placeholder; its working official-CDN resolver is explicitly CANAL+ en clair and therefore not the full linear service. Samsung TV Plus's current French FAST catalog contains no exact CANAL+. No legitimate direct IPTVX-compatible M3U source exists.",
       "publish": false
