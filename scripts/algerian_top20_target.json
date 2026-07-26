@@ -8,9 +8,9 @@
     "last_manual_audit": "2026-07-25"
   },
   "latest_audit": {
-    "checked_at": "2026-07-26T04:12:09Z",
+    "checked_at": "2026-07-26T04:18:04Z",
     "source_rotation": "Samira TV's official site and Samira+ app surfaces; Echorouk TV, Echorouk News, and El Hayat exact official players and YouTube identities; El Watania's first-party Ant Media HLS; EPTV's exact TV6, TV8, and TV9 pages and YouTube identities; Almagharibia's current official YouTube live and Apple-facing relay; current iptv-org commit a00f8a7550; and fresh TDA/operator discovery surfaces",
-    "published_regression": "GitHub Actions run 30186605707 passed canonical/alias identity and ordering plus all 33 local moving-media attempts for the 11 published channels. Its first public gate found a transient El Heddaf failure, then the required complete retry passed all 33 public Apple-TV-path attempts. The same run gave quarantined Almagharibia a second independent recovery success: nine 720p H.264/AAC moving-media passes plus a sustained 45-second cloud decode. A 12-item draft was not published because immediate same-network qualification then passed Almagharibia only 2/3 and an isolated retry failed 0/3. The public canonical and alias therefore remain at the last-known-good 11 entries.",
+    "published_regression": "GitHub Actions run 30186605707 passed canonical/alias identity and ordering plus all 33 local moving-media attempts for the 11 published channels; after one transient El Heddaf public failure, its required complete retry passed all 33 public attempts. The same run gave quarantined Almagharibia a second independent nine-pass plus 45-second cloud recovery success, but immediate same-network qualification failed and prevented publication. After bounding shared-relay checker concurrency, final run 30187446975 passed all 33 local-cloud and all 33 public Apple-TV-path attempts on their first complete gates with exact canonical/alias parity. The public lineup remains the last-known-good 11 entries.",
     "unpublished_exact_channels": [
       "Samira TV",
       "Echorouk TV",
@@ -75,7 +75,8 @@
       "El Watania's exact first-party HLS improved enough to return its current index in under one second on three probes and passed one strict 1080p moving-media attempt. It failed the next two attempts with no video/no response, and the sustained decode failed on TLS/first-segment loading, so it remains unpublished.",
       "EPTV's exact TV6, TV8, and TV9 pages returned HTTP 200 and preserved their official identities, but none of the exact official live channels was broadcasting. Current iptv-org commit a00f8a7550 again supplied no authorized exact Algerian recovery candidate.",
       "Almagharibia's exact official YouTube broadcast remained live. Cloud run 30186605707 repeated nine 720p moving-media passes and a sustained 45-second decode, but the immediate same-network 12-item draft gate passed only 2/3 and an isolated retry failed 0/3 with TLS timeout, no video codec, and reprobe failure. The split-path channel remains quarantined rather than recreating an Apple TV black screen.",
-      "The Algerian checker now limits simultaneous requests to the shared relay and retains a bounded 105-second attempt cap. With that self-load fix, all 11 published channels passed 3/3 in the local draft regression; Almagharibia alone still failed its publication gate."
+      "The Algerian checker now limits simultaneous requests to the shared relay and retains a bounded 105-second attempt cap. With that self-load fix, all 11 published channels passed 3/3 in the local draft regression; Almagharibia alone still failed its publication gate.",
+      "Final cloud run 30187446975 validated the concurrency repair: canonical and alias remained 11 identical entries, every published channel passed 3/3 locally and 3/3 through the public Apple-TV path on the first complete gates, and no item required quarantine or repair."
     ],
     "result": "All 11 published channels remain healthy. Almagharibia passed a second independent cloud recovery but failed the immediate same-network Apple-path gate, so it remains quarantined and the published lineup remains 11 of 20 with all nine recovery targets preserved."
   },
