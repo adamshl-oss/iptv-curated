@@ -8,9 +8,9 @@
     "last_manual_audit": "2026-07-25"
   },
   "latest_audit": {
-    "checked_at": "2026-07-26T06:27:00Z",
-    "source_rotation": "Samira TV's official site and Samira+ app/API surfaces; exact Echorouk TV, Echorouk News, and El Hayat official players and YouTube identities; El Watania's first-party Ant Media HLS embedded by the broadcaster and its newly indexed exact iptv-org entry; EPTV's exact TV6, TV8, and TV9 pages and YouTube identities; Almagharibia's current official app/YouTube live plus its Apple-facing relay; current iptv-org commit a00f8a7550; and fresh TDA/operator discovery surfaces",
-    "published_regression": "GitHub Actions run 30190340684 passed the complete 12-entry canonical/alias regression with all 36 local and all 36 cache-busted public Apple-TV-path moving-media attempts, nine additional Almagharibia 720p H.264/AAC decodes, and its sustained 45-second cloud test. The same outside-cloud runner then failed El Watania on all three bounded recovery attempts, confirming that the intermittent channel must remain outside the published Apple TV lineup.",
+    "checked_at": "2026-07-26T07:20:00Z",
+    "source_rotation": "Samira TV's official site and Samira+ service; exact Echorouk TV, Echorouk News, and El Hayat official players and YouTube identities; El Watania's broadcaster-embedded first-party Ant Media HLS and current iptv-org entry; EPTV's exact TV6, TV8, and TV9 pages and YouTube identities; Almagharibia's official app/YouTube live plus Apple-facing relay; current iptv-org commit a00f8a7550; and fresh TDA/operator discovery surfaces",
+    "published_regression": "GitHub Actions run 30191183603 passed the complete 12-entry canonical/alias regression with all 36 local and all 36 cache-busted public Apple-TV-path moving-media attempts, nine additional Almagharibia 1280x720 H.264/AAC decodes, and its sustained 45-second cloud test. El Watania separately failed all three Mac-side and all three outside-cloud recovery attempts, so it remained safely withheld. IPTVX force-reloaded all 12 identities and sustained visibly changing current Ennahar video in preview and full-player modes.",
     "unpublished_exact_channels": [
       "Samira TV",
       "Echorouk TV",
@@ -22,6 +22,13 @@
       "TV9 El Barlamaniya"
     ],
     "evidence": [
+      "Run 30191183603 passed canonical/alias parity, every published Algerian channel 3/3 locally and 3/3 through the cache-busted public Apple-TV path, then gave Almagharibia nine additional 1280x720 H.264/AAC moving-media passes plus 45 seconds of sustained cloud playback.",
+      "El Watania's exact broadcaster-embedded first-party HLS failed three fresh Mac-side attempts and all three bounded outside-cloud attempts in run 30191183603 with no response. Its source and recovery history remain preserved, but it stays outside the Apple TV playlist.",
+      "Samira's official site returned HTTP 200 on three fresh probes while samira.plus returned HTTP 500; the exact official YouTube identity was not live and the app service exposed no portable public non-DRM manifest.",
+      "The correct El Hayat player embedded by elhayat.dz is live.dzsecurity.net/live/player/elhayattv; it returned HTTP 403 on all three probes. The exact Echorouk TV and Echorouk News players also returned HTTP 403 on all three probes, and none of the three official YouTube identities was live.",
+      "EPTV's exact TV6, TV8, and TV9 pages returned HTTP 200 on three probes each, but all three official live identities were inactive. TDA still confirms these and the private targets as carried Algerian channels, but supplies satellite parameters rather than portable IPTV delivery.",
+      "Both public Algerian GitHub Pages copies remained byte-identical at 12 entries. IPTVX force-reloaded the cloud source, displayed all 12 expected identities, and Ennahar showed visibly different current branded frames in preview and sustained full-player modes.",
+      "No newly viable exact authorized non-DRM Algerian feed qualified in this cycle. All eight unpublished exact targets remain preserved for fresh source recovery rather than being replaced by private restreams, loops, DRM, or inexact substitutes.",
       "Run 30190340684 passed canonical/alias parity, every published Algerian channel 3/3 locally and 3/3 through the cache-busted public Apple-TV path, then gave Almagharibia nine additional 1280x720 H.264/AAC moving-media passes plus 45 seconds of sustained cloud playback.",
       "El Watania's exact first-party HLS is now also indexed by the current maintained iptv-org Algeria playlist, but that entry points to the same broadcaster-embedded Ant Media source already under recovery. It failed all three fresh Mac-side strict attempts and all three outside-cloud attempts in run 30190340684 with no-response/insufficient-frame evidence, so it remains safely withheld.",
       "Samira's main official site returned HTTP 200 on three probes while samira.plus returned HTTP 500 on all three; the official Samira YouTube identity was not live. The official Samira+ app still advertises 24/7 live viewing but supplied no portable public non-DRM manifest.",
@@ -94,7 +101,7 @@
       "Final post-publication run 30188252633 passed 12-entry canonical/alias parity, every channel 3/3 locally and 3/3 through the public Apple-TV path, then gave Almagharibia nine more outside-cloud 720p moving-media passes and a sustained 45-second decode.",
       "A cache-busted public fetch found both Algerian GitHub Pages copies byte-identical at 12 entries. IPTVX force-reloaded the cloud group, displayed all 12 exact identities including Almagharibia, and showed visibly different branded frames 12 seconds apart in both preview and full-player modes; the live on-screen clock matched current GMT."
     ],
-    "result": "All 12 published channels are healthy through complete cloud, public Apple-TV-path, and forced IPTVX playback regressions. El Watania failed both Mac-side and outside-cloud recovery gates in this cycle, so it remains safely withheld; all eight exact recovery targets remain preserved."
+    "result": "All 12 published channels are healthy through complete cloud, public Apple-TV-path, and forced IPTVX playback regressions. El Watania failed both Mac-side and outside-cloud recovery gates and remains safely withheld; all eight exact recovery targets remain preserved."
   },
   "channels": [
     {
