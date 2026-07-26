@@ -10,7 +10,7 @@
   "latest_audit": {
     "checked_at": "2026-07-26T02:06:25Z",
     "source_rotation": "Current official TV6/TV8/TV9, Samira TV, Echorouk TV, Echorouk News, El Hayat, and El Watania YouTube identities; TDA's current public/private roster; EPTV's current site and app; Samira TV's official site and Samira+ app/support surfaces; Echorouk's official signed live players; El Watania's first-party HLS; iptv-org Algeria; maintained public resolvers; and production cloud egress tests",
-    "published_regression": "GitHub Actions run 30183067345 passed dynamic-feed handling, canonical/alias identity and ordering, all 36 independent local-playlist audio/video/moving-frame attempts, publication visibility, and all 36 public Apple-TV-path attempts. IPTVX force-reloaded the public playlist and displayed all 12 identities. That reload exposed an intermittent expired-wrapper black-screen failure for Almagharibia; production relay version 32 now rotates four official YouTube player endpoints and adds bounded independent cloud hops, passed a 30-request public burst without failure, and then sustained visibly changing current Almagharibia video in IPTVX for 20 seconds.",
+    "published_regression": "GitHub Actions run 30183067345 initially passed canonical/alias identity and ordering plus all 36 local and 36 public moving-media attempts for 12 entries. IPTVX then exposed an expired-wrapper black screen. Production relay version 32 restored 20 seconds of changing IPTVX playback and passed a 30-request burst, but independent cloud run 30184092989 subsequently failed Almagharibia at 0/3 in two complete gates. The persistently split-path channel was quarantined under the agreed rule; a complete 11-channel post-quarantine public gate follows.",
     "unpublished_exact_channels": [
       "Samira TV",
       "Echorouk TV",
@@ -19,7 +19,8 @@
       "Echorouk News",
       "TV6 Algérie",
       "TV8 Adhakira",
-      "TV9 El Barlamaniya"
+      "TV9 El Barlamaniya",
+      "Almagharibia TV"
     ],
     "evidence": [
       "TDA's current official roster still confirms Samira TV, Echorouk TV, Echorouk News, El Hayat TV, and El Watania TV in the private HD/SD bouquet and TV6, TV8, and TV9 in the public bouquet; this preserves their high-priority target status but provides satellite parameters rather than IPTV delivery.",
@@ -61,9 +62,10 @@
       "Samira+'s correct official support site is samira.plus, but it returned a current WAF/server 500 and no portable live manifest. El Watania's exact first-party HLS returned its tiny live index only after roughly 10.6 seconds and then stalled on expired/unavailable media, so neither qualified for Apple TV.",
       "The Almagharibia GitHub wrapper expired while the shared French workflow held the previous common queue, and IPTVX correctly exposed the resulting intermittent black screen even though conventional probes happened to pass. The French and Algerian refresh workflows now use separate country-specific concurrency groups so one audit cannot delay the other's dynamic refresh.",
       "The GitHub cloud refresher now rotates the same four official YouTube player endpoints and sends their documented Android client identity, preventing one challenged player host from leaving the signed recovery wrapper stale.",
-      "Production relay version 32 hardened Almagharibia by rotating four official YouTube player endpoints and retrying through bounded independent cloud hops when one egress is challenged. The repaired route passed 30 of 30 concurrent cache-busted public manifest requests and then produced visibly different current Almagharibia frames 20 seconds apart in IPTVX; no Mac is involved."
+      "Production relay version 32 hardened Almagharibia by rotating four official YouTube player endpoints and retrying through bounded independent cloud hops when one egress is challenged. It passed 30 of 30 concurrent cache-busted requests and produced visibly different IPTVX frames 20 seconds apart, but GitHub cloud run 30184092989 then failed it at 0/3 twice with timeouts, HTTP 502, and TLS/no-response evidence.",
+      "Because an Apple-facing channel must work consistently across cloud paths rather than only on this Mac's current route, Almagharibia was quarantined from the published M3U. Its exact identity, official source, resolver, relay code, and failure evidence remain preserved for future recovery."
     ],
-    "result": "No newly viable authorized exact channel qualified; the published lineup remains 12 of 20, with TV6 and the technically healthy but provenance-rejected TV8 preserved as separate recovery targets."
+    "result": "No newly viable authorized exact channel qualified; Almagharibia was quarantined after persistent outside-cloud failures, so the published lineup is 11 of 20. All nine unpublished targets and their recovery evidence remain preserved."
   },
   "channels": [
     {
@@ -283,15 +285,14 @@
     {
       "rank": 20,
       "name": "Almagharibia TV",
-      "playlist_order": 13,
       "playlist_name": "Almagharibia TV (Official Cloud Live)",
       "tvg_id": "AlmagharibiaTV.uk",
       "official_url": "https://almagharibia.tv/",
-      "status": "verified_official_dynamic",
-      "reason": "The broadcaster's official app exposes its current official YouTube live identity; the public relay consumes the 20-minute GitHub Pages refresh, falls back to an independent official-player resolve, and serves a fixed 720p rendition through short Apple-compatible segment paths without relying on this Mac.",
+      "status": "quarantined_cloud_egress_unstable",
+      "reason": "The broadcaster's official app exposes its exact current YouTube live identity, and the short-path relay can sustain 720p H.264/AAC playback in IPTVX. It remains unpublished because two complete independent GitHub-cloud gates failed 0/3 after the signed wrapper expired and YouTube challenged both the runner and some relay egresses. Preserve the official identity, four-endpoint resolver, bounded cloud-hop repair, and all evidence until three complete cloud gates plus sustained Apple playback pass consistently.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/youtube/almagharibia",
       "min_height": 720,
-      "publish": true
+      "publish": false
     }
   ]
 }
