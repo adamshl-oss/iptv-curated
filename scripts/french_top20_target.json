@@ -166,12 +166,14 @@
       "tvg_id": "CNews.fr",
       "logo": "https://i.imgur.com/sSNhk2g.png",
       "official_url": "https://www.cnews.fr/le-direct",
-      "status": "verified_dynamic",
-      "reason": "Official CNEWS Dailymotion live; signed HLS is regenerated in GitHub Actions and decode-tested before publication.",
+      "status": "verified_dynamic_apple_relay",
+      "reason": "Official CNEWS Dailymotion live. GitHub Actions regenerates and decode-tests the signed 1080p source, while the always-on cloud endpoint reduces Dailymotion's multi-hour event manifest to a short live window and proxies media through stable Apple-player URLs.",
+      "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/cnews/live.m3u8",
+      "refresh_wrapper": "streams/cnews.m3u8",
       "resolver": {
         "type": "yt_dlp",
         "url": "https://www.dailymotion.com/video/x3b68jn",
-        "preferred_live_filename": "live-1080@60.m3u8"
+        "preferred_live_filename": "live-720@60.m3u8"
       },
       "min_height": 720,
       "publish": true

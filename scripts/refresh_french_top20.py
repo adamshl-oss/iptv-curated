@@ -14,13 +14,17 @@ ROOT = Path(__file__).resolve().parent.parent
 REGISTRY = ROOT / "scripts" / "french_top20_target.json"
 TEST = ROOT / "scripts" / "test_stream.sh"
 CANONICAL = ROOT / "french-tv-top20-july-2026.m3u"
-CURRENT_IPTVX_ALIAS = ROOT / "french-tv-july-2026-v5.m3u"
+CURRENT_IPTVX_ALIASES = (
+    ROOT / "french-tv-july-2026-v5.m3u",
+    ROOT / "french-tv-july-2026-v6.m3u",
+)
 TEST_TIMEOUT_SECONDS = 70
 
 
 def resolve(channel: dict[str, object]) -> str:
     static = str(channel.get("stream_url", ""))
-    if static.startswith(("http://", "https://")):
+    refresh_wrapper = str(channel.get("refresh_wrapper", ""))
+    if not refresh_wrapper and static.startswith(("http://", "https://")):
         return static
 
     resolver = channel.get("resolver")
@@ -64,6 +68,22 @@ def resolve(channel: dict[str, object]) -> str:
                 f"{channel['name']}: could not select preferred live rendition"
             )
     return resolved
+
+
+def write_wrapper(relative_path: str, url: str) -> None:
+    target = ROOT / relative_path
+    rendered = "\n".join(
+        [
+            "#EXTM3U",
+            "# Current official CNEWS Dailymotion 720p live rendition.",
+            url,
+            "",
+        ]
+    )
+    if not target.exists() or target.read_text() != rendered:
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(rendered)
+        print(f"WRITE\t{target.relative_to(ROOT)}")
 
 
 def playback_test(name: str, url: str, min_height: int) -> str:
@@ -144,11 +164,19 @@ def main() -> None:
         name = str(channel["name"])
         url = resolve(channel)
         detail = playback_test(name, url, int(channel.get("min_height", 540)))
-        urls[name] = url
+        refresh_wrapper = str(channel.get("refresh_wrapper", ""))
+        if refresh_wrapper:
+            write_wrapper(refresh_wrapper, url)
+            public_url = str(channel.get("stream_url", ""))
+            if not public_url.startswith(("http://", "https://")):
+                raise RuntimeError(f"{name}: dynamic wrapper has no public relay URL")
+            urls[name] = public_url
+        else:
+            urls[name] = url
         print(f"PASS\t#{channel['rank']}\t{name}\t{detail}")
 
     rendered = render(published, urls)
-    for target in (CANONICAL, CURRENT_IPTVX_ALIAS):
+    for target in (CANONICAL, *CURRENT_IPTVX_ALIASES):
         if not target.exists() or target.read_text() != rendered:
             target.write_text(rendered)
             print(f"WRITE\t{target.name}")
