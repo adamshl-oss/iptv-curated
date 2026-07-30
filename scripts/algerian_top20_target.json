@@ -124,6 +124,13 @@
     ],
     "result": "All 12 published Algerian channels are healthy through complete cloud, public Apple-TV-path, Almagharibia stress, and forced IPTVX playback regressions. El Watania failed the outside-cloud recovery gate, TV6 remains correctly quarantined for identity mismatch, and all eight exact recovery targets remain preserved."
   },
+  "self_healing": {
+    "controller": "scripts/reconcile_self_healing.py",
+    "quarantine_after_failed_gates": 2,
+    "recover_after_successful_gates": 2,
+    "attempts_per_gate": 3,
+    "published_count": 11
+  },
   "channels": [
     {
       "rank": 1,
@@ -284,7 +291,14 @@
       "reason": "Quarantined on 2026-07-30 after its only exact public source returned persistent 404 responses through three outside-cloud playback gates. The target is preserved for recovery; no pirate or inexact substitute was accepted.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv5",
       "min_height": 540,
-      "publish": false
+      "publish": false,
+      "auto_healing": {
+        "enabled": true,
+        "recovery_allowed": true,
+        "failure_streak": 2,
+        "success_streak": 0,
+        "prior_status": "verified_cloud"
+      }
     },
     {
       "rank": 15,

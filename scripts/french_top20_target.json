@@ -5,23 +5,31 @@
     "ranking_source": "https://www.ozap.com/actu/audiences-annuelles-2025-tf1-toujours-solide-leader-france-2-redescend-de-son-nuage-w9-et-canal-en-forme-record-historique-pour-arte/653093",
     "lineup_source": "https://www.arcom.fr/television-et-video-la-demande/la-numerotation-des-chaines",
     "publication_rule": "Exact live linear channel, real decode, no loop, and playable from a cloud-hosted M3U without this Mac",
-    "last_manual_audit": "2026-07-25"
+    "last_manual_audit": "2026-07-30"
   },
   "latest_audit": {
-    "checked_at": "2026-07-26T09:02:28Z",
-    "source_rotation": "ParaTV commit b9512d0b5226; schumijo commit 9d268dcdc6a9; current iptv-org commit a00f8a7550 and Free-TV commit a3ab401e; exact official France Télévisions and M6+ pages/manifests; current full Canal+ live and en-clair service surfaces; official CStar Dailymotion; and current authorized FAST/operator discovery surfaces",
-    "published_regression": "GitHub Actions run 30194765878 refreshed the signed cloud URLs and passed the complete 12-entry canonical/alias regression with all 36 local-cloud and all 36 cache-busted public Apple-TV-path moving-media attempts on their first complete gates. IPTVX force-reloaded all 12 identities and sustained visibly changing current CNEWS video in preview and full-player modes.",
+    "checked_at": "2026-07-30T07:24:00Z",
+    "source_rotation": "Current official-CDN ParaTV resolver, direct child-manifest checks, GitHub-hosted outside-cloud ffmpeg, independent local ffmpeg, and sustained IPTVX/Apple playback.",
+    "published_regression": "The 2026-07-30 pressure test exposed IP-bound 403 failures in TF1, ARTE, TMC, TFX, and TF1 Séries Films. Those five were quarantined; the remaining seven passed 21 of 21 independent H.264/AAC moving-media gates.",
     "unpublished_exact_channels": [
+      "TF1",
       "France 2",
       "France 3",
       "M6",
       "France 5",
+      "ARTE",
+      "TMC",
       "W9",
+      "TFX",
       "6ter",
+      "TF1 Séries Films",
       "Canal+",
       "CStar"
     ],
     "evidence": [
+      "GitHub Actions run 30522080794 and a separate local-cloud rerun proved that TF1, ARTE, TMC, TFX, and TF1 Séries Films now return HTTP 403 at every signed child manifest because the resolver token is IP-bound. They were removed from both public playlists instead of being left as dead entries.",
+      "The remaining published French set—CNEWS, BFMTV, LCI, RMC Découverte, RMC Story, L'Équipe, and RMC Life—passed 21 of 21 fresh real audio/video/motion gates. RMC Story's earlier isolated timeout recovered to 3/3 and was correctly retained.",
+      "The cloud controller now requires two consecutive failed complete gates before quarantine and two consecutive successful complete gates before restoration. A controlled BFMTV all-sources-down test proved first-gate retention, second-gate quarantine, and two-gate recovery without touching production state.",
       "Run 30194765878 passed 12-entry canonical/alias parity, all 36 local-cloud moving-media attempts, publication visibility for both cloud copies, and all 36 cache-busted public Apple-TV-path attempts on the first complete gates. Every entry delivered H.264/AAC at or above its required resolution.",
       "ParaTV advanced to b9512d0b5226 and regenerated exact France 2, France 3, France 5, and CStar wrappers. The three direct France Télévisions wrappers failed 0/3 with no video codec, while all three SSAI variants timed out 0/3 under the bounded 70-second gate; schumijo advanced to 9d268dcdc6a9 with only L'Équipe, JDG, and tennis maintenance.",
       "The newly rotated exact CStar wrapper decoded H.264/AAC moving media 3/3 but only at 848x480. Official Dailymotion x5gv5v0 returned current DM007 owner geo-restriction metadata and no authorized qualities 3/3, so the candidate was rejected below the 540p floor and without republishing a territory token.",
@@ -110,7 +118,14 @@
       "Run 30188075328 completed successfully with 12 identical canonical/alias entries, all 36 local and all 36 public moving-media attempts passing, and both public GitHub Pages copies current. The cache-busted public canonical and alias remained byte-identical after the workflow.",
       "IPTVX reopened the public French source, displayed all 12 exact identities in the France Top 20 — Verified group, and rendered visibly different current TF1 frames 12 seconds apart in both preview and full-player modes."
     ],
-    "result": "All 12 published French channels pass the complete outside-cloud, cache-busted public Apple-TV-path, and forced IPTVX playback regressions. Newly rotated France Télévisions wrappers still failed, CStar remained sub-540p and owner-restricted, and no new exact legal feed qualified, so the playlist remains 12 of 20."
+    "result": "Seven currently published French channels pass every fresh playback gate. Five formerly published IP-bound sources were safely quarantined, remain durable recovery targets, and cannot be automatically restored until their delivery is genuinely portable to Apple TV."
+  },
+  "self_healing": {
+    "controller": "scripts/reconcile_self_healing.py",
+    "quarantine_after_failed_gates": 2,
+    "recover_after_successful_gates": 2,
+    "attempts_per_gate": 3,
+    "published_count": 7
   },
   "channels": [
     {
@@ -118,11 +133,20 @@
       "name": "TF1",
       "tvg_id": "TF1.fr",
       "official_url": "https://www.tf1.fr/tf1/direct",
-      "status": "verified_cloud_resolver",
-      "reason": "The always-on cloud endpoint resolves the current ParaTV-maintained master for TF1's unmodified official non-DRM CDN feed; exact branding/programme identity and three consecutive 720p audio/video decodes passed.",
+      "status": "quarantined_ip_bound",
+      "reason": "Quarantined after two independent 2026-07-30 playback gates proved the current signed official-CDN token is bound to the resolver IP and returns HTTP 403 to IPTVX, Apple TV, and unrelated cloud clients.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/tf1/tf1/live.m3u8",
       "min_height": 720,
-      "publish": true
+      "publish": false,
+      "auto_healing": {
+        "enabled": true,
+        "recovery_allowed": false,
+        "failure_streak": 2,
+        "success_streak": 0,
+        "prior_status": "verified_cloud_resolver",
+        "last_failure": "2026-07-30T07:14:12Z",
+        "last_evidence": "three public ffmpeg gates returned no video codec; direct child manifests returned HTTP 403"
+      }
     },
     {
       "rank": 2,
@@ -183,22 +207,40 @@
       "name": "ARTE",
       "tvg_id": "ARTE.fr",
       "official_url": "https://www.arte.tv/fr/direct/",
-      "status": "verified_cloud_resolver",
-      "reason": "The always-on cloud endpoint resolves the current ParaTV-maintained master for ARTE's unmodified official non-DRM CDN feed and exposes its stable 720p H.264/AAC rendition for Apple-compatible playback. The ARTE watermark and official schedule matched; three independent pre-publication decodes and both complete GitHub Actions playback gates passed.",
+      "status": "quarantined_ip_bound",
+      "reason": "Quarantined after two independent 2026-07-30 playback gates proved the current signed official-CDN token is bound to the resolver IP and returns HTTP 403 to IPTVX, Apple TV, and unrelated cloud clients.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/tf1/arte/live.m3u8",
       "min_height": 720,
-      "publish": true
+      "publish": false,
+      "auto_healing": {
+        "enabled": true,
+        "recovery_allowed": false,
+        "failure_streak": 2,
+        "success_streak": 0,
+        "prior_status": "verified_cloud_resolver",
+        "last_failure": "2026-07-30T07:14:12Z",
+        "last_evidence": "three public ffmpeg gates returned no video codec; direct child manifests returned HTTP 403"
+      }
     },
     {
       "rank": 8,
       "name": "TMC",
       "tvg_id": "TMC.fr",
       "official_url": "https://www.tf1.fr/tmc/direct",
-      "status": "verified_cloud_resolver",
-      "reason": "The always-on cloud endpoint resolves the current ParaTV-maintained master for TMC's unmodified official non-DRM CDN feed; exact on-screen branding and three consecutive 720p audio/video decodes passed.",
+      "status": "quarantined_ip_bound",
+      "reason": "Quarantined after two independent 2026-07-30 playback gates proved the current signed official-CDN token is bound to the resolver IP and returns HTTP 403 to IPTVX, Apple TV, and unrelated cloud clients.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/tf1/tmc/live.m3u8",
       "min_height": 720,
-      "publish": true
+      "publish": false,
+      "auto_healing": {
+        "enabled": true,
+        "recovery_allowed": false,
+        "failure_streak": 2,
+        "success_streak": 0,
+        "prior_status": "verified_cloud_resolver",
+        "last_failure": "2026-07-30T07:14:12Z",
+        "last_evidence": "three public ffmpeg gates returned no video codec; direct child manifests returned HTTP 403"
+      }
     },
     {
       "rank": 9,
@@ -237,11 +279,20 @@
       "name": "TFX",
       "tvg_id": "TFX.fr",
       "official_url": "https://www.tf1.fr/tfx/direct",
-      "status": "verified_cloud_resolver",
-      "reason": "The always-on cloud endpoint resolves the current ParaTV-maintained master for TFX's unmodified official non-DRM CDN feed; exact channel identity and three consecutive 720p audio/video decodes passed.",
+      "status": "quarantined_ip_bound",
+      "reason": "Quarantined after two independent 2026-07-30 playback gates proved the current signed official-CDN token is bound to the resolver IP and returns HTTP 403 to IPTVX, Apple TV, and unrelated cloud clients.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/tf1/tfx/live.m3u8",
       "min_height": 720,
-      "publish": true
+      "publish": false,
+      "auto_healing": {
+        "enabled": true,
+        "recovery_allowed": false,
+        "failure_streak": 2,
+        "success_streak": 0,
+        "prior_status": "verified_cloud_resolver",
+        "last_failure": "2026-07-30T07:14:12Z",
+        "last_evidence": "three public ffmpeg gates returned no video codec; direct child manifests returned HTTP 403"
+      }
     },
     {
       "rank": 13,
@@ -281,11 +332,20 @@
       "name": "TF1 Séries Films",
       "tvg_id": "TF1SeriesFilms.fr",
       "official_url": "https://www.tf1.fr/tf1-series-films/direct",
-      "status": "verified_cloud_resolver",
-      "reason": "The always-on cloud endpoint resolves the current ParaTV-maintained master for TF1 Séries Films' unmodified official non-DRM CDN feed; exact on-screen branding and three consecutive 720p audio/video decodes passed.",
+      "status": "quarantined_ip_bound",
+      "reason": "Quarantined after two independent 2026-07-30 playback gates proved the current signed official-CDN token is bound to the resolver IP and returns HTTP 403 to IPTVX, Apple TV, and unrelated cloud clients.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/tf1/tf1-series-films/live.m3u8",
       "min_height": 720,
-      "publish": true
+      "publish": false,
+      "auto_healing": {
+        "enabled": true,
+        "recovery_allowed": false,
+        "failure_streak": 2,
+        "success_streak": 0,
+        "prior_status": "verified_cloud_resolver",
+        "last_failure": "2026-07-30T07:14:12Z",
+        "last_evidence": "three public ffmpeg gates returned no video codec; direct child manifests returned HTTP 403"
+      }
     },
     {
       "rank": 17,

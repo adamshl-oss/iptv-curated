@@ -1,0 +1,148 @@
+{
+  "france": {
+    "registry": "scripts/french_top20_target.json",
+    "canonical": "french-tv-top20-july-2026.m3u",
+    "alias": "french-tv-july-2026-v5.m3u",
+    "header": [
+      "#EXTM3U",
+      "# France audience top 20; only channels passing the cloud playback gate are published.",
+      "# Stable cloud routes perform request-time source healing without this Mac."
+    ],
+    "entries": [
+      {
+        "name": "TF1",
+        "extinf": "#EXTINF:-1 tvg-id=\"TF1.fr\" tvg-chno=\"1\" group-title=\"France Top 20 — Verified\",TF1",
+        "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/tf1/tf1/live.m3u8"
+      },
+      {
+        "name": "CNEWS",
+        "extinf": "#EXTINF:-1 tvg-id=\"CNews.fr\" tvg-chno=\"6\" group-title=\"France Top 20 — Verified\" tvg-logo=\"https://i.imgur.com/sSNhk2g.png\",CNEWS",
+        "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/cnews/live.m3u8"
+      },
+      {
+        "name": "ARTE",
+        "extinf": "#EXTINF:-1 tvg-id=\"ARTE.fr\" tvg-chno=\"7\" group-title=\"France Top 20 — Verified\",ARTE",
+        "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/tf1/arte/live.m3u8"
+      },
+      {
+        "name": "TMC",
+        "extinf": "#EXTINF:-1 tvg-id=\"TMC.fr\" tvg-chno=\"8\" group-title=\"France Top 20 — Verified\",TMC",
+        "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/tf1/tmc/live.m3u8"
+      },
+      {
+        "name": "BFMTV",
+        "extinf": "#EXTINF:-1 tvg-id=\"BFMTV.fr\" tvg-chno=\"9\" group-title=\"France Top 20 — Verified\" tvg-logo=\"https://i.imgur.com/YJCcczD.png\",BFMTV",
+        "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/linear/france/bfmtv/live.m3u8"
+      },
+      {
+        "name": "LCI",
+        "extinf": "#EXTINF:-1 tvg-id=\"LCI.fr\" tvg-chno=\"11\" group-title=\"France Top 20 — Verified\",LCI",
+        "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/lci/live.m3u8"
+      },
+      {
+        "name": "TFX",
+        "extinf": "#EXTINF:-1 tvg-id=\"TFX.fr\" tvg-chno=\"12\" group-title=\"France Top 20 — Verified\",TFX",
+        "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/tf1/tfx/live.m3u8"
+      },
+      {
+        "name": "RMC Découverte",
+        "extinf": "#EXTINF:-1 tvg-id=\"RMCDecouverte.fr\" tvg-chno=\"14\" group-title=\"France Top 20 — Verified\" tvg-logo=\"https://upload.wikimedia.org/wikipedia/fr/thumb/b/b3/RMC_D%C3%A9couverte_logo_2017.svg/512px-RMC_D%C3%A9couverte_logo_2017.svg.png\",RMC Découverte",
+        "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/linear/france/rmc-decouverte/live.m3u8"
+      },
+      {
+        "name": "RMC Story",
+        "extinf": "#EXTINF:-1 tvg-id=\"RMCStory.fr\" tvg-chno=\"15\" group-title=\"France Top 20 — Verified\" tvg-logo=\"https://upload.wikimedia.org/wikipedia/fr/thumb/4/43/Logo_RMC_Story_2025.png/512px-Logo_RMC_Story_2025.png\",RMC Story",
+        "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/linear/france/rmc-story/live.m3u8"
+      },
+      {
+        "name": "TF1 Séries Films",
+        "extinf": "#EXTINF:-1 tvg-id=\"TF1SeriesFilms.fr\" tvg-chno=\"16\" group-title=\"France Top 20 — Verified\",TF1 Séries Films",
+        "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/tf1/tf1-series-films/live.m3u8"
+      },
+      {
+        "name": "L'Équipe",
+        "extinf": "#EXTINF:-1 tvg-id=\"LEquipe.fr\" tvg-chno=\"17\" group-title=\"France Top 20 — Verified\",L'Équipe",
+        "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/linear/france/lequipe/live.m3u8"
+      },
+      {
+        "name": "RMC Life",
+        "extinf": "#EXTINF:-1 tvg-id=\"RMCLife.fr\" tvg-chno=\"20\" group-title=\"France Top 20 — Verified\",RMC Life",
+        "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/linear/france/rmc-life/live.m3u8"
+      }
+    ]
+  },
+  "algeria": {
+    "registry": "scripts/algerian_top20_target.json",
+    "canonical": "algerian-tv-july-2026.m3u",
+    "alias": "algerian-tv-july-2026-v2.m3u",
+    "header": [
+      "#EXTM3U playlist-name=\"Algerian TV — July 2026 (Self-Healing Cloud)\"",
+      "#---ALGERIA-CLOUD-DYNAMIC-BEGIN---"
+    ],
+    "footer": [
+      "#---ALGERIA-CLOUD-DYNAMIC-END---"
+    ],
+    "entries": [
+      {
+        "name": "AL24 News",
+        "extinf": "#EXTINF:-1 tvg-id=\"AL24News.dz\" tvg-logo=\"https://i.imgur.com/vyVEXYL.png\" group-title=\"Algeria — Cloud Live\",AL24 News (Cloud HD)",
+        "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/al24"
+      },
+      {
+        "name": "TV1 / Programme National",
+        "extinf": "#EXTINF:-1 tvg-id=\"TV1.dz\" group-title=\"Algeria — Cloud Live\",TV1 / Programme National (Cloud Live)",
+        "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv1"
+      },
+      {
+        "name": "TV2 / Canal Algérie",
+        "extinf": "#EXTINF:-1 tvg-id=\"TV2.dz\" tvg-logo=\"https://i.imgur.com/VEb631f.png\" group-title=\"Algeria — Cloud Live\",TV2 / Canal Algérie (1080p)",
+        "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv2"
+      },
+      {
+        "name": "TV3 / A3",
+        "extinf": "#EXTINF:-1 tvg-id=\"TV3.dz\" group-title=\"Algeria — Cloud Live\",TV3 / A3 (Cloud Live)",
+        "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv3"
+      },
+      {
+        "name": "TV4 Tamazight",
+        "extinf": "#EXTINF:-1 tvg-id=\"TV4.dz\" group-title=\"Algeria — Cloud Live\",TV4 Tamazight (Cloud Live)",
+        "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv4"
+      },
+      {
+        "name": "TV5 Coran",
+        "extinf": "#EXTINF:-1 tvg-id=\"TV5.dz\" group-title=\"Algeria — Cloud Live\",TV5 Coran (Cloud Live)",
+        "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv5"
+      },
+      {
+        "name": "TV7 El Maarifa",
+        "extinf": "#EXTINF:-1 tvg-id=\"TV7.dz\" group-title=\"Algeria — Cloud Live\",TV7 El Maarifa (Cloud Live)",
+        "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv7"
+      },
+      {
+        "name": "Ennahar TV",
+        "extinf": "#EXTINF:-1 tvg-id=\"EnnaharTV.dz\" tvg-logo=\"https://i.imgur.com/C0TCA1s.png\" group-title=\"Algeria — Cloud Live\",Ennahar TV (Cloud Live)",
+        "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/ennahar"
+      },
+      {
+        "name": "El Heddaf TV",
+        "extinf": "#EXTINF:-1 tvg-id=\"ElHeddafTV.dz\" tvg-logo=\"https://i.imgur.com/cDkIDIA.png\" group-title=\"Algeria — Cloud Live\",El Heddaf TV (Cloud Live)",
+        "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/elheddaf"
+      },
+      {
+        "name": "El Bilad TV",
+        "extinf": "#EXTINF:-1 tvg-id=\"ElBilad.dz\" group-title=\"Algeria — Cloud Live\",El Bilad TV (Cloud Live)",
+        "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/elbilad"
+      },
+      {
+        "name": "Amou Yazid TV",
+        "extinf": "#EXTINF:-1 tvg-id=\"AmouYazidTV.dz\" tvg-logo=\"https://i.imgur.com/L8UPGPC.png\" group-title=\"Algeria — Cloud Live\",Amou Yazid TV (Cloud 1080p)",
+        "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/amouyazid"
+      },
+      {
+        "name": "Almagharibia TV",
+        "extinf": "#EXTINF:-1 tvg-id=\"AlmagharibiaTV.uk\" tvg-logo=\"https://i.imgur.com/XE6OWcb.png\" group-title=\"Algeria — Cloud Live\",Almagharibia TV (Official Cloud Live)",
+        "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/youtube/almagharibia"
+      }
+    ]
+  }
+}
