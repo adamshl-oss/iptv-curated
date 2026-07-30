@@ -92,7 +92,11 @@ jobs:
           RECONCILE_OUTCOME: ${{ steps.reconcile.outcome }}
         run: |
           if [ "$RECONCILE_OUTCOME" != "success" ]; then
-            echo "A French channel failed its first complete gate; the next run will quarantine it if the failure persists."
+            if grep -q $'^PASS\tfrance controller' french-self-healing-audit.txt; then
+              echo "::warning::A French channel failed its first complete gate; the next run will retry or quarantine it."
+              exit 0
+            fi
+            echo "The French controller itself failed unexpectedly."
             exit 1
           fi
           echo "Every published French channel passed or was safely quarantined."
