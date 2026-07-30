@@ -272,7 +272,15 @@
       "reason": "The always-on relay converts TF1's current official non-DRM CDN delivery into short, stable Apple-player URLs. Three public 576p H.264/AAC decode gates, a continuous 45-second cloud decode, a current LCI-branded frame, and sustained changing video in both IPTVX preview and full-player modes passed without the former 10–15-second stall.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/lci/live.m3u8",
       "min_height": 540,
-      "publish": true
+      "publish": true,
+      "auto_healing": {
+        "enabled": true,
+        "failure_streak": 1,
+        "success_streak": 0,
+        "last_failure": "2026-07-30T12:17:50Z",
+        "last_evidence": "1:h264/aac 1024x576, moving; 2:h264/aac 1024x576, moving; 3:no_audio_codec",
+        "recovery_allowed": true
+      }
     },
     {
       "rank": 12,
