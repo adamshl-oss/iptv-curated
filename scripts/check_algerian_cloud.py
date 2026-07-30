@@ -15,7 +15,7 @@ RELAY_ROOT = "https://algerian-tv-relay-2026.espiiem.chatgpt.site"
 CHANNELS = {
     "AL24 News": f"{RELAY_ROOT}/api/free/al24",
     "TV1": f"{RELAY_ROOT}/api/free/tv1",
-    "TV2": "http://185.9.2.18/chid_347/index.m3u8",
+    "TV2": f"{RELAY_ROOT}/api/free/tv2",
     "TV3": f"{RELAY_ROOT}/api/free/tv3",
     "TV4": f"{RELAY_ROOT}/api/free/tv4",
     "TV5": f"{RELAY_ROOT}/api/free/tv5",

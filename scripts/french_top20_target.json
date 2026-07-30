@@ -167,7 +167,7 @@
       "logo": "https://i.imgur.com/sSNhk2g.png",
       "official_url": "https://www.cnews.fr/le-direct",
       "status": "verified_dynamic_apple_relay",
-      "reason": "Official CNEWS Dailymotion live. GitHub Actions regenerates and decode-tests the signed 1080p source, while the always-on cloud endpoint reduces Dailymotion's multi-hour event manifest to a short live window and proxies media through stable Apple-player URLs.",
+      "reason": "Exact official CNEWS Dailymotion live behind request-time cloud failover. The route races independent maintained resolvers, trims the event manifest to a live window, proxies media through stable Apple-player URLs, and temporarily accepts the broadcaster's globally available 288p rendition until its protected HD delivery is again usable outside France.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/cnews/live.m3u8",
       "refresh_wrapper": "streams/cnews.m3u8",
       "resolver": {
@@ -175,7 +175,7 @@
         "url": "https://www.dailymotion.com/video/x3b68jn",
         "preferred_live_filename": "live-720@60.m3u8"
       },
-      "min_height": 720,
+      "min_height": 288,
       "publish": true
     },
     {
@@ -208,7 +208,7 @@
       "official_url": "https://www.rmcbfmplay.com/direct/bfmtv",
       "status": "verified_static",
       "reason": "Broadcaster CDN HLS passed repeated ffprobe and ffmpeg decode tests.",
-      "stream_url": "https://live-cdn-stream-euw1.bfmtv.bct.nextradiotv.com/master.m3u8",
+      "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/linear/france/bfmtv/live.m3u8",
       "min_height": 540,
       "publish": true
     },
@@ -260,7 +260,7 @@
       "official_url": "https://www.rmcbfmplay.com/direct/rmc_decouverte",
       "status": "verified_static",
       "reason": "Public distribution HLS passed 1080p decode; on-screen branding and current programme matched RMC's official live schedule.",
-      "stream_url": "https://d16zzycxcd0m0r.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-hixvx5kymecr9/RMC_Decouverte_FR.m3u8",
+      "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/linear/france/rmc-decouverte/live.m3u8",
       "min_height": 720,
       "publish": true
     },
@@ -272,7 +272,7 @@
       "official_url": "https://www.rmcbfmplay.com/direct/rmc_story",
       "status": "verified_static",
       "reason": "Public distribution HLS passed 1080p decode; on-screen branding and current programme matched RMC's official live schedule.",
-      "stream_url": "https://d15aro46bnpfm8.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-fqkqiax1078up/RMC_Story_FR.m3u8",
+      "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/linear/france/rmc-story/live.m3u8",
       "min_height": 720,
       "publish": true
     },
@@ -294,7 +294,7 @@
       "official_url": "https://www.lequipe.fr/lachainelequipe/",
       "status": "verified_licensed_distribution",
       "reason": "The exact linear channel is carried by Samsung TV Plus; its public licensed-distribution HLS passed repeated 1080p audio/video decode and identity checks.",
-      "stream_url": "https://jmp2.uk/stvp-FR200016Y5",
+      "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/linear/france/lequipe/live.m3u8",
       "min_height": 720,
       "publish": true
     },
@@ -323,7 +323,7 @@
       "official_url": "https://www.rmcbfmplay.com/direct/rmc_life",
       "status": "verified_licensed_distribution",
       "reason": "The exact RMC Life linear channel is carried by Samsung TV Plus; its public licensed-distribution HLS passed repeated 1080p audio/video decode and identity checks.",
-      "stream_url": "https://jmp2.uk/stvp-FR4000003O1",
+      "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/linear/france/rmc-life/live.m3u8",
       "min_height": 720,
       "publish": true
     }

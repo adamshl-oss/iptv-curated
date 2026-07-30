@@ -24,6 +24,10 @@ TEST_TIMEOUT_SECONDS = 70
 def resolve(channel: dict[str, object]) -> str:
     static = str(channel.get("stream_url", ""))
     refresh_wrapper = str(channel.get("refresh_wrapper", ""))
+    if static.startswith(
+        "https://algerian-tv-relay-2026.espiiem.chatgpt.site/"
+    ):
+        return static
     if not refresh_wrapper and static.startswith(("http://", "https://")):
         return static
 
@@ -165,9 +169,9 @@ def main() -> None:
         url = resolve(channel)
         detail = playback_test(name, url, int(channel.get("min_height", 540)))
         refresh_wrapper = str(channel.get("refresh_wrapper", ""))
-        if refresh_wrapper:
+        public_url = str(channel.get("stream_url", ""))
+        if refresh_wrapper and url != public_url:
             write_wrapper(refresh_wrapper, url)
-            public_url = str(channel.get("stream_url", ""))
             if not public_url.startswith(("http://", "https://")):
                 raise RuntimeError(f"{name}: dynamic wrapper has no public relay URL")
             urls[name] = public_url

@@ -1,127 +1,54 @@
-name: Refresh French cloud channels
+name: Audit self-healing French channels
 
 on:
   schedule:
-    - cron: "10,30,50 * * * *"
+    - cron: "3,13,23,33,43,53 * * * *"
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
-  group: french-playlist-write
-  cancel-in-progress: false
+  group: french-self-healing-audit
+  cancel-in-progress: true
 
 jobs:
-  refresh-french-cloud:
+  audit:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 35
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-
-      - name: Install playback and resolver tools
+      - name: Install real playback tools
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y ffmpeg jq
-          python3 -m pip install --upgrade yt-dlp
           chmod +x scripts/test_stream.sh
 
-      - name: Resolve and test the audited French top 20
-        run: |
-          for gate in 1 2; do
-            if python3 scripts/refresh_french_top20.py; then
-              exit 0
-            fi
-            echo "French resolver gate $gate failed; retrying the complete gate."
-            sleep 10
-          done
-          exit 1
-
-      - name: Verify exact target identity and local playback
-        id: local_check
+      - name: Three-pass moving-media audit of every French channel
+        id: playback
         continue-on-error: true
         run: |
-          for gate in 1 2; do
-            if python3 scripts/check_french_top20_playback.py \
-              french-tv-top20-july-2026.m3u \
-              french-tv-july-2026-v5.m3u; then
-              exit 0
-            fi
-            echo "French local playback gate $gate failed; retrying all three attempts."
-            sleep 10
-          done
-          exit 1
+          set -o pipefail
+          python3 scripts/check_french_top20_playback.py \
+            2>&1 | tee french-self-healing-audit.txt
 
-      - name: Commit and push verified refresh
-        if: steps.local_check.outcome == 'success'
-        run: |
-          if ! git diff --quiet -- french-tv-top20-july-2026.m3u french-tv-july-2026-v5.m3u; then
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add french-tv-top20-july-2026.m3u french-tv-july-2026-v5.m3u
-            git commit -m "Refresh audited French top-20 feeds ($(date -u +%FT%TZ))"
-            git pull --rebase
-            git push
-          else
-            echo "Audited French cloud URLs are still healthy."
-          fi
+      - name: Preserve audit evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: french-self-healing-${{ github.run_id }}
+          path: french-self-healing-audit.txt
+          retention-days: 30
 
-      - name: Wait for both public cloud copies
-        if: steps.local_check.outcome == 'success'
-        run: |
-          for playlist in \
-            french-tv-top20-july-2026.m3u \
-            french-tv-july-2026-v5.m3u; do
-            local_hash="$(sha256sum "$playlist" | cut -d' ' -f1)"
-            public_url="https://adamshl-oss.github.io/iptv-curated/$playlist"
-            matched=false
-            for attempt in $(seq 1 24); do
-              remote_hash="$(
-                curl -fsSL "${public_url}?sync=$(date -u +%s%N)" |
-                  sha256sum |
-                  cut -d' ' -f1
-              )"
-              if [ "$remote_hash" = "$local_hash" ]; then
-                echo "Public $playlist is current."
-                matched=true
-                break
-              fi
-              sleep 10
-            done
-            if [ "$matched" != true ]; then
-              echo "Public $playlist did not update within four minutes."
-              exit 1
-            fi
-          done
-
-      - name: Verify the public Apple TV playlist and alias
-        id: public_check
-        if: steps.local_check.outcome == 'success'
-        continue-on-error: true
-        run: |
-          for gate in 1 2; do
-            if python3 scripts/check_french_top20_playback.py; then
-              exit 0
-            fi
-            echo "French public playback gate $gate failed; retrying all three attempts."
-            sleep 10
-          done
-          exit 1
-
-      - name: Enforce complete published-playlist health
+      - name: Report persistent channel failures
         if: always()
         env:
-          LOCAL_OUTCOME: ${{ steps.local_check.outcome }}
-          PUBLIC_OUTCOME: ${{ steps.public_check.outcome }}
+          PLAYBACK_OUTCOME: ${{ steps.playback.outcome }}
         run: |
-          if [ "$LOCAL_OUTCOME" != "success" ] ||
-             [ "$PUBLIC_OUTCOME" != "success" ]; then
-            echo "At least one French channel failed real playback validation."
+          if [ "$PLAYBACK_OUTCOME" != "success" ]; then
+            echo "One or more French channels failed all required live gates."
             exit 1
           fi
+          echo "Every French channel passed three independent moving-media gates."

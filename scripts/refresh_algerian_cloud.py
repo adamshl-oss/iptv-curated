@@ -325,7 +325,7 @@ def render_playlist_block() -> str:
             'tvg-logo="https://i.imgur.com/VEb631f.png" '
             'group-title="Algeria — Cloud Live",'
             "TV2 / Canal Algérie (1080p)",
-            "http://185.9.2.18/chid_347/index.m3u8",
+            f"{RELAY_ROOT}/api/free/tv2",
             '#EXTINF:-1 tvg-id="TV3.dz" '
             'group-title="Algeria — Cloud Live",'
             "TV3 / A3 (Cloud Live)",
