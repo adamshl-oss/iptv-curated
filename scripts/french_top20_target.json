@@ -393,7 +393,15 @@
       "reason": "The exact RMC Life linear channel is carried by Samsung TV Plus; its public licensed-distribution HLS passed repeated 1080p audio/video decode and identity checks.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/linear/france/rmc-life/live.m3u8",
       "min_height": 720,
-      "publish": true
+      "publish": true,
+      "auto_healing": {
+        "enabled": true,
+        "failure_streak": 1,
+        "success_streak": 0,
+        "last_failure": "2026-07-30T20:53:48Z",
+        "last_evidence": "1:timeout; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving",
+        "recovery_allowed": true
+      }
     }
   ]
 }
