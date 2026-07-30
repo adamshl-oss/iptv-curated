@@ -1,0 +1,67 @@
+name: Renew Algerian signed recovery source
+
+on:
+  schedule:
+    - cron: "47 */2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: algerian-signed-source-renewal
+  cancel-in-progress: true
+
+jobs:
+  renew:
+    runs-on: macos-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install official-source resolvers
+        run: python3 -m pip install --upgrade curl_cffi "yt-dlp[default]"
+
+      - name: Resolve current official live source
+        env:
+          FORCE_REFRESH: "true"
+        run: python3 scripts/refresh_algerian_cloud.py
+
+      - name: Require a durable signed recovery window
+        run: |
+          python3 - <<'PY'
+          import time
+          from scripts.refresh_algerian_cloud import current_wrapper_url, url_expiry
+
+          target = current_wrapper_url("almagharibia")
+          remaining = url_expiry(target or "") - time.time()
+          print(f"signed recovery window: {remaining / 3600:.1f} hours")
+          if remaining < 4 * 3600:
+              raise SystemExit("official signed recovery window is too short")
+          PY
+
+      - name: Publish renewal
+        run: |
+          if git diff --quiet -- \
+            algerian-tv-july-2026.m3u \
+            algerian-tv-july-2026-v2.m3u \
+            streams/almagharibia.m3u8; then
+            echo "Existing official recovery source is still durable."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email \
+            "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            algerian-tv-july-2026.m3u \
+            algerian-tv-july-2026-v2.m3u \
+            streams/almagharibia.m3u8
+          git commit -m "Renew official Almagharibia recovery source"
+          git pull --rebase
+          git push
