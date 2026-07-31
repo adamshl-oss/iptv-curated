@@ -1,0 +1,35 @@
+name: Route scheduled workflow notifications to bot
+
+on:
+  workflow_dispatch:
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  reassign-scheduled-actor:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Re-enable scheduled workflows as github-actions bot
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+
+          workflows=(
+            refresh-french-cloud.yml
+            refresh-algerian-cloud.yml
+            renew-algerian-signed-source.yml
+            refresh-youtube.yml
+            refresh.yml
+            rebuild-pool.yml
+          )
+
+          for workflow in "${workflows[@]}"; do
+            gh workflow disable "$workflow" --repo "$GH_REPO"
+            gh workflow enable "$workflow" --repo "$GH_REPO"
+          done
+
+          echo "Scheduled workflow ownership moved to github-actions[bot]."
