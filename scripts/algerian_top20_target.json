@@ -129,7 +129,7 @@
     "quarantine_after_failed_gates": 2,
     "recover_after_successful_gates": 2,
     "attempts_per_gate": 3,
-    "published_count": 11
+    "published_count": 12
   },
   "channels": [
     {
@@ -287,17 +287,18 @@
       "playlist_name": "TV5 Coran (Cloud Live)",
       "tvg_id": "TV5.dz",
       "official_url": "https://entv.dz/",
-      "status": "quarantined_source_gone",
+      "status": "verified_cloud",
       "reason": "Quarantined on 2026-07-30 after its only exact public source returned persistent 404 responses through three outside-cloud playback gates. The target is preserved for recovery; no pirate or inexact substitute was accepted.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv5",
       "min_height": 540,
-      "publish": false,
+      "publish": true,
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
         "failure_streak": 0,
-        "success_streak": 1,
-        "prior_status": "verified_cloud"
+        "success_streak": 2,
+        "prior_status": "verified_cloud",
+        "last_recovery": "2026-07-31T08:13:28Z"
       }
     },
     {
@@ -367,7 +368,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-07-30T20:53:26Z",
         "last_evidence": "1:no_response; 2:no_response; 3:h264/aac 1280x720, moving",
