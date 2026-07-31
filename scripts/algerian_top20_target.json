@@ -295,10 +295,12 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 0,
-        "success_streak": 2,
+        "failure_streak": 1,
+        "success_streak": 0,
         "prior_status": "verified_cloud",
-        "last_recovery": "2026-07-31T08:13:28Z"
+        "last_recovery": "2026-07-31T08:13:28Z",
+        "last_failure": "2026-07-31T15:55:02Z",
+        "last_evidence": "1:invalid_video_dimensions_0x0; 2:invalid_video_dimensions_0x0; 3:invalid_video_dimensions_0x0"
       }
     },
     {
@@ -352,7 +354,15 @@
       "reason": "Exact live channel retained from the verified lineup behind an always-on public endpoint.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/amouyazid",
       "min_height": 720,
-      "publish": true
+      "publish": true,
+      "auto_healing": {
+        "enabled": true,
+        "failure_streak": 1,
+        "success_streak": 0,
+        "last_failure": "2026-07-31T15:55:02Z",
+        "last_evidence": "1:http_503; 2:http_503; 3:http_503",
+        "recovery_allowed": true
+      }
     },
     {
       "rank": 20,
