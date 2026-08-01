@@ -154,8 +154,19 @@ def main() -> int:
             and healing.get("recovery_allowed") is True
         )
         if channel.get("publish") is True or should_recover:
-            if not channel.get("stream_url"):
-                channel["stream_url"] = entry["url"]
+            stream_url = str(channel.get("stream_url") or entry.get("url") or "")
+            if not stream_url.startswith(("http://", "https://")):
+                if channel.get("publish") is True:
+                    print(
+                        f"FAIL\t{entry['name']}\t"
+                        "published channel has no stream URL"
+                    )
+                    return 1
+                # Unpublished targets without a discovered candidate remain in
+                # the durable catalog but are not sent through a meaningless
+                # playback gate against their ordinary broadcaster web page.
+                continue
+            channel["stream_url"] = stream_url
             candidates.append(channel)
 
     with futures.ThreadPoolExecutor(max_workers=4) as executor:

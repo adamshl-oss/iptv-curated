@@ -2,9 +2,10 @@
 """Refresh official Algerian feeds behind stable GitHub Pages HLS URLs.
 
 IPTV clients cache the top-level M3U for days, while broadcaster signatures
-often expire in hours.  The top-level playlist therefore contains only stable
-GitHub Pages wrapper URLs; this job refreshes the signed child URLs inside
-those wrappers.
+often expire in hours. The top-level playlist therefore contains only stable
+cloud relay URLs. This job refreshes signed child URLs inside the wrappers; it
+must never rewrite playlist membership, which belongs exclusively to the
+self-healing controller and its target registry.
 """
 
 from __future__ import annotations
@@ -308,65 +309,6 @@ def refresh_or_keep(
         return existing
 
 
-def render_playlist_block() -> str:
-    return "\n".join(
-        [
-            BEGIN,
-            '#EXTINF:-1 tvg-id="AL24News.dz" '
-            'tvg-logo="https://i.imgur.com/vyVEXYL.png" '
-            'group-title="Algeria — Cloud Live",'
-            "AL24 News (Cloud HD)",
-            f"{RELAY_ROOT}/api/free/al24",
-            '#EXTINF:-1 tvg-id="TV1.dz" '
-            'group-title="Algeria — Cloud Live",'
-            "TV1 / Programme National (Cloud Live)",
-            f"{RELAY_ROOT}/api/free/tv1",
-            '#EXTINF:-1 tvg-id="TV2.dz" '
-            'tvg-logo="https://i.imgur.com/VEb631f.png" '
-            'group-title="Algeria — Cloud Live",'
-            "TV2 / Canal Algérie (1080p)",
-            f"{RELAY_ROOT}/api/free/tv2",
-            '#EXTINF:-1 tvg-id="TV3.dz" '
-            'group-title="Algeria — Cloud Live",'
-            "TV3 / A3 (Cloud Live)",
-            f"{RELAY_ROOT}/api/free/tv3",
-            '#EXTINF:-1 tvg-id="TV4.dz" '
-            'group-title="Algeria — Cloud Live",'
-            "TV4 Tamazight (Cloud Live)",
-            f"{RELAY_ROOT}/api/free/tv4",
-            '#EXTINF:-1 tvg-id="TV7.dz" '
-            'group-title="Algeria — Cloud Live",'
-            "TV7 El Maarifa (Cloud Live)",
-            f"{RELAY_ROOT}/api/free/tv7",
-            '#EXTINF:-1 tvg-id="EnnaharTV.dz" '
-            'tvg-logo="https://i.imgur.com/C0TCA1s.png" '
-            'group-title="Algeria — Cloud Live",'
-            "Ennahar TV (Cloud Live)",
-            f"{RELAY_ROOT}/api/free/ennahar",
-            '#EXTINF:-1 tvg-id="ElHeddafTV.dz" '
-            'tvg-logo="https://i.imgur.com/cDkIDIA.png" '
-            'group-title="Algeria — Cloud Live",'
-            "El Heddaf TV (Cloud Live)",
-            f"{RELAY_ROOT}/api/free/elheddaf",
-            '#EXTINF:-1 tvg-id="ElBilad.dz" '
-            'group-title="Algeria — Cloud Live",'
-            "El Bilad TV (Cloud Live)",
-            f"{RELAY_ROOT}/api/free/elbilad",
-            '#EXTINF:-1 tvg-id="AmouYazidTV.dz" '
-            'tvg-logo="https://i.imgur.com/L8UPGPC.png" '
-            'group-title="Algeria — Cloud Live",'
-            "Amou Yazid TV (Cloud 1080p)",
-            f"{RELAY_ROOT}/api/free/amouyazid",
-            '#EXTINF:-1 tvg-id="AlmagharibiaTV.uk" '
-            'tvg-logo="https://i.imgur.com/XE6OWcb.png" '
-            'group-title="Algeria — Cloud Live",'
-            "Almagharibia TV (Official Cloud Live)",
-            f"{RELAY_ROOT}/api/youtube/almagharibia",
-            END,
-        ]
-    )
-
-
 def write_wrapper(slug: str, target: str) -> None:
     STREAMS.mkdir(exist_ok=True)
     (STREAMS / f"{slug}.m3u8").write_text(
@@ -386,7 +328,6 @@ def write_wrapper(slug: str, target: str) -> None:
 
 
 def main() -> None:
-    text = PLAYLIST.read_text()
     force_refresh = os.environ.get("FORCE_REFRESH", "").lower() == "true"
     almagharibia = refresh_or_keep(
         "Almagharibia",
@@ -401,15 +342,7 @@ def main() -> None:
     for slug, target in refreshed.items():
         if target:
             write_wrapper(slug, target)
-
-    block = render_playlist_block()
-    pattern = re.compile(re.escape(BEGIN) + r".*?" + re.escape(END), re.DOTALL)
-    if not pattern.search(text):
-        raise RuntimeError("Dynamic Algerian playlist markers are missing")
-    updated = pattern.sub(block, text)
-    PLAYLIST.write_text(updated)
-    PLAYLIST_ALIAS.write_text(updated)
-    print("Updated 11-channel Algerian cloud playlist")
+    print("Refreshed Algerian signed wrappers; playlist membership unchanged")
 
 
 if __name__ == "__main__":
