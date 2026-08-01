@@ -27,10 +27,7 @@ jobs:
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y ffmpeg jq
-          chmod +x \
-            scripts/test_stream.sh \
-            scripts/discover_channel_sources.py \
-            scripts/reconcile_self_healing.py
+          chmod +x scripts/test_stream.sh
 
       - name: Verify discovery policy
         run: |
