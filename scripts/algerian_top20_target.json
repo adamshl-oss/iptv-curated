@@ -335,7 +335,15 @@
       "reason": "Exact EPTV education service retained from the verified lineup behind an always-on public endpoint.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv7",
       "min_height": 540,
-      "publish": true
+      "publish": true,
+      "auto_healing": {
+        "enabled": true,
+        "failure_streak": 1,
+        "success_streak": 0,
+        "last_failure": "2026-08-03T19:03:01Z",
+        "last_evidence": "1:invalid_video_dimensions_0x0; 2:invalid_video_dimensions_0x0; 3:invalid_video_dimensions_0x0",
+        "recovery_allowed": true
+      }
     },
     {
       "rank": 17,
