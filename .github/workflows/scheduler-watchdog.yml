@@ -47,18 +47,45 @@ jobs:
               gh api \
                 -H "Accept: application/vnd.github+json" \
                 "repos/$GH_REPO/actions/workflows/$workflow/runs?branch=main&per_page=1" \
-                --jq '.workflow_runs[0].created_at // ""'
+                --jq '(.workflow_runs[0] // empty) | [.id, .status, (.conclusion // ""), .created_at] | @tsv'
             } 2>/dev/null || true)"
 
             if [ -n "$latest" ]; then
-              latest_epoch="$(date -u -d "$latest" +%s)"
-              age="$((now - latest_epoch))"
+              IFS=$'\t' read -r latest_id latest_status latest_conclusion latest_created <<< "$latest"
+              latest_epoch="$(date -u -d "$latest_created" +%s)"
+              latest_age="$((now - latest_epoch))"
+
+              # A new queued run gets a short acquisition grace period. A real
+              # running job gets the full Actions job timeout. Neither state is
+              # allowed to mask recovery forever.
+              if [ "$latest_status" = "queued" ] && [ "$latest_age" -le 600 ]; then
+                echo "$workflow has queued run $latest_id (${latest_age}s old)."
+                return 0
+              fi
+              if [ "$latest_status" = "in_progress" ] && [ "$latest_age" -le 3600 ]; then
+                echo "$workflow has active run $latest_id (${latest_age}s old)."
+                return 0
+              fi
+            fi
+
+            # Only a successful completion can make maintenance fresh. Failed,
+            # cancelled, timed-out, or abandoned queued runs never reset this
+            # clock.
+            latest_success="$({
+              gh api \
+                -H "Accept: application/vnd.github+json" \
+                "repos/$GH_REPO/actions/workflows/$workflow/runs?branch=main&status=success&per_page=1" \
+                --jq '.workflow_runs[0].created_at // ""'
+            } 2>/dev/null || true)"
+            if [ -n "$latest_success" ]; then
+              success_epoch="$(date -u -d "$latest_success" +%s)"
+              age="$((now - success_epoch))"
             else
               age="$((max_age + 1))"
             fi
 
             if [ "$age" -le "$max_age" ]; then
-              echo "$workflow is fresh (${age}s old)."
+              echo "$workflow is fresh from a successful run (${age}s old)."
               return 0
             fi
 
