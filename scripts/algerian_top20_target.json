@@ -240,7 +240,15 @@
       "reason": "Exact EPTV international service retained from the verified lineup; source provenance remains under review and it is subject to the same recurring three-pass quarantine gate.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv2",
       "min_height": 720,
-      "publish": true
+      "publish": true,
+      "auto_healing": {
+        "enabled": true,
+        "failure_streak": 1,
+        "success_streak": 0,
+        "last_failure": "2026-08-07T15:49:17Z",
+        "last_evidence": "1:h264/mp2 1920x1080, moving; 2:h264/mp2 1920x1080, moving; 3:http_503",
+        "recovery_allowed": true
+      }
     },
     {
       "rank": 8,
