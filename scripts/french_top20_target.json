@@ -353,18 +353,23 @@
       "tvg_id": "RMCStory.fr",
       "logo": "https://upload.wikimedia.org/wikipedia/fr/thumb/4/43/Logo_RMC_Story_2025.png/512px-Logo_RMC_Story_2025.png",
       "official_url": "https://www.rmcbfmplay.com/direct/rmc_story",
-      "status": "verified_static",
-      "reason": "Public distribution HLS passed 1080p decode; on-screen branding and current programme matched RMC's official live schedule.",
-      "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/linear/france/rmc-story/live.m3u8",
+      "status": "candidate_cloud_verification",
+      "reason": "Automatically discovered from github:iptv-org/iptv; exact identity and three moving-media gates passed. Awaiting the independent recovery gate.",
+      "stream_url": "https://d15aro46bnpfm8.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-fqkqiax1078up/RMC_Story_FR.m3u8",
       "min_height": 720,
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
-        "success_streak": 0,
+        "failure_streak": 0,
+        "success_streak": 1,
         "last_failure": "2026-08-07T07:19:32Z",
         "last_evidence": "1:timeout; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving",
-        "recovery_allowed": true
+        "recovery_allowed": true,
+        "prior_status": "verified_static",
+        "prior_reason": "Public distribution HLS passed 1080p decode; on-screen branding and current programme matched RMC's official live schedule.",
+        "candidate_discovered_at": "2026-08-07T07:31:20Z",
+        "candidate_source": "github:iptv-org/iptv",
+        "candidate_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving"
       }
     },
     {
@@ -424,8 +429,8 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 2,
-        "success_streak": 0,
+        "failure_streak": 0,
+        "success_streak": 1,
         "prior_status": "geo_restricted",
         "prior_reason": "CStar's official Dailymotion live x5gv5v0 is explicitly geo-restricted outside its licensed territories; a fresh 2026-07-25 extraction was again refused by the owner's territory policy. Free TV's exact CStar service (678) was also audited, but every tested HLS audio/video rendition is SAMPLE-AES/FairPlay encrypted and its player requires account and TV-rights tokens for the license request. Molotov Basic carries the exact channel, but its current public state marks it unavailable from the US; channel APIs require an authenticated session and Molotov confirms its delivery uses DRM. POST Luxembourg's 2026-07-24 base package and Zattoo Switzerland carry exact CStar, but POST requires its Internet+TV subscription and decoder, while Zattoo prohibits Swiss live TV outside Switzerland and blocks hosting/proxy use. Licensed Swiss provider netplus carries exact CStar, but its HLS origin completes TLS and then returns no HTTP response from the US; Teleboy and Salt likewise require Swiss service/account access. ParaTV's newly refreshed signed Dailymotion wrapper passed three 12-second H.264/AAC decodes and showed exact CStar branding from the US, but the token is sourced from an owner-permitted territory and would circumvent Dailymotion's explicit US restriction, so it was intentionally not published. Other maintained resolvers offer only private-IP restreams, and Samsung TV Plus's current French FAST catalog contains no exact CStar. The previously published signed Dailymotion rendition expired and was removed rather than left as a dead channel.",
         "candidate_discovered_at": "2026-08-01T05:29:33Z",
