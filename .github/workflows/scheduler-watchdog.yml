@@ -40,6 +40,32 @@ jobs:
 
           failed=0
 
+          ensure_cloud_clock() {
+            active="$({
+              gh api \
+                "repos/$GH_REPO/actions/workflows/iptv-maintenance-clock.yml/runs?branch=main&per_page=10" \
+                --jq '[.workflow_runs[] | select(.status == "waiting" or .status == "queued" or .status == "in_progress")][0] | if . then [.id, .status, .created_at] | @tsv else "" end'
+            } 2>/dev/null || true)"
+
+            if [ -n "$active" ]; then
+              IFS=$'\t' read -r clock_id clock_status clock_created <<< "$active"
+              clock_epoch="$(date -u -d "$clock_created" +%s)"
+              clock_age="$((now - clock_epoch))"
+              if [ "$clock_age" -le 2700 ]; then
+                echo "Cloud clock run $clock_id is $clock_status (${clock_age}s old)."
+                return 0
+              fi
+              echo "Cloud clock run $clock_id is stale (${clock_age}s old); starting a replacement."
+            else
+              echo "No active cloud clock exists; starting a replacement."
+            fi
+
+            if ! gh workflow run iptv-maintenance-clock.yml --repo "$GH_REPO" --ref main; then
+              echo "::error::Could not restore the server-side maintenance clock."
+              failed="$((failed + 1))"
+            fi
+          }
+
           dispatch_if_stale() {
             workflow="$1"
             max_age="$2"
@@ -123,6 +149,11 @@ jobs:
               failed="$((failed + 1))"
             fi
           }
+
+          # Native cron and workflow-run events are a second way back into this
+          # controller. If the self-renewing server-side clock ever loses its
+          # successor, the next watchdog invocation recreates it.
+          ensure_cloud_clock
 
           dispatch_if_stale refresh-french-cloud.yml 1500
           dispatch_if_stale refresh-algerian-cloud.yml 1500
