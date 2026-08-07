@@ -129,7 +129,7 @@
     "quarantine_after_failed_gates": 2,
     "recover_after_successful_gates": 2,
     "attempts_per_gate": 3,
-    "published_count": 10
+    "published_count": 11
   },
   "channels": [
     {
@@ -407,22 +407,22 @@
       "playlist_name": "Almagharibia TV (Official Cloud Live)",
       "tvg_id": "AlmagharibiaTV.uk",
       "official_url": "https://almagharibia.tv/",
-      "status": "quarantined_automated",
-      "reason": "Automatically quarantined after two consecutive complete cloud playback gates failed: 1:http_500; 2:http_500; 3:http_500",
+      "status": "verified_cloud_apple_relay",
+      "reason": "The broadcaster's official app exposed its exact current YouTube live identity. GitHub run 30187908850 passed nine independent outside-cloud 720p H.264/AAC moving-media decodes plus a sustained 45-second decode; the immediate home/Apple-facing route then passed 3/3 plus another sustained 45-second decode, and the complete 12-item lineup passed all 36 local attempts. This satisfied the same-cycle split-path recovery gate that the earlier unstable version had failed.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/youtube/almagharibia",
       "min_height": 720,
       "playlist_order": 13,
-      "publish": false,
+      "publish": true,
       "auto_healing": {
         "enabled": true,
         "failure_streak": 0,
-        "success_streak": 1,
+        "success_streak": 2,
         "last_failure": "2026-08-07T04:16:34Z",
         "last_evidence": "1:http_500; 2:http_500; 3:http_500",
         "recovery_allowed": true,
         "prior_status": "verified_cloud_apple_relay",
         "prior_reason": "The broadcaster's official app exposed its exact current YouTube live identity. GitHub run 30187908850 passed nine independent outside-cloud 720p H.264/AAC moving-media decodes plus a sustained 45-second decode; the immediate home/Apple-facing route then passed 3/3 plus another sustained 45-second decode, and the complete 12-item lineup passed all 36 local attempts. This satisfied the same-cycle split-path recovery gate that the earlier unstable version had failed.",
-        "last_recovery": "2026-08-02T11:46:14Z"
+        "last_recovery": "2026-08-07T05:16:11Z"
       }
     }
   ]
