@@ -53,11 +53,16 @@ jobs:
         run: |
           chmod +x scripts/test_stream.sh
           public_relay="https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/youtube/almagharibia"
-          for attempt in 1 2 3; do
-            echo "Public relay playback gate $attempt/3"
-            scripts/test_stream.sh "$public_relay"
+          passed=0
+          for attempt in 1 2 3 4 5; do
+            echo "Public relay playback gate $attempt/5"
+            if scripts/test_stream.sh "$public_relay"; then
+              passed="$((passed + 1))"
+            fi
             sleep 5
           done
+          echo "Public relay passed $passed/5 complete playback gates."
+          [ "$passed" -ge 3 ]
 
       - name: Publish renewal
         run: |
