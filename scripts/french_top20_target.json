@@ -154,10 +154,10 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 0,
-        "success_streak": 1,
+        "failure_streak": 1,
+        "success_streak": 0,
         "prior_status": "verified_cloud_resolver",
-        "last_failure": "2026-08-07T14:30:07Z",
+        "last_failure": "2026-08-07T16:37:01Z",
         "last_evidence": "1:http_404; 2:http_404; 3:http_404",
         "prior_reason": "Quarantined after two independent 2026-07-30 playback gates proved the current signed official-CDN token is bound to the resolver IP and returns HTTP 403 to IPTVX, Apple TV, and unrelated cloud clients.",
         "candidate_discovered_at": "2026-08-07T14:49:07Z",
@@ -253,10 +253,10 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 0,
-        "success_streak": 1,
+        "failure_streak": 1,
+        "success_streak": 0,
         "prior_status": "verified_cloud_resolver",
-        "last_failure": "2026-08-07T14:30:07Z",
+        "last_failure": "2026-08-07T16:37:01Z",
         "last_evidence": "1:http_404; 2:http_404; 3:http_404",
         "prior_reason": "Quarantined after two independent 2026-07-30 playback gates proved the current signed official-CDN token is bound to the resolver IP and returns HTTP 403 to IPTVX, Apple TV, and unrelated cloud clients.",
         "candidate_discovered_at": "2026-08-07T14:49:07Z",
@@ -397,10 +397,10 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 0,
-        "success_streak": 1,
+        "failure_streak": 1,
+        "success_streak": 0,
         "prior_status": "verified_cloud_resolver",
-        "last_failure": "2026-08-07T14:30:07Z",
+        "last_failure": "2026-08-07T16:37:01Z",
         "last_evidence": "1:http_404; 2:http_404; 3:http_404",
         "prior_reason": "Quarantined after two independent 2026-07-30 playback gates proved the current signed official-CDN token is bound to the resolver IP and returns HTTP 403 to IPTVX, Apple TV, and unrelated cloud clients.",
         "candidate_discovered_at": "2026-08-07T14:49:07Z",
@@ -441,16 +441,16 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 0,
-        "success_streak": 2,
+        "failure_streak": 1,
+        "success_streak": 0,
         "prior_status": "geo_restricted",
         "prior_reason": "CStar's official Dailymotion live x5gv5v0 is explicitly geo-restricted outside its licensed territories; a fresh 2026-07-25 extraction was again refused by the owner's territory policy. Free TV's exact CStar service (678) was also audited, but every tested HLS audio/video rendition is SAMPLE-AES/FairPlay encrypted and its player requires account and TV-rights tokens for the license request. Molotov Basic carries the exact channel, but its current public state marks it unavailable from the US; channel APIs require an authenticated session and Molotov confirms its delivery uses DRM. POST Luxembourg's 2026-07-24 base package and Zattoo Switzerland carry exact CStar, but POST requires its Internet+TV subscription and decoder, while Zattoo prohibits Swiss live TV outside Switzerland and blocks hosting/proxy use. Licensed Swiss provider netplus carries exact CStar, but its HLS origin completes TLS and then returns no HTTP response from the US; Teleboy and Salt likewise require Swiss service/account access. ParaTV's newly refreshed signed Dailymotion wrapper passed three 12-second H.264/AAC decodes and showed exact CStar branding from the US, but the token is sourced from an owner-permitted territory and would circumvent Dailymotion's explicit US restriction, so it was intentionally not published. Other maintained resolvers offer only private-IP restreams, and Samsung TV Plus's current French FAST catalog contains no exact CStar. The previously published signed Dailymotion rendition expired and was removed rather than left as a dead channel.",
         "candidate_discovered_at": "2026-08-01T05:29:33Z",
         "candidate_source": "paratv-france",
         "candidate_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving",
         "last_recovery": "2026-08-07T07:46:22Z",
-        "last_failure": "2026-08-07T01:31:41Z",
-        "last_evidence": "1:variant_empty; 2:variant_empty; 3:variant_empty"
+        "last_failure": "2026-08-07T16:37:01Z",
+        "last_evidence": "1:quality 480p below 540p; 2:quality 480p below 540p; 3:quality 480p below 540p"
       }
     },
     {
