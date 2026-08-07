@@ -129,7 +129,7 @@
     "quarantine_after_failed_gates": 2,
     "recover_after_successful_gates": 2,
     "attempts_per_gate": 3,
-    "published_count": 11
+    "published_count": 10
   },
   "channels": [
     {
@@ -343,18 +343,20 @@
       "playlist_name": "TV7 El Maarifa (Cloud Live)",
       "tvg_id": "TV7.dz",
       "official_url": "https://entv.dz/",
-      "status": "verified_cloud",
-      "reason": "Exact EPTV education service retained from the verified lineup behind an always-on public endpoint.",
+      "status": "quarantined_automated",
+      "reason": "Automatically quarantined after two consecutive complete cloud playback gates failed: 1:http_503; 2:http_503; 3:http_503",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv7",
       "min_height": 540,
-      "publish": true,
+      "publish": false,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 2,
         "success_streak": 0,
-        "last_failure": "2026-08-07T04:16:34Z",
+        "last_failure": "2026-08-07T04:46:59Z",
         "last_evidence": "1:http_503; 2:http_503; 3:http_503",
-        "recovery_allowed": true
+        "recovery_allowed": true,
+        "prior_status": "verified_cloud",
+        "prior_reason": "Exact EPTV education service retained from the verified lineup behind an always-on public endpoint."
       }
     },
     {
@@ -413,8 +415,8 @@
       "publish": false,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 2,
-        "success_streak": 0,
+        "failure_streak": 0,
+        "success_streak": 1,
         "last_failure": "2026-08-07T04:16:34Z",
         "last_evidence": "1:http_500; 2:http_500; 3:http_500",
         "recovery_allowed": true,
