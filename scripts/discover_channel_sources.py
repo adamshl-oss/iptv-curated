@@ -320,10 +320,38 @@ def github_candidates(
         return []
     query = quote_plus(f'"{tvg_id}"')
     search_url = f"https://api.github.com/search/code?q={query}&per_page={result_limit}"
-    try:
-        payload = json.loads(fetch_text(search_url, token=token))
-    except (HTTPError, URLError, TimeoutError, json.JSONDecodeError) as error:
-        print(f"DISCOVERY\t{country}\t{target['name']}\tGitHub search unavailable: {error}")
+    payload: dict[str, Any] | None = None
+    for attempt in range(1, 5):
+        try:
+            payload = json.loads(fetch_text(search_url, token=token))
+            break
+        except HTTPError as error:
+            if error.code not in (403, 429) or attempt == 4:
+                print(
+                    f"DISCOVERY\t{country}\t{target['name']}\t"
+                    f"GitHub search unavailable after {attempt} attempt(s): {error}"
+                )
+                return []
+            retry_after = int(error.headers.get("Retry-After", "0") or 0)
+            reset_at = int(error.headers.get("X-RateLimit-Reset", "0") or 0)
+            reset_wait = max(0, reset_at - int(time.time()) + 2)
+            delay = max(10 * attempt, retry_after, reset_wait)
+            delay = min(delay, 90)
+            print(
+                f"RETRY\t{country}\t{target['name']}\t"
+                f"GitHub search rate-limited; waiting {delay}s"
+            )
+            time.sleep(delay)
+        except (URLError, TimeoutError, json.JSONDecodeError) as error:
+            if attempt == 4:
+                print(
+                    f"DISCOVERY\t{country}\t{target['name']}\t"
+                    f"GitHub search unavailable after {attempt} attempt(s): {error}"
+                )
+                return []
+            time.sleep(5 * attempt)
+
+    if payload is None:
         return []
 
     found: list[Candidate] = []

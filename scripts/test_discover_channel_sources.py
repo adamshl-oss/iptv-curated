@@ -5,7 +5,9 @@ from __future__ import annotations
 import importlib.util
 import sys
 import unittest
+from email.message import Message
 from pathlib import Path
+from urllib.error import HTTPError
 
 
 COVERAGE_MODULE_PATH = Path(__file__).with_name("coverage_status.py")
@@ -122,6 +124,45 @@ class DiscoveryPolicyTests(unittest.TestCase):
         self.assertFalse(target["publish"])
         self.assertEqual(target["auto_healing"]["success_streak"], 1)
         self.assertTrue(target["auto_healing"]["recovery_allowed"])
+
+    def test_github_rate_limit_is_retried_instead_of_skipping_target(self) -> None:
+        original_fetch = discovery.fetch_text
+        original_sleep = discovery.time.sleep
+        calls = 0
+        sleeps: list[int] = []
+        headers = Message()
+        headers["Retry-After"] = "1"
+
+        def fake_fetch(*_args, **_kwargs):
+            nonlocal calls
+            calls += 1
+            if calls == 1:
+                raise HTTPError(
+                    "https://api.github.com/search/code",
+                    429,
+                    "Too Many Requests",
+                    headers,
+                    None,
+                )
+            return '{"items": []}'
+
+        discovery.fetch_text = fake_fetch
+        discovery.time.sleep = sleeps.append
+        try:
+            candidates = discovery.github_candidates(
+                "france",
+                {"name": "France 2", "tvg_id": "France2.fr"},
+                "token",
+                set(),
+                3,
+            )
+        finally:
+            discovery.fetch_text = original_fetch
+            discovery.time.sleep = original_sleep
+
+        self.assertEqual(candidates, [])
+        self.assertEqual(calls, 2)
+        self.assertEqual(sleeps, [10])
 
 
 if __name__ == "__main__":
