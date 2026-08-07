@@ -125,7 +125,7 @@
     "quarantine_after_failed_gates": 2,
     "recover_after_successful_gates": 2,
     "attempts_per_gate": 3,
-    "published_count": 10,
+    "published_count": 11,
     "required_count": 20,
     "coverage_state": "degraded",
     "missing_targets": [
@@ -137,8 +137,7 @@
       "W9",
       "TFX",
       "6ter",
-      "Canal+",
-      "CStar"
+      "Canal+"
     ]
   },
   "channels": [
@@ -254,11 +253,11 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 0,
-        "success_streak": 2,
+        "failure_streak": 1,
+        "success_streak": 0,
         "prior_status": "verified_cloud_resolver",
-        "last_failure": "2026-07-30T07:14:12Z",
-        "last_evidence": "three public ffmpeg gates returned no video codec; direct child manifests returned HTTP 403",
+        "last_failure": "2026-08-07T07:46:22Z",
+        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:timeout",
         "prior_reason": "Quarantined after two independent 2026-07-30 playback gates proved the current signed official-CDN token is bound to the resolver IP and returns HTTP 403 to IPTVX, Apple TV, and unrelated cloud clients.",
         "candidate_discovered_at": "2026-08-07T06:27:14Z",
         "candidate_source": "paratv-france",
@@ -345,7 +344,15 @@
       "reason": "Public distribution HLS passed 1080p decode; on-screen branding and current programme matched RMC's official live schedule.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/linear/france/rmc-decouverte/live.m3u8",
       "min_height": 720,
-      "publish": true
+      "publish": true,
+      "auto_healing": {
+        "enabled": true,
+        "failure_streak": 1,
+        "success_streak": 0,
+        "last_failure": "2026-08-07T07:46:22Z",
+        "last_evidence": "1:timeout; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving",
+        "recovery_allowed": true
+      }
     },
     {
       "rank": 15,
@@ -422,21 +429,21 @@
       "name": "CStar",
       "tvg_id": "CStar.fr",
       "official_url": "https://www.canalplus.com/chaines/cstar",
-      "status": "quarantined_automated",
-      "reason": "Automatically quarantined after two consecutive complete cloud playback gates failed: 1:variant_empty; 2:variant_empty; 3:variant_empty",
-      "publish": false,
+      "status": "geo_restricted",
+      "reason": "CStar's official Dailymotion live x5gv5v0 is explicitly geo-restricted outside its licensed territories; a fresh 2026-07-25 extraction was again refused by the owner's territory policy. Free TV's exact CStar service (678) was also audited, but every tested HLS audio/video rendition is SAMPLE-AES/FairPlay encrypted and its player requires account and TV-rights tokens for the license request. Molotov Basic carries the exact channel, but its current public state marks it unavailable from the US; channel APIs require an authenticated session and Molotov confirms its delivery uses DRM. POST Luxembourg's 2026-07-24 base package and Zattoo Switzerland carry exact CStar, but POST requires its Internet+TV subscription and decoder, while Zattoo prohibits Swiss live TV outside Switzerland and blocks hosting/proxy use. Licensed Swiss provider netplus carries exact CStar, but its HLS origin completes TLS and then returns no HTTP response from the US; Teleboy and Salt likewise require Swiss service/account access. ParaTV's newly refreshed signed Dailymotion wrapper passed three 12-second H.264/AAC decodes and showed exact CStar branding from the US, but the token is sourced from an owner-permitted territory and would circumvent Dailymotion's explicit US restriction, so it was intentionally not published. Other maintained resolvers offer only private-IP restreams, and Samsung TV Plus's current French FAST catalog contains no exact CStar. The previously published signed Dailymotion rendition expired and was removed rather than left as a dead channel.",
+      "publish": true,
       "stream_url": "https://raw.githubusercontent.com/Paradise-91/ParaTV/main/streams/canalplus/cstar-dm.m3u8",
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
         "failure_streak": 0,
-        "success_streak": 1,
+        "success_streak": 2,
         "prior_status": "geo_restricted",
         "prior_reason": "CStar's official Dailymotion live x5gv5v0 is explicitly geo-restricted outside its licensed territories; a fresh 2026-07-25 extraction was again refused by the owner's territory policy. Free TV's exact CStar service (678) was also audited, but every tested HLS audio/video rendition is SAMPLE-AES/FairPlay encrypted and its player requires account and TV-rights tokens for the license request. Molotov Basic carries the exact channel, but its current public state marks it unavailable from the US; channel APIs require an authenticated session and Molotov confirms its delivery uses DRM. POST Luxembourg's 2026-07-24 base package and Zattoo Switzerland carry exact CStar, but POST requires its Internet+TV subscription and decoder, while Zattoo prohibits Swiss live TV outside Switzerland and blocks hosting/proxy use. Licensed Swiss provider netplus carries exact CStar, but its HLS origin completes TLS and then returns no HTTP response from the US; Teleboy and Salt likewise require Swiss service/account access. ParaTV's newly refreshed signed Dailymotion wrapper passed three 12-second H.264/AAC decodes and showed exact CStar branding from the US, but the token is sourced from an owner-permitted territory and would circumvent Dailymotion's explicit US restriction, so it was intentionally not published. Other maintained resolvers offer only private-IP restreams, and Samsung TV Plus's current French FAST catalog contains no exact CStar. The previously published signed Dailymotion rendition expired and was removed rather than left as a dead channel.",
         "candidate_discovered_at": "2026-08-01T05:29:33Z",
         "candidate_source": "paratv-france",
         "candidate_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving",
-        "last_recovery": "2026-08-01T05:32:17Z",
+        "last_recovery": "2026-08-07T07:46:22Z",
         "last_failure": "2026-08-07T01:31:41Z",
         "last_evidence": "1:variant_empty; 2:variant_empty; 3:variant_empty"
       }
