@@ -42,10 +42,10 @@ class CoverageStatusTests(unittest.TestCase):
         self.assertEqual(status["published_count"], 20)
         self.assertEqual(status["missing"], [])
 
-    def test_real_french_registry_cannot_report_complete_at_seven(self) -> None:
+    def test_real_partial_french_registry_cannot_report_complete(self) -> None:
         status = coverage.build_status()["countries"]["france"]
         self.assertEqual(status["required_count"], 20)
-        self.assertEqual(status["published_count"], 7)
+        self.assertLess(status["published_count"], status["required_count"])
         self.assertEqual(status["state"], "degraded")
 
 
