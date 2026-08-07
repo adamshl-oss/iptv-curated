@@ -3,7 +3,27 @@
   "minimum_successful_playback_attempts": 3,
   "maximum_candidates_per_target": 4,
   "official_page_asset_limit": 4,
+  "official_page_deep_asset_limit": 12,
   "github_search_result_limit": 3,
+  "research_memory": {
+    "legacy_baseline_at": "2026-08-07T14:30:00Z",
+    "legacy_families": [
+      "official:page",
+      "official:assets",
+      "github:tvg_id",
+      "catalog:*"
+    ],
+    "families_per_target_per_run": 1,
+    "maximum_tasks_per_run": 4,
+    "candidate_retry_cooldown_hours": 168,
+    "max_run_history": 200,
+    "family_cooldown_hours": {
+      "catalog": 24,
+      "official": 72,
+      "official:deep_assets": 168,
+      "github": 168
+    }
+  },
   "trusted_github_repositories": [
     "iptv-org/iptv",
     "Paradise-91/ParaTV",

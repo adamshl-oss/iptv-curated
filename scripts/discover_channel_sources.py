@@ -40,12 +40,32 @@ from urllib.request import Request, urlopen
 
 from coverage_status import build_status, print_status, write_status
 
+try:
+    from discovery_memory import (
+        candidate_is_due,
+        finish_run,
+        load_history,
+        plan_searches,
+        record_task,
+        save_history,
+    )
+except ModuleNotFoundError:  # Imported as scripts.discover_channel_sources in tests.
+    from scripts.discovery_memory import (
+        candidate_is_due,
+        finish_run,
+        load_history,
+        plan_searches,
+        record_task,
+        save_history,
+    )
+
 
 ROOT = Path(__file__).resolve().parent.parent
 POLICY_PATH = ROOT / "scripts" / "source_discovery.json"
 CATALOG_PATH = ROOT / "scripts" / "self_healing_catalog.json"
 TEST = ROOT / "scripts" / "test_stream.sh"
 REPORT_DEFAULT = ROOT / "source-discovery-report.json"
+HISTORY_DEFAULT = ROOT / "source-discovery-history.json"
 REGISTRIES = {
     "france": ROOT / "scripts" / "french_top20_target.json",
     "algeria": ROOT / "scripts" / "algerian_top20_target.json",
@@ -260,6 +280,7 @@ def official_page_candidates(
     country: str,
     target: dict[str, Any],
     asset_limit: int,
+    mode: str = "all",
 ) -> list[Candidate]:
     page_url = str(target.get("official_url", ""))
     if not page_url.startswith("https://"):
@@ -270,19 +291,20 @@ def official_page_candidates(
         print(f"DISCOVERY\t{country}\t{target['name']}\tofficial page unavailable: {error}")
         return []
 
-    documents = [(page_url, page)]
+    documents = [(page_url, page)] if mode in {"all", "page"} else []
     assets: list[str] = []
-    for source in SCRIPT_RE.findall(page):
-        asset = urljoin(page_url, html.unescape(source))
-        if asset.startswith("https://") and asset not in assets:
-            assets.append(asset)
-        if len(assets) >= asset_limit:
-            break
-    for asset in assets:
-        try:
-            documents.append((asset, fetch_text(asset, timeout=15)))
-        except Exception:
-            continue
+    if mode in {"all", "assets", "deep_assets"}:
+        for source in SCRIPT_RE.findall(page):
+            asset = urljoin(page_url, html.unescape(source))
+            if asset.startswith("https://") and asset not in assets:
+                assets.append(asset)
+            if len(assets) >= asset_limit:
+                break
+        for asset in assets:
+            try:
+                documents.append((asset, fetch_text(asset, timeout=15)))
+            except Exception:
+                continue
 
     found: list[Candidate] = []
     seen: set[str] = set()
@@ -314,11 +336,41 @@ def github_candidates(
     token: str,
     trusted_repositories: set[str],
     result_limit: int,
+    query_mode: str = "tvg_id",
+    repository: str = "",
 ) -> list[Candidate]:
     tvg_id = str(target.get("tvg_id", ""))
     if not token or not tvg_id:
         return []
-    query = quote_plus(f'"{tvg_id}"')
+    target_name = str(target.get("name", ""))
+    official_host = urlparse(str(target.get("official_url", ""))).hostname or ""
+    aliases = [
+        str(alias)
+        for alias in target.get("aliases", []) or []
+        if str(alias).strip()
+    ]
+    if query_mode == "tvg_id":
+        query_text = f'"{tvg_id}"'
+    elif query_mode == "tvg_id_hls":
+        query_text = f'"{tvg_id}" m3u8'
+    elif query_mode == "exact_name_hls":
+        query_text = f'"{target_name}" m3u8'
+    elif query_mode == "exact_name_live":
+        query_text = f'"{target_name}" live'
+    elif query_mode == "country_name_hls":
+        country_name = "France" if country == "france" else "Algeria"
+        query_text = f'"{target_name}" "{country_name}" m3u8'
+    elif query_mode == "official_host" and official_host:
+        query_text = f'"{tvg_id}" "{official_host}"'
+    elif query_mode == "alias_hls" and aliases:
+        query_text = f'"{aliases[0]}" m3u8'
+    elif query_mode == "playlist_name_hls" and target.get("playlist_name"):
+        query_text = f'"{target["playlist_name"]}" m3u8'
+    else:
+        return []
+    if repository:
+        query_text += f" repo:{repository}"
+    query = quote_plus(query_text)
     search_url = f"https://api.github.com/search/code?q={query}&per_page={result_limit}"
     payload: dict[str, Any] | None = None
     for attempt in range(1, 5):
@@ -543,6 +595,8 @@ def main() -> int:
     parser.add_argument("--no-github-search", action="store_true")
     parser.add_argument("--skip-playback", action="store_true")
     parser.add_argument("--attempts", type=int)
+    parser.add_argument("--history", type=Path, default=HISTORY_DEFAULT)
+    parser.add_argument("--plan-only", action="store_true")
     args = parser.parse_args()
 
     policy = json.loads(POLICY_PATH.read_text())
@@ -562,9 +616,65 @@ def main() -> int:
         for country, registry in registries.items()
     }
 
+    run_at = utc_now()
+    history = load_history(args.history, policy, registries, run_at)
+    planned_tasks, deferred_targets = plan_searches(
+        history, policy, targets, run_at
+    )
+    if args.no_official_pages:
+        planned_tasks = [
+            task for task in planned_tasks if task["family"]["kind"] != "official"
+        ]
+    if args.no_github_search:
+        planned_tasks = [
+            task for task in planned_tasks if task["family"]["kind"] != "github"
+        ]
+
+    if args.plan_only:
+        plan_report = {
+            "version": 2,
+            "generated_at": run_at,
+            "plan_only": True,
+            "tasks": [
+                {
+                    "country": task["country"],
+                    "target": task["target"],
+                    "family": task["family"]["key"],
+                }
+                for task in planned_tasks
+            ],
+            "deferred": deferred_targets,
+        }
+        args.report.write_text(
+            json.dumps(plan_report, ensure_ascii=False, indent=2) + "\n"
+        )
+        if planned_tasks:
+            print(
+                f"SEARCH_DUE\ttasks={len(planned_tasks)}; "
+                f"families={','.join(sorted({task['family']['key'] for task in planned_tasks}))}"
+            )
+        else:
+            eligible = [
+                item["next_eligible_at"]
+                for item in deferred_targets
+                if item.get("next_eligible_at")
+            ]
+            print(
+                "SEARCH_DEFERRED\tno research path is due; "
+                f"next={min(eligible) if eligible else 'unavailable'}"
+            )
+        return 0
+
     catalog_items: dict[str, list[Candidate]] = {country: [] for country in selected}
     source_results: list[dict[str, Any]] = []
+    selected_catalogs = {
+        task["family"]["key"]
+        for task in planned_tasks
+        if task["family"]["kind"] == "catalog"
+    }
     for spec in policy["catalogs"]:
+        if f"catalog:{spec['name']}" not in selected_catalogs:
+            continue
         countries = selected if spec["country"] == "all" else [spec["country"]]
         countries = [country for country in countries if country in selected]
         if not countries:
@@ -585,23 +695,31 @@ def main() -> int:
         except Exception as error:
             source_results.append({"source": spec["name"], "status": "error", "error": str(error)})
 
-    official_items: dict[tuple[str, str], list[Candidate]] = {}
+    official_items: dict[tuple[str, str, str], list[Candidate]] = {}
     if not args.no_official_pages:
         official_jobs = [
-            (country, target)
-            for country in selected
-            for target in targets[country]
-            if str(target.get("official_url", "")).startswith("https://")
+            task
+            for task in planned_tasks
+            if task["family"]["kind"] == "official"
         ]
         with futures.ThreadPoolExecutor(max_workers=6) as executor:
             future_map = {
                 executor.submit(
                     official_page_candidates,
-                    country,
-                    target,
-                    asset_limit,
-                ): (country, str(target["name"]))
-                for country, target in official_jobs
+                    str(task["country"]),
+                    task["target_data"],
+                    (
+                        int(policy.get("official_page_deep_asset_limit", 12))
+                        if task["family"]["mode"] == "deep_assets"
+                        else asset_limit
+                    ),
+                    str(task["family"]["mode"]),
+                ): (
+                    str(task["country"]),
+                    str(task["target"]),
+                    str(task["family"]["key"]),
+                )
+                for task in official_jobs
             }
             for future in futures.as_completed(future_map):
                 key = future_map[future]
@@ -611,35 +729,55 @@ def main() -> int:
                     print(f"DISCOVERY\t{key[0]}\t{key[1]}\tofficial crawl failed: {error}")
                     official_items[key] = []
 
-    candidate_sets: dict[tuple[str, str], list[Candidate]] = {}
-    for country in selected:
-        for target in targets[country]:
-            found: list[Candidate] = []
-            for item in catalog_items[country]:
-                matched = match_candidate(country, target, item)
-                if matched:
-                    found.append(matched)
-            found.extend(official_items.get((country, str(target["name"])), []))
-            if not args.no_github_search:
-                found.extend(
-                    github_candidates(
-                        country,
-                        target,
-                        token,
-                        trusted_repositories,
-                        github_limit,
-                    )
+    candidate_sets: dict[tuple[str, str, str], list[Candidate]] = {}
+    for task in planned_tasks:
+        country = str(task["country"])
+        target = task["target_data"]
+        family = task["family"]
+        found: list[Candidate] = []
+        if family["kind"] == "catalog":
+            source_name = str(family["mode"])
+            catalog_candidates = [
+                item for item in catalog_items[country] if item.source == source_name
+            ]
+        else:
+            catalog_candidates = []
+        for item in catalog_candidates:
+            matched = match_candidate(country, target, item)
+            if matched:
+                found.append(matched)
+        found.extend(
+            official_items.get(
+                (country, str(target["name"]), str(family["key"])), []
+            )
+        )
+        if family["kind"] == "github" and not args.no_github_search:
+            found.extend(
+                github_candidates(
+                    country,
+                    target,
+                    token,
+                    trusted_repositories,
+                    github_limit,
+                    str(family["mode"]),
+                    str(family.get("repository", "")),
                 )
-                # Keep well below GitHub's authenticated code-search burst limit.
-                if token:
-                    time.sleep(6.5)
-            candidate_sets[(country, str(target["name"]))] = deduplicate(found)
+            )
+            # Keep well below GitHub's authenticated code-search burst limit.
+            if token:
+                time.sleep(6.5)
+        candidate_sets[
+            (country, str(target["name"]), str(family["key"]))
+        ] = deduplicate(found)
 
     def evaluate_target(
-        country: str,
-        target: dict[str, Any],
+        task: dict[str, Any],
     ) -> tuple[list[Candidate], list[dict[str, Any]], Candidate | None, list[str]]:
-        candidates = candidate_sets[(country, str(target["name"]))]
+        country = str(task["country"])
+        target = task["target_data"]
+        candidates = candidate_sets[
+            (country, str(target["name"]), str(task["family"]["key"]))
+        ]
         evaluated: list[dict[str, Any]] = []
         selected_candidate: Candidate | None = None
         selected_evidence: list[str] = []
@@ -661,17 +799,36 @@ def main() -> int:
                     "eligible_for_recovery": eligible,
                 }
             )
-            if not eligible or candidate.url == current_url:
+            if not eligible:
+                record["outcome"] = "rejected_policy"
+                evaluated.append(record)
+                continue
+            if candidate.url == current_url:
+                record["outcome"] = "current_stream"
+                evaluated.append(record)
+                continue
+            candidate_due, due_reason = candidate_is_due(
+                history,
+                country,
+                str(target["name"]),
+                candidate.url,
+                run_at,
+            )
+            if not candidate_due:
+                record["outcome"] = "candidate_cooldown"
+                record["candidate_cooldown_reason"] = due_reason
                 evaluated.append(record)
                 continue
             if args.skip_playback:
                 record["playback_skipped"] = True
+                record["outcome"] = "playback_skipped"
                 evaluated.append(record)
                 continue
             live, live_reason = live_manifest(candidate.url)
             record["live_manifest"] = live
             record["live_reason"] = live_reason
             if not live:
+                record["outcome"] = "not_live"
                 evaluated.append(record)
                 continue
             passed, evidence = playback_gate(
@@ -681,6 +838,7 @@ def main() -> int:
             )
             record["playback_passed"] = passed
             record["playback_evidence"] = evidence
+            record["outcome"] = "qualified" if passed else "playback_failed"
             evaluated.append(record)
             if passed:
                 selected_candidate = candidate
@@ -688,20 +846,17 @@ def main() -> int:
                 break
         return candidates, evaluated, selected_candidate, selected_evidence
 
-    jobs = [
-        (country, target)
-        for country in selected
-        for target in targets[country]
-    ]
+    jobs = planned_tasks
     with futures.ThreadPoolExecutor(max_workers=4) as executor:
-        evaluation_results = list(
-            executor.map(lambda job: evaluate_target(*job), jobs)
-        )
+        evaluation_results = list(executor.map(evaluate_target, jobs))
 
     report_targets: list[dict[str, Any]] = []
     changed_countries: set[str] = set()
     qualified_count = 0
-    for (country, target), result in zip(jobs, evaluation_results):
+    task_summaries: list[dict[str, Any]] = []
+    for task, result in zip(jobs, evaluation_results):
+        country = str(task["country"])
+        target = task["target_data"]
         candidates, evaluated, selected_candidate, selected_evidence = result
         if selected_candidate and args.apply:
             apply_candidate(target, selected_candidate, selected_evidence)
@@ -714,18 +869,42 @@ def main() -> int:
         else:
             print(
                 f"DISCOVERY\t{country}\t{target['name']}\t"
+                f"family={task['family']['key']}; "
                 f"{len(candidates)} candidate(s), no applied replacement"
             )
+        outcomes = {
+            str(record["url"]): str(record.get("outcome", "discovered"))
+            for record in evaluated
+        }
+        history_candidates = []
+        for candidate in candidates:
+            item = asdict(candidate)
+            item["outcome"] = outcomes.get(candidate.url, "not_evaluated_limit")
+            history_candidates.append(item)
+        task_summaries.append(
+            record_task(
+                history,
+                policy,
+                task,
+                candidates=history_candidates,
+                qualified=selected_candidate is not None,
+                now=run_at,
+            )
+        )
         report_targets.append(
             {
                 "country": country,
                 "target": target["name"],
+                "family": task["family"]["key"],
                 "published": target.get("publish") is True,
                 "candidates_found": len(candidates),
                 "evaluated": evaluated,
                 "qualified": asdict(selected_candidate) if selected_candidate else None,
             }
         )
+
+    finish_run(history, policy, run_at, task_summaries, deferred_targets)
+    save_history(args.history, history)
 
     if args.apply:
         for country in changed_countries:
@@ -737,11 +916,17 @@ def main() -> int:
         coverage = build_status()
 
     report = {
-        "version": 1,
-        "generated_at": utc_now(),
+        "version": 2,
+        "generated_at": run_at,
         "policy_sha256": hashlib.sha256(POLICY_PATH.read_bytes()).hexdigest(),
         "countries": selected,
         "targets_searched": len(report_targets),
+        "research_memory": {
+            "path": str(args.history),
+            "run_count": history["run_count"],
+            "tasks": task_summaries,
+            "deferred_targets": deferred_targets,
+        },
         "changed_countries": sorted(changed_countries),
         "sources": source_results,
         "targets": report_targets,
