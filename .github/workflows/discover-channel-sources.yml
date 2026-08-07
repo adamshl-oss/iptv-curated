@@ -71,6 +71,7 @@ jobs:
           chmod +x scripts/test_stream.sh
 
       - name: Search and qualify exact replacements
+        id: search
         if: steps.plan.outputs.due == 'true'
         env:
           GITHUB_TOKEN: ${{ github.token }}
@@ -80,9 +81,17 @@ jobs:
             --apply \
             --history .automation/source-discovery-history.json \
             --report source-discovery-report.json
+          if jq -e '.changed_countries | length > 0' \
+            source-discovery-report.json >/dev/null; then
+            echo "qualified=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "qualified=false" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Independent recovery gate and playlist rebuild
-        if: steps.plan.outputs.due == 'true'
+        if: >-
+          steps.plan.outputs.due == 'true' &&
+          steps.search.outputs.qualified == 'true'
         run: |
           set -o pipefail
           for country in france algeria; do
@@ -99,7 +108,9 @@ jobs:
 
       - name: Publish qualified recoveries
         id: publish
-        if: steps.plan.outputs.due == 'true'
+        if: >-
+          steps.plan.outputs.due == 'true' &&
+          steps.search.outputs.qualified == 'true'
         run: |
           paths=(
             french-tv-top20-july-2026.m3u
@@ -139,7 +150,7 @@ jobs:
           else
             git worktree add --detach "$state_dir" HEAD
             git -C "$state_dir" switch --orphan "$state_branch"
-            git -C "$state_dir" rm -rf .
+            git -C "$state_dir" rm -rf . || true
           fi
           cp "$history" "$state_dir/source-discovery-history.json"
           git -C "$state_dir" config user.name "github-actions[bot]"
