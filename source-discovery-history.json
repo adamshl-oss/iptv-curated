@@ -1,8 +1,8 @@
 {
   "version": 1,
   "created_at": "2026-08-07T15:53:53Z",
-  "updated_at": "2026-08-07T22:30:22Z",
-  "run_count": 15,
+  "updated_at": "2026-08-07T23:00:15Z",
+  "run_count": 16,
   "targets": {
     "france::TF1": {
       "families": {
@@ -618,6 +618,15 @@
           "candidates_found": 0,
           "new_candidates": 0,
           "qualified": false
+        },
+        "github:country_name_hls": {
+          "attempts": 1,
+          "last_attempted_at": "2026-08-07T23:00:15Z",
+          "next_eligible_at": "2026-08-14T23:00:15Z",
+          "outcome": "none",
+          "candidates_found": 0,
+          "new_candidates": 0,
+          "qualified": false
         }
       },
       "candidates": {
@@ -630,7 +639,7 @@
           "last_outcome": "not_live"
         }
       },
-      "last_task_at": "2026-08-07T21:56:56Z"
+      "last_task_at": "2026-08-07T23:00:15Z"
     },
     "france::France 5": {
       "families": {
@@ -1343,6 +1352,15 @@
           "candidates_found": 2,
           "new_candidates": 1,
           "qualified": false
+        },
+        "github:exact_name_hls": {
+          "attempts": 1,
+          "last_attempted_at": "2026-08-07T23:00:15Z",
+          "next_eligible_at": "2026-08-14T23:00:15Z",
+          "outcome": "none",
+          "candidates_found": 0,
+          "new_candidates": 0,
+          "qualified": false
         }
       },
       "candidates": {
@@ -1363,7 +1381,7 @@
           "last_outcome": "rejected_policy"
         }
       },
-      "last_task_at": "2026-08-07T21:56:56Z"
+      "last_task_at": "2026-08-07T23:00:15Z"
     },
     "france::LCI": {
       "families": {
@@ -2450,6 +2468,15 @@
           "candidates_found": 2,
           "new_candidates": 2,
           "qualified": false
+        },
+        "github-repo:Paradise-91~ParaTV:exact_name_hls": {
+          "attempts": 1,
+          "last_attempted_at": "2026-08-07T23:00:15Z",
+          "next_eligible_at": "2026-08-14T23:00:15Z",
+          "outcome": "candidates_found",
+          "candidates_found": 1,
+          "new_candidates": 0,
+          "qualified": false
         }
       },
       "candidates": {
@@ -2463,8 +2490,8 @@
         },
         "453fee436e34b3d85945d49870eece47fe1a0a6b9ef1e06d38d366e529869763": {
           "first_seen_at": "2026-08-07T21:56:56Z",
-          "last_seen_at": "2026-08-07T21:56:56Z",
-          "next_eligible_at": "2026-08-14T21:56:56Z",
+          "last_seen_at": "2026-08-07T23:00:15Z",
+          "next_eligible_at": "2026-08-14T23:00:15Z",
           "url": "https://raw.githubusercontent.com/Paradise-91/ParaTV/main/streams/canalplus/cstar-dm.m3u8",
           "source": "github:Paradise-91/ParaTV",
           "last_outcome": "current_stream"
@@ -2478,7 +2505,7 @@
           "last_outcome": "rejected_policy"
         }
       },
-      "last_task_at": "2026-08-07T21:56:56Z"
+      "last_task_at": "2026-08-07T23:00:15Z"
     },
     "france::RMC Life": {
       "families": {
@@ -2771,6 +2798,15 @@
           "candidates_found": 0,
           "new_candidates": 0,
           "qualified": false
+        },
+        "github:official_host": {
+          "attempts": 1,
+          "last_attempted_at": "2026-08-07T23:00:15Z",
+          "next_eligible_at": "2026-08-14T23:00:15Z",
+          "outcome": "none",
+          "candidates_found": 0,
+          "new_candidates": 0,
+          "qualified": false
         }
       },
       "candidates": {
@@ -2815,7 +2851,7 @@
           "last_outcome": "not_evaluated_limit"
         }
       },
-      "last_task_at": "2026-08-07T21:56:56Z"
+      "last_task_at": "2026-08-07T23:00:15Z"
     },
     "algeria::El Heddaf TV": {
       "families": {
@@ -3240,10 +3276,19 @@
           "candidates_found": 0,
           "new_candidates": 0,
           "qualified": false
+        },
+        "github-repo:Paradise-91~ParaTV:exact_name_hls": {
+          "attempts": 1,
+          "last_attempted_at": "2026-08-07T23:00:15Z",
+          "next_eligible_at": "2026-08-14T23:00:15Z",
+          "outcome": "none",
+          "candidates_found": 0,
+          "new_candidates": 0,
+          "qualified": false
         }
       },
       "candidates": {},
-      "last_task_at": "2026-08-07T21:56:56Z"
+      "last_task_at": "2026-08-07T23:00:15Z"
     },
     "algeria::El Watania TV": {
       "families": {
@@ -3336,6 +3381,15 @@
           "candidates_found": 1,
           "new_candidates": 1,
           "qualified": false
+        },
+        "github:exact_name_live": {
+          "attempts": 1,
+          "last_attempted_at": "2026-08-07T23:00:15Z",
+          "next_eligible_at": "2026-08-14T23:00:15Z",
+          "outcome": "candidates_found",
+          "candidates_found": 1,
+          "new_candidates": 1,
+          "qualified": false
         }
       },
       "candidates": {
@@ -3346,9 +3400,17 @@
           "url": "https://stream.castr.com/62c18c3f14d09a0b7e5355a5/live_1b36cfb0ba2411ee9700956e0f7084c8/index.fmp4.m3u8",
           "source": "github:Q81990/IPTV",
           "last_outcome": "rejected_policy"
+        },
+        "e1c7f8c56a79466994bf329980122120c27d363fa66498a61f34f5d32681ece3": {
+          "first_seen_at": "2026-08-07T23:00:15Z",
+          "last_seen_at": "2026-08-07T23:00:15Z",
+          "next_eligible_at": "2026-08-14T23:00:15Z",
+          "url": "http://tv.pro-ott.com:25443/live/V5OMGJAJGmPN/rGuG6mUFwu/124145.ts",
+          "source": "github:deldel66/tv",
+          "last_outcome": "rejected_policy"
         }
       },
-      "last_task_at": "2026-08-07T21:56:56Z"
+      "last_task_at": "2026-08-07T23:00:15Z"
     },
     "algeria::Echorouk News": {
       "families": {
@@ -3853,10 +3915,19 @@
           "candidates_found": 0,
           "new_candidates": 0,
           "qualified": false
+        },
+        "github-repo:iptv-org~iptv:tvg_id": {
+          "attempts": 1,
+          "last_attempted_at": "2026-08-07T23:00:15Z",
+          "next_eligible_at": "2026-08-14T23:00:15Z",
+          "outcome": "none",
+          "candidates_found": 0,
+          "new_candidates": 0,
+          "qualified": false
         }
       },
       "candidates": {},
-      "last_task_at": "2026-08-07T21:56:56Z"
+      "last_task_at": "2026-08-07T23:00:15Z"
     },
     "algeria::TV9 El Barlamaniya": {
       "families": {
@@ -3958,6 +4029,15 @@
           "candidates_found": 0,
           "new_candidates": 0,
           "qualified": false
+        },
+        "github:playlist_name_hls": {
+          "attempts": 1,
+          "last_attempted_at": "2026-08-07T23:00:15Z",
+          "next_eligible_at": "2026-08-14T23:00:15Z",
+          "outcome": "none",
+          "candidates_found": 0,
+          "new_candidates": 0,
+          "qualified": false
         }
       },
       "candidates": {
@@ -3978,7 +4058,7 @@
           "last_outcome": "rejected_policy"
         }
       },
-      "last_task_at": "2026-08-07T21:56:56Z"
+      "last_task_at": "2026-08-07T23:00:15Z"
     },
     "algeria::Amou Yazid TV": {
       "families": {
@@ -6055,6 +6135,133 @@
           "country": "algeria",
           "target": "El Watania TV",
           "next_eligible_at": "2026-08-07T22:30:22Z",
+          "reason": "run_budget"
+        }
+      ]
+    },
+    {
+      "at": "2026-08-07T23:00:15Z",
+      "tasks": [
+        {
+          "country": "algeria",
+          "target": "TV9 El Barlamaniya",
+          "family": "github:playlist_name_hls",
+          "candidates_found": 0,
+          "new_candidates": 0,
+          "qualified": false,
+          "next_eligible_at": "2026-08-14T23:00:15Z"
+        },
+        {
+          "country": "france",
+          "target": "CStar",
+          "family": "github-repo:Paradise-91~ParaTV:exact_name_hls",
+          "candidates_found": 1,
+          "new_candidates": 0,
+          "qualified": false,
+          "next_eligible_at": "2026-08-14T23:00:15Z"
+        },
+        {
+          "country": "france",
+          "target": "W9",
+          "family": "github:exact_name_hls",
+          "candidates_found": 0,
+          "new_candidates": 0,
+          "qualified": false,
+          "next_eligible_at": "2026-08-14T23:00:15Z"
+        },
+        {
+          "country": "algeria",
+          "target": "El Hayat TV",
+          "family": "github-repo:Paradise-91~ParaTV:exact_name_hls",
+          "candidates_found": 0,
+          "new_candidates": 0,
+          "qualified": false,
+          "next_eligible_at": "2026-08-14T23:00:15Z"
+        },
+        {
+          "country": "algeria",
+          "target": "Echorouk TV",
+          "family": "github:official_host",
+          "candidates_found": 0,
+          "new_candidates": 0,
+          "qualified": false,
+          "next_eligible_at": "2026-08-14T23:00:15Z"
+        },
+        {
+          "country": "algeria",
+          "target": "TV8 Adhakira",
+          "family": "github-repo:iptv-org~iptv:tvg_id",
+          "candidates_found": 0,
+          "new_candidates": 0,
+          "qualified": false,
+          "next_eligible_at": "2026-08-14T23:00:15Z"
+        },
+        {
+          "country": "france",
+          "target": "M6",
+          "family": "github:country_name_hls",
+          "candidates_found": 0,
+          "new_candidates": 0,
+          "qualified": false,
+          "next_eligible_at": "2026-08-14T23:00:15Z"
+        },
+        {
+          "country": "algeria",
+          "target": "El Watania TV",
+          "family": "github:exact_name_live",
+          "candidates_found": 1,
+          "new_candidates": 1,
+          "qualified": false,
+          "next_eligible_at": "2026-08-14T23:00:15Z"
+        }
+      ],
+      "deferred_targets": [
+        {
+          "country": "france",
+          "target": "Canal+",
+          "next_eligible_at": "2026-08-07T23:00:15Z",
+          "reason": "run_budget"
+        },
+        {
+          "country": "algeria",
+          "target": "TV6 Algérie",
+          "next_eligible_at": "2026-08-07T23:00:15Z",
+          "reason": "run_budget"
+        },
+        {
+          "country": "algeria",
+          "target": "Echorouk News",
+          "next_eligible_at": "2026-08-07T23:00:15Z",
+          "reason": "run_budget"
+        },
+        {
+          "country": "algeria",
+          "target": "Samira TV",
+          "next_eligible_at": "2026-08-07T23:00:15Z",
+          "reason": "run_budget"
+        },
+        {
+          "country": "france",
+          "target": "France 2",
+          "next_eligible_at": "2026-08-07T23:00:15Z",
+          "reason": "run_budget"
+        },
+        {
+          "country": "france",
+          "target": "France 5",
+          "next_eligible_at": "2026-08-07T23:00:15Z",
+          "reason": "run_budget"
+        },
+        {
+          "country": "france",
+          "target": "6ter",
+          "next_eligible_at": "2026-08-07T23:00:15Z",
+          "reason": "run_budget"
+        },
+        {
+          "country": "france",
+          "target": "France 3",
+          "next_eligible_at": "2026-08-07T23:00:15Z",
           "reason": "run_budget"
         }
       ]
