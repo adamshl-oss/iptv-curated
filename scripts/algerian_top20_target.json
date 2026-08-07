@@ -126,7 +126,7 @@
   },
   "self_healing": {
     "controller": "scripts/reconcile_self_healing.py",
-    "quarantine_after_failed_gates": 2,
+    "quarantine_after_failed_gates": 1,
     "recover_after_successful_gates": 2,
     "attempts_per_gate": 3,
     "published_count": 12,

@@ -928,6 +928,7 @@ def main() -> int:
             "deferred_targets": deferred_targets,
         },
         "changed_countries": sorted(changed_countries),
+        "qualified_count": qualified_count,
         "sources": source_results,
         "targets": report_targets,
         "coverage": coverage,
