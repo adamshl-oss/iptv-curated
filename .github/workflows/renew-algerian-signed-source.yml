@@ -1,15 +1,13 @@
 name: Renew Algerian signed recovery source
 
 on:
-  schedule:
-    - cron: "49 */2 * * *"
   workflow_dispatch:
 
 permissions:
   contents: write
 
 concurrency:
-  group: iptv-curated-state
+  group: algerian-signed-source-renewal
   cancel-in-progress: false
 
 jobs:

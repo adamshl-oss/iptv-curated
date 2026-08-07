@@ -1,9 +1,6 @@
 name: Refresh and audit self-healing Algerian channels
 
 on:
-  schedule:
-    # Staggered from the French audit and re-registered under a human actor.
-    - cron: "17,47 * * * *"
   workflow_dispatch:
     inputs:
       force_refresh:
@@ -16,7 +13,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: iptv-curated-state
+  group: algerian-self-healing-audit
   cancel-in-progress: false
 
 jobs:

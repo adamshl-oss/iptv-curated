@@ -97,12 +97,12 @@ jobs:
             fi
           }
 
-          dispatch_if_stale refresh-french-cloud.yml 2700
-          dispatch_if_stale refresh-algerian-cloud.yml 2700
-          dispatch_if_stale refresh-youtube.yml 9000
-          dispatch_if_stale refresh.yml 25200
-          dispatch_if_stale discover-channel-sources.yml 25200
-          dispatch_if_stale renew-algerian-signed-source.yml 9000
+          dispatch_if_stale refresh-french-cloud.yml 1500
+          dispatch_if_stale refresh-algerian-cloud.yml 1500
+          dispatch_if_stale refresh-youtube.yml 6300
+          dispatch_if_stale refresh.yml 19800
+          dispatch_if_stale discover-channel-sources.yml 19800
+          dispatch_if_stale renew-algerian-signed-source.yml 6300
 
           if [ "$failed" -ne 0 ]; then
             echo "::error::$failed catch-up workflow(s) failed."

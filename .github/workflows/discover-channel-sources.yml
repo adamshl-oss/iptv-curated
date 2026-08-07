@@ -1,8 +1,6 @@
 name: Discover and qualify channel replacements
 
 on:
-  schedule:
-    - cron: "52 1,7,13,19 * * *"
   workflow_dispatch:
 
 permissions:
@@ -10,7 +8,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: iptv-curated-state
+  group: channel-source-discovery
   cancel-in-progress: false
 
 jobs:
