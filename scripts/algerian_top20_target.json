@@ -129,7 +129,7 @@
     "quarantine_after_failed_gates": 2,
     "recover_after_successful_gates": 2,
     "attempts_per_gate": 3,
-    "published_count": 11
+    "published_count": 12
   },
   "channels": [
     {
@@ -200,20 +200,21 @@
       "playlist_name": "TV3 / A3 (Cloud Live)",
       "tvg_id": "TV3.dz",
       "official_url": "https://entv.dz/",
-      "status": "quarantined_automated",
-      "reason": "Automatically quarantined after two consecutive complete cloud playback gates failed: 1:http_503; 2:http_503; 3:http_503",
+      "status": "verified_cloud",
+      "reason": "Exact EPTV service retained from the verified lineup behind an always-on public endpoint.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv3",
       "min_height": 540,
-      "publish": false,
+      "publish": true,
       "auto_healing": {
         "enabled": true,
         "failure_streak": 0,
-        "success_streak": 1,
+        "success_streak": 2,
         "last_failure": "2026-08-05T22:34:28Z",
         "last_evidence": "1:http_503; 2:http_503; 3:http_503",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
-        "prior_reason": "Exact EPTV service retained from the verified lineup behind an always-on public endpoint."
+        "prior_reason": "Exact EPTV service retained from the verified lineup behind an always-on public endpoint.",
+        "last_recovery": "2026-08-07T01:42:41Z"
       }
     },
     {
@@ -412,7 +413,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-08-07T00:32:24Z",
         "last_evidence": "1:no_response; 2:no_response; 3:http_500",
