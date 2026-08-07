@@ -2,7 +2,7 @@ name: Refresh YouTube lives
 
 on:
   schedule:
-    - cron: "0 */2 * * *"   # every 2 hours (tokens last 2-6h)
+    - cron: "11 */2 * * *"   # every 2 hours, away from peak minute 0
   workflow_dispatch:
 
 permissions:

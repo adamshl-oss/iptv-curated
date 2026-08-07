@@ -2,7 +2,10 @@ name: Audit self-healing French channels
 
 on:
   schedule:
-    - cron: "3,13,23,33,43,53 * * * *"
+    # Deliberately staggered away from the top of the hour. Changing the cron
+    # also re-registers the schedule under the repository owner instead of the
+    # github-actions bot that previously re-enabled this workflow.
+    - cron: "7,17,27,37,47,57 * * * *"
   workflow_dispatch:
 
 permissions:

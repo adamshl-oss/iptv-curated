@@ -1,0 +1,72 @@
+name: Recover missed IPTV maintenance runs
+
+on:
+  schedule:
+    # Independent catch-up cadence. GitHub may drop an individual schedule;
+    # this controller dispatches any maintenance workflow that became stale.
+    - cron: "5,20,35,50 * * * *"
+  workflow_dispatch:
+  workflow_run:
+    workflows:
+      - Audit self-healing French channels
+      - Refresh and audit self-healing Algerian channels
+      - Refresh YouTube lives
+      - Refresh playlists
+      - Discover and qualify channel replacements
+      - Renew Algerian signed recovery source
+    types: [completed]
+
+permissions:
+  actions: write
+  contents: read
+
+concurrency:
+  group: iptv-scheduler-watchdog
+  cancel-in-progress: false
+
+jobs:
+  recover-stale-workflows:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Dispatch stale maintenance workflows
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+
+          now="$(date -u +%s)"
+
+          dispatch_if_stale() {
+            workflow="$1"
+            max_age="$2"
+            latest="$({
+              gh api \
+                -H "Accept: application/vnd.github+json" \
+                "repos/$GH_REPO/actions/workflows/$workflow/runs?branch=main&per_page=1" \
+                --jq '.workflow_runs[0].created_at // ""'
+            } 2>/dev/null || true)"
+
+            if [ -n "$latest" ]; then
+              latest_epoch="$(date -u -d "$latest" +%s)"
+              age="$((now - latest_epoch))"
+            else
+              age="$((max_age + 1))"
+            fi
+
+            if [ "$age" -le "$max_age" ]; then
+              echo "$workflow is fresh (${age}s old)."
+              return 0
+            fi
+
+            echo "$workflow is stale (${age}s old); dispatching catch-up."
+            gh workflow run "$workflow" --repo "$GH_REPO" --ref main
+          }
+
+          dispatch_if_stale refresh-french-cloud.yml 1200
+          dispatch_if_stale refresh-algerian-cloud.yml 1200
+          dispatch_if_stale refresh-youtube.yml 9000
+          dispatch_if_stale refresh.yml 25200
+          dispatch_if_stale discover-channel-sources.yml 25200
+          dispatch_if_stale renew-algerian-signed-source.yml 9000
