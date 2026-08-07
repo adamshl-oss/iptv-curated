@@ -21,16 +21,21 @@ jobs:
         with:
           ref: main
 
-      - name: Install playback tools
+      - name: Restore durable research memory
         run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y ffmpeg jq
-          chmod +x scripts/test_stream.sh
+          mkdir -p .automation
+          if git fetch origin \
+            refs/heads/discovery-state:refs/remotes/origin/discovery-state; then
+            git show \
+              origin/discovery-state:source-discovery-history.json \
+              > .automation/source-discovery-history.json
+          fi
 
       - name: Verify discovery policy
         run: |
           python3 -m unittest \
             scripts/test_discover_channel_sources.py \
+            scripts/test_discovery_memory.py \
             scripts/test_coverage_status.py
           jq empty \
             scripts/source_discovery.json \
@@ -38,17 +43,46 @@ jobs:
             scripts/french_top20_target.json \
             scripts/algerian_top20_target.json \
             iptv-coverage-status.json
+          if [ -f .automation/source-discovery-history.json ]; then
+            jq empty .automation/source-discovery-history.json
+          fi
+
+      - name: Plan a fresh research frontier
+        id: plan
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          python3 scripts/discover_channel_sources.py \
+            --country all \
+            --history .automation/source-discovery-history.json \
+            --plan-only \
+            --report source-discovery-plan.json | tee source-discovery-plan.txt
+          if grep -q '^SEARCH_DUE' source-discovery-plan.txt; then
+            echo "due=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "due=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Install playback tools
+        if: steps.plan.outputs.due == 'true'
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg jq
+          chmod +x scripts/test_stream.sh
 
       - name: Search and qualify exact replacements
+        if: steps.plan.outputs.due == 'true'
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
           python3 scripts/discover_channel_sources.py \
             --country all \
             --apply \
+            --history .automation/source-discovery-history.json \
             --report source-discovery-report.json
 
       - name: Independent recovery gate and playlist rebuild
+        if: steps.plan.outputs.due == 'true'
         run: |
           set -o pipefail
           for country in france algeria; do
@@ -65,6 +99,7 @@ jobs:
 
       - name: Publish qualified recoveries
         id: publish
+        if: steps.plan.outputs.due == 'true'
         run: |
           paths=(
             french-tv-top20-july-2026.m3u
@@ -87,6 +122,38 @@ jobs:
           git pull --rebase
           git push
           echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Persist durable research memory
+        if: always() && steps.plan.outputs.due == 'true'
+        run: |
+          history=.automation/source-discovery-history.json
+          [ -s "$history" ] || exit 0
+          state_parent="$(mktemp -d)"
+          state_dir="$state_parent/state"
+          state_branch="discovery-state-${GITHUB_RUN_ID}"
+          if git ls-remote --exit-code --heads origin discovery-state >/dev/null; then
+            git fetch origin \
+              refs/heads/discovery-state:refs/remotes/origin/discovery-state
+            git worktree add -b "$state_branch" \
+              "$state_dir" origin/discovery-state
+          else
+            git worktree add --detach "$state_dir" HEAD
+            git -C "$state_dir" switch --orphan "$state_branch"
+            git -C "$state_dir" rm -rf .
+          fi
+          cp "$history" "$state_dir/source-discovery-history.json"
+          git -C "$state_dir" config user.name "github-actions[bot]"
+          git -C "$state_dir" config user.email \
+            "41898282+github-actions[bot]@users.noreply.github.com"
+          git -C "$state_dir" add source-discovery-history.json
+          if ! git -C "$state_dir" diff --cached --quiet; then
+            git -C "$state_dir" commit -m \
+              "Record channel research frontier (${GITHUB_RUN_ID})"
+            git -C "$state_dir" push origin HEAD:discovery-state
+          fi
+          git worktree remove "$state_dir"
+          git branch -D "$state_branch" || true
+          rmdir "$state_parent"
 
       - name: Wait for GitHub Pages publication
         if: steps.publish.outputs.changed == 'true'
@@ -146,7 +213,10 @@ jobs:
         with:
           name: channel-source-discovery-${{ github.run_id }}
           path: |
+            source-discovery-plan.json
+            source-discovery-plan.txt
             source-discovery-report.json
+            .automation/source-discovery-history.json
             france-discovery-recovery.txt
             algeria-discovery-recovery.txt
             coverage-summary.txt
