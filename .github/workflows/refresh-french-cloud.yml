@@ -25,6 +25,7 @@ jobs:
           sudo apt-get update -qq
           sudo apt-get install -y ffmpeg jq
           chmod +x scripts/test_stream.sh
+          python3 -m unittest scripts/test_reconcile_self_healing.py
 
       - name: Audit, quarantine, recover, and rebuild
         id: reconcile
@@ -89,28 +90,53 @@ jobs:
           path: french-self-healing-audit.txt
           retention-days: 30
 
+      - name: Pressure-test public source failover
+        run: |
+          check_failover() {
+            channel="$1"
+            expected_source="$2"
+            headers="$(mktemp)"
+            body="$(mktemp)"
+            status="$(curl -sS --max-time 30 -D "$headers" -o "$body" -w '%{http_code}' \
+              "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/qa/failover/france/${channel}?mode=primary-down")"
+            [ "$status" = "200" ]
+            grep -qi "^x-iptvx-source: ${expected_source}" "$headers"
+            grep -q '^#EXTM3U' "$body"
+          }
+          check_failover bfmtv sfr-authorized
+          check_failover lequipe samsung-cloudfront
+          check_failover rmc-life samsung-official-bootstrap
+
+          status="$(curl -sS --max-time 30 -o /dev/null -w '%{http_code}' \
+            'https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/qa/failover/france/bfmtv?mode=all-down')"
+          [ "$status" = "503" ]
+
       - name: Report controller result
         if: always()
         env:
           RECONCILE_OUTCOME: ${{ steps.reconcile.outcome }}
         run: |
           coverage_line="$(grep $'^COVERAGE_.*\tfrance\t' french-self-healing-audit.txt | tail -1)"
+          playback_line="$(grep $'^PLAYBACK_.*\tfrance\t' french-self-healing-audit.txt | tail -1)"
+          outcome_line="$(grep $'^OUTCOME_.*\tfrance\t' french-self-healing-audit.txt | tail -1)"
           {
-            echo "## French target coverage"
+            echo "## French playback and target coverage"
             echo
             echo '```'
+            echo "$playback_line"
+            echo "$outcome_line"
             echo "$coverage_line"
             echo '```'
             echo
-            echo "A healthy controller run does not make incomplete coverage complete."
+            echo "Success means every published permanent cloud URL passed; target coverage is separate."
           } >> "$GITHUB_STEP_SUMMARY"
 
           if [ "$RECONCILE_OUTCOME" != "success" ]; then
-            if grep -q $'^OPERATIONAL\tfrance controller' french-self-healing-audit.txt; then
-              echo "::warning::A French channel failed its first complete gate; the next run will retry or quarantine it."
-              exit 0
-            fi
             echo "The French controller itself failed unexpectedly."
+            exit 1
+          fi
+          if ! grep -q $'^PLAYBACK_HEALTHY\tfrance\t' french-self-healing-audit.txt; then
+            echo "Published French playback remains degraded."
             exit 1
           fi
           if grep -q $'^COVERAGE_COMPLETE\tfrance\t' french-self-healing-audit.txt; then

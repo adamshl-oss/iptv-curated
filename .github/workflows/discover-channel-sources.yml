@@ -36,7 +36,8 @@ jobs:
           python3 -m unittest \
             scripts/test_discover_channel_sources.py \
             scripts/test_discovery_memory.py \
-            scripts/test_coverage_status.py
+            scripts/test_coverage_status.py \
+            scripts/test_reconcile_self_healing.py
           jq empty \
             scripts/source_discovery.json \
             scripts/self_healing_catalog.json \
@@ -203,15 +204,27 @@ jobs:
         if: always()
         run: |
           python3 scripts/coverage_status.py --check | tee coverage-summary.txt
+          if [ -s source-discovery-report.json ]; then
+            qualified="$(jq -r '.qualified_count // 0' source-discovery-report.json)"
+            searched="$(jq -r '.targets_searched // 0' source-discovery-report.json)"
+          else
+            qualified=0
+            searched=0
+          fi
           {
-            echo "## IPTV target coverage"
+            echo "## Discovery result and IPTV target coverage"
             echo
             echo '```'
+            echo "NET_NEW_QUALIFIED_CHANNELS=$qualified"
+            echo "FRESH_RESEARCH_TASKS=$searched"
             cat coverage-summary.txt
             echo '```'
             echo
-            echo "Discovery remains active while either country is degraded."
+            echo "A completed search with zero qualified channels is recorded as no progress, not goal success."
           } >> "$GITHUB_STEP_SUMMARY"
+          if [ "$qualified" -eq 0 ]; then
+            echo "::warning::No new channel qualified in this discovery run."
+          fi
           while IFS= read -r line; do
             case "$line" in
               COVERAGE_DEGRADED*) echo "::warning::$line" ;;

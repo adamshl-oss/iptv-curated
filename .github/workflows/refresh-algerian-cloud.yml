@@ -46,6 +46,7 @@ jobs:
           npm ci
           npx tsc
           chmod +x "$GITHUB_WORKSPACE/scripts/test_stream.sh"
+          python3 -m unittest "$GITHUB_WORKSPACE/scripts/test_reconcile_self_healing.py"
 
       - name: Renew each official signed source independently
         id: refresh
@@ -166,22 +167,26 @@ jobs:
           RECONCILE_OUTCOME: ${{ steps.reconcile.outcome }}
         run: |
           coverage_line="$(grep $'^COVERAGE_.*\talgeria\t' algerian-self-healing-audit.txt | tail -1)"
+          playback_line="$(grep $'^PLAYBACK_.*\talgeria\t' algerian-self-healing-audit.txt | tail -1)"
+          outcome_line="$(grep $'^OUTCOME_.*\talgeria\t' algerian-self-healing-audit.txt | tail -1)"
           {
-            echo "## Algerian target coverage"
+            echo "## Algerian playback and target coverage"
             echo
             echo '```'
+            echo "$playback_line"
+            echo "$outcome_line"
             echo "$coverage_line"
             echo '```'
             echo
-            echo "A healthy controller run does not make incomplete coverage complete."
+            echo "Success means every published permanent cloud URL passed; target coverage is separate."
           } >> "$GITHUB_STEP_SUMMARY"
 
           if [ "$RECONCILE_OUTCOME" != "success" ]; then
-            if grep -q $'^OPERATIONAL\talgeria controller' algerian-self-healing-audit.txt; then
-              echo "::warning::An Algerian channel failed its first complete gate; the next run will retry or quarantine it."
-              exit 0
-            fi
             echo "The Algerian controller itself failed unexpectedly."
+            exit 1
+          fi
+          if ! grep -q $'^PLAYBACK_HEALTHY\talgeria\t' algerian-self-healing-audit.txt; then
+            echo "Published Algerian playback remains degraded."
             exit 1
           fi
           if grep -q $'^COVERAGE_COMPLETE\talgeria\t' algerian-self-healing-audit.txt; then
