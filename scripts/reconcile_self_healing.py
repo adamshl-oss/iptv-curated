@@ -15,6 +15,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+from coverage_status import country_status, print_status, write_status
+
 
 ROOT = Path(__file__).resolve().parent.parent
 CATALOG_PATH = ROOT / "scripts" / "self_healing_catalog.json"
@@ -141,7 +143,9 @@ def main() -> int:
 
     if args.build_only:
         count = write_playlist(args.country, catalog, channels)
-        print(f"PASS\t{args.country}\trebuilt {count} published channels")
+        coverage = country_status(registry)
+        print(f"OPERATIONAL\t{args.country}\trebuilt {count} published channels")
+        print_status({"countries": {args.country: coverage}})
         return 0
 
     candidates: list[dict[str, Any]] = []
@@ -242,23 +246,31 @@ def main() -> int:
             changed = True
 
     count = write_playlist(args.country, catalog, channels)
-    registry.setdefault("self_healing", {})
-    registry["self_healing"].update(
-        {
-            "controller": "scripts/reconcile_self_healing.py",
-            "quarantine_after_failed_gates": 2,
-            "recover_after_successful_gates": 2,
-            "attempts_per_gate": args.attempts,
-            "published_count": count,
-        }
-    )
+    coverage = country_status(registry)
+    controller_state = {
+        "controller": "scripts/reconcile_self_healing.py",
+        "quarantine_after_failed_gates": 2,
+        "recover_after_successful_gates": 2,
+        "attempts_per_gate": args.attempts,
+        "published_count": count,
+        "required_count": coverage["required_count"],
+        "coverage_state": coverage["state"],
+        "missing_targets": [item["name"] for item in coverage["missing"]],
+    }
+    healing_state = registry.setdefault("self_healing", {})
+    if any(healing_state.get(key) != value for key, value in controller_state.items()):
+        changed = True
+    healing_state.update(controller_state)
     if args.apply and changed:
         registry_path.write_text(json.dumps(registry, ensure_ascii=False, indent=2) + "\n")
+    if args.apply:
+        write_status()
 
     print(
-        f"PASS\t{args.country} controller\tpublished={count}; "
+        f"OPERATIONAL\t{args.country} controller\tpublished={count}; "
         f"changes={', '.join(transitions) if transitions else 'none'}"
     )
+    print_status({"countries": {args.country: coverage}})
     return 1 if unhandled_failure else 0
 
 

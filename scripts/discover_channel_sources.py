@@ -38,6 +38,8 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import parse_qs, quote_plus, unquote, urljoin, urlparse
 from urllib.request import Request, urlopen
 
+from coverage_status import build_status, print_status, write_status
+
 
 ROOT = Path(__file__).resolve().parent.parent
 POLICY_PATH = ROOT / "scripts" / "source_discovery.json"
@@ -702,6 +704,9 @@ def main() -> int:
             REGISTRIES[country].write_text(
                 json.dumps(registries[country], ensure_ascii=False, indent=2) + "\n"
             )
+        coverage = write_status()
+    else:
+        coverage = build_status()
 
     report = {
         "version": 1,
@@ -712,12 +717,14 @@ def main() -> int:
         "changed_countries": sorted(changed_countries),
         "sources": source_results,
         "targets": report_targets,
+        "coverage": coverage,
     }
     args.report.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n")
     print(
-        f"PASS\tdiscovery controller\ttargets={len(report_targets)}; "
+        f"OPERATIONAL\tdiscovery controller\ttargets={len(report_targets)}; "
         f"qualified={qualified_count} channel(s)"
     )
+    print_status(coverage)
     return 0
 
 

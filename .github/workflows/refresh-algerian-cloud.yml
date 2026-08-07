@@ -113,6 +113,7 @@ jobs:
           if git diff --quiet -- \
             algerian-tv-july-2026.m3u \
             algerian-tv-july-2026-v2.m3u \
+            iptv-coverage-status.json \
             scripts/algerian_top20_target.json; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
@@ -123,6 +124,7 @@ jobs:
           git add \
             algerian-tv-july-2026.m3u \
             algerian-tv-july-2026-v2.m3u \
+            iptv-coverage-status.json \
             scripts/algerian_top20_target.json
           git commit -m "Reconcile Algerian channel health ($(date -u +%FT%TZ))"
           git pull --rebase
@@ -134,7 +136,8 @@ jobs:
         run: |
           for playlist in \
             algerian-tv-july-2026.m3u \
-            algerian-tv-july-2026-v2.m3u; do
+            algerian-tv-july-2026-v2.m3u \
+            iptv-coverage-status.json; do
             local_hash="$(sha256sum "$playlist" | cut -d' ' -f1)"
             public_url="https://adamshl-oss.github.io/iptv-curated/$playlist"
             for attempt in $(seq 1 24); do
@@ -162,12 +165,28 @@ jobs:
         env:
           RECONCILE_OUTCOME: ${{ steps.reconcile.outcome }}
         run: |
+          coverage_line="$(grep $'^COVERAGE_.*\talgeria\t' algerian-self-healing-audit.txt | tail -1)"
+          {
+            echo "## Algerian target coverage"
+            echo
+            echo '```'
+            echo "$coverage_line"
+            echo '```'
+            echo
+            echo "A healthy controller run does not make incomplete coverage complete."
+          } >> "$GITHUB_STEP_SUMMARY"
+
           if [ "$RECONCILE_OUTCOME" != "success" ]; then
-            if grep -q $'^PASS\talgeria controller' algerian-self-healing-audit.txt; then
+            if grep -q $'^OPERATIONAL\talgeria controller' algerian-self-healing-audit.txt; then
               echo "::warning::An Algerian channel failed its first complete gate; the next run will retry or quarantine it."
               exit 0
             fi
             echo "The Algerian controller itself failed unexpectedly."
             exit 1
           fi
-          echo "Every published Algerian channel passed or was safely quarantined."
+          if grep -q $'^COVERAGE_COMPLETE\talgeria\t' algerian-self-healing-audit.txt; then
+            echo "Algerian coverage is complete."
+          else
+            echo "::warning::$coverage_line"
+            echo "Playback automation is operational; Algerian target coverage remains degraded."
+          fi

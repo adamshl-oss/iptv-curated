@@ -29,12 +29,15 @@ jobs:
 
       - name: Verify discovery policy
         run: |
-          python3 -m unittest scripts/test_discover_channel_sources.py
+          python3 -m unittest \
+            scripts/test_discover_channel_sources.py \
+            scripts/test_coverage_status.py
           jq empty \
             scripts/source_discovery.json \
             scripts/self_healing_catalog.json \
             scripts/french_top20_target.json \
-            scripts/algerian_top20_target.json
+            scripts/algerian_top20_target.json \
+            iptv-coverage-status.json
 
       - name: Search and qualify exact replacements
         env:
@@ -53,7 +56,7 @@ jobs:
               --country "$country" \
               --apply \
               2>&1 | tee "$country-discovery-recovery.txt" || {
-                grep -q $'^PASS\t'"$country"' controller' \
+                grep -q $'^OPERATIONAL\t'"$country"' controller' \
                   "$country-discovery-recovery.txt"
               }
           done
@@ -68,6 +71,7 @@ jobs:
             french-tv-july-2026-v5.m3u
             algerian-tv-july-2026.m3u
             algerian-tv-july-2026-v2.m3u
+            iptv-coverage-status.json
             scripts/french_top20_target.json
             scripts/algerian_top20_target.json
           )
@@ -91,7 +95,8 @@ jobs:
             french-tv-top20-july-2026.m3u \
             french-tv-july-2026-v5.m3u \
             algerian-tv-july-2026.m3u \
-            algerian-tv-july-2026-v2.m3u; do
+            algerian-tv-july-2026-v2.m3u \
+            iptv-coverage-status.json; do
             local_hash="$(sha256sum "$playlist" | cut -d' ' -f1)"
             public_url="https://adamshl-oss.github.io/iptv-curated/$playlist"
             for attempt in $(seq 1 60); do
@@ -116,6 +121,25 @@ jobs:
           wait "$french_pid"
           wait "$algerian_pid"
 
+      - name: Report persistent target coverage
+        if: always()
+        run: |
+          python3 scripts/coverage_status.py --check | tee coverage-summary.txt
+          {
+            echo "## IPTV target coverage"
+            echo
+            echo '```'
+            cat coverage-summary.txt
+            echo '```'
+            echo
+            echo "Discovery remains active while either country is degraded."
+          } >> "$GITHUB_STEP_SUMMARY"
+          while IFS= read -r line; do
+            case "$line" in
+              COVERAGE_DEGRADED*) echo "::warning::$line" ;;
+            esac
+          done < coverage-summary.txt
+
       - name: Preserve discovery evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -125,5 +149,7 @@ jobs:
             source-discovery-report.json
             france-discovery-recovery.txt
             algeria-discovery-recovery.txt
+            coverage-summary.txt
+            iptv-coverage-status.json
           if-no-files-found: warn
           retention-days: 30

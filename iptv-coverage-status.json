@@ -1,0 +1,152 @@
+{
+  "version": 1,
+  "definition": "complete means every exact ranked target is currently published; operational audits never override this coverage state",
+  "countries": {
+    "france": {
+      "state": "degraded",
+      "published_count": 7,
+      "required_count": 20,
+      "published_names": [
+        "CNEWS",
+        "BFMTV",
+        "LCI",
+        "RMC Découverte",
+        "RMC Story",
+        "L'Équipe",
+        "RMC Life"
+      ],
+      "missing": [
+        {
+          "rank": 1,
+          "name": "TF1",
+          "status": "candidate_cloud_verification"
+        },
+        {
+          "rank": 2,
+          "name": "France 2",
+          "status": "geo_restricted"
+        },
+        {
+          "rank": 3,
+          "name": "France 3",
+          "status": "geo_restricted"
+        },
+        {
+          "rank": 4,
+          "name": "M6",
+          "status": "drm_protected"
+        },
+        {
+          "rank": 5,
+          "name": "France 5",
+          "status": "geo_restricted"
+        },
+        {
+          "rank": 7,
+          "name": "ARTE",
+          "status": "quarantined_ip_bound"
+        },
+        {
+          "rank": 8,
+          "name": "TMC",
+          "status": "candidate_cloud_verification"
+        },
+        {
+          "rank": 10,
+          "name": "W9",
+          "status": "drm_protected"
+        },
+        {
+          "rank": 12,
+          "name": "TFX",
+          "status": "quarantined_ip_bound"
+        },
+        {
+          "rank": 13,
+          "name": "6ter",
+          "status": "drm_protected"
+        },
+        {
+          "rank": 16,
+          "name": "TF1 Séries Films",
+          "status": "candidate_cloud_verification"
+        },
+        {
+          "rank": 18,
+          "name": "Canal+",
+          "status": "paid_drm"
+        },
+        {
+          "rank": 19,
+          "name": "CStar",
+          "status": "quarantined_automated"
+        }
+      ]
+    },
+    "algeria": {
+      "state": "degraded",
+      "published_count": 11,
+      "required_count": 20,
+      "published_names": [
+        "El Heddaf TV",
+        "Ennahar TV",
+        "TV1 / Programme National",
+        "TV3 / A3",
+        "TV2 / Canal Algérie",
+        "AL24 News",
+        "El Bilad TV",
+        "TV4 Tamazight",
+        "TV5 Coran",
+        "Amou Yazid TV",
+        "Almagharibia TV"
+      ],
+      "missing": [
+        {
+          "rank": 1,
+          "name": "Samira TV",
+          "status": "official_app_only"
+        },
+        {
+          "rank": 2,
+          "name": "Echorouk TV",
+          "status": "official_cdn_unreachable"
+        },
+        {
+          "rank": 10,
+          "name": "El Hayat TV",
+          "status": "no_authorized_public_feed"
+        },
+        {
+          "rank": 11,
+          "name": "El Watania TV",
+          "status": "official_hls_intermittent"
+        },
+        {
+          "rank": 12,
+          "name": "Echorouk News",
+          "status": "official_cdn_unreachable"
+        },
+        {
+          "rank": 15,
+          "name": "TV6 Algérie",
+          "status": "quarantined_identity_mismatch"
+        },
+        {
+          "rank": 16,
+          "name": "TV7 El Maarifa",
+          "status": "quarantined_automated"
+        },
+        {
+          "rank": 17,
+          "name": "TV8 Adhakira",
+          "status": "exact_feed_unverified_provenance"
+        },
+        {
+          "rank": 18,
+          "name": "TV9 El Barlamaniya",
+          "status": "no_authorized_public_feed"
+        }
+      ]
+    }
+  }
+}

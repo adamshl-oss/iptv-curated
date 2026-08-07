@@ -155,11 +155,39 @@ jobs:
           # successor, the next watchdog invocation recreates it.
           ensure_cloud_clock
 
+          coverage_document="$({
+            gh api \
+              -H "Accept: application/vnd.github.raw+json" \
+              "repos/$GH_REPO/contents/iptv-coverage-status.json?ref=main"
+          } 2>/dev/null || true)"
+          if jq -e '
+            .countries.france.state == "complete" and
+            .countries.algeria.state == "complete"
+          ' >/dev/null 2>&1 <<< "$coverage_document"; then
+            discovery_max_age=19800
+            echo "Target coverage is complete; discovery remains on the improvement cadence."
+          else
+            discovery_max_age=1500
+            france_coverage="$(
+              jq -r '
+                .countries.france |
+                "\(.published_count)/\(.required_count)"
+              ' <<< "$coverage_document" 2>/dev/null || echo unknown
+            )"
+            algeria_coverage="$(
+              jq -r '
+                .countries.algeria |
+                "\(.published_count)/\(.required_count)"
+              ' <<< "$coverage_document" 2>/dev/null || echo unknown
+            )"
+            echo "Target coverage is degraded (France $france_coverage; Algeria $algeria_coverage); discovery must run at least every 25 minutes."
+          fi
+
           dispatch_if_stale refresh-french-cloud.yml 1500
           dispatch_if_stale refresh-algerian-cloud.yml 1500
           dispatch_if_stale refresh-youtube.yml 6300
           dispatch_if_stale refresh.yml 19800
-          dispatch_if_stale discover-channel-sources.yml 19800
+          dispatch_if_stale discover-channel-sources.yml "$discovery_max_age"
           dispatch_if_stale renew-algerian-signed-source.yml 6300
 
           if [ "$failed" -ne 0 ]; then
