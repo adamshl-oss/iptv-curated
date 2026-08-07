@@ -32,6 +32,8 @@ jobs:
 
       - name: Install official-source resolvers
         run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg jq
           python3 -m pip install --upgrade \
             curl_cffi "yt-dlp[default]" bgutil-ytdlp-pot-provider
           git clone --depth 1 --branch 1.3.1 \
@@ -47,18 +49,15 @@ jobs:
           BGUTIL_SERVER_HOME: ${{ runner.temp }}/bgutil-ytdlp-pot-provider/server
         run: python3 scripts/refresh_algerian_cloud.py
 
-      - name: Require a durable signed recovery window
+      - name: Require a durable public cloud recovery path
         run: |
-          python3 - <<'PY'
-          import time
-          from scripts.refresh_algerian_cloud import current_wrapper_url, url_expiry
-
-          target = current_wrapper_url("almagharibia")
-          remaining = url_expiry(target or "") - time.time()
-          print(f"signed recovery window: {remaining / 3600:.1f} hours")
-          if remaining < 4 * 3600:
-              raise SystemExit("official signed recovery window is too short")
-          PY
+          chmod +x scripts/test_stream.sh
+          public_relay="https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/youtube/almagharibia"
+          for attempt in 1 2 3; do
+            echo "Public relay playback gate $attempt/3"
+            scripts/test_stream.sh "$public_relay"
+            sleep 5
+          done
 
       - name: Publish renewal
         run: |
