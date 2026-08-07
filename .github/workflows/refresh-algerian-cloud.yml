@@ -46,7 +46,8 @@ jobs:
           npm ci
           npx tsc
           chmod +x "$GITHUB_WORKSPACE/scripts/test_stream.sh"
-          python3 -m unittest "$GITHUB_WORKSPACE/scripts/test_reconcile_self_healing.py"
+          cd "$GITHUB_WORKSPACE"
+          python3 -m unittest scripts/test_reconcile_self_healing.py
 
       - name: Renew each official signed source independently
         id: refresh
