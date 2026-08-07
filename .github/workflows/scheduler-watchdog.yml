@@ -27,7 +27,7 @@ concurrency:
 jobs:
   recover-stale-workflows:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 45
     steps:
       - name: Dispatch stale maintenance workflows
         env:
@@ -37,6 +37,8 @@ jobs:
           set -euo pipefail
 
           now="$(date -u +%s)"
+
+          failed=0
 
           dispatch_if_stale() {
             workflow="$1"
@@ -60,13 +62,49 @@ jobs:
               return 0
             fi
 
-            echo "$workflow is stale (${age}s old); dispatching catch-up."
+            echo "$workflow is stale (${age}s old); dispatching serial catch-up."
+            before="$(
+              gh api \
+                "repos/$GH_REPO/actions/workflows/$workflow/runs?event=workflow_dispatch&branch=main&per_page=1" \
+                --jq '.workflow_runs[0].id // 0'
+            )"
             gh workflow run "$workflow" --repo "$GH_REPO" --ref main
+
+            run_id=""
+            for attempt in $(seq 1 30); do
+              latest_id="$(
+                gh api \
+                  "repos/$GH_REPO/actions/workflows/$workflow/runs?event=workflow_dispatch&branch=main&per_page=1" \
+                  --jq '.workflow_runs[0].id // 0'
+              )"
+              if [ "$latest_id" != "$before" ] && [ "$latest_id" != "0" ]; then
+                run_id="$latest_id"
+                break
+              fi
+              sleep 2
+            done
+
+            if [ -z "$run_id" ]; then
+              echo "::error::$workflow dispatch was not accepted within 60 seconds."
+              failed="$((failed + 1))"
+              return 0
+            fi
+
+            echo "Waiting for $workflow catch-up run $run_id."
+            if ! gh run watch "$run_id" --repo "$GH_REPO" --exit-status --interval 5; then
+              echo "::error::$workflow catch-up run $run_id failed."
+              failed="$((failed + 1))"
+            fi
           }
 
-          dispatch_if_stale refresh-french-cloud.yml 1200
-          dispatch_if_stale refresh-algerian-cloud.yml 1200
+          dispatch_if_stale refresh-french-cloud.yml 2700
+          dispatch_if_stale refresh-algerian-cloud.yml 2700
           dispatch_if_stale refresh-youtube.yml 9000
           dispatch_if_stale refresh.yml 25200
           dispatch_if_stale discover-channel-sources.yml 25200
           dispatch_if_stale renew-algerian-signed-source.yml 9000
+
+          if [ "$failed" -ne 0 ]; then
+            echo "::error::$failed catch-up workflow(s) failed."
+            exit 1
+          fi

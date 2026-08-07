@@ -9,8 +9,8 @@ permissions:
   contents: write
 
 concurrency:
-  group: algerian-signed-source-renewal
-  cancel-in-progress: true
+  group: iptv-curated-state
+  cancel-in-progress: false
 
 jobs:
   renew:

@@ -5,15 +5,17 @@ on:
     # Deliberately staggered away from the top of the hour. Changing the cron
     # also re-registers the schedule under the repository owner instead of the
     # github-actions bot that previously re-enabled this workflow.
-    - cron: "7,17,27,37,47,57 * * * *"
+    - cron: "7,37 * * * *"
   workflow_dispatch:
 
 permissions:
   contents: write
 
 concurrency:
-  group: french-self-healing-audit
-  cancel-in-progress: true
+  # Every workflow that mutates the two curated playlists shares this mutex.
+  # This prevents stale audit/discovery commits from racing each other.
+  group: iptv-curated-state
+  cancel-in-progress: false
 
 jobs:
   audit:
