@@ -413,10 +413,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
-        "last_failure": "2026-08-07T02:45:29Z",
-        "last_evidence": "1:reprobe_failed; 2:http_500; 3:h264/aac 1280x720, moving",
+        "last_failure": "2026-08-07T03:45:13Z",
+        "last_evidence": "1:h264/aac 1280x720, moving; 2:reprobe_failed; 3:http_500",
         "recovery_allowed": true,
         "prior_status": "verified_cloud_apple_relay",
         "prior_reason": "The broadcaster's official app exposed its exact current YouTube live identity. GitHub run 30187908850 passed nine independent outside-cloud 720p H.264/AAC moving-media decodes plus a sustained 45-second decode; the immediate home/Apple-facing route then passed 3/3 plus another sustained 45-second decode, and the complete 12-item lineup passed all 36 local attempts. This satisfied the same-cycle split-path recovery gate that the earlier unstable version had failed.",
