@@ -8,6 +8,15 @@ import unittest
 from pathlib import Path
 
 
+COVERAGE_MODULE_PATH = Path(__file__).with_name("coverage_status.py")
+COVERAGE_SPEC = importlib.util.spec_from_file_location(
+    "coverage_status", COVERAGE_MODULE_PATH
+)
+assert COVERAGE_SPEC and COVERAGE_SPEC.loader
+coverage = importlib.util.module_from_spec(COVERAGE_SPEC)
+sys.modules[COVERAGE_SPEC.name] = coverage
+COVERAGE_SPEC.loader.exec_module(coverage)
+
 MODULE_PATH = Path(__file__).with_name("discover_channel_sources.py")
 SPEC = importlib.util.spec_from_file_location("source_discovery", MODULE_PATH)
 assert SPEC and SPEC.loader
