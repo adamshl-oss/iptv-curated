@@ -19,10 +19,10 @@ SPEC.loader.exec_module(gate)
 POLICY = {
     "duration_seconds": 60,
     "minimum_media_ratio": 0.95,
-    "maximum_wall_lag_seconds": 12,
+    "maximum_wall_lag_seconds": 15,
     "freeze_detection_seconds": 2,
-    "maximum_single_freeze_seconds": 5,
-    "maximum_total_freeze_seconds": 8,
+    "maximum_single_freeze_seconds": 12,
+    "maximum_total_freeze_seconds": 10,
     "maximum_freeze_events": 3,
     "maximum_network_errors": 0,
     "process_grace_seconds": 45,
@@ -56,6 +56,26 @@ class SustainedEvaluationTests(unittest.TestCase):
         self.assertFalse(result.passed)
         self.assertIn("buffering_21.0s", result.reason)
 
+    def test_marginal_startup_overhead_does_not_flap_a_channel(self) -> None:
+        result = gate.evaluate(
+            returncode=0,
+            stdout=progress(60),
+            stderr="",
+            wall_seconds=73.4,
+            policy=POLICY,
+        )
+        self.assertTrue(result.passed)
+
+    def test_one_short_static_scene_does_not_look_like_transport_failure(self) -> None:
+        result = gate.evaluate(
+            returncode=0,
+            stdout=progress(60),
+            stderr="freeze_start: 10.0\nfreeze_duration: 6.4\nfreeze_end: 16.4",
+            wall_seconds=64,
+            policy=POLICY,
+        )
+        self.assertTrue(result.passed)
+
     def test_repeated_and_long_freezes_fail(self) -> None:
         stderr = "\n".join(
             [
@@ -82,7 +102,7 @@ class SustainedEvaluationTests(unittest.TestCase):
         )
         self.assertFalse(result.passed)
         self.assertIn("freeze_events_4", result.reason)
-        self.assertIn("long_freeze_6.0s", result.reason)
+        self.assertNotIn("long_freeze_6.0s", result.reason)
         self.assertIn("total_freeze_13.1s", result.reason)
 
     def test_short_decode_and_http_failure_fail(self) -> None:
