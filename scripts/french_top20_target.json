@@ -125,7 +125,7 @@
     "quarantine_after_failed_gates": 1,
     "recover_after_successful_gates": 2,
     "attempts_per_gate": 3,
-    "published_count": 11,
+    "published_count": 12,
     "required_count": 20,
     "coverage_state": "degraded",
     "missing_targets": [
@@ -135,7 +135,6 @@
       "France 5",
       "W9",
       "6ter",
-      "TF1 Séries Films",
       "Canal+",
       "CStar"
     ]
@@ -399,16 +398,16 @@
       "name": "TF1 Séries Films",
       "tvg_id": "TF1SeriesFilms.fr",
       "official_url": "https://www.tf1.fr/tf1-series-films/direct",
-      "status": "quarantined_automated",
-      "reason": "Automatically quarantined after one complete three-attempt public cloud playback gate failed: 1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:reprobe_failed",
+      "status": "verified_cloud_resolver",
+      "reason": "Quarantined after two independent 2026-07-30 playback gates proved the current signed official-CDN token is bound to the resolver IP and returns HTTP 403 to IPTVX, Apple TV, and unrelated cloud clients.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/tf1/tf1-series-films/live.m3u8",
       "min_height": 720,
-      "publish": false,
+      "publish": true,
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
         "failure_streak": 0,
-        "success_streak": 1,
+        "success_streak": 2,
         "prior_status": "verified_cloud_resolver",
         "last_failure": "2026-08-08T00:49:21Z",
         "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:reprobe_failed",
@@ -416,7 +415,7 @@
         "candidate_discovered_at": "2026-08-07T14:49:07Z",
         "candidate_source": "paratv-france",
         "candidate_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving",
-        "last_recovery": "2026-08-07T17:24:56Z",
+        "last_recovery": "2026-08-08T01:51:53Z",
         "last_candidate_url": "https://raw.githubusercontent.com/Paradise-91/ParaTV/main/streams/YAn5UO0uo95/LGL5fig0S3gDvdLD.m3u8"
       }
     },
