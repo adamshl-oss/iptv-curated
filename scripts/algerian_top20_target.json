@@ -129,14 +129,13 @@
     "quarantine_after_failed_gates": 1,
     "recover_after_successful_gates": 2,
     "attempts_per_gate": 3,
-    "published_count": 6,
+    "published_count": 7,
     "required_count": 20,
     "coverage_state": "degraded",
     "missing_targets": [
       "Samira TV",
       "Echorouk TV",
       "Ennahar TV",
-      "TV1 / Programme National",
       "TV3 / A3",
       "El Hayat TV",
       "El Watania TV",
@@ -232,21 +231,21 @@
       "playlist_name": "TV1 / Programme National (Cloud Live)",
       "tvg_id": "TV1.dz",
       "official_url": "https://entv.dz/",
-      "status": "quarantined_automated",
-      "reason": "Automatically quarantined after the complete startup plus sustained public Apple-TV playback gate failed: 1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:buffering_18.1s; media=60.0s; wall=78.1s; lag=18.1s; freezes=2/7.8s/max5.1s; errors=0",
+      "status": "verified_cloud",
+      "reason": "Exact EPTV flagship service retained from the verified lineup behind an always-on public endpoint.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv1",
       "min_height": 540,
-      "publish": false,
+      "publish": true,
       "auto_healing": {
         "enabled": true,
         "failure_streak": 0,
-        "success_streak": 1,
+        "success_streak": 2,
         "last_failure": "2026-08-08T15:47:50Z",
         "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:buffering_18.1s; media=60.0s; wall=78.1s; lag=18.1s; freezes=2/7.8s/max5.1s; errors=0",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact EPTV flagship service retained from the verified lineup behind an always-on public endpoint.",
-        "last_recovery": "2026-08-08T08:08:49Z"
+        "last_recovery": "2026-08-08T17:34:25Z"
       }
     },
     {
@@ -380,8 +379,8 @@
       "publish": false,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
-        "success_streak": 0,
+        "failure_streak": 0,
+        "success_streak": 1,
         "last_failure": "2026-08-08T15:40:41Z",
         "last_evidence": "1:h264/aac 720x576, moving; 2:h264/aac 720x576, moving; 3:h264/aac 720x576, moving; sustained:buffering_26.6s,total_freeze_16.9s; media=60.0s; wall=86.6s; lag=26.6s; freezes=3/16.9s/max6.7s; errors=0",
         "recovery_allowed": true,
