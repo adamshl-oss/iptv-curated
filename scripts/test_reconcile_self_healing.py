@@ -161,7 +161,42 @@ class SustainedControllerTests(unittest.TestCase):
         apple.assert_called_once()
         self.assertIn("apple:total_stall_18.0s", result.details)
 
-    def test_failure_quarantines_and_three_clean_gates_restore(self) -> None:
+    def test_clean_apple_playback_overrides_platform_specific_ffmpeg_pacing(self) -> None:
+        channel = {"name": "Fixture TV", "min_height": 540}
+        with (
+            mock.patch.object(
+                reconcile,
+                "playback_attempt",
+                return_value=(True, "h264/aac 1280x720, moving"),
+            ),
+            mock.patch.object(
+                reconcile,
+                "sustained_playback_attempt",
+                return_value=(False, "buffering_43.0s"),
+            ),
+            mock.patch.object(
+                reconcile,
+                "apple_playback_attempt",
+                return_value=(True, "apple_ok; stalls=0"),
+            ) as apple,
+            mock.patch.object(reconcile.time, "sleep"),
+        ):
+            result = reconcile.gate(
+                channel,
+                "https://relay.example.test/live.m3u8",
+                3,
+                Path("policy.json"),
+                require_apple=True,
+            )
+
+        self.assertTrue(result.passed)
+        self.assertFalse(result.sustained_passed)
+        self.assertTrue(result.apple_passed)
+        apple.assert_called_once()
+        self.assertIn("sustained:buffering_43.0s", result.details)
+        self.assertIn("apple:apple_ok; stalls=0", result.details)
+
+    def test_failure_quarantines_and_two_clean_apple_gates_restore(self) -> None:
         channel = {
             "name": "Fixture TV",
             "publish": True,
@@ -206,13 +241,6 @@ class SustainedControllerTests(unittest.TestCase):
 
         _, transitions = reconcile.apply_gate_result(
             channel, passed, public_url, checked_at="2026-08-08T01:00:00Z"
-        )
-        self.assertEqual(transitions, [])
-        self.assertFalse(channel["publish"])
-        self.assertEqual(channel["auto_healing"]["success_streak"], 2)
-
-        _, transitions = reconcile.apply_gate_result(
-            channel, passed, public_url, checked_at="2026-08-08T01:30:00Z"
         )
         self.assertEqual(transitions, ["recovered Fixture TV"])
         self.assertTrue(channel["publish"])
