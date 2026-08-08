@@ -182,7 +182,7 @@ def gate(
         details.append(f"sustained:{sustained_detail}")
     else:
         details.append("sustained:skipped_after_startup_failure")
-    if require_apple and successes == attempts and sustained_passed:
+    if require_apple and successes == attempts:
         if lock is None:
             apple_passed, apple_detail = apple_playback_attempt(url, policy_path)
         else:
@@ -190,10 +190,17 @@ def gate(
                 apple_passed, apple_detail = apple_playback_attempt(url, policy_path)
         details.append(f"apple:{apple_detail}")
     elif require_apple:
-        details.append("apple:skipped_after_ffmpeg_failure")
+        details.append("apple:skipped_after_startup_failure")
+    if require_apple:
+        # AVPlayer is the playback stack IPTVX and Apple TV actually use. The
+        # real-time ffmpeg gate remains valuable transport evidence, but its
+        # platform-specific pacing cannot veto a clean Apple playback minute.
+        passed = successes == attempts and apple_passed
+    else:
+        passed = successes == attempts and sustained_passed
     return GateResult(
         name=name,
-        passed=successes == attempts and sustained_passed and apple_passed,
+        passed=passed,
         successes=successes,
         sustained_passed=sustained_passed,
         apple_passed=apple_passed,
@@ -208,7 +215,7 @@ def apply_gate_result(
     *,
     checked_at: str | None = None,
     quarantine_after_failed_gates: int = 1,
-    recover_after_successful_gates: int = 3,
+    recover_after_successful_gates: int = 2,
 ) -> tuple[bool, list[str]]:
     """Apply one complete startup+sustained gate to durable channel state."""
     name = str(channel["name"])
