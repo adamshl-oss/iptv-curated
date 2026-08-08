@@ -4,15 +4,13 @@
   "countries": {
     "france": {
       "state": "degraded",
-      "published_count": 8,
+      "published_count": 6,
       "required_count": 20,
       "published_names": [
         "CNEWS",
-        "ARTE",
         "BFMTV",
         "RMC Découverte",
         "RMC Story",
-        "TF1 Séries Films",
         "L'Équipe",
         "RMC Life"
       ],
@@ -43,6 +41,11 @@
           "status": "geo_restricted"
         },
         {
+          "rank": 7,
+          "name": "ARTE",
+          "status": "quarantined_automated"
+        },
+        {
           "rank": 8,
           "name": "TMC",
           "status": "quarantined_automated"
@@ -66,6 +69,11 @@
           "rank": 13,
           "name": "6ter",
           "status": "drm_protected"
+        },
+        {
+          "rank": 16,
+          "name": "TF1 Séries Films",
+          "status": "quarantined_automated"
         },
         {
           "rank": 18,
