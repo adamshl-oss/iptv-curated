@@ -125,7 +125,7 @@
     "quarantine_after_failed_gates": 1,
     "recover_after_successful_gates": 2,
     "attempts_per_gate": 3,
-    "published_count": 8,
+    "published_count": 10,
     "required_count": 20,
     "coverage_state": "degraded",
     "missing_targets": [
@@ -134,13 +134,11 @@
       "France 3",
       "M6",
       "France 5",
-      "CNEWS",
       "TMC",
       "W9",
       "6ter",
       "Canal+",
-      "CStar",
-      "RMC Life"
+      "CStar"
     ],
     "sustained_playback_seconds": 60,
     "maximum_wall_lag_seconds": 12.0,
@@ -162,7 +160,7 @@
         "enabled": true,
         "recovery_allowed": true,
         "failure_streak": 0,
-        "success_streak": 0,
+        "success_streak": 1,
         "prior_status": "verified_cloud_resolver",
         "last_failure": "2026-08-08T07:37:26Z",
         "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:buffering_15.3s; media=60.0s; wall=75.3s; lag=15.3s; freezes=0/0.0s/max0.0s; errors=0",
@@ -216,8 +214,8 @@
       "tvg_id": "CNews.fr",
       "logo": "https://i.imgur.com/sSNhk2g.png",
       "official_url": "https://www.cnews.fr/le-direct",
-      "status": "quarantined_automated",
-      "reason": "Automatically quarantined after the complete startup plus sustained public Apple-TV playback gate failed: 1:h264/aac 512x288, moving; 2:h264/aac 512x288, moving; 3:h264/aac 512x288, moving; sustained:freeze_events_4,long_freeze_9.0s,total_freeze_17.6s; media=60.0s; wall=62.4s; lag=2.4s; freezes=4/17.6s/max9.0s; errors=0",
+      "status": "verified_dynamic_apple_relay",
+      "reason": "Exact official CNEWS Dailymotion live behind request-time cloud failover. The route races independent maintained resolvers, trims the event manifest to a live window, proxies media through stable Apple-player URLs, and temporarily accepts the broadcaster's globally available 288p rendition until its protected HD delivery is again usable outside France.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/cnews/live.m3u8",
       "refresh_wrapper": "streams/cnews.m3u8",
       "resolver": {
@@ -226,16 +224,17 @@
         "preferred_live_filename": "live-720@60.m3u8"
       },
       "min_height": 288,
-      "publish": false,
+      "publish": true,
       "auto_healing": {
         "enabled": true,
         "failure_streak": 0,
-        "success_streak": 1,
+        "success_streak": 2,
         "last_failure": "2026-08-08T08:57:53Z",
         "last_evidence": "1:h264/aac 512x288, moving; 2:h264/aac 512x288, moving; 3:h264/aac 512x288, moving; sustained:freeze_events_4,long_freeze_9.0s,total_freeze_17.6s; media=60.0s; wall=62.4s; lag=2.4s; freezes=4/17.6s/max9.0s; errors=0",
         "recovery_allowed": true,
         "prior_status": "verified_dynamic_apple_relay",
-        "prior_reason": "Exact official CNEWS Dailymotion live behind request-time cloud failover. The route races independent maintained resolvers, trims the event manifest to a live window, proxies media through stable Apple-player URLs, and temporarily accepts the broadcaster's globally available 288p rendition until its protected HD delivery is again usable outside France."
+        "prior_reason": "Exact official CNEWS Dailymotion live behind request-time cloud failover. The route races independent maintained resolvers, trims the event manifest to a live window, proxies media through stable Apple-player URLs, and temporarily accepts the broadcaster's globally available 288p rendition until its protected HD delivery is again usable outside France.",
+        "last_recovery": "2026-08-08T09:58:34Z"
       }
     },
     {
@@ -274,7 +273,7 @@
         "enabled": true,
         "recovery_allowed": true,
         "failure_streak": 0,
-        "success_streak": 0,
+        "success_streak": 1,
         "prior_status": "verified_cloud_resolver",
         "last_failure": "2026-08-08T07:37:26Z",
         "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:buffering_12.6s; media=60.0s; wall=72.6s; lag=12.6s; freezes=0/0.0s/max0.0s; errors=0",
@@ -489,20 +488,21 @@
       "name": "RMC Life",
       "tvg_id": "RMCLife.fr",
       "official_url": "https://www.rmcbfmplay.com/direct/rmc_life",
-      "status": "quarantined_automated",
-      "reason": "Automatically quarantined after the complete startup plus sustained public Apple-TV playback gate failed: 1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:buffering_36.6s; media=60.0s; wall=96.6s; lag=36.6s; freezes=0/0.0s/max0.0s; errors=0",
+      "status": "verified_licensed_distribution",
+      "reason": "The exact RMC Life linear channel is carried by Samsung TV Plus; its public licensed-distribution HLS passed repeated 1080p audio/video decode and identity checks.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/linear/france/rmc-life/live.m3u8",
       "min_height": 720,
-      "publish": false,
+      "publish": true,
       "auto_healing": {
         "enabled": true,
         "failure_streak": 0,
-        "success_streak": 1,
+        "success_streak": 2,
         "last_failure": "2026-08-08T08:57:53Z",
         "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:buffering_36.6s; media=60.0s; wall=96.6s; lag=36.6s; freezes=0/0.0s/max0.0s; errors=0",
         "recovery_allowed": true,
         "prior_status": "verified_licensed_distribution",
-        "prior_reason": "The exact RMC Life linear channel is carried by Samsung TV Plus; its public licensed-distribution HLS passed repeated 1080p audio/video decode and identity checks."
+        "prior_reason": "The exact RMC Life linear channel is carried by Samsung TV Plus; its public licensed-distribution HLS passed repeated 1080p audio/video decode and identity checks.",
+        "last_recovery": "2026-08-08T09:58:34Z"
       }
     }
   ]
