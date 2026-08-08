@@ -129,13 +129,12 @@
     "quarantine_after_failed_gates": 1,
     "recover_after_successful_gates": 2,
     "attempts_per_gate": 3,
-    "published_count": 8,
+    "published_count": 10,
     "required_count": 20,
     "coverage_state": "degraded",
     "missing_targets": [
       "Samira TV",
       "Echorouk TV",
-      "TV1 / Programme National",
       "El Hayat TV",
       "El Watania TV",
       "Echorouk News",
@@ -143,8 +142,7 @@
       "TV6 Algérie",
       "TV7 El Maarifa",
       "TV8 Adhakira",
-      "TV9 El Barlamaniya",
-      "Amou Yazid TV"
+      "TV9 El Barlamaniya"
     ],
     "sustained_playback_seconds": 60,
     "maximum_wall_lag_seconds": 12.0,
@@ -207,21 +205,21 @@
       "playlist_name": "TV1 / Programme National (Cloud Live)",
       "tvg_id": "TV1.dz",
       "official_url": "https://entv.dz/",
-      "status": "quarantined_automated",
-      "reason": "Automatically quarantined after the complete startup plus sustained public Apple-TV playback gate failed: 1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:freeze_events_4,long_freeze_44.5s,total_freeze_59.9s; media=60.0s; wall=63.1s; lag=3.1s; freezes=4/59.9s/max44.5s; errors=0",
+      "status": "verified_cloud",
+      "reason": "Exact EPTV flagship service retained from the verified lineup behind an always-on public endpoint.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv1",
       "min_height": 540,
-      "publish": false,
+      "publish": true,
       "auto_healing": {
         "enabled": true,
         "failure_streak": 0,
-        "success_streak": 1,
+        "success_streak": 2,
         "last_failure": "2026-08-08T07:21:03Z",
         "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:freeze_events_4,long_freeze_44.5s,total_freeze_59.9s; media=60.0s; wall=63.1s; lag=3.1s; freezes=4/59.9s/max44.5s; errors=0",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact EPTV flagship service retained from the verified lineup behind an always-on public endpoint.",
-        "last_recovery": "2026-08-08T05:59:50Z"
+        "last_recovery": "2026-08-08T08:08:49Z"
       }
     },
     {
@@ -367,7 +365,7 @@
         "enabled": true,
         "recovery_allowed": true,
         "failure_streak": 0,
-        "success_streak": 1,
+        "success_streak": 0,
         "prior_status": "verified_cloud",
         "last_recovery": "2026-08-07T21:25:15Z",
         "last_failure": "2026-08-08T05:34:10Z",
@@ -438,20 +436,21 @@
       "playlist_order": 12,
       "playlist_name": "Amou Yazid TV (Cloud 1080p)",
       "tvg_id": "AmouYazidTV.dz",
-      "status": "quarantined_automated",
-      "reason": "Automatically quarantined after the complete startup plus sustained public Apple-TV playback gate failed: 1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:total_freeze_9.3s; media=60.0s; wall=61.1s; lag=1.1s; freezes=3/9.3s/max3.6s; errors=0",
+      "status": "verified_cloud",
+      "reason": "Exact live channel retained from the verified lineup behind an always-on public endpoint.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/amouyazid",
       "min_height": 720,
-      "publish": false,
+      "publish": true,
       "auto_healing": {
         "enabled": true,
         "failure_streak": 0,
-        "success_streak": 1,
+        "success_streak": 2,
         "last_failure": "2026-08-08T07:21:03Z",
         "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:total_freeze_9.3s; media=60.0s; wall=61.1s; lag=1.1s; freezes=3/9.3s/max3.6s; errors=0",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
-        "prior_reason": "Exact live channel retained from the verified lineup behind an always-on public endpoint."
+        "prior_reason": "Exact live channel retained from the verified lineup behind an always-on public endpoint.",
+        "last_recovery": "2026-08-08T08:08:49Z"
       }
     },
     {
