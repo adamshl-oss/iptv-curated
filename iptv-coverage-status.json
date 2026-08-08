@@ -73,17 +73,15 @@
     },
     "algeria": {
       "state": "degraded",
-      "published_count": 8,
+      "published_count": 6,
       "required_count": 20,
       "published_names": [
         "El Heddaf TV",
         "Ennahar TV",
-        "TV1 / Programme National",
         "TV3 / A3",
         "AL24 News",
         "El Bilad TV",
-        "TV4 Tamazight",
-        "Amou Yazid TV"
+        "TV4 Tamazight"
       ],
       "missing": [
         {
@@ -95,6 +93,11 @@
           "rank": 2,
           "name": "Echorouk TV",
           "status": "official_cdn_unreachable"
+        },
+        {
+          "rank": 5,
+          "name": "TV1 / Programme National",
+          "status": "quarantined_automated"
         },
         {
           "rank": 7,
@@ -140,6 +143,11 @@
           "rank": 18,
           "name": "TV9 El Barlamaniya",
           "status": "no_authorized_public_feed"
+        },
+        {
+          "rank": 19,
+          "name": "Amou Yazid TV",
+          "status": "quarantined_automated"
         },
         {
           "rank": 20,
