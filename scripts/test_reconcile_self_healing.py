@@ -126,7 +126,7 @@ class SustainedControllerTests(unittest.TestCase):
         sustained.assert_not_called()
         self.assertIn("sustained:skipped_after_startup_failure", result.details)
 
-    def test_failure_quarantines_and_two_clean_gates_restore(self) -> None:
+    def test_failure_quarantines_and_three_clean_gates_restore(self) -> None:
         channel = {
             "name": "Fixture TV",
             "publish": True,
@@ -169,6 +169,13 @@ class SustainedControllerTests(unittest.TestCase):
 
         _, transitions = reconcile.apply_gate_result(
             channel, passed, public_url, checked_at="2026-08-08T01:00:00Z"
+        )
+        self.assertEqual(transitions, [])
+        self.assertFalse(channel["publish"])
+        self.assertEqual(channel["auto_healing"]["success_streak"], 2)
+
+        _, transitions = reconcile.apply_gate_result(
+            channel, passed, public_url, checked_at="2026-08-08T01:30:00Z"
         )
         self.assertEqual(transitions, ["recovered Fixture TV"])
         self.assertTrue(channel["publish"])

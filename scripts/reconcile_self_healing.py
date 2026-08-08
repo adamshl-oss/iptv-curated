@@ -158,6 +158,8 @@ def apply_gate_result(
     public_url: str,
     *,
     checked_at: str | None = None,
+    quarantine_after_failed_gates: int = 1,
+    recover_after_successful_gates: int = 3,
 ) -> tuple[bool, list[str]]:
     """Apply one complete startup+sustained gate to durable channel state."""
     name = str(channel["name"])
@@ -205,24 +207,25 @@ def apply_gate_result(
             }
         )
         healing.setdefault("recovery_allowed", True)
-        healing.setdefault("prior_status", channel.get("status"))
-        healing.setdefault("prior_reason", channel.get("reason"))
-        channel["publish"] = False
-        channel["status"] = "quarantined_automated"
-        channel["reason"] = (
-            "Automatically quarantined after the complete startup plus "
-            "sustained public Apple-TV playback gate failed: "
-            f"{'; '.join(result.details)}"
-        )
+        if failure_streak >= quarantine_after_failed_gates:
+            healing.setdefault("prior_status", channel.get("status"))
+            healing.setdefault("prior_reason", channel.get("reason"))
+            channel["publish"] = False
+            channel["status"] = "quarantined_automated"
+            channel["reason"] = (
+                "Automatically quarantined after the complete startup plus "
+                "sustained public Apple-TV playback gate failed: "
+                f"{'; '.join(result.details)}"
+            )
+            transitions.append(f"quarantined {name}")
         channel["auto_healing"] = healing
-        transitions.append(f"quarantined {name}")
         return True, transitions
 
     if result.passed:
         success_streak = int(healing.get("success_streak", 0)) + 1
         healing["success_streak"] = success_streak
         healing["failure_streak"] = 0
-        if success_streak >= 2:
+        if success_streak >= recover_after_successful_gates:
             candidate_url = str(channel.get("stream_url") or "")
             if candidate_url and candidate_url != public_url:
                 healing["last_candidate_url"] = candidate_url
@@ -282,7 +285,9 @@ def main() -> int:
     parser.add_argument("--build-only", action="store_true")
     args = parser.parse_args()
 
-    health_policy = json.loads(HEALTH_POLICY_PATH.read_text())["sustained_playback"]
+    policy_document = json.loads(HEALTH_POLICY_PATH.read_text())
+    health_policy = policy_document["sustained_playback"]
+    transition_policy = policy_document["state_transitions"]
     if health_policy.get("enabled") is not True:
         print("FAIL\tsustained playback policy is disabled")
         return 1
@@ -376,7 +381,15 @@ def main() -> int:
             )
         )
         result_changed, result_transitions = apply_gate_result(
-            channel, result, public_url
+            channel,
+            result,
+            public_url,
+            quarantine_after_failed_gates=int(
+                transition_policy["quarantine_after_failed_gates"]
+            ),
+            recover_after_successful_gates=int(
+                transition_policy["recover_after_successful_gates"]
+            ),
         )
         changed = changed or result_changed
         transitions.extend(result_transitions)
@@ -385,8 +398,12 @@ def main() -> int:
     coverage = country_status(registry)
     controller_state = {
         "controller": "scripts/reconcile_self_healing.py",
-        "quarantine_after_failed_gates": 1,
-        "recover_after_successful_gates": 2,
+        "quarantine_after_failed_gates": int(
+            transition_policy["quarantine_after_failed_gates"]
+        ),
+        "recover_after_successful_gates": int(
+            transition_policy["recover_after_successful_gates"]
+        ),
         "attempts_per_gate": args.attempts,
         "sustained_playback_seconds": int(health_policy["duration_seconds"]),
         "maximum_wall_lag_seconds": float(
