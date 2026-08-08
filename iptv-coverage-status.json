@@ -4,17 +4,15 @@
   "countries": {
     "france": {
       "state": "degraded",
-      "published_count": 10,
+      "published_count": 8,
       "required_count": 20,
       "published_names": [
         "CNEWS",
         "ARTE",
         "BFMTV",
-        "LCI",
         "TFX",
         "RMC Découverte",
         "RMC Story",
-        "TF1 Séries Films",
         "L'Équipe",
         "RMC Life"
       ],
@@ -55,9 +53,19 @@
           "status": "drm_protected"
         },
         {
+          "rank": 11,
+          "name": "LCI",
+          "status": "quarantined_automated"
+        },
+        {
           "rank": 13,
           "name": "6ter",
           "status": "drm_protected"
+        },
+        {
+          "rank": 16,
+          "name": "TF1 Séries Films",
+          "status": "quarantined_automated"
         },
         {
           "rank": 18,
