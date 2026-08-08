@@ -1,8 +1,8 @@
 {
   "version": 1,
   "created_at": "2026-08-07T15:53:53Z",
-  "updated_at": "2026-08-08T03:34:03Z",
-  "run_count": 24,
+  "updated_at": "2026-08-08T04:05:19Z",
+  "run_count": 25,
   "targets": {
     "france::TF1": {
       "families": {
@@ -290,6 +290,15 @@
           "candidates_found": 1,
           "new_candidates": 0,
           "qualified": false
+        },
+        "github-repo:iptv-org~iptv:exact_name_hls": {
+          "attempts": 1,
+          "last_attempted_at": "2026-08-08T04:05:19Z",
+          "next_eligible_at": "2026-08-15T04:05:19Z",
+          "outcome": "candidates_found",
+          "candidates_found": 1,
+          "new_candidates": 0,
+          "qualified": false
         }
       },
       "candidates": {
@@ -319,8 +328,8 @@
         },
         "87312febd7908cfdc90f9e111036062f51728aaa3c42474b779258cc8a168738": {
           "first_seen_at": "2026-08-07T21:26:20Z",
-          "last_seen_at": "2026-08-08T02:54:05Z",
-          "next_eligible_at": "2026-08-15T02:54:05Z",
+          "last_seen_at": "2026-08-08T04:05:19Z",
+          "next_eligible_at": "2026-08-15T04:05:19Z",
           "url": "http://69.64.57.208/france2/mono.m3u8",
           "source": "github:iptv-org/iptv",
           "last_outcome": "rejected_policy"
@@ -350,7 +359,7 @@
           "last_outcome": "rejected_policy"
         }
       },
-      "last_task_at": "2026-08-08T02:54:05Z"
+      "last_task_at": "2026-08-08T04:05:19Z"
     },
     "france::France 3": {
       "families": {
@@ -937,6 +946,15 @@
           "candidates_found": 2,
           "new_candidates": 0,
           "qualified": false
+        },
+        "github-repo:schumijo~iptv:tvg_id": {
+          "attempts": 1,
+          "last_attempted_at": "2026-08-08T04:05:19Z",
+          "next_eligible_at": "2026-08-15T04:05:19Z",
+          "outcome": "candidates_found",
+          "candidates_found": 1,
+          "new_candidates": 1,
+          "qualified": false
         }
       },
       "candidates": {
@@ -979,9 +997,17 @@
           "url": "https://raw.githubusercontent.com/Paradise-91/ParaTV/main/streams/francetv/france-5.m3u8",
           "source": "github:Paradise-91/ParaTV",
           "last_outcome": "candidate_cooldown"
+        },
+        "c75477ebea26831bf63e176beeacbfc1832c3b252f2b150bc5d11f172c23e776": {
+          "first_seen_at": "2026-08-08T04:05:19Z",
+          "last_seen_at": "2026-08-08T04:05:19Z",
+          "next_eligible_at": "2026-08-15T04:05:19Z",
+          "url": "https://raw.githubusercontent.com/schumijo/iptv/main/playlists/francetv/france5.m3u8",
+          "source": "github:schumijo/iptv",
+          "last_outcome": "not_live"
         }
       },
-      "last_task_at": "2026-08-08T02:54:05Z"
+      "last_task_at": "2026-08-08T04:05:19Z"
     },
     "france::CNEWS": {
       "families": {
@@ -1999,6 +2025,15 @@
           "candidates_found": 1,
           "new_candidates": 0,
           "qualified": false
+        },
+        "official:deep_assets": {
+          "attempts": 1,
+          "last_attempted_at": "2026-08-08T04:05:19Z",
+          "next_eligible_at": "2026-08-15T04:05:19Z",
+          "outcome": "none",
+          "candidates_found": 0,
+          "new_candidates": 0,
+          "qualified": false
         }
       },
       "candidates": {
@@ -2043,7 +2078,7 @@
           "last_outcome": "candidate_cooldown"
         }
       },
-      "last_task_at": "2026-08-08T02:05:27Z"
+      "last_task_at": "2026-08-08T04:05:19Z"
     },
     "france::RMC Découverte": {
       "families": {
@@ -2642,6 +2677,15 @@
           "candidates_found": 1,
           "new_candidates": 0,
           "qualified": false
+        },
+        "github:exact_name_live": {
+          "attempts": 1,
+          "last_attempted_at": "2026-08-08T04:05:19Z",
+          "next_eligible_at": "2026-08-15T04:05:19Z",
+          "outcome": "none",
+          "candidates_found": 0,
+          "new_candidates": 0,
+          "qualified": false
         }
       },
       "candidates": {
@@ -2654,7 +2698,7 @@
           "last_outcome": "rejected_policy"
         }
       },
-      "last_task_at": "2026-08-08T02:54:05Z"
+      "last_task_at": "2026-08-08T04:05:19Z"
     },
     "france::CStar": {
       "families": {
@@ -3106,6 +3150,15 @@
           "candidates_found": 1,
           "new_candidates": 1,
           "qualified": false
+        },
+        "github:country_name_hls": {
+          "attempts": 1,
+          "last_attempted_at": "2026-08-08T04:05:19Z",
+          "next_eligible_at": "2026-08-15T04:05:19Z",
+          "outcome": "candidates_found",
+          "candidates_found": 1,
+          "new_candidates": 1,
+          "qualified": false
         }
       },
       "candidates": {
@@ -3140,9 +3193,17 @@
           "url": "http://solution62000.mine.nu:8000/live/Chrif_Tufan@2_sFhT7HcOWU/TTufan_Cherif_@78XroUJjsx5H/165.m3u8",
           "source": "github:IPTVFlixBD/RynoCast-IPTV-M3u-Playlist",
           "last_outcome": "rejected_policy"
+        },
+        "a9d580d8a04d837b0eeb196623ce52a95e0759bc28bbaec89b74c8b0f851d366": {
+          "first_seen_at": "2026-08-08T04:05:19Z",
+          "last_seen_at": "2026-08-08T04:05:19Z",
+          "next_eligible_at": "2026-08-15T04:05:19Z",
+          "url": "https://ch.iptvmate.net/a8d2a45d86ebd01a5eaa71c7b05ecfcd.m3u8",
+          "source": "github:iptvmate/iptvchannels",
+          "last_outcome": "rejected_policy"
         }
       },
-      "last_task_at": "2026-08-08T02:54:05Z"
+      "last_task_at": "2026-08-08T04:05:19Z"
     },
     "algeria::Echorouk TV": {
       "families": {
@@ -3943,6 +4004,15 @@
           "candidates_found": 0,
           "new_candidates": 0,
           "qualified": false
+        },
+        "github-repo:iptv-org~iptv:tvg_id": {
+          "attempts": 1,
+          "last_attempted_at": "2026-08-08T04:05:19Z",
+          "next_eligible_at": "2026-08-15T04:05:19Z",
+          "outcome": "none",
+          "candidates_found": 0,
+          "new_candidates": 0,
+          "qualified": false
         }
       },
       "candidates": {
@@ -3971,7 +4041,7 @@
           "last_outcome": "rejected_policy"
         }
       },
-      "last_task_at": "2026-08-08T02:54:05Z"
+      "last_task_at": "2026-08-08T04:05:19Z"
     },
     "algeria::Echorouk News": {
       "families": {
@@ -4109,6 +4179,15 @@
           "candidates_found": 0,
           "new_candidates": 0,
           "qualified": false
+        },
+        "github-repo:iptv-org~iptv:tvg_id": {
+          "attempts": 1,
+          "last_attempted_at": "2026-08-08T04:05:19Z",
+          "next_eligible_at": "2026-08-15T04:05:19Z",
+          "outcome": "none",
+          "candidates_found": 0,
+          "new_candidates": 0,
+          "qualified": false
         }
       },
       "candidates": {
@@ -4145,7 +4224,7 @@
           "last_outcome": "rejected_policy"
         }
       },
-      "last_task_at": "2026-08-08T02:54:05Z"
+      "last_task_at": "2026-08-08T04:05:19Z"
     },
     "algeria::TV4 Tamazight": {
       "families": {
@@ -4393,6 +4472,15 @@
           "candidates_found": 0,
           "new_candidates": 0,
           "qualified": false
+        },
+        "github-repo:Paradise-91~ParaTV:exact_name_hls": {
+          "attempts": 1,
+          "last_attempted_at": "2026-08-08T04:05:19Z",
+          "next_eligible_at": "2026-08-15T04:05:19Z",
+          "outcome": "none",
+          "candidates_found": 0,
+          "new_candidates": 0,
+          "qualified": false
         }
       },
       "candidates": {
@@ -4405,7 +4493,7 @@
           "last_outcome": "rejected_policy"
         }
       },
-      "last_task_at": "2026-08-08T02:54:05Z"
+      "last_task_at": "2026-08-08T04:05:19Z"
     },
     "algeria::TV7 El Maarifa": {
       "families": {
@@ -8063,6 +8151,139 @@
           "country": "france",
           "target": "France 3",
           "next_eligible_at": "2026-08-08T03:34:03Z",
+          "reason": "run_budget"
+        }
+      ]
+    },
+    {
+      "at": "2026-08-08T04:05:19Z",
+      "tasks": [
+        {
+          "country": "france",
+          "target": "6ter",
+          "family": "official:deep_assets",
+          "candidates_found": 0,
+          "new_candidates": 0,
+          "qualified": false,
+          "next_eligible_at": "2026-08-15T04:05:19Z"
+        },
+        {
+          "country": "france",
+          "target": "Canal+",
+          "family": "github:exact_name_live",
+          "candidates_found": 0,
+          "new_candidates": 0,
+          "qualified": false,
+          "next_eligible_at": "2026-08-15T04:05:19Z"
+        },
+        {
+          "country": "algeria",
+          "target": "TV6 Algérie",
+          "family": "github-repo:Paradise-91~ParaTV:exact_name_hls",
+          "candidates_found": 0,
+          "new_candidates": 0,
+          "qualified": false,
+          "next_eligible_at": "2026-08-15T04:05:19Z"
+        },
+        {
+          "country": "algeria",
+          "target": "Echorouk News",
+          "family": "github-repo:iptv-org~iptv:tvg_id",
+          "candidates_found": 0,
+          "new_candidates": 0,
+          "qualified": false,
+          "next_eligible_at": "2026-08-15T04:05:19Z"
+        },
+        {
+          "country": "algeria",
+          "target": "Samira TV",
+          "family": "github:country_name_hls",
+          "candidates_found": 1,
+          "new_candidates": 1,
+          "qualified": false,
+          "next_eligible_at": "2026-08-15T04:05:19Z"
+        },
+        {
+          "country": "france",
+          "target": "France 2",
+          "family": "github-repo:iptv-org~iptv:exact_name_hls",
+          "candidates_found": 1,
+          "new_candidates": 0,
+          "qualified": false,
+          "next_eligible_at": "2026-08-15T04:05:19Z"
+        },
+        {
+          "country": "france",
+          "target": "France 5",
+          "family": "github-repo:schumijo~iptv:tvg_id",
+          "candidates_found": 1,
+          "new_candidates": 1,
+          "qualified": false,
+          "next_eligible_at": "2026-08-15T04:05:19Z"
+        },
+        {
+          "country": "algeria",
+          "target": "El Watania TV",
+          "family": "github-repo:iptv-org~iptv:tvg_id",
+          "candidates_found": 0,
+          "new_candidates": 0,
+          "qualified": false,
+          "next_eligible_at": "2026-08-15T04:05:19Z"
+        }
+      ],
+      "deferred_targets": [
+        {
+          "country": "france",
+          "target": "France 3",
+          "next_eligible_at": "2026-08-08T04:05:19Z",
+          "reason": "run_budget"
+        },
+        {
+          "country": "algeria",
+          "target": "TV9 El Barlamaniya",
+          "next_eligible_at": "2026-08-08T04:05:19Z",
+          "reason": "run_budget"
+        },
+        {
+          "country": "france",
+          "target": "CStar",
+          "next_eligible_at": "2026-08-08T04:05:19Z",
+          "reason": "run_budget"
+        },
+        {
+          "country": "france",
+          "target": "W9",
+          "next_eligible_at": "2026-08-08T04:05:19Z",
+          "reason": "run_budget"
+        },
+        {
+          "country": "algeria",
+          "target": "El Hayat TV",
+          "next_eligible_at": "2026-08-08T04:05:19Z",
+          "reason": "run_budget"
+        },
+        {
+          "country": "algeria",
+          "target": "Echorouk TV",
+          "next_eligible_at": "2026-08-08T04:05:19Z",
+          "reason": "run_budget"
+        },
+        {
+          "country": "algeria",
+          "target": "TV8 Adhakira",
+          "next_eligible_at": "2026-08-08T04:05:19Z",
+          "reason": "run_budget"
+        },
+        {
+          "country": "france",
+          "target": "M6",
+          "next_eligible_at": "2026-08-08T04:05:19Z",
+          "reason": "run_budget"
+        },
+        {
+          "country": "algeria",
+          "target": "Almagharibia TV",
+          "next_eligible_at": "2026-08-08T04:05:19Z",
           "reason": "run_budget"
         }
       ]
