@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
 
 permissions:
+  actions: write
   contents: write
 
 concurrency:
@@ -15,7 +16,7 @@ concurrency:
 jobs:
   audit:
     runs-on: ubuntu-latest
-    timeout-minutes: 35
+    timeout-minutes: 50
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -25,7 +26,10 @@ jobs:
           sudo apt-get update -qq
           sudo apt-get install -y ffmpeg jq
           chmod +x scripts/test_stream.sh
-          python3 -m unittest scripts/test_reconcile_self_healing.py
+          chmod +x scripts/sustained_stream_gate.py
+          python3 -m unittest \
+            scripts/test_reconcile_self_healing.py \
+            scripts/test_sustained_stream_gate.py
 
       - name: Audit, quarantine, recover, and rebuild
         id: reconcile
@@ -90,6 +94,47 @@ jobs:
           path: french-self-healing-audit.txt
           retention-days: 30
 
+      - name: Launch replacement discovery when coverage is degraded
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          if ! grep -q $'^COVERAGE_DEGRADED\tfrance\t' \
+            french-self-healing-audit.txt; then
+            echo "French target coverage is complete."
+            exit 0
+          fi
+
+          active="$(
+            gh api \
+              "repos/$GH_REPO/actions/workflows/discover-channel-sources.yml/runs?branch=main&per_page=20" \
+              --jq '[.workflow_runs[] | select(.status == "queued" or .status == "in_progress")]
+                | length'
+          )"
+          if [ "$active" -gt 0 ]; then
+            echo "Replacement discovery is already active."
+            exit 0
+          fi
+
+          latest_success="$(
+            gh api \
+              "repos/$GH_REPO/actions/workflows/discover-channel-sources.yml/runs?branch=main&status=success&per_page=1" \
+              --jq '.workflow_runs[0].created_at // ""'
+          )"
+          if [ -n "$latest_success" ]; then
+            age="$(( $(date -u +%s) - $(date -u -d "$latest_success" +%s) ))"
+            if [ "$age" -le 1200 ]; then
+              echo "Replacement discovery completed ${age}s ago; no duplicate launched."
+              exit 0
+            fi
+          fi
+
+          gh workflow run discover-channel-sources.yml \
+            --repo "$GH_REPO" \
+            --ref main
+          echo "Replacement discovery launched immediately."
+
       - name: Pressure-test public source failover
         run: |
           check_failover() {
@@ -128,14 +173,15 @@ jobs:
             echo "$coverage_line"
             echo '```'
             echo
-            echo "Success means every published permanent cloud URL passed; target coverage is separate."
+            echo "A green run means the controller worked. Coverage and sustained quality are reported separately above."
           } >> "$GITHUB_STEP_SUMMARY"
 
           if [ "$RECONCILE_OUTCOME" != "success" ]; then
             echo "The French controller itself failed unexpectedly."
             exit 1
           fi
-          if ! grep -q $'^PLAYBACK_HEALTHY\tfrance\t' french-self-healing-audit.txt; then
+          if ! grep -Eq $'^PLAYBACK_(HEALTHY|SURVIVORS_HEALTHY)\tfrance\t' \
+            french-self-healing-audit.txt; then
             echo "Published French playback remains degraded."
             exit 1
           fi

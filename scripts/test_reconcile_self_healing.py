@@ -7,6 +7,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 
 MODULE_PATH = Path(__file__).with_name("reconcile_self_healing.py")
@@ -64,6 +65,115 @@ class PermanentPublicUrlTests(unittest.TestCase):
                 self.catalog,
                 [{"name": "Fixture TV", "publish": True}],
             )
+
+
+class SustainedControllerTests(unittest.TestCase):
+    def test_startup_success_cannot_hide_sustained_failure(self) -> None:
+        channel = {"name": "Fixture TV", "min_height": 540}
+        with (
+            mock.patch.object(
+                reconcile,
+                "playback_attempt",
+                return_value=(True, "h264/aac 1280x720, moving"),
+            ) as startup,
+            mock.patch.object(
+                reconcile,
+                "sustained_playback_attempt",
+                return_value=(False, "buffering_21.0s"),
+            ) as sustained,
+            mock.patch.object(reconcile.time, "sleep"),
+        ):
+            result = reconcile.gate(
+                channel,
+                "https://relay.example.test/live.m3u8",
+                3,
+                Path("policy.json"),
+            )
+
+        self.assertFalse(result.passed)
+        self.assertEqual(result.successes, 3)
+        self.assertFalse(result.sustained_passed)
+        self.assertEqual(startup.call_count, 3)
+        sustained.assert_called_once()
+        self.assertIn("sustained:buffering_21.0s", result.details)
+
+    def test_sustained_gate_is_skipped_when_startup_is_already_broken(self) -> None:
+        channel = {"name": "Fixture TV", "min_height": 540}
+        with (
+            mock.patch.object(
+                reconcile,
+                "playback_attempt",
+                side_effect=[
+                    (True, "moving"),
+                    (False, "http_503"),
+                    (True, "moving"),
+                ],
+            ),
+            mock.patch.object(
+                reconcile, "sustained_playback_attempt"
+            ) as sustained,
+            mock.patch.object(reconcile.time, "sleep"),
+        ):
+            result = reconcile.gate(
+                channel,
+                "https://relay.example.test/live.m3u8",
+                3,
+                Path("policy.json"),
+            )
+
+        self.assertFalse(result.passed)
+        self.assertEqual(result.successes, 2)
+        sustained.assert_not_called()
+        self.assertIn("sustained:skipped_after_startup_failure", result.details)
+
+    def test_failure_quarantines_and_two_clean_gates_restore(self) -> None:
+        channel = {
+            "name": "Fixture TV",
+            "publish": True,
+            "status": "verified_cloud",
+            "reason": "Previously verified",
+            "stream_url": "https://relay.example.test/live.m3u8",
+            "auto_healing": {"enabled": True, "recovery_allowed": True},
+        }
+        failed = reconcile.GateResult(
+            name="Fixture TV",
+            passed=False,
+            successes=3,
+            sustained_passed=False,
+            details=["sustained:buffering_21.0s"],
+        )
+        passed = reconcile.GateResult(
+            name="Fixture TV",
+            passed=True,
+            successes=3,
+            sustained_passed=True,
+            details=["sustained:sustained_ok"],
+        )
+        public_url = "https://relay.example.test/live.m3u8"
+
+        changed, transitions = reconcile.apply_gate_result(
+            channel, failed, public_url, checked_at="2026-08-08T00:00:00Z"
+        )
+        self.assertTrue(changed)
+        self.assertEqual(transitions, ["quarantined Fixture TV"])
+        self.assertFalse(channel["publish"])
+        self.assertEqual(channel["status"], "quarantined_automated")
+        self.assertIn("buffering_21.0s", channel["reason"])
+
+        _, transitions = reconcile.apply_gate_result(
+            channel, passed, public_url, checked_at="2026-08-08T00:30:00Z"
+        )
+        self.assertEqual(transitions, [])
+        self.assertFalse(channel["publish"])
+        self.assertEqual(channel["auto_healing"]["success_streak"], 1)
+
+        _, transitions = reconcile.apply_gate_result(
+            channel, passed, public_url, checked_at="2026-08-08T01:00:00Z"
+        )
+        self.assertEqual(transitions, ["recovered Fixture TV"])
+        self.assertTrue(channel["publish"])
+        self.assertEqual(channel["status"], "verified_cloud")
+        self.assertEqual(channel["reason"], "Previously verified")
 
 
 if __name__ == "__main__":

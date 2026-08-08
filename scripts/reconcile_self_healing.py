@@ -21,6 +21,11 @@ from coverage_status import country_status, print_status, write_status
 ROOT = Path(__file__).resolve().parent.parent
 CATALOG_PATH = ROOT / "scripts" / "self_healing_catalog.json"
 TEST = ROOT / "scripts" / "test_stream.sh"
+SUSTAINED_TEST = ROOT / "scripts" / "sustained_stream_gate.py"
+HEALTH_POLICY_PATH = ROOT / "scripts" / "stream_health_policy.json"
+APPLE_TV_USER_AGENT = (
+    "AppleCoreMedia/1.0.0.21A329 (AppleTV; U; CPU OS 17_0 like Mac OS X)"
+)
 TF1_GATE = threading.Semaphore(2)
 ATTEMPT_TIMEOUT_SECONDS = 105
 
@@ -30,6 +35,7 @@ class GateResult:
     name: str
     passed: bool
     successes: int
+    sustained_passed: bool
     details: list[str]
 
 
@@ -42,7 +48,7 @@ def utc_now() -> str:
 def playback_attempt(url: str, min_height: int) -> tuple[bool, str]:
     try:
         completed = subprocess.run(
-            [str(TEST), url],
+            [str(TEST), url, APPLE_TV_USER_AGENT],
             capture_output=True,
             text=True,
             timeout=ATTEMPT_TIMEOUT_SECONDS,
@@ -65,7 +71,45 @@ def playback_attempt(url: str, min_height: int) -> tuple[bool, str]:
     return True, f"{media}, moving"
 
 
-def gate(channel: dict[str, Any], url: str, attempts: int) -> GateResult:
+def sustained_playback_attempt(
+    url: str, policy_path: Path = HEALTH_POLICY_PATH
+) -> tuple[bool, str]:
+    policy = json.loads(policy_path.read_text())["sustained_playback"]
+    timeout = int(policy["duration_seconds"]) + int(
+        policy["process_grace_seconds"]
+    ) + 5
+    try:
+        completed = subprocess.run(
+            [
+                sys.executable,
+                str(SUSTAINED_TEST),
+                url,
+                "--policy",
+                str(policy_path),
+                "--user-agent",
+                APPLE_TV_USER_AGENT,
+            ],
+            capture_output=True,
+            text=True,
+            timeout=timeout,
+            check=False,
+        )
+    except subprocess.TimeoutExpired:
+        return False, "sustained_process_timeout"
+
+    output = (completed.stdout or completed.stderr).strip()
+    fields = output.split("|", 2)
+    if completed.returncode != 0 or not fields or fields[0] != "PASS":
+        return False, fields[2] if len(fields) > 2 else output or "sustained_unknown"
+    return True, fields[2] if len(fields) > 2 else "sustained_ok"
+
+
+def gate(
+    channel: dict[str, Any],
+    url: str,
+    attempts: int,
+    policy_path: Path = HEALTH_POLICY_PATH,
+) -> GateResult:
     name = str(channel["name"])
     # Gate the permanent URL that IPTVX receives.  Testing an upstream
     # candidate here can produce a false positive when the public relay is
@@ -85,12 +129,118 @@ def gate(channel: dict[str, Any], url: str, attempts: int) -> GateResult:
         details.append(f"{number}:{detail}")
         if number < attempts:
             time.sleep(number)
+    sustained_passed = False
+    if successes == attempts:
+        if lock is None:
+            sustained_passed, sustained_detail = sustained_playback_attempt(
+                url, policy_path
+            )
+        else:
+            with lock:
+                sustained_passed, sustained_detail = sustained_playback_attempt(
+                    url, policy_path
+                )
+        details.append(f"sustained:{sustained_detail}")
+    else:
+        details.append("sustained:skipped_after_startup_failure")
     return GateResult(
         name=name,
-        passed=successes == attempts,
+        passed=successes == attempts and sustained_passed,
         successes=successes,
+        sustained_passed=sustained_passed,
         details=details,
     )
+
+
+def apply_gate_result(
+    channel: dict[str, Any],
+    result: GateResult,
+    public_url: str,
+    *,
+    checked_at: str | None = None,
+) -> tuple[bool, list[str]]:
+    """Apply one complete startup+sustained gate to durable channel state."""
+    name = str(channel["name"])
+    timestamp = checked_at or utc_now()
+    healing = dict(channel.get("auto_healing") or {})
+    published = channel.get("publish") is True
+    changed = False
+    transitions: list[str] = []
+
+    if published and result.passed:
+        if channel.get("stream_url") != public_url:
+            prior_candidate = str(channel.get("stream_url") or "")
+            if prior_candidate:
+                healing.setdefault("last_candidate_url", prior_candidate)
+            channel["stream_url"] = public_url
+            changed = True
+        if channel.get("status") == "candidate_cloud_verification":
+            channel["status"] = "verified_cloud_relay"
+            channel["reason"] = (
+                "The permanent cloud URL passed the independent public "
+                "three-attempt H.264/AAC startup gate and sustained Apple-TV "
+                "playback gate after candidate qualification. IPTVX receives "
+                "this stable URL, not the upstream candidate."
+            )
+            healing["success_streak"] = 0
+            healing["last_recovery"] = timestamp
+            transitions.append(f"verified permanent route for {name}")
+            changed = True
+        if healing.get("failure_streak", 0) != 0:
+            healing["failure_streak"] = 0
+            changed = True
+        if changed:
+            channel["auto_healing"] = healing
+        return changed, transitions
+
+    if published:
+        failure_streak = int(healing.get("failure_streak", 0)) + 1
+        healing.update(
+            {
+                "enabled": True,
+                "failure_streak": failure_streak,
+                "success_streak": 0,
+                "last_failure": timestamp,
+                "last_evidence": "; ".join(result.details),
+            }
+        )
+        healing.setdefault("recovery_allowed", True)
+        healing.setdefault("prior_status", channel.get("status"))
+        healing.setdefault("prior_reason", channel.get("reason"))
+        channel["publish"] = False
+        channel["status"] = "quarantined_automated"
+        channel["reason"] = (
+            "Automatically quarantined after the complete startup plus "
+            "sustained public Apple-TV playback gate failed: "
+            f"{'; '.join(result.details)}"
+        )
+        channel["auto_healing"] = healing
+        transitions.append(f"quarantined {name}")
+        return True, transitions
+
+    if result.passed:
+        success_streak = int(healing.get("success_streak", 0)) + 1
+        healing["success_streak"] = success_streak
+        healing["failure_streak"] = 0
+        if success_streak >= 2:
+            candidate_url = str(channel.get("stream_url") or "")
+            if candidate_url and candidate_url != public_url:
+                healing["last_candidate_url"] = candidate_url
+            channel["stream_url"] = public_url
+            channel["publish"] = True
+            channel["status"] = healing.get("prior_status", "verified_cloud")
+            if healing.get("prior_reason"):
+                channel["reason"] = healing["prior_reason"]
+            healing["last_recovery"] = timestamp
+            transitions.append(f"recovered {name}")
+        channel["auto_healing"] = healing
+        return True, transitions
+
+    if healing.get("success_streak", 0) != 0:
+        healing["success_streak"] = 0
+        channel["auto_healing"] = healing
+        return True, transitions
+    return False, transitions
 
 
 def write_playlist(
@@ -131,6 +281,11 @@ def main() -> int:
     parser.add_argument("--apply", action="store_true")
     parser.add_argument("--build-only", action="store_true")
     args = parser.parse_args()
+
+    health_policy = json.loads(HEALTH_POLICY_PATH.read_text())["sustained_playback"]
+    if health_policy.get("enabled") is not True:
+        print("FAIL\tsustained playback policy is disabled")
+        return 1
 
     all_catalogs = json.loads(CATALOG_PATH.read_text())
     catalog = all_catalogs[args.country]
@@ -196,6 +351,7 @@ def main() -> int:
                 name=str(channel["name"]),
                 passed=False,
                 successes=0,
+                sustained_passed=False,
                 details=["no permanent cloud URL"] * args.attempts,
             )
         )
@@ -203,108 +359,27 @@ def main() -> int:
     result_by_name = {result.name: result for result in results}
     changed = False
     transitions: list[str] = []
-    unhandled_failure = False
     for channel, _gate_url in candidates:
         name = str(channel["name"])
         result = result_by_name[name]
         print(
             f"{'PASS' if result.passed else 'FAIL'}\t{name}\t"
-            f"{result.successes}/{args.attempts}; {'; '.join(result.details)}"
+            f"startup={result.successes}/{args.attempts}; "
+            f"sustained={'pass' if result.sustained_passed else 'fail'}; "
+            f"{'; '.join(result.details)}"
         )
-        healing = dict(channel.get("auto_healing") or {})
-        published = channel.get("publish") is True
-
-        if published and result.passed:
-            public_url = str(
-                next(
-                    entry["url"]
-                    for entry in catalog["entries"]
-                    if entry["name"] == name
-                )
+        public_url = str(
+            next(
+                entry["url"]
+                for entry in catalog["entries"]
+                if entry["name"] == name
             )
-            if channel.get("stream_url") != public_url:
-                prior_candidate = str(channel.get("stream_url") or "")
-                if prior_candidate:
-                    healing.setdefault("last_candidate_url", prior_candidate)
-                channel["stream_url"] = public_url
-                channel["auto_healing"] = healing
-                changed = True
-            if channel.get("status") == "candidate_cloud_verification":
-                channel["status"] = "verified_cloud_relay"
-                channel["reason"] = (
-                    "The permanent cloud URL passed the independent public "
-                    "three-attempt H.264/AAC moving-media gate after candidate "
-                    "qualification. IPTVX receives this stable URL, not the "
-                    "upstream candidate."
-                )
-                healing["success_streak"] = 0
-                healing["last_recovery"] = utc_now()
-                channel["auto_healing"] = healing
-                transitions.append(f"verified permanent route for {name}")
-                changed = True
-            if healing.get("failure_streak", 0) != 0:
-                healing["failure_streak"] = 0
-                channel["auto_healing"] = healing
-                changed = True
-            continue
-
-        if published:
-            failure_streak = int(healing.get("failure_streak", 0)) + 1
-            healing.update(
-                {
-                    "enabled": True,
-                    "failure_streak": failure_streak,
-                    "success_streak": 0,
-                    "last_failure": utc_now(),
-                    "last_evidence": "; ".join(result.details),
-                }
-            )
-            healing.setdefault("recovery_allowed", True)
-            if failure_streak >= 1:
-                healing.setdefault("prior_status", channel.get("status"))
-                healing.setdefault("prior_reason", channel.get("reason"))
-                channel["publish"] = False
-                channel["status"] = "quarantined_automated"
-                channel["reason"] = (
-                    "Automatically quarantined after one complete three-attempt "
-                    "public cloud playback gate failed: "
-                    f"{'; '.join(result.details)}"
-                )
-                transitions.append(f"quarantined {name}")
-            else:
-                unhandled_failure = True
-            channel["auto_healing"] = healing
-            changed = True
-            continue
-
-        if result.passed:
-            success_streak = int(healing.get("success_streak", 0)) + 1
-            healing["success_streak"] = success_streak
-            healing["failure_streak"] = 0
-            if success_streak >= 2:
-                public_url = str(
-                    next(
-                        entry["url"]
-                        for entry in catalog["entries"]
-                        if entry["name"] == name
-                    )
-                )
-                candidate_url = str(channel.get("stream_url") or "")
-                if candidate_url and candidate_url != public_url:
-                    healing["last_candidate_url"] = candidate_url
-                channel["stream_url"] = public_url
-                channel["publish"] = True
-                channel["status"] = healing.get("prior_status", "verified_cloud")
-                if healing.get("prior_reason"):
-                    channel["reason"] = healing["prior_reason"]
-                healing["last_recovery"] = utc_now()
-                transitions.append(f"recovered {name}")
-            channel["auto_healing"] = healing
-            changed = True
-        elif healing.get("success_streak", 0) != 0:
-            healing["success_streak"] = 0
-            channel["auto_healing"] = healing
-            changed = True
+        )
+        result_changed, result_transitions = apply_gate_result(
+            channel, result, public_url
+        )
+        changed = changed or result_changed
+        transitions.extend(result_transitions)
 
     count = write_playlist(args.country, catalog, channels)
     coverage = country_status(registry)
@@ -313,6 +388,16 @@ def main() -> int:
         "quarantine_after_failed_gates": 1,
         "recover_after_successful_gates": 2,
         "attempts_per_gate": args.attempts,
+        "sustained_playback_seconds": int(health_policy["duration_seconds"]),
+        "maximum_wall_lag_seconds": float(
+            health_policy["maximum_wall_lag_seconds"]
+        ),
+        "maximum_single_freeze_seconds": float(
+            health_policy["maximum_single_freeze_seconds"]
+        ),
+        "maximum_total_freeze_seconds": float(
+            health_policy["maximum_total_freeze_seconds"]
+        ),
         "published_count": count,
         "required_count": coverage["required_count"],
         "coverage_state": coverage["state"],
@@ -351,13 +436,21 @@ def main() -> int:
             f"PLAYBACK_DEGRADED\t{args.country}\t"
             f"failed_published={', '.join(remaining_failures)}"
         )
-    else:
+    elif coverage["state"] == "complete":
         print(
             f"PLAYBACK_HEALTHY\t{args.country}\t"
-            f"all {count} published permanent cloud URLs passed"
+            f"all {count} published permanent cloud URLs passed startup and "
+            f"{int(health_policy['duration_seconds'])}s sustained playback"
+        )
+    else:
+        print(
+            f"PLAYBACK_SURVIVORS_HEALTHY\t{args.country}\t"
+            f"the {count} currently published survivors passed startup and "
+            f"{int(health_policy['duration_seconds'])}s sustained playback; "
+            "target coverage remains degraded"
         )
     print_status({"countries": {args.country: coverage}})
-    return 1 if unhandled_failure or remaining_failures else 0
+    return 1 if remaining_failures else 0
 
 
 if __name__ == "__main__":

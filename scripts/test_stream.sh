@@ -5,11 +5,14 @@
 
 set -u
 URL="${1:-}"
-UA="${2:-Mozilla/5.0 (Macintosh; Intel Mac OS X 15_4) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15}"
+UA="${2:-AppleCoreMedia/1.0.0.21A329 (AppleTV; U; CPU OS 17_0 like Mac OS X)}"
 TIMEOUT=10
 TMPD="$(mktemp -d)"
 trap 'rm -rf "$TMPD"' EXIT
 HLS_ARGS=(-allowed_extensions ALL)
+if ffprobe -hide_banner -h demuxer=hls 2>&1 | grep -q "allowed_segment_extensions"; then
+  HLS_ARGS+=(-allowed_segment_extensions ALL)
+fi
 if ffprobe -hide_banner -h demuxer=hls 2>&1 | grep -q "extension_picky"; then
   HLS_ARGS+=(-extension_picky 0)
 fi
