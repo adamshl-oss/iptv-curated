@@ -137,8 +137,8 @@
       "LCI",
       "TFX",
       "6ter",
-      "RMC Découverte",
       "TF1 Séries Films",
+      "L'Équipe",
       "Canal+",
       "CStar"
     ],
@@ -332,7 +332,7 @@
       "auto_healing": {
         "enabled": true,
         "failure_streak": 0,
-        "success_streak": 1,
+        "success_streak": 2,
         "last_failure": "2026-08-08T10:31:14Z",
         "last_evidence": "1:h264/aac 1024x576, moving; 2:h264/aac 1024x576, moving; 3:h264/aac 1024x576, moving; sustained:buffering_19.9s; media=60.0s; wall=79.9s; lag=19.9s; freezes=0/0.0s/max0.0s; errors=0",
         "recovery_allowed": true,
@@ -358,7 +358,7 @@
         "enabled": true,
         "recovery_allowed": true,
         "failure_streak": 0,
-        "success_streak": 0,
+        "success_streak": 1,
         "prior_status": "verified_cloud_resolver",
         "prior_reason": "Permanent request-time cloud resolver for the exact TFX service, independently verified by moving H.264/AAC media, current TFX branding, and matching current programming.",
         "last_failure": "2026-08-08T11:01:59Z",
@@ -381,15 +381,15 @@
       "tvg_id": "RMCDecouverte.fr",
       "logo": "https://upload.wikimedia.org/wikipedia/fr/thumb/b/b3/RMC_D%C3%A9couverte_logo_2017.svg/512px-RMC_D%C3%A9couverte_logo_2017.svg.png",
       "official_url": "https://www.rmcbfmplay.com/direct/rmc_decouverte",
-      "status": "quarantined_automated",
-      "reason": "Automatically quarantined after the complete startup plus sustained public Apple-TV playback gate failed: 1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:ffmpeg_rc124:[hls @ 0x55ce3ae23440] keepalive request failed for 'https://d16zzycxcd0m0r.cloudfront.net/m1/160757,buffering_45.0s; media=60.0s; wall=105.0s; lag=45.0s; freezes=0/0.0s/max0.0s; errors=0",
+      "status": "verified_static",
+      "reason": "Public distribution HLS passed 1080p decode; on-screen branding and current programme matched RMC's official live schedule.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/linear/france/rmc-decouverte/live.m3u8",
       "min_height": 720,
-      "publish": false,
+      "publish": true,
       "auto_healing": {
         "enabled": true,
         "failure_streak": 0,
-        "success_streak": 2,
+        "success_streak": 3,
         "last_failure": "2026-08-08T14:22:37Z",
         "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:ffmpeg_rc124:[hls @ 0x55ce3ae23440] keepalive request failed for 'https://d16zzycxcd0m0r.cloudfront.net/m1/160757,buffering_45.0s; media=60.0s; wall=105.0s; lag=45.0s; freezes=0/0.0s/max0.0s; errors=0",
         "recovery_allowed": true,
@@ -399,7 +399,7 @@
         "candidate_source": "schumijo-fr",
         "candidate_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving",
         "last_candidate_url": "https://d16zzycxcd0m0r.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-hixvx5kymecr9/RMC_Decouverte_FR.m3u8",
-        "last_recovery": "2026-08-07T17:24:56Z"
+        "last_recovery": "2026-08-08T15:58:16Z"
       }
     },
     {
@@ -443,7 +443,7 @@
         "enabled": true,
         "recovery_allowed": true,
         "failure_streak": 0,
-        "success_streak": 0,
+        "success_streak": 1,
         "prior_status": "verified_cloud_resolver",
         "last_failure": "2026-08-08T13:03:55Z",
         "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:buffering_12.3s; media=60.0s; wall=72.2s; lag=12.3s; freezes=0/0.0s/max0.0s; errors=0",
@@ -460,11 +460,21 @@
       "name": "L'Équipe",
       "tvg_id": "LEquipe.fr",
       "official_url": "https://www.lequipe.fr/lachainelequipe/",
-      "status": "verified_licensed_distribution",
-      "reason": "The exact linear channel is carried by Samsung TV Plus; its public licensed-distribution HLS passed repeated 1080p audio/video decode and identity checks.",
+      "status": "quarantined_automated",
+      "reason": "Automatically quarantined after the complete startup plus sustained public Apple-TV playback gate failed: 1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:freeze_events_4,total_freeze_11.4s; media=60.0s; wall=63.7s; lag=3.7s; freezes=4/11.4s/max3.5s; errors=0",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/linear/france/lequipe/live.m3u8",
       "min_height": 720,
-      "publish": true
+      "publish": false,
+      "auto_healing": {
+        "enabled": true,
+        "failure_streak": 1,
+        "success_streak": 0,
+        "last_failure": "2026-08-08T15:58:16Z",
+        "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:freeze_events_4,total_freeze_11.4s; media=60.0s; wall=63.7s; lag=3.7s; freezes=4/11.4s/max3.5s; errors=0",
+        "recovery_allowed": true,
+        "prior_status": "verified_licensed_distribution",
+        "prior_reason": "The exact linear channel is carried by Samsung TV Plus; its public licensed-distribution HLS passed repeated 1080p audio/video decode and identity checks."
+      }
     },
     {
       "rank": 18,
