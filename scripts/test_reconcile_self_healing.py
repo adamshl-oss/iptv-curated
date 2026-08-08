@@ -93,6 +93,7 @@ class SustainedControllerTests(unittest.TestCase):
         self.assertFalse(result.passed)
         self.assertEqual(result.successes, 3)
         self.assertFalse(result.sustained_passed)
+        self.assertTrue(result.apple_passed)
         self.assertEqual(startup.call_count, 3)
         sustained.assert_called_once()
         self.assertIn("sustained:buffering_21.0s", result.details)
@@ -126,6 +127,40 @@ class SustainedControllerTests(unittest.TestCase):
         sustained.assert_not_called()
         self.assertIn("sustained:skipped_after_startup_failure", result.details)
 
+    def test_real_apple_gate_is_required_when_requested(self) -> None:
+        channel = {"name": "Fixture TV", "min_height": 540}
+        with (
+            mock.patch.object(
+                reconcile,
+                "playback_attempt",
+                return_value=(True, "h264/aac 1280x720, moving"),
+            ),
+            mock.patch.object(
+                reconcile,
+                "sustained_playback_attempt",
+                return_value=(True, "sustained_ok"),
+            ),
+            mock.patch.object(
+                reconcile,
+                "apple_playback_attempt",
+                return_value=(False, "total_stall_18.0s"),
+            ) as apple,
+            mock.patch.object(reconcile.time, "sleep"),
+        ):
+            result = reconcile.gate(
+                channel,
+                "https://relay.example.test/live.m3u8",
+                3,
+                Path("policy.json"),
+                require_apple=True,
+            )
+
+        self.assertFalse(result.passed)
+        self.assertTrue(result.sustained_passed)
+        self.assertFalse(result.apple_passed)
+        apple.assert_called_once()
+        self.assertIn("apple:total_stall_18.0s", result.details)
+
     def test_failure_quarantines_and_three_clean_gates_restore(self) -> None:
         channel = {
             "name": "Fixture TV",
@@ -140,6 +175,7 @@ class SustainedControllerTests(unittest.TestCase):
             passed=False,
             successes=3,
             sustained_passed=False,
+            apple_passed=False,
             details=["sustained:buffering_21.0s"],
         )
         passed = reconcile.GateResult(
@@ -147,6 +183,7 @@ class SustainedControllerTests(unittest.TestCase):
             passed=True,
             successes=3,
             sustained_passed=True,
+            apple_passed=True,
             details=["sustained:sustained_ok"],
         )
         public_url = "https://relay.example.test/live.m3u8"

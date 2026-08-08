@@ -13,7 +13,7 @@ concurrency:
 
 jobs:
   discover:
-    runs-on: ubuntu-latest
+    runs-on: macos-14
     timeout-minutes: 55
     steps:
       - name: Checkout current main
@@ -69,10 +69,14 @@ jobs:
       - name: Install playback tools
         if: steps.plan.outputs.due == 'true'
         run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y ffmpeg jq
+          brew install ffmpeg jq coreutils
+          echo "$(brew --prefix coreutils)/libexec/gnubin" >> "$GITHUB_PATH"
           chmod +x scripts/test_stream.sh
           chmod +x scripts/sustained_stream_gate.py
+          xcrun swiftc -O scripts/apple_avplayer_check.swift \
+            -o "$RUNNER_TEMP/apple-avplayer-check"
+          echo "APPLE_AVPLAYER_GATE_BIN=$RUNNER_TEMP/apple-avplayer-check" \
+            >> "$GITHUB_ENV"
 
       - name: Search and qualify exact replacements
         id: search
@@ -101,6 +105,7 @@ jobs:
           for country in france algeria; do
             python3 scripts/reconcile_self_healing.py \
               --country "$country" \
+              --apple-player \
               --apply \
               2>&1 | tee "$country-discovery-recovery.txt" || {
                 grep -q $'^OPERATIONAL\t'"$country"' controller' \
