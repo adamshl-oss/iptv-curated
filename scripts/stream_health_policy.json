@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "sustained_playback": {
     "enabled": true,
     "duration_seconds": 60,
@@ -11,6 +11,17 @@
     "maximum_freeze_events": 3,
     "maximum_network_errors": 0,
     "process_grace_seconds": 45
+  },
+  "apple_playback": {
+    "enabled": true,
+    "duration_seconds": 60,
+    "sample_interval_seconds": 0.25,
+    "maximum_startup_seconds": 12,
+    "minimum_advancing_ratio": 0.92,
+    "maximum_total_stall_seconds": 5,
+    "maximum_single_stall_seconds": 3,
+    "maximum_stall_events": 3,
+    "process_grace_seconds": 30
   },
   "state_transitions": {
     "quarantine_after_failed_gates": 1,

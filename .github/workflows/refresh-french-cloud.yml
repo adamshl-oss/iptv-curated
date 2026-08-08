@@ -13,7 +13,7 @@ concurrency:
 
 jobs:
   audit:
-    runs-on: ubuntu-latest
+    runs-on: macos-14
     timeout-minutes: 50
     steps:
       - name: Checkout
@@ -21,10 +21,14 @@ jobs:
 
       - name: Install real playback tools
         run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y ffmpeg jq
+          brew install ffmpeg jq coreutils
+          echo "$(brew --prefix coreutils)/libexec/gnubin" >> "$GITHUB_PATH"
           chmod +x scripts/test_stream.sh
           chmod +x scripts/sustained_stream_gate.py
+          xcrun swiftc -O scripts/apple_avplayer_check.swift \
+            -o "$RUNNER_TEMP/apple-avplayer-check"
+          echo "APPLE_AVPLAYER_GATE_BIN=$RUNNER_TEMP/apple-avplayer-check" \
+            >> "$GITHUB_ENV"
           python3 -m unittest \
             scripts/test_reconcile_self_healing.py \
             scripts/test_sustained_stream_gate.py
@@ -36,6 +40,7 @@ jobs:
           set -o pipefail
           python3 scripts/reconcile_self_healing.py \
             --country france \
+            --apple-player \
             --apply \
             2>&1 | tee french-self-healing-audit.txt
 

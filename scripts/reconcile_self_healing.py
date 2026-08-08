@@ -6,6 +6,8 @@ from __future__ import annotations
 import argparse
 import concurrent.futures as futures
 import json
+import os
+import shutil
 import subprocess
 import sys
 import threading
@@ -22,6 +24,7 @@ ROOT = Path(__file__).resolve().parent.parent
 CATALOG_PATH = ROOT / "scripts" / "self_healing_catalog.json"
 TEST = ROOT / "scripts" / "test_stream.sh"
 SUSTAINED_TEST = ROOT / "scripts" / "sustained_stream_gate.py"
+APPLE_TEST = ROOT / "scripts" / "apple_avplayer_check.swift"
 HEALTH_POLICY_PATH = ROOT / "scripts" / "stream_health_policy.json"
 APPLE_TV_USER_AGENT = (
     "AppleCoreMedia/1.0.0.21A329 (AppleTV; U; CPU OS 17_0 like Mac OS X)"
@@ -36,6 +39,7 @@ class GateResult:
     passed: bool
     successes: int
     sustained_passed: bool
+    apple_passed: bool
     details: list[str]
 
 
@@ -104,11 +108,45 @@ def sustained_playback_attempt(
     return True, fields[2] if len(fields) > 2 else "sustained_ok"
 
 
+def apple_playback_attempt(
+    url: str, policy_path: Path = HEALTH_POLICY_PATH
+) -> tuple[bool, str]:
+    document = json.loads(policy_path.read_text())
+    policy = document["apple_playback"]
+    binary = os.environ.get("APPLE_AVPLAYER_GATE_BIN", "")
+    if binary:
+        command = [binary, url, str(policy_path)]
+    elif shutil.which("xcrun"):
+        command = ["xcrun", "swift", str(APPLE_TEST), url, str(policy_path)]
+    else:
+        return False, "apple_gate_unavailable"
+    timeout = int(policy["maximum_startup_seconds"]) + int(
+        policy["duration_seconds"]
+    ) + int(policy["process_grace_seconds"]) + 10
+    try:
+        completed = subprocess.run(
+            command,
+            capture_output=True,
+            text=True,
+            timeout=timeout,
+            check=False,
+        )
+    except subprocess.TimeoutExpired:
+        return False, "apple_process_timeout"
+
+    output = (completed.stdout or completed.stderr).strip()
+    fields = output.split("|", 2)
+    if completed.returncode != 0 or not fields or fields[0] != "PASS":
+        return False, fields[2] if len(fields) > 2 else output or "apple_unknown"
+    return True, fields[2] if len(fields) > 2 else "apple_ok"
+
+
 def gate(
     channel: dict[str, Any],
     url: str,
     attempts: int,
     policy_path: Path = HEALTH_POLICY_PATH,
+    require_apple: bool = False,
 ) -> GateResult:
     name = str(channel["name"])
     # Gate the permanent URL that IPTVX receives.  Testing an upstream
@@ -130,6 +168,7 @@ def gate(
         if number < attempts:
             time.sleep(number)
     sustained_passed = False
+    apple_passed = not require_apple
     if successes == attempts:
         if lock is None:
             sustained_passed, sustained_detail = sustained_playback_attempt(
@@ -143,11 +182,21 @@ def gate(
         details.append(f"sustained:{sustained_detail}")
     else:
         details.append("sustained:skipped_after_startup_failure")
+    if require_apple and successes == attempts and sustained_passed:
+        if lock is None:
+            apple_passed, apple_detail = apple_playback_attempt(url, policy_path)
+        else:
+            with lock:
+                apple_passed, apple_detail = apple_playback_attempt(url, policy_path)
+        details.append(f"apple:{apple_detail}")
+    elif require_apple:
+        details.append("apple:skipped_after_ffmpeg_failure")
     return GateResult(
         name=name,
-        passed=successes == attempts and sustained_passed,
+        passed=successes == attempts and sustained_passed and apple_passed,
         successes=successes,
         sustained_passed=sustained_passed,
+        apple_passed=apple_passed,
         details=details,
     )
 
@@ -180,8 +229,8 @@ def apply_gate_result(
             channel["status"] = "verified_cloud_relay"
             channel["reason"] = (
                 "The permanent cloud URL passed the independent public "
-                "three-attempt H.264/AAC startup gate and sustained Apple-TV "
-                "playback gate after candidate qualification. IPTVX receives "
+                "three-attempt media gate, sustained transport gate, and real "
+                "Apple AVPlayer gate after candidate qualification. IPTVX receives "
                 "this stable URL, not the upstream candidate."
             )
             healing["success_streak"] = 0
@@ -214,7 +263,7 @@ def apply_gate_result(
             channel["status"] = "quarantined_automated"
             channel["reason"] = (
                 "Automatically quarantined after the complete startup plus "
-                "sustained public Apple-TV playback gate failed: "
+                "sustained transport and Apple AVPlayer gate failed: "
                 f"{'; '.join(result.details)}"
             )
             transitions.append(f"quarantined {name}")
@@ -283,6 +332,11 @@ def main() -> int:
     parser.add_argument("--attempts", type=int, default=3)
     parser.add_argument("--apply", action="store_true")
     parser.add_argument("--build-only", action="store_true")
+    parser.add_argument(
+        "--apple-player",
+        action="store_true",
+        help="Require a real AVPlayer sustained-playback pass",
+    )
     args = parser.parse_args()
 
     policy_document = json.loads(HEALTH_POLICY_PATH.read_text())
@@ -290,6 +344,15 @@ def main() -> int:
     transition_policy = policy_document["state_transitions"]
     if health_policy.get("enabled") is not True:
         print("FAIL\tsustained playback policy is disabled")
+        return 1
+    apple_policy = policy_document.get("apple_playback") or {}
+    if args.apple_player and apple_policy.get("enabled") is not True:
+        print("FAIL\tApple playback policy is disabled")
+        return 1
+    if args.apple_player and not (
+        os.environ.get("APPLE_AVPLAYER_GATE_BIN") or shutil.which("xcrun")
+    ):
+        print("FAIL\tApple AVPlayer gate is unavailable on this runner")
         return 1
 
     all_catalogs = json.loads(CATALOG_PATH.read_text())
@@ -341,11 +404,19 @@ def main() -> int:
                 continue
             candidates.append((channel, gate_url))
 
-    with futures.ThreadPoolExecutor(max_workers=4) as executor:
+    workers = 3 if args.apple_player else 4
+    with futures.ThreadPoolExecutor(max_workers=workers) as executor:
         gateable = [item for item in candidates if item[1]]
         results = list(
             executor.map(
-                lambda item: gate(item[0], item[1], args.attempts), gateable
+                lambda item: gate(
+                    item[0],
+                    item[1],
+                    args.attempts,
+                    HEALTH_POLICY_PATH,
+                    args.apple_player,
+                ),
+                gateable,
             )
         )
     for channel, gate_url in candidates:
@@ -357,6 +428,7 @@ def main() -> int:
                 passed=False,
                 successes=0,
                 sustained_passed=False,
+                apple_passed=False,
                 details=["no permanent cloud URL"] * args.attempts,
             )
         )
@@ -371,6 +443,7 @@ def main() -> int:
             f"{'PASS' if result.passed else 'FAIL'}\t{name}\t"
             f"startup={result.successes}/{args.attempts}; "
             f"sustained={'pass' if result.sustained_passed else 'fail'}; "
+            f"apple={'pass' if result.apple_passed else 'fail'}; "
             f"{'; '.join(result.details)}"
         )
         public_url = str(
@@ -406,6 +479,8 @@ def main() -> int:
         ),
         "attempts_per_gate": args.attempts,
         "sustained_playback_seconds": int(health_policy["duration_seconds"]),
+        "apple_player_required": args.apple_player,
+        "apple_playback_seconds": int(apple_policy.get("duration_seconds", 0)),
         "maximum_wall_lag_seconds": float(
             health_policy["maximum_wall_lag_seconds"]
         ),
@@ -457,13 +532,15 @@ def main() -> int:
         print(
             f"PLAYBACK_HEALTHY\t{args.country}\t"
             f"all {count} published permanent cloud URLs passed startup and "
-            f"{int(health_policy['duration_seconds'])}s sustained playback"
+            f"{int(health_policy['duration_seconds'])}s transport playback"
+            f"{' plus real Apple AVPlayer playback' if args.apple_player else ''}"
         )
     else:
         print(
             f"PLAYBACK_SURVIVORS_HEALTHY\t{args.country}\t"
             f"the {count} currently published survivors passed startup and "
-            f"{int(health_policy['duration_seconds'])}s sustained playback; "
+            f"{int(health_policy['duration_seconds'])}s transport playback"
+            f"{' plus real Apple AVPlayer playback' if args.apple_player else ''}; "
             "target coverage remains degraded"
         )
     print_status({"countries": {args.country: coverage}})
