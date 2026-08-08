@@ -4,15 +4,13 @@
   "countries": {
     "france": {
       "state": "degraded",
-      "published_count": 6,
+      "published_count": 4,
       "required_count": 20,
       "published_names": [
         "CNEWS",
-        "BFMTV",
         "RMC Découverte",
         "RMC Story",
-        "L'Équipe",
-        "RMC Life"
+        "L'Équipe"
       ],
       "missing": [
         {
@@ -51,6 +49,11 @@
           "status": "quarantined_automated"
         },
         {
+          "rank": 9,
+          "name": "BFMTV",
+          "status": "quarantined_automated"
+        },
+        {
           "rank": 10,
           "name": "W9",
           "status": "drm_protected"
@@ -83,6 +86,11 @@
         {
           "rank": 19,
           "name": "CStar",
+          "status": "quarantined_automated"
+        },
+        {
+          "rank": 20,
+          "name": "RMC Life",
           "status": "quarantined_automated"
         }
       ]
