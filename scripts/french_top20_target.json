@@ -125,7 +125,7 @@
     "quarantine_after_failed_gates": 1,
     "recover_after_successful_gates": 2,
     "attempts_per_gate": 3,
-    "published_count": 4,
+    "published_count": 5,
     "required_count": 20,
     "coverage_state": "degraded",
     "missing_targets": [
@@ -134,7 +134,6 @@
       "France 3",
       "M6",
       "France 5",
-      "ARTE",
       "TMC",
       "BFMTV",
       "W9",
@@ -166,7 +165,7 @@
         "enabled": true,
         "recovery_allowed": true,
         "failure_streak": 0,
-        "success_streak": 1,
+        "success_streak": 0,
         "prior_status": "verified_cloud_resolver",
         "last_failure": "2026-08-08T12:32:39Z",
         "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:buffering_13.9s; media=60.0s; wall=73.9s; lag=13.9s; freezes=0/0.0s/max0.0s; errors=0",
@@ -248,21 +247,21 @@
       "name": "ARTE",
       "tvg_id": "ARTE.fr",
       "official_url": "https://www.arte.tv/fr/direct/",
-      "status": "quarantined_automated",
-      "reason": "Automatically quarantined after the complete startup plus sustained public Apple-TV playback gate failed: 1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:buffering_13.3s; media=60.0s; wall=73.3s; lag=13.3s; freezes=0/0.0s/max0.0s; errors=0",
+      "status": "verified_cloud_resolver",
+      "reason": "Permanent request-time cloud resolver for the exact ARTE France service, independently verified by moving H.264/AAC media and current ARTE branding.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/tf1/arte/live.m3u8",
       "min_height": 720,
-      "publish": false,
+      "publish": true,
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
         "failure_streak": 0,
-        "success_streak": 1,
+        "success_streak": 2,
         "prior_status": "verified_cloud_resolver",
         "prior_reason": "Permanent request-time cloud resolver for the exact ARTE France service, independently verified by moving H.264/AAC media and current ARTE branding.",
         "last_failure": "2026-08-08T13:03:55Z",
         "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:buffering_13.3s; media=60.0s; wall=73.3s; lag=13.3s; freezes=0/0.0s/max0.0s; errors=0",
-        "last_recovery": "2026-08-08T08:02:38Z"
+        "last_recovery": "2026-08-08T13:51:28Z"
       }
     },
     {
@@ -279,7 +278,7 @@
         "enabled": true,
         "recovery_allowed": true,
         "failure_streak": 0,
-        "success_streak": 1,
+        "success_streak": 0,
         "prior_status": "verified_cloud_resolver",
         "last_failure": "2026-08-08T07:37:26Z",
         "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:buffering_12.6s; media=60.0s; wall=72.6s; lag=12.6s; freezes=0/0.0s/max0.0s; errors=0",
@@ -304,8 +303,8 @@
       "publish": false,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
-        "success_streak": 0,
+        "failure_streak": 0,
+        "success_streak": 1,
         "last_failure": "2026-08-08T13:34:49Z",
         "last_evidence": "1:h264/aac 960x540, moving; 2:h264/aac 960x540, moving; 3:h264/aac 960x540, moving; sustained:long_freeze_9.6s,total_freeze_18.4s; media=60.0s; wall=63.1s; lag=3.1s; freezes=3/18.4s/max9.6s; errors=0",
         "recovery_allowed": true,
@@ -327,9 +326,9 @@
       "name": "LCI",
       "tvg_id": "LCI.fr",
       "official_url": "https://www.tf1.fr/lci/direct",
-      "status": "quarantined_automated",
-      "reason": "Automatically quarantined after the complete startup plus sustained public Apple-TV playback gate failed: 1:h264/aac 1024x576, moving; 2:h264/aac 1024x576, moving; 3:h264/aac 1024x576, moving; sustained:buffering_19.9s; media=60.0s; wall=79.9s; lag=19.9s; freezes=0/0.0s/max0.0s; errors=0",
-      "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/lci/live.m3u8",
+      "status": "candidate_cloud_verification",
+      "reason": "Automatically discovered from github:Paradise-91/ParaTV; exact identity and three moving-media gates passed. Awaiting the independent recovery gate.",
+      "stream_url": "https://raw.githubusercontent.com/Paradise-91/ParaTV/main/streams/Woe1DkVucQrO/vt2S3NCJtyYghHeb.m3u8",
       "min_height": 540,
       "publish": false,
       "auto_healing": {
@@ -341,7 +340,10 @@
         "recovery_allowed": true,
         "prior_status": "verified_cloud_apple_relay",
         "prior_reason": "The always-on relay converts TF1's current official non-DRM CDN delivery into short, stable Apple-player URLs. Three public 576p H.264/AAC decode gates, a continuous 45-second cloud decode, a current LCI-branded frame, and sustained changing video in both IPTVX preview and full-player modes passed without the former 10–15-second stall.",
-        "last_recovery": "2026-08-08T08:57:53Z"
+        "last_recovery": "2026-08-08T08:57:53Z",
+        "candidate_discovered_at": "2026-08-08T13:39:32Z",
+        "candidate_source": "github:Paradise-91/ParaTV",
+        "candidate_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving"
       }
     },
     {
@@ -511,8 +513,8 @@
       "publish": false,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
-        "success_streak": 0,
+        "failure_streak": 0,
+        "success_streak": 1,
         "last_failure": "2026-08-08T13:34:49Z",
         "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:ffmpeg_rc124:[hls @ 0x558a3db86440] keepalive request failed for 'https://d2gkzqu5bqo3kk.cloudfront.net/v1/segmen,buffering_45.0s; media=60.0s; wall=105.0s; lag=45.0s; freezes=0/0.0s/max0.0s; errors=0",
         "recovery_allowed": true,

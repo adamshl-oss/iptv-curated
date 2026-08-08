@@ -4,10 +4,11 @@
   "countries": {
     "france": {
       "state": "degraded",
-      "published_count": 4,
+      "published_count": 5,
       "required_count": 20,
       "published_names": [
         "CNEWS",
+        "ARTE",
         "RMC Découverte",
         "RMC Story",
         "L'Équipe"
@@ -39,11 +40,6 @@
           "status": "geo_restricted"
         },
         {
-          "rank": 7,
-          "name": "ARTE",
-          "status": "quarantined_automated"
-        },
-        {
           "rank": 8,
           "name": "TMC",
           "status": "quarantined_automated"
@@ -61,7 +57,7 @@
         {
           "rank": 11,
           "name": "LCI",
-          "status": "quarantined_automated"
+          "status": "candidate_cloud_verification"
         },
         {
           "rank": 12,
@@ -97,14 +93,13 @@
     },
     "algeria": {
       "state": "degraded",
-      "published_count": 11,
+      "published_count": 10,
       "required_count": 20,
       "published_names": [
         "El Heddaf TV",
         "Ennahar TV",
         "TV1 / Programme National",
         "TV3 / A3",
-        "TV2 / Canal Algérie",
         "AL24 News",
         "El Bilad TV",
         "TV4 Tamazight",
@@ -122,6 +117,11 @@
           "rank": 2,
           "name": "Echorouk TV",
           "status": "official_cdn_unreachable"
+        },
+        {
+          "rank": 7,
+          "name": "TV2 / Canal Algérie",
+          "status": "quarantined_automated"
         },
         {
           "rank": 10,
