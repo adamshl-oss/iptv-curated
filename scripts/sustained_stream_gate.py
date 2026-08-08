@@ -106,7 +106,19 @@ def evaluate(
 
     failures: list[str] = []
     if returncode != 0:
-        failures.append(f"ffmpeg_rc{returncode}")
+        diagnostic = next(
+            (
+                line.strip()
+                for line in reversed(stderr.splitlines())
+                if line.strip()
+                and re.search(r"error|failed|invalid|not found|unable", line, re.I)
+            ),
+            "",
+        )
+        diagnostic = re.sub(r"[|\r\n]+", ":", diagnostic)[:100]
+        failures.append(
+            f"ffmpeg_rc{returncode}{':' + diagnostic if diagnostic else ''}"
+        )
     if media < minimum_media:
         failures.append(f"short_media_{media:.1f}s")
     if lag > float(policy["maximum_wall_lag_seconds"]):
@@ -144,12 +156,6 @@ def command(url: str, user_agent: str, policy: dict[str, Any]) -> list[str]:
         "info",
         "-user_agent",
         user_agent,
-        "-allowed_extensions",
-        "ALL",
-        "-allowed_segment_extensions",
-        "ALL",
-        "-extension_picky",
-        "0",
         "-rw_timeout",
         "15000000",
         "-re",

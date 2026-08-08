@@ -98,6 +98,16 @@ class SustainedEvaluationTests(unittest.TestCase):
         self.assertIn("short_media_6.6s", result.reason)
         self.assertIn("network_errors_1", result.reason)
 
+    def test_cloud_gate_uses_only_portable_ffmpeg_options(self) -> None:
+        command = gate.command(
+            "https://relay.example.test/live.m3u8",
+            gate.APPLE_TV_USER_AGENT,
+            POLICY,
+        )
+        self.assertNotIn("-allowed_segment_extensions", command)
+        self.assertNotIn("-extension_picky", command)
+        self.assertIn("-rw_timeout", command)
+
 
 if __name__ == "__main__":
     unittest.main()

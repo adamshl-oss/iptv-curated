@@ -8,9 +8,7 @@ permissions:
   contents: write
 
 concurrency:
-  # The serial watchdog is the sole unattended dispatcher. This per-workflow
-  # guard only prevents accidental duplicate French audits.
-  group: french-self-healing-audit
+  group: iptv-state-writer
   cancel-in-progress: false
 
 jobs:
@@ -60,6 +58,7 @@ jobs:
             french-tv-july-2026-v5.m3u \
             iptv-coverage-status.json \
             scripts/french_top20_target.json
+          git add -u
           git commit -m "Reconcile French channel health ($(date -u +%FT%TZ))"
           git pull --rebase
           git push

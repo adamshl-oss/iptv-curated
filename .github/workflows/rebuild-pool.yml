@@ -8,6 +8,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: iptv-state-writer
+  cancel-in-progress: false
+
 jobs:
   rebuild:
     runs-on: ubuntu-latest

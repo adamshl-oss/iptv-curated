@@ -6,6 +6,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: iptv-state-writer
+  cancel-in-progress: false
+
 jobs:
   refresh:
     runs-on: ubuntu-latest
