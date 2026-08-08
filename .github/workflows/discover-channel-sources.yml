@@ -8,7 +8,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: channel-source-discovery
+  group: iptv-state-writer
   cancel-in-progress: false
 
 jobs:

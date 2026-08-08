@@ -14,7 +14,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: algerian-self-healing-audit
+  group: iptv-state-writer
   cancel-in-progress: false
 
 jobs:
@@ -132,6 +132,7 @@ jobs:
             algerian-tv-july-2026-v2.m3u \
             iptv-coverage-status.json \
             scripts/algerian_top20_target.json
+          git add -u
           git commit -m "Reconcile Algerian channel health ($(date -u +%FT%TZ))"
           git pull --rebase
           git push
