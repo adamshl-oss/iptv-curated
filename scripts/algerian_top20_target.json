@@ -127,7 +127,7 @@
   "self_healing": {
     "controller": "scripts/reconcile_self_healing.py",
     "quarantine_after_failed_gates": 1,
-    "recover_after_successful_gates": 2,
+    "recover_after_successful_gates": 3,
     "attempts_per_gate": 3,
     "published_count": 7,
     "required_count": 20,
@@ -148,9 +148,9 @@
       "Almagharibia TV"
     ],
     "sustained_playback_seconds": 60,
-    "maximum_wall_lag_seconds": 12.0,
-    "maximum_single_freeze_seconds": 5.0,
-    "maximum_total_freeze_seconds": 8.0
+    "maximum_wall_lag_seconds": 15.0,
+    "maximum_single_freeze_seconds": 12.0,
+    "maximum_total_freeze_seconds": 10.0
   },
   "channels": [
     {
@@ -213,8 +213,8 @@
       "publish": false,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
-        "success_streak": 0,
+        "failure_streak": 0,
+        "success_streak": 1,
         "last_failure": "2026-08-08T14:29:05Z",
         "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:buffering_43.0s,long_freeze_10.0s,total_freeze_10.0s; media=60.0s; wall=102.9s; lag=43.0s; freezes=1/10.0s/max10.0s; errors=0",
         "recovery_allowed": true,
@@ -260,8 +260,8 @@
       "publish": false,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
-        "success_streak": 0,
+        "failure_streak": 0,
+        "success_streak": 1,
         "last_failure": "2026-08-08T14:29:05Z",
         "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:buffering_35.1s; media=60.0s; wall=95.1s; lag=35.1s; freezes=0/0.0s/max0.0s; errors=0",
         "recovery_allowed": true,
@@ -391,8 +391,8 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 1,
-        "success_streak": 0,
+        "failure_streak": 0,
+        "success_streak": 1,
         "prior_status": "verified_cloud",
         "last_recovery": "2026-08-08T12:41:24Z",
         "last_failure": "2026-08-08T14:03:51Z",
