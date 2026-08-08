@@ -7,16 +7,21 @@
       "published_count": 8,
       "required_count": 20,
       "published_names": [
-        "TF1",
         "CNEWS",
         "ARTE",
         "TMC",
         "BFMTV",
+        "LCI",
         "RMC Découverte",
         "RMC Story",
         "RMC Life"
       ],
       "missing": [
+        {
+          "rank": 1,
+          "name": "TF1",
+          "status": "quarantined_automated"
+        },
         {
           "rank": 2,
           "name": "France 2",
@@ -41,11 +46,6 @@
           "rank": 10,
           "name": "W9",
           "status": "drm_protected"
-        },
-        {
-          "rank": 11,
-          "name": "LCI",
-          "status": "candidate_cloud_verification"
         },
         {
           "rank": 12,
