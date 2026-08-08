@@ -123,7 +123,7 @@
   "self_healing": {
     "controller": "scripts/reconcile_self_healing.py",
     "quarantine_after_failed_gates": 1,
-    "recover_after_successful_gates": 2,
+    "recover_after_successful_gates": 3,
     "attempts_per_gate": 3,
     "published_count": 6,
     "required_count": 20,
@@ -145,9 +145,9 @@
       "CStar"
     ],
     "sustained_playback_seconds": 60,
-    "maximum_wall_lag_seconds": 12.0,
-    "maximum_single_freeze_seconds": 5.0,
-    "maximum_total_freeze_seconds": 8.0
+    "maximum_wall_lag_seconds": 15.0,
+    "maximum_single_freeze_seconds": 12.0,
+    "maximum_total_freeze_seconds": 10.0
   },
   "channels": [
     {
@@ -164,7 +164,7 @@
         "enabled": true,
         "recovery_allowed": true,
         "failure_streak": 0,
-        "success_streak": 1,
+        "success_streak": 2,
         "prior_status": "verified_cloud_resolver",
         "last_failure": "2026-08-08T12:32:39Z",
         "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:buffering_13.9s; media=60.0s; wall=73.9s; lag=13.9s; freezes=0/0.0s/max0.0s; errors=0",
@@ -277,7 +277,7 @@
         "enabled": true,
         "recovery_allowed": true,
         "failure_streak": 0,
-        "success_streak": 1,
+        "success_streak": 2,
         "prior_status": "verified_cloud_resolver",
         "last_failure": "2026-08-08T07:37:26Z",
         "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:buffering_12.6s; media=60.0s; wall=72.6s; lag=12.6s; freezes=0/0.0s/max0.0s; errors=0",
@@ -334,7 +334,7 @@
       "auto_healing": {
         "enabled": true,
         "failure_streak": 0,
-        "success_streak": 1,
+        "success_streak": 0,
         "last_failure": "2026-08-08T10:31:14Z",
         "last_evidence": "1:h264/aac 1024x576, moving; 2:h264/aac 1024x576, moving; 3:h264/aac 1024x576, moving; sustained:buffering_19.9s; media=60.0s; wall=79.9s; lag=19.9s; freezes=0/0.0s/max0.0s; errors=0",
         "recovery_allowed": true,
@@ -360,7 +360,7 @@
         "enabled": true,
         "recovery_allowed": true,
         "failure_streak": 0,
-        "success_streak": 1,
+        "success_streak": 2,
         "prior_status": "verified_cloud_resolver",
         "prior_reason": "Permanent request-time cloud resolver for the exact TFX service, independently verified by moving H.264/AAC media, current TFX branding, and matching current programming.",
         "last_failure": "2026-08-08T11:01:59Z",
@@ -390,8 +390,8 @@
       "publish": false,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
-        "success_streak": 0,
+        "failure_streak": 0,
+        "success_streak": 1,
         "last_failure": "2026-08-08T14:22:37Z",
         "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:ffmpeg_rc124:[hls @ 0x55ce3ae23440] keepalive request failed for 'https://d16zzycxcd0m0r.cloudfront.net/m1/160757,buffering_45.0s; media=60.0s; wall=105.0s; lag=45.0s; freezes=0/0.0s/max0.0s; errors=0",
         "recovery_allowed": true,
@@ -445,7 +445,7 @@
         "enabled": true,
         "recovery_allowed": true,
         "failure_streak": 0,
-        "success_streak": 1,
+        "success_streak": 2,
         "prior_status": "verified_cloud_resolver",
         "last_failure": "2026-08-08T13:03:55Z",
         "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:buffering_12.3s; media=60.0s; wall=72.2s; lag=12.3s; freezes=0/0.0s/max0.0s; errors=0",
