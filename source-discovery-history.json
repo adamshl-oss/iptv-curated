@@ -1,8 +1,8 @@
 {
   "version": 1,
   "created_at": "2026-08-07T15:53:53Z",
-  "updated_at": "2026-08-09T06:36:44Z",
-  "run_count": 71,
+  "updated_at": "2026-08-09T07:04:59Z",
+  "run_count": 72,
   "targets": {
     "france::TF1": {
       "families": {
@@ -3509,13 +3509,22 @@
           "candidates_found": 0,
           "new_candidates": 0,
           "qualified": false
+        },
+        "github:country_name_hls": {
+          "attempts": 1,
+          "last_attempted_at": "2026-08-09T07:04:59Z",
+          "next_eligible_at": "2026-08-16T07:04:59Z",
+          "outcome": "candidates_found",
+          "candidates_found": 1,
+          "new_candidates": 0,
+          "qualified": false
         }
       },
       "candidates": {
         "a78a946857c15a51a1be733a6d91fb324a2e225361ea001df440ecc5bad9ead9": {
           "first_seen_at": "2026-08-08T17:35:30Z",
-          "last_seen_at": "2026-08-09T06:07:32Z",
-          "next_eligible_at": "2026-08-16T06:07:32Z",
+          "last_seen_at": "2026-08-09T07:04:59Z",
+          "next_eligible_at": "2026-08-16T07:04:59Z",
           "url": "https://www.dailymotion.com/video/x2lefik",
           "source": "github:Free-TV/IPTV",
           "last_outcome": "rejected_policy"
@@ -3529,7 +3538,7 @@
           "last_outcome": "rejected_policy"
         }
       },
-      "last_task_at": "2026-08-09T06:36:44Z"
+      "last_task_at": "2026-08-09T07:04:59Z"
     },
     "france::Canal+": {
       "families": {
@@ -4743,6 +4752,15 @@
           "candidates_found": 4,
           "new_candidates": 4,
           "qualified": false
+        },
+        "github:exact_name_hls": {
+          "attempts": 1,
+          "last_attempted_at": "2026-08-09T07:04:59Z",
+          "next_eligible_at": "2026-08-16T07:04:59Z",
+          "outcome": "candidates_found",
+          "candidates_found": 1,
+          "new_candidates": 1,
+          "qualified": false
         }
       },
       "candidates": {
@@ -4777,9 +4795,17 @@
           "url": "https://uvotv-aniview.global.ssl.fastly.net/hls/live/2119194/ennahartv/playlist.m3u8",
           "source": "github:spookyhost1/yarr-stremio",
           "last_outcome": "rejected_policy"
+        },
+        "06880b710f8c6073a77aaa591b2368858162ab382bec8009ec5c794deb35eac9": {
+          "first_seen_at": "2026-08-09T07:04:59Z",
+          "last_seen_at": "2026-08-09T07:04:59Z",
+          "next_eligible_at": "2026-08-16T07:04:59Z",
+          "url": "https://ch.iptvmate.net/61bd67872ede7520d03c6ab7743f7cb7.m3u8",
+          "source": "github:iptvmate/iptvchannels",
+          "last_outcome": "rejected_policy"
         }
       },
-      "last_task_at": "2026-08-09T01:34:57Z"
+      "last_task_at": "2026-08-09T07:04:59Z"
     },
     "algeria::TV1 / Programme National": {
       "families": {
@@ -17194,6 +17220,126 @@
           "new_candidates": 0,
           "qualified": false,
           "next_eligible_at": "2026-08-16T06:36:44Z"
+        }
+      ],
+      "deferred_targets": [
+        {
+          "country": "france",
+          "target": "France 2",
+          "next_eligible_at": "2026-08-09T14:30:04Z"
+        },
+        {
+          "country": "france",
+          "target": "France 3",
+          "next_eligible_at": "2026-08-09T15:01:06Z"
+        },
+        {
+          "country": "france",
+          "target": "M6",
+          "next_eligible_at": "2026-08-09T14:30:49Z"
+        },
+        {
+          "country": "france",
+          "target": "France 5",
+          "next_eligible_at": "2026-08-09T14:30:04Z"
+        },
+        {
+          "country": "france",
+          "target": "W9",
+          "next_eligible_at": "2026-08-09T14:30:04Z"
+        },
+        {
+          "country": "france",
+          "target": "6ter",
+          "next_eligible_at": "2026-08-09T15:01:06Z"
+        },
+        {
+          "country": "france",
+          "target": "Canal+",
+          "next_eligible_at": "2026-08-09T14:30:04Z"
+        },
+        {
+          "country": "france",
+          "target": "CStar",
+          "next_eligible_at": "2026-08-09T14:30:04Z"
+        },
+        {
+          "country": "algeria",
+          "target": "Samira TV",
+          "next_eligible_at": "2026-08-09T14:30:49Z"
+        },
+        {
+          "country": "algeria",
+          "target": "Echorouk TV",
+          "next_eligible_at": "2026-08-09T14:30:49Z"
+        },
+        {
+          "country": "algeria",
+          "target": "TV3 / A3",
+          "next_eligible_at": "2026-08-09T15:01:06Z"
+        },
+        {
+          "country": "algeria",
+          "target": "El Hayat TV",
+          "next_eligible_at": "2026-08-09T14:30:49Z"
+        },
+        {
+          "country": "algeria",
+          "target": "El Watania TV",
+          "next_eligible_at": "2026-08-09T14:30:49Z"
+        },
+        {
+          "country": "algeria",
+          "target": "Echorouk News",
+          "next_eligible_at": "2026-08-09T14:30:49Z"
+        },
+        {
+          "country": "algeria",
+          "target": "TV5 Coran",
+          "next_eligible_at": "2026-08-09T15:01:06Z"
+        },
+        {
+          "country": "algeria",
+          "target": "TV6 Algérie",
+          "next_eligible_at": "2026-08-09T14:30:49Z"
+        },
+        {
+          "country": "algeria",
+          "target": "TV8 Adhakira",
+          "next_eligible_at": "2026-08-09T14:30:49Z"
+        },
+        {
+          "country": "algeria",
+          "target": "TV9 El Barlamaniya",
+          "next_eligible_at": "2026-08-09T14:30:04Z"
+        },
+        {
+          "country": "algeria",
+          "target": "Almagharibia TV",
+          "next_eligible_at": "2026-08-09T21:49:53Z"
+        }
+      ]
+    },
+    {
+      "at": "2026-08-09T07:04:59Z",
+      "tasks": [
+        {
+          "country": "algeria",
+          "target": "Ennahar TV",
+          "family": "github:exact_name_hls",
+          "candidates_found": 1,
+          "new_candidates": 1,
+          "qualified": false,
+          "next_eligible_at": "2026-08-16T07:04:59Z"
+        },
+        {
+          "country": "france",
+          "target": "L'Équipe",
+          "family": "github:country_name_hls",
+          "candidates_found": 1,
+          "new_candidates": 0,
+          "qualified": false,
+          "next_eligible_at": "2026-08-16T07:04:59Z"
         }
       ],
       "deferred_targets": [
