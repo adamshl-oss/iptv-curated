@@ -65,17 +65,18 @@
     },
     "algeria": {
       "state": "degraded",
-      "published_count": 8,
+      "published_count": 9,
       "required_count": 20,
       "published_names": [
         "El Heddaf TV",
+        "TV1 / Programme National",
         "TV3 / A3",
         "TV2 / Canal Algérie",
         "AL24 News",
         "El Bilad TV",
-        "TV5 Coran",
         "TV7 El Maarifa",
-        "Amou Yazid TV"
+        "Amou Yazid TV",
+        "Almagharibia TV"
       ],
       "missing": [
         {
@@ -91,11 +92,6 @@
         {
           "rank": 4,
           "name": "Ennahar TV",
-          "status": "quarantined_automated"
-        },
-        {
-          "rank": 5,
-          "name": "TV1 / Programme National",
           "status": "quarantined_automated"
         },
         {
@@ -119,6 +115,11 @@
           "status": "quarantined_automated"
         },
         {
+          "rank": 14,
+          "name": "TV5 Coran",
+          "status": "quarantined_automated"
+        },
+        {
           "rank": 15,
           "name": "TV6 Algérie",
           "status": "quarantined_identity_mismatch"
@@ -132,11 +133,6 @@
           "rank": 18,
           "name": "TV9 El Barlamaniya",
           "status": "no_authorized_public_feed"
-        },
-        {
-          "rank": 20,
-          "name": "Almagharibia TV",
-          "status": "quarantined_automated"
         }
       ]
     }
