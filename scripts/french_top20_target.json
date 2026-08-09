@@ -125,7 +125,7 @@
     "quarantine_after_failed_gates": 1,
     "recover_after_successful_gates": 2,
     "attempts_per_gate": 3,
-    "published_count": 9,
+    "published_count": 10,
     "required_count": 20,
     "coverage_state": "degraded",
     "missing_targets": [
@@ -138,8 +138,7 @@
       "RMC Découverte",
       "L'Équipe",
       "Canal+",
-      "CStar",
-      "RMC Life"
+      "CStar"
     ],
     "sustained_playback_seconds": 60,
     "maximum_wall_lag_seconds": 15.0,
@@ -390,8 +389,8 @@
       "publish": false,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
-        "success_streak": 0,
+        "failure_streak": 0,
+        "success_streak": 1,
         "last_failure": "2026-08-09T15:53:22Z",
         "last_evidence": "1:timeout; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "recovery_allowed": true,
@@ -469,8 +468,8 @@
       "publish": false,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
-        "success_streak": 0,
+        "failure_streak": 0,
+        "success_streak": 1,
         "last_failure": "2026-08-09T15:53:22Z",
         "last_evidence": "1:h264/aac 1920x1080, moving; 2:no_response; 3:h264/aac 1920x1080, moving; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "recovery_allowed": true,
@@ -517,21 +516,21 @@
       "name": "RMC Life",
       "tvg_id": "RMCLife.fr",
       "official_url": "https://www.rmcbfmplay.com/direct/rmc_life",
-      "status": "quarantined_automated",
-      "reason": "Automatically quarantined after the complete startup plus sustained transport and Apple AVPlayer gate failed: 1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:timeout; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
+      "status": "verified_licensed_distribution",
+      "reason": "The exact RMC Life linear channel is carried by Samsung TV Plus; its public licensed-distribution HLS passed repeated 1080p audio/video decode and identity checks.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/linear/france/rmc-life/live.m3u8",
       "min_height": 720,
-      "publish": false,
+      "publish": true,
       "auto_healing": {
         "enabled": true,
         "failure_streak": 0,
-        "success_streak": 1,
+        "success_streak": 2,
         "last_failure": "2026-08-09T15:19:22Z",
         "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:timeout; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "recovery_allowed": true,
         "prior_status": "verified_licensed_distribution",
         "prior_reason": "The exact RMC Life linear channel is carried by Samsung TV Plus; its public licensed-distribution HLS passed repeated 1080p audio/video decode and identity checks.",
-        "last_recovery": "2026-08-08T17:53:32Z"
+        "last_recovery": "2026-08-09T16:25:03Z"
       }
     }
   ]
