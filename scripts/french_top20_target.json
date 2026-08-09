@@ -442,8 +442,8 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 1,
-        "success_streak": 0,
+        "failure_streak": 0,
+        "success_streak": 1,
         "prior_status": "verified_cloud_resolver",
         "last_failure": "2026-08-09T08:28:25Z",
         "last_evidence": "1:http_502; 2:http_502; 3:http_502; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
