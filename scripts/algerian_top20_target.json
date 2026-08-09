@@ -129,13 +129,12 @@
     "quarantine_after_failed_gates": 1,
     "recover_after_successful_gates": 2,
     "attempts_per_gate": 3,
-    "published_count": 9,
+    "published_count": 10,
     "required_count": 20,
     "coverage_state": "degraded",
     "missing_targets": [
       "Samira TV",
       "Echorouk TV",
-      "Ennahar TV",
       "El Hayat TV",
       "El Watania TV",
       "Echorouk News",
@@ -206,21 +205,21 @@
       "playlist_name": "Ennahar TV (Cloud Live)",
       "tvg_id": "EnnaharTV.dz",
       "official_url": "https://www.ennaharonline.com/live/",
-      "status": "quarantined_automated",
-      "reason": "Automatically quarantined after the complete startup plus sustained transport and Apple AVPlayer gate failed: 1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:ffmpeg_rc124,short_media_20.0s,buffering_85.0s; media=20.0s; wall=105.0s; lag=85.0s; freezes=0/0.0s/max0.0s; errors=0; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
+      "status": "verified_cloud",
+      "reason": "Exact live channel retained from the verified lineup behind an always-on public endpoint.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/ennahar",
       "min_height": 540,
-      "publish": false,
+      "publish": true,
       "auto_healing": {
         "enabled": true,
         "failure_streak": 0,
-        "success_streak": 1,
+        "success_streak": 2,
         "last_failure": "2026-08-09T00:38:54Z",
         "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:ffmpeg_rc124,short_media_20.0s,buffering_85.0s; media=20.0s; wall=105.0s; lag=85.0s; freezes=0/0.0s/max0.0s; errors=0; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact live channel retained from the verified lineup behind an always-on public endpoint.",
-        "last_recovery": "2026-08-08T22:32:41Z"
+        "last_recovery": "2026-08-09T01:46:31Z"
       }
     },
     {
