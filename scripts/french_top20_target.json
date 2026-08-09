@@ -125,7 +125,7 @@
     "quarantine_after_failed_gates": 1,
     "recover_after_successful_gates": 2,
     "attempts_per_gate": 3,
-    "published_count": 11,
+    "published_count": 12,
     "required_count": 20,
     "coverage_state": "degraded",
     "missing_targets": [
@@ -135,7 +135,6 @@
       "France 5",
       "W9",
       "6ter",
-      "RMC Story",
       "Canal+",
       "CStar"
     ],
@@ -408,15 +407,15 @@
       "tvg_id": "RMCStory.fr",
       "logo": "https://upload.wikimedia.org/wikipedia/fr/thumb/4/43/Logo_RMC_Story_2025.png/512px-Logo_RMC_Story_2025.png",
       "official_url": "https://www.rmcbfmplay.com/direct/rmc_story",
-      "status": "quarantined_automated",
-      "reason": "Automatically quarantined after the complete startup plus sustained transport and Apple AVPlayer gate failed: 1:timeout; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
+      "status": "verified_static",
+      "reason": "Public distribution HLS passed 1080p decode; on-screen branding and current programme matched RMC's official live schedule.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/linear/france/rmc-story/live.m3u8",
       "min_height": 720,
-      "publish": false,
+      "publish": true,
       "auto_healing": {
         "enabled": true,
         "failure_streak": 0,
-        "success_streak": 1,
+        "success_streak": 2,
         "last_failure": "2026-08-09T10:44:44Z",
         "last_evidence": "1:timeout; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "recovery_allowed": true,
@@ -426,7 +425,7 @@
         "candidate_source": "github:iptv-org/iptv",
         "candidate_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving",
         "last_candidate_url": "https://d15aro46bnpfm8.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-fqkqiax1078up/RMC_Story_FR.m3u8",
-        "last_recovery": "2026-08-08T17:53:32Z"
+        "last_recovery": "2026-08-09T11:46:43Z"
       }
     },
     {
