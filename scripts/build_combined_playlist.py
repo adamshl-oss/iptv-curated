@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import argparse
 import os
+import re
 import tempfile
 from pathlib import Path
 
@@ -20,6 +21,7 @@ SOURCES = (
     ROOT / "algerian-tv-july-2026.m3u",
 )
 OUTPUT = ROOT / "chaines-tv.m3u"
+COMBINED_GROUP = "CHAINES TV"
 HEADER = (
     '#EXTM3U playlist-name="CHAINES TV"',
     "# Combined verified French and Algerian channels.",
@@ -51,6 +53,19 @@ def entries(path: Path) -> list[tuple[str, str]]:
     return result
 
 
+def combined_extinf(extinf: str) -> str:
+    """Put every channel in one IPTVX category while preserving metadata."""
+    metadata, separator, name = extinf.partition(",")
+    if not separator:
+        raise ValueError("EXTINF has no channel name")
+    group = f'group-title="{COMBINED_GROUP}"'
+    if re.search(r'\bgroup-title="[^"]*"', metadata):
+        metadata = re.sub(r'\bgroup-title="[^"]*"', group, metadata, count=1)
+    else:
+        metadata = f"{metadata} {group}"
+    return f"{metadata},{name}"
+
+
 def build(sources: tuple[Path, ...] = SOURCES, output: Path = OUTPUT) -> int:
     lines = list(HEADER)
     seen_ids: set[str] = set()
@@ -63,7 +78,7 @@ def build(sources: tuple[Path, ...] = SOURCES, output: Path = OUTPUT) -> int:
             if identity in seen_ids:
                 raise ValueError(f"duplicate channel identity: {identity}")
             seen_ids.add(identity)
-            lines.extend((extinf, url))
+            lines.extend((combined_extinf(extinf), url))
             count += 1
 
     body = "\n".join(lines) + "\n"

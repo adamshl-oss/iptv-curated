@@ -57,6 +57,9 @@ class CombinedPlaylistTests(unittest.TestCase):
         self.assertTrue(body.startswith('#EXTM3U playlist-name="CHAINES TV"\n'))
         self.assertLess(body.index("TF1.fr"), body.index("TV1.dz"))
         self.assertEqual(body.count("#EXTINF:"), 2)
+        self.assertEqual(body.count('group-title="CHAINES TV"'), 2)
+        self.assertNotIn('group-title="France"', body)
+        self.assertNotIn('group-title="Algeria"', body)
 
     def test_rejects_non_https_streams(self) -> None:
         source = self.write_source(
