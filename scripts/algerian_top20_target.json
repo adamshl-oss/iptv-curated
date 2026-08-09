@@ -129,7 +129,7 @@
     "quarantine_after_failed_gates": 1,
     "recover_after_successful_gates": 2,
     "attempts_per_gate": 3,
-    "published_count": 10,
+    "published_count": 11,
     "required_count": 20,
     "coverage_state": "degraded",
     "missing_targets": [
@@ -141,8 +141,7 @@
       "TV5 Coran",
       "TV6 Algérie",
       "TV8 Adhakira",
-      "TV9 El Barlamaniya",
-      "Almagharibia TV"
+      "TV9 El Barlamaniya"
     ],
     "sustained_playback_seconds": 60,
     "maximum_wall_lag_seconds": 15.0,
@@ -414,7 +413,7 @@
         "enabled": true,
         "recovery_allowed": true,
         "failure_streak": 0,
-        "success_streak": 1,
+        "success_streak": 0,
         "prior_status": "verified_cloud",
         "last_recovery": "2026-08-09T13:58:29Z",
         "last_failure": "2026-08-09T21:55:55Z",
@@ -508,22 +507,22 @@
       "playlist_name": "Almagharibia TV (Official Cloud Live)",
       "tvg_id": "AlmagharibiaTV.uk",
       "official_url": "https://almagharibia.tv/",
-      "status": "quarantined_automated",
-      "reason": "Automatically quarantined after the complete startup plus sustained transport and Apple AVPlayer gate failed: 1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:buffering_35.7s,freeze_events_4,total_freeze_14.1s; media=60.0s; wall=95.7s; lag=35.7s; freezes=4/14.1s/max6.0s; errors=0; apple:advance_ratio_0.902,total_stall_5.9s,long_stall_5.9s; startup=1.2s; observed=60.1s; advancing=54.2s/0.902; waiting=5.9s; stalls=1/5.9s/max5.9s; discontinuities=1",
+      "status": "verified_cloud_apple_relay",
+      "reason": "The broadcaster's official app exposed its exact current YouTube live identity. GitHub run 30187908850 passed nine independent outside-cloud 720p H.264/AAC moving-media decodes plus a sustained 45-second decode; the immediate home/Apple-facing route then passed 3/3 plus another sustained 45-second decode, and the complete 12-item lineup passed all 36 local attempts. This satisfied the same-cycle split-path recovery gate that the earlier unstable version had failed.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/youtube/almagharibia",
       "min_height": 720,
       "playlist_order": 13,
-      "publish": false,
+      "publish": true,
       "auto_healing": {
         "enabled": true,
         "failure_streak": 0,
-        "success_streak": 1,
+        "success_streak": 2,
         "last_failure": "2026-08-09T22:27:58Z",
         "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:buffering_35.7s,freeze_events_4,total_freeze_14.1s; media=60.0s; wall=95.7s; lag=35.7s; freezes=4/14.1s/max6.0s; errors=0; apple:advance_ratio_0.902,total_stall_5.9s,long_stall_5.9s; startup=1.2s; observed=60.1s; advancing=54.2s/0.902; waiting=5.9s; stalls=1/5.9s/max5.9s; discontinuities=1",
         "recovery_allowed": true,
         "prior_status": "verified_cloud_apple_relay",
         "prior_reason": "The broadcaster's official app exposed its exact current YouTube live identity. GitHub run 30187908850 passed nine independent outside-cloud 720p H.264/AAC moving-media decodes plus a sustained 45-second decode; the immediate home/Apple-facing route then passed 3/3 plus another sustained 45-second decode, and the complete 12-item lineup passed all 36 local attempts. This satisfied the same-cycle split-path recovery gate that the earlier unstable version had failed.",
-        "last_recovery": "2026-08-09T21:55:55Z"
+        "last_recovery": "2026-08-09T23:57:32Z"
       }
     }
   ]
