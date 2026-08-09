@@ -77,16 +77,14 @@
     },
     "algeria": {
       "state": "degraded",
-      "published_count": 10,
+      "published_count": 8,
       "required_count": 20,
       "published_names": [
         "El Heddaf TV",
-        "Ennahar TV",
-        "TV1 / Programme National",
-        "TV3 / A3",
         "TV2 / Canal Algérie",
         "AL24 News",
         "El Bilad TV",
+        "TV4 Tamazight",
         "TV5 Coran",
         "TV7 El Maarifa",
         "Amou Yazid TV"
@@ -103,6 +101,21 @@
           "status": "official_cdn_unreachable"
         },
         {
+          "rank": 4,
+          "name": "Ennahar TV",
+          "status": "quarantined_automated"
+        },
+        {
+          "rank": 5,
+          "name": "TV1 / Programme National",
+          "status": "quarantined_automated"
+        },
+        {
+          "rank": 6,
+          "name": "TV3 / A3",
+          "status": "quarantined_automated"
+        },
+        {
           "rank": 10,
           "name": "El Hayat TV",
           "status": "no_authorized_public_feed"
@@ -116,11 +129,6 @@
           "rank": 12,
           "name": "Echorouk News",
           "status": "official_cdn_unreachable"
-        },
-        {
-          "rank": 13,
-          "name": "TV4 Tamazight",
-          "status": "quarantined_automated"
         },
         {
           "rank": 15,
