@@ -413,8 +413,8 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 1,
-        "success_streak": 0,
+        "failure_streak": 0,
+        "success_streak": 1,
         "prior_status": "verified_cloud",
         "last_recovery": "2026-08-09T09:26:11Z",
         "last_failure": "2026-08-09T10:25:46Z",
@@ -517,7 +517,7 @@
       "auto_healing": {
         "enabled": true,
         "failure_streak": 0,
-        "success_streak": 1,
+        "success_streak": 0,
         "last_failure": "2026-08-08T22:32:41Z",
         "last_evidence": "1:http_500; 2:http_500; 3:http_500; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "recovery_allowed": true,
