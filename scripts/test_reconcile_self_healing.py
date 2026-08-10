@@ -196,7 +196,7 @@ class SustainedControllerTests(unittest.TestCase):
         self.assertIn("sustained:buffering_43.0s", result.details)
         self.assertIn("apple:apple_ok; stalls=0", result.details)
 
-    def test_failure_quarantines_and_two_clean_apple_gates_restore(self) -> None:
+    def test_three_failures_quarantine_and_one_clean_apple_gate_restores(self) -> None:
         channel = {
             "name": "Fixture TV",
             "publish": True,
@@ -227,20 +227,29 @@ class SustainedControllerTests(unittest.TestCase):
             channel, failed, public_url, checked_at="2026-08-08T00:00:00Z"
         )
         self.assertTrue(changed)
+        self.assertEqual(transitions, [])
+        self.assertTrue(channel["publish"])
+        self.assertEqual(channel["status"], "verified_cloud")
+        self.assertEqual(channel["auto_healing"]["failure_streak"], 1)
+
+        _, transitions = reconcile.apply_gate_result(
+            channel, failed, public_url, checked_at="2026-08-08T00:30:00Z"
+        )
+        self.assertEqual(transitions, [])
+        self.assertTrue(channel["publish"])
+        self.assertEqual(channel["status"], "verified_cloud")
+        self.assertEqual(channel["auto_healing"]["failure_streak"], 2)
+
+        _, transitions = reconcile.apply_gate_result(
+            channel, failed, public_url, checked_at="2026-08-08T01:00:00Z"
+        )
         self.assertEqual(transitions, ["quarantined Fixture TV"])
         self.assertFalse(channel["publish"])
         self.assertEqual(channel["status"], "quarantined_automated")
         self.assertIn("buffering_21.0s", channel["reason"])
 
         _, transitions = reconcile.apply_gate_result(
-            channel, passed, public_url, checked_at="2026-08-08T00:30:00Z"
-        )
-        self.assertEqual(transitions, [])
-        self.assertFalse(channel["publish"])
-        self.assertEqual(channel["auto_healing"]["success_streak"], 1)
-
-        _, transitions = reconcile.apply_gate_result(
-            channel, passed, public_url, checked_at="2026-08-08T01:00:00Z"
+            channel, passed, public_url, checked_at="2026-08-08T01:30:00Z"
         )
         self.assertEqual(transitions, ["recovered Fixture TV"])
         self.assertTrue(channel["publish"])

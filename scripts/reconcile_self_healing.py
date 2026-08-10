@@ -214,8 +214,8 @@ def apply_gate_result(
     public_url: str,
     *,
     checked_at: str | None = None,
-    quarantine_after_failed_gates: int = 1,
-    recover_after_successful_gates: int = 2,
+    quarantine_after_failed_gates: int = 3,
+    recover_after_successful_gates: int = 1,
 ) -> tuple[bool, list[str]]:
     """Apply one complete startup+sustained gate to durable channel state."""
     name = str(channel["name"])
