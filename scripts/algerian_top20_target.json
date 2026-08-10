@@ -411,12 +411,12 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 0,
-        "success_streak": 2,
+        "failure_streak": 1,
+        "success_streak": 0,
         "prior_status": "verified_cloud",
         "last_recovery": "2026-08-10T00:59:32Z",
-        "last_failure": "2026-08-09T21:55:55Z",
-        "last_evidence": "1:h264/aac 720x576, moving; 2:h264/aac 720x576, moving; 3:h264/aac 720x576, moving; sustained:ffmpeg_rc124,short_media_54.6s,buffering_50.4s; media=54.6s; wall=105.0s; lag=50.4s; freezes=0/0.0s/max0.0s; errors=0; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
+        "last_failure": "2026-08-10T04:41:46Z",
+        "last_evidence": "1:h264/aac 720x576, moving; 2:h264/aac 720x576, moving; 3:h264/aac 720x576, moving; sustained:short_media_50.2s,buffering_19.9s,long_freeze_95322.5s,total_freeze_95322.5s; media=50.2s; wall=70.1s; lag=19.9s; freezes=1/95322.5s/max95322.5s; errors=0; apple:advance_ratio_0.162,total_stall_50.5s,long_stall_50.5s; startup=0.9s; observed=60.3s; advancing=9.8s/0.162; waiting=0.0s; stalls=1/50.5s/max50.5s; discontinuities=2",
         "prior_reason": "Quarantined on 2026-07-30 after its only exact public source returned persistent 404 responses through three outside-cloud playback gates. The target is preserved for recovery; no pirate or inexact substitute was accepted."
       }
     },
