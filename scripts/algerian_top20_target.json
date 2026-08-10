@@ -386,7 +386,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-08-10T07:47:13Z",
         "last_evidence": "1:h264/aac 720x576, moving; 2:h264/aac 720x576, moving; 3:h264/aac 720x576, moving; sustained:ffmpeg_rc124,short_media_51.1s,buffering_53.9s; media=51.1s; wall=105.0s; lag=53.9s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.347,total_stall_39.3s,long_stall_39.3s; startup=1.7s; observed=60.2s; advancing=20.9s/0.347; waiting=24.0s; stalls=1/39.3s/max39.3s; discontinuities=1",
@@ -514,7 +514,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 2,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-08-10T07:47:13Z",
         "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:motion_rc8:[in#0 @ 0x152804680] Error opening input: Server returned 5XX Server Error reply; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
