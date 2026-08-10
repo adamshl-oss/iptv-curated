@@ -411,12 +411,12 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
         "prior_status": "verified_cloud",
         "last_recovery": "2026-08-10T00:59:32Z",
-        "last_failure": "2026-08-10T04:41:46Z",
-        "last_evidence": "1:h264/aac 720x576, moving; 2:h264/aac 720x576, moving; 3:h264/aac 720x576, moving; sustained:short_media_50.2s,buffering_19.9s,long_freeze_95322.5s,total_freeze_95322.5s; media=50.2s; wall=70.1s; lag=19.9s; freezes=1/95322.5s/max95322.5s; errors=0; apple:advance_ratio_0.162,total_stall_50.5s,long_stall_50.5s; startup=0.9s; observed=60.3s; advancing=9.8s/0.162; waiting=0.0s; stalls=1/50.5s/max50.5s; discontinuities=2",
+        "last_failure": "2026-08-10T12:13:04Z",
+        "last_evidence": "1:h264/aac 720x576, moving; 2:h264/aac 720x576, moving; 3:h264/aac 720x576, moving; sustained:sustained_ok; media=60.0s; wall=70.1s; lag=10.1s; freezes=0/0.0s/max0.0s; errors=0; apple:long_stall_3.1s; startup=1.2s; observed=60.0s; advancing=56.9s/0.948; waiting=3.1s; stalls=1/3.1s/max3.1s; discontinuities=1",
         "prior_reason": "Quarantined on 2026-07-30 after its only exact public source returned persistent 404 responses through three outside-cloud playback gates. The target is preserved for recovery; no pirate or inexact substitute was accepted."
       }
     },
@@ -514,7 +514,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-08-10T11:40:35Z",
         "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:buffering_20.4s; media=60.0s; wall=80.4s; lag=20.4s; freezes=2/6.0s/max4.0s; errors=0; apple:advance_ratio_0.915,total_stall_5.1s,stall_events_5; startup=0.9s; observed=60.1s; advancing=54.9s/0.915; waiting=5.1s; stalls=5/5.1s/max2.0s; discontinuities=1",
