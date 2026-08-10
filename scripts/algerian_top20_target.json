@@ -514,10 +514,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
-        "last_failure": "2026-08-10T09:40:52Z",
-        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:buffering_33.3s,freeze_events_4,total_freeze_14.1s; media=60.0s; wall=93.3s; lag=33.3s; freezes=4/14.1s/max6.0s; errors=0; apple:long_stall_3.9s; startup=2.6s; observed=60.0s; advancing=56.1s/0.934; waiting=3.9s; stalls=1/3.9s/max3.9s; discontinuities=1",
+        "last_failure": "2026-08-10T11:40:35Z",
+        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:buffering_20.4s; media=60.0s; wall=80.4s; lag=20.4s; freezes=2/6.0s/max4.0s; errors=0; apple:advance_ratio_0.915,total_stall_5.1s,stall_events_5; startup=0.9s; observed=60.1s; advancing=54.9s/0.915; waiting=5.1s; stalls=5/5.1s/max2.0s; discontinuities=1",
         "recovery_allowed": true,
         "prior_status": "verified_cloud_apple_relay",
         "prior_reason": "The broadcaster's official app exposed its exact current YouTube live identity. GitHub run 30187908850 passed nine independent outside-cloud 720p H.264/AAC moving-media decodes plus a sustained 45-second decode; the immediate home/Apple-facing route then passed 3/3 plus another sustained 45-second decode, and the complete 12-item lineup passed all 36 local attempts. This satisfied the same-cycle split-path recovery gate that the earlier unstable version had failed.",
