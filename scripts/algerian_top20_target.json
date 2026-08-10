@@ -186,10 +186,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 2,
         "success_streak": 0,
-        "last_failure": "2026-08-10T13:17:46Z",
-        "last_evidence": "1:no_audio_codec; 2:no_audio_codec; 3:no_audio_codec; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
+        "last_failure": "2026-08-10T13:49:48Z",
+        "last_evidence": "1:http_503; 2:http_503; 3:http_503; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact live channel retained from the verified lineup behind an always-on public endpoint.",
@@ -210,7 +210,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-08-10T13:17:46Z",
         "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:frozen_video_1_unique; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
@@ -330,7 +330,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-08-10T13:17:46Z",
         "last_evidence": "1:frozen_video_1_unique; 2:frozen_video_1_unique; 3:frozen_video_1_unique; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
@@ -514,7 +514,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 2,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-08-10T13:17:46Z",
         "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:ffmpeg_rc124,short_media_52.0s,buffering_53.1s,total_freeze_16.1s; media=52.0s; wall=105.0s; lag=53.1s; freezes=3/16.1s/max10.0s; errors=0; apple:advance_ratio_0.093,total_stall_54.7s,long_stall_54.7s; startup=1.6s; observed=60.3s; advancing=5.6s/0.093; waiting=26.2s; stalls=1/54.7s/max54.7s; discontinuities=1",
