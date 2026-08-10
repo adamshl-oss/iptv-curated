@@ -4,10 +4,12 @@
   "countries": {
     "france": {
       "state": "degraded",
-      "published_count": 10,
+      "published_count": 12,
       "required_count": 20,
       "published_names": [
+        "TF1",
         "CNEWS",
+        "ARTE",
         "TMC",
         "BFMTV",
         "LCI",
@@ -19,11 +21,6 @@
         "RMC Life"
       ],
       "missing": [
-        {
-          "rank": 1,
-          "name": "TF1",
-          "status": "quarantined_automated"
-        },
         {
           "rank": 2,
           "name": "France 2",
@@ -43,11 +40,6 @@
           "rank": 5,
           "name": "France 5",
           "status": "geo_restricted"
-        },
-        {
-          "rank": 7,
-          "name": "ARTE",
-          "status": "quarantined_automated"
         },
         {
           "rank": 10,
