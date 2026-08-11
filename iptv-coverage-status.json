@@ -65,14 +65,16 @@
     },
     "algeria": {
       "state": "degraded",
-      "published_count": 5,
+      "published_count": 7,
       "required_count": 20,
       "published_names": [
         "El Heddaf TV",
+        "TV3 / A3",
         "TV2 / Canal Algérie",
         "El Bilad TV",
-        "Amou Yazid TV",
-        "Almagharibia TV"
+        "TV4 Tamazight",
+        "TV7 El Maarifa",
+        "Amou Yazid TV"
       ],
       "missing": [
         {
@@ -96,11 +98,6 @@
           "status": "quarantined_automated"
         },
         {
-          "rank": 6,
-          "name": "TV3 / A3",
-          "status": "quarantined_automated"
-        },
-        {
           "rank": 8,
           "name": "AL24 News",
           "status": "quarantined_automated"
@@ -121,11 +118,6 @@
           "status": "official_cdn_unreachable"
         },
         {
-          "rank": 13,
-          "name": "TV4 Tamazight",
-          "status": "quarantined_automated"
-        },
-        {
           "rank": 14,
           "name": "TV5 Coran",
           "status": "quarantined_automated"
@@ -136,11 +128,6 @@
           "status": "quarantined_identity_mismatch"
         },
         {
-          "rank": 16,
-          "name": "TV7 El Maarifa",
-          "status": "quarantined_automated"
-        },
-        {
           "rank": 17,
           "name": "TV8 Adhakira",
           "status": "exact_feed_unverified_provenance"
@@ -149,6 +136,11 @@
           "rank": 18,
           "name": "TV9 El Barlamaniya",
           "status": "no_authorized_public_feed"
+        },
+        {
+          "rank": 20,
+          "name": "Almagharibia TV",
+          "status": "quarantined_automated"
         }
       ]
     }
