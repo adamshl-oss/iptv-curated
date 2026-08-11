@@ -186,10 +186,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 2,
         "success_streak": 0,
-        "last_failure": "2026-08-11T18:07:25Z",
-        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:ffmpeg_rc124,short_media_39.9s,buffering_65.1s; media=39.9s; wall=105.0s; lag=65.1s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.499,total_stall_30.1s,long_stall_30.1s; startup=2.7s; observed=60.0s; advancing=29.9s/0.499; waiting=30.1s; stalls=1/30.1s/max30.1s; discontinuities=0",
+        "last_failure": "2026-08-11T18:43:02Z",
+        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:ffmpeg_rc124,short_media_19.8s,buffering_85.2s; media=19.8s; wall=105.0s; lag=85.2s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.492,total_stall_30.6s,long_stall_30.6s; startup=1.4s; observed=60.2s; advancing=29.6s/0.492; waiting=16.3s; stalls=1/30.6s/max30.6s; discontinuities=1",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact live channel retained from the verified lineup behind an always-on public endpoint.",
@@ -518,7 +518,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-08-11T18:07:25Z",
         "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:buffering_43.9s,freeze_events_5,total_freeze_18.1s; media=60.0s; wall=103.9s; lag=43.9s; freezes=5/18.1s/max6.0s; errors=0; apple:long_stall_3.9s; startup=1.5s; observed=60.1s; advancing=56.2s/0.935; waiting=3.9s; stalls=1/3.9s/max3.9s; discontinuities=1",
