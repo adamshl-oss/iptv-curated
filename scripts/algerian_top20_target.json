@@ -391,10 +391,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
-        "last_failure": "2026-08-10T20:28:29Z",
-        "last_evidence": "1:h264/aac 960x540, moving; 2:h264/aac 960x540, moving; 3:h264/aac 960x540, moving; sustained:short_media_53.3s,buffering_45.7s,freeze_events_4,total_freeze_24.2s; media=53.3s; wall=99.0s; lag=45.7s; freezes=4/24.2s/max8.1s; errors=0; apple:advance_ratio_0.546,total_stall_27.3s,long_stall_27.3s; startup=2.9s; observed=60.1s; advancing=32.8s/0.546; waiting=27.3s; stalls=1/27.3s/max27.3s; discontinuities=1",
+        "last_failure": "2026-08-11T00:07:47Z",
+        "last_evidence": "1:http_503; 2:http_503; 3:http_503; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact EPTV Tamazight service retained from the verified lineup behind an always-on public endpoint.",
