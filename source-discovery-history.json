@@ -1,8 +1,8 @@
 {
   "version": 1,
   "created_at": "2026-08-07T15:53:53Z",
-  "updated_at": "2026-08-11T18:08:12Z",
-  "run_count": 144,
+  "updated_at": "2026-08-11T18:30:45Z",
+  "run_count": 145,
   "targets": {
     "france::TF1": {
       "families": {
@@ -581,9 +581,9 @@
           "qualified": false
         },
         "catalog:paratv-france": {
-          "attempts": 4,
-          "last_attempted_at": "2026-08-10T18:13:54Z",
-          "next_eligible_at": "2026-08-11T18:13:54Z",
+          "attempts": 5,
+          "last_attempted_at": "2026-08-11T18:30:45Z",
+          "next_eligible_at": "2026-08-12T18:30:45Z",
           "outcome": "candidates_found",
           "candidates_found": 2,
           "new_candidates": 0,
@@ -778,22 +778,22 @@
         },
         "7f13f443be14976a546612e08e925c0b1a8735326beca5e89504785a4196ccab": {
           "first_seen_at": "2026-08-08T04:34:10Z",
-          "last_seen_at": "2026-08-10T18:13:54Z",
-          "next_eligible_at": "2026-08-17T18:13:54Z",
+          "last_seen_at": "2026-08-11T18:30:45Z",
+          "next_eligible_at": "2026-08-18T18:30:45Z",
           "url": "https://raw.githubusercontent.com/Paradise-91/ParaTV/main/streams/francetv/backup/france3.m3u8",
           "source": "paratv-france",
           "last_outcome": "candidate_cooldown"
         },
         "d9cbdcab16d1e99b33247e74526c235dcb56c63f21353054c20ab4433a758530": {
           "first_seen_at": "2026-08-08T04:34:10Z",
-          "last_seen_at": "2026-08-10T19:21:41Z",
-          "next_eligible_at": "2026-08-17T19:21:41Z",
+          "last_seen_at": "2026-08-11T18:30:45Z",
+          "next_eligible_at": "2026-08-18T18:30:45Z",
           "url": "https://raw.githubusercontent.com/Paradise-91/ParaTV/main/streams/francetv/france-3.m3u8",
-          "source": "paratv-francetv",
-          "last_outcome": "rejected_policy"
+          "source": "paratv-france",
+          "last_outcome": "candidate_cooldown"
         }
       },
-      "last_task_at": "2026-08-11T16:36:25Z"
+      "last_task_at": "2026-08-11T18:30:45Z"
     },
     "france::M6": {
       "families": {
@@ -1064,9 +1064,9 @@
           "qualified": false
         },
         "catalog:paratv-francetv": {
-          "attempts": 4,
-          "last_attempted_at": "2026-08-10T18:13:54Z",
-          "next_eligible_at": "2026-08-11T18:13:54Z",
+          "attempts": 5,
+          "last_attempted_at": "2026-08-11T18:30:45Z",
+          "next_eligible_at": "2026-08-12T18:30:45Z",
           "outcome": "candidates_found",
           "candidates_found": 1,
           "new_candidates": 0,
@@ -1252,11 +1252,11 @@
         },
         "9d263b992d1de5138ffa63261d5f5b0cfdbf55d7a035fa56af85a02f915f79a1": {
           "first_seen_at": "2026-08-08T01:32:46Z",
-          "last_seen_at": "2026-08-11T16:07:01Z",
-          "next_eligible_at": "2026-08-18T16:07:01Z",
+          "last_seen_at": "2026-08-11T18:30:45Z",
+          "next_eligible_at": "2026-08-18T18:30:45Z",
           "url": "https://raw.githubusercontent.com/Paradise-91/ParaTV/main/streams/francetv/france-5.m3u8",
-          "source": "paratv-france",
-          "last_outcome": "candidate_cooldown"
+          "source": "paratv-francetv",
+          "last_outcome": "rejected_policy"
         },
         "c75477ebea26831bf63e176beeacbfc1832c3b252f2b150bc5d11f172c23e776": {
           "first_seen_at": "2026-08-08T04:05:19Z",
@@ -1267,7 +1267,7 @@
           "last_outcome": "candidate_cooldown"
         }
       },
-      "last_task_at": "2026-08-11T16:07:01Z"
+      "last_task_at": "2026-08-11T18:30:45Z"
     },
     "france::CNEWS": {
       "families": {
@@ -2088,9 +2088,9 @@
           "qualified": false
         },
         "catalog:paratv-francetv": {
-          "attempts": 4,
-          "last_attempted_at": "2026-08-10T18:13:54Z",
-          "next_eligible_at": "2026-08-11T18:13:54Z",
+          "attempts": 5,
+          "last_attempted_at": "2026-08-11T18:30:45Z",
+          "next_eligible_at": "2026-08-12T18:30:45Z",
           "outcome": "none",
           "candidates_found": 0,
           "new_candidates": 0,
@@ -2283,7 +2283,7 @@
           "last_outcome": "rejected_policy"
         }
       },
-      "last_task_at": "2026-08-11T16:07:01Z"
+      "last_task_at": "2026-08-11T18:30:45Z"
     },
     "france::LCI": {
       "families": {
@@ -2812,9 +2812,9 @@
           "qualified": false
         },
         "catalog:paratv-france": {
-          "attempts": 4,
-          "last_attempted_at": "2026-08-10T18:13:54Z",
-          "next_eligible_at": "2026-08-11T18:13:54Z",
+          "attempts": 5,
+          "last_attempted_at": "2026-08-11T18:30:45Z",
+          "next_eligible_at": "2026-08-12T18:30:45Z",
           "outcome": "none",
           "candidates_found": 0,
           "new_candidates": 0,
@@ -3032,7 +3032,7 @@
           "last_outcome": "rejected_policy"
         }
       },
-      "last_task_at": "2026-08-11T15:39:13Z"
+      "last_task_at": "2026-08-11T18:30:45Z"
     },
     "france::RMC Découverte": {
       "families": {
@@ -3790,9 +3790,9 @@
           "qualified": false
         },
         "catalog:paratv-tf1plus": {
-          "attempts": 4,
-          "last_attempted_at": "2026-08-10T18:13:54Z",
-          "next_eligible_at": "2026-08-11T18:13:54Z",
+          "attempts": 5,
+          "last_attempted_at": "2026-08-11T18:30:45Z",
+          "next_eligible_at": "2026-08-12T18:30:45Z",
           "outcome": "none",
           "candidates_found": 0,
           "new_candidates": 0,
@@ -3944,7 +3944,7 @@
           "last_outcome": "rejected_policy"
         }
       },
-      "last_task_at": "2026-08-11T17:26:23Z"
+      "last_task_at": "2026-08-11T18:30:45Z"
     },
     "france::CStar": {
       "families": {
@@ -4003,9 +4003,9 @@
           "qualified": false
         },
         "catalog:paratv-tf1plus": {
-          "attempts": 4,
-          "last_attempted_at": "2026-08-10T18:13:54Z",
-          "next_eligible_at": "2026-08-11T18:13:54Z",
+          "attempts": 5,
+          "last_attempted_at": "2026-08-11T18:30:45Z",
+          "next_eligible_at": "2026-08-12T18:30:45Z",
           "outcome": "none",
           "candidates_found": 0,
           "new_candidates": 0,
@@ -4181,7 +4181,7 @@
           "last_outcome": "candidate_cooldown"
         }
       },
-      "last_task_at": "2026-08-11T17:26:23Z"
+      "last_task_at": "2026-08-11T18:30:45Z"
     },
     "france::RMC Life": {
       "families": {
@@ -26837,6 +26837,127 @@
         {
           "country": "algeria",
           "target": "TV8 Adhakira",
+          "next_eligible_at": "2026-08-12T14:39:54Z"
+        },
+        {
+          "country": "algeria",
+          "target": "Almagharibia TV",
+          "next_eligible_at": "2026-08-11T23:01:35Z"
+        }
+      ]
+    },
+    {
+      "at": "2026-08-11T18:30:45Z",
+      "tasks": [
+        {
+          "country": "france",
+          "target": "6ter",
+          "family": "catalog:paratv-france",
+          "candidates_found": 0,
+          "new_candidates": 0,
+          "qualified": false,
+          "next_eligible_at": "2026-08-12T18:30:45Z"
+        },
+        {
+          "country": "france",
+          "target": "France 5",
+          "family": "catalog:paratv-francetv",
+          "candidates_found": 1,
+          "new_candidates": 0,
+          "qualified": false,
+          "next_eligible_at": "2026-08-12T18:30:45Z"
+        },
+        {
+          "country": "france",
+          "target": "W9",
+          "family": "catalog:paratv-francetv",
+          "candidates_found": 0,
+          "new_candidates": 0,
+          "qualified": false,
+          "next_eligible_at": "2026-08-12T18:30:45Z"
+        },
+        {
+          "country": "france",
+          "target": "France 3",
+          "family": "catalog:paratv-france",
+          "candidates_found": 2,
+          "new_candidates": 0,
+          "qualified": false,
+          "next_eligible_at": "2026-08-12T18:30:45Z"
+        },
+        {
+          "country": "france",
+          "target": "CStar",
+          "family": "catalog:paratv-tf1plus",
+          "candidates_found": 0,
+          "new_candidates": 0,
+          "qualified": false,
+          "next_eligible_at": "2026-08-12T18:30:45Z"
+        },
+        {
+          "country": "france",
+          "target": "Canal+",
+          "family": "catalog:paratv-tf1plus",
+          "candidates_found": 0,
+          "new_candidates": 0,
+          "qualified": false,
+          "next_eligible_at": "2026-08-12T18:30:45Z"
+        }
+      ],
+      "deferred_targets": [
+        {
+          "country": "france",
+          "target": "France 2",
+          "next_eligible_at": "2026-08-11T18:47:29Z"
+        },
+        {
+          "country": "france",
+          "target": "M6",
+          "next_eligible_at": "2026-08-11T18:47:29Z"
+        },
+        {
+          "country": "algeria",
+          "target": "Samira TV",
+          "next_eligible_at": "2026-08-12T14:39:54Z"
+        },
+        {
+          "country": "algeria",
+          "target": "Echorouk TV",
+          "next_eligible_at": "2026-08-12T14:39:54Z"
+        },
+        {
+          "country": "algeria",
+          "target": "El Heddaf TV",
+          "next_eligible_at": "2026-08-11T19:21:41Z"
+        },
+        {
+          "country": "algeria",
+          "target": "El Hayat TV",
+          "next_eligible_at": "2026-08-12T14:39:54Z"
+        },
+        {
+          "country": "algeria",
+          "target": "El Watania TV",
+          "next_eligible_at": "2026-08-12T15:10:14Z"
+        },
+        {
+          "country": "algeria",
+          "target": "Echorouk News",
+          "next_eligible_at": "2026-08-12T14:39:54Z"
+        },
+        {
+          "country": "algeria",
+          "target": "TV6 Algérie",
+          "next_eligible_at": "2026-08-12T14:39:54Z"
+        },
+        {
+          "country": "algeria",
+          "target": "TV8 Adhakira",
+          "next_eligible_at": "2026-08-12T14:39:54Z"
+        },
+        {
+          "country": "algeria",
+          "target": "TV9 El Barlamaniya",
           "next_eligible_at": "2026-08-12T14:39:54Z"
         },
         {
