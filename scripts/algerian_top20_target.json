@@ -130,14 +130,13 @@
     "quarantine_after_failed_gates": 3,
     "recover_after_successful_gates": 1,
     "attempts_per_gate": 3,
-    "published_count": 3,
+    "published_count": 4,
     "required_count": 10,
     "coverage_state": "degraded",
     "missing_targets": [
       "Samira TV",
       "Echorouk TV",
       "El Heddaf TV",
-      "Ennahar TV",
       "TV1 / Programme National",
       "TV3 / A3",
       "Echorouk News"
@@ -207,21 +206,21 @@
       "playlist_name": "Ennahar TV (Cloud Live)",
       "tvg_id": "EnnaharTV.dz",
       "official_url": "https://www.ennaharonline.com/live/",
-      "status": "quarantined_automated",
-      "reason": "Automatically quarantined after the complete startup plus sustained transport and Apple AVPlayer gate failed: 1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:short_media_12.7s,buffering_63.7s,network_errors_6; media=12.7s; wall=76.4s; lag=63.7s; freezes=1/3.7s/max3.7s; errors=6; apple:player_error:The operation couldn’t be completed. (CoreMediaErrorDomain error -12312.)",
+      "status": "verified_cloud",
+      "reason": "Exact live channel retained from the verified lineup behind an always-on public endpoint.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/ennahar",
       "min_height": 540,
-      "publish": false,
+      "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 3,
-        "success_streak": 0,
+        "failure_streak": 0,
+        "success_streak": 1,
         "last_failure": "2026-08-12T17:40:02Z",
         "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:short_media_12.7s,buffering_63.7s,network_errors_6; media=12.7s; wall=76.4s; lag=63.7s; freezes=1/3.7s/max3.7s; errors=6; apple:player_error:The operation couldn’t be completed. (CoreMediaErrorDomain error -12312.)",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact live channel retained from the verified lineup behind an always-on public endpoint.",
-        "last_recovery": "2026-08-12T03:51:07Z"
+        "last_recovery": "2026-08-12T18:08:55Z"
       }
     },
     {
