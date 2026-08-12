@@ -256,12 +256,12 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
         "prior_status": "verified_cloud_resolver",
         "prior_reason": "Permanent request-time cloud resolver for the exact ARTE France service, independently verified by moving H.264/AAC media and current ARTE branding.",
-        "last_failure": "2026-08-12T15:25:05Z",
-        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:http_500; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
+        "last_failure": "2026-08-12T21:14:11Z",
+        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:buffering_19.9s,long_freeze_22.3s,total_freeze_28.6s; media=60.0s; wall=79.9s; lag=19.9s; freezes=2/28.6s/max22.3s; errors=0; apple:advance_ratio_0.191,total_stall_48.7s,long_stall_48.7s; startup=1.8s; observed=60.2s; advancing=11.5s/0.191; waiting=39.4s; stalls=1/48.7s/max48.7s; discontinuities=1",
         "last_recovery": "2026-08-10T02:10:35Z"
       }
     },
