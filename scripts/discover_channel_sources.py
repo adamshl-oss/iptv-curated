@@ -602,6 +602,11 @@ def main() -> int:
     parser.add_argument("--attempts", type=int)
     parser.add_argument("--history", type=Path, default=HISTORY_DEFAULT)
     parser.add_argument("--plan-only", action="store_true")
+    parser.add_argument(
+        "--wide",
+        action="store_true",
+        help="Manually sweep multiple source families per target without research cooldowns.",
+    )
     args = parser.parse_args()
 
     policy = json.loads(POLICY_PATH.read_text())
@@ -633,7 +638,7 @@ def main() -> int:
     run_at = utc_now()
     history = load_history(args.history, policy, registries, run_at)
     planned_tasks, deferred_targets = plan_searches(
-        history, policy, targets, run_at
+        history, policy, targets, run_at, wide=args.wide
     )
     if args.no_official_pages:
         planned_tasks = [
@@ -841,13 +846,16 @@ def main() -> int:
                 record["outcome"] = "current_stream"
                 evaluated.append(record)
                 continue
-            candidate_due, due_reason = candidate_is_due(
-                history,
-                country,
-                str(target["name"]),
-                candidate.url,
-                run_at,
-            )
+            if args.wide:
+                candidate_due, due_reason = True, "manual wide sweep"
+            else:
+                candidate_due, due_reason = candidate_is_due(
+                    history,
+                    country,
+                    str(target["name"]),
+                    candidate.url,
+                    run_at,
+                )
             if not candidate_due:
                 record["outcome"] = "candidate_cooldown"
                 record["candidate_cooldown_reason"] = due_reason

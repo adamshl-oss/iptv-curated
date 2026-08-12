@@ -242,13 +242,19 @@ def plan_searches(
     policy: dict[str, Any],
     targets: dict[str, list[dict[str, Any]]],
     now: str | None = None,
+    *,
+    wide: bool = False,
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     """Pick never-tried paths first, then only paths whose cooldown expired."""
 
     now = now or utc_now()
     now_dt = parse_time(now)
+    settings = policy.get("research_memory", {})
+    wide_settings = policy.get("wide_sweep", {})
     per_target = int(
-        policy.get("research_memory", {}).get("families_per_target_per_run", 1)
+        wide_settings.get("families_per_target", 4)
+        if wide
+        else settings.get("families_per_target_per_run", 1)
     )
     available: list[dict[str, Any]] = []
     deferred: list[dict[str, Any]] = []
@@ -264,6 +270,9 @@ def plan_searches(
             next_times: list[str] = []
             for family in families:
                 attempt = state["families"].get(family["key"])
+                if wide:
+                    due.append(family)
+                    continue
                 if not attempt:
                     due.append(family)
                     continue
@@ -301,7 +310,9 @@ def plan_searches(
         )
     )
     limit = int(
-        policy.get("research_memory", {}).get("maximum_tasks_per_run", 4)
+        wide_settings.get("maximum_tasks", 60)
+        if wide
+        else settings.get("maximum_tasks_per_run", 4)
     )
     planned = available[:limit]
     for task in available[limit:]:

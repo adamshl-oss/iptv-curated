@@ -167,6 +167,27 @@ class DiscoveryMemoryTests(unittest.TestCase):
         )
         self.assertNotEqual(first[0]["target"], second_wake[0]["target"])
 
+    def test_wide_sweep_ignores_family_cooldowns_and_expands_target_depth(self) -> None:
+        policy = dict(self.policy)
+        policy["wide_sweep"] = {
+            "families_per_target": 4,
+            "maximum_tasks": 60,
+        }
+        history = memory.new_history(
+            policy, self.registries, "2026-08-07T14:31:00Z"
+        )
+        planned, _ = memory.plan_searches(
+            history,
+            policy,
+            {"france": [self.target]},
+            "2026-08-07T14:32:00Z",
+            wide=True,
+        )
+        self.assertEqual(len(planned), 4)
+        keys = {task["family"]["key"] for task in planned}
+        self.assertEqual(len(keys), 4)
+        self.assertTrue(keys & {"official:page", "official:assets", "github:tvg_id"})
+
 
 if __name__ == "__main__":
     unittest.main()

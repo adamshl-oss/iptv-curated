@@ -2,6 +2,12 @@ name: Discover and qualify channel replacements
 
 on:
   workflow_dispatch:
+    inputs:
+      wide:
+        description: Sweep multiple source families per unresolved target
+        required: false
+        type: boolean
+        default: false
 
 permissions:
   actions: write
@@ -56,9 +62,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
+          wide_args=()
+          if [ "${{ inputs.wide }}" = "true" ]; then
+            wide_args+=(--wide)
+          fi
           python3 scripts/discover_channel_sources.py \
             --country all \
             --history .automation/source-discovery-history.json \
+            "${wide_args[@]}" \
             --plan-only \
             --report source-discovery-plan.json | tee source-discovery-plan.txt
           if grep -q '^SEARCH_DUE' source-discovery-plan.txt; then
@@ -85,10 +96,15 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
+          wide_args=()
+          if [ "${{ inputs.wide }}" = "true" ]; then
+            wide_args+=(--wide)
+          fi
           python3 scripts/discover_channel_sources.py \
             --country all \
             --apply \
             --history .automation/source-discovery-history.json \
+            "${wide_args[@]}" \
             --report source-discovery-report.json
           if jq -e '.changed_countries | length > 0' \
             source-discovery-report.json >/dev/null; then

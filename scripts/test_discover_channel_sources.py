@@ -169,6 +169,9 @@ class DiscoveryPolicyTests(unittest.TestCase):
         self.assertIsNotNone(parser)
         self.assertIn("--official-only", MODULE_PATH.read_text())
 
+    def test_wide_sweep_is_a_supported_command_line_mode(self) -> None:
+        self.assertIn("--wide", MODULE_PATH.read_text())
+
 
 if __name__ == "__main__":
     unittest.main()
