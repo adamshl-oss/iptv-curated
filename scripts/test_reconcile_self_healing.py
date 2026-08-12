@@ -47,7 +47,9 @@ class PermanentPublicUrlTests(unittest.TestCase):
                 "stream_url": "https://upstream.example.test/expiring.m3u8",
             }
         ]
-        count = reconcile.write_playlist("france", self.catalog, channels)
+        count = reconcile.write_playlist(
+            "france", self.catalog, {"channels": channels}
+        )
         body = (reconcile.ROOT / "canonical.m3u").read_text()
         self.assertEqual(count, 1)
         self.assertIn("https://relay.example.test/api/fixture/live.m3u8", body)
@@ -63,7 +65,7 @@ class PermanentPublicUrlTests(unittest.TestCase):
             reconcile.write_playlist(
                 "france",
                 self.catalog,
-                [{"name": "Fixture TV", "publish": True}],
+                {"channels": [{"name": "Fixture TV", "publish": True}]},
             )
 
 

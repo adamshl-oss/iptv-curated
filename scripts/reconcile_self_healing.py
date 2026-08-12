@@ -305,14 +305,27 @@ def apply_gate_result(
 def write_playlist(
     country: str,
     catalog: dict[str, Any],
-    channels: list[dict[str, Any]],
+    registry: dict[str, Any],
 ) -> int:
+    channels = registry["channels"]
+    target_count = registry.get("target_count")
     by_name = {str(channel["name"]): channel for channel in channels}
     lines = list(catalog["header"])
     count = 0
-    for entry in catalog["entries"]:
+    entries = sorted(
+        catalog["entries"],
+        key=lambda entry: int(by_name[str(entry["name"])].get("rank", 10_000)),
+    )
+    for entry in entries:
         channel = by_name.get(str(entry["name"]))
-        if not channel or channel.get("publish") is not True:
+        if (
+            not channel
+            or (
+                target_count is not None
+                and int(channel.get("rank", 10_000)) > int(target_count)
+            )
+            or channel.get("publish") is not True
+        ):
             continue
         stream_url = str(entry.get("url") or "")
         if not stream_url.startswith("https://"):
@@ -382,15 +395,18 @@ def main() -> int:
         return 1
 
     if args.build_only:
-        count = write_playlist(args.country, catalog, channels)
+        count = write_playlist(args.country, catalog, registry)
         coverage = country_status(registry)
         print(f"OPERATIONAL\t{args.country}\trebuilt {count} published channels")
         print_status({"countries": {args.country: coverage}})
         return 0
 
+    target_count = registry.get("target_count")
     candidates: list[tuple[dict[str, Any], str]] = []
     for entry in catalog["entries"]:
         channel = by_name[str(entry["name"])]
+        if target_count is not None and int(channel.get("rank", 10_000)) > int(target_count):
+            continue
         healing = channel.get("auto_healing") or {}
         should_recover = (
             channel.get("publish") is not True
@@ -474,7 +490,7 @@ def main() -> int:
         changed = changed or result_changed
         transitions.extend(result_transitions)
 
-    count = write_playlist(args.country, catalog, channels)
+    count = write_playlist(args.country, catalog, registry)
     coverage = country_status(registry)
     controller_state = {
         "controller": "scripts/reconcile_self_healing.py",

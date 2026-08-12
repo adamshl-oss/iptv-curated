@@ -4,7 +4,7 @@
   "countries": {
     "france": {
       "state": "degraded",
-      "published_count": 12,
+      "published_count": 11,
       "required_count": 20,
       "published_names": [
         "TF1",
@@ -13,12 +13,11 @@
         "TMC",
         "BFMTV",
         "LCI",
-        "TFX",
         "RMC Découverte",
+        "TFX",
         "RMC Story",
         "TF1 Séries Films",
-        "L'Équipe",
-        "RMC Life"
+        "L'Équipe"
       ],
       "missing": [
         {
@@ -47,38 +46,38 @@
           "status": "drm_protected"
         },
         {
-          "rank": 13,
-          "name": "6ter",
-          "status": "drm_protected"
-        },
-        {
-          "rank": 18,
+          "rank": 17,
           "name": "Canal+",
           "status": "paid_drm"
         },
         {
-          "rank": 19,
+          "rank": 18,
           "name": "CStar",
           "status": "quarantined_automated"
+        },
+        {
+          "rank": 19,
+          "name": "Gulli",
+          "status": "unverified"
+        },
+        {
+          "rank": 20,
+          "name": "6ter",
+          "status": "drm_protected"
         }
       ]
     },
     "algeria": {
       "state": "degraded",
-      "published_count": 11,
-      "required_count": 20,
+      "published_count": 6,
+      "required_count": 10,
       "published_names": [
         "Ennahar TV",
         "TV1 / Programme National",
-        "TV3 / A3",
         "TV2 / Canal Algérie",
-        "AL24 News",
+        "TV3 / A3",
         "El Bilad TV",
-        "TV4 Tamazight",
-        "TV5 Coran",
-        "TV7 El Maarifa",
-        "Amou Yazid TV",
-        "Almagharibia TV"
+        "AL24 News"
       ],
       "missing": [
         {
@@ -97,34 +96,9 @@
           "status": "quarantined_automated"
         },
         {
-          "rank": 10,
-          "name": "El Hayat TV",
-          "status": "no_authorized_public_feed"
-        },
-        {
-          "rank": 11,
-          "name": "El Watania TV",
-          "status": "official_hls_intermittent"
-        },
-        {
-          "rank": 12,
+          "rank": 8,
           "name": "Echorouk News",
           "status": "official_cdn_unreachable"
-        },
-        {
-          "rank": 15,
-          "name": "TV6 Algérie",
-          "status": "quarantined_identity_mismatch"
-        },
-        {
-          "rank": 17,
-          "name": "TV8 Adhakira",
-          "status": "exact_feed_unverified_provenance"
-        },
-        {
-          "rank": 18,
-          "name": "TV9 El Barlamaniya",
-          "status": "no_authorized_public_feed"
         }
       ]
     }

@@ -24,8 +24,14 @@ REGISTRY_PATHS = {
 
 
 def country_status(registry: dict[str, Any]) -> dict[str, Any]:
+    target_count = registry.get("target_count")
     channels = sorted(
-        registry["channels"],
+        (
+            channel
+            for channel in registry["channels"]
+            if target_count is None
+            or int(channel.get("rank", 10_000)) <= int(target_count)
+        ),
         key=lambda channel: int(channel.get("rank", 10_000)),
     )
     published = [

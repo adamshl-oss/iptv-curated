@@ -593,6 +593,11 @@ def main() -> int:
     parser.add_argument("--report", type=Path, default=REPORT_DEFAULT)
     parser.add_argument("--no-official-pages", action="store_true")
     parser.add_argument("--no-github-search", action="store_true")
+    parser.add_argument(
+        "--official-only",
+        action="store_true",
+        help="Use only broadcaster-owned web surfaces; skip catalogs and GitHub.",
+    )
     parser.add_argument("--skip-playback", action="store_true")
     parser.add_argument("--attempts", type=int)
     parser.add_argument("--history", type=Path, default=HISTORY_DEFAULT)
@@ -612,7 +617,16 @@ def main() -> int:
         country: json.loads(REGISTRIES[country].read_text()) for country in selected
     }
     targets = {
-        country: [target for target in registry["channels"] if should_search(target)]
+        country: [
+            target
+            for target in registry["channels"]
+            if (
+                registry.get("target_count") is None
+                or int(target.get("rank", 10_000))
+                <= int(registry["target_count"])
+            )
+            and should_search(target)
+        ]
         for country, registry in registries.items()
     }
 
@@ -625,9 +639,29 @@ def main() -> int:
         planned_tasks = [
             task for task in planned_tasks if task["family"]["kind"] != "official"
         ]
-    if args.no_github_search:
+    if args.no_github_search or args.official_only:
         planned_tasks = [
             task for task in planned_tasks if task["family"]["kind"] != "github"
+        ]
+    if args.official_only:
+        # A manually requested official audit deliberately covers every
+        # unresolved in-scope target. It does not inherit the incremental
+        # scheduler's eight-task budget or third-party research rotation.
+        planned_tasks = [
+            {
+                "country": country,
+                "target": str(target["name"]),
+                "target_data": target,
+                "family": {
+                    "key": "official:deep_assets",
+                    "kind": "official",
+                    "mode": "deep_assets",
+                },
+                "last_task_at": None,
+            }
+            for country, country_targets in targets.items()
+            for target in country_targets
+            if str(target.get("official_url", "")).startswith("https://")
         ]
 
     if args.plan_only:

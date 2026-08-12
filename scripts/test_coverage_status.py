@@ -42,6 +42,20 @@ class CoverageStatusTests(unittest.TestCase):
         self.assertEqual(status["published_count"], 20)
         self.assertEqual(status["missing"], [])
 
+    def test_target_count_excludes_out_of_scope_archive_channels(self) -> None:
+        registry = {
+            "target_count": 2,
+            "channels": [
+                {"rank": 1, "name": "Target One", "publish": True},
+                {"rank": 2, "name": "Target Two", "publish": False},
+                {"rank": 3, "name": "Archived", "publish": True},
+            ],
+        }
+        status = coverage.country_status(registry)
+        self.assertEqual(status["required_count"], 2)
+        self.assertEqual(status["published_names"], ["Target One"])
+        self.assertEqual(status["missing"][0]["name"], "Target Two")
+
     def test_real_partial_french_registry_cannot_report_complete(self) -> None:
         status = coverage.build_status()["countries"]["france"]
         self.assertEqual(status["required_count"], 20)

@@ -1,5 +1,6 @@
 {
   "name": "French TV — Audience Top 20 — July 2026",
+  "target_count": 20,
   "methodology": {
     "ranking": "2025 annual Médiamétrie audience share",
     "ranking_source": "https://www.ozap.com/actu/audiences-annuelles-2025-tf1-toujours-solide-leader-france-2-redescend-de-son-nuage-w9-et-canal-en-forme-record-historique-pour-arte/653093",
@@ -348,7 +349,7 @@
       }
     },
     {
-      "rank": 12,
+      "rank": 13,
       "name": "TFX",
       "tvg_id": "TFX.fr",
       "official_url": "https://www.tf1.fr/tfx/direct",
@@ -370,7 +371,7 @@
       }
     },
     {
-      "rank": 13,
+      "rank": 20,
       "name": "6ter",
       "tvg_id": "6ter.fr",
       "official_url": "https://www.m6.fr/6ter/direct",
@@ -379,7 +380,7 @@
       "publish": false
     },
     {
-      "rank": 14,
+      "rank": 12,
       "name": "RMC Découverte",
       "tvg_id": "RMCDecouverte.fr",
       "logo": "https://upload.wikimedia.org/wikipedia/fr/thumb/b/b3/RMC_D%C3%A9couverte_logo_2017.svg/512px-RMC_D%C3%A9couverte_logo_2017.svg.png",
@@ -406,7 +407,7 @@
       }
     },
     {
-      "rank": 15,
+      "rank": 14,
       "name": "RMC Story",
       "tvg_id": "RMCStory.fr",
       "logo": "https://upload.wikimedia.org/wikipedia/fr/thumb/4/43/Logo_RMC_Story_2025.png/512px-Logo_RMC_Story_2025.png",
@@ -433,7 +434,7 @@
       }
     },
     {
-      "rank": 16,
+      "rank": 15,
       "name": "TF1 Séries Films",
       "tvg_id": "TF1SeriesFilms.fr",
       "official_url": "https://www.tf1.fr/tf1-series-films/direct",
@@ -459,7 +460,7 @@
       }
     },
     {
-      "rank": 17,
+      "rank": 16,
       "name": "L'Équipe",
       "tvg_id": "LEquipe.fr",
       "official_url": "https://www.lequipe.fr/lachainelequipe/",
@@ -481,7 +482,7 @@
       }
     },
     {
-      "rank": 18,
+      "rank": 17,
       "name": "Canal+",
       "tvg_id": "CanalPlus.fr",
       "official_url": "https://www.canalplus.com/live/",
@@ -490,7 +491,7 @@
       "publish": false
     },
     {
-      "rank": 19,
+      "rank": 18,
       "name": "CStar",
       "tvg_id": "CStar.fr",
       "official_url": "https://www.canalplus.com/chaines/cstar",
@@ -514,26 +515,13 @@
       }
     },
     {
-      "rank": 20,
-      "name": "RMC Life",
-      "tvg_id": "RMCLife.fr",
-      "official_url": "https://www.rmcbfmplay.com/direct/rmc_life",
-      "status": "verified_licensed_distribution",
-      "reason": "The exact RMC Life linear channel is carried by Samsung TV Plus; its public licensed-distribution HLS passed repeated 1080p audio/video decode and identity checks.",
-      "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/linear/france/rmc-life/live.m3u8",
-      "min_height": 720,
-      "publish": true,
-      "auto_healing": {
-        "enabled": true,
-        "failure_streak": 0,
-        "success_streak": 0,
-        "last_failure": "2026-08-11T21:47:38Z",
-        "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:sustained_ok; media=60.0s; wall=63.9s; lag=3.9s; freezes=0/0.0s/max0.0s; errors=0; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
-        "recovery_allowed": true,
-        "prior_status": "verified_licensed_distribution",
-        "prior_reason": "The exact RMC Life linear channel is carried by Samsung TV Plus; its public licensed-distribution HLS passed repeated 1080p audio/video decode and identity checks.",
-        "last_recovery": "2026-08-09T16:25:03Z"
-      }
+      "rank": 19,
+      "name": "Gulli",
+      "tvg_id": "Gulli.fr",
+      "official_url": "https://www.gulli.fr/direct",
+      "status": "unverified",
+      "reason": "Current top-20 target added from the 2025 annual audience ranking; no authorized portable IPTV source has yet been qualified.",
+      "publish": false
     }
   ]
 }

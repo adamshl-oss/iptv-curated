@@ -164,6 +164,11 @@ class DiscoveryPolicyTests(unittest.TestCase):
         self.assertEqual(calls, 2)
         self.assertEqual(sleeps, [10])
 
+    def test_official_only_is_a_supported_command_line_mode(self) -> None:
+        parser = discovery.argparse.ArgumentParser()
+        self.assertIsNotNone(parser)
+        self.assertIn("--official-only", MODULE_PATH.read_text())
+
 
 if __name__ == "__main__":
     unittest.main()
