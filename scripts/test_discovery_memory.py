@@ -186,7 +186,25 @@ class DiscoveryMemoryTests(unittest.TestCase):
         self.assertEqual(len(planned), 4)
         keys = {task["family"]["key"] for task in planned}
         self.assertEqual(len(keys), 4)
-        self.assertTrue(keys & {"official:page", "official:assets", "github:tvg_id"})
+
+        for task in planned:
+            memory.record_task(
+                history,
+                policy,
+                task,
+                candidates=[],
+                qualified=False,
+                now="2026-08-07T14:32:00Z",
+            )
+        next_planned, _ = memory.plan_searches(
+            history,
+            policy,
+            {"france": [self.target]},
+            "2026-08-07T14:33:00Z",
+            wide=True,
+        )
+        next_keys = {task["family"]["key"] for task in next_planned}
+        self.assertTrue(keys.isdisjoint(next_keys))
 
 
 if __name__ == "__main__":

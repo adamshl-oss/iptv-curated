@@ -611,9 +611,18 @@ def main() -> int:
 
     policy = json.loads(POLICY_PATH.read_text())
     attempts = args.attempts or int(policy["minimum_successful_playback_attempts"])
-    candidate_limit = int(policy["maximum_candidates_per_target"])
+    wide_settings = policy.get("wide_sweep", {})
+    candidate_limit = int(
+        wide_settings.get("maximum_candidates_per_target", 10)
+        if args.wide
+        else policy["maximum_candidates_per_target"]
+    )
     asset_limit = int(policy["official_page_asset_limit"])
-    github_limit = int(policy["github_search_result_limit"])
+    github_limit = int(
+        wide_settings.get("github_search_result_limit", 10)
+        if args.wide
+        else policy["github_search_result_limit"]
+    )
     trusted_repositories = set(policy["trusted_github_repositories"])
     token = os.environ.get("GITHUB_TOKEN", "")
     selected = list(REGISTRIES) if args.country == "all" else [args.country]

@@ -268,6 +268,17 @@ def plan_searches(
             families = _rotated(family_specs(policy, country, target), key)
             due: list[dict[str, Any]] = []
             next_times: list[str] = []
+            if wide:
+                # A wide sweep ignores cooldowns but still advances through the
+                # frontier instead of repeating the same first families on
+                # every manual or scheduled sweep.
+                families.sort(
+                    key=lambda family: str(
+                        state["families"]
+                        .get(family["key"], {})
+                        .get("last_attempted_at", "1970-01-01T00:00:00Z")
+                    )
+                )
             for family in families:
                 attempt = state["families"].get(family["key"])
                 if wide:

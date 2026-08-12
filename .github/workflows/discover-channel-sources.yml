@@ -1,6 +1,8 @@
 name: Discover and qualify channel replacements
 
 on:
+  schedule:
+    - cron: "17 */6 * * *"
   workflow_dispatch:
     inputs:
       wide:
@@ -63,7 +65,8 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
           wide_args=()
-          if [ "${{ inputs.wide }}" = "true" ]; then
+          if [ "${{ github.event_name }}" = "schedule" ] || \
+             [ "${{ inputs.wide }}" = "true" ]; then
             wide_args+=(--wide)
           fi
           python3 scripts/discover_channel_sources.py \
@@ -97,7 +100,8 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
           wide_args=()
-          if [ "${{ inputs.wide }}" = "true" ]; then
+          if [ "${{ github.event_name }}" = "schedule" ] || \
+             [ "${{ inputs.wide }}" = "true" ]; then
             wide_args+=(--wide)
           fi
           python3 scripts/discover_channel_sources.py \
