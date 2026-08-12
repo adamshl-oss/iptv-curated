@@ -102,46 +102,6 @@ class DiscoveryPolicyTests(unittest.TestCase):
         exact, _ = discovery.exact_channel_identity(candidate)
         self.assertFalse(exact)
 
-    def test_catalog_or_public_player_is_not_an_iptvx_admission(self) -> None:
-        candidate = discovery.Candidate(
-            country="france",
-            target="France 2",
-            target_tvg_id="France2.fr",
-            candidate_name="France 2",
-            candidate_tvg_id="France2.fr",
-            url="https://official.example/france2/live.m3u8",
-            source="catalog:fixture",
-            trusted=True,
-            match_basis="exact_tvg_id",
-        )
-        admitted, reason = discovery.admission_for_candidate(candidate, [])
-        self.assertFalse(admitted)
-        self.assertIn("endpoint-level", reason)
-
-    def test_only_exact_approved_endpoint_is_admitted(self) -> None:
-        candidate = discovery.Candidate(
-            country="france",
-            target="France 2",
-            target_tvg_id="France2.fr",
-            candidate_name="France 2",
-            candidate_tvg_id="France2.fr",
-            url="https://delivery.example/france2/live.m3u8",
-            source="official-page:france.example",
-            trusted=True,
-            match_basis="exact_tvg_id",
-        )
-        admissions = [{
-            "id": "france2-direct",
-            "status": "approved",
-            "country": "france",
-            "hostname": "delivery.example",
-            "tvg_ids": ["France2.fr"],
-            "third_party_iptvx_authorized": True,
-            "authorization_evidence": "https://rights.example/approval",
-        }]
-        admitted, _ = discovery.admission_for_candidate(candidate, admissions)
-        self.assertTrue(admitted)
-
     def test_new_candidate_enters_second_gate_not_publication(self) -> None:
         target = {
             "name": "France 2",

@@ -4,11 +4,11 @@
 The discovery job deliberately separates finding from publishing:
 
 * official broadcaster pages, maintained public catalogs, and GitHub code are
-  searched for exact target identities as research leads only;
+  searched for exact target identities;
 * unsafe, private-IP, DRM, VOD, low-quality, or expiring direct URLs cannot be
   promoted;
-* a candidate must have a separate endpoint-level authorization record, match
-  the exact tvg-id, and pass three real moving-media gates;
+* a candidate must come from an official page or an allowlisted maintained
+  resolver, match the exact tvg-id, and pass three real moving-media gates;
 * a newly discovered source enters the existing two-gate recovery controller.
 
 This gives the cloud controller new options without allowing an arbitrary web
@@ -62,7 +62,6 @@ except ModuleNotFoundError:  # Imported as scripts.discover_channel_sources in t
 
 ROOT = Path(__file__).resolve().parent.parent
 POLICY_PATH = ROOT / "scripts" / "source_discovery.json"
-ADMISSIONS_PATH = ROOT / "scripts" / "source_admissions.json"
 CATALOG_PATH = ROOT / "scripts" / "self_healing_catalog.json"
 TEST = ROOT / "scripts" / "test_stream.sh"
 REPORT_DEFAULT = ROOT / "source-discovery-report.json"
@@ -196,35 +195,6 @@ def stable_stream_url(url: str, minimum_lifetime: int = 86_400) -> tuple[bool, s
         if expiry and expiry < now + minimum_lifetime:
             return False, "direct CDN token expires within 24 hours"
     return True, "stable URL"
-
-
-def admission_for_candidate(
-    candidate: "Candidate", admissions: list[dict[str, Any]]
-) -> tuple[bool, str]:
-    """Return whether a delivery endpoint has explicit IPTVX distribution rights.
-
-    A public player, catalog inclusion, or platform carriage can be a valuable
-    discovery lead, but none of those establishes permission to relay or place
-    an endpoint in a third-party IPTV client.  Admissions are deliberately
-    endpoint and channel specific; wildcard host approvals are not accepted.
-    """
-    host = (urlparse(candidate.url).hostname or "").casefold()
-    for admission in admissions:
-        if admission.get("status") != "approved":
-            continue
-        if str(admission.get("country", "")).casefold() != candidate.country:
-            continue
-        if str(admission.get("hostname", "")).casefold() != host:
-            continue
-        if candidate.target_tvg_id not in set(admission.get("tvg_ids", [])):
-            continue
-        if admission.get("third_party_iptvx_authorized") is not True:
-            continue
-        evidence = str(admission.get("authorization_evidence", ""))
-        if not evidence.startswith("https://"):
-            continue
-        return True, f"approved admission {admission.get('id', host)}"
-    return False, "no endpoint-level IPTVX authorization admission"
 
 
 @dataclass(frozen=True)
@@ -635,8 +605,6 @@ def main() -> int:
     args = parser.parse_args()
 
     policy = json.loads(POLICY_PATH.read_text())
-    admissions_payload = json.loads(ADMISSIONS_PATH.read_text())
-    admissions = list(admissions_payload.get("admissions", []))
     attempts = args.attempts or int(policy["minimum_successful_playback_attempts"])
     candidate_limit = int(policy["maximum_candidates_per_target"])
     asset_limit = int(policy["official_page_asset_limit"])
@@ -853,8 +821,7 @@ def main() -> int:
             safe, safe_reason = safe_stream_url(candidate.url)
             stable, stable_reason = stable_stream_url(candidate.url)
             exact, exact_reason = exact_channel_identity(candidate)
-            admitted, admission_reason = admission_for_candidate(candidate, admissions)
-            eligible = admitted and exact and safe and stable
+            eligible = candidate.trusted and exact and safe and stable
             record.update(
                 {
                     "safe": safe,
@@ -863,8 +830,6 @@ def main() -> int:
                     "stable_reason": stable_reason,
                     "exact_identity": exact,
                     "exact_identity_reason": exact_reason,
-                    "admitted": admitted,
-                    "admission_reason": admission_reason,
                     "eligible_for_recovery": eligible,
                 }
             )

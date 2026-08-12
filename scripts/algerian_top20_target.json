@@ -370,7 +370,7 @@
       "tvg_id": "EchoroukNews.dz",
       "official_url": "https://www.echoroukonline.com/live",
       "status": "official_cdn_unreachable",
-      "reason": "The official live-news player produced a fresh signed HLS URL, but three US playback attempts reached the CDN and ended without an HTTP/media response. A responsive third-party manifest was rejected because its distribution rights could not be established.",
+      "reason": "Fresh 2026-08-12 testing recovered the dormant relay route, but its current HLS segments report 0x0 video and repeatedly fail H.264 SPS/PPS decoding; native AVFoundation cannot start playback. The official signed source also returns no media from this network.",
       "publish": false
     },
     {

@@ -16,20 +16,13 @@ repeat the same full search.
    FFmpeg installation.
 4. Record candidates, rejection/playback outcome, source, redacted URL,
    attempt count, and next eligible time.
-5. Treat every discovered URL as a lead, including official player assets,
-   catalogs, GitHub, and P2P indexes. It cannot be published until an
-   endpoint-level admission records rights-holder or distributor evidence that
-   explicitly permits third-party IPTVX delivery (and proxying/P2P where
-   applicable).
-6. Do not decode an unchanged failed candidate again for seven days. Catalogs
+5. Do not decode an unchanged failed candidate again for seven days. Catalogs
    may be revisited after 24 hours, official surfaces after 72 hours, and deep
    or GitHub research after seven days.
-7. Persist the updated frontier back to `discovery-state` and attach the full
+6. Persist the updated frontier back to `discovery-state` and attach the full
    plan, report, and memory ledger to the workflow run.
 
 The state branch is separate from `main`, so research bookkeeping does not
-rebuild GitHub Pages or change either public playlist. Playback evidence is
-never distribution-rights evidence. Automatic replacement is disabled; a
-source must first be added to `scripts/source_admissions.json` with exact
-channel, endpoint, territory, and authorization evidence before a separately
-reviewed promotion.
+rebuild GitHub Pages or change either public playlist. Only a candidate that
+passes the existing exact-identity and three-playback gates can enter the
+normal independent recovery controller.

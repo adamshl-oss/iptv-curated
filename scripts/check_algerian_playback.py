@@ -107,7 +107,16 @@ def check(entry: tuple[str, str, int]) -> tuple[str, bool, str]:
 
 
 def main() -> int:
-    target = json.loads(REGISTRY.read_text())["channels"]
+    registry = json.loads(REGISTRY.read_text())
+    target_count = int(registry.get("target_count", 20))
+    target = sorted(
+        (
+            channel
+            for channel in registry["channels"]
+            if int(channel.get("rank", 10_000)) <= target_count
+        ),
+        key=lambda channel: int(channel["rank"]),
+    )
     published = sorted(
         (channel for channel in target if channel.get("publish") is True),
         key=lambda channel: channel["playlist_order"],
@@ -116,8 +125,10 @@ def main() -> int:
         str(channel.get("playlist_name", channel["name"]))
         for channel in published
     ]
-    if len(target) != 20 or [channel["rank"] for channel in target] != list(range(1, 21)):
-        print("FAIL\ttarget registry is not exactly ranks 1-20")
+    if len(target) != target_count or [channel["rank"] for channel in target] != list(
+        range(1, target_count + 1)
+    ):
+        print(f"FAIL\ttarget registry is not exactly ranks 1-{target_count}")
         return 1
 
     source = sys.argv[1] if len(sys.argv) > 1 else DEFAULT_PLAYLIST
