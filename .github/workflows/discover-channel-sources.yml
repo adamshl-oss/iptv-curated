@@ -1,4 +1,4 @@
-name: Discover and qualify channel replacements
+name: Discover and record channel source leads
 
 on:
   workflow_dispatch:
@@ -42,6 +42,7 @@ jobs:
             scripts/test_sustained_stream_gate.py
           jq empty \
             scripts/source_discovery.json \
+            scripts/source_admissions.json \
             scripts/stream_health_policy.json \
             scripts/self_healing_catalog.json \
             scripts/french_top20_target.json \
@@ -79,7 +80,7 @@ jobs:
           echo "APPLE_AVPLAYER_GATE_BIN=$RUNNER_TEMP/apple-avplayer-check" \
             >> "$GITHUB_ENV"
 
-      - name: Search and qualify exact replacements
+      - name: Search and record source leads
         id: search
         if: steps.plan.outputs.due == 'true'
         env:
@@ -87,65 +88,8 @@ jobs:
         run: |
           python3 scripts/discover_channel_sources.py \
             --country all \
-            --apply \
             --history .automation/source-discovery-history.json \
             --report source-discovery-report.json
-          if jq -e '.changed_countries | length > 0' \
-            source-discovery-report.json >/dev/null; then
-            echo "qualified=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "qualified=false" >> "$GITHUB_OUTPUT"
-          fi
-
-      - name: Independent recovery gate and playlist rebuild
-        if: >-
-          steps.plan.outputs.due == 'true' &&
-          steps.search.outputs.qualified == 'true'
-        run: |
-          set -o pipefail
-          for country in france algeria; do
-            python3 scripts/reconcile_self_healing.py \
-              --country "$country" \
-              --apple-player \
-              --apply \
-              2>&1 | tee "$country-discovery-recovery.txt" || {
-                grep -q $'^OPERATIONAL\t'"$country"' controller' \
-                  "$country-discovery-recovery.txt"
-              }
-          done
-          python3 scripts/build_combined_playlist.py
-          cmp french-tv-top20-july-2026.m3u french-tv-july-2026-v5.m3u
-          cmp algerian-tv-july-2026.m3u algerian-tv-july-2026-v2.m3u
-          python3 scripts/build_combined_playlist.py --check
-
-      - name: Publish qualified recoveries
-        id: publish
-        if: >-
-          steps.plan.outputs.due == 'true' &&
-          steps.search.outputs.qualified == 'true'
-        run: |
-          paths=(
-            french-tv-top20-july-2026.m3u
-            french-tv-july-2026-v5.m3u
-            algerian-tv-july-2026.m3u
-            algerian-tv-july-2026-v2.m3u
-            chaines-tv-candidate.m3u
-            iptv-coverage-status.json
-            scripts/french_top20_target.json
-            scripts/algerian_top20_target.json
-          )
-          if git diff --quiet -- "${paths[@]}"; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-          git config user.name "github-actions[bot]"
-          git config user.email \
-            "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "${paths[@]}"
-          git commit -m "Discover and qualify channel replacements ($(date -u +%FT%TZ))"
-          git pull --rebase
-          git push
-          echo "changed=true" >> "$GITHUB_OUTPUT"
 
       - name: Persist durable research memory
         if: always() && steps.plan.outputs.due == 'true'
@@ -178,40 +122,6 @@ jobs:
           git worktree remove "$state_dir"
           git branch -D "$state_branch" || true
           rmdir "$state_parent"
-
-      - name: Wait for GitHub Pages publication
-        if: steps.publish.outputs.changed == 'true'
-        run: |
-          for playlist in \
-            french-tv-top20-july-2026.m3u \
-            french-tv-july-2026-v5.m3u \
-            algerian-tv-july-2026.m3u \
-            algerian-tv-july-2026-v2.m3u \
-            chaines-tv-candidate.m3u \
-            iptv-coverage-status.json; do
-            local_hash="$(sha256sum "$playlist" | cut -d' ' -f1)"
-            public_url="https://adamshl-oss.github.io/iptv-curated/$playlist"
-            for attempt in $(seq 1 60); do
-              remote_hash="$(
-                curl -fsSL "${public_url}?sync=$(date -u +%s%N)" |
-                  sha256sum |
-                  cut -d' ' -f1
-              )"
-              [ "$remote_hash" = "$local_hash" ] && break
-              [ "$attempt" -eq 60 ] && exit 1
-              sleep 10
-            done
-          done
-
-      - name: Validate published recoveries
-        if: steps.publish.outputs.changed == 'true'
-        run: |
-          python3 scripts/check_french_top20_playback.py &
-          french_pid=$!
-          python3 scripts/check_algerian_playback.py &
-          algerian_pid=$!
-          wait "$french_pid"
-          wait "$algerian_pid"
 
       - name: Report persistent target coverage
         if: always()

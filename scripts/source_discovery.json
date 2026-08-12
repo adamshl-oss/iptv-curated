@@ -1,5 +1,7 @@
 {
-  "version": 1,
+  "version": 2,
+  "discovery_is_lead_generation_only": true,
+  "automatic_promotion": false,
   "minimum_successful_playback_attempts": 3,
   "maximum_candidates_per_target": 4,
   "official_page_asset_limit": 4,
@@ -24,53 +26,49 @@
       "github": 168
     }
   },
-  "trusted_github_repositories": [
-    "iptv-org/iptv",
-    "Paradise-91/ParaTV",
-    "schumijo/iptv"
-  ],
+  "trusted_github_repositories": [],
   "catalogs": [
     {
       "name": "iptv-org-fr",
       "country": "france",
       "url": "https://iptv-org.github.io/iptv/countries/fr.m3u",
-      "auto_recover": true
+      "auto_recover": false
     },
     {
       "name": "iptv-org-dz",
       "country": "algeria",
       "url": "https://iptv-org.github.io/iptv/countries/dz.m3u",
-      "auto_recover": true
+      "auto_recover": false
     },
     {
       "name": "paratv-france",
       "country": "france",
       "url": "https://raw.githubusercontent.com/Paradise-91/ParaTV/main/playlists/paratv/group/france/france.m3u",
-      "auto_recover": true
+      "auto_recover": false
     },
     {
       "name": "paratv-francetv",
       "country": "france",
       "url": "https://raw.githubusercontent.com/Paradise-91/ParaTV/main/playlists/paratv/group/france.tv/france.tv.m3u",
-      "auto_recover": true
+      "auto_recover": false
     },
     {
       "name": "paratv-tf1plus",
       "country": "france",
       "url": "https://raw.githubusercontent.com/Paradise-91/ParaTV/main/playlists/paratv/group/tf1plus/tf1plus.m3u",
-      "auto_recover": true
+      "auto_recover": false
     },
     {
       "name": "paratv-canalplus",
       "country": "france",
       "url": "https://raw.githubusercontent.com/Paradise-91/ParaTV/main/playlists/paratv/group/canalplus/canalplus.m3u",
-      "auto_recover": true
+      "auto_recover": false
     },
     {
       "name": "schumijo-fr",
       "country": "france",
       "url": "https://raw.githubusercontent.com/schumijo/iptv/main/fr.m3u8",
-      "auto_recover": true
+      "auto_recover": false
     },
     {
       "name": "free-tv",

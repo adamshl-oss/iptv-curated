@@ -64,8 +64,10 @@ invented ranks.
 
 ## Operating rule
 
-Every source candidate must match this exact channel identity and be recorded
-as one of: official, licensed provider, or verified authorized distribution.
-Peer-to-peer transport is allowed only when the underlying distribution is
-authorized; it cannot be used to bypass paid access, DRM, geographic controls,
-or broadcaster terms.
+Every source candidate must match this exact channel identity. Before it can
+enter IPTVX, its exact delivery endpoint must have a rights-holder or
+authorized-distributor record that explicitly permits third-party IPTVX use;
+catalog inclusion, app availability, public playback, and a successful decode
+are only discovery evidence. Peer-to-peer transport is allowed only when that
+record expressly authorizes the exact P2P delivery; it cannot be used to bypass
+paid access, DRM, geographic controls, or broadcaster terms.
