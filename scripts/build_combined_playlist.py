@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Build the single IPTVX-facing CHAINES TV playlist.
+"""Build the candidate CHAINES TV playlist.
 
-The country playlists remain internal controller outputs.  This file is the
-only playlist the user subscribes to, and is rebuilt in the same commit as
-every country-level quarantine or recovery.
+The country playlists remain internal controller outputs. This candidate is
+rebuilt after every quarantine or recovery. Client devices consume the frozen
+``chaines-tv.m3u`` release, changed only by explicit promotion.
 """
 
 from __future__ import annotations
@@ -20,12 +20,12 @@ SOURCES = (
     ROOT / "french-tv-top20-july-2026.m3u",
     ROOT / "algerian-tv-july-2026.m3u",
 )
-OUTPUT = ROOT / "chaines-tv.m3u"
+OUTPUT = ROOT / "chaines-tv-candidate.m3u"
 COMBINED_GROUP = "CHAINES TV"
 HEADER = (
     '#EXTM3U playlist-name="CHAINES TV"',
     "# Combined verified French and Algerian channels.",
-    "# Rebuilt automatically after every quarantine or recovery.",
+    "# Candidate: rebuilt automatically after every quarantine or recovery.",
 )
 
 
@@ -109,7 +109,7 @@ def main() -> int:
             candidate = Path(directory) / OUTPUT.name
             count = build(SOURCES, candidate)
             if candidate.read_text() != expected:
-                print("FAIL\tCHAINES TV is stale")
+                print("FAIL\tCHAINES TV candidate is stale")
                 return 1
     else:
         count = build()

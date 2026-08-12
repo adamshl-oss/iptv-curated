@@ -1,0 +1,41 @@
+name: Promote verified IPTVX release
+
+on:
+  workflow_dispatch:
+    inputs:
+      release:
+        description: "Release ID: YYYY-MM-DD or YYYY-MM-DD-suffix"
+        required: true
+        type: string
+      confirmation:
+        description: "Enter PROMOTE after reviewing the candidate's real playback evidence"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: iptvx-release-promotion
+  cancel-in-progress: false
+
+jobs:
+  promote:
+    if: inputs.confirmation == 'PROMOTE'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate and promote the candidate
+        run: |
+          python3 scripts/promote_client_playlist.py --release "${{ inputs.release }}"
+          python3 -m py_compile scripts/promote_client_playlist.py
+          git diff --exit-code --check
+      - name: Commit the immutable release and fixed aliases
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add iptvx.m3u chaines-tv.m3u releases/
+          git commit -m "Promote IPTVX release ${{ inputs.release }}"
+          git pull --rebase
+          git push
