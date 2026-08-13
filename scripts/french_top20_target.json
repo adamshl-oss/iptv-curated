@@ -161,11 +161,11 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
         "prior_status": "verified_cloud_resolver",
-        "last_failure": "2026-08-12T15:25:05Z",
-        "last_evidence": "1:h264/aac 1280x720, moving; 2:reprobe_failed; 3:no_response; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
+        "last_failure": "2026-08-13T12:01:37Z",
+        "last_evidence": "1:h264/aac 1280x720, moving; 2:ffmpeg_rc196:[tls @ 0x600003c6c000] IO error: Operation timed out; 3:h264/aac 1280x720, moving; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "prior_reason": "Quarantined after two independent 2026-07-30 playback gates proved the current signed official-CDN token is bound to the resolver IP and returns HTTP 403 to IPTVX, Apple TV, and unrelated cloud clients.",
         "candidate_discovered_at": "2026-08-07T14:49:07Z",
         "candidate_source": "paratv-france",
@@ -229,10 +229,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
-        "last_failure": "2026-08-12T15:25:05Z",
-        "last_evidence": "1:h264/aac 512x288, moving; 2:h264/aac 512x288, moving; 3:h264/aac 512x288, moving; sustained:short_media_30.0s,network_errors_6; media=30.0s; wall=32.1s; lag=2.1s; freezes=0/0.0s/max0.0s; errors=6; apple:player_error:resource unavailable",
+        "last_failure": "2026-08-13T12:01:37Z",
+        "last_evidence": "1:h264/aac 512x288, moving; 2:h264/aac 512x288, moving; 3:h264/aac 512x288, moving; sustained:buffering_17.1s,network_errors_1; media=60.0s; wall=77.1s; lag=17.1s; freezes=0/0.0s/max0.0s; errors=1; apple:advance_ratio_0.885,total_stall_6.9s,long_stall_6.9s; startup=1.0s; observed=60.3s; advancing=53.4s/0.885; waiting=6.9s; stalls=1/6.9s/max6.9s; discontinuities=1",
         "recovery_allowed": true,
         "prior_status": "verified_dynamic_apple_relay",
         "prior_reason": "Exact official CNEWS Dailymotion live behind request-time cloud failover. The route races independent maintained resolvers, trims the event manifest to a live window, proxies media through stable Apple-player URLs, and temporarily accepts the broadcaster's globally available 288p rendition until its protected HD delivery is again usable outside France.",
@@ -256,12 +256,12 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
         "prior_status": "verified_cloud_resolver",
         "prior_reason": "Permanent request-time cloud resolver for the exact ARTE France service, independently verified by moving H.264/AAC media and current ARTE branding.",
-        "last_failure": "2026-08-12T21:14:11Z",
-        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:buffering_19.9s,long_freeze_22.3s,total_freeze_28.6s; media=60.0s; wall=79.9s; lag=19.9s; freezes=2/28.6s/max22.3s; errors=0; apple:advance_ratio_0.191,total_stall_48.7s,long_stall_48.7s; startup=1.8s; observed=60.2s; advancing=11.5s/0.191; waiting=39.4s; stalls=1/48.7s/max48.7s; discontinuities=1",
+        "last_failure": "2026-08-13T12:01:37Z",
+        "last_evidence": "1:h264/aac 1280x720, moving; 2:motion_rc196:[tls @ 0x6000033f8000] IO error: Operation timed out; 3:no_response; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "last_recovery": "2026-08-10T02:10:35Z"
       }
     },
@@ -278,7 +278,7 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "prior_status": "verified_cloud_resolver",
         "last_failure": "2026-08-13T11:37:34Z",
@@ -362,7 +362,7 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "prior_status": "verified_cloud_resolver",
         "prior_reason": "Permanent request-time cloud resolver for the exact TFX service, independently verified by moving H.264/AAC media, current TFX branding, and matching current programming.",
