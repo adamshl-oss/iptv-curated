@@ -335,7 +335,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-08-13T00:18:42Z",
         "last_evidence": "1:h264/aac 1024x576, moving; 2:h264/aac 1024x576, moving; 3:h264/aac 1024x576, moving; sustained:ffmpeg_rc124:[in#0/hls @ 0x11c7048f0] keepalive request failed for 'https://algerian-tv-relay-2026.espiiem.chatgp,short_media_32.5s,buffering_72.5s,network_errors_1; media=32.5s; wall=105.0s; lag=72.5s; freezes=0/0.0s/max0.0s; errors=1; apple:advance_ratio_0.480,total_stall_31.3s,long_stall_31.3s; startup=6.0s; observed=60.3s; advancing=28.9s/0.480; waiting=20.9s; stalls=1/31.3s/max31.3s; discontinuities=1",
@@ -362,7 +362,7 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "prior_status": "verified_cloud_resolver",
         "prior_reason": "Permanent request-time cloud resolver for the exact TFX service, independently verified by moving H.264/AAC media, current TFX branding, and matching current programming.",
@@ -393,7 +393,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-08-13T00:18:42Z",
         "last_evidence": "1:no_response; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
@@ -447,7 +447,7 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "prior_status": "verified_cloud_resolver",
         "last_failure": "2026-08-13T00:18:42Z",
@@ -472,7 +472,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-08-13T00:18:42Z",
         "last_evidence": "1:http_500; 2:http_500; 3:http_500; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
