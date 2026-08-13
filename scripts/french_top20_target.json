@@ -362,12 +362,12 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
         "prior_status": "verified_cloud_resolver",
         "prior_reason": "Permanent request-time cloud resolver for the exact TFX service, independently verified by moving H.264/AAC media, current TFX branding, and matching current programming.",
-        "last_failure": "2026-08-13T15:15:18Z",
-        "last_evidence": "1:reprobe_failed; 2:h264/aac 1280x720, moving; 3:reprobe_failed; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
+        "last_failure": "2026-08-13T16:32:22Z",
+        "last_evidence": "1:http_502; 2:http_502; 3:http_502; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "last_recovery": "2026-08-09T19:59:30Z"
       }
     },
@@ -447,11 +447,11 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
         "prior_status": "verified_cloud_resolver",
-        "last_failure": "2026-08-13T00:18:42Z",
-        "last_evidence": "1:ffmpeg_rc8:[in#0 @ 0x122704680] Error opening input: Server returned 5XX Server Error reply; 2:http_500; 3:http_500; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
+        "last_failure": "2026-08-13T16:32:22Z",
+        "last_evidence": "1:http_502; 2:http_502; 3:http_502; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "prior_reason": "Quarantined after two independent 2026-07-30 playback gates proved the current signed official-CDN token is bound to the resolver IP and returns HTTP 403 to IPTVX, Apple TV, and unrelated cloud clients.",
         "candidate_discovered_at": "2026-08-07T14:49:07Z",
         "candidate_source": "paratv-france",
