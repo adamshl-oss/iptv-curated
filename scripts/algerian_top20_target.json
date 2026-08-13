@@ -183,7 +183,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-08-13T14:55:46Z",
         "last_evidence": "1:http_503; 2:http_503; 3:http_503; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
@@ -211,7 +211,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-08-13T14:55:46Z",
         "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:short_media_40.0s,network_errors_6; media=40.0s; wall=43.2s; lag=3.2s; freezes=0/0.0s/max0.0s; errors=6; apple:player_error:resource unavailable",
@@ -307,10 +307,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
-        "last_failure": "2026-08-13T02:11:27Z",
-        "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:short_media_20.0s,network_errors_6; media=20.0s; wall=23.6s; lag=3.6s; freezes=0/0.0s/max0.0s; errors=6; apple:player_error:resource unavailable",
+        "last_failure": "2026-08-13T15:22:02Z",
+        "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:short_media_10.0s,network_errors_6; media=10.0s; wall=13.8s; lag=3.8s; freezes=0/0.0s/max0.0s; errors=6; apple:player_error:resource unavailable",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact Algerian international news channel retained from the verified lineup behind an always-on public endpoint.",
@@ -331,7 +331,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-08-13T14:55:46Z",
         "last_evidence": "1:h264/aac 720x576, moving; 2:h264/aac 720x576, moving; 3:h264/aac 720x576, moving; sustained:short_media_26.2s,buffering_22.4s,network_errors_5; media=26.2s; wall=48.6s; lag=22.4s; freezes=0/0.0s/max0.0s; errors=5; apple:player_error:resource unavailable",
