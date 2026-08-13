@@ -259,10 +259,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 2,
         "success_streak": 0,
-        "last_failure": "2026-08-13T02:11:27Z",
-        "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:ffmpeg_rc124:[null @ 0x1577c5fd0] Application provided invalid, non monotonically increasing dts to muxer in stre,short_media_51.6s,buffering_53.4s; media=51.6s; wall=105.0s; lag=53.4s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.325,total_stall_40.7s,long_stall_40.7s; startup=1.6s; observed=60.3s; advancing=19.6s/0.325; waiting=0.0s; stalls=1/40.7s/max40.7s; discontinuities=2",
+        "last_failure": "2026-08-13T02:37:30Z",
+        "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:ffmpeg_rc124,short_media_39.8s,buffering_65.2s; media=39.8s; wall=105.0s; lag=65.2s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.563,total_stall_26.3s,long_stall_26.3s; startup=1.5s; observed=60.2s; advancing=33.9s/0.563; waiting=26.3s; stalls=1/26.3s/max26.3s; discontinuities=1",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact EPTV service retained from the verified lineup behind an always-on public endpoint.",
@@ -307,7 +307,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-08-13T02:11:27Z",
         "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:short_media_20.0s,network_errors_6; media=20.0s; wall=23.6s; lag=3.6s; freezes=0/0.0s/max0.0s; errors=6; apple:player_error:resource unavailable",
