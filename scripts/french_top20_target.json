@@ -472,10 +472,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
-        "last_failure": "2026-08-13T21:24:52Z",
-        "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:buffering_26.0s; media=60.0s; wall=86.0s; lag=26.0s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.005,total_stall_60.0s,long_stall_60.0s; startup=2.9s; observed=60.3s; advancing=0.3s/0.005; waiting=0.0s; stalls=1/60.0s/max60.0s; discontinuities=1",
+        "last_failure": "2026-08-13T23:44:11Z",
+        "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:buffering_28.1s; media=60.0s; wall=88.1s; lag=28.1s; freezes=0/0.0s/max0.0s; errors=0; apple:startup_timeout_12.0s:no_media_advance",
         "recovery_allowed": true,
         "prior_status": "verified_licensed_distribution",
         "prior_reason": "The exact linear channel is carried by Samsung TV Plus; its public licensed-distribution HLS passed repeated 1080p audio/video decode and identity checks.",
