@@ -1,8 +1,8 @@
 {
   "version": 1,
   "created_at": "2026-08-07T15:53:53Z",
-  "updated_at": "2026-08-14T13:21:07Z",
-  "run_count": 242,
+  "updated_at": "2026-08-14T13:47:01Z",
+  "run_count": 243,
   "targets": {
     "france::TF1": {
       "families": {
@@ -8809,9 +8809,9 @@
           "qualified": false
         },
         "catalog:iptv-org-fr": {
-          "attempts": 2,
-          "last_attempted_at": "2026-08-13T13:29:26Z",
-          "next_eligible_at": "2026-08-14T13:29:26Z",
+          "attempts": 3,
+          "last_attempted_at": "2026-08-14T13:47:01Z",
+          "next_eligible_at": "2026-08-15T13:47:01Z",
           "outcome": "candidates_found",
           "candidates_found": 1,
           "new_candidates": 0,
@@ -8856,10 +8856,10 @@
         },
         "ca609b61d3dd1f2397e595cf621be87fb8faba14f2cea1ce4a2e76032682c449": {
           "first_seen_at": "2026-08-12T07:45:24Z",
-          "last_seen_at": "2026-08-14T07:20:38Z",
-          "next_eligible_at": "2026-08-21T07:20:38Z",
+          "last_seen_at": "2026-08-14T13:47:01Z",
+          "next_eligible_at": "2026-08-21T13:47:01Z",
           "url": "http://99.27.51.147:8080/Gulli/index.m3u8",
-          "source": "github:iptv-org/iptv",
+          "source": "iptv-org-fr",
           "last_outcome": "rejected_policy"
         },
         "d35d39245c7afb4b828fc48871b34e4b055904861961229a724353a558245211": {
@@ -8887,156 +8887,10 @@
           "last_outcome": "rejected_policy"
         }
       },
-      "last_task_at": "2026-08-14T09:44:51Z"
+      "last_task_at": "2026-08-14T13:47:01Z"
     }
   },
   "runs": [
-    {
-      "at": "2026-08-08T12:33:40Z",
-      "tasks": [
-        {
-          "country": "algeria",
-          "target": "El Heddaf TV",
-          "family": "github-repo:iptv-org~iptv:exact_name_hls",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-15T12:33:40Z"
-        },
-        {
-          "country": "algeria",
-          "target": "TV3 / A3",
-          "family": "github-repo:schumijo~iptv:exact_name_hls",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-15T12:33:40Z"
-        },
-        {
-          "country": "france",
-          "target": "TF1",
-          "family": "github-repo:schumijo~iptv:tvg_id",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-15T12:33:40Z"
-        },
-        {
-          "country": "france",
-          "target": "TFX",
-          "family": "official:deep_assets",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-15T12:33:40Z"
-        },
-        {
-          "country": "france",
-          "target": "TMC",
-          "family": "github-repo:schumijo~iptv:exact_name_hls",
-          "candidates_found": 1,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-15T12:33:40Z"
-        },
-        {
-          "country": "france",
-          "target": "LCI",
-          "family": "github-repo:iptv-org~iptv:tvg_id",
-          "candidates_found": 2,
-          "new_candidates": 2,
-          "qualified": false,
-          "next_eligible_at": "2026-08-15T12:33:40Z"
-        }
-      ],
-      "deferred_targets": [
-        {
-          "country": "france",
-          "target": "France 2",
-          "next_eligible_at": "2026-08-08T14:30:00Z"
-        },
-        {
-          "country": "france",
-          "target": "France 3",
-          "next_eligible_at": "2026-08-08T14:30:00Z"
-        },
-        {
-          "country": "france",
-          "target": "M6",
-          "next_eligible_at": "2026-08-08T14:30:00Z"
-        },
-        {
-          "country": "france",
-          "target": "France 5",
-          "next_eligible_at": "2026-08-08T14:30:00Z"
-        },
-        {
-          "country": "france",
-          "target": "W9",
-          "next_eligible_at": "2026-08-08T14:30:00Z"
-        },
-        {
-          "country": "france",
-          "target": "6ter",
-          "next_eligible_at": "2026-08-08T14:30:00Z"
-        },
-        {
-          "country": "france",
-          "target": "Canal+",
-          "next_eligible_at": "2026-08-08T14:30:00Z"
-        },
-        {
-          "country": "france",
-          "target": "CStar",
-          "next_eligible_at": "2026-08-08T14:30:00Z"
-        },
-        {
-          "country": "algeria",
-          "target": "Samira TV",
-          "next_eligible_at": "2026-08-08T14:30:00Z"
-        },
-        {
-          "country": "algeria",
-          "target": "Echorouk TV",
-          "next_eligible_at": "2026-08-08T14:30:00Z"
-        },
-        {
-          "country": "algeria",
-          "target": "El Hayat TV",
-          "next_eligible_at": "2026-08-08T14:30:00Z"
-        },
-        {
-          "country": "algeria",
-          "target": "El Watania TV",
-          "next_eligible_at": "2026-08-08T14:30:00Z"
-        },
-        {
-          "country": "algeria",
-          "target": "Echorouk News",
-          "next_eligible_at": "2026-08-08T14:30:00Z"
-        },
-        {
-          "country": "algeria",
-          "target": "TV5 Coran",
-          "next_eligible_at": "2026-08-08T14:30:00Z"
-        },
-        {
-          "country": "algeria",
-          "target": "TV6 Algérie",
-          "next_eligible_at": "2026-08-08T14:30:00Z"
-        },
-        {
-          "country": "algeria",
-          "target": "TV8 Adhakira",
-          "next_eligible_at": "2026-08-08T14:30:00Z"
-        },
-        {
-          "country": "algeria",
-          "target": "TV9 El Barlamaniya",
-          "next_eligible_at": "2026-08-08T14:30:00Z"
-        }
-      ]
-    },
     {
       "at": "2026-08-08T13:05:05Z",
       "tasks": [
@@ -34450,6 +34304,78 @@
           "country": "france",
           "target": "Gulli",
           "next_eligible_at": "2026-08-14T13:29:26Z"
+        },
+        {
+          "country": "algeria",
+          "target": "Samira TV",
+          "next_eligible_at": "2026-08-14T15:16:03Z"
+        },
+        {
+          "country": "algeria",
+          "target": "El Heddaf TV",
+          "next_eligible_at": "2026-08-14T18:53:23Z"
+        },
+        {
+          "country": "algeria",
+          "target": "Echorouk News",
+          "next_eligible_at": "2026-08-14T16:56:54Z"
+        }
+      ]
+    },
+    {
+      "at": "2026-08-14T13:47:01Z",
+      "wide": false,
+      "tasks": [
+        {
+          "country": "france",
+          "target": "Gulli",
+          "family": "catalog:iptv-org-fr",
+          "candidates_found": 1,
+          "new_candidates": 0,
+          "qualified": false,
+          "next_eligible_at": "2026-08-15T13:47:01Z"
+        }
+      ],
+      "deferred_targets": [
+        {
+          "country": "france",
+          "target": "France 2",
+          "next_eligible_at": "2026-08-14T16:56:54Z"
+        },
+        {
+          "country": "france",
+          "target": "France 3",
+          "next_eligible_at": "2026-08-14T17:24:17Z"
+        },
+        {
+          "country": "france",
+          "target": "M6",
+          "next_eligible_at": "2026-08-14T20:44:40Z"
+        },
+        {
+          "country": "france",
+          "target": "France 5",
+          "next_eligible_at": "2026-08-14T20:44:40Z"
+        },
+        {
+          "country": "france",
+          "target": "W9",
+          "next_eligible_at": "2026-08-14T16:56:54Z"
+        },
+        {
+          "country": "france",
+          "target": "6ter",
+          "next_eligible_at": "2026-08-14T17:24:17Z"
+        },
+        {
+          "country": "france",
+          "target": "Canal+",
+          "next_eligible_at": "2026-08-14T15:46:14Z"
+        },
+        {
+          "country": "france",
+          "target": "CStar",
+          "next_eligible_at": "2026-08-14T15:46:14Z"
         },
         {
           "country": "algeria",
