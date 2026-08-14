@@ -59,6 +59,7 @@ APPLE_OUTPUT="$($APPLE_BIN \
   http://127.0.0.1:18765/streams/echorouk.m3u8 \
   scripts/stream_health_policy.json)"
 kill "$SERVER_PID" 2>/dev/null || true
+wait "$SERVER_PID" 2>/dev/null || true
 SERVER_PID=""
 case "$APPLE_OUTPUT" in
   PASS*) ;;

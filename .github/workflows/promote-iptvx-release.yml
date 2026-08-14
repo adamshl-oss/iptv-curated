@@ -30,7 +30,7 @@ jobs:
         run: |
           python3 scripts/promote_client_playlist.py --release "${{ inputs.release }}"
           python3 -m py_compile scripts/promote_client_playlist.py
-          git diff --exit-code --check
+          git diff --check
       - name: Commit the immutable release and fixed aliases
         run: |
           git config user.name "github-actions[bot]"
