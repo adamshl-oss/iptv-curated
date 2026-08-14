@@ -216,8 +216,12 @@ jobs:
               ' <<< "$discovery_memory"
             } 2>/dev/null || true)"
             if [ -n "$last_wide_at" ]; then
-              last_wide_epoch="$(date -u -d "$last_wide_at" +%s)"
-              wide_age="$((now - last_wide_epoch))"
+              last_wide_epoch="$(date -u -d "$last_wide_at" +%s 2>/dev/null || true)"
+              if [ -n "$last_wide_epoch" ]; then
+                wide_age="$((now - last_wide_epoch))"
+              else
+                wide_age=999999
+              fi
             else
               wide_age=999999
             fi
