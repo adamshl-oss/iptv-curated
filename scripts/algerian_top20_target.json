@@ -130,12 +130,11 @@
     "quarantine_after_failed_gates": 3,
     "recover_after_successful_gates": 1,
     "attempts_per_gate": 3,
-    "published_count": 6,
+    "published_count": 7,
     "required_count": 10,
     "coverage_state": "degraded",
     "missing_targets": [
       "Samira TV",
-      "Echorouk TV",
       "El Heddaf TV",
       "Echorouk News"
     ],
@@ -165,9 +164,9 @@
       "playlist_name": "Echorouk TV (Cloud Live)",
       "tvg_id": "EchoroukTV.dz",
       "official_url": "https://www.echoroukonline.com/live-",
-      "status": "quarantined_automated",
-      "reason": "Automatically quarantined after the complete startup plus sustained transport and Apple AVPlayer gate failed: home Apple AVPlayer evidence is stale (2725s)",
-      "publish": false,
+      "status": "verified_official_signed_source",
+      "reason": "Official Echorouk live-player HLS renewed automatically from the broadcaster's current signed source.",
+      "publish": true,
       "stream_url": "https://raw.githubusercontent.com/adamshl-oss/iptv-curated/main/streams/echorouk.m3u8",
       "health_authority": "home_avplayer",
       "health_authority_max_age_seconds": 2100,
@@ -176,12 +175,13 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 1,
-        "success_streak": 0,
+        "failure_streak": 0,
+        "success_streak": 1,
         "prior_status": "verified_official_signed_source",
         "prior_reason": "Official Echorouk live-player HLS renewed automatically from the broadcaster's current signed source.",
         "last_failure": "2026-08-14T10:17:08Z",
-        "last_evidence": "home Apple AVPlayer evidence is stale (2725s)"
+        "last_evidence": "home Apple AVPlayer evidence is stale (2725s)",
+        "last_recovery": "2026-08-14T11:24:30Z"
       }
     },
     {
@@ -274,10 +274,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 2,
         "success_streak": 0,
-        "last_failure": "2026-08-14T11:18:18Z",
-        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:short_media_19.0s,buffering_84.5s,network_errors_6; media=19.0s; wall=103.5s; lag=84.5s; freezes=0/0.0s/max0.0s; errors=6; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
+        "last_failure": "2026-08-14T11:24:30Z",
+        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:buffering_30.7s; media=60.0s; wall=90.7s; lag=30.7s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.828,total_stall_10.4s,long_stall_10.4s; startup=0.9s; observed=60.2s; advancing=49.8s/0.828; waiting=10.4s; stalls=1/10.4s/max10.4s; discontinuities=1",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact EPTV service retained from the verified lineup behind an always-on public endpoint.",
