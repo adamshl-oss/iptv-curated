@@ -362,12 +362,12 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
         "prior_status": "verified_cloud_resolver",
         "prior_reason": "Permanent request-time cloud resolver for the exact TFX service, independently verified by moving H.264/AAC media, current TFX branding, and matching current programming.",
-        "last_failure": "2026-08-14T02:38:39Z",
-        "last_evidence": "1:http_502; 2:http_502; 3:h264/aac 1280x720, moving; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
+        "last_failure": "2026-08-14T18:32:43Z",
+        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:ffmpeg_rc8:Error opening input files: Server returned 5XX Server Error reply,short_media_0.0s,network_errors_3; media=0.0s; wall=0.5s; lag=0.5s; freezes=0/0.0s/max0.0s; errors=3; apple:player_error:resource unavailable",
         "last_recovery": "2026-08-09T19:59:30Z"
       }
     },
