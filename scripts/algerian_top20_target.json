@@ -259,10 +259,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 2,
         "success_streak": 0,
-        "last_failure": "2026-08-14T01:44:07Z",
-        "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:short_media_9.5s,buffering_17.8s,network_errors_4; media=9.5s; wall=27.2s; lag=17.8s; freezes=0/0.0s/max0.0s; errors=4; apple:player_error:resource unavailable",
+        "last_failure": "2026-08-14T01:50:44Z",
+        "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:buffering_18.3s; media=60.0s; wall=78.3s; lag=18.3s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.494,total_stall_30.4s,long_stall_30.4s; startup=1.3s; observed=60.0s; advancing=29.6s/0.494; waiting=30.4s; stalls=1/30.4s/max30.4s; discontinuities=1",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact EPTV service retained from the verified lineup behind an always-on public endpoint.",
