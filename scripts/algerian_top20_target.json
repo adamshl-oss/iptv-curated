@@ -348,10 +348,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
-        "last_failure": "2026-08-13T21:32:09Z",
-        "last_evidence": "1:h264/aac 720x576, moving; 2:h264/aac 720x576, moving; 3:h264/aac 720x576, moving; sustained:buffering_19.3s; media=60.0s; wall=79.2s; lag=19.3s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.614,total_stall_23.2s,long_stall_23.2s; startup=1.3s; observed=60.0s; advancing=36.8s/0.614; waiting=23.2s; stalls=1/23.2s/max23.2s; discontinuities=2",
+        "last_failure": "2026-08-14T21:48:11Z",
+        "last_evidence": "1:h264/aac 720x576, moving; 2:h264/aac 720x576, moving; 3:h264/aac 720x576, moving; sustained:ffmpeg_rc124:[in#0/hls @ 0x14cf047a0] Failed to reload playlist 0,short_media_50.2s,buffering_54.8s,network_errors_4; media=50.2s; wall=105.0s; lag=54.8s; freezes=1/2.3s/max2.3s; errors=4; apple:advance_ratio_0.657,total_stall_20.7s,long_stall_20.7s; startup=1.6s; observed=60.2s; advancing=39.5s/0.657; waiting=20.7s; stalls=1/20.7s/max20.7s; discontinuities=1",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact live channel retained from the verified lineup behind an always-on public endpoint.",
