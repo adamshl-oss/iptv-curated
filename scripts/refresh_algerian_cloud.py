@@ -236,18 +236,52 @@ def resolve_dzsecurity_site(
     # rendezvous itself returns no response on cloud runners, so resolve only
     # that first hop here and publish the resulting encrypted edge URL.
     rendezvous_url = "http:" + url.removeprefix("https:")
-    rendezvous = browser_requests.get(
-        rendezvous_url,
-        headers={"Referer": player_url},
-        impersonate="safari",
-        allow_redirects=False,
-        timeout=25,
-    )
-    if rendezvous.status_code not in {301, 302, 307, 308}:
-        raise RuntimeError(
-            f"Official HLS rendezvous returned HTTP {rendezvous.status_code}"
+    try:
+        rendezvous = browser_requests.get(
+            rendezvous_url,
+            headers={"Referer": player_url},
+            impersonate="safari",
+            allow_redirects=False,
+            timeout=25,
         )
-    edge_url = str(rendezvous.headers.get("location") or "")
+        if rendezvous.status_code not in {301, 302, 307, 308}:
+            raise RuntimeError(
+                f"Official HLS rendezvous returned HTTP {rendezvous.status_code}"
+            )
+        edge_url = str(rendezvous.headers.get("location") or "")
+    except Exception as browser_error:
+        # curl_cffi intermittently receives an empty reply from the plain-HTTP
+        # rendezvous on Linux runners. Standard HTTP/1.1 curl reaches the same
+        # 302 reliably; capture only its headers and never expose the signed
+        # source URL in workflow output.
+        completed = subprocess.run(
+            [
+                "curl",
+                "--http1.1",
+                "--silent",
+                "--show-error",
+                "--max-time",
+                "25",
+                "--dump-header",
+                "-",
+                "--output",
+                "/dev/null",
+                "--referer",
+                player_url,
+                rendezvous_url,
+            ],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        if completed.returncode != 0:
+            raise RuntimeError(
+                f"Official HLS rendezvous failed ({browser_error})"
+            ) from browser_error
+        location = re.search(
+            r"(?im)^location:\s*(https://[^\r\n]+)", completed.stdout
+        )
+        edge_url = location.group(1).strip() if location else ""
     parsed = urlparse(edge_url)
     host = parsed.hostname or ""
     if not (
