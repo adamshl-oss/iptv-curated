@@ -259,7 +259,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-08-14T02:46:03Z",
         "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:ffmpeg_rc124,buffering_47.5s; media=57.5s; wall=105.0s; lag=47.5s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.476,total_stall_31.5s,long_stall_31.5s; startup=1.2s; observed=60.0s; advancing=28.6s/0.476; waiting=31.5s; stalls=1/31.5s/max31.5s; discontinuities=1",
@@ -307,10 +307,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
-        "last_failure": "2026-08-13T15:22:02Z",
-        "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:short_media_10.0s,network_errors_6; media=10.0s; wall=13.8s; lag=3.8s; freezes=0/0.0s/max0.0s; errors=6; apple:player_error:resource unavailable",
+        "last_failure": "2026-08-14T03:08:01Z",
+        "last_evidence": "1:motion_rc8:[in#0 @ 0x1208049d0] Error opening input: Server returned 5XX Server Error reply; 2:http_503; 3:http_503; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact Algerian international news channel retained from the verified lineup behind an always-on public endpoint.",
