@@ -119,7 +119,7 @@ def main() -> int:
     )
     published = sorted(
         (channel for channel in target if channel.get("publish") is True),
-        key=lambda channel: channel["playlist_order"],
+        key=lambda channel: int(channel["rank"]),
     )
     expected = [
         str(channel.get("playlist_name", channel["name"]))
