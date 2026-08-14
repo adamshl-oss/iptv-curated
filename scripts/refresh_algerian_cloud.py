@@ -230,7 +230,35 @@ def resolve_dzsecurity_site(
         url = "https:" + url
     if url_expiry(url) <= time.time() + 900:
         raise RuntimeError("Official player returned an expiring URL")
-    return url
+
+    # DZSecurity's rendezvous currently accepts this signed request over HTTP
+    # and immediately redirects to an HTTPS edge session.  The HTTPS
+    # rendezvous itself returns no response on cloud runners, so resolve only
+    # that first hop here and publish the resulting encrypted edge URL.
+    rendezvous_url = "http:" + url.removeprefix("https:")
+    rendezvous = browser_requests.get(
+        rendezvous_url,
+        headers={"Referer": player_url},
+        impersonate="safari",
+        allow_redirects=False,
+        timeout=25,
+    )
+    if rendezvous.status_code not in {301, 302, 307, 308}:
+        raise RuntimeError(
+            f"Official HLS rendezvous returned HTTP {rendezvous.status_code}"
+        )
+    edge_url = str(rendezvous.headers.get("location") or "")
+    parsed = urlparse(edge_url)
+    host = parsed.hostname or ""
+    if not (
+        parsed.scheme == "https"
+        and host.startswith("hls-distrib-")
+        and host.endswith(".dzsecurity.net")
+        and parsed.path == f"/live/{channel_path}/playlist.m3u8"
+        and parsed.query.startswith("session=")
+    ):
+        raise RuntimeError("Official HLS rendezvous returned an invalid edge URL")
+    return edge_url
 
 
 def resolve_ennahar_site() -> str:

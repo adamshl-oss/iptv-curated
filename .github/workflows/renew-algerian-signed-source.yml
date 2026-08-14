@@ -59,11 +59,16 @@ jobs:
         run: |
           chmod +x scripts/test_stream.sh
           python3 - <<'PY'
-          import time
-          from scripts.refresh_algerian_cloud import current_wrapper_url, url_expiry
+          from urllib.parse import urlparse
+          from scripts.refresh_algerian_cloud import current_wrapper_url
           url = current_wrapper_url("echorouk") or ""
-          if url_expiry(url) <= time.time() + 900:
-              raise SystemExit("Echorouk wrapper is missing or expires too soon")
+          parsed = urlparse(url)
+          if not (
+              parsed.scheme == "https"
+              and (parsed.hostname or "").endswith(".dzsecurity.net")
+              and parsed.query.startswith("session=")
+          ):
+              raise SystemExit("Echorouk wrapper has no fresh HTTPS edge session")
           PY
           passed=0
           for attempt in 1 2 3; do
