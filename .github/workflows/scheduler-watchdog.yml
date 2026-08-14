@@ -27,7 +27,7 @@ concurrency:
 jobs:
   recover-stale-workflows:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 75
     steps:
       - name: Dispatch stale maintenance workflows
         env:
@@ -69,6 +69,8 @@ jobs:
           dispatch_if_stale() {
             workflow="$1"
             max_age="$2"
+            input_name="${3:-}"
+            input_value="${4:-}"
             latest="$({
               gh api \
                 -H "Accept: application/vnd.github+json" \
@@ -121,7 +123,14 @@ jobs:
                 "repos/$GH_REPO/actions/workflows/$workflow/runs?event=workflow_dispatch&branch=main&per_page=1" \
                 --jq '.workflow_runs[0].id // 0'
             )"
-            gh workflow run "$workflow" --repo "$GH_REPO" --ref main
+            dispatch_args=()
+            if [ -n "$input_name" ]; then
+              dispatch_args+=(-f "$input_name=$input_value")
+            fi
+            gh workflow run "$workflow" \
+              --repo "$GH_REPO" \
+              --ref main \
+              "${dispatch_args[@]}"
 
             run_id=""
             for attempt in $(seq 1 30); do
@@ -187,7 +196,41 @@ jobs:
           dispatch_if_stale refresh-algerian-cloud.yml 1500
           dispatch_if_stale refresh-youtube.yml 6300
           dispatch_if_stale refresh.yml 19800
-          dispatch_if_stale discover-channel-sources.yml "$discovery_max_age"
+
+          if [ "$discovery_max_age" -eq 1500 ]; then
+            discovery_memory="$({
+              gh api \
+                -H "Accept: application/vnd.github.raw+json" \
+                "repos/$GH_REPO/contents/source-discovery-history.json?ref=discovery-state"
+            } 2>/dev/null || true)"
+            last_wide_at="$({
+              jq -r '
+                [
+                  .runs[]? |
+                  select(
+                    .wide == true or
+                    (.wide == null and (.tasks | length) > 8)
+                  ) |
+                  .at
+                ] | last // ""
+              ' <<< "$discovery_memory"
+            } 2>/dev/null || true)"
+            if [ -n "$last_wide_at" ]; then
+              last_wide_epoch="$(date -u -d "$last_wide_at" +%s)"
+              wide_age="$((now - last_wide_epoch))"
+            else
+              wide_age=999999
+            fi
+            if [ "$wide_age" -gt 19800 ]; then
+              echo "Wide source recovery is stale (${wide_age}s old); dispatching it explicitly."
+              dispatch_if_stale discover-channel-sources.yml 0 wide true
+            else
+              echo "Wide source recovery is fresh (${wide_age}s old)."
+              dispatch_if_stale discover-channel-sources.yml "$discovery_max_age"
+            fi
+          else
+            dispatch_if_stale discover-channel-sources.yml "$discovery_max_age"
+          fi
           dispatch_if_stale renew-algerian-signed-source.yml 6300
 
           if [ "$failed" -ne 0 ]; then

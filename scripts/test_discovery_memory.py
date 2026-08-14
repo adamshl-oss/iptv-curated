@@ -167,6 +167,32 @@ class DiscoveryMemoryTests(unittest.TestCase):
         )
         self.assertNotEqual(first[0]["target"], second_wake[0]["target"])
 
+    def test_missing_channel_precedes_published_channel_with_failure(self) -> None:
+        missing = dict(self.target, publish=False)
+        published = {
+            "name": "TF1",
+            "tvg_id": "TF1.fr",
+            "official_url": "https://www.tf1.fr/tf1/direct",
+            "publish": True,
+        }
+        registries = {"france": {"channels": [missing, published]}}
+        policy = dict(self.policy)
+        policy["research_memory"] = dict(self.policy["research_memory"])
+        policy["research_memory"]["maximum_tasks_per_run"] = 1
+        history = memory.new_history(
+            policy, registries, "2026-08-07T14:31:00Z"
+        )
+        history["targets"]["france::France 2"]["last_task_at"] = (
+            "2026-08-07T14:30:00Z"
+        )
+        planned, _ = memory.plan_searches(
+            history,
+            policy,
+            {"france": [missing, published]},
+            "2026-08-07T14:31:00Z",
+        )
+        self.assertEqual(planned[0]["target"], "France 2")
+
     def test_wide_sweep_ignores_family_cooldowns_and_expands_target_depth(self) -> None:
         policy = dict(self.policy)
         policy["wide_sweep"] = {
@@ -205,6 +231,20 @@ class DiscoveryMemoryTests(unittest.TestCase):
         )
         next_keys = {task["family"]["key"] for task in next_planned}
         self.assertTrue(keys.isdisjoint(next_keys))
+
+    def test_run_history_records_wide_sweeps(self) -> None:
+        history = memory.new_history(
+            self.policy, self.registries, "2026-08-07T14:31:00Z"
+        )
+        memory.finish_run(
+            history,
+            self.policy,
+            "2026-08-07T14:32:00Z",
+            [],
+            [],
+            wide=True,
+        )
+        self.assertTrue(history["runs"][-1]["wide"])
 
 
 if __name__ == "__main__":

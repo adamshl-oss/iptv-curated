@@ -954,7 +954,14 @@ def main() -> int:
             }
         )
 
-    finish_run(history, policy, run_at, task_summaries, deferred_targets)
+    finish_run(
+        history,
+        policy,
+        run_at,
+        task_summaries,
+        deferred_targets,
+        wide=args.wide,
+    )
     save_history(args.history, history)
 
     if args.apply:

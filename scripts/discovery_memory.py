@@ -310,10 +310,13 @@ def plan_searches(
                         "next_eligible_at": min(next_times) if next_times else None,
                     }
                 )
-    # Spread work fairly: a channel that was not researched recently goes
-    # before a channel that received a task on the preceding wake.
+    # Missing canonical channels are the primary recovery objective. A
+    # published channel with a transient failure remains searchable, but it
+    # must not consume the limited frontier ahead of an unpublished target.
+    # Within each group, spread work fairly by oldest research time.
     available.sort(
         key=lambda task: (
+            0 if task["target_data"].get("publish") is not True else 1,
             str(task.get("last_task_at") or "1970-01-01T00:00:00Z"),
             hashlib.sha256(
                 target_key(str(task["country"]), str(task["target"])).encode()
@@ -441,12 +444,15 @@ def finish_run(
     now: str,
     task_summaries: list[dict[str, Any]],
     deferred: list[dict[str, Any]],
+    *,
+    wide: bool = False,
 ) -> None:
     history["updated_at"] = now
     history["run_count"] = int(history.get("run_count", 0)) + 1
     history.setdefault("runs", []).append(
         {
             "at": now,
+            "wide": wide,
             "tasks": task_summaries,
             "deferred_targets": deferred,
         }
