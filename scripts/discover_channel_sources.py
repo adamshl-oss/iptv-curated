@@ -580,6 +580,8 @@ def apply_candidate(
 
 
 def should_search(target: dict[str, Any]) -> bool:
+    if target.get("health_authority") == "home_avplayer":
+        return False
     if target.get("publish") is not True:
         return True
     healing = target.get("auto_healing") or {}

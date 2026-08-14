@@ -17,7 +17,7 @@ import re
 import subprocess
 import time
 from pathlib import Path
-from urllib.parse import urljoin, urlparse
+from urllib.parse import parse_qs, urljoin, urlparse
 from urllib.request import Request, urlopen
 
 from curl_cffi import requests as browser_requests
@@ -401,19 +401,37 @@ def write_echorouk_wrapper(target: str) -> None:
     lines = [line.strip() for line in response.text.splitlines() if line.strip()]
     if not lines or lines[0] != "#EXTM3U":
         raise RuntimeError("Echorouk edge did not return HLS")
-    child_index = next(
-        (
-            index
-            for index, line in enumerate(lines)
-            if index > 0 and not line.startswith("#")
-        ),
-        None,
-    )
-    if child_index is None or "#EXT-X-STREAM-INF" not in response.text:
-        raise RuntimeError("Echorouk edge master did not expose a media child")
-    lines[child_index] = urljoin(target, lines[child_index])
+    variants: list[tuple[int, str, str]] = []
+    for index, line in enumerate(lines[:-1]):
+        if not line.startswith("#EXT-X-STREAM-INF:"):
+            continue
+        child = lines[index + 1]
+        if child.startswith("#") or "URI=" in line:
+            continue
+        if "RESOLUTION=1280x720" not in line or "avc1." not in line or "mp4a." not in line:
+            continue
+        bandwidth = re.search(r"BANDWIDTH=(\d+)", line)
+        variants.append((int(bandwidth.group(1)) if bandwidth else 0, line, child))
+    if not variants:
+        raise RuntimeError("Echorouk edge master has no exact 720p H.264/AAC variant")
+    _, stream_info, relative_child = max(variants)
+    child_url = urljoin(target, relative_child)
+    target_parts = urlparse(target)
+    child_parts = urlparse(child_url)
+    target_session = parse_qs(target_parts.query).get("session")
+    child_session = parse_qs(child_parts.query).get("session")
+    if not (
+        child_parts.scheme == "https"
+        and child_parts.hostname == target_parts.hostname
+        and child_parts.path.startswith("/live/EchoroukTV/")
+        and child_session
+        and child_session == target_session
+    ):
+        raise RuntimeError("Echorouk media child escaped its signed channel session")
     STREAMS.mkdir(exist_ok=True)
-    (STREAMS / "echorouk.m3u8").write_text("\n".join(lines) + "\n")
+    (STREAMS / "echorouk.m3u8").write_text(
+        "\n".join(["#EXTM3U", "#EXT-X-VERSION:3", stream_info, child_url, ""])
+    )
 
 
 def main() -> None:
@@ -425,16 +443,8 @@ def main() -> None:
         minimum_remaining=3600,
         force_refresh=force_refresh,
     )
-    echorouk = refresh_or_keep(
-        "Echorouk TV",
-        current_wrapper_url("echorouk"),
-        resolve_echorouk,
-        minimum_remaining=1800,
-        force_refresh=force_refresh,
-    )
     refreshed = {
         "almagharibia": almagharibia,
-        "echorouk": echorouk,
     }
     for slug, target in refreshed.items():
         if target:

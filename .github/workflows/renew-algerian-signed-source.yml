@@ -55,40 +55,13 @@ jobs:
           cmp algerian-tv-july-2026.m3u algerian-tv-july-2026-v2.m3u
           python3 scripts/build_combined_playlist.py --check
 
-      - name: Require a fresh playable Echorouk recovery path
-        run: |
-          chmod +x scripts/test_stream.sh
-          python3 - <<'PY'
-          from urllib.parse import urlparse
-          from scripts.refresh_algerian_cloud import current_wrapper_url
-          url = current_wrapper_url("echorouk") or ""
-          parsed = urlparse(url)
-          if not (
-              parsed.scheme == "https"
-              and (parsed.hostname or "").endswith(".dzsecurity.net")
-              and parsed.query.startswith("session=")
-          ):
-              raise SystemExit("Echorouk wrapper has no fresh HTTPS edge session")
-          PY
-          passed=0
-          for attempt in 1 2 3; do
-            echo "Echorouk wrapper playback gate $attempt/3"
-            if scripts/test_stream.sh streams/echorouk.m3u8; then
-              passed="$((passed + 1))"
-            fi
-            sleep 5
-          done
-          echo "Echorouk wrapper passed $passed/3 complete playback gates."
-          [ "$passed" -ge 3 ]
-
       - name: Publish renewal
         run: |
           if git diff --quiet -- \
             algerian-tv-july-2026.m3u \
             algerian-tv-july-2026-v2.m3u \
             chaines-tv-candidate.m3u \
-            streams/almagharibia.m3u8 \
-            streams/echorouk.m3u8; then
+            streams/almagharibia.m3u8; then
             echo "Existing official recovery source is still durable."
             exit 0
           fi
@@ -99,8 +72,7 @@ jobs:
             algerian-tv-july-2026.m3u \
             algerian-tv-july-2026-v2.m3u \
             chaines-tv-candidate.m3u \
-            streams/almagharibia.m3u8 \
-            streams/echorouk.m3u8
+            streams/almagharibia.m3u8
           git commit -m "Renew official Algerian signed sources"
           git pull --rebase
           git push

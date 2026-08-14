@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.emerveillable.iptv-echorouk-renewal</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Users/adam/.local/share/iptv-curated-maintainer/scripts/renew_echorouk_from_home.sh</string>
+  </array>
+  <key>WorkingDirectory</key>
+  <string>/Users/adam/.local/share/iptv-curated-maintainer</string>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>StartInterval</key>
+  <integer>1500</integer>
+  <key>ProcessType</key>
+  <string>Background</string>
+  <key>StandardOutPath</key>
+  <string>/Users/adam/Library/Logs/iptv-echorouk-renewal.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/adam/Library/Logs/iptv-echorouk-renewal.error.log</string>
+</dict>
+</plist>

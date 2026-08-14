@@ -3,9 +3,12 @@
 from __future__ import annotations
 
 import importlib.util
+import hashlib
+import json
 import sys
 import tempfile
 import unittest
+from datetime import datetime, timezone
 from pathlib import Path
 from unittest import mock
 
@@ -73,8 +76,165 @@ class PermanentPublicUrlTests(unittest.TestCase):
         self.assertFalse(reconcile.in_target_scope({"rank": 11}, 10))
         self.assertTrue(reconcile.in_target_scope({"rank": 99}, None))
 
+    def test_home_authority_requires_fresh_real_apple_evidence(self) -> None:
+        from home_health_authority import evaluate_home_authority
+
+        channel = {
+            "name": "Fixture TV",
+            "health_authority": "home_avplayer",
+            "health_authority_max_age_seconds": 2100,
+            "health_authority_wrapper": "streams/fixture.m3u8",
+            "health_authority_evidence": "streams/fixture-health.json",
+        }
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            wrapper = root / "streams" / "fixture.m3u8"
+            wrapper.parent.mkdir()
+            wrapper.write_text("#EXTM3U\nhttps://example.test/live.m3u8\n")
+            evidence = wrapper.with_name("fixture-health.json")
+            document = {
+                "channel": "Fixture TV",
+                "checked_at": "2026-08-14T08:00:00Z",
+                "wrapper_sha256": hashlib.sha256(wrapper.read_bytes()).hexdigest(),
+                "evidence": (
+                    "apple_ok; startup=1.5s; observed=60.2s; "
+                    "advancing=60.2s/1.000; waiting=0.0s; "
+                    "stalls=0/0.0s/max0.0s; discontinuities=1"
+                ),
+            }
+            evidence.write_text(json.dumps(document))
+            fresh = evaluate_home_authority(
+                channel,
+                datetime(2026, 8, 14, 8, 30, tzinfo=timezone.utc),
+                root,
+            )
+            document["checked_at"] = "2026-08-14T10:00:00Z"
+            evidence.write_text(json.dumps(document))
+            future = evaluate_home_authority(
+                channel,
+                datetime(2026, 8, 14, 8, 30, tzinfo=timezone.utc),
+                root,
+            )
+            document["checked_at"] = "2026-08-14T08:00:00Z"
+            document["wrapper_sha256"] = "0" * 64
+            evidence.write_text(json.dumps(document))
+            mismatch = evaluate_home_authority(
+                channel,
+                datetime(2026, 8, 14, 8, 30, tzinfo=timezone.utc),
+                root,
+            )
+            document["wrapper_sha256"] = hashlib.sha256(
+                wrapper.read_bytes()
+            ).hexdigest()
+            evidence.write_text(json.dumps(document))
+            stale = evaluate_home_authority(
+                channel,
+                datetime(2026, 8, 14, 9, 0, tzinfo=timezone.utc),
+                root,
+            )
+        self.assertEqual(
+            fresh,
+            (
+                True,
+                "home Apple AVPlayer evidence age=1800s; apple_ok; startup=1.5s; "
+                "observed=60.2s; advancing=60.2s/1.000; waiting=0.0s; "
+                "stalls=0/0.0s/max0.0s; discontinuities=1",
+            ),
+        )
+        self.assertEqual(future, (False, "home Apple AVPlayer evidence is from the future"))
+        self.assertEqual(
+            mismatch, (False, "home Apple AVPlayer evidence does not match this wrapper")
+        )
+        self.assertEqual(
+            stale, (False, "home Apple AVPlayer evidence is stale (3600s)")
+        )
+
 
 class SustainedControllerTests(unittest.TestCase):
+    def test_home_authority_is_not_sent_through_generic_gate(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            scripts = root / "scripts"
+            streams = root / "streams"
+            scripts.mkdir()
+            streams.mkdir()
+            wrapper = streams / "fixture.m3u8"
+            wrapper.write_text("#EXTM3U\nhttps://example.test/live.m3u8\n")
+            evidence = streams / "fixture-health.json"
+            evidence.write_text(
+                json.dumps(
+                    {
+                        "channel": "Fixture TV",
+                        "checked_at": datetime.now(timezone.utc).strftime(
+                            "%Y-%m-%dT%H:%M:%SZ"
+                        ),
+                        "wrapper_sha256": hashlib.sha256(
+                            wrapper.read_bytes()
+                        ).hexdigest(),
+                        "evidence": (
+                            "apple_ok; startup=1.0s; observed=60.2s; "
+                            "advancing=60.2s/1.000; waiting=0.0s; "
+                            "stalls=0/0.0s/max0.0s; discontinuities=0"
+                        ),
+                    }
+                )
+            )
+            registry = {
+                "target_count": 1,
+                "channels": [
+                    {
+                        "rank": 1,
+                        "name": "Fixture TV",
+                        "publish": True,
+                        "status": "verified_home_apple",
+                        "stream_url": "https://raw.example/fixture.m3u8",
+                        "health_authority": "home_avplayer",
+                        "health_authority_wrapper": "streams/fixture.m3u8",
+                        "health_authority_evidence": "streams/fixture-health.json",
+                        "auto_healing": {
+                            "enabled": True,
+                            "recovery_allowed": True,
+                        },
+                    }
+                ],
+            }
+            registry_path = scripts / "registry.json"
+            registry_path.write_text(json.dumps(registry))
+            catalog_path = scripts / "catalog.json"
+            catalog_path.write_text(
+                json.dumps(
+                    {
+                        "algeria": {
+                            "registry": "scripts/registry.json",
+                            "canonical": "canonical.m3u",
+                            "alias": "alias.m3u",
+                            "header": ["#EXTM3U"],
+                            "entries": [
+                                {
+                                    "name": "Fixture TV",
+                                    "extinf": "#EXTINF:-1,Fixture TV",
+                                    "url": "https://raw.example/fixture.m3u8",
+                                }
+                            ],
+                        }
+                    }
+                )
+            )
+            with (
+                mock.patch.object(reconcile, "ROOT", root),
+                mock.patch.object(reconcile, "CATALOG_PATH", catalog_path),
+                mock.patch.object(
+                    reconcile.sys,
+                    "argv",
+                    ["reconcile_self_healing.py", "--country", "algeria"],
+                ),
+                mock.patch.object(reconcile, "gate") as gate,
+                mock.patch.object(reconcile, "print_status"),
+            ):
+                result = reconcile.main()
+            self.assertEqual(result, 0)
+            gate.assert_not_called()
+
     def test_startup_success_cannot_hide_sustained_failure(self) -> None:
         channel = {"name": "Fixture TV", "min_height": 540}
         with (

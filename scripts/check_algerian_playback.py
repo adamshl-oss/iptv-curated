@@ -12,6 +12,8 @@ import time
 from pathlib import Path
 from urllib.request import Request, urlopen
 
+from home_health_authority import evaluate_home_authority
+
 
 ROOT = Path(__file__).resolve().parent.parent
 REGISTRY = ROOT / "scripts" / "algerian_top20_target.json"
@@ -155,7 +157,21 @@ def main() -> int:
         )
         for channel in published
     }
-    checks = [(name, url, minimums[name]) for name, url in actual if name in minimums]
+    by_playlist_name = {
+        str(channel.get("playlist_name", channel["name"])): channel
+        for channel in published
+    }
+    checks = []
+    for name, url in actual:
+        if name not in minimums:
+            continue
+        authority = evaluate_home_authority(by_playlist_name[name], root=ROOT)
+        if authority is None:
+            checks.append((name, url, minimums[name]))
+            continue
+        passed, detail = authority
+        print(f"{'PASS' if passed else 'FAIL'}\t{name}\t{detail}")
+        failed = failed or not passed
     with futures.ThreadPoolExecutor(max_workers=4) as executor:
         results = list(executor.map(check, checks))
     for name, passed, detail in results:

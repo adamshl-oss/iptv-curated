@@ -18,6 +18,7 @@ from pathlib import Path
 from typing import Any
 
 from coverage_status import country_status, print_status, write_status
+from home_health_authority import evaluate_home_authority
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -410,6 +411,8 @@ def main() -> int:
         return 0
 
     candidates: list[tuple[dict[str, Any], str]] = []
+    authority_results: list[GateResult] = []
+    authority_names: set[str] = set()
     for entry in catalog["entries"]:
         channel = by_name[str(entry["name"])]
         if not in_target_scope(channel, target_count):
@@ -421,6 +424,22 @@ def main() -> int:
             and healing.get("recovery_allowed") is True
         )
         if channel.get("publish") is True or should_recover:
+            authority = evaluate_home_authority(channel, root=ROOT)
+            if authority is not None:
+                passed, detail = authority
+                authority_results.append(
+                    GateResult(
+                        name=str(channel["name"]),
+                        passed=passed,
+                        successes=args.attempts if passed else 0,
+                        sustained_passed=passed,
+                        apple_passed=passed,
+                        details=[detail],
+                    )
+                )
+                authority_names.add(str(channel["name"]))
+                candidates.append((channel, ""))
+                continue
             # Recovery is only real when the stable public route works.  A raw
             # candidate may remain recorded for diagnosis, but it never enters
             # the Apple TV playlist directly.
@@ -436,8 +455,10 @@ def main() -> int:
 
     workers = 3 if args.apple_player else 4
     with futures.ThreadPoolExecutor(max_workers=workers) as executor:
-        gateable = [item for item in candidates if item[1]]
-        results = list(
+        gateable = [
+            item for item in candidates if item[1] and item[0]["name"] not in authority_names
+        ]
+        results = authority_results + list(
             executor.map(
                 lambda item: gate(
                     item[0],
@@ -450,7 +471,7 @@ def main() -> int:
             )
         )
     for channel, gate_url in candidates:
-        if gate_url:
+        if gate_url or str(channel["name"]) in authority_names:
             continue
         results.append(
             GateResult(
@@ -488,7 +509,9 @@ def main() -> int:
             result,
             public_url,
             quarantine_after_failed_gates=int(
-                transition_policy["quarantine_after_failed_gates"]
+                1
+                if channel.get("health_authority") == "home_avplayer"
+                else transition_policy["quarantine_after_failed_gates"]
             ),
             recover_after_successful_gates=int(
                 transition_policy["recover_after_successful_gates"]

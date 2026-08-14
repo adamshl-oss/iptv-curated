@@ -125,6 +125,18 @@ class DiscoveryPolicyTests(unittest.TestCase):
         self.assertEqual(target["auto_healing"]["success_streak"], 1)
         self.assertTrue(target["auto_healing"]["recovery_allowed"])
 
+    def test_generic_discovery_cannot_overwrite_home_authority(self) -> None:
+        self.assertFalse(
+            discovery.should_search(
+                {
+                    "name": "Echorouk TV",
+                    "publish": False,
+                    "health_authority": "home_avplayer",
+                    "auto_healing": {"failure_streak": 1},
+                }
+            )
+        )
+
     def test_github_rate_limit_is_retried_instead_of_skipping_target(self) -> None:
         original_fetch = discovery.fetch_text
         original_sleep = discovery.time.sleep
