@@ -17,7 +17,7 @@ import re
 import subprocess
 import time
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import urljoin, urlparse
 from urllib.request import Request, urlopen
 
 from curl_cffi import requests as browser_requests
@@ -389,6 +389,33 @@ def write_wrapper(slug: str, target: str) -> None:
     )
 
 
+def write_echorouk_wrapper(target: str) -> None:
+    """Flatten DZSecurity's nested master so AVPlayer can open the stable URL."""
+    response = browser_requests.get(
+        target,
+        headers={"Referer": ECHOROUK_PLAYER},
+        impersonate="safari",
+        timeout=25,
+    )
+    response.raise_for_status()
+    lines = [line.strip() for line in response.text.splitlines() if line.strip()]
+    if not lines or lines[0] != "#EXTM3U":
+        raise RuntimeError("Echorouk edge did not return HLS")
+    child_index = next(
+        (
+            index
+            for index, line in enumerate(lines)
+            if index > 0 and not line.startswith("#")
+        ),
+        None,
+    )
+    if child_index is None or "#EXT-X-STREAM-INF" not in response.text:
+        raise RuntimeError("Echorouk edge master did not expose a media child")
+    lines[child_index] = urljoin(target, lines[child_index])
+    STREAMS.mkdir(exist_ok=True)
+    (STREAMS / "echorouk.m3u8").write_text("\n".join(lines) + "\n")
+
+
 def main() -> None:
     force_refresh = os.environ.get("FORCE_REFRESH", "").lower() == "true"
     almagharibia = refresh_or_keep(
@@ -411,7 +438,10 @@ def main() -> None:
     }
     for slug, target in refreshed.items():
         if target:
-            write_wrapper(slug, target)
+            if slug == "echorouk":
+                write_echorouk_wrapper(target)
+            else:
+                write_wrapper(slug, target)
     print("Refreshed Algerian signed wrappers; playlist membership unchanged")
 
 
