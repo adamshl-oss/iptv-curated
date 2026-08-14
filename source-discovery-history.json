@@ -1,8 +1,8 @@
 {
   "version": 1,
   "created_at": "2026-08-07T15:53:53Z",
-  "updated_at": "2026-08-14T21:41:24Z",
-  "run_count": 259,
+  "updated_at": "2026-08-14T22:17:22Z",
+  "run_count": 260,
   "targets": {
     "france::TF1": {
       "families": {
@@ -4712,9 +4712,9 @@
           "qualified": false
         },
         "catalog:free-tv": {
-          "attempts": 7,
-          "last_attempted_at": "2026-08-13T21:54:11Z",
-          "next_eligible_at": "2026-08-14T21:54:11Z",
+          "attempts": 8,
+          "last_attempted_at": "2026-08-14T22:17:22Z",
+          "next_eligible_at": "2026-08-15T22:17:22Z",
           "outcome": "none",
           "candidates_found": 0,
           "new_candidates": 0,
@@ -4895,7 +4895,7 @@
           "last_outcome": "rejected_policy"
         }
       },
-      "last_task_at": "2026-08-14T20:08:00Z"
+      "last_task_at": "2026-08-14T22:17:22Z"
     },
     "france::RMC Life": {
       "families": {
@@ -6573,9 +6573,9 @@
           "qualified": false
         },
         "catalog:iptv-org-dz": {
-          "attempts": 3,
-          "last_attempted_at": "2026-08-13T01:43:28Z",
-          "next_eligible_at": "2026-08-14T01:43:28Z",
+          "attempts": 4,
+          "last_attempted_at": "2026-08-14T22:17:22Z",
+          "next_eligible_at": "2026-08-15T22:17:22Z",
           "outcome": "candidates_found",
           "candidates_found": 1,
           "new_candidates": 0,
@@ -6657,10 +6657,10 @@
       "candidates": {
         "502c89560a39affd8dd847d56d9e2faaeb377407be5086147fcb9dcd94d65e8d": {
           "first_seen_at": "2026-08-11T19:45:10Z",
-          "last_seen_at": "2026-08-13T15:46:14Z",
-          "next_eligible_at": "2026-08-20T15:46:14Z",
+          "last_seen_at": "2026-08-14T22:17:22Z",
+          "next_eligible_at": "2026-08-21T22:17:22Z",
           "url": "https://cdn.live.easybroadcast.io/abr_corp/66_al24_u4yga6h/corp/66_al24_u4yga6h_240p/chunks.m3u8",
-          "source": "github:iptv-org/iptv",
+          "source": "iptv-org-dz",
           "last_outcome": "candidate_cooldown"
         },
         "32441af3c1a78d6833944fe1c2f1a3c4a0eb800745925bac71efdda24f1fa92f": {
@@ -6680,7 +6680,7 @@
           "last_outcome": "rejected_policy"
         }
       },
-      "last_task_at": "2026-08-13T15:46:14Z"
+      "last_task_at": "2026-08-14T22:17:22Z"
     },
     "algeria::El Bilad TV": {
       "families": {
@@ -8980,164 +8980,6 @@
     }
   },
   "runs": [
-    {
-      "at": "2026-08-08T20:06:01Z",
-      "tasks": [
-        {
-          "country": "algeria",
-          "target": "TV7 El Maarifa",
-          "family": "catalog:free-tv",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-09T20:06:01Z"
-        },
-        {
-          "country": "france",
-          "target": "France 2",
-          "family": "catalog:free-tv",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-09T20:06:01Z"
-        },
-        {
-          "country": "france",
-          "target": "W9",
-          "family": "catalog:schumijo-fr",
-          "candidates_found": 1,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-09T20:06:01Z"
-        },
-        {
-          "country": "france",
-          "target": "6ter",
-          "family": "catalog:paratv-canalplus",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-09T20:06:01Z"
-        },
-        {
-          "country": "france",
-          "target": "France 3",
-          "family": "catalog:paratv-canalplus",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-09T20:06:01Z"
-        },
-        {
-          "country": "algeria",
-          "target": "TV3 / A3",
-          "family": "github:playlist_name_hls",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-15T20:06:01Z"
-        },
-        {
-          "country": "france",
-          "target": "France 5",
-          "family": "catalog:free-tv",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-09T20:06:01Z"
-        },
-        {
-          "country": "algeria",
-          "target": "TV4 Tamazight",
-          "family": "official:deep_assets",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-15T20:06:01Z"
-        }
-      ],
-      "deferred_targets": [
-        {
-          "country": "france",
-          "target": "Canal+",
-          "next_eligible_at": "2026-08-09T14:30:04Z"
-        },
-        {
-          "country": "france",
-          "target": "CStar",
-          "next_eligible_at": "2026-08-09T14:30:04Z"
-        },
-        {
-          "country": "algeria",
-          "target": "Samira TV",
-          "next_eligible_at": "2026-08-09T14:30:49Z"
-        },
-        {
-          "country": "algeria",
-          "target": "Echorouk TV",
-          "next_eligible_at": "2026-08-09T14:30:49Z"
-        },
-        {
-          "country": "algeria",
-          "target": "El Hayat TV",
-          "next_eligible_at": "2026-08-09T14:30:49Z"
-        },
-        {
-          "country": "algeria",
-          "target": "El Watania TV",
-          "next_eligible_at": "2026-08-09T14:30:49Z"
-        },
-        {
-          "country": "algeria",
-          "target": "Echorouk News",
-          "next_eligible_at": "2026-08-09T14:30:49Z"
-        },
-        {
-          "country": "algeria",
-          "target": "TV5 Coran",
-          "next_eligible_at": "2026-08-09T15:01:06Z"
-        },
-        {
-          "country": "algeria",
-          "target": "TV6 Algérie",
-          "next_eligible_at": "2026-08-09T14:30:49Z"
-        },
-        {
-          "country": "algeria",
-          "target": "TV8 Adhakira",
-          "next_eligible_at": "2026-08-09T14:30:49Z"
-        },
-        {
-          "country": "algeria",
-          "target": "TV9 El Barlamaniya",
-          "next_eligible_at": "2026-08-09T14:30:04Z"
-        },
-        {
-          "country": "algeria",
-          "target": "El Bilad TV",
-          "next_eligible_at": "2026-08-08T20:06:01Z",
-          "reason": "run_budget"
-        },
-        {
-          "country": "france",
-          "target": "M6",
-          "next_eligible_at": "2026-08-08T20:06:01Z",
-          "reason": "run_budget"
-        },
-        {
-          "country": "algeria",
-          "target": "Ennahar TV",
-          "next_eligible_at": "2026-08-08T20:06:01Z",
-          "reason": "run_budget"
-        },
-        {
-          "country": "algeria",
-          "target": "TV1 / Programme National",
-          "next_eligible_at": "2026-08-08T20:06:01Z",
-          "reason": "run_budget"
-        }
-      ]
-    },
     {
       "at": "2026-08-08T20:39:14Z",
       "tasks": [
@@ -33887,6 +33729,92 @@
           "country": "france",
           "target": "CStar",
           "next_eligible_at": "2026-08-14T21:54:11Z"
+        },
+        {
+          "country": "france",
+          "target": "Gulli",
+          "next_eligible_at": "2026-08-15T13:47:01Z"
+        },
+        {
+          "country": "algeria",
+          "target": "Samira TV",
+          "next_eligible_at": "2026-08-15T15:19:58Z"
+        },
+        {
+          "country": "algeria",
+          "target": "El Heddaf TV",
+          "next_eligible_at": "2026-08-14T22:19:53Z"
+        },
+        {
+          "country": "algeria",
+          "target": "TV3 / A3",
+          "next_eligible_at": "2026-08-15T19:58:48Z"
+        },
+        {
+          "country": "algeria",
+          "target": "Echorouk News",
+          "next_eligible_at": "2026-08-15T07:03:27Z"
+        }
+      ]
+    },
+    {
+      "at": "2026-08-14T22:17:22Z",
+      "wide": false,
+      "tasks": [
+        {
+          "country": "france",
+          "target": "CStar",
+          "family": "catalog:free-tv",
+          "candidates_found": 0,
+          "new_candidates": 0,
+          "qualified": false,
+          "next_eligible_at": "2026-08-15T22:17:22Z"
+        },
+        {
+          "country": "algeria",
+          "target": "AL24 News",
+          "family": "catalog:iptv-org-dz",
+          "candidates_found": 1,
+          "new_candidates": 0,
+          "qualified": false,
+          "next_eligible_at": "2026-08-15T22:17:22Z"
+        }
+      ],
+      "deferred_targets": [
+        {
+          "country": "france",
+          "target": "France 2",
+          "next_eligible_at": "2026-08-14T22:19:53Z"
+        },
+        {
+          "country": "france",
+          "target": "France 3",
+          "next_eligible_at": "2026-08-14T22:57:14Z"
+        },
+        {
+          "country": "france",
+          "target": "M6",
+          "next_eligible_at": "2026-08-14T22:57:14Z"
+        },
+        {
+          "country": "france",
+          "target": "France 5",
+          "next_eligible_at": "2026-08-14T22:19:53Z"
+        },
+        {
+          "country": "france",
+          "target": "W9",
+          "next_eligible_at": "2026-08-14T22:19:53Z"
+        },
+        {
+          "country": "france",
+          "target": "6ter",
+          "next_eligible_at": "2026-08-14T22:57:14Z"
+        },
+        {
+          "country": "france",
+          "target": "Canal+",
+          "next_eligible_at": "2026-08-14T22:57:14Z"
         },
         {
           "country": "france",
