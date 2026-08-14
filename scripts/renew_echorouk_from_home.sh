@@ -37,9 +37,9 @@ if [ ! -x "$VENV/bin/python" ]; then
   python3 -m venv "$VENV"
 fi
 if ! "$VENV/bin/python" -c \
-  'import importlib.metadata; assert importlib.metadata.version("curl_cffi") == "0.14.0"' \
+  'import importlib.metadata; assert importlib.metadata.version("curl_cffi") == "0.13.0"' \
   2>/dev/null; then
-  "$VENV/bin/pip" install -q 'curl_cffi==0.14.0'
+  "$VENV/bin/pip" install -q 'curl_cffi==0.13.0'
 fi
 if [ ! -x "$APPLE_BIN" ] || [ scripts/apple_avplayer_check.swift -nt "$APPLE_BIN" ]; then
   xcrun swiftc -O scripts/apple_avplayer_check.swift -o "$APPLE_BIN"
