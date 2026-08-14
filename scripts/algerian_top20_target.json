@@ -164,10 +164,19 @@
       "playlist_order": 15,
       "playlist_name": "Echorouk TV (Cloud Live)",
       "tvg_id": "EchoroukTV.dz",
-      "official_url": "https://www.echoroukonline.com/live",
-      "status": "official_cdn_unreachable",
-      "reason": "The official player produced a fresh signed HLS URL, but three US playback attempts reached the CDN and ended without an HTTP/media response. Unverified restreams were rejected.",
-      "publish": false
+      "official_url": "https://www.echoroukonline.com/live-",
+      "status": "candidate_cloud_verification",
+      "reason": "The official Echorouk player now exposes a renewable signed 720p H.264/AAC HLS. Its stable GitHub wrapper is staged for independent sustained and native Apple playback recovery.",
+      "publish": false,
+      "stream_url": "https://adamshl-oss.github.io/iptv-curated/streams/echorouk.m3u8",
+      "auto_healing": {
+        "enabled": true,
+        "recovery_allowed": true,
+        "failure_streak": 0,
+        "success_streak": 0,
+        "prior_status": "verified_official_signed_source",
+        "prior_reason": "Official Echorouk live-player HLS renewed automatically from the broadcaster's current signed source."
+      }
     },
     {
       "rank": 3,

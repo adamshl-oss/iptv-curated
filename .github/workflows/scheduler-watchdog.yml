@@ -27,7 +27,7 @@ concurrency:
 jobs:
   recover-stale-workflows:
     runs-on: ubuntu-latest
-    timeout-minutes: 75
+    timeout-minutes: 120
     steps:
       - name: Dispatch stale maintenance workflows
         env:
@@ -235,7 +235,7 @@ jobs:
           else
             dispatch_if_stale discover-channel-sources.yml "$discovery_max_age"
           fi
-          dispatch_if_stale renew-algerian-signed-source.yml 6300
+          dispatch_if_stale renew-algerian-signed-source.yml 1500
 
           if [ "$failed" -ne 0 ]; then
             echo "::error::$failed catch-up workflow(s) failed."

@@ -46,7 +46,7 @@ ENNAHAR_PLAYER = "https://live.dzsecurity.net/live/player/ennahartv"
 ENNAHAR_REFERER = "https://www.ennaharonline.com/live/"
 ENNAHAR_YOUTUBE_LIVE = "https://www.youtube.com/@ennahartvonline/live"
 ECHOROUK_PLAYER = "https://live.dzsecurity.net/live/player/echorouktv"
-ECHOROUK_REFERER = "https://www.echoroukonline.com/live"
+ECHOROUK_REFERER = "https://www.echoroukonline.com/live-"
 
 
 def current_wrapper_url(slug: str) -> str | None:
@@ -336,8 +336,16 @@ def main() -> None:
         minimum_remaining=3600,
         force_refresh=force_refresh,
     )
+    echorouk = refresh_or_keep(
+        "Echorouk TV",
+        current_wrapper_url("echorouk"),
+        resolve_echorouk,
+        minimum_remaining=1800,
+        force_refresh=force_refresh,
+    )
     refreshed = {
         "almagharibia": almagharibia,
+        "echorouk": echorouk,
     }
     for slug, target in refreshed.items():
         if target:

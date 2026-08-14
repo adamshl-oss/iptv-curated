@@ -346,6 +346,12 @@ def write_playlist(
     return count
 
 
+def in_target_scope(channel: dict[str, Any], target_count: int | None) -> bool:
+    return target_count is None or int(channel.get("rank", 10_000)) <= int(
+        target_count
+    )
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--country", required=True, choices=("france", "algeria"))
@@ -380,8 +386,10 @@ def main() -> int:
     registry_path = ROOT / str(catalog["registry"])
     registry = json.loads(registry_path.read_text())
     channels = registry["channels"]
+    target_count = registry.get("target_count")
     starting_published_count = sum(
-        channel.get("publish") is True for channel in channels
+        channel.get("publish") is True and in_target_scope(channel, target_count)
+        for channel in channels
     )
     by_name = {str(channel["name"]): channel for channel in channels}
 
@@ -401,11 +409,10 @@ def main() -> int:
         print_status({"countries": {args.country: coverage}})
         return 0
 
-    target_count = registry.get("target_count")
     candidates: list[tuple[dict[str, Any], str]] = []
     for entry in catalog["entries"]:
         channel = by_name[str(entry["name"])]
-        if target_count is not None and int(channel.get("rank", 10_000)) > int(target_count):
+        if not in_target_scope(channel, target_count):
             continue
         healing = channel.get("auto_healing") or {}
         should_recover = (
@@ -540,7 +547,8 @@ def main() -> int:
     remaining_failures = [
         str(channel["name"])
         for channel in channels
-        if channel.get("publish") is True
+        if in_target_scope(channel, target_count)
+        and channel.get("publish") is True
         and (
             str(channel["name"]) not in result_by_name
             or not result_by_name[str(channel["name"])].passed

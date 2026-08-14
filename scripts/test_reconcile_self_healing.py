@@ -68,6 +68,11 @@ class PermanentPublicUrlTests(unittest.TestCase):
                 {"channels": [{"name": "Fixture TV", "publish": True}]},
             )
 
+    def test_canonical_scope_excludes_legacy_records(self) -> None:
+        self.assertTrue(reconcile.in_target_scope({"rank": 10}, 10))
+        self.assertFalse(reconcile.in_target_scope({"rank": 11}, 10))
+        self.assertTrue(reconcile.in_target_scope({"rank": 99}, None))
+
 
 class SustainedControllerTests(unittest.TestCase):
     def test_startup_success_cannot_hide_sustained_failure(self) -> None:
