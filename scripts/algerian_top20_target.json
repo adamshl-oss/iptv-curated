@@ -275,10 +275,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 2,
         "success_streak": 0,
-        "last_failure": "2026-08-15T08:31:19Z",
-        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:ffmpeg_rc124:[in#0/hls @ 0x14d7048f0] keepalive request failed for 'https://algerian-tv-relay-2026.espiiem.chatgp,short_media_24.8s,buffering_80.2s,network_errors_2; media=24.8s; wall=105.0s; lag=80.2s; freezes=0/0.0s/max0.0s; errors=2; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
+        "last_failure": "2026-08-15T09:01:13Z",
+        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:short_media_20.0s,buffering_61.7s,network_errors_5; media=20.0s; wall=81.7s; lag=61.7s; freezes=0/0.0s/max0.0s; errors=5; apple:advance_ratio_0.495,total_stall_30.3s,long_stall_30.3s; startup=0.9s; observed=60.1s; advancing=29.7s/0.495; waiting=26.7s; stalls=1/30.3s/max30.3s; discontinuities=1",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact EPTV service retained from the verified lineup behind an always-on public endpoint.",
