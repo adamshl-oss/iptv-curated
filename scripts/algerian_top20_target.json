@@ -250,10 +250,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
-        "last_failure": "2026-08-16T20:01:55Z",
-        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:buffering_26.0s; media=60.0s; wall=86.0s; lag=26.0s; freezes=2/9.5s/max4.8s; errors=0; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
+        "last_failure": "2026-08-17T05:14:21Z",
+        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:ffmpeg_rc124,short_media_49.8s,buffering_55.2s; media=49.8s; wall=105.0s; lag=55.2s; freezes=0/0.0s/max0.0s; errors=0; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact EPTV flagship service retained from the verified lineup behind an always-on public endpoint.",
