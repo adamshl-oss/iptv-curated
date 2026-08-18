@@ -198,10 +198,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
-        "last_failure": "2026-08-17T19:39:19Z",
-        "last_evidence": "1:reprobe_failed; 2:motion_rc196:[tls @ 0x600000fb8c80] IO error: Operation timed out; 3:no_video_codec; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
+        "last_failure": "2026-08-18T04:03:33Z",
+        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:short_media_10.0s,buffering_32.8s,network_errors_6; media=10.0s; wall=42.8s; lag=32.8s; freezes=0/0.0s/max0.0s; errors=6; apple:player_error:resource unavailable",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact live channel retained from the verified lineup behind an always-on public endpoint.",
