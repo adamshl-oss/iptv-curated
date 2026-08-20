@@ -130,13 +130,12 @@
     "quarantine_after_failed_gates": 3,
     "recover_after_successful_gates": 1,
     "attempts_per_gate": 3,
-    "published_count": 6,
+    "published_count": 7,
     "required_count": 10,
     "coverage_state": "degraded",
     "missing_targets": [
       "Samira TV",
       "Echorouk TV",
-      "TV3 / A3",
       "Echorouk News"
     ],
     "sustained_playback_seconds": 60,
@@ -268,21 +267,21 @@
       "playlist_name": "TV3 / A3 (Cloud Live)",
       "tvg_id": "TV3.dz",
       "official_url": "https://entv.dz/",
-      "status": "quarantined_automated",
-      "reason": "Automatically quarantined after the complete startup plus sustained transport and Apple AVPlayer gate failed: 1:invalid_video_dimensions_0x0; 2:ffmpeg_rc69:[NULL @ 0x1257e7e00] non-existing PPS 0 referenced; 3:invalid_video_dimensions_0x0; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
+      "status": "verified_cloud",
+      "reason": "Exact EPTV service retained from the verified lineup behind an always-on public endpoint.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv3",
       "min_height": 540,
-      "publish": false,
+      "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 3,
-        "success_streak": 0,
+        "failure_streak": 0,
+        "success_streak": 1,
         "last_failure": "2026-08-20T08:19:00Z",
         "last_evidence": "1:invalid_video_dimensions_0x0; 2:ffmpeg_rc69:[NULL @ 0x1257e7e00] non-existing PPS 0 referenced; 3:invalid_video_dimensions_0x0; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact EPTV service retained from the verified lineup behind an always-on public endpoint.",
-        "last_recovery": "2026-08-19T22:06:12Z"
+        "last_recovery": "2026-08-20T09:13:12Z"
       }
     },
     {
