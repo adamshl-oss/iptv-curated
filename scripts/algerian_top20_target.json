@@ -198,10 +198,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
-        "last_failure": "2026-08-20T10:56:32Z",
-        "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:ffmpeg_rc124:[null @ 0x152ed71b0] Application provided invalid, non monotonically increasing dts to muxer in stre,short_media_45.6s,buffering_59.5s; media=45.6s; wall=105.0s; lag=59.5s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.348,total_stall_39.2s,long_stall_39.2s; startup=3.4s; observed=60.1s; advancing=20.9s/0.348; waiting=39.2s; stalls=1/39.2s/max39.2s; discontinuities=0",
+        "last_failure": "2026-08-20T12:40:37Z",
+        "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:variant_empty; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact live channel retained from the verified lineup behind an always-on public endpoint.",
