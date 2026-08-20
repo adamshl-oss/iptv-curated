@@ -130,14 +130,13 @@
     "quarantine_after_failed_gates": 3,
     "recover_after_successful_gates": 1,
     "attempts_per_gate": 3,
-    "published_count": 4,
+    "published_count": 5,
     "required_count": 10,
     "coverage_state": "degraded",
     "missing_targets": [
       "Samira TV",
       "Echorouk TV",
       "Ennahar TV",
-      "TV1 / Programme National",
       "TV3 / A3",
       "Echorouk News"
     ],
@@ -246,21 +245,21 @@
       "playlist_name": "TV1 / Programme National (Cloud Live)",
       "tvg_id": "TV1.dz",
       "official_url": "https://entv.dz/",
-      "status": "quarantined_automated",
-      "reason": "Automatically quarantined after the complete startup plus sustained transport and Apple AVPlayer gate failed: 1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:ffmpeg_rc124:[https @ 0x600002b74800] Error reading HTTP response: End of file,short_media_43.9s,buffering_61.2s; media=43.9s; wall=105.0s; lag=61.2s; freezes=1/8.5s/max8.5s; errors=0; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
+      "status": "verified_cloud",
+      "reason": "Exact EPTV flagship service retained from the verified lineup behind an always-on public endpoint.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv1",
       "min_height": 540,
-      "publish": false,
+      "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 3,
-        "success_streak": 0,
+        "failure_streak": 0,
+        "success_streak": 1,
         "last_failure": "2026-08-20T19:38:32Z",
         "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:ffmpeg_rc124:[https @ 0x600002b74800] Error reading HTTP response: End of file,short_media_43.9s,buffering_61.2s; media=43.9s; wall=105.0s; lag=61.2s; freezes=1/8.5s/max8.5s; errors=0; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact EPTV flagship service retained from the verified lineup behind an always-on public endpoint.",
-        "last_recovery": "2026-08-19T22:06:12Z"
+        "last_recovery": "2026-08-20T21:03:40Z"
       }
     },
     {
@@ -349,7 +348,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-08-20T20:31:55Z",
         "last_evidence": "1:h264/aac 720x576, moving; 2:h264/aac 720x576, moving; 3:h264/aac 720x576, moving; sustained:buffering_17.8s; media=60.0s; wall=77.8s; lag=17.8s; freezes=1/6.2s/max6.2s; errors=0; apple:advance_ratio_0.743,total_stall_15.4s,long_stall_15.4s; startup=1.9s; observed=60.1s; advancing=44.7s/0.743; waiting=15.4s; stalls=1/15.4s/max15.4s; discontinuities=1",
