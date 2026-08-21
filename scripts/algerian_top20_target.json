@@ -227,10 +227,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 2,
         "success_streak": 0,
-        "last_failure": "2026-08-21T17:39:20Z",
-        "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:ffmpeg_rc124:[https @ 0x6000032f4100] Error reading HTTP response: End of file,short_media_52.8s,buffering_52.2s,freeze_events_4,total_freeze_23.2s; media=52.8s; wall=105.0s; lag=52.2s; freezes=4/23.2s/max8.2s; errors=0; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
+        "last_failure": "2026-08-21T18:07:50Z",
+        "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:sustained_ok; media=60.0s; wall=68.2s; lag=8.2s; freezes=1/4.4s/max4.4s; errors=0; apple:advance_ratio_0.581,total_stall_25.3s,long_stall_25.3s; startup=1.2s; observed=60.3s; advancing=35.0s/0.581; waiting=25.3s; stalls=1/25.3s/max25.3s; discontinuities=1",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact live channel retained from the verified lineup behind an always-on public endpoint.",
@@ -251,7 +251,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-08-21T17:39:20Z",
         "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:ffmpeg_rc124:[in#0/hls @ 0x12cf048f0] keepalive request failed for 'https://algerian-tv-relay-2026.espiiem.chatgp,short_media_52.1s,buffering_52.9s,freeze_events_8,total_freeze_42.8s,network_errors_2; media=52.1s; wall=105.0s; lag=52.9s; freezes=8/42.8s/max7.4s; errors=2; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
@@ -275,7 +275,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-08-21T17:39:20Z",
         "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:ffmpeg_rc124:[h264 @ 0x145641f80] concealing 2086 DC, 2086 AC, 2086 MV errors in P frame,short_media_51.8s,buffering_53.2s,freeze_events_5,total_freeze_39.6s; media=51.8s; wall=105.0s; lag=53.2s; freezes=5/39.6s/max9.4s; errors=0; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
@@ -347,7 +347,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 2,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-08-21T17:39:20Z",
         "last_evidence": "1:h264/aac 720x576, moving; 2:h264/aac 720x576, moving; 3:h264/aac 720x576, moving; sustained:buffering_16.3s; media=60.0s; wall=76.3s; lag=16.3s; freezes=1/3.6s/max3.6s; errors=0; apple:advance_ratio_0.691,total_stall_18.5s,long_stall_18.5s; startup=7.9s; observed=60.1s; advancing=41.5s/0.691; waiting=18.5s; stalls=1/18.5s/max18.5s; discontinuities=1",
