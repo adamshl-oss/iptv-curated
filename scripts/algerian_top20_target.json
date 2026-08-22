@@ -227,7 +227,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 2,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-08-22T20:27:18Z",
         "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:ffmpeg_rc124:[h264 @ 0x1427217b0] concealing 291 DC, 291 AC, 291 MV errors in P frame,short_media_42.1s,buffering_62.9s; media=42.1s; wall=105.0s; lag=62.9s; freezes=2/9.5s/max7.3s; errors=0; apple:advance_ratio_0.499,total_stall_30.0s,long_stall_30.0s; startup=2.9s; observed=60.0s; advancing=30.0s/0.499; waiting=30.0s; stalls=1/30.0s/max30.0s; discontinuities=1",
@@ -251,7 +251,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-08-22T20:27:18Z",
         "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:ffmpeg_rc124:[null @ 0x13b0c5c30] Application provided invalid, non monotonically increasing dts to muxer in stre,short_media_47.7s,buffering_57.3s; media=47.7s; wall=105.0s; lag=57.3s; freezes=1/7.3s/max7.3s; errors=0; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
@@ -275,7 +275,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-08-22T20:27:18Z",
         "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:ffmpeg_rc124:[h264 @ 0x159f22db0] concealing 5985 DC, 5985 AC, 5985 MV errors in P frame,short_media_53.8s,buffering_51.2s,freeze_events_5,total_freeze_35.6s; media=53.8s; wall=105.0s; lag=51.2s; freezes=5/35.6s/max9.1s; errors=0; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
