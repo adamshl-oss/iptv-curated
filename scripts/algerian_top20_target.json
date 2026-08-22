@@ -130,13 +130,12 @@
     "quarantine_after_failed_gates": 3,
     "recover_after_successful_gates": 1,
     "attempts_per_gate": 3,
-    "published_count": 6,
+    "published_count": 7,
     "required_count": 10,
     "coverage_state": "degraded",
     "missing_targets": [
       "Samira TV",
       "Echorouk TV",
-      "Ennahar TV",
       "Echorouk News"
     ],
     "sustained_playback_seconds": 60,
@@ -220,21 +219,21 @@
       "playlist_name": "Ennahar TV (Cloud Live)",
       "tvg_id": "EnnaharTV.dz",
       "official_url": "https://www.ennaharonline.com/live/",
-      "status": "quarantined_automated",
-      "reason": "Automatically quarantined after the complete startup plus sustained transport and Apple AVPlayer gate failed: 1:quality 240p below 540p; 2:quality 240p below 540p; 3:quality 240p below 540p; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
+      "status": "verified_cloud",
+      "reason": "Exact live channel retained from the verified lineup behind an always-on public endpoint.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/ennahar",
       "min_height": 540,
-      "publish": false,
+      "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 3,
-        "success_streak": 0,
+        "failure_streak": 0,
+        "success_streak": 1,
         "last_failure": "2026-08-22T06:36:28Z",
         "last_evidence": "1:quality 240p below 540p; 2:quality 240p below 540p; 3:quality 240p below 540p; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact live channel retained from the verified lineup behind an always-on public endpoint.",
-        "last_recovery": "2026-08-21T21:31:40Z"
+        "last_recovery": "2026-08-22T07:59:54Z"
       }
     },
     {
