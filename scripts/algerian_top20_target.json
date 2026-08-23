@@ -130,7 +130,7 @@
     "quarantine_after_failed_gates": 3,
     "recover_after_successful_gates": 1,
     "attempts_per_gate": 3,
-    "published_count": 3,
+    "published_count": 4,
     "required_count": 10,
     "coverage_state": "degraded",
     "missing_targets": [
@@ -139,8 +139,7 @@
       "Ennahar TV",
       "TV1 / Programme National",
       "TV3 / A3",
-      "Echorouk News",
-      "El Bilad TV"
+      "Echorouk News"
     ],
     "sustained_playback_seconds": 60,
     "maximum_wall_lag_seconds": 15.0,
@@ -343,21 +342,21 @@
       "playlist_name": "El Bilad TV (Cloud Live)",
       "tvg_id": "ElBilad.dz",
       "official_url": "https://www.elbilad.net/",
-      "status": "quarantined_automated",
-      "reason": "Automatically quarantined after the complete startup plus sustained transport and Apple AVPlayer gate failed: 1:h264/aac 720x576, moving; 2:h264/aac 720x576, moving; 3:h264/aac 720x576, moving; sustained:ffmpeg_rc124:[h264 @ 0x142746200] concealing 336 DC, 336 AC, 336 MV errors in I frame,buffering_46.2s,freeze_events_7,total_freeze_39.5s,network_errors_8; media=58.9s; wall=105.0s; lag=46.2s; freezes=7/39.5s/max8.3s; errors=8; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
+      "status": "verified_cloud",
+      "reason": "Exact live channel retained from the verified lineup behind an always-on public endpoint.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/elbilad",
       "min_height": 540,
-      "publish": false,
+      "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 3,
-        "success_streak": 0,
+        "failure_streak": 0,
+        "success_streak": 1,
         "last_failure": "2026-08-23T17:04:02Z",
         "last_evidence": "1:h264/aac 720x576, moving; 2:h264/aac 720x576, moving; 3:h264/aac 720x576, moving; sustained:ffmpeg_rc124:[h264 @ 0x142746200] concealing 336 DC, 336 AC, 336 MV errors in I frame,buffering_46.2s,freeze_events_7,total_freeze_39.5s,network_errors_8; media=58.9s; wall=105.0s; lag=46.2s; freezes=7/39.5s/max8.3s; errors=8; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact live channel retained from the verified lineup behind an always-on public endpoint.",
-        "last_recovery": "2026-08-08T20:57:58Z"
+        "last_recovery": "2026-08-23T18:05:24Z"
       }
     },
     {
