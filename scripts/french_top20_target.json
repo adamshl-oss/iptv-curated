@@ -386,25 +386,25 @@
       "tvg_id": "RMCDecouverte.fr",
       "logo": "https://upload.wikimedia.org/wikipedia/fr/thumb/b/b3/RMC_D%C3%A9couverte_logo_2017.svg/512px-RMC_D%C3%A9couverte_logo_2017.svg.png",
       "official_url": "https://www.rmcbfmplay.com/direct/rmc_decouverte",
-      "status": "verified_static",
-      "reason": "Public distribution HLS passed 1080p decode; on-screen branding and current programme matched RMC's official live schedule.",
+      "status": "verified_cloud_relay",
+      "reason": "The permanent cloud URL passed the independent public three-attempt media gate, sustained transport gate, and real Apple AVPlayer gate after candidate qualification. IPTVX receives this stable URL, not the upstream candidate.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/linear/france/rmc-decouverte/live.m3u8",
       "min_height": 720,
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-08-23T15:56:04Z",
         "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:timeout; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "recovery_allowed": true,
         "prior_status": "verified_static",
         "prior_reason": "Public distribution HLS passed 1080p decode; on-screen branding and current programme matched RMC's official live schedule.",
-        "candidate_discovered_at": "2026-08-07T08:06:32Z",
+        "candidate_discovered_at": "2026-08-23T15:57:01Z",
         "candidate_source": "schumijo-fr",
         "candidate_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving",
         "last_candidate_url": "https://d16zzycxcd0m0r.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-hixvx5kymecr9/RMC_Decouverte_FR.m3u8",
-        "last_recovery": "2026-08-09T17:00:28Z"
+        "last_recovery": "2026-08-23T16:14:16Z"
       }
     },
     {
