@@ -229,7 +229,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-08-24T02:52:06Z",
         "last_evidence": "1:no_response; 2:h264/aac 512x288, moving; 3:h264/aac 512x288, moving; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
@@ -335,10 +335,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
-        "last_failure": "2026-08-23T20:59:36Z",
-        "last_evidence": "1:timeout; 2:h264/aac 1024x576, moving; 3:h264/aac 1024x576, moving; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
+        "last_failure": "2026-08-24T03:07:30Z",
+        "last_evidence": "1:h264/aac 1024x576, moving; 2:h264/aac 1024x576, moving; 3:h264/aac 1024x576, moving; sustained:ffmpeg_rc124,short_media_47.9s,buffering_57.1s; media=47.9s; wall=105.0s; lag=57.1s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.781,total_stall_13.2s,long_stall_13.2s; startup=4.0s; observed=60.1s; advancing=47.0s/0.781; waiting=13.2s; stalls=1/13.2s/max13.2s; discontinuities=1",
         "recovery_allowed": true,
         "prior_status": "verified_cloud_apple_relay",
         "prior_reason": "The always-on relay converts TF1's current official non-DRM CDN delivery into short, stable Apple-player URLs. Three public 576p H.264/AAC decode gates, a continuous 45-second cloud decode, a current LCI-branded frame, and sustained changing video in both IPTVX preview and full-player modes passed without the former 10–15-second stall.",
