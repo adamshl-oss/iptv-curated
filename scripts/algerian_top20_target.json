@@ -226,7 +226,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-08-25T20:07:18Z",
         "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:sustained_ok; media=60.0s; wall=65.9s; lag=5.9s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.793,total_stall_12.5s,long_stall_12.5s; startup=1.9s; observed=60.2s; advancing=47.7s/0.793; waiting=12.5s; stalls=1/12.5s/max12.5s; discontinuities=1",
@@ -250,10 +250,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 2,
         "success_streak": 0,
-        "last_failure": "2026-08-25T20:07:18Z",
-        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:buffering_36.1s,total_freeze_14.0s; media=60.0s; wall=96.1s; lag=36.1s; freezes=2/14.0s/max7.5s; errors=0; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
+        "last_failure": "2026-08-25T20:35:11Z",
+        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:short_media_53.9s,buffering_41.6s,total_freeze_11.1s; media=53.9s; wall=95.4s; lag=41.6s; freezes=2/11.1s/max6.2s; errors=0; apple:advance_ratio_0.876,total_stall_7.5s,long_stall_7.5s; startup=2.2s; observed=60.1s; advancing=52.6s/0.876; waiting=7.5s; stalls=1/7.5s/max7.5s; discontinuities=1",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact EPTV flagship service retained from the verified lineup behind an always-on public endpoint.",
@@ -274,7 +274,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-08-25T20:07:18Z",
         "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:ffmpeg_rc124:[h264 @ 0x1386741c0] concealing 2625 DC, 2625 AC, 2625 MV errors in B frame,short_media_49.3s,buffering_55.7s,total_freeze_12.8s; media=49.3s; wall=105.0s; lag=55.7s; freezes=2/12.8s/max6.6s; errors=0; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
