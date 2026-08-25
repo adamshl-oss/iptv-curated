@@ -250,7 +250,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 2,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-08-25T20:35:11Z",
         "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:short_media_53.9s,buffering_41.6s,total_freeze_11.1s; media=53.9s; wall=95.4s; lag=41.6s; freezes=2/11.1s/max6.2s; errors=0; apple:advance_ratio_0.876,total_stall_7.5s,long_stall_7.5s; startup=2.2s; observed=60.1s; advancing=52.6s/0.876; waiting=7.5s; stalls=1/7.5s/max7.5s; discontinuities=1",
@@ -274,10 +274,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
-        "last_failure": "2026-08-25T20:07:18Z",
-        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:ffmpeg_rc124:[h264 @ 0x1386741c0] concealing 2625 DC, 2625 AC, 2625 MV errors in B frame,short_media_49.3s,buffering_55.7s,total_freeze_12.8s; media=49.3s; wall=105.0s; lag=55.7s; freezes=2/12.8s/max6.6s; errors=0; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
+        "last_failure": "2026-08-25T21:00:54Z",
+        "last_evidence": "1:http_503; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact EPTV service retained from the verified lineup behind an always-on public endpoint.",
