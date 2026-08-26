@@ -1,8 +1,8 @@
 {
   "version": 1,
   "created_at": "2026-08-07T15:53:53Z",
-  "updated_at": "2026-08-26T08:30:27Z",
-  "run_count": 540,
+  "updated_at": "2026-08-26T09:00:00Z",
+  "run_count": 541,
   "targets": {
     "france::TF1": {
       "families": {
@@ -6646,9 +6646,9 @@
           "qualified": false
         },
         "catalog:iptv-org-dz": {
-          "attempts": 18,
-          "last_attempted_at": "2026-08-25T06:39:46Z",
-          "next_eligible_at": "2026-08-26T06:39:46Z",
+          "attempts": 19,
+          "last_attempted_at": "2026-08-26T09:00:00Z",
+          "next_eligible_at": "2026-08-27T09:00:00Z",
           "outcome": "none",
           "candidates_found": 0,
           "new_candidates": 0,
@@ -6815,7 +6815,7 @@
           "last_outcome": "rejected_policy"
         }
       },
-      "last_task_at": "2026-08-26T08:30:27Z"
+      "last_task_at": "2026-08-26T09:00:00Z"
     },
     "algeria::TV2 / Canal Algérie": {
       "families": {
@@ -6874,9 +6874,9 @@
           "qualified": false
         },
         "github-repo:schumijo~iptv:tvg_id": {
-          "attempts": 2,
-          "last_attempted_at": "2026-08-17T12:31:44Z",
-          "next_eligible_at": "2026-08-24T12:31:44Z",
+          "attempts": 3,
+          "last_attempted_at": "2026-08-26T09:00:00Z",
+          "next_eligible_at": "2026-09-02T09:00:00Z",
           "outcome": "none",
           "candidates_found": 0,
           "new_candidates": 0,
@@ -6982,7 +6982,7 @@
           "last_outcome": "rejected_policy"
         }
       },
-      "last_task_at": "2026-08-26T08:30:27Z"
+      "last_task_at": "2026-08-26T09:00:00Z"
     },
     "algeria::AL24 News": {
       "families": {
@@ -9782,78 +9782,6 @@
     }
   },
   "runs": [
-    {
-      "at": "2026-08-18T04:26:27Z",
-      "wide": false,
-      "tasks": [
-        {
-          "country": "algeria",
-          "target": "El Heddaf TV",
-          "family": "catalog:free-tv",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-19T04:26:27Z"
-        }
-      ],
-      "deferred_targets": [
-        {
-          "country": "france",
-          "target": "France 2",
-          "next_eligible_at": "2026-08-18T14:29:28Z"
-        },
-        {
-          "country": "france",
-          "target": "France 3",
-          "next_eligible_at": "2026-08-18T14:29:28Z"
-        },
-        {
-          "country": "france",
-          "target": "M6",
-          "next_eligible_at": "2026-08-18T04:36:08Z"
-        },
-        {
-          "country": "france",
-          "target": "France 5",
-          "next_eligible_at": "2026-08-18T04:36:08Z"
-        },
-        {
-          "country": "france",
-          "target": "W9",
-          "next_eligible_at": "2026-08-18T14:29:28Z"
-        },
-        {
-          "country": "france",
-          "target": "6ter",
-          "next_eligible_at": "2026-08-18T14:29:28Z"
-        },
-        {
-          "country": "france",
-          "target": "Canal+",
-          "next_eligible_at": "2026-08-18T14:29:28Z"
-        },
-        {
-          "country": "france",
-          "target": "CStar",
-          "next_eligible_at": "2026-08-18T14:29:28Z"
-        },
-        {
-          "country": "france",
-          "target": "Gulli",
-          "next_eligible_at": "2026-08-18T04:36:08Z"
-        },
-        {
-          "country": "algeria",
-          "target": "Samira TV",
-          "next_eligible_at": "2026-08-18T09:13:00Z"
-        },
-        {
-          "country": "algeria",
-          "target": "Echorouk News",
-          "next_eligible_at": "2026-08-18T09:13:00Z"
-        }
-      ]
-    },
     {
       "at": "2026-08-18T04:56:02Z",
       "wide": false,
@@ -41826,6 +41754,87 @@
         }
       ],
       "deferred_targets": []
+    },
+    {
+      "at": "2026-08-26T09:00:00Z",
+      "wide": false,
+      "tasks": [
+        {
+          "country": "algeria",
+          "target": "TV3 / A3",
+          "family": "catalog:iptv-org-dz",
+          "candidates_found": 0,
+          "new_candidates": 0,
+          "qualified": false,
+          "next_eligible_at": "2026-08-27T09:00:00Z"
+        },
+        {
+          "country": "algeria",
+          "target": "TV2 / Canal Algérie",
+          "family": "github-repo:schumijo~iptv:tvg_id",
+          "candidates_found": 0,
+          "new_candidates": 0,
+          "qualified": false,
+          "next_eligible_at": "2026-09-02T09:00:00Z"
+        }
+      ],
+      "deferred_targets": [
+        {
+          "country": "france",
+          "target": "France 2",
+          "next_eligible_at": "2026-08-26T19:59:11Z"
+        },
+        {
+          "country": "france",
+          "target": "France 3",
+          "next_eligible_at": "2026-08-26T14:36:46Z"
+        },
+        {
+          "country": "france",
+          "target": "M6",
+          "next_eligible_at": "2026-08-26T19:59:11Z"
+        },
+        {
+          "country": "france",
+          "target": "France 5",
+          "next_eligible_at": "2026-08-26T19:59:11Z"
+        },
+        {
+          "country": "france",
+          "target": "W9",
+          "next_eligible_at": "2026-08-26T19:59:11Z"
+        },
+        {
+          "country": "france",
+          "target": "6ter",
+          "next_eligible_at": "2026-08-26T19:59:11Z"
+        },
+        {
+          "country": "france",
+          "target": "Canal+",
+          "next_eligible_at": "2026-08-26T19:59:11Z"
+        },
+        {
+          "country": "france",
+          "target": "CStar",
+          "next_eligible_at": "2026-08-26T14:36:46Z"
+        },
+        {
+          "country": "france",
+          "target": "Gulli",
+          "next_eligible_at": "2026-08-27T02:06:56Z"
+        },
+        {
+          "country": "algeria",
+          "target": "Samira TV",
+          "next_eligible_at": "2026-08-27T03:50:32Z"
+        },
+        {
+          "country": "algeria",
+          "target": "Echorouk News",
+          "next_eligible_at": "2026-08-26T21:09:02Z"
+        }
+      ]
     }
   ]
 }
