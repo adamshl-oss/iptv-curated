@@ -274,7 +274,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-08-26T08:29:53Z",
         "last_evidence": "1:ffmpeg_rc196:[tls @ 0x600000604c80] IO error: Operation timed out; 2:h264/aac 720x576, moving; 3:h264/aac 720x576, moving; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
@@ -298,10 +298,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 2,
         "success_streak": 0,
-        "last_failure": "2026-08-26T08:29:53Z",
-        "last_evidence": "1:h264/mp2 1920x1080, moving; 2:h264/mp2 1920x1080, moving; 3:ffmpeg_rc196:[tls @ 0x600003884a00] IO error: Operation timed out; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
+        "last_failure": "2026-08-26T09:07:29Z",
+        "last_evidence": "1:h264/mp2 1920x1080, moving; 2:h264/mp2 1920x1080, moving; 3:h264/mp2 1920x1080, moving; sustained:sustained_ok; media=60.0s; wall=65.1s; lag=5.1s; freezes=0/0.0s/max0.0s; errors=0; apple:player_error:The operation couldn’t be completed. (CoreMediaErrorDomain error -12971.)",
         "recovery_allowed": true,
         "prior_status": "verified_direct",
         "prior_reason": "Exact EPTV international service retained from the verified lineup; source provenance remains under review and it is subject to the same recurring three-pass quarantine gate.",
