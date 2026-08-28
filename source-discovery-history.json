@@ -1,8 +1,8 @@
 {
   "version": 1,
   "created_at": "2026-08-07T15:53:53Z",
-  "updated_at": "2026-08-28T12:26:45Z",
-  "run_count": 568,
+  "updated_at": "2026-08-28T12:52:36Z",
+  "run_count": 569,
   "targets": {
     "france::TF1": {
       "families": {
@@ -1742,12 +1742,12 @@
           "qualified": false
         },
         "github-repo:Paradise-91~ParaTV:tvg_id": {
-          "attempts": 1,
-          "last_attempted_at": "2026-08-12T06:57:23Z",
-          "next_eligible_at": "2026-08-19T06:57:23Z",
+          "attempts": 2,
+          "last_attempted_at": "2026-08-28T12:52:36Z",
+          "next_eligible_at": "2026-09-04T12:52:36Z",
           "outcome": "candidates_found",
           "candidates_found": 2,
-          "new_candidates": 1,
+          "new_candidates": 0,
           "qualified": false
         },
         "github-repo:Paradise-91~ParaTV:exact_name_hls": {
@@ -1805,11 +1805,11 @@
         },
         "626945eb3c41fd741d018c540562b8b72a84788912b2f13950714848ffb42977": {
           "first_seen_at": "2026-08-10T01:17:46Z",
-          "last_seen_at": "2026-08-28T12:26:45Z",
-          "next_eligible_at": "2026-09-04T12:26:45Z",
+          "last_seen_at": "2026-08-28T12:52:36Z",
+          "next_eligible_at": "2026-09-04T12:52:36Z",
           "url": "https://raw.githubusercontent.com/Paradise-91/ParaTV/main/streams/canalplus/cnews-dm.m3u8",
-          "source": "github:iptv-org/iptv",
-          "last_outcome": "current_stream"
+          "source": "github:Paradise-91/ParaTV",
+          "last_outcome": "rejected_policy"
         },
         "466b592ba643a101db6f2ccf52eab165f73ce89ee2137e82d52d777d16e4c4a2": {
           "first_seen_at": "2026-08-10T01:17:46Z",
@@ -1821,8 +1821,8 @@
         },
         "917cf89ff697d95c8620d208509c1f9e2fd9bf4237e1148c297d15b162f47273": {
           "first_seen_at": "2026-08-12T06:57:23Z",
-          "last_seen_at": "2026-08-12T06:57:23Z",
-          "next_eligible_at": "2026-08-19T06:57:23Z",
+          "last_seen_at": "2026-08-28T12:52:36Z",
+          "next_eligible_at": "2026-09-04T12:52:36Z",
           "url": "https://raw.githubusercontent.com/Paradise-91/ParaTV/main/streams/canalplus/cnews-clair-hd.m3u8",
           "source": "github:Paradise-91/ParaTV",
           "last_outcome": "rejected_policy"
@@ -1836,7 +1836,7 @@
           "last_outcome": "candidate_cooldown"
         }
       },
-      "last_task_at": "2026-08-28T12:26:45Z"
+      "last_task_at": "2026-08-28T12:52:36Z"
     },
     "france::ARTE": {
       "families": {
@@ -6662,9 +6662,9 @@
           "qualified": false
         },
         "catalog:iptv-org-dz": {
-          "attempts": 19,
-          "last_attempted_at": "2026-08-26T09:00:00Z",
-          "next_eligible_at": "2026-08-27T09:00:00Z",
+          "attempts": 20,
+          "last_attempted_at": "2026-08-28T12:52:36Z",
+          "next_eligible_at": "2026-08-29T12:52:36Z",
           "outcome": "none",
           "candidates_found": 0,
           "new_candidates": 0,
@@ -6831,7 +6831,7 @@
           "last_outcome": "rejected_policy"
         }
       },
-      "last_task_at": "2026-08-26T09:00:00Z"
+      "last_task_at": "2026-08-28T12:52:36Z"
     },
     "algeria::TV2 / Canal Algérie": {
       "families": {
@@ -9798,82 +9798,6 @@
     }
   },
   "runs": [
-    {
-      "at": "2026-08-19T03:32:21Z",
-      "wide": false,
-      "tasks": [
-        {
-          "country": "france",
-          "target": "France 5",
-          "family": "catalog:paratv-france",
-          "candidates_found": 2,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-20T03:32:21Z"
-        },
-        {
-          "country": "algeria",
-          "target": "TV1 / Programme National",
-          "family": "official:page",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-22T03:32:21Z"
-        }
-      ],
-      "deferred_targets": [
-        {
-          "country": "france",
-          "target": "France 2",
-          "next_eligible_at": "2026-08-19T13:55:21Z"
-        },
-        {
-          "country": "france",
-          "target": "France 3",
-          "next_eligible_at": "2026-08-19T13:55:21Z"
-        },
-        {
-          "country": "france",
-          "target": "M6",
-          "next_eligible_at": "2026-08-19T04:56:02Z"
-        },
-        {
-          "country": "france",
-          "target": "W9",
-          "next_eligible_at": "2026-08-19T13:55:21Z"
-        },
-        {
-          "country": "france",
-          "target": "6ter",
-          "next_eligible_at": "2026-08-19T13:55:21Z"
-        },
-        {
-          "country": "france",
-          "target": "Canal+",
-          "next_eligible_at": "2026-08-19T13:55:21Z"
-        },
-        {
-          "country": "france",
-          "target": "CStar",
-          "next_eligible_at": "2026-08-19T13:55:21Z"
-        },
-        {
-          "country": "france",
-          "target": "Gulli",
-          "next_eligible_at": "2026-08-19T04:56:02Z"
-        },
-        {
-          "country": "algeria",
-          "target": "Samira TV",
-          "next_eligible_at": "2026-08-19T03:56:37Z"
-        },
-        {
-          "country": "algeria",
-          "target": "Echorouk News",
-          "next_eligible_at": "2026-08-19T08:04:21Z"
-        }
-      ]
-    },
     {
       "at": "2026-08-19T04:04:38Z",
       "wide": false,
@@ -41556,6 +41480,87 @@
           "new_candidates": 0,
           "qualified": false,
           "next_eligible_at": "2026-09-04T12:26:45Z"
+        }
+      ],
+      "deferred_targets": [
+        {
+          "country": "france",
+          "target": "France 2",
+          "next_eligible_at": "2026-08-29T01:17:46Z"
+        },
+        {
+          "country": "france",
+          "target": "France 3",
+          "next_eligible_at": "2026-08-29T01:44:32Z"
+        },
+        {
+          "country": "france",
+          "target": "M6",
+          "next_eligible_at": "2026-08-29T01:44:32Z"
+        },
+        {
+          "country": "france",
+          "target": "France 5",
+          "next_eligible_at": "2026-08-29T01:17:46Z"
+        },
+        {
+          "country": "france",
+          "target": "W9",
+          "next_eligible_at": "2026-08-29T01:17:46Z"
+        },
+        {
+          "country": "france",
+          "target": "6ter",
+          "next_eligible_at": "2026-08-29T01:44:32Z"
+        },
+        {
+          "country": "france",
+          "target": "Canal+",
+          "next_eligible_at": "2026-08-29T01:17:46Z"
+        },
+        {
+          "country": "france",
+          "target": "CStar",
+          "next_eligible_at": "2026-08-29T01:17:46Z"
+        },
+        {
+          "country": "france",
+          "target": "Gulli",
+          "next_eligible_at": "2026-08-29T01:17:46Z"
+        },
+        {
+          "country": "algeria",
+          "target": "Samira TV",
+          "next_eligible_at": "2026-08-29T01:17:46Z"
+        },
+        {
+          "country": "algeria",
+          "target": "Echorouk News",
+          "next_eligible_at": "2026-08-29T01:17:46Z"
+        }
+      ]
+    },
+    {
+      "at": "2026-08-28T12:52:36Z",
+      "wide": false,
+      "tasks": [
+        {
+          "country": "france",
+          "target": "CNEWS",
+          "family": "github-repo:Paradise-91~ParaTV:tvg_id",
+          "candidates_found": 2,
+          "new_candidates": 0,
+          "qualified": false,
+          "next_eligible_at": "2026-09-04T12:52:36Z"
+        },
+        {
+          "country": "algeria",
+          "target": "TV3 / A3",
+          "family": "catalog:iptv-org-dz",
+          "candidates_found": 0,
+          "new_candidates": 0,
+          "qualified": false,
+          "next_eligible_at": "2026-08-29T12:52:36Z"
         }
       ],
       "deferred_targets": [
