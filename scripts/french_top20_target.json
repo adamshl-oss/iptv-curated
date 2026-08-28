@@ -304,10 +304,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
-        "last_failure": "2026-08-26T11:30:39Z",
-        "last_evidence": "1:h264/aac 960x540, moving; 2:h264/aac 960x540, moving; 3:h264/aac 960x540, moving; sustained:short_media_46.1s,buffering_43.5s,freeze_events_5,total_freeze_15.4s,network_errors_3; media=46.1s; wall=89.6s; lag=43.5s; freezes=5/15.4s/max4.8s; errors=3; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
+        "last_failure": "2026-08-28T19:56:09Z",
+        "last_evidence": "1:h264/aac 960x540, moving; 2:h264/aac 960x540, moving; 3:ffmpeg_rc202:[tls @ 0x600000930000] IO error: Connection reset by peer; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "recovery_allowed": true,
         "prior_status": "verified_static",
         "prior_reason": "Broadcaster CDN HLS passed repeated ffprobe and ffmpeg decode tests.",
