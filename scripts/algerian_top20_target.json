@@ -226,10 +226,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
-        "last_failure": "2026-08-25T20:07:18Z",
-        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:sustained_ok; media=60.0s; wall=65.9s; lag=5.9s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.793,total_stall_12.5s,long_stall_12.5s; startup=1.9s; observed=60.2s; advancing=47.7s/0.793; waiting=12.5s; stalls=1/12.5s/max12.5s; discontinuities=1",
+        "last_failure": "2026-08-28T01:23:58Z",
+        "last_evidence": "1:h264/aac 1920x1080, moving; 2:reprobe_failed; 3:h264/aac 1920x1080, moving; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact live channel retained from the verified lineup behind an always-on public endpoint.",
