@@ -472,7 +472,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-08-28T01:43:52Z",
         "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:buffering_32.0s; media=60.0s; wall=92.0s; lag=32.0s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.006,total_stall_59.8s,long_stall_59.8s; startup=5.3s; observed=60.1s; advancing=0.3s/0.006; waiting=0.0s; stalls=1/59.8s/max59.8s; discontinuities=1",
@@ -499,7 +499,7 @@
       "status": "candidate_cloud_verification",
       "reason": "Automatically discovered from github:Paradise-91/ParaTV; exact identity and three moving-media gates passed. Awaiting the independent recovery gate.",
       "publish": false,
-      "stream_url": "https://raw.githubusercontent.com/Paradise-91/ParaTV/main/streams/canalplus/res/cstar-dm-highest.m3u8",
+      "stream_url": "https://raw.githubusercontent.com/Paradise-91/ParaTV/main/streams/canalplus/cstar-dm.m3u8",
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
@@ -507,7 +507,7 @@
         "success_streak": 1,
         "prior_status": "geo_restricted",
         "prior_reason": "CStar's official Dailymotion live x5gv5v0 is explicitly geo-restricted outside its licensed territories; a fresh 2026-07-25 extraction was again refused by the owner's territory policy. Free TV's exact CStar service (678) was also audited, but every tested HLS audio/video rendition is SAMPLE-AES/FairPlay encrypted and its player requires account and TV-rights tokens for the license request. Molotov Basic carries the exact channel, but its current public state marks it unavailable from the US; channel APIs require an authenticated session and Molotov confirms its delivery uses DRM. POST Luxembourg's 2026-07-24 base package and Zattoo Switzerland carry exact CStar, but POST requires its Internet+TV subscription and decoder, while Zattoo prohibits Swiss live TV outside Switzerland and blocks hosting/proxy use. Licensed Swiss provider netplus carries exact CStar, but its HLS origin completes TLS and then returns no HTTP response from the US; Teleboy and Salt likewise require Swiss service/account access. ParaTV's newly refreshed signed Dailymotion wrapper passed three 12-second H.264/AAC decodes and showed exact CStar branding from the US, but the token is sourced from an owner-permitted territory and would circumvent Dailymotion's explicit US restriction, so it was intentionally not published. Other maintained resolvers offer only private-IP restreams, and Samsung TV Plus's current French FAST catalog contains no exact CStar. The previously published signed Dailymotion rendition expired and was removed rather than left as a dead channel.",
-        "candidate_discovered_at": "2026-08-26T14:37:06Z",
+        "candidate_discovered_at": "2026-08-28T02:01:59Z",
         "candidate_source": "github:Paradise-91/ParaTV",
         "candidate_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving",
         "last_recovery": "2026-08-07T07:46:22Z",
