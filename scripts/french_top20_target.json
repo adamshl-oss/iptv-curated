@@ -362,12 +362,12 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
         "prior_status": "verified_cloud_resolver",
         "prior_reason": "Permanent request-time cloud resolver for the exact TFX service, independently verified by moving H.264/AAC media, current TFX branding, and matching current programming.",
-        "last_failure": "2026-08-28T11:34:09Z",
-        "last_evidence": "1:http_502; 2:http_502; 3:http_502; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
+        "last_failure": "2026-08-29T02:28:20Z",
+        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:buffering_32.7s; media=60.0s; wall=92.7s; lag=32.7s; freezes=0/0.0s/max0.0s; errors=0; apple:player_error:resource unavailable",
         "last_recovery": "2026-08-18T08:49:49Z"
       }
     },
@@ -447,11 +447,11 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
         "prior_status": "verified_cloud_resolver",
-        "last_failure": "2026-08-26T11:30:39Z",
-        "last_evidence": "1:no_response; 2:no_response; 3:no_response; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
+        "last_failure": "2026-08-29T02:28:20Z",
+        "last_evidence": "1:http_502; 2:http_502; 3:http_502; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "prior_reason": "Quarantined after two independent 2026-07-30 playback gates proved the current signed official-CDN token is bound to the resolver IP and returns HTTP 403 to IPTVX, Apple TV, and unrelated cloud clients.",
         "candidate_discovered_at": "2026-08-07T14:49:07Z",
         "candidate_source": "paratv-france",
