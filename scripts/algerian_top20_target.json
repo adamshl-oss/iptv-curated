@@ -130,15 +130,13 @@
     "quarantine_after_failed_gates": 3,
     "recover_after_successful_gates": 1,
     "attempts_per_gate": 3,
-    "published_count": 4,
+    "published_count": 6,
     "required_count": 10,
     "coverage_state": "degraded",
     "missing_targets": [
       "Samira TV",
       "Echorouk TV",
-      "Ennahar TV",
       "TV1 / Programme National",
-      "TV3 / A3",
       "Echorouk News"
     ],
     "sustained_playback_seconds": 60,
@@ -222,21 +220,21 @@
       "playlist_name": "Ennahar TV (Cloud Live)",
       "tvg_id": "EnnaharTV.dz",
       "official_url": "https://www.ennaharonline.com/live/",
-      "status": "quarantined_automated",
-      "reason": "Automatically quarantined after the complete startup plus sustained transport and Apple AVPlayer gate failed: 1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:ffmpeg_rc124:[aist#0:1/aac @ 0x15bf687e0] [dec:aac @ 0x15bf85ab0] Error submitting packet to decoder: Invalid dat,short_media_52.0s,buffering_53.0s,freeze_events_8,total_freeze_35.9s,network_errors_10; media=52.0s; wall=105.0s; lag=53.0s; freezes=8/35.9s/max5.3s; errors=10; apple:advance_ratio_0.181,total_stall_49.3s,long_stall_49.3s; startup=9.4s; observed=60.2s; advancing=10.9s/0.181; waiting=47.3s; stalls=1/49.3s/max49.3s; discontinuities=1",
+      "status": "verified_cloud",
+      "reason": "Exact live channel retained from the verified lineup behind an always-on public endpoint.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/ennahar",
       "min_height": 540,
-      "publish": false,
+      "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 3,
-        "success_streak": 0,
+        "failure_streak": 0,
+        "success_streak": 1,
         "last_failure": "2026-08-30T17:34:43Z",
         "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:ffmpeg_rc124:[aist#0:1/aac @ 0x15bf687e0] [dec:aac @ 0x15bf85ab0] Error submitting packet to decoder: Invalid dat,short_media_52.0s,buffering_53.0s,freeze_events_8,total_freeze_35.9s,network_errors_10; media=52.0s; wall=105.0s; lag=53.0s; freezes=8/35.9s/max5.3s; errors=10; apple:advance_ratio_0.181,total_stall_49.3s,long_stall_49.3s; startup=9.4s; observed=60.2s; advancing=10.9s/0.181; waiting=47.3s; stalls=1/49.3s/max49.3s; discontinuities=1",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact live channel retained from the verified lineup behind an always-on public endpoint.",
-        "last_recovery": "2026-08-29T21:05:37Z"
+        "last_recovery": "2026-08-30T20:34:59Z"
       }
     },
     {
@@ -270,21 +268,21 @@
       "playlist_name": "TV3 / A3 (Cloud Live)",
       "tvg_id": "TV3.dz",
       "official_url": "https://entv.dz/",
-      "status": "quarantined_automated",
-      "reason": "Automatically quarantined after the complete startup plus sustained transport and Apple AVPlayer gate failed: 1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:ffmpeg_rc124:[h264 @ 0x128ee0430] concealing 2833 DC, 2833 AC, 2833 MV errors in P frame,short_media_46.8s,buffering_58.3s,freeze_events_5,total_freeze_42.3s,network_errors_2; media=46.8s; wall=105.0s; lag=58.3s; freezes=5/42.3s/max10.0s; errors=2; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
+      "status": "verified_cloud",
+      "reason": "Exact EPTV service retained from the verified lineup behind an always-on public endpoint.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv3",
       "min_height": 540,
-      "publish": false,
+      "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 3,
-        "success_streak": 0,
+        "failure_streak": 0,
+        "success_streak": 1,
         "last_failure": "2026-08-30T17:34:43Z",
         "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:ffmpeg_rc124:[h264 @ 0x128ee0430] concealing 2833 DC, 2833 AC, 2833 MV errors in P frame,short_media_46.8s,buffering_58.3s,freeze_events_5,total_freeze_42.3s,network_errors_2; media=46.8s; wall=105.0s; lag=58.3s; freezes=5/42.3s/max10.0s; errors=2; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact EPTV service retained from the verified lineup behind an always-on public endpoint.",
-        "last_recovery": "2026-08-29T21:05:37Z"
+        "last_recovery": "2026-08-30T20:34:59Z"
       }
     },
     {
@@ -301,10 +299,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
-        "last_failure": "2026-08-30T17:34:43Z",
-        "last_evidence": "1:h264/mp2 1920x1080, moving; 2:h264/mp2 1920x1080, moving; 3:h264/mp2 1920x1080, moving; sustained:sustained_ok; media=60.0s; wall=64.8s; lag=4.8s; freezes=0/0.0s/max0.0s; errors=0; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
+        "last_failure": "2026-08-30T20:34:59Z",
+        "last_evidence": "1:h264/mp2 1920x1080, moving; 2:h264/mp2 1920x1080, moving; 3:h264/mp2 1920x1080, moving; sustained:sustained_ok; media=60.0s; wall=62.9s; lag=2.9s; freezes=0/0.0s/max0.0s; errors=0; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
         "recovery_allowed": true,
         "prior_status": "verified_direct",
         "prior_reason": "Exact EPTV international service retained from the verified lineup; source provenance remains under review and it is subject to the same recurring three-pass quarantine gate.",
