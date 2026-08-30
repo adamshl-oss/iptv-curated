@@ -130,13 +130,12 @@
     "quarantine_after_failed_gates": 3,
     "recover_after_successful_gates": 1,
     "attempts_per_gate": 3,
-    "published_count": 6,
+    "published_count": 7,
     "required_count": 10,
     "coverage_state": "degraded",
     "missing_targets": [
       "Samira TV",
       "Echorouk TV",
-      "TV1 / Programme National",
       "Echorouk News"
     ],
     "sustained_playback_seconds": 60,
@@ -199,10 +198,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 2,
         "success_streak": 0,
-        "last_failure": "2026-08-30T21:03:30Z",
-        "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:sustained_ok; media=60.0s; wall=62.4s; lag=2.4s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.856,total_stall_8.6s,long_stall_8.6s; startup=10.5s; observed=60.0s; advancing=51.4s/0.856; waiting=8.6s; stalls=1/8.6s/max8.6s; discontinuities=0",
+        "last_failure": "2026-08-30T21:29:28Z",
+        "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:sustained_ok; media=60.0s; wall=69.0s; lag=9.0s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.445,total_stall_33.4s,long_stall_33.4s; startup=8.3s; observed=60.1s; advancing=26.7s/0.445; waiting=33.4s; stalls=1/33.4s/max33.4s; discontinuities=0",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact live channel retained from the verified lineup behind an always-on public endpoint.",
@@ -244,21 +243,21 @@
       "playlist_name": "TV1 / Programme National (Cloud Live)",
       "tvg_id": "TV1.dz",
       "official_url": "https://entv.dz/",
-      "status": "quarantined_automated",
-      "reason": "Automatically quarantined after the complete startup plus sustained transport and Apple AVPlayer gate failed: 1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:ffmpeg_rc124:[h264 @ 0x152f68df0] concealing 1893 DC, 1893 AC, 1893 MV errors in P frame,short_media_52.5s,buffering_52.5s,total_freeze_19.4s; media=52.5s; wall=105.0s; lag=52.5s; freezes=3/19.4s/max7.6s; errors=0; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
+      "status": "verified_cloud",
+      "reason": "Exact EPTV flagship service retained from the verified lineup behind an always-on public endpoint.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv1",
       "min_height": 540,
-      "publish": false,
+      "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 3,
-        "success_streak": 0,
+        "failure_streak": 0,
+        "success_streak": 1,
         "last_failure": "2026-08-30T17:59:41Z",
         "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:ffmpeg_rc124:[h264 @ 0x152f68df0] concealing 1893 DC, 1893 AC, 1893 MV errors in P frame,short_media_52.5s,buffering_52.5s,total_freeze_19.4s; media=52.5s; wall=105.0s; lag=52.5s; freezes=3/19.4s/max7.6s; errors=0; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact EPTV flagship service retained from the verified lineup behind an always-on public endpoint.",
-        "last_recovery": "2026-08-28T21:34:56Z"
+        "last_recovery": "2026-08-30T21:29:28Z"
       }
     },
     {
@@ -275,7 +274,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-08-30T21:03:30Z",
         "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:ffmpeg_rc124,buffering_47.9s; media=57.1s; wall=105.0s; lag=47.9s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.260,total_stall_44.4s,long_stall_44.4s; startup=2.3s; observed=60.0s; advancing=15.6s/0.260; waiting=44.4s; stalls=1/44.4s/max44.4s; discontinuities=1",
