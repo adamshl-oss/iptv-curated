@@ -1,8 +1,8 @@
 {
   "version": 1,
   "created_at": "2026-08-07T15:53:53Z",
-  "updated_at": "2026-08-31T09:17:28Z",
-  "run_count": 646,
+  "updated_at": "2026-08-31T10:11:51Z",
+  "run_count": 647,
   "targets": {
     "france::TF1": {
       "families": {
@@ -1738,12 +1738,12 @@
           "qualified": false
         },
         "github:tvg_id": {
-          "attempts": 1,
-          "last_attempted_at": "2026-08-07T14:30:00Z",
-          "next_eligible_at": "2026-08-14T14:30:00Z",
-          "outcome": "legacy_scan_completed",
-          "candidates_found": null,
-          "new_candidates": null,
+          "attempts": 2,
+          "last_attempted_at": "2026-08-31T10:11:51Z",
+          "next_eligible_at": "2026-09-07T10:11:51Z",
+          "outcome": "candidates_found",
+          "candidates_found": 2,
+          "new_candidates": 0,
           "qualified": false
         },
         "catalog:iptv-org-fr": {
@@ -1937,19 +1937,19 @@
         },
         "70eb329bf2a387787f9acf13e4f751cdffe372af3e5fc876ff21a1a3c010b7ca": {
           "first_seen_at": "2026-08-10T01:17:46Z",
-          "last_seen_at": "2026-08-28T13:32:42Z",
-          "next_eligible_at": "2026-09-04T13:32:42Z",
+          "last_seen_at": "2026-08-31T10:11:51Z",
+          "next_eligible_at": "2026-09-07T10:11:51Z",
           "url": "https://raw.githubusercontent.com/LeBazarDeBryan/XTVZ_/main/Stream/Live/CNews.m3u8",
           "source": "github:iptv-org/iptv",
-          "last_outcome": "not_live"
+          "last_outcome": "candidate_cooldown"
         },
         "626945eb3c41fd741d018c540562b8b72a84788912b2f13950714848ffb42977": {
           "first_seen_at": "2026-08-10T01:17:46Z",
-          "last_seen_at": "2026-08-30T11:54:47Z",
-          "next_eligible_at": "2026-09-06T11:54:47Z",
+          "last_seen_at": "2026-08-31T10:11:51Z",
+          "next_eligible_at": "2026-09-07T10:11:51Z",
           "url": "https://raw.githubusercontent.com/Paradise-91/ParaTV/main/streams/canalplus/cnews-dm.m3u8",
-          "source": "paratv-canalplus",
-          "last_outcome": "rejected_policy"
+          "source": "github:iptv-org/iptv",
+          "last_outcome": "candidate_cooldown"
         },
         "466b592ba643a101db6f2ccf52eab165f73ce89ee2137e82d52d777d16e4c4a2": {
           "first_seen_at": "2026-08-10T01:17:46Z",
@@ -1984,7 +1984,7 @@
           "last_outcome": "rejected_policy"
         }
       },
-      "last_task_at": "2026-08-30T11:55:19Z"
+      "last_task_at": "2026-08-31T10:11:51Z"
     },
     "france::ARTE": {
       "families": {
@@ -10152,445 +10152,6 @@
     }
   },
   "runs": [
-    {
-      "at": "2026-08-22T08:02:47Z",
-      "wide": true,
-      "tasks": [
-        {
-          "country": "france",
-          "target": "CStar",
-          "family": "official:assets",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-25T08:02:47Z"
-        },
-        {
-          "country": "france",
-          "target": "CStar",
-          "family": "catalog:paratv-france",
-          "candidates_found": 1,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-23T08:02:47Z"
-        },
-        {
-          "country": "france",
-          "target": "CStar",
-          "family": "catalog:paratv-francetv",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-23T08:02:47Z"
-        },
-        {
-          "country": "france",
-          "target": "CStar",
-          "family": "catalog:paratv-tf1plus",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-23T08:02:47Z"
-        },
-        {
-          "country": "france",
-          "target": "Canal+",
-          "family": "official:assets",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-25T08:02:47Z"
-        },
-        {
-          "country": "france",
-          "target": "Canal+",
-          "family": "catalog:paratv-france",
-          "candidates_found": 1,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-23T08:02:47Z"
-        },
-        {
-          "country": "france",
-          "target": "Canal+",
-          "family": "catalog:paratv-francetv",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-23T08:02:47Z"
-        },
-        {
-          "country": "france",
-          "target": "Canal+",
-          "family": "catalog:paratv-tf1plus",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-23T08:02:47Z"
-        },
-        {
-          "country": "algeria",
-          "target": "Echorouk News",
-          "family": "github-repo:iptv-org~iptv:exact_name_hls",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-29T08:02:47Z"
-        },
-        {
-          "country": "algeria",
-          "target": "Echorouk News",
-          "family": "github-repo:Paradise-91~ParaTV:tvg_id",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-29T08:02:47Z"
-        },
-        {
-          "country": "algeria",
-          "target": "Echorouk News",
-          "family": "official:page",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-25T08:02:47Z"
-        },
-        {
-          "country": "algeria",
-          "target": "Echorouk News",
-          "family": "official:deep_assets",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-29T08:02:47Z"
-        },
-        {
-          "country": "algeria",
-          "target": "Samira TV",
-          "family": "official:deep_assets",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-29T08:02:47Z"
-        },
-        {
-          "country": "algeria",
-          "target": "Samira TV",
-          "family": "github:playlist_name_hls",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-29T08:02:47Z"
-        },
-        {
-          "country": "algeria",
-          "target": "Samira TV",
-          "family": "github-repo:schumijo~iptv:tvg_id",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-29T08:02:47Z"
-        },
-        {
-          "country": "algeria",
-          "target": "Samira TV",
-          "family": "github-repo:schumijo~iptv:exact_name_hls",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-29T08:02:47Z"
-        },
-        {
-          "country": "france",
-          "target": "France 2",
-          "family": "official:page",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-25T08:02:47Z"
-        },
-        {
-          "country": "france",
-          "target": "France 2",
-          "family": "official:deep_assets",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-29T08:02:47Z"
-        },
-        {
-          "country": "france",
-          "target": "France 2",
-          "family": "github-repo:Paradise-91~ParaTV:tvg_id",
-          "candidates_found": 5,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-29T08:02:47Z"
-        },
-        {
-          "country": "france",
-          "target": "France 2",
-          "family": "catalog:paratv-tf1plus",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-23T08:02:47Z"
-        },
-        {
-          "country": "france",
-          "target": "France 5",
-          "family": "catalog:schumijo-fr",
-          "candidates_found": 1,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-23T08:02:47Z"
-        },
-        {
-          "country": "france",
-          "target": "France 5",
-          "family": "official:page",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-25T08:02:47Z"
-        },
-        {
-          "country": "france",
-          "target": "France 5",
-          "family": "official:assets",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-25T08:02:47Z"
-        },
-        {
-          "country": "france",
-          "target": "France 5",
-          "family": "github-repo:schumijo~iptv:tvg_id",
-          "candidates_found": 1,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-29T08:02:47Z"
-        },
-        {
-          "country": "france",
-          "target": "W9",
-          "family": "official:page",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-25T08:02:47Z"
-        },
-        {
-          "country": "france",
-          "target": "W9",
-          "family": "official:deep_assets",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-29T08:02:47Z"
-        },
-        {
-          "country": "france",
-          "target": "W9",
-          "family": "github-repo:Paradise-91~ParaTV:tvg_id",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-29T08:02:47Z"
-        },
-        {
-          "country": "france",
-          "target": "W9",
-          "family": "catalog:paratv-tf1plus",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-23T08:02:47Z"
-        },
-        {
-          "country": "france",
-          "target": "Gulli",
-          "family": "catalog:paratv-france",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-23T08:02:47Z"
-        },
-        {
-          "country": "france",
-          "target": "Gulli",
-          "family": "catalog:paratv-francetv",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-23T08:02:47Z"
-        },
-        {
-          "country": "france",
-          "target": "Gulli",
-          "family": "catalog:paratv-tf1plus",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-23T08:02:47Z"
-        },
-        {
-          "country": "france",
-          "target": "Gulli",
-          "family": "catalog:schumijo-fr",
-          "candidates_found": 1,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-23T08:02:47Z"
-        },
-        {
-          "country": "france",
-          "target": "M6",
-          "family": "official:assets",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-25T08:02:47Z"
-        },
-        {
-          "country": "france",
-          "target": "M6",
-          "family": "github-repo:iptv-org~iptv:tvg_id",
-          "candidates_found": 1,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-29T08:02:47Z"
-        },
-        {
-          "country": "france",
-          "target": "M6",
-          "family": "catalog:paratv-canalplus",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-23T08:02:47Z"
-        },
-        {
-          "country": "france",
-          "target": "M6",
-          "family": "catalog:schumijo-fr",
-          "candidates_found": 1,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-23T08:02:47Z"
-        },
-        {
-          "country": "france",
-          "target": "6ter",
-          "family": "github:exact_name_live",
-          "candidates_found": 2,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-29T08:02:47Z"
-        },
-        {
-          "country": "france",
-          "target": "6ter",
-          "family": "catalog:paratv-france",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-23T08:02:47Z"
-        },
-        {
-          "country": "france",
-          "target": "6ter",
-          "family": "catalog:paratv-francetv",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-23T08:02:47Z"
-        },
-        {
-          "country": "france",
-          "target": "6ter",
-          "family": "catalog:paratv-tf1plus",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-23T08:02:47Z"
-        },
-        {
-          "country": "france",
-          "target": "France 3",
-          "family": "official:page",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-25T08:02:47Z"
-        },
-        {
-          "country": "france",
-          "target": "France 3",
-          "family": "catalog:paratv-france",
-          "candidates_found": 2,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-23T08:02:47Z"
-        },
-        {
-          "country": "france",
-          "target": "France 3",
-          "family": "catalog:paratv-francetv",
-          "candidates_found": 1,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-23T08:02:47Z"
-        },
-        {
-          "country": "france",
-          "target": "France 3",
-          "family": "catalog:paratv-tf1plus",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-23T08:02:47Z"
-        },
-        {
-          "country": "france",
-          "target": "RMC Story",
-          "family": "official:deep_assets",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-29T08:02:47Z"
-        },
-        {
-          "country": "france",
-          "target": "RMC Story",
-          "family": "github:tvg_id_hls",
-          "candidates_found": 7,
-          "new_candidates": 5,
-          "qualified": true,
-          "next_eligible_at": "2026-08-29T08:02:47Z"
-        },
-        {
-          "country": "france",
-          "target": "RMC Story",
-          "family": "github:exact_name_hls",
-          "candidates_found": 6,
-          "new_candidates": 2,
-          "qualified": true,
-          "next_eligible_at": "2026-08-29T08:02:47Z"
-        },
-        {
-          "country": "france",
-          "target": "RMC Story",
-          "family": "github:exact_name_live",
-          "candidates_found": 2,
-          "new_candidates": 0,
-          "qualified": true,
-          "next_eligible_at": "2026-08-29T08:02:47Z"
-        }
-      ],
-      "deferred_targets": []
-    },
     {
       "at": "2026-08-22T10:57:34Z",
       "wide": false,
@@ -42453,6 +42014,83 @@
           "country": "algeria",
           "target": "Samira TV",
           "next_eligible_at": "2026-09-01T00:21:00Z"
+        },
+        {
+          "country": "algeria",
+          "target": "Echorouk News",
+          "next_eligible_at": "2026-09-01T00:21:00Z"
+        }
+      ]
+    },
+    {
+      "at": "2026-08-31T10:11:51Z",
+      "wide": false,
+      "tasks": [
+        {
+          "country": "france",
+          "target": "CNEWS",
+          "family": "github:tvg_id",
+          "candidates_found": 2,
+          "new_candidates": 0,
+          "qualified": false,
+          "next_eligible_at": "2026-09-07T10:11:51Z"
+        }
+      ],
+      "deferred_targets": [
+        {
+          "country": "france",
+          "target": "France 2",
+          "next_eligible_at": "2026-08-31T18:21:19Z"
+        },
+        {
+          "country": "france",
+          "target": "France 3",
+          "next_eligible_at": "2026-08-31T18:21:19Z"
+        },
+        {
+          "country": "france",
+          "target": "M6",
+          "next_eligible_at": "2026-08-31T18:32:05Z"
+        },
+        {
+          "country": "france",
+          "target": "France 5",
+          "next_eligible_at": "2026-08-31T18:32:05Z"
+        },
+        {
+          "country": "france",
+          "target": "W9",
+          "next_eligible_at": "2026-08-31T18:21:19Z"
+        },
+        {
+          "country": "france",
+          "target": "6ter",
+          "next_eligible_at": "2026-08-31T18:21:19Z"
+        },
+        {
+          "country": "france",
+          "target": "Canal+",
+          "next_eligible_at": "2026-08-31T18:21:19Z"
+        },
+        {
+          "country": "france",
+          "target": "CStar",
+          "next_eligible_at": "2026-08-31T18:21:19Z"
+        },
+        {
+          "country": "france",
+          "target": "Gulli",
+          "next_eligible_at": "2026-08-31T18:21:19Z"
+        },
+        {
+          "country": "algeria",
+          "target": "Samira TV",
+          "next_eligible_at": "2026-09-01T00:21:00Z"
+        },
+        {
+          "country": "algeria",
+          "target": "TV2 / Canal Algérie",
+          "next_eligible_at": "2026-08-31T13:32:42Z"
         },
         {
           "country": "algeria",
