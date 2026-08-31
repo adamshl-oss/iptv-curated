@@ -198,7 +198,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 2,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-08-31T15:02:11Z",
         "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:buffering_31.5s; media=60.0s; wall=91.5s; lag=31.5s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.615,total_stall_23.2s,long_stall_23.2s; startup=3.0s; observed=60.2s; advancing=37.0s/0.615; waiting=23.2s; stalls=1/23.2s/max23.2s; discontinuities=0",
@@ -298,7 +298,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 2,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-08-31T15:02:11Z",
         "last_evidence": "1:h264/mp2 1920x1080, moving; 2:h264/mp2 1920x1080, moving; 3:h264/mp2 1920x1080, moving; sustained:sustained_ok; media=60.0s; wall=72.7s; lag=12.7s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.009,total_stall_59.6s,long_stall_58.8s; startup=2.4s; observed=60.1s; advancing=0.5s/0.009; waiting=0.8s; stalls=2/59.6s/max58.8s; discontinuities=0",
@@ -322,10 +322,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
-        "last_failure": "2026-08-17T03:30:41Z",
-        "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:sustained_ok; media=60.0s; wall=71.0s; lag=11.0s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.207,total_stall_47.7s,long_stall_47.7s; startup=1.4s; observed=60.1s; advancing=12.5s/0.207; waiting=0.0s; stalls=1/47.7s/max47.7s; discontinuities=1",
+        "last_failure": "2026-08-31T15:24:00Z",
+        "last_evidence": "1:quality 240p below 540p; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact Algerian international news channel retained from the verified lineup behind an always-on public endpoint.",
