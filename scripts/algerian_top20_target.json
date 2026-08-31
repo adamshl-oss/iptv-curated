@@ -298,10 +298,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 2,
         "success_streak": 0,
-        "last_failure": "2026-08-31T09:40:21Z",
-        "last_evidence": "1:h264/mp2 1920x1080, moving; 2:h264/mp2 1920x1080, moving; 3:h264/mp2 1920x1080, moving; sustained:sustained_ok; media=60.0s; wall=69.0s; lag=9.0s; freezes=0/0.0s/max0.0s; errors=0; apple:startup_timeout_12.0s:no_media_advance",
+        "last_failure": "2026-08-31T09:49:20Z",
+        "last_evidence": "1:h264/mp2 1920x1080, moving; 2:h264/mp2 1920x1080, moving; 3:h264/mp2 1920x1080, moving; sustained:buffering_16.2s; media=59.6s; wall=75.8s; lag=16.2s; freezes=1/8.0s/max8.0s; errors=0; apple:player_error:The operation couldn’t be completed. (CoreMediaErrorDomain error -12714.)",
         "recovery_allowed": true,
         "prior_status": "verified_direct",
         "prior_reason": "Exact EPTV international service retained from the verified lineup; source provenance remains under review and it is subject to the same recurring three-pass quarantine gate.",
