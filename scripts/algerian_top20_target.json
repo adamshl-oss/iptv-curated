@@ -130,13 +130,12 @@
     "quarantine_after_failed_gates": 3,
     "recover_after_successful_gates": 1,
     "attempts_per_gate": 3,
-    "published_count": 6,
+    "published_count": 7,
     "required_count": 10,
     "coverage_state": "degraded",
     "missing_targets": [
       "Samira TV",
       "Echorouk TV",
-      "TV3 / A3",
       "Echorouk News"
     ],
     "sustained_playback_seconds": 60,
@@ -199,10 +198,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
-        "last_failure": "2026-08-31T19:10:29Z",
-        "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:sustained_ok; media=60.0s; wall=67.2s; lag=7.2s; freezes=0/0.0s/max0.0s; errors=0; apple:long_stall_3.6s; startup=9.9s; observed=60.2s; advancing=56.7s/0.941; waiting=3.6s; stalls=1/3.6s/max3.6s; discontinuities=0",
+        "last_failure": "2026-08-31T21:03:54Z",
+        "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:sustained_ok; media=60.0s; wall=66.9s; lag=6.9s; freezes=0/0.0s/max0.0s; errors=0; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact live channel retained from the verified lineup behind an always-on public endpoint.",
@@ -251,7 +250,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 2,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-08-31T20:36:06Z",
         "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:ffmpeg_rc124:[h264 @ 0x153661fc0] concealing 2085 DC, 2085 AC, 2085 MV errors in P frame,short_media_40.1s,buffering_64.9s,total_freeze_10.0s; media=40.1s; wall=105.0s; lag=64.9s; freezes=1/10.0s/max10.0s; errors=0; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
@@ -268,21 +267,21 @@
       "playlist_name": "TV3 / A3 (Cloud Live)",
       "tvg_id": "TV3.dz",
       "official_url": "https://entv.dz/",
-      "status": "quarantined_automated",
-      "reason": "Automatically quarantined after the complete startup plus sustained transport and Apple AVPlayer gate failed: 1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:buffering_30.7s,total_freeze_12.6s; media=60.0s; wall=90.7s; lag=30.7s; freezes=3/12.6s/max4.6s; errors=0; apple:advance_ratio_0.601,total_stall_23.9s,long_stall_23.9s; startup=3.0s; observed=60.0s; advancing=36.1s/0.601; waiting=23.9s; stalls=1/23.9s/max23.9s; discontinuities=1",
+      "status": "verified_cloud",
+      "reason": "Exact EPTV service retained from the verified lineup behind an always-on public endpoint.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv3",
       "min_height": 540,
-      "publish": false,
+      "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 3,
-        "success_streak": 0,
+        "failure_streak": 0,
+        "success_streak": 1,
         "last_failure": "2026-08-31T20:36:06Z",
         "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:buffering_30.7s,total_freeze_12.6s; media=60.0s; wall=90.7s; lag=30.7s; freezes=3/12.6s/max4.6s; errors=0; apple:advance_ratio_0.601,total_stall_23.9s,long_stall_23.9s; startup=3.0s; observed=60.0s; advancing=36.1s/0.601; waiting=23.9s; stalls=1/23.9s/max23.9s; discontinuities=1",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact EPTV service retained from the verified lineup behind an always-on public endpoint.",
-        "last_recovery": "2026-08-31T19:10:29Z"
+        "last_recovery": "2026-08-31T21:03:54Z"
       }
     },
     {
