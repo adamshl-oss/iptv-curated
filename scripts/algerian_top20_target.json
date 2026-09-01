@@ -199,7 +199,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-09-01T18:12:22Z",
         "last_evidence": "1:http_503; 2:http_503; 3:http_503; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
@@ -299,10 +299,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 2,
         "success_streak": 0,
-        "last_failure": "2026-09-01T18:12:22Z",
-        "last_evidence": "1:h264/mp2 1920x1080, moving; 2:h264/mp2 1920x1080, moving; 3:h264/mp2 1920x1080, moving; sustained:sustained_ok; media=60.0s; wall=73.5s; lag=13.5s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.580,total_stall_25.3s,long_stall_25.3s; startup=3.7s; observed=60.2s; advancing=34.9s/0.580; waiting=0.0s; stalls=1/25.3s/max25.3s; discontinuities=0",
+        "last_failure": "2026-09-01T18:37:29Z",
+        "last_evidence": "1:h264/mp2 1920x1080, moving; 2:h264/mp2 1920x1080, moving; 3:h264/mp2 1920x1080, moving; sustained:buffering_20.8s; media=60.0s; wall=80.8s; lag=20.8s; freezes=1/3.9s/max3.9s; errors=0; apple:advance_ratio_0.203,total_stall_47.9s,long_stall_47.9s; startup=1.3s; observed=60.1s; advancing=12.2s/0.203; waiting=0.0s; stalls=1/47.9s/max47.9s; discontinuities=0",
         "recovery_allowed": true,
         "prior_status": "verified_direct",
         "prior_reason": "Exact EPTV international service retained from the verified lineup; source provenance remains under review and it is subject to the same recurring three-pass quarantine gate.",
