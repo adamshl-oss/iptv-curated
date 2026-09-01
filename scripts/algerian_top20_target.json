@@ -198,7 +198,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-09-01T04:06:22Z",
         "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:ffmpeg_rc124:[in#0/hls @ 0x13af048f0] Failed to reload playlist 0,short_media_12.8s,buffering_92.2s,network_errors_4; media=12.8s; wall=105.0s; lag=92.2s; freezes=0/0.0s/max0.0s; errors=4; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
@@ -274,7 +274,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-09-01T04:06:22Z",
         "last_evidence": "1:h264/aac 720x576, moving; 2:h264/aac 720x576, moving; 3:h264/aac 720x576, moving; sustained:ffmpeg_rc124:[h264 @ 0x15902c1a0] concealing 486 DC, 486 AC, 486 MV errors in B frame,short_media_35.4s,buffering_69.6s; media=35.4s; wall=105.0s; lag=69.6s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.589,total_stall_24.7s,long_stall_24.7s; startup=1.4s; observed=60.0s; advancing=35.3s/0.589; waiting=24.7s; stalls=1/24.7s/max24.7s; discontinuities=1",
@@ -322,7 +322,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-09-01T04:06:22Z",
         "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:short_media_30.0s,buffering_21.0s,long_freeze_9081.2s,total_freeze_9081.2s,network_errors_6; media=30.0s; wall=51.0s; lag=21.0s; freezes=1/9081.2s/max9081.2s; errors=6; apple:player_error:resource unavailable",
