@@ -1,8 +1,8 @@
 {
   "version": 1,
   "created_at": "2026-08-07T15:53:53Z",
-  "updated_at": "2026-09-02T14:21:53Z",
-  "run_count": 720,
+  "updated_at": "2026-09-02T14:45:15Z",
+  "run_count": 721,
   "targets": {
     "france::TF1": {
       "families": {
@@ -79,9 +79,9 @@
           "qualified": false
         },
         "catalog:schumijo-fr": {
-          "attempts": 6,
-          "last_attempted_at": "2026-08-17T08:48:50Z",
-          "next_eligible_at": "2026-08-18T08:48:50Z",
+          "attempts": 7,
+          "last_attempted_at": "2026-09-02T14:45:15Z",
+          "next_eligible_at": "2026-09-03T14:45:15Z",
           "outcome": "candidates_found",
           "candidates_found": 1,
           "new_candidates": 0,
@@ -272,10 +272,10 @@
         },
         "40cc65af4eec8ffdb2c7c9e4b478f56d306171018c624ece84f563b9c2cace6b": {
           "first_seen_at": "2026-08-08T16:34:08Z",
-          "last_seen_at": "2026-08-18T08:04:21Z",
-          "next_eligible_at": "2026-08-25T08:04:21Z",
+          "last_seen_at": "2026-09-02T14:45:15Z",
+          "next_eligible_at": "2026-09-09T14:45:15Z",
           "url": "https://alive-tf1-hls.cdn-0.diff.tf1.fr/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaXAiOiIxNTkuMjYuMTEyLjgiLCJjbWNkIjoiIiwiZXhwIjoxNzg0MDQyMzU4LCJnaWQiOiJlNzIwMzhjMzU5NDg0MDc1YjgzOGUwNjY5NWI3ZDQ5NiIsImlhdCI6MTc4NDAyNzk1OCwiaXNzIjoiZGVsaXZlcnkiLCJtYXhiIjowLCJzdGVtIjoiL3Byb2QvVEYxL2NtYWYvb3V0Iiwic3ViIjoiZTcyMDM4YzM1OTQ4NDA3NWI4MzhlMDY2OTViN2Q0OTYifQ.guXEzaByDrfGQzirSrm7N3ONiaiz-evEgnKQHsTSVW4/prod/TF1/cmaf/out/TF1.m3u8",
-          "source": "github:schumijo/iptv",
+          "source": "schumijo-fr",
           "last_outcome": "rejected_policy"
         },
         "4790ffcbfcd85c23e25855cf0059023811c9df813fb11a6b6ea2a8a7576779e5": {
@@ -303,7 +303,7 @@
           "last_outcome": "rejected_policy"
         }
       },
-      "last_task_at": "2026-09-01T20:41:02Z"
+      "last_task_at": "2026-09-02T14:45:15Z"
     },
     "france::France 2": {
       "families": {
@@ -2096,9 +2096,9 @@
           "qualified": false
         },
         "github-repo:schumijo~iptv:tvg_id": {
-          "attempts": 2,
-          "last_attempted_at": "2026-08-15T14:37:09Z",
-          "next_eligible_at": "2026-08-22T14:37:09Z",
+          "attempts": 3,
+          "last_attempted_at": "2026-09-02T14:45:15Z",
+          "next_eligible_at": "2026-09-09T14:45:15Z",
           "outcome": "candidates_found",
           "candidates_found": 1,
           "new_candidates": 0,
@@ -2135,11 +2135,11 @@
       "candidates": {
         "5e5d02453248eb7935b6426b65766f2ff6f0a924f6cbc413f40eb6a02b22f84e": {
           "first_seen_at": "2026-08-08T06:59:48Z",
-          "last_seen_at": "2026-08-18T07:17:54Z",
-          "next_eligible_at": "2026-08-25T07:17:54Z",
+          "last_seen_at": "2026-09-02T14:45:15Z",
+          "next_eligible_at": "2026-09-09T14:45:15Z",
           "url": "https://raw.githubusercontent.com/schumijo/iptv/main/playlists/francetv/arte.m3u8",
-          "source": "schumijo-fr",
-          "last_outcome": "candidate_cooldown"
+          "source": "github:schumijo/iptv",
+          "last_outcome": "not_live"
         },
         "7e1f2c532f6066e1cc11a7769a6267def5d88e40bcbd4fb0de363d46bd07ca58": {
           "first_seen_at": "2026-08-08T13:36:33Z",
@@ -2230,7 +2230,7 @@
           "last_outcome": "rejected_policy"
         }
       },
-      "last_task_at": "2026-09-01T20:41:02Z"
+      "last_task_at": "2026-09-02T14:45:15Z"
     },
     "france::TMC": {
       "families": {
@@ -10192,83 +10192,6 @@
     }
   },
   "runs": [
-    {
-      "at": "2026-08-25T08:56:06Z",
-      "wide": false,
-      "tasks": [
-        {
-          "country": "france",
-          "target": "Gulli",
-          "family": "catalog:paratv-tf1plus",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-08-26T08:56:06Z"
-        }
-      ],
-      "deferred_targets": [
-        {
-          "country": "france",
-          "target": "France 2",
-          "next_eligible_at": "2026-08-25T14:09:08Z"
-        },
-        {
-          "country": "france",
-          "target": "France 3",
-          "next_eligible_at": "2026-08-25T14:09:08Z"
-        },
-        {
-          "country": "france",
-          "target": "M6",
-          "next_eligible_at": "2026-08-25T14:09:08Z"
-        },
-        {
-          "country": "france",
-          "target": "France 5",
-          "next_eligible_at": "2026-08-25T14:09:08Z"
-        },
-        {
-          "country": "france",
-          "target": "W9",
-          "next_eligible_at": "2026-08-25T14:09:08Z"
-        },
-        {
-          "country": "france",
-          "target": "6ter",
-          "next_eligible_at": "2026-08-25T14:09:08Z"
-        },
-        {
-          "country": "france",
-          "target": "Canal+",
-          "next_eligible_at": "2026-08-25T14:09:08Z"
-        },
-        {
-          "country": "france",
-          "target": "CStar",
-          "next_eligible_at": "2026-08-25T14:09:08Z"
-        },
-        {
-          "country": "algeria",
-          "target": "Samira TV",
-          "next_eligible_at": "2026-08-25T14:29:48Z"
-        },
-        {
-          "country": "algeria",
-          "target": "El Heddaf TV",
-          "next_eligible_at": "2026-08-25T14:29:48Z"
-        },
-        {
-          "country": "algeria",
-          "target": "TV3 / A3",
-          "next_eligible_at": "2026-08-26T06:39:46Z"
-        },
-        {
-          "country": "algeria",
-          "target": "Echorouk News",
-          "next_eligible_at": "2026-08-25T14:29:48Z"
-        }
-      ]
-    },
     {
       "at": "2026-08-25T10:37:25Z",
       "wide": false,
@@ -40456,6 +40379,107 @@
           "country": "algeria",
           "target": "El Heddaf TV",
           "next_eligible_at": "2026-09-02T19:53:19Z"
+        },
+        {
+          "country": "algeria",
+          "target": "TV2 / Canal Algérie",
+          "next_eligible_at": "2026-09-02T19:00:38Z"
+        },
+        {
+          "country": "algeria",
+          "target": "El Bilad TV",
+          "next_eligible_at": "2026-09-03T03:09:26Z"
+        },
+        {
+          "country": "algeria",
+          "target": "Echorouk News",
+          "next_eligible_at": "2026-09-03T06:36:09Z"
+        }
+      ]
+    },
+    {
+      "at": "2026-09-02T14:45:15Z",
+      "wide": false,
+      "tasks": [
+        {
+          "country": "france",
+          "target": "TF1",
+          "family": "catalog:schumijo-fr",
+          "candidates_found": 1,
+          "new_candidates": 0,
+          "qualified": false,
+          "next_eligible_at": "2026-09-03T14:45:15Z"
+        },
+        {
+          "country": "france",
+          "target": "ARTE",
+          "family": "github-repo:schumijo~iptv:tvg_id",
+          "candidates_found": 1,
+          "new_candidates": 0,
+          "qualified": false,
+          "next_eligible_at": "2026-09-09T14:45:15Z"
+        }
+      ],
+      "deferred_targets": [
+        {
+          "country": "france",
+          "target": "France 2",
+          "next_eligible_at": "2026-09-02T21:12:07Z"
+        },
+        {
+          "country": "france",
+          "target": "France 3",
+          "next_eligible_at": "2026-09-02T21:12:07Z"
+        },
+        {
+          "country": "france",
+          "target": "M6",
+          "next_eligible_at": "2026-09-02T18:31:11Z"
+        },
+        {
+          "country": "france",
+          "target": "France 5",
+          "next_eligible_at": "2026-09-02T18:31:11Z"
+        },
+        {
+          "country": "france",
+          "target": "W9",
+          "next_eligible_at": "2026-09-02T21:12:07Z"
+        },
+        {
+          "country": "france",
+          "target": "6ter",
+          "next_eligible_at": "2026-09-02T21:12:07Z"
+        },
+        {
+          "country": "france",
+          "target": "Canal+",
+          "next_eligible_at": "2026-09-02T18:31:11Z"
+        },
+        {
+          "country": "france",
+          "target": "CStar",
+          "next_eligible_at": "2026-09-02T21:12:07Z"
+        },
+        {
+          "country": "france",
+          "target": "Gulli",
+          "next_eligible_at": "2026-09-02T18:31:11Z"
+        },
+        {
+          "country": "algeria",
+          "target": "Samira TV",
+          "next_eligible_at": "2026-09-03T06:36:09Z"
+        },
+        {
+          "country": "algeria",
+          "target": "El Heddaf TV",
+          "next_eligible_at": "2026-09-02T19:53:19Z"
+        },
+        {
+          "country": "algeria",
+          "target": "TV3 / A3",
+          "next_eligible_at": "2026-09-02T19:23:39Z"
         },
         {
           "country": "algeria",
