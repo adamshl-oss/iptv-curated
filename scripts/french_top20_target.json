@@ -335,7 +335,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-09-02T13:59:55Z",
         "last_evidence": "1:timeout; 2:timeout; 3:ffmpeg_rc196:[tls @ 0x600001124aa0] IO error: Operation timed out; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
@@ -420,9 +420,9 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
-        "last_failure": "2026-09-02T10:00:53Z",
+        "last_failure": "2026-09-02T14:15:26Z",
         "last_evidence": "1:timeout; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "recovery_allowed": true,
         "prior_status": "verified_static",
