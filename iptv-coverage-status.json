@@ -69,9 +69,16 @@
     },
     "algeria": {
       "state": "degraded",
-      "published_count": 0,
+      "published_count": 6,
       "required_count": 10,
-      "published_names": [],
+      "published_names": [
+        "Ennahar TV",
+        "TV1 / Programme National",
+        "TV2 / Canal Algérie",
+        "TV3 / A3",
+        "El Bilad TV",
+        "AL24 News"
+      ],
       "missing": [
         {
           "rank": 1,
@@ -89,39 +96,9 @@
           "status": "candidate_cloud_verification"
         },
         {
-          "rank": 4,
-          "name": "Ennahar TV",
-          "status": "quarantined_automated"
-        },
-        {
-          "rank": 5,
-          "name": "TV1 / Programme National",
-          "status": "quarantined_automated"
-        },
-        {
-          "rank": 6,
-          "name": "TV2 / Canal Algérie",
-          "status": "quarantined_automated"
-        },
-        {
-          "rank": 7,
-          "name": "TV3 / A3",
-          "status": "quarantined_automated"
-        },
-        {
           "rank": 8,
           "name": "Echorouk News",
           "status": "official_cdn_unreachable"
-        },
-        {
-          "rank": 9,
-          "name": "El Bilad TV",
-          "status": "quarantined_automated"
-        },
-        {
-          "rank": 10,
-          "name": "AL24 News",
-          "status": "quarantined_automated"
         }
       ]
     }
