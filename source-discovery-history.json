@@ -1,8 +1,8 @@
 {
   "version": 1,
   "created_at": "2026-08-07T15:53:53Z",
-  "updated_at": "2026-09-03T12:09:47Z",
-  "run_count": 757,
+  "updated_at": "2026-09-03T13:49:26Z",
+  "run_count": 758,
   "targets": {
     "france::TF1": {
       "families": {
@@ -371,9 +371,9 @@
           "qualified": false
         },
         "catalog:paratv-canalplus": {
-          "attempts": 27,
-          "last_attempted_at": "2026-09-02T13:31:20Z",
-          "next_eligible_at": "2026-09-03T13:31:20Z",
+          "attempts": 28,
+          "last_attempted_at": "2026-09-03T13:49:26Z",
+          "next_eligible_at": "2026-09-04T13:49:26Z",
           "outcome": "none",
           "candidates_found": 0,
           "new_candidates": 0,
@@ -652,7 +652,7 @@
           "last_outcome": "playback_failed"
         }
       },
-      "last_task_at": "2026-09-03T12:09:47Z"
+      "last_task_at": "2026-09-03T13:49:26Z"
     },
     "france::France 3": {
       "families": {
@@ -1166,9 +1166,9 @@
           "qualified": false
         },
         "catalog:schumijo-fr": {
-          "attempts": 27,
-          "last_attempted_at": "2026-09-02T13:31:20Z",
-          "next_eligible_at": "2026-09-03T13:31:20Z",
+          "attempts": 28,
+          "last_attempted_at": "2026-09-03T13:49:26Z",
+          "next_eligible_at": "2026-09-04T13:49:26Z",
           "outcome": "candidates_found",
           "candidates_found": 1,
           "new_candidates": 0,
@@ -1295,8 +1295,8 @@
       "candidates": {
         "591a9c23e8fc4f9ae10f211276742b95fa5173a76da25371105d35a8f46bbd12": {
           "first_seen_at": "2026-08-07T16:12:55Z",
-          "last_seen_at": "2026-09-02T13:31:20Z",
-          "next_eligible_at": "2026-09-09T13:31:20Z",
+          "last_seen_at": "2026-09-03T13:49:26Z",
+          "next_eligible_at": "2026-09-10T13:49:26Z",
           "url": "https://viamotionhsi.netplus.ch/live/eds/m6hd/browser-HLS8/m6hd.m3u8",
           "source": "schumijo-fr",
           "last_outcome": "candidate_cooldown"
@@ -1318,7 +1318,7 @@
           "last_outcome": "rejected_policy"
         }
       },
-      "last_task_at": "2026-09-03T12:09:47Z"
+      "last_task_at": "2026-09-03T13:49:26Z"
     },
     "france::France 5": {
       "families": {
@@ -1386,9 +1386,9 @@
           "qualified": false
         },
         "catalog:paratv-canalplus": {
-          "attempts": 28,
-          "last_attempted_at": "2026-09-02T13:31:20Z",
-          "next_eligible_at": "2026-09-03T13:31:20Z",
+          "attempts": 29,
+          "last_attempted_at": "2026-09-03T13:49:26Z",
+          "next_eligible_at": "2026-09-04T13:49:26Z",
           "outcome": "none",
           "candidates_found": 0,
           "new_candidates": 0,
@@ -1715,7 +1715,7 @@
           "last_outcome": "rejected_policy"
         }
       },
-      "last_task_at": "2026-09-03T12:09:47Z"
+      "last_task_at": "2026-09-03T13:49:26Z"
     },
     "france::CNEWS": {
       "families": {
@@ -2970,9 +2970,9 @@
           "qualified": false
         },
         "catalog:paratv-canalplus": {
-          "attempts": 27,
-          "last_attempted_at": "2026-09-02T13:31:20Z",
-          "next_eligible_at": "2026-09-03T13:31:20Z",
+          "attempts": 28,
+          "last_attempted_at": "2026-09-03T13:49:26Z",
+          "next_eligible_at": "2026-09-04T13:49:26Z",
           "outcome": "none",
           "candidates_found": 0,
           "new_candidates": 0,
@@ -3195,7 +3195,7 @@
           "last_outcome": "rejected_policy"
         }
       },
-      "last_task_at": "2026-09-03T12:09:47Z"
+      "last_task_at": "2026-09-03T13:49:26Z"
     },
     "france::LCI": {
       "families": {
@@ -10274,78 +10274,6 @@
     }
   },
   "runs": [
-    {
-      "at": "2026-08-28T06:17:30Z",
-      "wide": false,
-      "tasks": [
-        {
-          "country": "france",
-          "target": "L'Équipe",
-          "family": "github:tvg_id_hls",
-          "candidates_found": 2,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-09-04T06:17:30Z"
-        }
-      ],
-      "deferred_targets": [
-        {
-          "country": "france",
-          "target": "France 2",
-          "next_eligible_at": "2026-08-29T01:17:46Z"
-        },
-        {
-          "country": "france",
-          "target": "France 3",
-          "next_eligible_at": "2026-08-29T01:44:32Z"
-        },
-        {
-          "country": "france",
-          "target": "M6",
-          "next_eligible_at": "2026-08-29T01:44:32Z"
-        },
-        {
-          "country": "france",
-          "target": "France 5",
-          "next_eligible_at": "2026-08-29T01:17:46Z"
-        },
-        {
-          "country": "france",
-          "target": "W9",
-          "next_eligible_at": "2026-08-29T01:17:46Z"
-        },
-        {
-          "country": "france",
-          "target": "6ter",
-          "next_eligible_at": "2026-08-29T01:44:32Z"
-        },
-        {
-          "country": "france",
-          "target": "Canal+",
-          "next_eligible_at": "2026-08-29T01:17:46Z"
-        },
-        {
-          "country": "france",
-          "target": "CStar",
-          "next_eligible_at": "2026-08-29T01:17:46Z"
-        },
-        {
-          "country": "france",
-          "target": "Gulli",
-          "next_eligible_at": "2026-08-29T01:17:46Z"
-        },
-        {
-          "country": "algeria",
-          "target": "Samira TV",
-          "next_eligible_at": "2026-08-29T01:17:46Z"
-        },
-        {
-          "country": "algeria",
-          "target": "Echorouk News",
-          "next_eligible_at": "2026-08-29T01:17:46Z"
-        }
-      ]
-    },
     {
       "at": "2026-08-28T07:44:29Z",
       "wide": true,
@@ -39475,6 +39403,90 @@
         }
       ],
       "deferred_targets": []
+    },
+    {
+      "at": "2026-09-03T13:49:26Z",
+      "wide": false,
+      "tasks": [
+        {
+          "country": "france",
+          "target": "France 2",
+          "family": "catalog:paratv-canalplus",
+          "candidates_found": 0,
+          "new_candidates": 0,
+          "qualified": false,
+          "next_eligible_at": "2026-09-04T13:49:26Z"
+        },
+        {
+          "country": "france",
+          "target": "France 5",
+          "family": "catalog:paratv-canalplus",
+          "candidates_found": 0,
+          "new_candidates": 0,
+          "qualified": false,
+          "next_eligible_at": "2026-09-04T13:49:26Z"
+        },
+        {
+          "country": "france",
+          "target": "W9",
+          "family": "catalog:paratv-canalplus",
+          "candidates_found": 0,
+          "new_candidates": 0,
+          "qualified": false,
+          "next_eligible_at": "2026-09-04T13:49:26Z"
+        },
+        {
+          "country": "france",
+          "target": "M6",
+          "family": "catalog:schumijo-fr",
+          "candidates_found": 1,
+          "new_candidates": 0,
+          "qualified": false,
+          "next_eligible_at": "2026-09-04T13:49:26Z"
+        }
+      ],
+      "deferred_targets": [
+        {
+          "country": "france",
+          "target": "France 3",
+          "next_eligible_at": "2026-09-03T21:26:23Z"
+        },
+        {
+          "country": "france",
+          "target": "6ter",
+          "next_eligible_at": "2026-09-03T21:26:23Z"
+        },
+        {
+          "country": "france",
+          "target": "Canal+",
+          "next_eligible_at": "2026-09-03T18:35:42Z"
+        },
+        {
+          "country": "france",
+          "target": "CStar",
+          "next_eligible_at": "2026-09-03T21:26:23Z"
+        },
+        {
+          "country": "france",
+          "target": "Gulli",
+          "next_eligible_at": "2026-09-03T18:36:28Z"
+        },
+        {
+          "country": "algeria",
+          "target": "Samira TV",
+          "next_eligible_at": "2026-09-04T01:05:08Z"
+        },
+        {
+          "country": "algeria",
+          "target": "El Heddaf TV",
+          "next_eligible_at": "2026-09-03T22:14:28Z"
+        },
+        {
+          "country": "algeria",
+          "target": "Echorouk News",
+          "next_eligible_at": "2026-09-04T01:05:08Z"
+        }
+      ]
     }
   ]
 }
