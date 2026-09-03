@@ -130,7 +130,7 @@
     "quarantine_after_failed_gates": 3,
     "recover_after_successful_gates": 1,
     "attempts_per_gate": 3,
-    "published_count": 4,
+    "published_count": 5,
     "required_count": 10,
     "coverage_state": "degraded",
     "missing_targets": [
@@ -138,7 +138,6 @@
       "Echorouk TV",
       "El Heddaf TV",
       "Ennahar TV",
-      "TV1 / Programme National",
       "Echorouk News"
     ],
     "sustained_playback_seconds": 60,
@@ -246,21 +245,21 @@
       "playlist_name": "TV1 / Programme National (Cloud Live)",
       "tvg_id": "TV1.dz",
       "official_url": "https://entv.dz/",
-      "status": "quarantined_automated",
-      "reason": "Automatically quarantined after the complete startup plus sustained transport and Apple AVPlayer gate failed: 1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:ffmpeg_rc124:[https @ 0x600003a10200] Error reading HTTP response: End of file,short_media_41.5s,buffering_63.5s,freeze_events_4,total_freeze_34.3s,network_errors_2; media=41.5s; wall=105.0s; lag=63.5s; freezes=4/34.3s/max9.3s; errors=2; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
+      "status": "verified_cloud",
+      "reason": "Exact EPTV flagship service retained from the verified lineup behind an always-on public endpoint.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv1",
       "min_height": 540,
-      "publish": false,
+      "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 3,
-        "success_streak": 0,
+        "failure_streak": 0,
+        "success_streak": 1,
         "last_failure": "2026-09-03T17:33:50Z",
         "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:ffmpeg_rc124:[https @ 0x600003a10200] Error reading HTTP response: End of file,short_media_41.5s,buffering_63.5s,freeze_events_4,total_freeze_34.3s,network_errors_2; media=41.5s; wall=105.0s; lag=63.5s; freezes=4/34.3s/max9.3s; errors=2; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact EPTV flagship service retained from the verified lineup behind an always-on public endpoint.",
-        "last_recovery": "2026-09-03T15:49:00Z"
+        "last_recovery": "2026-09-03T21:01:24Z"
       }
     },
     {
