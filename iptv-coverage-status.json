@@ -4,15 +4,15 @@
   "countries": {
     "france": {
       "state": "degraded",
-      "published_count": 4,
+      "published_count": 0,
       "required_count": 20,
-      "published_names": [
-        "TF1",
-        "CNEWS",
-        "ARTE",
-        "BFMTV"
-      ],
+      "published_names": [],
       "missing": [
+        {
+          "rank": 1,
+          "name": "TF1",
+          "status": "quarantined_automated"
+        },
         {
           "rank": 2,
           "name": "France 2",
@@ -34,8 +34,23 @@
           "status": "geo_restricted"
         },
         {
+          "rank": 6,
+          "name": "CNEWS",
+          "status": "quarantined_automated"
+        },
+        {
+          "rank": 7,
+          "name": "ARTE",
+          "status": "quarantined_automated"
+        },
+        {
           "rank": 8,
           "name": "TMC",
+          "status": "quarantined_automated"
+        },
+        {
+          "rank": 9,
+          "name": "BFMTV",
           "status": "quarantined_automated"
         },
         {
