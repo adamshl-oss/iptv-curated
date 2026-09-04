@@ -130,13 +130,12 @@
     "quarantine_after_failed_gates": 3,
     "recover_after_successful_gates": 1,
     "attempts_per_gate": 3,
-    "published_count": 4,
+    "published_count": 5,
     "required_count": 10,
     "coverage_state": "degraded",
     "missing_targets": [
       "Samira TV",
       "Echorouk TV",
-      "Ennahar TV",
       "TV1 / Programme National",
       "TV3 / A3",
       "Echorouk News"
@@ -201,7 +200,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-09-04T17:20:26Z",
         "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:sustained_ok; media=60.0s; wall=60.7s; lag=0.7s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.769,total_stall_13.9s,long_stall_13.9s; startup=2.6s; observed=60.0s; advancing=46.2s/0.769; waiting=13.9s; stalls=1/13.9s/max13.9s; discontinuities=1",
@@ -222,21 +221,21 @@
       "playlist_name": "Ennahar TV (Cloud Live)",
       "tvg_id": "EnnaharTV.dz",
       "official_url": "https://www.ennaharonline.com/live/",
-      "status": "quarantined_automated",
-      "reason": "Automatically quarantined after the complete startup plus sustained transport and Apple AVPlayer gate failed: 1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:buffering_38.5s,freeze_events_5,total_freeze_39.7s; media=60.0s; wall=98.5s; lag=38.5s; freezes=5/39.7s/max8.5s; errors=0; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
+      "status": "verified_cloud",
+      "reason": "Exact live channel retained from the verified lineup behind an always-on public endpoint.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/ennahar",
       "min_height": 540,
-      "publish": false,
+      "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 3,
-        "success_streak": 0,
+        "failure_streak": 0,
+        "success_streak": 1,
         "last_failure": "2026-09-04T17:11:53Z",
         "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:buffering_38.5s,freeze_events_5,total_freeze_39.7s; media=60.0s; wall=98.5s; lag=38.5s; freezes=5/39.7s/max8.5s; errors=0; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact live channel retained from the verified lineup behind an always-on public endpoint.",
-        "last_recovery": "2026-09-03T22:03:05Z"
+        "last_recovery": "2026-09-04T17:51:25Z"
       }
     },
     {
@@ -301,7 +300,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-09-04T17:20:26Z",
         "last_evidence": "1:h264/mp2 1920x1080, moving; 2:h264/mp2 1920x1080, moving; 3:h264/mp2 1920x1080, moving; sustained:buffering_20.4s; media=60.0s; wall=80.4s; lag=20.4s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.102,total_stall_54.1s,long_stall_54.1s; startup=1.6s; observed=60.2s; advancing=6.1s/0.102; waiting=0.0s; stalls=1/54.1s/max54.1s; discontinuities=0",
@@ -349,7 +348,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 2,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-09-04T17:20:26Z",
         "last_evidence": "1:h264/aac 720x576, moving; 2:h264/aac 720x576, moving; 3:h264/aac 720x576, moving; sustained:buffering_29.7s,network_errors_2; media=60.0s; wall=89.7s; lag=29.7s; freezes=3/9.9s/max3.4s; errors=2; apple:advance_ratio_0.823,total_stall_10.7s,long_stall_10.7s; startup=8.9s; observed=60.3s; advancing=49.6s/0.823; waiting=10.7s; stalls=1/10.7s/max10.7s; discontinuities=1",
