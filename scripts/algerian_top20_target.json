@@ -274,10 +274,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
-        "last_failure": "2026-09-04T05:02:01Z",
-        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:ffmpeg_rc124:[h264 @ 0x12a626750] concealing 3209 DC, 3209 AC, 3209 MV errors in I frame,buffering_45.1s,network_errors_2; media=60.0s; wall=105.0s; lag=45.1s; freezes=1/2.2s/max2.2s; errors=2; apple:advance_ratio_0.826,total_stall_10.5s,long_stall_10.5s; startup=1.5s; observed=60.3s; advancing=49.8s/0.826; waiting=10.5s; stalls=1/10.5s/max10.5s; discontinuities=1",
+        "last_failure": "2026-09-04T06:31:11Z",
+        "last_evidence": "1:invalid_video_dimensions_0x0; 2:invalid_video_dimensions_0x0; 3:invalid_video_dimensions_0x0; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact EPTV service retained from the verified lineup behind an always-on public endpoint.",
