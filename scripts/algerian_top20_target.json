@@ -130,13 +130,12 @@
     "quarantine_after_failed_gates": 3,
     "recover_after_successful_gates": 1,
     "attempts_per_gate": 3,
-    "published_count": 6,
+    "published_count": 7,
     "required_count": 10,
     "coverage_state": "degraded",
     "missing_targets": [
       "Samira TV",
       "Echorouk TV",
-      "TV3 / A3",
       "Echorouk News"
     ],
     "sustained_playback_seconds": 60,
@@ -227,7 +226,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-09-04T13:30:52Z",
         "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:buffering_27.0s; media=60.0s; wall=87.0s; lag=27.0s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.899,total_stall_6.1s,long_stall_6.1s; startup=3.5s; observed=60.1s; advancing=54.0s/0.899; waiting=6.1s; stalls=1/6.1s/max6.1s; discontinuities=1",
@@ -268,21 +267,21 @@
       "playlist_name": "TV3 / A3 (Cloud Live)",
       "tvg_id": "TV3.dz",
       "official_url": "https://entv.dz/",
-      "status": "quarantined_automated",
-      "reason": "Automatically quarantined after the complete startup plus sustained transport and Apple AVPlayer gate failed: 1:invalid_video_dimensions_0x0; 2:invalid_video_dimensions_0x0; 3:invalid_video_dimensions_0x0; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
+      "status": "verified_cloud",
+      "reason": "Exact EPTV service retained from the verified lineup behind an always-on public endpoint.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv3",
       "min_height": 540,
-      "publish": false,
+      "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 3,
-        "success_streak": 0,
+        "failure_streak": 0,
+        "success_streak": 1,
         "last_failure": "2026-09-04T08:10:25Z",
         "last_evidence": "1:invalid_video_dimensions_0x0; 2:invalid_video_dimensions_0x0; 3:invalid_video_dimensions_0x0; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact EPTV service retained from the verified lineup behind an always-on public endpoint.",
-        "last_recovery": "2026-09-03T20:19:53Z"
+        "last_recovery": "2026-09-04T13:59:36Z"
       }
     },
     {
