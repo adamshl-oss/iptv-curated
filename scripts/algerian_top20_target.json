@@ -198,7 +198,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-09-05T16:24:39Z",
         "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:ffmpeg_rc196:[tls @ 0x600001a40c80] IO error: Operation timed out; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
@@ -298,10 +298,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
-        "last_failure": "2026-09-05T13:10:17Z",
-        "last_evidence": "1:h264/mp2 1920x1080, moving; 2:h264/mp2 1920x1080, moving; 3:h264/mp2 1920x1080, moving; sustained:buffering_16.2s; media=60.0s; wall=76.2s; lag=16.2s; freezes=0/0.0s/max0.0s; errors=0; apple:startup_timeout_12.0s:no_media_advance",
+        "last_failure": "2026-09-05T16:44:44Z",
+        "last_evidence": "1:h264/mp2 1920x1080, moving; 2:h264/mp2 1920x1080, moving; 3:h264/mp2 1920x1080, moving; sustained:sustained_ok; media=60.0s; wall=62.8s; lag=2.8s; freezes=2/4.3s/max2.2s; errors=0; apple:advance_ratio_0.855,total_stall_8.7s,long_stall_8.7s; startup=1.5s; observed=60.1s; advancing=51.4s/0.855; waiting=8.7s; stalls=1/8.7s/max8.7s; discontinuities=0",
         "recovery_allowed": true,
         "prior_status": "verified_direct",
         "prior_reason": "Exact EPTV international service retained from the verified lineup; source provenance remains under review and it is subject to the same recurring three-pass quarantine gate.",
