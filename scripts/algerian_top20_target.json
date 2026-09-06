@@ -298,10 +298,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 2,
         "success_streak": 0,
-        "last_failure": "2026-09-06T12:23:47Z",
-        "last_evidence": "1:h264/mp2 1920x1080, moving; 2:h264/mp2 1920x1080, moving; 3:h264/mp2 1920x1080, moving; sustained:sustained_ok; media=60.0s; wall=72.1s; lag=12.1s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.801,total_stall_12.0s,long_stall_12.0s; startup=2.2s; observed=60.1s; advancing=48.2s/0.801; waiting=0.0s; stalls=1/12.0s/max12.0s; discontinuities=0",
+        "last_failure": "2026-09-06T13:11:31Z",
+        "last_evidence": "1:no_video_codec; 2:no_video_codec; 3:h264/mp2 1920x1080, moving; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "recovery_allowed": true,
         "prior_status": "verified_direct",
         "prior_reason": "Exact EPTV international service retained from the verified lineup; source provenance remains under review and it is subject to the same recurring three-pass quarantine gate.",
