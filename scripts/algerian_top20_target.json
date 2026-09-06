@@ -274,10 +274,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 0,
-        "success_streak": 1,
-        "last_failure": "2026-09-06T10:04:37Z",
-        "last_evidence": "1:invalid_video_dimensions_0x0; 2:invalid_video_dimensions_0x0; 3:invalid_video_dimensions_0x0; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
+        "failure_streak": 1,
+        "success_streak": 0,
+        "last_failure": "2026-09-06T13:36:39Z",
+        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:sustained_ok; media=60.0s; wall=60.7s; lag=0.7s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.850,total_stall_9.0s,long_stall_9.0s; startup=1.3s; observed=60.2s; advancing=51.2s/0.850; waiting=9.0s; stalls=1/9.0s/max9.0s; discontinuities=1",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact EPTV service retained from the verified lineup behind an always-on public endpoint.",
@@ -298,7 +298,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 2,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-09-06T13:11:31Z",
         "last_evidence": "1:no_video_codec; 2:no_video_codec; 3:h264/mp2 1920x1080, moving; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
