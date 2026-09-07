@@ -4,7 +4,7 @@
   "countries": {
     "france": {
       "state": "degraded",
-      "published_count": 11,
+      "published_count": 12,
       "required_count": 20,
       "published_names": [
         "TF1",
@@ -17,7 +17,8 @@
         "TFX",
         "RMC Story",
         "TF1 Séries Films",
-        "L'Équipe"
+        "L'Équipe",
+        "CStar"
       ],
       "missing": [
         {
@@ -51,11 +52,6 @@
           "status": "paid_drm"
         },
         {
-          "rank": 18,
-          "name": "CStar",
-          "status": "candidate_cloud_verification"
-        },
-        {
           "rank": 19,
           "name": "Gulli",
           "status": "unverified"
@@ -69,14 +65,16 @@
     },
     "algeria": {
       "state": "degraded",
-      "published_count": 7,
+      "published_count": 9,
       "required_count": 10,
       "published_names": [
+        "Echorouk TV",
         "El Heddaf TV",
         "Ennahar TV",
         "TV1 / Programme National",
         "TV2 / Canal Algérie",
         "TV3 / A3",
+        "Echorouk News",
         "El Bilad TV",
         "AL24 News"
       ],
@@ -85,16 +83,6 @@
           "rank": 1,
           "name": "Samira TV",
           "status": "official_app_only"
-        },
-        {
-          "rank": 2,
-          "name": "Echorouk TV",
-          "status": "quarantined_automated"
-        },
-        {
-          "rank": 8,
-          "name": "Echorouk News",
-          "status": "official_cdn_unreachable"
         }
       ]
     }

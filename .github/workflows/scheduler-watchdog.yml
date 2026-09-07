@@ -14,6 +14,7 @@ on:
       - Refresh playlists
       - Discover and qualify channel replacements
       - Renew Algerian signed recovery source
+      - Promote verified IPTVX release
     types: [completed]
 
 permissions:
@@ -103,7 +104,7 @@ jobs:
               gh api \
                 -H "Accept: application/vnd.github+json" \
                 "repos/$GH_REPO/actions/workflows/$workflow/runs?branch=main&status=success&per_page=1" \
-                --jq '.workflow_runs[0].created_at // ""'
+                --jq '.workflow_runs[0].updated_at // ""'
             } 2>/dev/null || true)"
             if [ -n "$latest_success" ]; then
               success_epoch="$(date -u -d "$latest_success" +%s)"
@@ -196,6 +197,10 @@ jobs:
           dispatch_if_stale refresh-algerian-cloud.yml 1500
           dispatch_if_stale refresh-youtube.yml 6300
           dispatch_if_stale refresh.yml 19800
+          # The fixed Apple TV aliases are only updated by this full
+          # every-channel promotion gate. Missing one hourly cron must never
+          # leave a qualified candidate stranded indefinitely.
+          dispatch_if_stale promote-iptvx-release.yml 4500
 
           if [ "$discovery_max_age" -eq 1500 ]; then
             discovery_memory="$({

@@ -95,6 +95,15 @@ class EvidenceTests(unittest.TestCase):
         self.assertEqual(len(promotion.verified_entries(self.report)), 3)
         self.assertEqual(self.report['promotion_decisions']['degraded_retained'], ['old'])
 
+    def test_shared_infrastructure_outage_freezes_release(self):
+        self.report['infrastructure_circuit_breaker'] = {
+            'open': True,
+            'groups': [{'host': 'example.test', 'affected': 3, 'tested': 4}],
+        }
+        accepted = promotion.verified_entries(self.report)
+        self.assertEqual([promotion.identity(info) for info, _ in accepted],
+                         ['old', 'omitted'])
+
     def test_health_tracks_same_channel_different_urls_independently(self):
         import json
         report = copy.deepcopy(self.report)

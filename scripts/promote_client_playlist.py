@@ -47,6 +47,8 @@ def durably_quarantined(key: str, url: str) -> bool:
 
 
 def record_health(report: dict) -> None:
+    if report.get("infrastructure_circuit_breaker", {}).get("open"):
+        return
     path = ROOT / "releases" / "client-health.json"
     document = json.loads(path.read_text()) if path.exists() else {"channels": {}}
     for row in report["results"]:
@@ -110,6 +112,14 @@ def verified_entries(report: dict) -> list[tuple[str, str]]:
     seen = set()
     decisions = {"degraded_retained": [], "quality_degraded_retained": [],
                  "unproven_skipped": [], "quarantined": []}
+    if report.get("infrastructure_circuit_breaker", {}).get("open"):
+        # A shared relay/DNS failure is infrastructure evidence, not proof that
+        # many independent channels died simultaneously. Freeze the client
+        # release and preserve every prior channel until the control plane is
+        # healthy again.
+        decisions["degraded_retained"] = list(old)
+        report["promotion_decisions"] = decisions
+        return list(old.values())
     for info, url in entries(CANDIDATE):
         key = identity(info)
         if key in seen:
@@ -159,6 +169,14 @@ def promote(release: str, report_path: Path) -> int:
     # Re-evaluate now that this distinct observed audit is in durable history.
     accepted = verified_entries(report)
     count = len(accepted)
+    releases = ROOT / "releases"
+    releases.mkdir(exist_ok=True)
+    # The status service needs one stable, machine-readable pointer to the
+    # newest real every-channel playback audit. Keep it current even when the
+    # playlist itself is unchanged, so a green workflow is never mistaken for
+    # proof that channels played.
+    (releases / "latest-client-audit.json").write_text(
+        json.dumps(report, ensure_ascii=False, indent=2) + "\n")
     print("RELEASE_DECISIONS\t" + json.dumps(report["promotion_decisions"]))
     if accepted == entries(CLIENT_ALIASES[1]):
         print("UNCHANGED\tClient identities, order and URLs already match tested release")
@@ -168,8 +186,6 @@ def promote(release: str, report_path: Path) -> int:
     for info, url in accepted:
         lines.extend((info, url))
     body = "\n".join(lines) + "\n"
-    releases = ROOT / "releases"
-    releases.mkdir(exist_ok=True)
     if (releases / f"iptvx-{release}.m3u").exists():
         raise ValueError("release ID already exists; immutable releases cannot be overwritten")
     (releases / f"iptvx-{release}.m3u").write_text(body)

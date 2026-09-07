@@ -30,6 +30,7 @@ jobs:
           xcrun swiftc -O scripts/apple_avplayer_check.swift -o "$RUNNER_TEMP/apple-player"
           echo "APPLE_AVPLAYER_GATE_BIN=$RUNNER_TEMP/apple-player" >> "$GITHUB_ENV"
           python3 -m unittest scripts/test_promote_client_playlist.py
+          python3 -m unittest scripts/test_audit_client_playlist.py
       - name: Test every candidate and prior client URL
         run: |
           python3 -u scripts/audit_client_playlist.py chaines-tv-candidate.m3u \

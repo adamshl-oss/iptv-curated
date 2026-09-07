@@ -217,7 +217,7 @@
       "logo": "https://i.imgur.com/sSNhk2g.png",
       "official_url": "https://www.cnews.fr/le-direct",
       "status": "verified_dynamic_apple_relay",
-      "reason": "Exact official CNEWS Dailymotion live behind request-time cloud failover. The route races independent maintained resolvers, trims the event manifest to a live window, proxies media through stable Apple-player URLs, and temporarily accepts the broadcaster's globally available 288p rendition until its protected HD delivery is again usable outside France.",
+      "reason": "Exact official CNEWS Dailymotion live behind request-time cloud failover. The relay now selects the verified 720p rendition explicitly instead of silently accepting the resolver's first low-resolution variant. Public validation passed three moving H.264/AAC decodes, a continuous 60-second transport gate, exact current branding/clock inspection, and 60 seconds of native AVPlayer playback with no stalls.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/cnews/live.m3u8",
       "refresh_wrapper": "streams/cnews.m3u8",
       "resolver": {
@@ -225,7 +225,7 @@
         "url": "https://www.dailymotion.com/video/x3b68jn",
         "preferred_live_filename": "live-720@60.m3u8"
       },
-      "min_height": 288,
+      "min_height": 720,
       "publish": true,
       "auto_healing": {
         "enabled": true,
@@ -496,21 +496,23 @@
       "name": "CStar",
       "tvg_id": "CStar.fr",
       "official_url": "https://www.canalplus.com/chaines/cstar",
-      "status": "candidate_cloud_verification",
-      "reason": "Automatically discovered from paratv-france; exact identity and three moving-media gates passed. Awaiting the independent recovery gate.",
-      "publish": false,
-      "stream_url": "https://raw.githubusercontent.com/Paradise-91/ParaTV/main/streams/canalplus/cstar-dm.m3u8",
+      "status": "verified_dynamic_apple_relay",
+      "reason": "Exact CStar official Dailymotion live resolved at request time through two maintained wrapper paths and proxied through stable Apple-player URLs. The 720p public cloud route passed three moving H.264/AAC decodes, a continuous 60-second transport gate, exact current CStar branding/program inspection, and 60 seconds of native AVPlayer playback with no stalls.",
+      "publish": true,
+      "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/cstar/live.m3u8",
+      "min_height": 720,
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
         "failure_streak": 0,
-        "success_streak": 1,
+        "success_streak": 2,
         "prior_status": "geo_restricted",
         "prior_reason": "CStar's official Dailymotion live x5gv5v0 is explicitly geo-restricted outside its licensed territories; a fresh 2026-07-25 extraction was again refused by the owner's territory policy. Free TV's exact CStar service (678) was also audited, but every tested HLS audio/video rendition is SAMPLE-AES/FairPlay encrypted and its player requires account and TV-rights tokens for the license request. Molotov Basic carries the exact channel, but its current public state marks it unavailable from the US; channel APIs require an authenticated session and Molotov confirms its delivery uses DRM. POST Luxembourg's 2026-07-24 base package and Zattoo Switzerland carry exact CStar, but POST requires its Internet+TV subscription and decoder, while Zattoo prohibits Swiss live TV outside Switzerland and blocks hosting/proxy use. Licensed Swiss provider netplus carries exact CStar, but its HLS origin completes TLS and then returns no HTTP response from the US; Teleboy and Salt likewise require Swiss service/account access. ParaTV's newly refreshed signed Dailymotion wrapper passed three 12-second H.264/AAC decodes and showed exact CStar branding from the US, but the token is sourced from an owner-permitted territory and would circumvent Dailymotion's explicit US restriction, so it was intentionally not published. Other maintained resolvers offer only private-IP restreams, and Samsung TV Plus's current French FAST catalog contains no exact CStar. The previously published signed Dailymotion rendition expired and was removed rather than left as a dead channel.",
         "candidate_discovered_at": "2026-09-07T00:58:02Z",
         "candidate_source": "paratv-france",
-        "candidate_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving",
-        "last_recovery": "2026-08-07T07:46:22Z",
+        "candidate_evidence": "public relay 1-3:h264/aac 1280x720 moving; sustained:60s pass; apple:60s pass with zero stalls; exact CStar branding inspected",
+        "last_candidate_url": "https://raw.githubusercontent.com/Paradise-91/ParaTV/main/streams/canalplus/cstar-dm.m3u8",
+        "last_recovery": "2026-09-07T03:15:00Z",
         "last_failure": "2026-08-07T17:02:59Z",
         "last_evidence": "no permanent cloud URL; no permanent cloud URL; no permanent cloud URL"
       }

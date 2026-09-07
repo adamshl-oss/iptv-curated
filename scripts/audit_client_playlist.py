@@ -13,6 +13,7 @@ from dataclasses import asdict
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.request import Request, urlopen
+from urllib.parse import urlparse
 
 from build_combined_playlist import entries
 from reconcile_self_healing import gate, apple_playback_attempt, HEALTH_POLICY_PATH
@@ -40,6 +41,22 @@ def identity(extinf: str) -> str:
     if not match:
         raise ValueError("Channel has no stable tvg-id")
     return match.group(1)
+
+
+def infrastructure_circuit(results: list[dict]) -> dict:
+    """Detect a shared relay outage before it mutates per-channel history."""
+    groups: dict[str, list[dict]] = {}
+    for row in results:
+        groups.setdefault(urlparse(row["url"]).hostname or "unknown", []).append(row)
+    opened = []
+    for host, rows in groups.items():
+        startup_failures = [row for row in rows
+                            if row.get("successes") == 0
+                            and not row.get("audit_error")]
+        if len(rows) >= 4 and len(startup_failures) >= max(3, (len(rows) + 1) // 2):
+            opened.append({"host": host, "affected": len(startup_failures),
+                           "tested": len(rows)})
+    return {"open": bool(opened), "groups": opened}
 
 
 def assess(result: dict) -> dict:
@@ -125,6 +142,7 @@ def main() -> int:
         "all_passed": all(item["passed"] for item in results),
         "results": sorted(results, key=lambda item: item["name"]),
     }
+    report["infrastructure_circuit_breaker"] = infrastructure_circuit(results)
     args.report.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n")
     return 0 if report["all_passed"] else 1
 

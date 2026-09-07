@@ -164,24 +164,21 @@
       "playlist_name": "Echorouk TV (Cloud Live)",
       "tvg_id": "EchoroukTV.dz",
       "official_url": "https://www.echoroukonline.com/live-",
-      "status": "quarantined_automated",
-      "reason": "Automatically quarantined after the complete startup plus sustained transport and Apple AVPlayer gate failed: home Apple AVPlayer evidence is stale (2428s)",
-      "publish": false,
-      "stream_url": "https://raw.githubusercontent.com/adamshl-oss/iptv-curated/main/streams/echorouk.m3u8",
-      "health_authority": "home_avplayer",
-      "health_authority_max_age_seconds": 2100,
-      "health_authority_wrapper": "streams/echorouk.m3u8",
-      "health_authority_evidence": "streams/echorouk-health.json",
+      "status": "verified_dynamic_apple_relay",
+      "reason": "Exact first-party Echorouk TV player resolved dynamically through its public challenge/sign flow. The cloud relay follows the signed bootstrap into its opaque media session and rewrites every HLS child and segment for Apple TV. The public 720p route passed three moving H.264/AAC decodes, a continuous 60-second transport gate, current branded-frame inspection, and 60 seconds of native AVPlayer playback with no stalls.",
+      "publish": true,
+      "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/echorouk/tv/live.m3u8",
+      "min_height": 720,
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 1,
-        "success_streak": 0,
+        "failure_streak": 0,
+        "success_streak": 2,
         "prior_status": "verified_official_signed_source",
         "prior_reason": "Official Echorouk live-player HLS renewed automatically from the broadcaster's current signed source.",
         "last_failure": "2026-08-14T12:01:19Z",
-        "last_evidence": "home Apple AVPlayer evidence is stale (2428s)",
-        "last_recovery": "2026-08-14T11:24:30Z"
+        "last_evidence": "public relay 1-3:h264/aac 1280x720 moving; sustained:60s pass; apple:60s pass with zero stalls; exact Echorouk TV branding inspected",
+        "last_recovery": "2026-09-07T03:18:00Z"
       }
     },
     {
@@ -383,10 +380,20 @@
       "playlist_order": 18,
       "playlist_name": "Echorouk News (Cloud Live)",
       "tvg_id": "EchoroukNews.dz",
-      "official_url": "https://www.echoroukonline.com/live",
-      "status": "official_cdn_unreachable",
-      "reason": "Fresh 2026-08-12 testing recovered the dormant relay route, but its current HLS segments report 0x0 video and repeatedly fail H.264 SPS/PPS decoding; native AVFoundation cannot start playback. The official signed source also returns no media from this network.",
-      "publish": false
+      "official_url": "https://www.echoroukonline.com/live-news",
+      "status": "verified_dynamic_apple_relay",
+      "reason": "Exact first-party Echorouk News player resolved dynamically through its public challenge/sign flow and proxied through stable Apple-player URLs. The public 720p route passed three moving H.264/AAC decodes, a continuous 60-second transport gate, current NEWS branding/ticker inspection, and 60 seconds of native AVPlayer playback with no stalls.",
+      "publish": true,
+      "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/echorouk/news/live.m3u8",
+      "min_height": 720,
+      "auto_healing": {
+        "enabled": true,
+        "recovery_allowed": true,
+        "failure_streak": 0,
+        "success_streak": 2,
+        "last_evidence": "public relay 1-3:h264/aac 1280x720 moving; sustained:60s pass; apple:60s pass with zero stalls; exact Echorouk News branding inspected",
+        "last_recovery": "2026-09-07T03:18:00Z"
+      }
     },
     {
       "rank": 13,
