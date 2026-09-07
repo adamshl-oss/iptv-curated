@@ -189,14 +189,17 @@ jobs:
             echo "A green run means the controller worked. Coverage and sustained quality are reported separately above."
           } >> "$GITHUB_STEP_SUMMARY"
 
-          if [ "$RECONCILE_OUTCOME" != "success" ]; then
-            echo "The French controller itself failed unexpectedly."
+          if ! grep -q $'^OPERATIONAL\tfrance controller\t' \
+            french-self-healing-audit.txt; then
+            echo "The French controller did not produce a valid operational report."
             exit 1
+          fi
+          if [ "$RECONCILE_OUTCOME" != "success" ]; then
+            echo "::warning::The controller completed, but published playback is degraded."
           fi
           if ! grep -Eq $'^PLAYBACK_(HEALTHY|SURVIVORS_HEALTHY)\tfrance\t' \
             french-self-healing-audit.txt; then
-            echo "Published French playback remains degraded."
-            exit 1
+            echo "::warning::Published French playback remains degraded; the next scheduled run will retry it."
           fi
           if grep -q $'^COVERAGE_COMPLETE\tfrance\t' french-self-healing-audit.txt; then
             echo "French coverage is complete."

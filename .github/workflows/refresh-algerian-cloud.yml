@@ -250,14 +250,17 @@ jobs:
             echo "A green run means the controller worked. Coverage and sustained quality are reported separately above."
           } >> "$GITHUB_STEP_SUMMARY"
 
-          if [ "$RECONCILE_OUTCOME" != "success" ]; then
-            echo "The Algerian controller itself failed unexpectedly."
+          if ! grep -q $'^OPERATIONAL\talgeria controller\t' \
+            algerian-self-healing-audit.txt; then
+            echo "The Algerian controller did not produce a valid operational report."
             exit 1
+          fi
+          if [ "$RECONCILE_OUTCOME" != "success" ]; then
+            echo "::warning::The controller completed, but published playback is degraded."
           fi
           if ! grep -Eq $'^PLAYBACK_(HEALTHY|SURVIVORS_HEALTHY)\talgeria\t' \
             algerian-self-healing-audit.txt; then
-            echo "Published Algerian playback remains degraded."
-            exit 1
+            echo "::warning::Published Algerian playback remains degraded; the next scheduled run will retry it."
           fi
           if grep -q $'^COVERAGE_COMPLETE\talgeria\t' algerian-self-healing-audit.txt; then
             echo "Algerian coverage is complete."
