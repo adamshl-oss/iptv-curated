@@ -34,6 +34,10 @@ jobs:
             scripts/test_reconcile_self_healing.py \
             scripts/test_sustained_stream_gate.py
 
+      - name: Verify player environment before changing channel health
+        run: |
+          python3 -c 'import sys; sys.path.insert(0, "scripts"); from audit_client_playlist import assert_player_environment; assert_player_environment()'
+
       - name: Audit, quarantine, recover, and rebuild
         id: reconcile
         continue-on-error: true

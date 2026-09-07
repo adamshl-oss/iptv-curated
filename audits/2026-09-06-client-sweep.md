@@ -71,7 +71,23 @@ Those findings were addressed before publication. It independently passed all
 35 related regression tests, including contradictory gate fields, stale hashes,
 wrong URLs, omitted healthy channels, transient failures and per-source history.
 
-Cloud release audit: GitHub Actions run `34073170780` tests every unique candidate
-and prior-client URL with three audio/video/motion attempts, sustained transport,
-and real AVPlayer. Terminal result and final public counts must be checked before
-claiming delivery. This document is not a claim that every channel is healthy.
+## Terminal cloud result and delivered release
+
+GitHub Actions run `34073170780` completed successfully, including the positive
+player control (0.6-second startup, 60.2 seconds advancing, zero stalls) and
+public byte-for-byte verification of both aliases. It tested all 19 unique
+candidate/prior-client URLs, not a sample. Echorouk failed 0/3 and was quarantined
+after the durable failure evidence above. El Heddaf was restored to the client.
+
+The published 18-channel release contains 11 French and 7 Algerian channels.
+All 18 passed three moving-media decodes and 60-second cloud AVPlayer playback.
+Seventeen passed the stricter combined assessment; LCI failed the sustained
+FFmpeg stress test (44.2 seconds media in 105 seconds wall time) despite its
+clean Apple minute, so it remains explicitly degraded rather than silently
+removed. CNEWS remains 288p and is explicitly quality-degraded. TV3 passed the
+cloud test, but its two local transport failures remain a regional/path warning.
+
+Evidence is in `releases/iptvx-2026-09-07-34073170780-audit.json`. A successful
+release workflow does not mean complete coverage, perfect quality, or actual
+Apple TV hardware verification. The French/Algerian controllers now use the same
+known-good player preflight before any health/quarantine decisions.
