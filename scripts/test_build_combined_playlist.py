@@ -54,7 +54,12 @@ class CombinedPlaylistTests(unittest.TestCase):
         body = output.read_text()
 
         self.assertEqual(count, 2)
-        self.assertTrue(body.startswith('#EXTM3U playlist-name="CHAINES TV"\n'))
+        self.assertTrue(
+            body.startswith(
+                '#EXTM3U url-tvg="https://adamshl-oss.github.io/iptv-curated/epg.xml.gz" '
+                'playlist-name="CHAINES TV"\n'
+            )
+        )
         self.assertLess(body.index("TF1.fr"), body.index("TV1.dz"))
         self.assertEqual(body.count("#EXTINF:"), 2)
         self.assertEqual(body.count('group-title="CHAINES TV"'), 2)

@@ -96,6 +96,14 @@ jobs:
                 echo "$workflow has active run $latest_id (${latest_age}s old)."
                 return 0
               fi
+              # A completed failure should be retried, but never on every
+              # workflow_run or public-status pulse. Give it the same cadence
+              # as the workflow's freshness target to prevent retry storms.
+              if [ "$latest_status" = "completed" ] && [ "$latest_conclusion" != "success" ] \
+                  && [ "$latest_age" -le "$max_age" ]; then
+                echo "$workflow last failed ${latest_age}s ago; retry backoff is still active."
+                return 0
+              fi
             fi
 
             # Only a successful completion can make maintenance fresh. Failed,
