@@ -6,17 +6,6 @@ on:
     # this controller dispatches any maintenance workflow that became stale.
     - cron: "5,20,35,50 * * * *"
   workflow_dispatch:
-  workflow_run:
-    workflows:
-      - Audit self-healing French channels
-      - Refresh and audit self-healing Algerian channels
-      - Refresh YouTube lives
-      - Refresh playlists
-      - Discover and qualify channel replacements
-      - Renew Algerian signed recovery source
-      - Promote verified IPTVX release
-      - Refresh IPTVX programme guide
-    types: [completed]
 
 permissions:
   actions: write
