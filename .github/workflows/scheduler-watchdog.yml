@@ -62,6 +62,21 @@ jobs:
             max_age="$2"
             input_name="${3:-}"
             input_value="${4:-}"
+            active="$({
+              gh api \
+                -H "Accept: application/vnd.github+json" \
+                "repos/$GH_REPO/actions/workflows/$workflow/runs?branch=main&per_page=10" \
+                --jq '[.workflow_runs[] | select(.status == "queued" or .status == "in_progress" or .status == "waiting")][0] | if . then [.id, .status, .created_at] | @tsv else "" end'
+            } 2>/dev/null || true)"
+            if [ -n "$active" ]; then
+              IFS=$'\t' read -r active_id active_status active_created <<< "$active"
+              active_epoch="$(date -u -d "$active_created" +%s)"
+              active_age="$((now - active_epoch))"
+              if [ "$active_age" -le 3600 ]; then
+                echo "$workflow has $active_status run $active_id (${active_age}s old)."
+                return 0
+              fi
+            fi
             latest="$({
               gh api \
                 -H "Accept: application/vnd.github+json" \
