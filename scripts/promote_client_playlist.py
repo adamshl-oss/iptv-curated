@@ -159,7 +159,7 @@ def verified_entries(report: dict) -> list[tuple[str, str]]:
 
 
 def promote(release: str, report_path: Path) -> int:
-    if not re.fullmatch(r"[0-9]{4}-[0-9]{2}-[0-9]{2}(?:-[a-z0-9]+)?", release):
+    if not re.fullmatch(r"[0-9]{4}-[0-9]{2}-[0-9]{2}(?:-[a-z0-9]+(?:-[a-z0-9]+)*)?", release):
         raise ValueError("release must be YYYY-MM-DD or YYYY-MM-DD-suffix")
     candidate = CANDIDATE.read_text()
     validate(candidate)

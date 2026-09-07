@@ -22,6 +22,15 @@ jobs:
     runs-on: macos-14
     timeout-minutes: 55
     steps:
+      - name: Validate requested release ID before the expensive playback audit
+        if: ${{ inputs.release != '' }}
+        env:
+          REQUESTED_RELEASE: ${{ inputs.release }}
+        run: |
+          [[ "$REQUESTED_RELEASE" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}(-[a-z0-9]+)*$ ]] || {
+            echo "Invalid release ID: use YYYY-MM-DD or YYYY-MM-DD-suffix"
+            exit 1
+          }
       - uses: actions/checkout@v4
       - name: Install actual media and Apple playback tools
         run: |
