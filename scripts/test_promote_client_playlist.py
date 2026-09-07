@@ -104,6 +104,9 @@ class EvidenceTests(unittest.TestCase):
         with patch.object(promotion, 'ROOT', Path(self.temp.name)):
             promotion.record_health(report)
             promotion.record_health(report)  # Same evidence cannot count twice.
+            older = copy.deepcopy(report)
+            older['checked_at'] = (datetime.now(timezone.utc) - timedelta(minutes=10)).isoformat()
+            promotion.record_health(older)  # Nor can an older replay count again.
         saved = json.loads((Path(self.temp.name) / 'releases/client-health.json').read_text())
         sources = saved['channels']['old']['sources']
         self.assertEqual(len(sources), 2)

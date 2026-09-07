@@ -53,7 +53,8 @@ def record_health(report: dict) -> None:
         key = row["tvg_id"]
         sources = document["channels"].setdefault(key, {}).setdefault("sources", {})
         prior = sources.get(row["url"], {})
-        if prior.get("checked_at") == report["checked_at"]:
+        if (prior.get("checked_at") and datetime.fromisoformat(report["checked_at"])
+                <= datetime.fromisoformat(prior["checked_at"])):
             continue
         if prior.get("url") != row["url"]:
             prior = {}
