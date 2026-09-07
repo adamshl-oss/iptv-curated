@@ -27,10 +27,10 @@ was repeatedly confused with complete coverage and a good viewing experience.
 
 | Priority | Deliverable | Acceptance test |
 |---|---|---|
-| 1 | Eliminate remaining Mac-only renewal paths, starting with Echorouk; renew expiring sources before expiry | Shut the home Mac down for 72 hours; exercise at least two expiry/renewal cycles remotely; no channel depends on a local sidecar |
+| 1 | Fix TV3's sustained-delivery problem and eliminate remaining Mac-only renewal paths, starting with Echorouk; renew expiring sources before expiry | Ten-minute TV3 real-time decode and Apple playback without repeated stalls; shut the home Mac down for 72 hours and exercise two expiry/renewal cycles remotely; no local sidecar dependency |
 | 2 | Public-client playback and freshness watchdog independent of GitHub's scheduler | Disable the GitHub scheduler in an isolated test; watchdog detects missed audits and restores scheduling; a missed job cannot stay silently green |
 | 3 | Channel-specific failover between independently verified sources | Break primary in a staging route; alternate starts without editing IPTVX; verify failback, exhausted alternatives and current channel identity; mirrors of one source do not count as redundancy |
-| 4 | Better pictures and coverage: CNEWS HD, Echorouk recovery, France Télévisions and M6 group | Publish each exact channel only after current branding, moving video, audio, repeated decodes and Apple playback; normally native 720p+; no upscaled SD passed off as HD |
+| 4 | Better pictures and coverage: CNEWS HD, Echorouk and Samira, France Télévisions and M6 group | Publish each exact channel only after current branding, moving video, audio, repeated decodes and Apple playback; normally native 720p+; no upscaled SD passed off as HD |
 | 5 | A simple living-room interface: one CHAINES TV source, consistent names/logos, guide data and favourites | Reopen IPTVX after a cold start; all expected identities appear in one accessible list; current/next programme agrees with broadcaster schedules |
 | 6 | A quiet but honest service dashboard | Show playable/target counts separately, resolution, last actual test, failures and recovery progress; email notifications off; alert only on meaningful outages through an agreed non-email route |
 

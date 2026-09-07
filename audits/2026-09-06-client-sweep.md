@@ -47,6 +47,16 @@ moving test pattern and audio, no network dependency) also failed AVPlayer with
 cannot reliably diagnose the remote channels. The audit/release tools now run
 this positive control and stop publication if the player environment is broken.
 The exact OS-level cause remains unconfirmed; no channel threshold was relaxed.
+An actual attempted promotion on this broken local tester was rejected by the
+new control. SHA256 checks before/after confirmed both client aliases and
+`releases/client-health.json` were unchanged; no control-test release was made.
+
+TV3 separately failed two local sustained FFmpeg tests: approximately 19.6/19.7
+seconds of media in 105 seconds of wall time. Its configured signed backup
+`/api/live/tv3` returned HTTP 502. The public primary manifest did advance from
+sequence 69 to 70 on separated fresh requests, so it was not simply a permanently
+unchanging manifest. Real-time delivery remains suspect; no successful repair
+or exact cause is claimed from these observations.
 
 Current frames captured and inspected for Ennahar, El Heddaf and CNEWS showed
 correct branding and broadcaster clocks matching the test time. Ennahar and

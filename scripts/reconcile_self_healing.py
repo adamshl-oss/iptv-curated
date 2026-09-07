@@ -236,9 +236,9 @@ def apply_gate_result(
         if channel.get("status") == "candidate_cloud_verification":
             channel["status"] = "verified_cloud_relay"
             channel["reason"] = (
-                "The permanent cloud URL passed the independent public "
-                "three-attempt media gate, sustained transport gate, and real "
-                "Apple AVPlayer gate after candidate qualification. IPTVX receives "
+                "The permanent cloud URL passed the configured public playback "
+                "gate after candidate qualification; individual transport and "
+                "player results are recorded separately. IPTVX receives "
                 "this stable URL, not the upstream candidate."
             )
             healing["success_streak"] = 0
@@ -270,8 +270,8 @@ def apply_gate_result(
             channel["publish"] = False
             channel["status"] = "quarantined_automated"
             channel["reason"] = (
-                "Automatically quarantined after the complete startup plus "
-                "sustained transport and Apple AVPlayer gate failed: "
+                "Automatically quarantined after repeated configured playback "
+                "gate failures: "
                 f"{'; '.join(result.details)}"
             )
             transitions.append(f"quarantined {name}")
