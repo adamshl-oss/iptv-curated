@@ -166,11 +166,11 @@ jobs:
               return 0
             fi
 
-            echo "Waiting for $workflow catch-up run $run_id."
-            if ! gh run watch "$run_id" --repo "$GH_REPO" --exit-status --interval 5; then
-              echo "::error::$workflow catch-up run $run_id failed."
-              failed="$((failed + 1))"
-            fi
+            # Dispatch is the watchdog's responsibility. The child workflow
+            # owns its own evidence, reporting, retry state and result. Do
+            # not occupy the watchdog while GitHub queues a macOS job: that
+            # can turn one delayed runner into a serial retry cascade.
+            echo "$workflow catch-up run $run_id accepted; child reports its own outcome."
           }
 
           # Native cron and workflow-run events are a second way back into this
