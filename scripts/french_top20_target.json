@@ -521,8 +521,8 @@
       "name": "Gulli",
       "tvg_id": "Gulli.fr",
       "official_url": "https://www.m6.fr/gulli/direct",
-      "status": "unverified",
-      "reason": "Current top-20 target added from the 2025 annual audience ranking; no authorized portable IPTV source has yet been qualified.",
+      "status": "drm_protected",
+      "reason": "Fresh official-page audit on 2026-09-07 found Gulli's exact current 720p M6+ HLS master (6play-gulli/cmaf_fp00/hls-short-hd720.m3u8), but three independent reads each declared SAMPLE-AES with com.apple.streamingkeydelivery and an skd:// FairPlay key. This is legitimate protected app playback, not a portable non-DRM M3U source for IPTVX; no bypass or substitute was published.",
       "publish": false
     }
   ]
