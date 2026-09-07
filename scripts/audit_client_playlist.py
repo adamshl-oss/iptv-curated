@@ -7,13 +7,32 @@ import concurrent.futures
 import hashlib
 import json
 import re
+import subprocess
+import tempfile
 from dataclasses import asdict
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.request import Request, urlopen
 
 from build_combined_playlist import entries
-from reconcile_self_healing import gate, HEALTH_POLICY_PATH
+from reconcile_self_healing import gate, apple_playback_attempt, HEALTH_POLICY_PATH
+
+
+def assert_player_environment() -> None:
+    """A broken tester must never quarantine working television channels."""
+    with tempfile.TemporaryDirectory(prefix="iptvx-player-control-") as folder:
+        clip = Path(folder) / "known-good.mp4"
+        subprocess.run([
+            "ffmpeg", "-hide_banner", "-loglevel", "error",
+            "-f", "lavfi", "-i", "testsrc2=size=320x180:rate=25",
+            "-f", "lavfi", "-i", "sine=frequency=440:sample_rate=48000",
+            "-t", "75", "-c:v", "libx264", "-preset", "ultrafast",
+            "-c:a", "aac", "-movflags", "+faststart", str(clip),
+        ], check=True, timeout=60)
+        passed, detail = apple_playback_attempt(clip.as_uri())
+        if not passed:
+            raise RuntimeError("Test environment failed known-good player control: " + detail)
+        print("PLAYER_CONTROL_PASS\t" + detail, flush=True)
 
 
 def identity(extinf: str) -> str:
@@ -52,6 +71,8 @@ def main() -> int:
     parser.add_argument("--include-playlist", type=Path,
                         help="Also audit prior client entries before any removal")
     args = parser.parse_args()
+    if args.apple_player:
+        assert_player_environment()
     if args.playlist.startswith("https://"):
         request = Request(args.playlist, headers={"Cache-Control": "no-cache"})
         with urlopen(request, timeout=30) as response:

@@ -41,6 +41,13 @@ locked when native UI access was attempted, so IPTVX screen and Apple TV
 hardware playback were not tested. Separate outside-cloud evidence is required;
 any disagreement remains visible rather than attributed to locking without proof.
 
+A follow-up positive control (locally generated 75-second H.264/AAC MP4 with
+moving test pattern and audio, no network dependency) also failed AVPlayer with
+`startup_timeout_12.0s:no_media_advance`. Thus the later local Apple failures
+cannot reliably diagnose the remote channels. The audit/release tools now run
+this positive control and stop publication if the player environment is broken.
+The exact OS-level cause remains unconfirmed; no channel threshold was relaxed.
+
 Current frames captured and inspected for Ennahar, El Heddaf and CNEWS showed
 correct branding and broadcaster clocks matching the test time. Ennahar and
 El Heddaf decoded at 1920x1080; CNEWS at 512x288. Short observation cannot prove

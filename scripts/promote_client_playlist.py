@@ -10,7 +10,7 @@ import re
 from datetime import datetime, timezone
 from pathlib import Path
 
-from audit_client_playlist import identity, assess
+from audit_client_playlist import identity, assess, assert_player_environment
 from build_combined_playlist import entries
 from reconcile_self_healing import HEALTH_POLICY_PATH
 
@@ -185,6 +185,7 @@ def main() -> int:
     parser.add_argument("--release", required=True)
     parser.add_argument("--report", type=Path, required=True)
     args = parser.parse_args()
+    assert_player_environment()
     print(f"PROCESSED\t{promote(args.release, args.report)} channels; see per-channel release decisions")
     return 0
 

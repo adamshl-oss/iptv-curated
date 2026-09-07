@@ -13,6 +13,8 @@ was repeatedly confused with complete coverage and a good viewing experience.
 - Test the actual candidate AND previous client URLs, not just registry flags.
 - Three audio/video/moving-frame startup tests, a sustained transport test and
   a real 60-second AVPlayer test. Report resolution separately from playback.
+- A known-good local player control before testing and before publication;
+  broken test environments cannot be mistaken for mass channel outages.
 - Hourly cloud release checks, with evidence bound to exact stream URLs,
   playlist hashes, policy and time. Healthy additions/replacements can ship
   despite unrelated failures. Never silently remove an omitted healthy item.
