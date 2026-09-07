@@ -8,6 +8,33 @@ different lineup. CNEWS is available at 288p, not good television quality.
 Echorouk's last successful renewal depended on a Mac and expired. A green job
 was repeatedly confused with complete coverage and a good viewing experience.
 
+## Delivered state — September 7, 2026
+
+- CHAINES TV now publishes 21 exact channels: 12 French and 9 Algerian. The
+  combined source and both country-specific alias pairs are synchronized.
+- The newest full cloud audit tested every one of the 21 URLs three times,
+  decoded moving audio/video, and ran each for 60 seconds through AVPlayer.
+  All 21 passed Apple playback; 20 passed the complete composite gate. LCI is
+  retained with an explicit transport-pacing warning because Apple playback
+  was continuous while the secondary ffmpeg test fell behind.
+- CNEWS is now 720p and CStar, Echorouk TV and Echorouk News are restored at
+  720p. Forced-primary-down tests proved the CNEWS and CStar mirror paths; an
+  all-sources-down test returns a clean 503 instead of a false success.
+- A cloud-only status dashboard now separates playback, quality, target
+  coverage, workflow health and quarantined channels. Its request-driven
+  watchdog can restore missed GitHub maintenance without this Mac.
+- GitHub's 15-minute server-side clock, native schedules and watchdog provide
+  overlapping off-Mac wakeups. Retry backoff, a shared-infrastructure circuit
+  breaker and removal guards prevent retry storms and mass false quarantine.
+- A real programme guide is published for all 12 current French channels and
+  refreshed daily while retaining the last-known-good guide during source
+  outages.
+
+The 72-hour Mac-off soak and seven-day availability measurement remain
+observation milestones; they cannot honestly be compressed into one work
+session. Missing protected or geo-restricted targets remain visible rather
+than being represented by unrelated substitutes.
+
 ## What the current repair changes
 
 - Test the actual candidate AND previous client URLs, not just registry flags.
