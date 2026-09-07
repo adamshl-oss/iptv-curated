@@ -1,15 +1,13 @@
 name: Promote verified IPTVX release
 
 on:
+  schedule:
+    - cron: '17 * * * *'
   workflow_dispatch:
     inputs:
       release:
         description: "Release ID: YYYY-MM-DD or YYYY-MM-DD-suffix"
-        required: true
-        type: string
-      confirmation:
-        description: "Enter PROMOTE after reviewing the candidate's real playback evidence"
-        required: true
+        required: false
         type: string
 
 permissions:
@@ -21,14 +19,31 @@ concurrency:
 
 jobs:
   promote:
-    if: inputs.confirmation == 'PROMOTE'
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
+    runs-on: macos-14
+    timeout-minutes: 55
     steps:
       - uses: actions/checkout@v4
-      - name: Validate and promote the candidate
+      - name: Install actual media and Apple playback tools
         run: |
-          python3 scripts/promote_client_playlist.py --release "${{ inputs.release }}"
+          brew install ffmpeg jq coreutils
+          echo "$(brew --prefix coreutils)/libexec/gnubin" >> "$GITHUB_PATH"
+          xcrun swiftc -O scripts/apple_avplayer_check.swift -o "$RUNNER_TEMP/apple-player"
+          echo "APPLE_AVPLAYER_GATE_BIN=$RUNNER_TEMP/apple-player" >> "$GITHUB_ENV"
+          python3 -m unittest scripts/test_promote_client_playlist.py
+      - name: Test every candidate and prior client URL
+        run: |
+          python3 -u scripts/audit_client_playlist.py chaines-tv-candidate.m3u \
+            --include-playlist chaines-tv.m3u --apple-player \
+            --report "$RUNNER_TEMP/client-audit.json" || test -f "$RUNNER_TEMP/client-audit.json"
+      - name: Refresh Git state without trusting stale playback evidence
+        run: git pull --ff-only
+      - name: Validate and promote the candidate
+        env:
+          REQUESTED_RELEASE: ${{ inputs.release }}
+        run: |
+          release="${REQUESTED_RELEASE:-$(date -u +%F)-${GITHUB_RUN_ID}}"
+          python3 scripts/promote_client_playlist.py --release "$release" \
+            --report "$RUNNER_TEMP/client-audit.json"
           python3 -m py_compile scripts/promote_client_playlist.py
           git diff --check
       - name: Commit the immutable release and fixed aliases
@@ -36,6 +51,26 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add iptvx.m3u chaines-tv.m3u releases/
-          git commit -m "Promote IPTVX release ${{ inputs.release }}"
+          git diff --cached --quiet && exit 0
+          git commit -m "Promote playback-tested IPTVX release ${GITHUB_RUN_ID}"
           git pull --rebase
           git push
+      - name: Verify both actual public client aliases
+        run: |
+          for playlist in chaines-tv.m3u iptvx.m3u; do
+            expected="$(shasum -a 256 "$playlist" | cut -d' ' -f1)"
+            matched=false
+            for attempt in $(seq 1 24); do
+              actual="$(curl -fsSL "https://adamshl-oss.github.io/iptv-curated/${playlist}?audit=${GITHUB_RUN_ID}-${attempt}" | shasum -a 256 | cut -d' ' -f1)"
+              if [ "$actual" = "$expected" ]; then matched=true; break; fi
+              sleep 10
+            done
+            [ "$matched" = true ] || exit 1
+          done
+      - name: Preserve every-channel evidence even when promotion is blocked
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: client-playback-${{ github.run_id }}
+          path: ${{ runner.temp }}/client-audit.*
+          retention-days: 30

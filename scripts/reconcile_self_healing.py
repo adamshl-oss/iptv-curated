@@ -586,15 +586,15 @@ def main() -> int:
         print(
             f"PLAYBACK_HEALTHY\t{args.country}\t"
             f"all {count} published permanent cloud URLs passed startup and "
-            f"{int(health_policy['duration_seconds'])}s transport playback"
-            f"{' plus real Apple AVPlayer playback' if args.apple_player else ''}"
+            f"{int(health_policy['duration_seconds'])}s "
+            f"{'Apple AVPlayer playback (transport results reported separately)' if args.apple_player else 'transport playback'}"
         )
     else:
         print(
             f"PLAYBACK_SURVIVORS_HEALTHY\t{args.country}\t"
             f"the {count} currently published survivors passed startup and "
-            f"{int(health_policy['duration_seconds'])}s transport playback"
-            f"{' plus real Apple AVPlayer playback' if args.apple_player else ''}; "
+            f"{int(health_policy['duration_seconds'])}s "
+            f"{'Apple AVPlayer playback (transport results reported separately)' if args.apple_player else 'transport playback'}; "
             "target coverage remains degraded"
         )
     print_status({"countries": {args.country: coverage}})
