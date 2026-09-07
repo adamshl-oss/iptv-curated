@@ -181,7 +181,7 @@ def promote(release: str, report_path: Path) -> int:
     if accepted == entries(CLIENT_ALIASES[1]):
         print("UNCHANGED\tClient identities, order and URLs already match tested release")
         return count
-    lines = ['#EXTM3U playlist-name="CHAINES TV"',
+    lines = ['#EXTM3U url-tvg="https://adamshl-oss.github.io/iptv-curated/epg.xml.gz" playlist-name="CHAINES TV"',
              f"# Release: {release}; per-channel playback evidence in release audit."]
     for info, url in accepted:
         lines.extend((info, url))

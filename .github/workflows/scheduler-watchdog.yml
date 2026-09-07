@@ -15,6 +15,7 @@ on:
       - Discover and qualify channel replacements
       - Renew Algerian signed recovery source
       - Promote verified IPTVX release
+      - Refresh IPTVX programme guide
     types: [completed]
 
 permissions:
@@ -201,6 +202,7 @@ jobs:
           # every-channel promotion gate. Missing one hourly cron must never
           # leave a qualified candidate stranded indefinitely.
           dispatch_if_stale promote-iptvx-release.yml 4500
+          dispatch_if_stale refresh-epg.yml 90000
 
           if [ "$discovery_max_age" -eq 1500 ]; then
             discovery_memory="$({

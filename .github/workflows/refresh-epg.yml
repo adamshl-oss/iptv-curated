@@ -1,0 +1,36 @@
+name: Refresh IPTVX programme guide
+
+on:
+  schedule:
+    - cron: "43 4 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: iptv-epg-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and verify compact guide
+        run: |
+          python3 -m unittest scripts/test_build_epg.py
+          if ! python3 scripts/build_epg.py; then
+            echo "::warning::Guide provider unavailable; retaining last-known-good EPG."
+            exit 0
+          fi
+          gzip -t epg.xml.gz
+      - name: Publish only a valid changed guide
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add epg.xml.gz
+          git diff --cached --quiet && exit 0
+          git commit -m "Refresh IPTVX programme guide ($(date -u +%FT%TZ))"
+          git pull --rebase
+          git push

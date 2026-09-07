@@ -23,7 +23,7 @@ SOURCES = (
 OUTPUT = ROOT / "chaines-tv-candidate.m3u"
 COMBINED_GROUP = "CHAINES TV"
 HEADER = (
-    '#EXTM3U playlist-name="CHAINES TV"',
+    '#EXTM3U url-tvg="https://adamshl-oss.github.io/iptv-curated/epg.xml.gz" playlist-name="CHAINES TV"',
     "# Combined verified French and Algerian channels.",
     "# Candidate: rebuilt automatically after every quarantine or recovery.",
 )

@@ -16,6 +16,7 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlparse
 
 from coverage_status import country_status, print_status, write_status
 from home_health_authority import evaluate_home_authority
@@ -485,6 +486,24 @@ def main() -> int:
         )
 
     result_by_name = {result.name: result for result in results}
+    host_results: dict[str, list[tuple[str, GateResult]]] = {}
+    for channel, gate_url in candidates:
+        if channel.get("publish") is not True or not gate_url:
+            continue
+        host = urlparse(gate_url).hostname or "unknown"
+        host_results.setdefault(host, []).append(
+            (str(channel["name"]), result_by_name[str(channel["name"])])
+        )
+    circuit_names: set[str] = set()
+    for host, rows in host_results.items():
+        startup_failed = [name for name, result in rows if result.successes == 0]
+        if len(rows) >= 4 and len(startup_failed) >= max(3, (len(rows) + 1) // 2):
+            circuit_names.update(startup_failed)
+            print(
+                f"INFRASTRUCTURE_CIRCUIT_OPEN\t{host}\t"
+                f"startup_failures={len(startup_failed)}/{len(rows)}; "
+                "channel failure streaks frozen"
+            )
     changed = False
     transitions: list[str] = []
     for channel, _gate_url in candidates:
@@ -504,6 +523,10 @@ def main() -> int:
                 if entry["name"] == name
             )
         )
+        if name in circuit_names and not result.passed:
+            # A correlated relay/DNS outage is not evidence that several
+            # independent television channels all died at once.
+            continue
         result_changed, result_transitions = apply_gate_result(
             channel,
             result,
