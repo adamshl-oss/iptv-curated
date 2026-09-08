@@ -1,0 +1,16 @@
+services:
+  gateway:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      PORT: "8080"
+      # Point this at an operator-controlled Ace Stream Engine deployment.
+      # The engine itself is intentionally not bundled here.
+      ACE_ENGINE_BASE_URL: "${ACE_ENGINE_BASE_URL:?set an authorized engine URL}"
+      # The externally visible HTTPS gateway URL used in IPTVX playlist rows.
+      PUBLIC_BASE_URL: "${PUBLIC_BASE_URL:?set the public HTTPS gateway URL}"
+      CHANNELS_FILE: /app/config/authorized-channels.json
+    volumes:
+      - ./config:/app/config:ro
