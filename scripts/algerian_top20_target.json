@@ -245,10 +245,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
-        "last_failure": "2026-09-08T21:19:52Z",
-        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:sustained_ok; media=60.0s; wall=70.2s; lag=10.2s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.584,total_stall_25.1s,long_stall_25.1s; startup=1.1s; observed=60.3s; advancing=35.2s/0.584; waiting=25.1s; stalls=1/25.1s/max25.1s; discontinuities=1",
+        "last_failure": "2026-09-08T23:35:53Z",
+        "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:buffering_19.0s; media=60.0s; wall=79.0s; lag=19.0s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.476,total_stall_31.4s,long_stall_31.4s; startup=1.1s; observed=60.0s; advancing=28.6s/0.476; waiting=25.9s; stalls=1/31.4s/max31.4s; discontinuities=1",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact EPTV flagship service retained from the verified lineup behind an always-on public endpoint.",
@@ -293,7 +293,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-09-08T21:56:20Z",
         "last_evidence": "1:h264/mp2 1920x1080, moving; 2:h264/mp2 1920x1080, moving; 3:h264/mp2 1920x1080, moving; sustained:sustained_ok; media=60.0s; wall=74.1s; lag=14.1s; freezes=0/0.0s/max0.0s; errors=0; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
@@ -387,7 +387,7 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 2,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:sustained_ok; media=60.0s; wall=63.9s; lag=3.9s; freezes=0/0.0s/max0.0s; errors=0; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
         "last_recovery": "2026-09-07T03:18:00Z",
