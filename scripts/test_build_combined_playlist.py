@@ -62,9 +62,33 @@ class CombinedPlaylistTests(unittest.TestCase):
         )
         self.assertLess(body.index("TF1.fr"), body.index("TV1.dz"))
         self.assertEqual(body.count("#EXTINF:"), 2)
-        self.assertEqual(body.count('group-title="CHAINES TV"'), 2)
+        self.assertIn('group-title="France — CHAINES TV"', body)
+        self.assertIn('group-title="Algérie — CHAINES TV"', body)
         self.assertNotIn('group-title="France"', body)
         self.assertNotIn('group-title="Algeria"', body)
+
+    def test_uses_relay_order_inside_each_country(self) -> None:
+        france = self.write_source(
+            "france.m3u",
+            [
+                ('#EXTINF:-1 tvg-id="RMCDecouverte.fr",RMC Découverte', "https://relay.example/france/rmc"),
+                ('#EXTINF:-1 tvg-id="TFX.fr",TFX', "https://relay.example/france/tfx"),
+            ],
+        )
+        algeria = self.write_source(
+            "algeria.m3u",
+            [
+                ('#EXTINF:-1 tvg-id="EnnaharTV.dz",Ennahar', "https://relay.example/algeria/ennahar"),
+                ('#EXTINF:-1 tvg-id="AL24News.dz",AL24', "https://relay.example/algeria/al24"),
+            ],
+        )
+        output = self.root / "chaines-tv.m3u"
+
+        combined.build((france, algeria), output)
+        body = output.read_text()
+
+        self.assertLess(body.index("TFX"), body.index("RMC Découverte"))
+        self.assertLess(body.index("AL24"), body.index("Ennahar"))
 
     def test_rejects_non_https_streams(self) -> None:
         source = self.write_source(

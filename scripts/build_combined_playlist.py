@@ -21,7 +21,37 @@ SOURCES = (
     ROOT / "algerian-tv-july-2026.m3u",
 )
 OUTPUT = ROOT / "chaines-tv-candidate.m3u"
-COMBINED_GROUP = "CHAINES TV"
+COUNTRY_GROUPS = ("France — CHAINES TV", "Algérie — CHAINES TV")
+# Match the relay's viewer-facing order.  Recovered channels that are not yet
+# listed here retain their source-controller order after the known services.
+PREFERRED_IDENTITIES = (
+    (
+        "TF1.fr",
+        "CNews.fr",
+        "ARTE.fr",
+        "TMC.fr",
+        "BFMTV.fr",
+        "LCI.fr",
+        "TFX.fr",
+        "RMCDecouverte.fr",
+        "RMCStory.fr",
+        "TF1SeriesFilms.fr",
+        "LEquipe.fr",
+        "CStar.fr",
+        "RMCLife.fr",
+    ),
+    (
+        "AL24News.dz",
+        "TV1.dz",
+        "TV2.dz",
+        "TV3.dz",
+        "EnnaharTV.dz",
+        "EchoroukTV.dz",
+        "EchoroukNews.dz",
+        "ElHeddafTV.dz",
+        "ElBilad.dz",
+    ),
+)
 HEADER = (
     '#EXTM3U url-tvg="https://adamshl-oss.github.io/iptv-curated/epg.xml.gz" playlist-name="CHAINES TV"',
     "# Combined verified French and Algerian channels.",
@@ -53,12 +83,12 @@ def entries(path: Path) -> list[tuple[str, str]]:
     return result
 
 
-def combined_extinf(extinf: str) -> str:
-    """Put every channel in one IPTVX category while preserving metadata."""
+def combined_extinf(extinf: str, group_name: str) -> str:
+    """Set the IPTVX country category while preserving channel metadata."""
     metadata, separator, name = extinf.partition(",")
     if not separator:
         raise ValueError("EXTINF has no channel name")
-    group = f'group-title="{COMBINED_GROUP}"'
+    group = f'group-title="{group_name}"'
     if re.search(r'\bgroup-title="[^"]*"', metadata):
         metadata = re.sub(r'\bgroup-title="[^"]*"', group, metadata, count=1)
     else:
@@ -66,19 +96,47 @@ def combined_extinf(extinf: str) -> str:
     return f"{metadata},{name}"
 
 
+def identity(extinf: str) -> str:
+    """Return the stable channel identity needed for country ordering."""
+    match = re.search(r'\btvg-id="([^"]+)"', extinf)
+    if not match:
+        raise ValueError("EXTINF has no tvg-id")
+    return match.group(1)
+
+
+def ordered_entries(source_entries: list[tuple[str, str]], country_index: int) -> list[tuple[str, str]]:
+    """Keep the published source complete while prioritizing the Relay order."""
+    priorities = {
+        channel_id: position
+        for position, channel_id in enumerate(PREFERRED_IDENTITIES[country_index])
+    }
+    return [
+        entry
+        for _, entry in sorted(
+            enumerate(source_entries),
+            key=lambda item: (priorities.get(identity(item[1][0]), len(priorities)), item[0]),
+        )
+    ]
+
+
 def build(sources: tuple[Path, ...] = SOURCES, output: Path = OUTPUT) -> int:
     lines = list(HEADER)
     seen_ids: set[str] = set()
     count = 0
-    for source in sources:
+    for country_index, source in enumerate(sources):
         source_entries = entries(source)
+        group_name = (
+            COUNTRY_GROUPS[country_index]
+            if country_index < len(COUNTRY_GROUPS)
+            else "CHAINES TV"
+        )
         lines.append(f"# Source: {source.name}")
-        for extinf, url in source_entries:
-            identity = extinf.split(",", 1)[0]
-            if identity in seen_ids:
-                raise ValueError(f"duplicate channel identity: {identity}")
-            seen_ids.add(identity)
-            lines.extend((combined_extinf(extinf), url))
+        for extinf, url in ordered_entries(source_entries, country_index):
+            channel_identity = identity(extinf)
+            if channel_identity in seen_ids:
+                raise ValueError(f"duplicate channel identity: {channel_identity}")
+            seen_ids.add(channel_identity)
+            lines.extend((combined_extinf(extinf, group_name), url))
             count += 1
 
     body = "\n".join(lines) + "\n"
