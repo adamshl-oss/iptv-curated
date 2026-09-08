@@ -1,0 +1,43 @@
+{
+  "name": "US TV — Chicago — Top 20",
+  "target_count": 20,
+  "methodology": {
+    "market": "Chicago designated market area",
+    "selection": "Primary Chicago broadcast stations, Chicago sports, and major national news, business, weather, sports, and entertainment networks.",
+    "publication_rule": "Exact live linear channel only. A source must be broadcaster- or authorized-distributor-owned, legally portable to IPTVX, non-DRM, HTTPS, at least 540p unless the broadcaster's authorized maximum is lower, and pass three moving-media plus Apple-player playback gates. Local-news FAST services are never substituted for a full broadcast network.",
+    "last_manual_audit": "2026-09-08"
+  },
+  "latest_audit": {
+    "checked_at": "2026-09-08T05:00:00Z",
+    "result": "No exact target is publishable as a public IPTVX M3U without an authorized provider or an OTA gateway. All apparent cable-network M3Us found in broad public catalogs were private-IP restreams and were rejected. Public Chicago local-news services are real but are not the full local-network channels and are retained only as research leads, not substitutes.",
+    "evidence": [
+      "CBS News Chicago officially offers a free 24/7 local-news service, but this is distinct from WBBM's complete CBS network feed.",
+      "FOX LOCAL officially offers free FOX 32 local programming, explicitly excluding FOX network programming, including NFL games.",
+      "The official available public streams discovered for ABC News Live, CBS News Chicago, NBC News NOW, and FOX LOCAL are companion news services, not WLS, WBBM, WMAQ, or WFLD full network feeds.",
+      "The exact cable targets CNN, Fox News Channel, MSNBC, CNBC, ESPN, FS1, TNT, and USA Network are authenticated/entitlement-controlled services. Public catalog entries for them were raw-IP restreams and were rejected.",
+      "Chicago Sports Network and the complete Chicago broadcast affiliates require either local OTA reception or an authorized pay-TV/TV-Everywhere entitlement for full-channel coverage."
+    ]
+  },
+  "channels": [
+    {"rank": 1, "name": "CBS Chicago (WBBM 2)", "tvg_id": "CBS.us@WBBMTV", "official_url": "https://www.cbsnews.com/chicago/live/", "status": "full_channel_entitlement_required", "publish": false, "notes": "Free CBS News Chicago is not a substitute for the complete WBBM/CBS linear channel."},
+    {"rank": 2, "name": "NBC 5 Chicago (WMAQ)", "tvg_id": "NBC.us@WMAQTV", "official_url": "https://www.nbcchicago.com/", "status": "full_channel_entitlement_required", "publish": false, "notes": "NBC 5 Chicago Live News is a distinct free local-news service, not the complete NBC affiliate."},
+    {"rank": 3, "name": "ABC 7 Chicago (WLS)", "tvg_id": "ABC.us@WLSTV", "official_url": "https://abc7chicago.com/", "status": "full_channel_entitlement_required", "publish": false, "notes": "ABC News Live is a national companion service, not WLS."},
+    {"rank": 4, "name": "FOX 32 Chicago (WFLD)", "tvg_id": "Fox.us@WFLD", "official_url": "https://www.fox32chicago.com/live/live", "status": "full_channel_entitlement_required", "publish": false, "notes": "FOX LOCAL offers local programming but explicitly excludes FOX network programming."},
+    {"rank": 5, "name": "WGN 9 Chicago", "tvg_id": "CW.us@WGN", "official_url": "https://wgntv.com/", "status": "full_channel_entitlement_required", "publish": false},
+    {"rank": 6, "name": "WTTW PBS Chicago", "tvg_id": "PBS.us@WTTW", "official_url": "https://www.wttw.com/", "status": "rights_limited_public_service", "publish": false},
+    {"rank": 7, "name": "Chicago Sports Network", "tvg_id": "CHSN.us", "official_url": "https://chsn.com/", "status": "full_channel_entitlement_required", "publish": false},
+    {"rank": 8, "name": "Telemundo Chicago (WSNS)", "tvg_id": "Telemundo.us@WSNS", "official_url": "https://www.telemundochicago.com/", "status": "full_channel_entitlement_required", "publish": false},
+    {"rank": 9, "name": "Univision Chicago (WGBO)", "tvg_id": "Univision.us@WGBODT", "official_url": "https://www.univision.com/local/chicago-wgbo", "status": "full_channel_entitlement_required", "publish": false},
+    {"rank": 10, "name": "The U / WCIU Chicago", "tvg_id": "TheU.us@WCIUTV", "official_url": "https://www.wciu.com/", "status": "full_channel_entitlement_required", "publish": false},
+    {"rank": 11, "name": "CNN", "tvg_id": "CNN.us", "official_url": "https://www.cnn.com/", "status": "paid_drm_or_entitlement_required", "publish": false},
+    {"rank": 12, "name": "Fox News Channel", "tvg_id": "FoxNewsChannel.us", "official_url": "https://www.foxnews.com/live", "status": "paid_drm_or_entitlement_required", "publish": false},
+    {"rank": 13, "name": "MSNBC", "tvg_id": "MSNBC.us", "official_url": "https://www.msnbc.com/live", "status": "paid_drm_or_entitlement_required", "publish": false},
+    {"rank": 14, "name": "CNBC", "tvg_id": "CNBC.us", "official_url": "https://www.cnbc.com/live-tv/", "status": "paid_drm_or_entitlement_required", "publish": false},
+    {"rank": 15, "name": "Bloomberg Television", "tvg_id": "BloombergTV.us", "official_url": "https://www.bloomberg.com/live", "status": "full_channel_entitlement_required", "publish": false, "notes": "Public Bloomberg event streams are not a permanent substitute for Bloomberg Television."},
+    {"rank": 16, "name": "The Weather Channel", "tvg_id": "WeatherChannel.us", "official_url": "https://weather.com/live", "status": "paid_drm_or_entitlement_required", "publish": false, "notes": "WeatherNation and AccuWeather NOW are distinct free services, not substitutes."},
+    {"rank": 17, "name": "ESPN", "tvg_id": "ESPN.us", "official_url": "https://www.espn.com/watch/", "status": "paid_drm_or_entitlement_required", "publish": false},
+    {"rank": 18, "name": "FS1", "tvg_id": "FS1.us", "official_url": "https://www.foxsports.com/live", "status": "paid_drm_or_entitlement_required", "publish": false},
+    {"rank": 19, "name": "TNT", "tvg_id": "TNT.us", "official_url": "https://www.tntdrama.com/watchtnt", "status": "paid_drm_or_entitlement_required", "publish": false},
+    {"rank": 20, "name": "USA Network", "tvg_id": "USANetwork.us", "official_url": "https://www.usanetwork.com/live", "status": "paid_drm_or_entitlement_required", "publish": false}
+  ]
+}
