@@ -45,9 +45,22 @@ jobs:
           python3 -u scripts/audit_client_playlist.py chaines-tv-candidate.m3u \
             --include-playlist chaines-tv.m3u --apple-player \
             --report "$RUNNER_TEMP/client-audit.json" || test -f "$RUNNER_TEMP/client-audit.json"
-      - name: Refresh Git state without trusting stale playback evidence
-        run: git pull --ff-only
+      - name: Refresh Git state and detect a newer candidate
+        id: freshness
+        run: |
+          git pull --ff-only
+          # A recovery or a metadata-only organization change can land while
+          # this 20+ minute all-channel gate runs.  Its audit evidence must
+          # never be applied to a different candidate, but that safe refusal
+          # is normal handoff—not a failed release or an alert condition.
+          if cmp -s "$RUNNER_TEMP/client-audit.m3u" chaines-tv-candidate.m3u; then
+            echo "fresh=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "fresh=false" >> "$GITHUB_OUTPUT"
+            echo "STALE_CANDIDATE: a newer candidate will be audited by the next release run"
+          fi
       - name: Validate and promote the candidate
+        if: steps.freshness.outputs.fresh == 'true'
         env:
           REQUESTED_RELEASE: ${{ inputs.release }}
         run: |
@@ -57,6 +70,7 @@ jobs:
           python3 -m py_compile scripts/promote_client_playlist.py
           git diff --check
       - name: Commit the immutable release and fixed aliases
+        if: steps.freshness.outputs.fresh == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -66,6 +80,7 @@ jobs:
           git pull --rebase
           git push
       - name: Verify both actual public client aliases
+        if: steps.freshness.outputs.fresh == 'true'
         run: |
           for playlist in chaines-tv.m3u iptvx.m3u; do
             expected="$(shasum -a 256 "$playlist" | cut -d' ' -f1)"
