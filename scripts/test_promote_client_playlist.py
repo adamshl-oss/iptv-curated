@@ -95,6 +95,19 @@ class EvidenceTests(unittest.TestCase):
         self.assertEqual(len(promotion.verified_entries(self.report)), 3)
         self.assertEqual(self.report['promotion_decisions']['degraded_retained'], ['old'])
 
+    def test_retained_channel_keeps_new_safe_presentation_metadata(self):
+        self.candidate.write_text(self.candidate.read_text().replace(
+            'tvg-id="old",old', 'tvg-id="old" group-title="France",old'))
+        self.report['source_hashes'][self.candidate.name] = hashlib.sha256(
+            self.candidate.read_bytes()).hexdigest()
+        self.report['results'][0].update(passed=False, successes=3)
+
+        accepted = promotion.verified_entries(self.report)
+
+        retained = next(info for info, _ in accepted if promotion.identity(info) == 'old')
+        self.assertIn('group-title="France"', retained)
+        self.assertEqual(self.report['promotion_decisions']['degraded_retained'], ['old'])
+
     def test_shared_infrastructure_outage_freezes_release(self):
         self.report['infrastructure_circuit_breaker'] = {
             'open': True,

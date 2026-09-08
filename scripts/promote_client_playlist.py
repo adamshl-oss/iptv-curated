@@ -129,6 +129,14 @@ def verified_entries(report: dict) -> list[tuple[str, str]]:
         is_existing = key in old and old[key][1] == url
         if passes(check) and (assess(dict(check)).get("quality_passed") or is_existing):
             result.append((info, url))
+        elif is_existing:
+            # Keep an existing, temporarily degraded URL visible, but retain
+            # the candidate's safe presentation metadata (country group,
+            # channel name and order).  Falling back to the old EXTINF here
+            # used to split a country section despite no stream changing.
+            result.append((info, url))
+            if not passes(evidence.get((key, old[key][1]), {})):
+                decisions["degraded_retained"].append(key)
         elif key in old:
             result.append(old[key])
             if not passes(evidence.get((key, old[key][1]), {})):
