@@ -86,6 +86,23 @@ class EvidenceTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             promotion.verified_entries(self.report)
 
+    def test_presentation_only_client_change_keeps_matching_evidence(self):
+        presentation = self.client.read_text().replace(
+            '#EXTM3U\n', '#EXTM3U\n# newer release comment\n')
+        self.client.write_text(presentation)
+        self.alias.write_text(presentation)
+
+        self.assertEqual(len(promotion.verified_entries(self.report)), 3)
+
+    def test_changed_client_url_rejects_evidence(self):
+        changed = self.client.read_text().replace(
+            'https://example.test/old.m3u8', 'https://example.test/changed.m3u8')
+        self.client.write_text(changed)
+        self.alias.write_text(changed)
+
+        with self.assertRaisesRegex(ValueError, 'client stream URLs changed'):
+            promotion.verified_entries(self.report)
+
     def test_inconsistent_gate_cannot_add(self):
         self.report['results'][1].update(passed=True, successes=0, apple_passed=False)
         self.assertEqual(len(promotion.verified_entries(self.report)), 2)

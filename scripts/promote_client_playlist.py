@@ -101,13 +101,24 @@ def verified_entries(report: dict) -> list[tuple[str, str]]:
         raise ValueError("playback evidence is stale or future-dated")
     if report.get("policy_sha256") != hashlib.sha256(HEALTH_POLICY_PATH.read_bytes()).hexdigest():
         raise ValueError("playback policy changed since audit")
-    for path in (CANDIDATE, CLIENT_ALIASES[1]):
-        if report.get("source_hashes", {}).get(path.name) != hashlib.sha256(path.read_bytes()).hexdigest():
-            raise ValueError(f"{path.name} changed since audit; retry against fresh snapshot")
+    if report.get("source_hashes", {}).get(CANDIDATE.name) != hashlib.sha256(
+            CANDIDATE.read_bytes()).hexdigest():
+        raise ValueError(f"{CANDIDATE.name} changed since audit; retry against fresh snapshot")
     if CLIENT_ALIASES[0].read_bytes() != CLIENT_ALIASES[1].read_bytes():
         raise ValueError("client aliases disagree")
     evidence = {(r["tvg_id"], r["url"]): r for r in report["results"]}
     old = {identity(info): (info, url) for info, url in entries(CLIENT_ALIASES[1])}
+    # A prior promotion may rewrite only the release comment or group labels
+    # while this audit runs.  That presentation change cannot invalidate
+    # playback evidence when every retained identity/URL pair is still in the
+    # report.  A stream URL change remains a hard refusal.
+    prior_alias_hash = report.get("source_hashes", {}).get(CLIENT_ALIASES[1].name)
+    current_alias_hash = hashlib.sha256(CLIENT_ALIASES[1].read_bytes()).hexdigest()
+    if prior_alias_hash != current_alias_hash:
+        untested = [(key, url) for key, (_, url) in old.items()
+                    if (key, url) not in evidence]
+        if untested:
+            raise ValueError("client stream URLs changed since audit; retry against fresh snapshot")
     result = []
     seen = set()
     decisions = {"degraded_retained": [], "quality_degraded_retained": [],
