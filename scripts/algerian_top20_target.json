@@ -193,7 +193,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-09-09T14:12:14Z",
         "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:buffering_34.1s; media=60.0s; wall=94.1s; lag=34.1s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.294,total_stall_42.5s,long_stall_42.5s; startup=2.9s; observed=60.3s; advancing=17.7s/0.294; waiting=35.7s; stalls=1/42.5s/max42.5s; discontinuities=1",
@@ -293,10 +293,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
-        "last_failure": "2026-09-09T13:30:15Z",
-        "last_evidence": "1:h264/mp2 1920x1080, moving; 2:h264/mp2 1920x1080, moving; 3:h264/mp2 1920x1080, moving; sustained:buffering_19.5s,long_freeze_20.4s,total_freeze_20.4s; media=60.0s; wall=79.5s; lag=19.5s; freezes=1/20.4s/max20.4s; errors=0; apple:player_error:The operation couldn’t be completed. (CoreMediaErrorDomain error -12714.)",
+        "last_failure": "2026-09-09T14:58:23Z",
+        "last_evidence": "1:h264/mp2 1920x1080, moving; 2:h264/mp2 1920x1080, moving; 3:h264/mp2 1920x1080, moving; sustained:sustained_ok; media=60.0s; wall=64.6s; lag=4.6s; freezes=2/5.2s/max2.8s; errors=0; apple:advance_ratio_0.704,total_stall_17.8s,long_stall_17.8s; startup=1.4s; observed=60.2s; advancing=42.4s/0.704; waiting=0.0s; stalls=1/17.8s/max17.8s; discontinuities=0",
         "recovery_allowed": true,
         "prior_status": "verified_direct",
         "prior_reason": "Exact EPTV international service retained from the verified lineup; source provenance remains under review and it is subject to the same recurring three-pass quarantine gate.",
