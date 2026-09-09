@@ -130,11 +130,12 @@
     "quarantine_after_failed_gates": 3,
     "recover_after_successful_gates": 1,
     "attempts_per_gate": 3,
-    "published_count": 9,
+    "published_count": 8,
     "required_count": 10,
     "coverage_state": "degraded",
     "missing_targets": [
-      "Samira TV"
+      "Samira TV",
+      "TV2 / Canal Algérie"
     ],
     "sustained_playback_seconds": 60,
     "maximum_wall_lag_seconds": 15.0,
@@ -193,7 +194,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 2,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-09-09T20:47:07Z",
         "last_evidence": "1:http_503; 2:http_503; 3:http_503; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
@@ -286,17 +287,17 @@
       "playlist_name": "TV2 / Canal Algérie (1080p)",
       "tvg_id": "TV2.dz",
       "official_url": "https://entv.dz/",
-      "status": "verified_direct",
-      "reason": "Exact EPTV international service retained from the verified lineup; source provenance remains under review and it is subject to the same recurring three-pass quarantine gate.",
+      "status": "quarantined_automated",
+      "reason": "Automatically quarantined after repeated configured playback gate failures: 1:h264/mp2 1920x1080, moving; 2:h264/mp2 1920x1080, moving; 3:h264/mp2 1920x1080, moving; sustained:sustained_ok; media=60.0s; wall=70.4s; lag=10.4s; freezes=2/5.8s/max3.3s; errors=0; apple:advance_ratio_0.278,total_stall_43.3s,long_stall_43.3s; startup=3.8s; observed=60.0s; advancing=16.7s/0.278; waiting=0.0s; stalls=1/43.3s/max43.3s; discontinuities=0",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv2",
       "min_height": 720,
-      "publish": true,
+      "publish": false,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 2,
+        "failure_streak": 3,
         "success_streak": 0,
-        "last_failure": "2026-09-09T20:47:07Z",
-        "last_evidence": "1:h264/mp2 1920x1080, moving; 2:h264/mp2 1920x1080, moving; 3:h264/mp2 1920x1080, moving; sustained:sustained_ok; media=60.0s; wall=66.2s; lag=6.2s; freezes=1/2.2s/max2.2s; errors=0; apple:advance_ratio_0.187,total_stall_48.8s,long_stall_48.8s; startup=2.6s; observed=60.0s; advancing=11.2s/0.187; waiting=0.0s; stalls=1/48.8s/max48.8s; discontinuities=0",
+        "last_failure": "2026-09-09T21:51:54Z",
+        "last_evidence": "1:h264/mp2 1920x1080, moving; 2:h264/mp2 1920x1080, moving; 3:h264/mp2 1920x1080, moving; sustained:sustained_ok; media=60.0s; wall=70.4s; lag=10.4s; freezes=2/5.8s/max3.3s; errors=0; apple:advance_ratio_0.278,total_stall_43.3s,long_stall_43.3s; startup=3.8s; observed=60.0s; advancing=16.7s/0.278; waiting=0.0s; stalls=1/43.3s/max43.3s; discontinuities=0",
         "recovery_allowed": true,
         "prior_status": "verified_direct",
         "prior_reason": "Exact EPTV international service retained from the verified lineup; source provenance remains under review and it is subject to the same recurring three-pass quarantine gate.",
@@ -387,11 +388,11 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
-        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:sustained_ok; media=60.0s; wall=63.9s; lag=3.9s; freezes=0/0.0s/max0.0s; errors=0; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
+        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:ffmpeg_rc124,short_media_0.0s,buffering_105.0s; media=0.0s; wall=105.0s; lag=105.0s; freezes=0/0.0s/max0.0s; errors=0; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
         "last_recovery": "2026-09-07T03:18:00Z",
-        "last_failure": "2026-09-08T21:56:20Z"
+        "last_failure": "2026-09-09T21:51:54Z"
       }
     },
     {
