@@ -170,12 +170,12 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 0,
-        "success_streak": 2,
+        "failure_streak": 1,
+        "success_streak": 0,
         "prior_status": "verified_official_signed_source",
         "prior_reason": "Official Echorouk live-player HLS renewed automatically from the broadcaster's current signed source.",
-        "last_failure": "2026-08-14T12:01:19Z",
-        "last_evidence": "public relay 1-3:h264/aac 1280x720 moving; sustained:60s pass; apple:60s pass with zero stalls; exact Echorouk TV branding inspected",
+        "last_failure": "2026-09-09T04:09:19Z",
+        "last_evidence": "1:http_502; 2:http_502; 3:http_502; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "last_recovery": "2026-09-07T03:18:00Z"
       }
     },
