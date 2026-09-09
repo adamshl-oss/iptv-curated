@@ -130,12 +130,11 @@
     "quarantine_after_failed_gates": 3,
     "recover_after_successful_gates": 1,
     "attempts_per_gate": 3,
-    "published_count": 7,
+    "published_count": 8,
     "required_count": 10,
     "coverage_state": "degraded",
     "missing_targets": [
       "Samira TV",
-      "Echorouk TV",
       "TV3 / A3"
     ],
     "sustained_playback_seconds": 60,
@@ -164,21 +163,21 @@
       "playlist_name": "Echorouk TV (Cloud Live)",
       "tvg_id": "EchoroukTV.dz",
       "official_url": "https://www.echoroukonline.com/live-",
-      "status": "quarantined_automated",
-      "reason": "Automatically quarantined after repeated configured playback gate failures: 1:http_502; 2:http_502; 3:http_502; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
-      "publish": false,
+      "status": "verified_official_signed_source",
+      "reason": "Official Echorouk live-player HLS renewed automatically from the broadcaster's current signed source.",
+      "publish": true,
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/echorouk/tv/live.m3u8",
       "min_height": 720,
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 3,
-        "success_streak": 0,
+        "failure_streak": 0,
+        "success_streak": 1,
         "prior_status": "verified_official_signed_source",
         "prior_reason": "Official Echorouk live-player HLS renewed automatically from the broadcaster's current signed source.",
         "last_failure": "2026-09-09T05:29:05Z",
         "last_evidence": "1:http_502; 2:http_502; 3:http_502; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
-        "last_recovery": "2026-09-07T03:18:00Z"
+        "last_recovery": "2026-09-09T10:43:30Z"
       }
     },
     {
@@ -195,10 +194,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
-        "last_failure": "2026-09-09T08:28:55Z",
-        "last_evidence": "1:variant_empty; 2:http_503; 3:h264/aac 1920x1080, moving; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
+        "last_failure": "2026-09-09T10:43:30Z",
+        "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:short_media_6.1s,buffering_61.6s,network_errors_5; media=6.1s; wall=67.7s; lag=61.6s; freezes=0/0.0s/max0.0s; errors=5; apple:player_error:resource unavailable",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact live channel retained from the verified lineup behind an always-on public endpoint.",
@@ -295,7 +294,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-09-09T09:09:47Z",
         "last_evidence": "1:h264/mp2 1920x1080, moving; 2:h264/mp2 1920x1080, moving; 3:h264/mp2 1920x1080, moving; sustained:sustained_ok; media=60.0s; wall=64.0s; lag=4.0s; freezes=0/0.0s/max0.0s; errors=0; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
