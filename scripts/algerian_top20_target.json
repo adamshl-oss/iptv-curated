@@ -293,7 +293,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-09-10T16:48:46Z",
         "last_evidence": "1:h264/mp2 1920x1080, moving; 2:h264/mp2 1920x1080, moving; 3:h264/mp2 1920x1080, moving; sustained:sustained_ok; media=60.0s; wall=65.8s; lag=5.8s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.735,total_stall_15.9s,long_stall_8.1s; startup=2.5s; observed=60.1s; advancing=44.2s/0.735; waiting=8.1s; stalls=2/15.9s/max8.1s; discontinuities=0",
@@ -341,7 +341,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 2,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-09-10T16:48:46Z",
         "last_evidence": "1:timeout; 2:http_503; 3:http_503; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
