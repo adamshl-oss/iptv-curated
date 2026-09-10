@@ -221,7 +221,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 2,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-09-10T13:16:30Z",
         "last_evidence": "1:ffmpeg_rc8:[in#0 @ 0x12c7049d0] Error opening input: Server returned 5XX Server Error reply; 2:http_503; 3:http_503; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
@@ -245,7 +245,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-09-10T13:16:30Z",
         "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:ffmpeg_rc124,short_media_40.8s,buffering_64.2s; media=40.8s; wall=105.0s; lag=64.2s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.495,total_stall_30.4s,long_stall_30.4s; startup=1.6s; observed=60.3s; advancing=29.8s/0.495; waiting=21.6s; stalls=1/30.4s/max30.4s; discontinuities=1",
@@ -269,7 +269,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 2,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-09-10T13:16:30Z",
         "last_evidence": "1:http_503; 2:http_503; 3:http_503; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
@@ -293,7 +293,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-09-10T13:16:30Z",
         "last_evidence": "1:h264/mp2 1920x1080, moving; 2:h264/mp2 1920x1080, moving; 3:h264/mp2 1920x1080, moving; sustained:sustained_ok; media=60.0s; wall=66.6s; lag=6.6s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.888,total_stall_6.8s,long_stall_6.8s; startup=3.1s; observed=60.1s; advancing=53.3s/0.888; waiting=0.0s; stalls=1/6.8s/max6.8s; discontinuities=0",
