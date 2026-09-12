@@ -1,8 +1,8 @@
 {
   "version": 1,
   "created_at": "2026-08-07T15:53:53Z",
-  "updated_at": "2026-09-12T01:35:44Z",
-  "run_count": 986,
+  "updated_at": "2026-09-12T01:56:51Z",
+  "run_count": 987,
   "targets": {
     "france::TF1": {
       "families": {
@@ -7660,11 +7660,11 @@
           "qualified": false
         },
         "github-repo:iptv-org~iptv:exact_name_hls": {
-          "attempts": 1,
-          "last_attempted_at": "2026-08-17T03:31:16Z",
-          "next_eligible_at": "2026-08-24T03:31:16Z",
-          "outcome": "none",
-          "candidates_found": 0,
+          "attempts": 2,
+          "last_attempted_at": "2026-09-12T01:56:51Z",
+          "next_eligible_at": "2026-09-19T01:56:51Z",
+          "outcome": "candidates_found",
+          "candidates_found": 1,
           "new_candidates": 0,
           "qualified": false
         }
@@ -7672,8 +7672,8 @@
       "candidates": {
         "502c89560a39affd8dd847d56d9e2faaeb377407be5086147fcb9dcd94d65e8d": {
           "first_seen_at": "2026-08-11T19:45:10Z",
-          "last_seen_at": "2026-09-12T01:35:44Z",
-          "next_eligible_at": "2026-09-19T01:35:44Z",
+          "last_seen_at": "2026-09-12T01:56:51Z",
+          "next_eligible_at": "2026-09-19T01:56:51Z",
           "url": "https://cdn.live.easybroadcast.io/abr_corp/66_al24_u4yga6h/corp/66_al24_u4yga6h_240p/chunks.m3u8",
           "source": "github:iptv-org/iptv",
           "last_outcome": "candidate_cooldown"
@@ -7751,7 +7751,7 @@
           "last_outcome": "rejected_policy"
         }
       },
-      "last_task_at": "2026-09-12T01:35:44Z"
+      "last_task_at": "2026-09-12T01:56:51Z"
     },
     "algeria::El Bilad TV": {
       "families": {
@@ -10390,83 +10390,6 @@
     }
   },
   "runs": [
-    {
-      "at": "2026-09-04T13:51:37Z",
-      "wide": false,
-      "tasks": [
-        {
-          "country": "algeria",
-          "target": "Ennahar TV",
-          "family": "catalog:iptv-org-dz",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-09-05T13:51:37Z"
-        }
-      ],
-      "deferred_targets": [
-        {
-          "country": "france",
-          "target": "France 2",
-          "next_eligible_at": "2026-09-04T14:14:36Z"
-        },
-        {
-          "country": "france",
-          "target": "France 3",
-          "next_eligible_at": "2026-09-04T21:49:07Z"
-        },
-        {
-          "country": "france",
-          "target": "M6",
-          "next_eligible_at": "2026-09-04T18:01:08Z"
-        },
-        {
-          "country": "france",
-          "target": "France 5",
-          "next_eligible_at": "2026-09-04T18:01:08Z"
-        },
-        {
-          "country": "france",
-          "target": "W9",
-          "next_eligible_at": "2026-09-04T14:14:36Z"
-        },
-        {
-          "country": "france",
-          "target": "6ter",
-          "next_eligible_at": "2026-09-04T21:49:07Z"
-        },
-        {
-          "country": "france",
-          "target": "Canal+",
-          "next_eligible_at": "2026-09-04T18:01:08Z"
-        },
-        {
-          "country": "france",
-          "target": "CStar",
-          "next_eligible_at": "2026-09-04T21:49:07Z"
-        },
-        {
-          "country": "france",
-          "target": "Gulli",
-          "next_eligible_at": "2026-09-04T18:01:08Z"
-        },
-        {
-          "country": "algeria",
-          "target": "Samira TV",
-          "next_eligible_at": "2026-09-05T00:35:15Z"
-        },
-        {
-          "country": "algeria",
-          "target": "TV3 / A3",
-          "next_eligible_at": "2026-09-04T15:17:03Z"
-        },
-        {
-          "country": "algeria",
-          "target": "Echorouk News",
-          "next_eligible_at": "2026-09-05T00:35:15Z"
-        }
-      ]
-    },
     {
       "at": "2026-09-04T14:17:17Z",
       "wide": false,
@@ -37537,6 +37460,68 @@
           "new_candidates": 0,
           "qualified": false,
           "next_eligible_at": "2026-09-19T01:35:44Z"
+        }
+      ],
+      "deferred_targets": [
+        {
+          "country": "france",
+          "target": "France 2",
+          "next_eligible_at": "2026-09-12T05:58:29Z"
+        },
+        {
+          "country": "france",
+          "target": "France 3",
+          "next_eligible_at": "2026-09-12T05:58:29Z"
+        },
+        {
+          "country": "france",
+          "target": "M6",
+          "next_eligible_at": "2026-09-12T05:58:29Z"
+        },
+        {
+          "country": "france",
+          "target": "France 5",
+          "next_eligible_at": "2026-09-12T05:58:29Z"
+        },
+        {
+          "country": "france",
+          "target": "W9",
+          "next_eligible_at": "2026-09-12T05:58:29Z"
+        },
+        {
+          "country": "france",
+          "target": "6ter",
+          "next_eligible_at": "2026-09-12T05:58:29Z"
+        },
+        {
+          "country": "france",
+          "target": "Canal+",
+          "next_eligible_at": "2026-09-12T05:58:29Z"
+        },
+        {
+          "country": "france",
+          "target": "Gulli",
+          "next_eligible_at": "2026-09-12T12:39:51Z"
+        },
+        {
+          "country": "algeria",
+          "target": "Samira TV",
+          "next_eligible_at": "2026-09-12T23:36:21Z"
+        }
+      ]
+    },
+    {
+      "at": "2026-09-12T01:56:51Z",
+      "wide": false,
+      "tasks": [
+        {
+          "country": "algeria",
+          "target": "AL24 News",
+          "family": "github-repo:iptv-org~iptv:exact_name_hls",
+          "candidates_found": 1,
+          "new_candidates": 0,
+          "qualified": false,
+          "next_eligible_at": "2026-09-19T01:56:51Z"
         }
       ],
       "deferred_targets": [
