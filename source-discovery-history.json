@@ -1,8 +1,8 @@
 {
   "version": 1,
   "created_at": "2026-08-07T15:53:53Z",
-  "updated_at": "2026-09-13T09:41:54Z",
-  "run_count": 1021,
+  "updated_at": "2026-09-13T10:04:32Z",
+  "run_count": 1022,
   "targets": {
     "france::TF1": {
       "families": {
@@ -1835,9 +1835,9 @@
           "qualified": false
         },
         "github:official_host": {
-          "attempts": 4,
-          "last_attempted_at": "2026-08-31T12:22:25Z",
-          "next_eligible_at": "2026-09-07T12:22:25Z",
+          "attempts": 5,
+          "last_attempted_at": "2026-09-13T10:04:32Z",
+          "next_eligible_at": "2026-09-20T10:04:32Z",
           "outcome": "none",
           "candidates_found": 0,
           "new_candidates": 0,
@@ -2008,7 +2008,7 @@
           "last_outcome": "not_evaluated_limit"
         }
       },
-      "last_task_at": "2026-09-13T09:41:54Z"
+      "last_task_at": "2026-09-13T10:04:32Z"
     },
     "france::ARTE": {
       "families": {
@@ -7331,9 +7331,9 @@
           "qualified": false
         },
         "official:assets": {
-          "attempts": 9,
-          "last_attempted_at": "2026-09-09T23:43:51Z",
-          "next_eligible_at": "2026-09-12T23:43:51Z",
+          "attempts": 10,
+          "last_attempted_at": "2026-09-13T10:04:32Z",
+          "next_eligible_at": "2026-09-16T10:04:32Z",
           "outcome": "none",
           "candidates_found": 0,
           "new_candidates": 0,
@@ -7518,7 +7518,7 @@
           "last_outcome": "rejected_policy"
         }
       },
-      "last_task_at": "2026-09-13T07:41:30Z"
+      "last_task_at": "2026-09-13T10:04:32Z"
     },
     "algeria::AL24 News": {
       "families": {
@@ -10406,78 +10406,6 @@
     }
   },
   "runs": [
-    {
-      "at": "2026-09-06T06:00:39Z",
-      "wide": false,
-      "tasks": [
-        {
-          "country": "france",
-          "target": "RMC Découverte",
-          "family": "catalog:paratv-francetv",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-09-07T06:00:39Z"
-        }
-      ],
-      "deferred_targets": [
-        {
-          "country": "france",
-          "target": "France 2",
-          "next_eligible_at": "2026-09-06T06:41:21Z"
-        },
-        {
-          "country": "france",
-          "target": "France 3",
-          "next_eligible_at": "2026-09-06T07:38:44Z"
-        },
-        {
-          "country": "france",
-          "target": "M6",
-          "next_eligible_at": "2026-09-06T06:41:21Z"
-        },
-        {
-          "country": "france",
-          "target": "France 5",
-          "next_eligible_at": "2026-09-06T06:41:21Z"
-        },
-        {
-          "country": "france",
-          "target": "W9",
-          "next_eligible_at": "2026-09-06T06:41:21Z"
-        },
-        {
-          "country": "france",
-          "target": "6ter",
-          "next_eligible_at": "2026-09-06T06:41:21Z"
-        },
-        {
-          "country": "france",
-          "target": "Canal+",
-          "next_eligible_at": "2026-09-06T06:41:21Z"
-        },
-        {
-          "country": "france",
-          "target": "CStar",
-          "next_eligible_at": "2026-09-06T06:41:21Z"
-        },
-        {
-          "country": "france",
-          "target": "Gulli",
-          "next_eligible_at": "2026-09-06T12:31:47Z"
-        },
-        {
-          "country": "algeria",
-          "target": "Samira TV",
-          "next_eligible_at": "2026-09-06T13:11:17Z"
-        },
-        {
-          "country": "algeria",
-          "target": "Echorouk News",
-          "next_eligible_at": "2026-09-06T13:11:17Z"
-        }
-      ]
-    },
     {
       "at": "2026-09-06T06:30:20Z",
       "wide": true,
@@ -36607,6 +36535,87 @@
           "country": "algeria",
           "target": "El Bilad TV",
           "next_eligible_at": "2026-09-13T18:04:41Z"
+        }
+      ]
+    },
+    {
+      "at": "2026-09-13T10:04:32Z",
+      "wide": false,
+      "tasks": [
+        {
+          "country": "algeria",
+          "target": "TV2 / Canal Algérie",
+          "family": "official:assets",
+          "candidates_found": 0,
+          "new_candidates": 0,
+          "qualified": false,
+          "next_eligible_at": "2026-09-16T10:04:32Z"
+        },
+        {
+          "country": "france",
+          "target": "CNEWS",
+          "family": "github:official_host",
+          "candidates_found": 0,
+          "new_candidates": 0,
+          "qualified": false,
+          "next_eligible_at": "2026-09-20T10:04:32Z"
+        }
+      ],
+      "deferred_targets": [
+        {
+          "country": "france",
+          "target": "France 2",
+          "next_eligible_at": "2026-09-13T18:04:41Z"
+        },
+        {
+          "country": "france",
+          "target": "France 3",
+          "next_eligible_at": "2026-09-13T12:39:47Z"
+        },
+        {
+          "country": "france",
+          "target": "M6",
+          "next_eligible_at": "2026-09-13T12:39:47Z"
+        },
+        {
+          "country": "france",
+          "target": "France 5",
+          "next_eligible_at": "2026-09-13T12:39:47Z"
+        },
+        {
+          "country": "france",
+          "target": "W9",
+          "next_eligible_at": "2026-09-13T18:04:41Z"
+        },
+        {
+          "country": "france",
+          "target": "6ter",
+          "next_eligible_at": "2026-09-13T15:08:49Z"
+        },
+        {
+          "country": "france",
+          "target": "Canal+",
+          "next_eligible_at": "2026-09-13T12:39:47Z"
+        },
+        {
+          "country": "france",
+          "target": "Gulli",
+          "next_eligible_at": "2026-09-13T13:14:02Z"
+        },
+        {
+          "country": "algeria",
+          "target": "Samira TV",
+          "next_eligible_at": "2026-09-14T00:08:53Z"
+        },
+        {
+          "country": "algeria",
+          "target": "Ennahar TV",
+          "next_eligible_at": "2026-09-13T20:38:27Z"
+        },
+        {
+          "country": "algeria",
+          "target": "TV3 / A3",
+          "next_eligible_at": "2026-09-14T05:34:40Z"
         }
       ]
     }
