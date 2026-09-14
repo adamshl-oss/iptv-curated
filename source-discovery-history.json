@@ -1,8 +1,8 @@
 {
   "version": 1,
   "created_at": "2026-08-07T15:53:53Z",
-  "updated_at": "2026-09-14T16:06:18Z",
-  "run_count": 1066,
+  "updated_at": "2026-09-14T16:29:42Z",
+  "run_count": 1067,
   "targets": {
     "france::TF1": {
       "families": {
@@ -5597,9 +5597,9 @@
           "qualified": false
         },
         "github:official_host": {
-          "attempts": 28,
-          "last_attempted_at": "2026-09-06T18:36:32Z",
-          "next_eligible_at": "2026-09-13T18:36:32Z",
+          "attempts": 29,
+          "last_attempted_at": "2026-09-14T16:29:42Z",
+          "next_eligible_at": "2026-09-21T16:29:42Z",
           "outcome": "none",
           "candidates_found": 0,
           "new_candidates": 0,
@@ -5778,7 +5778,7 @@
           "last_outcome": "rejected_policy"
         }
       },
-      "last_task_at": "2026-09-14T16:06:18Z"
+      "last_task_at": "2026-09-14T16:29:42Z"
     },
     "france::RMC Life": {
       "families": {
@@ -10422,68 +10422,6 @@
     }
   },
   "runs": [
-    {
-      "at": "2026-09-08T04:07:51Z",
-      "wide": false,
-      "tasks": [
-        {
-          "country": "algeria",
-          "target": "Echorouk News",
-          "family": "catalog:iptv-org-dz",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-09-09T04:07:51Z"
-        }
-      ],
-      "deferred_targets": [
-        {
-          "country": "france",
-          "target": "France 2",
-          "next_eligible_at": "2026-09-08T06:34:38Z"
-        },
-        {
-          "country": "france",
-          "target": "France 3",
-          "next_eligible_at": "2026-09-08T06:34:38Z"
-        },
-        {
-          "country": "france",
-          "target": "M6",
-          "next_eligible_at": "2026-09-08T06:34:38Z"
-        },
-        {
-          "country": "france",
-          "target": "France 5",
-          "next_eligible_at": "2026-09-08T06:34:38Z"
-        },
-        {
-          "country": "france",
-          "target": "W9",
-          "next_eligible_at": "2026-09-08T06:34:38Z"
-        },
-        {
-          "country": "france",
-          "target": "6ter",
-          "next_eligible_at": "2026-09-08T06:34:38Z"
-        },
-        {
-          "country": "france",
-          "target": "Canal+",
-          "next_eligible_at": "2026-09-08T06:34:38Z"
-        },
-        {
-          "country": "france",
-          "target": "Gulli",
-          "next_eligible_at": "2026-09-08T12:38:14Z"
-        },
-        {
-          "country": "algeria",
-          "target": "Samira TV",
-          "next_eligible_at": "2026-09-09T00:59:22Z"
-        }
-      ]
-    },
     {
       "at": "2026-09-08T04:33:28Z",
       "wide": false,
@@ -34492,6 +34430,68 @@
           "new_candidates": 0,
           "qualified": false,
           "next_eligible_at": "2026-09-15T16:06:18Z"
+        }
+      ],
+      "deferred_targets": [
+        {
+          "country": "france",
+          "target": "France 2",
+          "next_eligible_at": "2026-09-14T21:16:35Z"
+        },
+        {
+          "country": "france",
+          "target": "France 3",
+          "next_eligible_at": "2026-09-14T17:50:30Z"
+        },
+        {
+          "country": "france",
+          "target": "M6",
+          "next_eligible_at": "2026-09-14T20:17:14Z"
+        },
+        {
+          "country": "france",
+          "target": "France 5",
+          "next_eligible_at": "2026-09-14T20:17:14Z"
+        },
+        {
+          "country": "france",
+          "target": "W9",
+          "next_eligible_at": "2026-09-14T21:16:35Z"
+        },
+        {
+          "country": "france",
+          "target": "6ter",
+          "next_eligible_at": "2026-09-14T17:50:30Z"
+        },
+        {
+          "country": "france",
+          "target": "Canal+",
+          "next_eligible_at": "2026-09-14T20:17:14Z"
+        },
+        {
+          "country": "france",
+          "target": "Gulli",
+          "next_eligible_at": "2026-09-14T18:54:02Z"
+        },
+        {
+          "country": "algeria",
+          "target": "Samira TV",
+          "next_eligible_at": "2026-09-15T00:14:09Z"
+        }
+      ]
+    },
+    {
+      "at": "2026-09-14T16:29:42Z",
+      "wide": false,
+      "tasks": [
+        {
+          "country": "france",
+          "target": "CStar",
+          "family": "github:official_host",
+          "candidates_found": 0,
+          "new_candidates": 0,
+          "qualified": false,
+          "next_eligible_at": "2026-09-21T16:29:42Z"
         }
       ],
       "deferred_targets": [
