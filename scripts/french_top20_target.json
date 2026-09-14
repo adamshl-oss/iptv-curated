@@ -334,10 +334,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
-        "last_failure": "2026-09-13T00:08:06Z",
-        "last_evidence": "1:h264/aac 1024x576, moving; 2:no_response; 3:no_response; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
+        "last_failure": "2026-09-14T14:36:50Z",
+        "last_evidence": "1:h264/aac 1024x576, moving; 2:timeout; 3:h264/aac 1024x576, moving; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "recovery_allowed": true,
         "prior_status": "verified_cloud_apple_relay",
         "prior_reason": "The always-on relay converts TF1's current official non-DRM CDN delivery into short, stable Apple-player URLs. Three public 576p H.264/AAC decode gates, a continuous 45-second cloud decode, a current LCI-branded frame, and sustained changing video in both IPTVX preview and full-player modes passed without the former 10–15-second stall.",
