@@ -130,13 +130,12 @@
     "quarantine_after_failed_gates": 3,
     "recover_after_successful_gates": 1,
     "attempts_per_gate": 3,
-    "published_count": 6,
+    "published_count": 7,
     "required_count": 10,
     "coverage_state": "degraded",
     "missing_targets": [
       "Samira TV",
       "TV1 / Programme National",
-      "TV2 / Canal Algérie",
       "TV3 / A3"
     ],
     "sustained_playback_seconds": 60,
@@ -196,10 +195,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
-        "last_failure": "2026-09-14T17:57:19Z",
-        "last_evidence": "1:http_503; 2:http_503; 3:http_503; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
+        "last_failure": "2026-09-15T20:12:20Z",
+        "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:sustained_ok; media=60.0s; wall=63.9s; lag=3.9s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.742,total_stall_15.5s,long_stall_15.5s; startup=1.5s; observed=60.0s; advancing=44.5s/0.742; waiting=15.5s; stalls=1/15.5s/max15.5s; discontinuities=1",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact live channel retained from the verified lineup behind an always-on public endpoint.",
@@ -224,7 +223,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 2,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-09-15T18:39:53Z",
         "last_evidence": "1:h264/aac 720x576, moving; 2:h264/aac 720x576, moving; 3:h264/aac 720x576, moving; sustained:buffering_24.1s; media=60.0s; wall=84.1s; lag=24.1s; freezes=1/4.3s/max4.3s; errors=0; apple:advance_ratio_0.765,total_stall_14.2s,long_stall_14.2s; startup=1.4s; observed=60.3s; advancing=46.1s/0.765; waiting=14.2s; stalls=1/14.2s/max14.2s; discontinuities=1",
@@ -289,21 +288,21 @@
       "playlist_name": "TV2 / Canal Algérie (1080p)",
       "tvg_id": "TV2.dz",
       "official_url": "https://entv.dz/",
-      "status": "quarantined_automated",
-      "reason": "Automatically quarantined after repeated configured playback gate failures: 1:h264/mp2 1920x1080, moving; 2:h264/mp2 1920x1080, moving; 3:h264/mp2 1920x1080, moving; sustained:buffering_16.1s; media=60.0s; wall=76.1s; lag=16.1s; freezes=2/5.7s/max3.4s; errors=0; apple:advance_ratio_0.587,total_stall_24.8s,long_stall_24.8s; startup=3.8s; observed=60.0s; advancing=35.2s/0.587; waiting=0.0s; stalls=1/24.8s/max24.8s; discontinuities=0",
+      "status": "verified_direct",
+      "reason": "Exact EPTV international service retained from the verified lineup; source provenance remains under review and it is subject to the same recurring three-pass quarantine gate.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv2",
       "min_height": 720,
-      "publish": false,
+      "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 3,
-        "success_streak": 0,
+        "failure_streak": 0,
+        "success_streak": 1,
         "last_failure": "2026-09-15T18:39:53Z",
         "last_evidence": "1:h264/mp2 1920x1080, moving; 2:h264/mp2 1920x1080, moving; 3:h264/mp2 1920x1080, moving; sustained:buffering_16.1s; media=60.0s; wall=76.1s; lag=16.1s; freezes=2/5.7s/max3.4s; errors=0; apple:advance_ratio_0.587,total_stall_24.8s,long_stall_24.8s; startup=3.8s; observed=60.0s; advancing=35.2s/0.587; waiting=0.0s; stalls=1/24.8s/max24.8s; discontinuities=0",
         "recovery_allowed": true,
         "prior_status": "verified_direct",
         "prior_reason": "Exact EPTV international service retained from the verified lineup; source provenance remains under review and it is subject to the same recurring three-pass quarantine gate.",
-        "last_recovery": "2026-09-15T13:38:34Z"
+        "last_recovery": "2026-09-15T20:12:20Z"
       }
     },
     {
