@@ -18,7 +18,7 @@
         },
         "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/echorouk/tv/live.m3u8": {
           "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/echorouk/tv/live.m3u8",
-          "checked_at": "2026-09-15T03:51:21.605891+00:00",
+          "checked_at": "2026-09-15T05:47:57.463849+00:00",
           "failure_streak": 0,
           "playback_passed": true,
           "quality_passed": true,
@@ -26,8 +26,8 @@
             "1:h264/aac 1280x720, moving",
             "2:h264/aac 1280x720, moving",
             "3:h264/aac 1280x720, moving",
-            "sustained:sustained_ok; media=60.0s; wall=65.2s; lag=5.2s; freezes=0/0.0s/max0.0s; errors=0",
-            "apple:apple_ok; startup=5.3s; observed=60.3s; advancing=60.3s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
+            "sustained:sustained_ok; media=60.0s; wall=72.1s; lag=12.1s; freezes=0/0.0s/max0.0s; errors=0",
+            "apple:apple_ok; startup=4.9s; observed=60.0s; advancing=60.0s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
           ]
         }
       }
@@ -36,7 +36,7 @@
       "sources": {
         "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/al24": {
           "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/al24",
-          "checked_at": "2026-09-15T03:51:21.605891+00:00",
+          "checked_at": "2026-09-15T05:47:57.463849+00:00",
           "failure_streak": 0,
           "playback_passed": true,
           "quality_passed": true,
@@ -44,8 +44,8 @@
             "1:h264/aac 1920x1080, moving",
             "2:h264/aac 1920x1080, moving",
             "3:h264/aac 1920x1080, moving",
-            "sustained:sustained_ok; media=60.0s; wall=63.7s; lag=3.7s; freezes=0/0.0s/max0.0s; errors=0",
-            "apple:apple_ok; startup=1.8s; observed=60.0s; advancing=60.0s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
+            "sustained:sustained_ok; media=60.0s; wall=71.1s; lag=11.1s; freezes=0/0.0s/max0.0s; errors=0",
+            "apple:apple_ok; startup=1.5s; observed=60.2s; advancing=60.2s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
           ]
         }
       }
@@ -54,16 +54,16 @@
       "sources": {
         "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/tf1/arte/live.m3u8": {
           "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/tf1/arte/live.m3u8",
-          "checked_at": "2026-09-15T03:51:21.605891+00:00",
-          "failure_streak": 0,
-          "playback_passed": true,
-          "quality_passed": true,
+          "checked_at": "2026-09-15T05:47:57.463849+00:00",
+          "failure_streak": 1,
+          "playback_passed": false,
+          "quality_passed": false,
           "details": [
             "1:h264/aac 1280x720, moving",
             "2:h264/aac 1280x720, moving",
-            "3:h264/aac 1280x720, moving",
-            "sustained:buffering_23.6s; media=60.0s; wall=83.6s; lag=23.6s; freezes=0/0.0s/max0.0s; errors=0",
-            "apple:apple_ok; startup=2.7s; observed=60.2s; advancing=60.2s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
+            "3:no_video_codec",
+            "sustained:skipped_after_startup_failure",
+            "apple:skipped_after_startup_failure"
           ]
         }
       }
@@ -72,7 +72,7 @@
       "sources": {
         "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/linear/france/bfmtv/live.m3u8": {
           "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/linear/france/bfmtv/live.m3u8",
-          "checked_at": "2026-09-15T03:51:21.605891+00:00",
+          "checked_at": "2026-09-15T05:47:57.463849+00:00",
           "failure_streak": 0,
           "playback_passed": true,
           "quality_passed": true,
@@ -80,8 +80,8 @@
             "1:h264/aac 960x540, moving",
             "2:h264/aac 960x540, moving",
             "3:h264/aac 960x540, moving",
-            "sustained:sustained_ok; media=60.0s; wall=64.5s; lag=4.5s; freezes=0/0.0s/max0.0s; errors=0",
-            "apple:apple_ok; startup=1.5s; observed=60.1s; advancing=60.1s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
+            "sustained:sustained_ok; media=60.0s; wall=63.1s; lag=3.1s; freezes=2/4.2s/max2.1s; errors=0",
+            "apple:apple_ok; startup=2.0s; observed=60.0s; advancing=60.0s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
           ]
         }
       }
@@ -108,7 +108,7 @@
       "sources": {
         "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/elbilad": {
           "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/elbilad",
-          "checked_at": "2026-09-15T03:51:21.605891+00:00",
+          "checked_at": "2026-09-15T05:47:57.463849+00:00",
           "failure_streak": 0,
           "playback_passed": true,
           "quality_passed": true,
@@ -116,8 +116,8 @@
             "1:h264/aac 720x576, moving",
             "2:h264/aac 720x576, moving",
             "3:h264/aac 720x576, moving",
-            "sustained:sustained_ok; media=60.0s; wall=65.6s; lag=5.6s; freezes=0/0.0s/max0.0s; errors=0",
-            "apple:apple_ok; startup=1.2s; observed=60.1s; advancing=60.1s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
+            "sustained:sustained_ok; media=60.0s; wall=64.9s; lag=4.9s; freezes=0/0.0s/max0.0s; errors=0",
+            "apple:apple_ok; startup=1.3s; observed=60.2s; advancing=60.2s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
           ]
         }
       }
@@ -126,7 +126,7 @@
       "sources": {
         "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/elheddaf": {
           "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/elheddaf",
-          "checked_at": "2026-09-15T03:51:21.605891+00:00",
+          "checked_at": "2026-09-15T05:47:57.463849+00:00",
           "failure_streak": 0,
           "playback_passed": true,
           "quality_passed": true,
@@ -134,8 +134,8 @@
             "1:h264/aac 1920x1080, moving",
             "2:h264/aac 1920x1080, moving",
             "3:h264/aac 1920x1080, moving",
-            "sustained:sustained_ok; media=60.0s; wall=67.7s; lag=7.7s; freezes=0/0.0s/max0.0s; errors=0",
-            "apple:apple_ok; startup=1.8s; observed=60.2s; advancing=60.2s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
+            "sustained:sustained_ok; media=60.0s; wall=62.6s; lag=2.6s; freezes=0/0.0s/max0.0s; errors=0",
+            "apple:apple_ok; startup=3.2s; observed=60.1s; advancing=60.1s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
           ]
         }
       }
@@ -144,16 +144,16 @@
       "sources": {
         "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/ennahar": {
           "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/ennahar",
-          "checked_at": "2026-09-15T03:51:21.605891+00:00",
-          "failure_streak": 0,
-          "playback_passed": true,
+          "checked_at": "2026-09-15T05:47:57.463849+00:00",
+          "failure_streak": 1,
+          "playback_passed": false,
           "quality_passed": true,
           "details": [
             "1:h264/aac 1920x1080, moving",
             "2:h264/aac 1920x1080, moving",
             "3:h264/aac 1920x1080, moving",
-            "sustained:sustained_ok; media=60.0s; wall=62.0s; lag=2.0s; freezes=0/0.0s/max0.0s; errors=0",
-            "apple:apple_ok; startup=1.2s; observed=60.3s; advancing=60.3s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
+            "sustained:ffmpeg_rc124,short_media_0.0s,buffering_105.0s; media=0.0s; wall=105.0s; lag=105.0s; freezes=0/0.0s/max0.0s; errors=0",
+            "apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason"
           ]
         }
       }
@@ -162,7 +162,7 @@
       "sources": {
         "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/linear/france/lequipe/live.m3u8": {
           "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/linear/france/lequipe/live.m3u8",
-          "checked_at": "2026-09-15T03:51:21.605891+00:00",
+          "checked_at": "2026-09-15T05:47:57.463849+00:00",
           "failure_streak": 0,
           "playback_passed": true,
           "quality_passed": true,
@@ -170,8 +170,8 @@
             "1:h264/aac 1920x1080, moving",
             "2:h264/aac 1920x1080, moving",
             "3:h264/aac 1920x1080, moving",
-            "sustained:sustained_ok; media=60.0s; wall=69.9s; lag=9.9s; freezes=0/0.0s/max0.0s; errors=0",
-            "apple:apple_ok; startup=1.9s; observed=60.1s; advancing=60.1s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
+            "sustained:sustained_ok; media=60.0s; wall=66.5s; lag=6.5s; freezes=0/0.0s/max0.0s; errors=0",
+            "apple:apple_ok; startup=2.4s; observed=60.1s; advancing=60.1s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
           ]
         }
       }
@@ -180,16 +180,16 @@
       "sources": {
         "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/lci/live.m3u8": {
           "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/lci/live.m3u8",
-          "checked_at": "2026-09-15T03:51:21.605891+00:00",
-          "failure_streak": 170,
+          "checked_at": "2026-09-15T05:47:57.463849+00:00",
+          "failure_streak": 171,
           "playback_passed": false,
           "quality_passed": true,
           "details": [
             "1:h264/aac 1024x576, moving",
             "2:h264/aac 1024x576, moving",
             "3:h264/aac 1024x576, moving",
-            "sustained:ffmpeg_rc124,short_media_45.0s,buffering_60.0s; media=45.0s; wall=105.0s; lag=60.0s; freezes=0/0.0s/max0.0s; errors=0",
-            "apple:apple_ok; startup=4.8s; observed=60.1s; advancing=60.1s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
+            "sustained:ffmpeg_rc124,short_media_48.0s,buffering_57.0s; media=48.0s; wall=105.0s; lag=57.0s; freezes=1/4.1s/max4.1s; errors=0",
+            "apple:apple_ok; startup=4.1s; observed=60.0s; advancing=60.0s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
           ]
         }
       }
@@ -198,7 +198,7 @@
       "sources": {
         "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/linear/france/rmc-decouverte/live.m3u8": {
           "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/linear/france/rmc-decouverte/live.m3u8",
-          "checked_at": "2026-09-15T03:51:21.605891+00:00",
+          "checked_at": "2026-09-15T05:47:57.463849+00:00",
           "failure_streak": 0,
           "playback_passed": true,
           "quality_passed": true,
@@ -206,8 +206,8 @@
             "1:h264/aac 1920x1080, moving",
             "2:h264/aac 1920x1080, moving",
             "3:h264/aac 1920x1080, moving",
-            "sustained:sustained_ok; media=60.0s; wall=68.1s; lag=8.1s; freezes=0/0.0s/max0.0s; errors=0",
-            "apple:apple_ok; startup=1.9s; observed=60.2s; advancing=60.2s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
+            "sustained:sustained_ok; media=60.0s; wall=63.9s; lag=3.9s; freezes=0/0.0s/max0.0s; errors=0",
+            "apple:apple_ok; startup=2.1s; observed=60.1s; advancing=60.1s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
           ]
         }
       }
@@ -216,7 +216,7 @@
       "sources": {
         "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/linear/france/rmc-story/live.m3u8": {
           "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/linear/france/rmc-story/live.m3u8",
-          "checked_at": "2026-09-15T03:51:21.605891+00:00",
+          "checked_at": "2026-09-15T05:47:57.463849+00:00",
           "failure_streak": 0,
           "playback_passed": true,
           "quality_passed": true,
@@ -224,8 +224,8 @@
             "1:h264/aac 1920x1080, moving",
             "2:h264/aac 1920x1080, moving",
             "3:h264/aac 1920x1080, moving",
-            "sustained:sustained_ok; media=60.0s; wall=68.7s; lag=8.6s; freezes=0/0.0s/max0.0s; errors=0",
-            "apple:apple_ok; startup=2.0s; observed=60.0s; advancing=60.0s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
+            "sustained:sustained_ok; media=60.0s; wall=63.9s; lag=3.9s; freezes=0/0.0s/max0.0s; errors=0",
+            "apple:apple_ok; startup=1.5s; observed=60.3s; advancing=60.3s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
           ]
         }
       }
@@ -234,16 +234,16 @@
       "sources": {
         "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/tf1/tf1/live.m3u8": {
           "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/tf1/tf1/live.m3u8",
-          "checked_at": "2026-09-15T03:51:21.605891+00:00",
-          "failure_streak": 0,
-          "playback_passed": true,
-          "quality_passed": true,
+          "checked_at": "2026-09-15T05:47:57.463849+00:00",
+          "failure_streak": 1,
+          "playback_passed": false,
+          "quality_passed": false,
           "details": [
             "1:h264/aac 1280x720, moving",
-            "2:h264/aac 1280x720, moving",
-            "3:h264/aac 1280x720, moving",
-            "sustained:buffering_32.4s; media=60.0s; wall=92.4s; lag=32.4s; freezes=0/0.0s/max0.0s; errors=0",
-            "apple:apple_ok; startup=3.2s; observed=60.1s; advancing=60.1s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
+            "2:http_502",
+            "3:http_502",
+            "sustained:skipped_after_startup_failure",
+            "apple:skipped_after_startup_failure"
           ]
         }
       }
@@ -252,7 +252,7 @@
       "sources": {
         "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/tf1/tf1-series-films/live.m3u8": {
           "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/tf1/tf1-series-films/live.m3u8",
-          "checked_at": "2026-09-15T03:51:21.605891+00:00",
+          "checked_at": "2026-09-15T05:47:57.463849+00:00",
           "failure_streak": 0,
           "playback_passed": true,
           "quality_passed": true,
@@ -260,8 +260,8 @@
             "1:h264/aac 1280x720, moving",
             "2:h264/aac 1280x720, moving",
             "3:h264/aac 1280x720, moving",
-            "sustained:buffering_27.0s; media=60.0s; wall=87.0s; lag=27.0s; freezes=0/0.0s/max0.0s; errors=0",
-            "apple:apple_ok; startup=2.0s; observed=60.2s; advancing=60.2s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
+            "sustained:buffering_37.8s; media=60.0s; wall=97.8s; lag=37.8s; freezes=0/0.0s/max0.0s; errors=0",
+            "apple:apple_ok; startup=2.5s; observed=60.0s; advancing=60.0s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
           ]
         }
       }
@@ -270,7 +270,7 @@
       "sources": {
         "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/tf1/tfx/live.m3u8": {
           "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/tf1/tfx/live.m3u8",
-          "checked_at": "2026-09-15T03:51:21.605891+00:00",
+          "checked_at": "2026-09-15T05:47:57.463849+00:00",
           "failure_streak": 0,
           "playback_passed": true,
           "quality_passed": true,
@@ -278,8 +278,8 @@
             "1:h264/aac 1280x720, moving",
             "2:h264/aac 1280x720, moving",
             "3:h264/aac 1280x720, moving",
-            "sustained:buffering_31.0s; media=60.0s; wall=91.0s; lag=31.0s; freezes=0/0.0s/max0.0s; errors=0",
-            "apple:apple_ok; startup=2.0s; observed=60.0s; advancing=60.0s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
+            "sustained:buffering_38.3s; media=60.0s; wall=98.3s; lag=38.3s; freezes=0/0.0s/max0.0s; errors=0",
+            "apple:apple_ok; startup=2.6s; observed=60.2s; advancing=60.2s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
           ]
         }
       }
@@ -288,7 +288,7 @@
       "sources": {
         "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/tf1/tmc/live.m3u8": {
           "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/tf1/tmc/live.m3u8",
-          "checked_at": "2026-09-15T03:51:21.605891+00:00",
+          "checked_at": "2026-09-15T05:47:57.463849+00:00",
           "failure_streak": 0,
           "playback_passed": true,
           "quality_passed": true,
@@ -296,8 +296,8 @@
             "1:h264/aac 1280x720, moving",
             "2:h264/aac 1280x720, moving",
             "3:h264/aac 1280x720, moving",
-            "sustained:buffering_29.8s; media=60.0s; wall=89.8s; lag=29.8s; freezes=0/0.0s/max0.0s; errors=0",
-            "apple:apple_ok; startup=2.0s; observed=60.2s; advancing=60.2s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
+            "sustained:buffering_38.3s; media=60.0s; wall=98.3s; lag=38.3s; freezes=0/0.0s/max0.0s; errors=0",
+            "apple:apple_ok; startup=2.9s; observed=60.1s; advancing=60.1s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
           ]
         }
       }
@@ -306,16 +306,16 @@
       "sources": {
         "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv1": {
           "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv1",
-          "checked_at": "2026-09-15T03:51:21.605891+00:00",
+          "checked_at": "2026-09-15T05:47:57.463849+00:00",
           "failure_streak": 0,
           "playback_passed": true,
           "quality_passed": true,
           "details": [
-            "1:h264/aac 1280x720, moving",
-            "2:h264/aac 1280x720, moving",
-            "3:h264/aac 1280x720, moving",
-            "sustained:sustained_ok; media=60.0s; wall=65.6s; lag=5.6s; freezes=0/0.0s/max0.0s; errors=0",
-            "apple:apple_ok; startup=1.5s; observed=60.0s; advancing=60.0s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
+            "1:h264/aac 1920x1080, moving",
+            "2:h264/aac 1920x1080, moving",
+            "3:h264/aac 1920x1080, moving",
+            "sustained:sustained_ok; media=60.0s; wall=63.2s; lag=3.2s; freezes=0/0.0s/max0.0s; errors=0",
+            "apple:apple_ok; startup=1.6s; observed=60.3s; advancing=60.3s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
           ]
         }
       }
@@ -324,16 +324,16 @@
       "sources": {
         "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv2": {
           "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv2",
-          "checked_at": "2026-09-15T03:51:21.605891+00:00",
-          "failure_streak": 0,
-          "playback_passed": true,
+          "checked_at": "2026-09-15T05:47:57.463849+00:00",
+          "failure_streak": 1,
+          "playback_passed": false,
           "quality_passed": true,
           "details": [
             "1:h264/mp2 1920x1080, moving",
             "2:h264/mp2 1920x1080, moving",
             "3:h264/mp2 1920x1080, moving",
-            "sustained:sustained_ok; media=60.0s; wall=61.4s; lag=1.4s; freezes=0/0.0s/max0.0s; errors=0",
-            "apple:apple_ok; startup=3.1s; observed=60.3s; advancing=60.3s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=0"
+            "sustained:sustained_ok; media=60.0s; wall=65.0s; lag=5.0s; freezes=0/0.0s/max0.0s; errors=0",
+            "apple:advance_ratio_0.558,total_stall_26.5s,long_stall_26.5s; startup=3.0s; observed=60.1s; advancing=33.6s/0.558; waiting=0.0s; stalls=1/26.5s/max26.5s; discontinuities=0"
           ]
         }
       }
@@ -342,16 +342,16 @@
       "sources": {
         "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv3": {
           "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv3",
-          "checked_at": "2026-09-15T03:51:21.605891+00:00",
-          "failure_streak": 0,
-          "playback_passed": true,
+          "checked_at": "2026-09-15T05:47:57.463849+00:00",
+          "failure_streak": 1,
+          "playback_passed": false,
           "quality_passed": true,
           "details": [
-            "1:h264/aac 1280x720, moving",
-            "2:h264/aac 1280x720, moving",
-            "3:h264/aac 1280x720, moving",
-            "sustained:sustained_ok; media=60.0s; wall=64.5s; lag=4.5s; freezes=0/0.0s/max0.0s; errors=0",
-            "apple:apple_ok; startup=1.2s; observed=60.2s; advancing=60.2s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
+            "1:h264/aac 1920x1080, moving",
+            "2:h264/aac 1920x1080, moving",
+            "3:h264/aac 1920x1080, moving",
+            "sustained:ffmpeg_rc124,short_media_0.0s,buffering_105.0s; media=0.0s; wall=105.0s; lag=105.0s; freezes=0/0.0s/max0.0s; errors=0",
+            "apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason"
           ]
         }
       }
@@ -378,16 +378,16 @@
       "sources": {
         "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/echorouk/news/live.m3u8": {
           "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/echorouk/news/live.m3u8",
-          "checked_at": "2026-09-15T03:51:21.605891+00:00",
-          "failure_streak": 8,
-          "playback_passed": false,
+          "checked_at": "2026-09-15T05:47:57.463849+00:00",
+          "failure_streak": 0,
+          "playback_passed": true,
           "quality_passed": true,
           "details": [
             "1:h264/aac 1280x720, moving",
             "2:h264/aac 1280x720, moving",
             "3:h264/aac 1280x720, moving",
-            "sustained:sustained_ok; media=60.0s; wall=67.0s; lag=7.0s; freezes=0/0.0s/max0.0s; errors=0",
-            "apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason"
+            "sustained:sustained_ok; media=60.0s; wall=65.3s; lag=5.3s; freezes=0/0.0s/max0.0s; errors=0",
+            "apple:apple_ok; startup=5.3s; observed=60.3s; advancing=60.3s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
           ]
         }
       }
