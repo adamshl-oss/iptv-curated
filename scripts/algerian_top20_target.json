@@ -245,9 +245,9 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
-        "last_failure": "2026-09-16T08:06:59Z",
+        "last_failure": "2026-09-16T13:12:56Z",
         "last_evidence": "1:http_503; 2:http_503; 3:http_503; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
@@ -269,9 +269,9 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
-        "last_failure": "2026-09-16T08:06:59Z",
+        "last_failure": "2026-09-16T13:12:56Z",
         "last_evidence": "1:http_503; 2:http_503; 3:http_503; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
@@ -293,7 +293,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-09-16T12:27:24Z",
         "last_evidence": "1:h264/mp2 1920x1080, moving; 2:h264/mp2 1920x1080, moving; 3:h264/mp2 1920x1080, moving; sustained:sustained_ok; media=60.0s; wall=70.6s; lag=10.6s; freezes=1/2.1s/max2.1s; errors=0; apple:advance_ratio_0.128,total_stall_52.4s,long_stall_52.4s; startup=6.1s; observed=60.1s; advancing=7.7s/0.128; waiting=0.0s; stalls=1/52.4s/max52.4s; discontinuities=0",
