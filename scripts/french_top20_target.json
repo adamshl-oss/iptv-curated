@@ -277,7 +277,7 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "prior_status": "verified_cloud_resolver",
         "last_failure": "2026-09-16T16:37:51Z",
@@ -334,9 +334,9 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 2,
         "success_streak": 0,
-        "last_failure": "2026-09-16T16:37:51Z",
+        "last_failure": "2026-09-16T17:26:58Z",
         "last_evidence": "1:h264/aac 1024x576, moving; 2:timeout; 3:timeout; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "recovery_allowed": true,
         "prior_status": "verified_cloud_apple_relay",
