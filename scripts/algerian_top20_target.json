@@ -269,9 +269,9 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
-        "last_failure": "2026-09-16T05:07:33Z",
+        "last_failure": "2026-09-16T07:24:12Z",
         "last_evidence": "1:http_503; 2:http_503; 3:http_503; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
@@ -293,7 +293,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-09-16T05:46:24Z",
         "last_evidence": "1:h264/mp2 1920x1080, moving; 2:h264/mp2 1920x1080, moving; 3:h264/mp2 1920x1080, moving; sustained:sustained_ok; media=60.0s; wall=61.5s; lag=1.5s; freezes=1/2.5s/max2.5s; errors=0; apple:advance_ratio_0.709,total_stall_17.5s,long_stall_17.5s; startup=2.0s; observed=60.1s; advancing=42.6s/0.709; waiting=0.0s; stalls=1/17.5s/max17.5s; discontinuities=0",
