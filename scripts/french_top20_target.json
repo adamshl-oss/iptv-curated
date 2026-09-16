@@ -334,7 +334,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-09-16T12:53:38Z",
         "last_evidence": "1:h264/aac 1024x576, moving; 2:h264/aac 1024x576, moving; 3:h264/aac 1024x576, moving; sustained:ffmpeg_rc124:[in#0/hls @ 0x125f04c50] Failed to open segment 92396590 of playlist 1,short_media_24.9s,buffering_80.1s,network_errors_1; media=24.9s; wall=105.0s; lag=80.1s; freezes=0/0.0s/max0.0s; errors=1; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
