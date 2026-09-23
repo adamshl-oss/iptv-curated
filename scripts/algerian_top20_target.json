@@ -221,7 +221,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-09-23T06:04:33Z",
         "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:short_media_19.4s,buffering_83.0s,network_errors_6; media=19.4s; wall=102.4s; lag=83.0s; freezes=0/0.0s/max0.0s; errors=6; apple:player_error:resource unavailable",
@@ -269,7 +269,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-09-23T06:04:33Z",
         "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:short_media_10.1s,buffering_19.1s,network_errors_6; media=10.1s; wall=29.1s; lag=19.1s; freezes=0/0.0s/max0.0s; errors=6; apple:player_error:resource unavailable",
@@ -293,10 +293,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
-        "last_failure": "2026-09-22T13:14:41Z",
-        "last_evidence": "1:h264/mp2 1920x1080, moving; 2:h264/mp2 1920x1080, moving; 3:h264/mp2 1920x1080, moving; sustained:buffering_15.2s; media=60.0s; wall=75.2s; lag=15.2s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.288,total_stall_42.8s,long_stall_42.8s; startup=2.4s; observed=60.2s; advancing=17.4s/0.288; waiting=0.0s; stalls=1/42.8s/max42.8s; discontinuities=0",
+        "last_failure": "2026-09-23T06:42:38Z",
+        "last_evidence": "1:h264/mp2 1920x1080, moving; 2:h264/mp2 1920x1080, moving; 3:h264/mp2 1920x1080, moving; sustained:sustained_ok; media=60.0s; wall=64.1s; lag=4.1s; freezes=0/0.0s/max0.0s; errors=0; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
         "recovery_allowed": true,
         "prior_status": "verified_direct",
         "prior_reason": "Exact EPTV international service retained from the verified lineup; source provenance remains under review and it is subject to the same recurring three-pass quarantine gate.",
@@ -341,7 +341,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-09-23T06:04:33Z",
         "last_evidence": "1:h264/aac 720x576, moving; 2:h264/aac 720x576, moving; 3:h264/aac 720x576, moving; sustained:short_media_7.2s,buffering_34.9s,network_errors_6; media=7.2s; wall=42.1s; lag=34.9s; freezes=0/0.0s/max0.0s; errors=6; apple:player_error:resource unavailable",
