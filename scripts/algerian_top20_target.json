@@ -170,12 +170,12 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
         "prior_status": "verified_official_signed_source",
         "prior_reason": "Official Echorouk live-player HLS renewed automatically from the broadcaster's current signed source.",
-        "last_failure": "2026-09-18T08:05:28Z",
-        "last_evidence": "1:ffmpeg_rc196:[tls @ 0x600002358c80] IO error: Operation timed out; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
+        "last_failure": "2026-09-23T02:30:46Z",
+        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:sustained_ok; media=60.0s; wall=63.4s; lag=3.4s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.797,total_stall_12.3s,long_stall_12.3s; startup=8.0s; observed=60.3s; advancing=48.1s/0.797; waiting=12.3s; stalls=1/12.3s/max12.3s; discontinuities=1",
         "last_recovery": "2026-09-09T10:43:30Z"
       }
     },
@@ -387,11 +387,11 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
-        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:sustained_ok; media=60.0s; wall=68.1s; lag=8.1s; freezes=0/0.0s/max0.0s; errors=0; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
+        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:sustained_ok; media=60.0s; wall=66.3s; lag=6.3s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.497,total_stall_30.2s,long_stall_30.2s; startup=5.4s; observed=60.2s; advancing=29.9s/0.497; waiting=30.2s; stalls=1/30.2s/max30.2s; discontinuities=1",
         "last_recovery": "2026-09-15T04:39:00Z",
-        "last_failure": "2026-09-20T17:04:01Z",
+        "last_failure": "2026-09-23T02:30:46Z",
         "prior_status": "verified_dynamic_apple_relay",
         "prior_reason": "Exact first-party Echorouk News player resolved dynamically through its public challenge/sign flow and proxied through stable Apple-player URLs. The public 720p route passed three moving H.264/AAC decodes, a continuous 60-second transport gate, current NEWS branding/ticker inspection, and 60 seconds of native AVPlayer playback with no stalls."
       }
