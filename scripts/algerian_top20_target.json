@@ -245,7 +245,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-09-28T18:24:04Z",
         "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:short_media_20.0s,buffering_61.7s,network_errors_6; media=20.0s; wall=81.7s; lag=61.7s; freezes=0/0.0s/max0.0s; errors=6; apple:player_error:resource unavailable",
@@ -387,7 +387,7 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:ffmpeg_rc124,short_media_54.0s,buffering_51.0s; media=54.0s; wall=105.0s; lag=51.0s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.884,total_stall_7.0s,long_stall_7.0s; startup=5.8s; observed=60.1s; advancing=53.1s/0.884; waiting=7.0s; stalls=1/7.0s/max7.0s; discontinuities=1",
         "last_recovery": "2026-09-24T03:06:49Z",
