@@ -344,10 +344,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
-        "last_failure": "2026-10-01T22:12:21Z",
-        "last_evidence": "1:reprobe_failed; 2:no_video_codec; 3:no_video_codec; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
+        "last_failure": "2026-10-02T10:11:56Z",
+        "last_evidence": "1:invalid_video_dimensions_0x0; 2:ffmpeg_rc69:[NULL @ 0x12de70970] non-existing PPS 0 referenced; 3:invalid_video_dimensions_0x0; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact live channel retained from the verified lineup behind an always-on public endpoint.",
