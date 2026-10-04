@@ -223,7 +223,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-10-04T19:39:03Z",
         "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:buffering_44.8s; media=60.0s; wall=104.8s; lag=44.8s; freezes=0/0.0s/max0.0s; errors=0; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
@@ -389,11 +389,11 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 0,
-        "success_streak": 1,
-        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:ffmpeg_rc124,short_media_0.0s,buffering_105.0s; media=0.0s; wall=105.0s; lag=105.0s; freezes=0/0.0s/max0.0s; errors=0; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
+        "failure_streak": 1,
+        "success_streak": 0,
+        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:ffmpeg_rc124,short_media_53.9s,buffering_51.1s; media=53.9s; wall=105.0s; lag=51.1s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.535,total_stall_27.9s,long_stall_18.9s; startup=4.8s; observed=60.0s; advancing=32.1s/0.535; waiting=27.9s; stalls=2/27.9s/max18.9s; discontinuities=1",
         "last_recovery": "2026-10-04T15:58:34Z",
-        "last_failure": "2026-10-04T14:34:34Z",
+        "last_failure": "2026-10-04T21:22:24Z",
         "prior_status": "verified_dynamic_apple_relay",
         "prior_reason": "Exact first-party Echorouk News player resolved dynamically through its public challenge/sign flow and proxied through stable Apple-player URLs. The public 720p route passed three moving H.264/AAC decodes, a continuous 60-second transport gate, current NEWS branding/ticker inspection, and 60 seconds of native AVPlayer playback with no stalls."
       }
