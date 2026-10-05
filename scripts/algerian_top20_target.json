@@ -172,12 +172,12 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
         "prior_status": "verified_official_signed_source",
         "prior_reason": "Official Echorouk live-player HLS renewed automatically from the broadcaster's current signed source.",
-        "last_failure": "2026-10-02T02:31:34Z",
-        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:short_media_12.0s,network_errors_6; media=12.0s; wall=16.5s; lag=4.5s; freezes=0/0.0s/max0.0s; errors=6; apple:player_error:resource unavailable",
+        "last_failure": "2026-10-05T02:58:13Z",
+        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:short_media_30.0s,network_errors_6; media=30.0s; wall=33.6s; lag=3.5s; freezes=0/0.0s/max0.0s; errors=6; apple:player_error:resource unavailable",
         "last_recovery": "2026-09-24T01:44:25Z"
       }
     },
@@ -247,10 +247,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 2,
         "success_streak": 0,
-        "last_failure": "2026-10-05T02:12:37Z",
-        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:ffmpeg_rc124,short_media_22.1s,buffering_82.9s; media=22.1s; wall=105.0s; lag=82.9s; freezes=0/0.0s/max0.0s; errors=0; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
+        "last_failure": "2026-10-05T02:58:13Z",
+        "last_evidence": "1:invalid_video_dimensions_0x0; 2:invalid_video_dimensions_0x0; 3:http_503; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact EPTV flagship service retained from the verified lineup behind an always-on public endpoint.",
