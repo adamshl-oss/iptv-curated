@@ -391,11 +391,11 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
-        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:ffmpeg_rc124,short_media_53.9s,buffering_51.1s; media=53.9s; wall=105.0s; lag=51.1s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.535,total_stall_27.9s,long_stall_18.9s; startup=4.8s; observed=60.0s; advancing=32.1s/0.535; waiting=27.9s; stalls=2/27.9s/max18.9s; discontinuities=1",
+        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:no_video_codec; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "last_recovery": "2026-10-04T15:58:34Z",
-        "last_failure": "2026-10-04T21:22:24Z",
+        "last_failure": "2026-10-07T17:11:24Z",
         "prior_status": "verified_dynamic_apple_relay",
         "prior_reason": "Exact first-party Echorouk News player resolved dynamically through its public challenge/sign flow and proxied through stable Apple-player URLs. The public 720p route passed three moving H.264/AAC decodes, a continuous 60-second transport gate, current NEWS branding/ticker inspection, and 60 seconds of native AVPlayer playback with no stalls."
       }
