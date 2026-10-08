@@ -130,15 +130,13 @@
     "quarantine_after_failed_gates": 3,
     "recover_after_successful_gates": 1,
     "attempts_per_gate": 3,
-    "published_count": 5,
+    "published_count": 7,
     "required_count": 10,
     "coverage_state": "degraded",
     "missing_targets": [
       "Samira TV",
-      "Echorouk TV",
       "Ennahar TV",
-      "TV1 / Programme National",
-      "El Bilad TV"
+      "TV1 / Programme National"
     ],
     "sustained_playback_seconds": 60,
     "maximum_wall_lag_seconds": 15.0,
@@ -166,21 +164,21 @@
       "playlist_name": "Echorouk TV (Cloud Live)",
       "tvg_id": "EchoroukTV.dz",
       "official_url": "https://www.echoroukonline.com/live-",
-      "status": "quarantined_automated",
-      "reason": "Automatically quarantined after repeated configured playback gate failures: 1:http_502; 2:http_502; 3:http_502; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
-      "publish": false,
+      "status": "verified_official_signed_source",
+      "reason": "Official Echorouk live-player HLS renewed automatically from the broadcaster's current signed source.",
+      "publish": true,
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/echorouk/tv/live.m3u8",
       "min_height": 720,
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 3,
-        "success_streak": 0,
+        "failure_streak": 0,
+        "success_streak": 1,
         "prior_status": "verified_official_signed_source",
         "prior_reason": "Official Echorouk live-player HLS renewed automatically from the broadcaster's current signed source.",
         "last_failure": "2026-10-08T06:36:41Z",
         "last_evidence": "1:http_502; 2:http_502; 3:http_502; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
-        "last_recovery": "2026-09-24T01:44:25Z"
+        "last_recovery": "2026-10-08T09:33:40Z"
       }
     },
     {
@@ -338,21 +336,21 @@
       "playlist_name": "El Bilad TV (Cloud Live)",
       "tvg_id": "ElBilad.dz",
       "official_url": "https://www.elbilad.net/",
-      "status": "quarantined_automated",
-      "reason": "Automatically quarantined after repeated configured playback gate failures: 1:h264/aac 720x576, moving; 2:h264/aac 720x576, moving; 3:h264/aac 720x576, moving; sustained:ffmpeg_rc124,short_media_7.3s,buffering_97.7s; media=7.3s; wall=105.0s; lag=97.7s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.352,total_stall_38.9s,long_stall_38.9s; startup=2.5s; observed=60.0s; advancing=21.1s/0.352; waiting=22.6s; stalls=1/38.9s/max38.9s; discontinuities=1",
+      "status": "verified_cloud",
+      "reason": "Exact live channel retained from the verified lineup behind an always-on public endpoint.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/elbilad",
       "min_height": 540,
-      "publish": false,
+      "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 3,
-        "success_streak": 0,
+        "failure_streak": 0,
+        "success_streak": 1,
         "last_failure": "2026-10-06T19:58:36Z",
         "last_evidence": "1:h264/aac 720x576, moving; 2:h264/aac 720x576, moving; 3:h264/aac 720x576, moving; sustained:ffmpeg_rc124,short_media_7.3s,buffering_97.7s; media=7.3s; wall=105.0s; lag=97.7s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.352,total_stall_38.9s,long_stall_38.9s; startup=2.5s; observed=60.0s; advancing=21.1s/0.352; waiting=22.6s; stalls=1/38.9s/max38.9s; discontinuities=1",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact live channel retained from the verified lineup behind an always-on public endpoint.",
-        "last_recovery": "2026-10-06T09:20:12Z"
+        "last_recovery": "2026-10-08T09:33:40Z"
       }
     },
     {
