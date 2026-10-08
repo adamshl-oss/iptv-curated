@@ -130,7 +130,7 @@
     "quarantine_after_failed_gates": 3,
     "recover_after_successful_gates": 1,
     "attempts_per_gate": 3,
-    "published_count": 5,
+    "published_count": 4,
     "required_count": 10,
     "coverage_state": "degraded",
     "missing_targets": [
@@ -138,6 +138,7 @@
       "Ennahar TV",
       "TV1 / Programme National",
       "TV3 / A3",
+      "Echorouk News",
       "El Bilad TV"
     ],
     "sustained_playback_seconds": 60,
@@ -383,19 +384,19 @@
       "playlist_name": "Echorouk News (Cloud Live)",
       "tvg_id": "EchoroukNews.dz",
       "official_url": "https://www.echoroukonline.com/live-news",
-      "status": "verified_dynamic_apple_relay",
-      "reason": "Exact first-party Echorouk News player resolved dynamically through its public challenge/sign flow and proxied through stable Apple-player URLs. The public 720p route passed three moving H.264/AAC decodes, a continuous 60-second transport gate, current NEWS branding/ticker inspection, and 60 seconds of native AVPlayer playback with no stalls.",
-      "publish": true,
+      "status": "quarantined_automated",
+      "reason": "Automatically quarantined after repeated configured playback gate failures: 1:no_audio_codec; 2:no_audio_codec; 3:no_audio_codec; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
+      "publish": false,
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/echorouk/news/live.m3u8",
       "min_height": 720,
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 2,
+        "failure_streak": 3,
         "success_streak": 0,
         "last_evidence": "1:no_audio_codec; 2:no_audio_codec; 3:no_audio_codec; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "last_recovery": "2026-10-08T03:36:02Z",
-        "last_failure": "2026-10-08T14:43:25Z",
+        "last_failure": "2026-10-08T15:27:41Z",
         "prior_status": "verified_dynamic_apple_relay",
         "prior_reason": "Exact first-party Echorouk News player resolved dynamically through its public challenge/sign flow and proxied through stable Apple-player URLs. The public 720p route passed three moving H.264/AAC decodes, a continuous 60-second transport gate, current NEWS branding/ticker inspection, and 60 seconds of native AVPlayer playback with no stalls."
       }
