@@ -174,12 +174,12 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
         "prior_status": "verified_official_signed_source",
         "prior_reason": "Official Echorouk live-player HLS renewed automatically from the broadcaster's current signed source.",
-        "last_failure": "2026-10-10T10:54:40Z",
-        "last_evidence": "1:h264/aac 1280x720, moving; 2:http_502; 3:motion_rc8:[in#0 @ 0x155605880] Error opening input: Server returned 5XX Server Error reply; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
+        "last_failure": "2026-10-10T21:12:11Z",
+        "last_evidence": "1:no_video_codec; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "last_recovery": "2026-10-08T14:43:25Z"
       }
     },
@@ -225,9 +225,9 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 2,
         "success_streak": 0,
-        "last_failure": "2026-10-10T20:27:39Z",
+        "last_failure": "2026-10-10T21:12:11Z",
         "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:ffmpeg_rc124,short_media_0.0s,buffering_105.0s; media=0.0s; wall=105.0s; lag=105.0s; freezes=0/0.0s/max0.0s; errors=0; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
