@@ -334,7 +334,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-10-11T17:40:06Z",
         "last_evidence": "1:h264/aac 1024x576, moving; 2:h264/aac 1024x576, moving; 3:motion_rc196:[tls @ 0x600003d23700] IO error: Operation timed out; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
@@ -446,11 +446,11 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
         "prior_status": "verified_cloud_resolver",
-        "last_failure": "2026-10-11T16:50:45Z",
-        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:buffering_22.9s; media=60.0s; wall=82.9s; lag=22.9s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.799,total_stall_12.1s,long_stall_12.1s; startup=6.8s; observed=60.1s; advancing=48.1s/0.799; waiting=12.1s; stalls=1/12.1s/max12.1s; discontinuities=1",
+        "last_failure": "2026-10-11T18:26:33Z",
+        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:buffering_33.4s; media=60.0s; wall=93.4s; lag=33.4s; freezes=0/0.0s/max0.0s; errors=0; apple:player_error:resource unavailable",
         "prior_reason": "Quarantined after two independent 2026-07-30 playback gates proved the current signed official-CDN token is bound to the resolver IP and returns HTTP 403 to IPTVX, Apple TV, and unrelated cloud clients.",
         "candidate_discovered_at": "2026-08-07T14:49:07Z",
         "candidate_source": "paratv-france",
