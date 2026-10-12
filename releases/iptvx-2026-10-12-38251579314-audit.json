@@ -1,0 +1,413 @@
+{
+  "checked_at": "2026-10-12T13:13:03.697993+00:00",
+  "playlist": "chaines-tv-candidate.m3u",
+  "playlist_sha256": "63dc445f7d43b00d2ed5aaca23df5b060c04dc816e13ccb4089583c524866dfa",
+  "source_hashes": {
+    "chaines-tv-candidate.m3u": "63dc445f7d43b00d2ed5aaca23df5b060c04dc816e13ccb4089583c524866dfa",
+    "chaines-tv.m3u": "4a0992c951f06d8b87729946e53e592d2f84c4d70c4214222739417749ecb898"
+  },
+  "policy_sha256": "aa1afc4f3374b0878408332c73a242a82cd45d7b2e28ea33e38a5a312a987c32",
+  "apple_required": true,
+  "count": 19,
+  "passed": 13,
+  "all_passed": false,
+  "results": [
+    {
+      "name": "ARTE",
+      "passed": false,
+      "successes": 3,
+      "sustained_passed": false,
+      "apple_passed": false,
+      "details": [
+        "1:h264/aac 1280x720, moving",
+        "2:h264/aac 1280x720, moving",
+        "3:h264/aac 1280x720, moving",
+        "sustained:short_media_11.8s,buffering_59.2s,network_errors_24; media=11.8s; wall=71.0s; lag=59.2s; freezes=0/0.0s/max0.0s; errors=24",
+        "apple:player_error:resource unavailable"
+      ],
+      "transport_pacing_only": false,
+      "height": 720,
+      "quality_passed": true,
+      "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/tf1/arte/live.m3u8",
+      "extinf": "#EXTINF:-1 tvg-id=\"ARTE.fr\" tvg-chno=\"7\" group-title=\"France — CHAINES TV\",ARTE",
+      "tvg_id": "ARTE.fr"
+    },
+    {
+      "name": "BFMTV",
+      "passed": true,
+      "successes": 3,
+      "sustained_passed": true,
+      "apple_passed": true,
+      "details": [
+        "1:h264/aac 960x540, moving",
+        "2:h264/aac 960x540, moving",
+        "3:h264/aac 960x540, moving",
+        "sustained:sustained_ok; media=60.0s; wall=66.0s; lag=6.0s; freezes=0/0.0s/max0.0s; errors=0",
+        "apple:apple_ok; startup=1.5s; observed=60.3s; advancing=60.3s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
+      ],
+      "transport_pacing_only": false,
+      "height": 540,
+      "quality_passed": true,
+      "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/linear/france/bfmtv/live.m3u8",
+      "extinf": "#EXTINF:-1 tvg-id=\"BFMTV.fr\" tvg-chno=\"9\" group-title=\"France — CHAINES TV\" tvg-logo=\"https://i.imgur.com/YJCcczD.png\",BFMTV",
+      "tvg_id": "BFMTV.fr"
+    },
+    {
+      "name": "CNEWS",
+      "passed": false,
+      "successes": 3,
+      "sustained_passed": false,
+      "apple_passed": true,
+      "details": [
+        "1:h264/aac 1280x720, moving",
+        "2:h264/aac 1280x720, moving",
+        "3:h264/aac 1280x720, moving",
+        "sustained:buffering_17.8s; media=60.0s; wall=77.8s; lag=17.8s; freezes=3/9.6s/max3.8s; errors=0",
+        "apple:apple_ok; startup=2.7s; observed=60.1s; advancing=60.1s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
+      ],
+      "transport_pacing_only": false,
+      "height": 720,
+      "quality_passed": true,
+      "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/cnews/live.m3u8",
+      "extinf": "#EXTINF:-1 tvg-id=\"CNews.fr\" tvg-chno=\"6\" group-title=\"France — CHAINES TV\" tvg-logo=\"https://i.imgur.com/sSNhk2g.png\",CNEWS",
+      "tvg_id": "CNews.fr"
+    },
+    {
+      "name": "CStar",
+      "passed": true,
+      "successes": 3,
+      "sustained_passed": true,
+      "apple_passed": true,
+      "details": [
+        "1:h264/aac 1280x720, moving",
+        "2:h264/aac 1280x720, moving",
+        "3:h264/aac 1280x720, moving",
+        "sustained:sustained_ok; media=60.0s; wall=74.6s; lag=14.6s; freezes=0/0.0s/max0.0s; errors=0",
+        "apple:apple_ok; startup=1.4s; observed=60.1s; advancing=60.1s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
+      ],
+      "transport_pacing_only": false,
+      "height": 720,
+      "quality_passed": true,
+      "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/cstar/live.m3u8",
+      "extinf": "#EXTINF:-1 tvg-id=\"CStar.fr\" tvg-chno=\"19\" group-title=\"France — CHAINES TV\",CStar",
+      "tvg_id": "CStar.fr"
+    },
+    {
+      "name": "Echorouk News (Cloud Live)",
+      "passed": true,
+      "successes": 3,
+      "sustained_passed": true,
+      "apple_passed": true,
+      "details": [
+        "1:h264/aac 1280x720, moving",
+        "2:h264/aac 1280x720, moving",
+        "3:h264/aac 1280x720, moving",
+        "sustained:sustained_ok; media=60.0s; wall=68.5s; lag=8.5s; freezes=0/0.0s/max0.0s; errors=0",
+        "apple:apple_ok; startup=6.7s; observed=60.2s; advancing=60.2s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
+      ],
+      "transport_pacing_only": false,
+      "height": 720,
+      "quality_passed": true,
+      "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/echorouk/news/live.m3u8",
+      "extinf": "#EXTINF:-1 tvg-id=\"EchoroukNews.dz\" group-title=\"Algérie — CHAINES TV\",Echorouk News (Cloud Live)",
+      "tvg_id": "EchoroukNews.dz"
+    },
+    {
+      "name": "Echorouk TV (Cloud Live)",
+      "passed": true,
+      "successes": 3,
+      "sustained_passed": true,
+      "apple_passed": true,
+      "details": [
+        "1:h264/aac 1280x720, moving",
+        "2:h264/aac 1280x720, moving",
+        "3:h264/aac 1280x720, moving",
+        "sustained:sustained_ok; media=60.0s; wall=64.2s; lag=4.2s; freezes=0/0.0s/max0.0s; errors=0",
+        "apple:apple_ok; startup=5.2s; observed=60.2s; advancing=60.2s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
+      ],
+      "transport_pacing_only": false,
+      "height": 720,
+      "quality_passed": true,
+      "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/echorouk/tv/live.m3u8",
+      "extinf": "#EXTINF:-1 tvg-id=\"EchoroukTV.dz\" group-title=\"Algérie — CHAINES TV\",Echorouk TV (Cloud Live)",
+      "tvg_id": "EchoroukTV.dz"
+    },
+    {
+      "name": "El Bilad TV (Cloud Live)",
+      "passed": true,
+      "successes": 3,
+      "sustained_passed": true,
+      "apple_passed": true,
+      "details": [
+        "1:h264/aac 720x576, moving",
+        "2:h264/aac 720x576, moving",
+        "3:h264/aac 720x576, moving",
+        "sustained:sustained_ok; media=60.0s; wall=66.2s; lag=6.2s; freezes=1/2.4s/max2.4s; errors=0",
+        "apple:apple_ok; startup=1.2s; observed=60.1s; advancing=60.1s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
+      ],
+      "transport_pacing_only": false,
+      "height": 576,
+      "quality_passed": true,
+      "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/elbilad",
+      "extinf": "#EXTINF:-1 tvg-id=\"ElBilad.dz\" group-title=\"Algérie — CHAINES TV\",El Bilad TV (Cloud Live)",
+      "tvg_id": "ElBilad.dz"
+    },
+    {
+      "name": "El Heddaf TV (Cloud Live)",
+      "passed": true,
+      "successes": 3,
+      "sustained_passed": true,
+      "apple_passed": true,
+      "details": [
+        "1:h264/aac 1920x1080, moving",
+        "2:h264/aac 1920x1080, moving",
+        "3:h264/aac 1920x1080, moving",
+        "sustained:sustained_ok; media=60.0s; wall=67.1s; lag=7.1s; freezes=0/0.0s/max0.0s; errors=0",
+        "apple:apple_ok; startup=3.6s; observed=60.1s; advancing=60.1s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
+      ],
+      "transport_pacing_only": false,
+      "height": 1080,
+      "quality_passed": true,
+      "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/elheddaf",
+      "extinf": "#EXTINF:-1 tvg-id=\"ElHeddafTV.dz\" tvg-logo=\"https://i.imgur.com/cDkIDIA.png\" group-title=\"Algérie — CHAINES TV\",El Heddaf TV (Cloud Live)",
+      "tvg_id": "ElHeddafTV.dz"
+    },
+    {
+      "name": "Ennahar TV (Cloud Live)",
+      "passed": false,
+      "successes": 3,
+      "sustained_passed": false,
+      "apple_passed": false,
+      "details": [
+        "1:h264/aac 1920x1080, moving",
+        "2:h264/aac 1920x1080, moving",
+        "3:h264/aac 1920x1080, moving",
+        "sustained:ffmpeg_rc124,short_media_0.0s,buffering_105.0s; media=0.0s; wall=105.0s; lag=105.0s; freezes=0/0.0s/max0.0s; errors=0",
+        "apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason"
+      ],
+      "transport_pacing_only": false,
+      "height": 1080,
+      "quality_passed": true,
+      "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/ennahar",
+      "extinf": "#EXTINF:-1 tvg-id=\"EnnaharTV.dz\" tvg-logo=\"https://i.imgur.com/C0TCA1s.png\" group-title=\"Algérie — CHAINES TV\",Ennahar TV (Cloud Live)",
+      "tvg_id": "EnnaharTV.dz"
+    },
+    {
+      "name": "L'Équipe",
+      "passed": true,
+      "successes": 3,
+      "sustained_passed": true,
+      "apple_passed": true,
+      "details": [
+        "1:h264/aac 1920x1080, moving",
+        "2:h264/aac 1920x1080, moving",
+        "3:h264/aac 1920x1080, moving",
+        "sustained:sustained_ok; media=60.0s; wall=68.1s; lag=8.1s; freezes=0/0.0s/max0.0s; errors=0",
+        "apple:apple_ok; startup=1.7s; observed=60.1s; advancing=60.1s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
+      ],
+      "transport_pacing_only": false,
+      "height": 1080,
+      "quality_passed": true,
+      "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/linear/france/lequipe/live.m3u8",
+      "extinf": "#EXTINF:-1 tvg-id=\"LEquipe.fr\" tvg-chno=\"17\" group-title=\"France — CHAINES TV\",L'Équipe",
+      "tvg_id": "LEquipe.fr"
+    },
+    {
+      "name": "LCI",
+      "passed": false,
+      "successes": 3,
+      "sustained_passed": false,
+      "apple_passed": true,
+      "details": [
+        "1:h264/aac 1280x720, moving",
+        "2:h264/aac 1024x576, moving",
+        "3:h264/aac 1024x576, moving",
+        "sustained:ffmpeg_rc124,short_media_44.5s,buffering_60.5s; media=44.5s; wall=105.0s; lag=60.5s; freezes=0/0.0s/max0.0s; errors=0",
+        "apple:apple_ok; startup=4.9s; observed=60.3s; advancing=60.3s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
+      ],
+      "transport_pacing_only": false,
+      "height": 576,
+      "quality_passed": true,
+      "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/lci/live.m3u8",
+      "extinf": "#EXTINF:-1 tvg-id=\"LCI.fr\" tvg-chno=\"11\" group-title=\"France — CHAINES TV\",LCI",
+      "tvg_id": "LCI.fr"
+    },
+    {
+      "name": "RMC Découverte",
+      "passed": true,
+      "successes": 3,
+      "sustained_passed": true,
+      "apple_passed": true,
+      "details": [
+        "1:h264/aac 1920x1080, moving",
+        "2:h264/aac 1920x1080, moving",
+        "3:h264/aac 1920x1080, moving",
+        "sustained:sustained_ok; media=60.0s; wall=65.4s; lag=5.4s; freezes=0/0.0s/max0.0s; errors=0",
+        "apple:apple_ok; startup=2.4s; observed=60.1s; advancing=60.1s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
+      ],
+      "transport_pacing_only": false,
+      "height": 1080,
+      "quality_passed": true,
+      "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/linear/france/rmc-decouverte/live.m3u8",
+      "extinf": "#EXTINF:-1 tvg-id=\"RMCDecouverte.fr\" tvg-chno=\"14\" group-title=\"France — CHAINES TV\" tvg-logo=\"https://upload.wikimedia.org/wikipedia/fr/thumb/b/b3/RMC_D%C3%A9couverte_logo_2017.svg/512px-RMC_D%C3%A9couverte_logo_2017.svg.png\",RMC Découverte",
+      "tvg_id": "RMCDecouverte.fr"
+    },
+    {
+      "name": "RMC Story",
+      "passed": true,
+      "successes": 3,
+      "sustained_passed": true,
+      "apple_passed": true,
+      "details": [
+        "1:h264/aac 1920x1080, moving",
+        "2:h264/aac 1920x1080, moving",
+        "3:h264/aac 1920x1080, moving",
+        "sustained:sustained_ok; media=60.0s; wall=63.3s; lag=3.3s; freezes=1/3.3s/max3.3s; errors=0",
+        "apple:apple_ok; startup=1.9s; observed=60.1s; advancing=60.1s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
+      ],
+      "transport_pacing_only": false,
+      "height": 1080,
+      "quality_passed": true,
+      "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/linear/france/rmc-story/live.m3u8",
+      "extinf": "#EXTINF:-1 tvg-id=\"RMCStory.fr\" tvg-chno=\"15\" group-title=\"France — CHAINES TV\" tvg-logo=\"https://upload.wikimedia.org/wikipedia/fr/thumb/4/43/Logo_RMC_Story_2025.png/512px-Logo_RMC_Story_2025.png\",RMC Story",
+      "tvg_id": "RMCStory.fr"
+    },
+    {
+      "name": "TF1",
+      "passed": false,
+      "successes": 2,
+      "sustained_passed": false,
+      "apple_passed": false,
+      "details": [
+        "1:h264/aac 1280x720, moving",
+        "2:h264/aac 1280x720, moving",
+        "3:ffmpeg_rc8:[in#0 @ 0x129605830] Error when loading first segment 'https://alive-tf1-hls.cdn",
+        "sustained:skipped_after_startup_failure",
+        "apple:skipped_after_startup_failure"
+      ],
+      "transport_pacing_only": false,
+      "height": 720,
+      "quality_passed": true,
+      "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/tf1/tf1/live.m3u8",
+      "extinf": "#EXTINF:-1 tvg-id=\"TF1.fr\" tvg-chno=\"1\" group-title=\"France — CHAINES TV\",TF1",
+      "tvg_id": "TF1.fr"
+    },
+    {
+      "name": "TF1 Séries Films",
+      "passed": false,
+      "successes": 1,
+      "sustained_passed": false,
+      "apple_passed": false,
+      "details": [
+        "1:motion_rc183:[tls @ 0x600003117840] IO error: Operation timed out",
+        "2:no_audio_codec",
+        "3:h264/aac 1280x720, moving",
+        "sustained:skipped_after_startup_failure",
+        "apple:skipped_after_startup_failure"
+      ],
+      "transport_pacing_only": false,
+      "height": null,
+      "quality_passed": false,
+      "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/tf1/tf1-series-films/live.m3u8",
+      "extinf": "#EXTINF:-1 tvg-id=\"TF1SeriesFilms.fr\" tvg-chno=\"16\" group-title=\"France — CHAINES TV\",TF1 Séries Films",
+      "tvg_id": "TF1SeriesFilms.fr"
+    },
+    {
+      "name": "TFX",
+      "passed": true,
+      "successes": 3,
+      "sustained_passed": false,
+      "apple_passed": true,
+      "details": [
+        "1:h264/aac 1280x720, moving",
+        "2:h264/aac 1280x720, moving",
+        "3:h264/aac 1280x720, moving",
+        "sustained:buffering_36.1s; media=60.0s; wall=96.1s; lag=36.1s; freezes=0/0.0s/max0.0s; errors=0",
+        "apple:apple_ok; startup=2.6s; observed=60.3s; advancing=60.3s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
+      ],
+      "transport_pacing_only": true,
+      "height": 720,
+      "quality_passed": true,
+      "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/tf1/tfx/live.m3u8",
+      "extinf": "#EXTINF:-1 tvg-id=\"TFX.fr\" tvg-chno=\"12\" group-title=\"France — CHAINES TV\",TFX",
+      "tvg_id": "TFX.fr"
+    },
+    {
+      "name": "TMC",
+      "passed": true,
+      "successes": 3,
+      "sustained_passed": false,
+      "apple_passed": true,
+      "details": [
+        "1:h264/aac 1280x720, moving",
+        "2:h264/aac 1280x720, moving",
+        "3:h264/aac 1280x720, moving",
+        "sustained:buffering_37.6s; media=60.0s; wall=97.6s; lag=37.6s; freezes=0/0.0s/max0.0s; errors=0",
+        "apple:apple_ok; startup=2.9s; observed=60.2s; advancing=60.2s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
+      ],
+      "transport_pacing_only": true,
+      "height": 720,
+      "quality_passed": true,
+      "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/tf1/tmc/live.m3u8",
+      "extinf": "#EXTINF:-1 tvg-id=\"TMC.fr\" tvg-chno=\"8\" group-title=\"France — CHAINES TV\",TMC",
+      "tvg_id": "TMC.fr"
+    },
+    {
+      "name": "TV1 / Programme National (Cloud Live)",
+      "passed": true,
+      "successes": 3,
+      "sustained_passed": true,
+      "apple_passed": true,
+      "details": [
+        "1:h264/aac 1280x720, moving",
+        "2:h264/aac 1280x720, moving",
+        "3:h264/aac 1280x720, moving",
+        "sustained:sustained_ok; media=60.0s; wall=70.0s; lag=10.0s; freezes=0/0.0s/max0.0s; errors=0",
+        "apple:apple_ok; startup=1.4s; observed=60.3s; advancing=60.3s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
+      ],
+      "transport_pacing_only": false,
+      "height": 720,
+      "quality_passed": true,
+      "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv1",
+      "extinf": "#EXTINF:-1 tvg-id=\"TV1.dz\" group-title=\"Algérie — CHAINES TV\",TV1 / Programme National (Cloud Live)",
+      "tvg_id": "TV1.dz"
+    },
+    {
+      "name": "TV2 / Canal Algérie (1080p)",
+      "passed": true,
+      "successes": 3,
+      "sustained_passed": true,
+      "apple_passed": true,
+      "details": [
+        "1:h264/mp2 1920x1080, moving",
+        "2:h264/mp2 1920x1080, moving",
+        "3:h264/mp2 1920x1080, moving",
+        "sustained:sustained_ok; media=60.0s; wall=61.4s; lag=1.4s; freezes=2/8.0s/max5.2s; errors=0",
+        "apple:apple_ok; startup=3.6s; observed=60.2s; advancing=60.2s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=0"
+      ],
+      "transport_pacing_only": false,
+      "height": 1080,
+      "quality_passed": true,
+      "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv2",
+      "extinf": "#EXTINF:-1 tvg-id=\"TV2.dz\" tvg-logo=\"https://i.imgur.com/VEb631f.png\" group-title=\"Algérie — CHAINES TV\",TV2 / Canal Algérie (1080p)",
+      "tvg_id": "TV2.dz"
+    }
+  ],
+  "infrastructure_circuit_breaker": {
+    "open": false,
+    "groups": []
+  },
+  "promotion_decisions": {
+    "degraded_retained": [
+      "TF1.fr",
+      "CNews.fr",
+      "ARTE.fr",
+      "LCI.fr",
+      "TF1SeriesFilms.fr",
+      "EnnaharTV.dz"
+    ],
+    "quality_degraded_retained": [],
+    "unproven_skipped": [],
+    "quarantined": []
+  }
+}
