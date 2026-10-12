@@ -130,14 +130,13 @@
     "quarantine_after_failed_gates": 3,
     "recover_after_successful_gates": 1,
     "attempts_per_gate": 3,
-    "published_count": 5,
+    "published_count": 6,
     "required_count": 10,
     "coverage_state": "degraded",
     "missing_targets": [
       "Samira TV",
       "Echorouk TV",
       "Ennahar TV",
-      "TV1 / Programme National",
       "AL24 News"
     ],
     "sustained_playback_seconds": 60,
@@ -242,21 +241,21 @@
       "playlist_name": "TV1 / Programme National (Cloud Live)",
       "tvg_id": "TV1.dz",
       "official_url": "https://entv.dz/",
-      "status": "quarantined_automated",
-      "reason": "Automatically quarantined after repeated configured playback gate failures: 1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:buffering_20.2s; media=60.0s; wall=80.2s; lag=20.2s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.665,total_stall_20.1s,long_stall_20.1s; startup=1.2s; observed=60.0s; advancing=39.9s/0.665; waiting=20.1s; stalls=1/20.1s/max20.1s; discontinuities=1",
+      "status": "verified_cloud",
+      "reason": "Exact EPTV flagship service retained from the verified lineup behind an always-on public endpoint.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv1",
       "min_height": 540,
-      "publish": false,
+      "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 3,
-        "success_streak": 0,
+        "failure_streak": 0,
+        "success_streak": 1,
         "last_failure": "2026-10-12T21:01:41Z",
         "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:buffering_20.2s; media=60.0s; wall=80.2s; lag=20.2s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.665,total_stall_20.1s,long_stall_20.1s; startup=1.2s; observed=60.0s; advancing=39.9s/0.665; waiting=20.1s; stalls=1/20.1s/max20.1s; discontinuities=1",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact EPTV flagship service retained from the verified lineup behind an always-on public endpoint.",
-        "last_recovery": "2026-10-12T08:56:37Z"
+        "last_recovery": "2026-10-12T21:37:55Z"
       }
     },
     {
@@ -345,10 +344,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 2,
         "success_streak": 0,
-        "last_failure": "2026-10-12T21:01:41Z",
-        "last_evidence": "1:invalid_video_dimensions_0x0; 2:invalid_video_dimensions_0x0; 3:invalid_video_dimensions_0x0; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
+        "last_failure": "2026-10-12T21:37:55Z",
+        "last_evidence": "1:invalid_video_dimensions_0x0; 2:timeout; 3:invalid_video_dimensions_0x0; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact live channel retained from the verified lineup behind an always-on public endpoint.",
@@ -391,11 +390,11 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 1,
+        "failure_streak": 2,
         "success_streak": 0,
-        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:sustained_ok; media=60.0s; wall=66.4s; lag=6.4s; freezes=0/0.0s/max0.0s; errors=0; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
+        "last_evidence": "1:h264/aac 1280x720, moving; 2:reprobe_failed; 3:h264/aac 1280x720, moving; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "last_recovery": "2026-10-11T03:33:05Z",
-        "last_failure": "2026-10-12T21:01:41Z",
+        "last_failure": "2026-10-12T21:37:55Z",
         "prior_status": "verified_dynamic_apple_relay",
         "prior_reason": "Exact first-party Echorouk News player resolved dynamically through its public challenge/sign flow and proxied through stable Apple-player URLs. The public 720p route passed three moving H.264/AAC decodes, a continuous 60-second transport gate, current NEWS branding/ticker inspection, and 60 seconds of native AVPlayer playback with no stalls."
       }
