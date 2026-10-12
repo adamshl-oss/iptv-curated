@@ -130,14 +130,13 @@
     "quarantine_after_failed_gates": 3,
     "recover_after_successful_gates": 1,
     "attempts_per_gate": 3,
-    "published_count": 5,
+    "published_count": 6,
     "required_count": 10,
     "coverage_state": "degraded",
     "missing_targets": [
       "Samira TV",
       "Echorouk TV",
       "Ennahar TV",
-      "El Bilad TV",
       "AL24 News"
     ],
     "sustained_playback_seconds": 60,
@@ -197,7 +196,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-10-12T18:17:32Z",
         "last_evidence": "1:h264/aac 1920x1080, moving; 2:no_video_codec; 3:h264/aac 1920x1080, moving; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
@@ -249,10 +248,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 2,
         "success_streak": 0,
-        "last_failure": "2026-10-12T18:17:32Z",
-        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:http_503; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
+        "last_failure": "2026-10-12T19:42:07Z",
+        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:short_media_20.0s,buffering_83.1s,network_errors_6; media=20.0s; wall=103.1s; lag=83.1s; freezes=0/0.0s/max0.0s; errors=6; apple:player_error:resource unavailable",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact EPTV flagship service retained from the verified lineup behind an always-on public endpoint.",
@@ -338,21 +337,21 @@
       "playlist_name": "El Bilad TV (Cloud Live)",
       "tvg_id": "ElBilad.dz",
       "official_url": "https://www.elbilad.net/",
-      "status": "quarantined_automated",
-      "reason": "Automatically quarantined after repeated configured playback gate failures: 1:invalid_video_dimensions_0x0; 2:invalid_video_dimensions_0x0; 3:invalid_video_dimensions_0x0; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
+      "status": "verified_cloud",
+      "reason": "Exact live channel retained from the verified lineup behind an always-on public endpoint.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/elbilad",
       "min_height": 540,
-      "publish": false,
+      "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 3,
-        "success_streak": 0,
+        "failure_streak": 0,
+        "success_streak": 1,
         "last_failure": "2026-10-12T17:40:43Z",
         "last_evidence": "1:invalid_video_dimensions_0x0; 2:invalid_video_dimensions_0x0; 3:invalid_video_dimensions_0x0; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact live channel retained from the verified lineup behind an always-on public endpoint.",
-        "last_recovery": "2026-10-11T23:47:16Z"
+        "last_recovery": "2026-10-12T19:42:07Z"
       }
     },
     {
