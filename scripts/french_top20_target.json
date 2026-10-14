@@ -228,10 +228,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
-        "last_failure": "2026-10-12T12:21:39Z",
-        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:sustained_ok; media=60.0s; wall=70.0s; lag=10.0s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.909,total_stall_5.5s,long_stall_5.5s; startup=1.7s; observed=60.1s; advancing=54.6s/0.909; waiting=5.5s; stalls=1/5.5s/max5.5s; discontinuities=1",
+        "last_failure": "2026-10-14T20:30:22Z",
+        "last_evidence": "1:http_502; 2:http_502; 3:http_502; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "recovery_allowed": true,
         "prior_status": "verified_dynamic_apple_relay",
         "prior_reason": "Exact official CNEWS Dailymotion live behind request-time cloud failover. The route races independent maintained resolvers, trims the event manifest to a live window, proxies media through stable Apple-player URLs, and temporarily accepts the broadcaster's globally available 288p rendition until its protected HD delivery is again usable outside France.",
