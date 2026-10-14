@@ -390,11 +390,11 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 1,
+        "failure_streak": 2,
         "success_streak": 0,
-        "last_evidence": "1:ffmpeg_rc8:[in#0 @ 0x1467049d0] Error opening input: Server returned 5XX Server Error reply; 2:http_502; 3:reprobe_failed; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
+        "last_evidence": "1:http_502; 2:h264/aac 1280x720, moving; 3:no_video_codec; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "last_recovery": "2026-10-14T11:00:44Z",
-        "last_failure": "2026-10-14T12:44:37Z",
+        "last_failure": "2026-10-14T13:30:12Z",
         "prior_status": "verified_dynamic_apple_relay",
         "prior_reason": "Exact first-party Echorouk News player resolved dynamically through its public challenge/sign flow and proxied through stable Apple-player URLs. The public 720p route passed three moving H.264/AAC decodes, a continuous 60-second transport gate, current NEWS branding/ticker inspection, and 60 seconds of native AVPlayer playback with no stalls."
       }
