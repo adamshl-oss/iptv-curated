@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-15T18:01:36.649136+00:00",
+  "checked_at": "2026-10-15T19:09:28.156108+00:00",
   "playlist": "chaines-tv-candidate.m3u",
   "playlist_sha256": "3c9efb8d7d56766f7bff8d60eebc1134cc7f00f6f874f2fc1f0fc0a47203b64b",
   "source_hashes": {
@@ -9,12 +9,12 @@
   "policy_sha256": "aa1afc4f3374b0878408332c73a242a82cd45d7b2e28ea33e38a5a312a987c32",
   "apple_required": true,
   "count": 16,
-  "passed": 11,
+  "passed": 13,
   "all_passed": false,
   "results": [
     {
       "name": "ARTE",
-      "passed": false,
+      "passed": true,
       "successes": 3,
       "sustained_passed": false,
       "apple_passed": true,
@@ -22,10 +22,10 @@
         "1:h264/aac 1280x720, moving",
         "2:h264/aac 1280x720, moving",
         "3:h264/aac 1280x720, moving",
-        "sustained:buffering_30.5s; media=60.0s; wall=90.5s; lag=30.5s; freezes=1/2.1s/max2.1s; errors=0",
-        "apple:apple_ok; startup=3.0s; observed=60.2s; advancing=60.2s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
+        "sustained:buffering_17.1s; media=60.0s; wall=77.1s; lag=17.1s; freezes=0/0.0s/max0.0s; errors=0",
+        "apple:apple_ok; startup=3.8s; observed=60.0s; advancing=60.0s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
       ],
-      "transport_pacing_only": false,
+      "transport_pacing_only": true,
       "height": 720,
       "quality_passed": true,
       "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/tf1/arte/live.m3u8",
@@ -42,8 +42,8 @@
         "1:h264/aac 960x540, moving",
         "2:h264/aac 960x540, moving",
         "3:h264/aac 960x540, moving",
-        "sustained:sustained_ok; media=60.0s; wall=64.2s; lag=4.2s; freezes=0/0.0s/max0.0s; errors=0",
-        "apple:apple_ok; startup=1.5s; observed=60.2s; advancing=60.2s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
+        "sustained:sustained_ok; media=60.0s; wall=63.2s; lag=3.2s; freezes=0/0.0s/max0.0s; errors=0",
+        "apple:apple_ok; startup=1.7s; observed=60.2s; advancing=60.2s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
       ],
       "transport_pacing_only": false,
       "height": 540,
@@ -62,8 +62,8 @@
         "1:h264/aac 1280x720, moving",
         "2:h264/aac 1280x720, moving",
         "3:h264/aac 1280x720, moving",
-        "sustained:buffering_26.0s; media=60.0s; wall=86.0s; lag=26.0s; freezes=0/0.0s/max0.0s; errors=0",
-        "apple:apple_ok; startup=3.0s; observed=60.2s; advancing=60.2s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
+        "sustained:buffering_18.8s; media=60.0s; wall=78.8s; lag=18.8s; freezes=0/0.0s/max0.0s; errors=0",
+        "apple:apple_ok; startup=2.6s; observed=60.0s; advancing=60.0s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
       ],
       "transport_pacing_only": true,
       "height": 720,
@@ -82,8 +82,8 @@
         "1:h264/aac 1280x720, moving",
         "2:h264/aac 1280x720, moving",
         "3:h264/aac 1280x720, moving",
-        "sustained:sustained_ok; media=60.0s; wall=65.2s; lag=5.2s; freezes=0/0.0s/max0.0s; errors=0",
-        "apple:apple_ok; startup=5.1s; observed=60.3s; advancing=60.3s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
+        "sustained:sustained_ok; media=60.0s; wall=64.0s; lag=4.0s; freezes=0/0.0s/max0.0s; errors=0",
+        "apple:apple_ok; startup=2.9s; observed=60.3s; advancing=60.3s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
       ],
       "transport_pacing_only": false,
       "height": 720,
@@ -94,20 +94,20 @@
     },
     {
       "name": "El Bilad TV (Cloud Live)",
-      "passed": false,
-      "successes": 0,
+      "passed": true,
+      "successes": 3,
       "sustained_passed": false,
-      "apple_passed": false,
+      "apple_passed": true,
       "details": [
-        "1:invalid_video_dimensions_0x0",
-        "2:invalid_video_dimensions_0x0",
-        "3:timeout",
-        "sustained:skipped_after_startup_failure",
-        "apple:skipped_after_startup_failure"
+        "1:h264/aac 720x576, moving",
+        "2:h264/aac 720x576, moving",
+        "3:h264/aac 720x576, moving",
+        "sustained:buffering_22.9s; media=60.0s; wall=83.0s; lag=22.9s; freezes=0/0.0s/max0.0s; errors=0",
+        "apple:apple_ok; startup=10.6s; observed=60.0s; advancing=60.0s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
       ],
-      "transport_pacing_only": false,
-      "height": null,
-      "quality_passed": false,
+      "transport_pacing_only": true,
+      "height": 576,
+      "quality_passed": true,
       "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/elbilad",
       "extinf": "#EXTINF:-1 tvg-id=\"ElBilad.dz\" group-title=\"Algérie — CHAINES TV\",El Bilad TV (Cloud Live)",
       "tvg_id": "ElBilad.dz"
@@ -122,8 +122,8 @@
         "1:h264/aac 1920x1080, moving",
         "2:h264/aac 1920x1080, moving",
         "3:h264/aac 1920x1080, moving",
-        "sustained:sustained_ok; media=60.0s; wall=65.9s; lag=5.9s; freezes=0/0.0s/max0.0s; errors=0",
-        "apple:apple_ok; startup=3.9s; observed=60.2s; advancing=60.2s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
+        "sustained:sustained_ok; media=60.0s; wall=62.4s; lag=2.4s; freezes=0/0.0s/max0.0s; errors=0",
+        "apple:apple_ok; startup=3.5s; observed=60.1s; advancing=60.1s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
       ],
       "transport_pacing_only": false,
       "height": 1080,
@@ -134,16 +134,16 @@
     },
     {
       "name": "L'Équipe",
-      "passed": true,
+      "passed": false,
       "successes": 3,
       "sustained_passed": true,
-      "apple_passed": true,
+      "apple_passed": false,
       "details": [
         "1:h264/aac 1920x1080, moving",
         "2:h264/aac 1920x1080, moving",
         "3:h264/aac 1920x1080, moving",
-        "sustained:sustained_ok; media=60.0s; wall=64.4s; lag=4.4s; freezes=0/0.0s/max0.0s; errors=0",
-        "apple:apple_ok; startup=1.7s; observed=60.1s; advancing=60.1s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
+        "sustained:sustained_ok; media=60.0s; wall=69.9s; lag=9.9s; freezes=1/2.5s/max2.5s; errors=0",
+        "apple:advance_ratio_0.004,total_stall_59.8s,long_stall_59.8s; startup=5.3s; observed=60.1s; advancing=0.3s/0.004; waiting=0.0s; stalls=1/59.8s/max59.8s; discontinuities=1"
       ],
       "transport_pacing_only": false,
       "height": 1080,
@@ -162,8 +162,8 @@
         "1:h264/aac 1024x576, moving",
         "2:h264/aac 1024x576, moving",
         "3:h264/aac 1024x576, moving",
-        "sustained:ffmpeg_rc124,short_media_47.6s,buffering_57.4s; media=47.6s; wall=105.0s; lag=57.4s; freezes=0/0.0s/max0.0s; errors=0",
-        "apple:apple_ok; startup=5.3s; observed=60.1s; advancing=60.1s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
+        "sustained:ffmpeg_rc124,short_media_50.0s,buffering_55.0s; media=50.0s; wall=105.0s; lag=55.0s; freezes=0/0.0s/max0.0s; errors=0",
+        "apple:apple_ok; startup=4.6s; observed=60.2s; advancing=60.2s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
       ],
       "transport_pacing_only": false,
       "height": 576,
@@ -174,16 +174,16 @@
     },
     {
       "name": "RMC Découverte",
-      "passed": false,
+      "passed": true,
       "successes": 3,
-      "sustained_passed": false,
+      "sustained_passed": true,
       "apple_passed": true,
       "details": [
         "1:h264/aac 1920x1080, moving",
         "2:h264/aac 1920x1080, moving",
         "3:h264/aac 1920x1080, moving",
-        "sustained:ffmpeg_rc234:Error opening output files: Invalid argument,short_media_0.0s; media=0.0s; wall=3.8s; lag=3.8s; freezes=0/0.0s/max0.0s; errors=0",
-        "apple:apple_ok; startup=3.2s; observed=60.1s; advancing=60.1s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
+        "sustained:sustained_ok; media=60.0s; wall=71.4s; lag=11.4s; freezes=0/0.0s/max0.0s; errors=0",
+        "apple:apple_ok; startup=2.5s; observed=60.0s; advancing=60.0s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
       ],
       "transport_pacing_only": false,
       "height": 1080,
@@ -202,8 +202,8 @@
         "1:h264/aac 1920x1080, moving",
         "2:h264/aac 1920x1080, moving",
         "3:h264/aac 1920x1080, moving",
-        "sustained:sustained_ok; media=60.0s; wall=65.6s; lag=5.6s; freezes=0/0.0s/max0.0s; errors=0",
-        "apple:apple_ok; startup=2.1s; observed=60.1s; advancing=60.1s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
+        "sustained:sustained_ok; media=60.0s; wall=69.5s; lag=9.5s; freezes=0/0.0s/max0.0s; errors=0",
+        "apple:apple_ok; startup=2.3s; observed=60.1s; advancing=59.1s/0.984; waiting=1.0s; stalls=1/1.0s/max1.0s; discontinuities=1"
       ],
       "transport_pacing_only": false,
       "height": 1080,
@@ -222,8 +222,8 @@
         "1:h264/aac 1280x720, moving",
         "2:h264/aac 1280x720, moving",
         "3:h264/aac 1280x720, moving",
-        "sustained:buffering_33.6s; media=60.0s; wall=93.6s; lag=33.6s; freezes=0/0.0s/max0.0s; errors=0",
-        "apple:apple_ok; startup=2.6s; observed=60.0s; advancing=60.0s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
+        "sustained:buffering_20.4s; media=60.0s; wall=80.4s; lag=20.4s; freezes=0/0.0s/max0.0s; errors=0",
+        "apple:apple_ok; startup=1.6s; observed=60.2s; advancing=60.2s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
       ],
       "transport_pacing_only": true,
       "height": 720,
@@ -234,7 +234,7 @@
     },
     {
       "name": "TF1 Séries Films",
-      "passed": true,
+      "passed": false,
       "successes": 3,
       "sustained_passed": false,
       "apple_passed": true,
@@ -242,10 +242,10 @@
         "1:h264/aac 1280x720, moving",
         "2:h264/aac 1280x720, moving",
         "3:h264/aac 1280x720, moving",
-        "sustained:buffering_37.9s; media=60.0s; wall=97.9s; lag=37.9s; freezes=0/0.0s/max0.0s; errors=0",
-        "apple:apple_ok; startup=2.2s; observed=60.2s; advancing=60.2s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
+        "sustained:buffering_19.0s; media=60.0s; wall=79.0s; lag=19.0s; freezes=1/2.2s/max2.2s; errors=0",
+        "apple:apple_ok; startup=1.8s; observed=60.2s; advancing=60.2s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
       ],
-      "transport_pacing_only": true,
+      "transport_pacing_only": false,
       "height": 720,
       "quality_passed": true,
       "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/tf1/tf1-series-films/live.m3u8",
@@ -262,8 +262,8 @@
         "1:h264/aac 1280x720, moving",
         "2:h264/aac 1280x720, moving",
         "3:h264/aac 1280x720, moving",
-        "sustained:buffering_34.7s; media=60.0s; wall=94.7s; lag=34.7s; freezes=0/0.0s/max0.0s; errors=0",
-        "apple:apple_ok; startup=2.6s; observed=60.2s; advancing=60.2s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
+        "sustained:buffering_18.0s; media=60.0s; wall=78.0s; lag=18.0s; freezes=0/0.0s/max0.0s; errors=0",
+        "apple:apple_ok; startup=2.9s; observed=60.1s; advancing=60.1s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
       ],
       "transport_pacing_only": true,
       "height": 720,
@@ -282,8 +282,8 @@
         "1:h264/aac 1280x720, moving",
         "2:h264/aac 1280x720, moving",
         "3:h264/aac 1280x720, moving",
-        "sustained:buffering_31.4s; media=60.0s; wall=91.4s; lag=31.4s; freezes=0/0.0s/max0.0s; errors=0",
-        "apple:apple_ok; startup=2.6s; observed=60.0s; advancing=60.0s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
+        "sustained:buffering_18.4s; media=60.0s; wall=78.4s; lag=18.4s; freezes=0/0.0s/max0.0s; errors=0",
+        "apple:apple_ok; startup=2.1s; observed=60.3s; advancing=60.3s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
       ],
       "transport_pacing_only": true,
       "height": 720,
@@ -294,19 +294,19 @@
     },
     {
       "name": "TV1 / Programme National (Cloud Live)",
-      "passed": false,
+      "passed": true,
       "successes": 3,
       "sustained_passed": false,
-      "apple_passed": false,
+      "apple_passed": true,
       "details": [
-        "1:h264/aac 1920x1080, moving",
-        "2:h264/aac 1920x1080, moving",
-        "3:h264/aac 1920x1080, moving",
-        "sustained:ffmpeg_rc124,short_media_0.0s,buffering_105.0s; media=0.0s; wall=105.0s; lag=105.0s; freezes=0/0.0s/max0.0s; errors=0",
-        "apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason"
+        "1:h264/aac 1280x720, moving",
+        "2:h264/aac 1280x720, moving",
+        "3:h264/aac 1280x720, moving",
+        "sustained:buffering_32.1s; media=60.0s; wall=92.1s; lag=32.1s; freezes=0/0.0s/max0.0s; errors=0",
+        "apple:apple_ok; startup=1.3s; observed=60.2s; advancing=60.2s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=1"
       ],
-      "transport_pacing_only": false,
-      "height": 1080,
+      "transport_pacing_only": true,
+      "height": 720,
       "quality_passed": true,
       "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv1",
       "extinf": "#EXTINF:-1 tvg-id=\"TV1.dz\" group-title=\"Algérie — CHAINES TV\",TV1 / Programme National (Cloud Live)",
@@ -322,8 +322,8 @@
         "1:h264/mp2 1920x1080, moving",
         "2:h264/mp2 1920x1080, moving",
         "3:h264/mp2 1920x1080, moving",
-        "sustained:sustained_ok; media=60.0s; wall=65.8s; lag=5.8s; freezes=0/0.0s/max0.0s; errors=0",
-        "apple:apple_ok; startup=3.8s; observed=60.3s; advancing=60.3s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=0"
+        "sustained:sustained_ok; media=60.0s; wall=62.9s; lag=2.9s; freezes=0/0.0s/max0.0s; errors=0",
+        "apple:apple_ok; startup=2.8s; observed=60.0s; advancing=60.0s/1.000; waiting=0.0s; stalls=0/0.0s/max0.0s; discontinuities=0"
       ],
       "transport_pacing_only": false,
       "height": 1080,
@@ -339,11 +339,9 @@
   },
   "promotion_decisions": {
     "degraded_retained": [
-      "ARTE.fr",
       "LCI.fr",
-      "RMCDecouverte.fr",
-      "ElBilad.dz",
-      "TV1.dz"
+      "TF1SeriesFilms.fr",
+      "LEquipe.fr"
     ],
     "quality_degraded_retained": [],
     "unproven_skipped": [],
