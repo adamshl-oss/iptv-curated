@@ -344,10 +344,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
-        "last_failure": "2026-10-16T12:02:42Z",
-        "last_evidence": "1:h264/aac 720x576, moving; 2:h264/aac 720x576, moving; 3:h264/aac 720x576, moving; sustained:short_media_21.4s,buffering_67.7s,network_errors_6; media=21.4s; wall=89.1s; lag=67.7s; freezes=0/0.0s/max0.0s; errors=6; apple:player_error:resource unavailable",
+        "last_failure": "2026-10-16T16:02:54Z",
+        "last_evidence": "1:timeout; 2:invalid_video_dimensions_0x0; 3:http_503; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact live channel retained from the verified lineup behind an always-on public endpoint.",
