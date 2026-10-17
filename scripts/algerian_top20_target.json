@@ -130,15 +130,12 @@
     "quarantine_after_failed_gates": 3,
     "recover_after_successful_gates": 1,
     "attempts_per_gate": 3,
-    "published_count": 5,
+    "published_count": 8,
     "required_count": 10,
     "coverage_state": "degraded",
     "missing_targets": [
       "Samira TV",
-      "Echorouk TV",
-      "Ennahar TV",
-      "TV1 / Programme National",
-      "TV3 / A3"
+      "Echorouk TV"
     ],
     "sustained_playback_seconds": 60,
     "maximum_wall_lag_seconds": 15.0,
@@ -218,21 +215,21 @@
       "playlist_name": "Ennahar TV (Cloud Live)",
       "tvg_id": "EnnaharTV.dz",
       "official_url": "https://www.ennaharonline.com/live/",
-      "status": "quarantined_automated",
-      "reason": "Automatically quarantined after repeated configured playback gate failures: 1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:ffmpeg_rc124,short_media_0.0s,buffering_105.0s; media=0.0s; wall=105.0s; lag=105.0s; freezes=0/0.0s/max0.0s; errors=0; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
+      "status": "verified_cloud",
+      "reason": "Exact live channel retained from the verified lineup behind an always-on public endpoint.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/ennahar",
       "min_height": 540,
-      "publish": false,
+      "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 3,
-        "success_streak": 0,
+        "failure_streak": 0,
+        "success_streak": 1,
         "last_failure": "2026-10-16T21:10:46Z",
         "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:ffmpeg_rc124,short_media_0.0s,buffering_105.0s; media=0.0s; wall=105.0s; lag=105.0s; freezes=0/0.0s/max0.0s; errors=0; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact live channel retained from the verified lineup behind an always-on public endpoint.",
-        "last_recovery": "2026-10-16T17:35:58Z"
+        "last_recovery": "2026-10-17T04:26:56Z"
       }
     },
     {
@@ -242,21 +239,21 @@
       "playlist_name": "TV1 / Programme National (Cloud Live)",
       "tvg_id": "TV1.dz",
       "official_url": "https://entv.dz/",
-      "status": "quarantined_automated",
-      "reason": "Automatically quarantined after repeated configured playback gate failures: 1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:ffmpeg_rc124,short_media_0.0s,buffering_105.0s; media=0.0s; wall=105.0s; lag=105.0s; freezes=0/0.0s/max0.0s; errors=0; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
+      "status": "verified_cloud",
+      "reason": "Exact EPTV flagship service retained from the verified lineup behind an always-on public endpoint.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv1",
       "min_height": 540,
-      "publish": false,
+      "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 3,
-        "success_streak": 0,
+        "failure_streak": 0,
+        "success_streak": 1,
         "last_failure": "2026-10-17T02:50:46Z",
         "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:ffmpeg_rc124,short_media_0.0s,buffering_105.0s; media=0.0s; wall=105.0s; lag=105.0s; freezes=0/0.0s/max0.0s; errors=0; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact EPTV flagship service retained from the verified lineup behind an always-on public endpoint.",
-        "last_recovery": "2026-10-16T22:15:38Z"
+        "last_recovery": "2026-10-17T04:26:56Z"
       }
     },
     {
@@ -266,21 +263,21 @@
       "playlist_name": "TV3 / A3 (Cloud Live)",
       "tvg_id": "TV3.dz",
       "official_url": "https://entv.dz/",
-      "status": "quarantined_automated",
-      "reason": "Automatically quarantined after repeated configured playback gate failures: 1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:ffmpeg_rc124,short_media_0.0s,buffering_105.0s; media=0.0s; wall=105.0s; lag=105.0s; freezes=0/0.0s/max0.0s; errors=0; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
+      "status": "verified_cloud",
+      "reason": "Exact EPTV service retained from the verified lineup behind an always-on public endpoint.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv3",
       "min_height": 540,
-      "publish": false,
+      "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 3,
-        "success_streak": 0,
+        "failure_streak": 0,
+        "success_streak": 1,
         "last_failure": "2026-10-17T02:12:03Z",
         "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:ffmpeg_rc124,short_media_0.0s,buffering_105.0s; media=0.0s; wall=105.0s; lag=105.0s; freezes=0/0.0s/max0.0s; errors=0; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact EPTV service retained from the verified lineup behind an always-on public endpoint.",
-        "last_recovery": "2026-10-16T22:15:38Z"
+        "last_recovery": "2026-10-17T04:26:56Z"
       }
     },
     {
@@ -391,11 +388,11 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
-        "last_evidence": "1:http_502; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
+        "last_evidence": "1:motion_rc8:[in#0 @ 0x14e7045b0] Error opening input: Server returned 5XX Server Error reply; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "last_recovery": "2026-10-15T07:44:38Z",
-        "last_failure": "2026-10-17T00:04:36Z",
+        "last_failure": "2026-10-17T04:26:56Z",
         "prior_status": "verified_dynamic_apple_relay",
         "prior_reason": "Exact first-party Echorouk News player resolved dynamically through its public challenge/sign flow and proxied through stable Apple-player URLs. The public 720p route passed three moving H.264/AAC decodes, a continuous 60-second transport gate, current NEWS branding/ticker inspection, and 60 seconds of native AVPlayer playback with no stalls."
       }
