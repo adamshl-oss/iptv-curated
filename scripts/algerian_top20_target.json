@@ -130,7 +130,7 @@
     "quarantine_after_failed_gates": 3,
     "recover_after_successful_gates": 1,
     "attempts_per_gate": 3,
-    "published_count": 5,
+    "published_count": 4,
     "required_count": 10,
     "coverage_state": "degraded",
     "missing_targets": [
@@ -138,7 +138,8 @@
       "Echorouk TV",
       "Ennahar TV",
       "TV1 / Programme National",
-      "TV3 / A3"
+      "TV3 / A3",
+      "El Bilad TV"
     ],
     "sustained_playback_seconds": 60,
     "maximum_wall_lag_seconds": 15.0,
@@ -338,17 +339,17 @@
       "playlist_name": "El Bilad TV (Cloud Live)",
       "tvg_id": "ElBilad.dz",
       "official_url": "https://www.elbilad.net/",
-      "status": "verified_cloud",
-      "reason": "Exact live channel retained from the verified lineup behind an always-on public endpoint.",
+      "status": "quarantined_automated",
+      "reason": "Automatically quarantined after repeated configured playback gate failures: 1:h264/aac 720x576, moving; 2:h264/aac 720x576, moving; 3:h264/aac 720x576, moving; sustained:freeze_events_12,total_freeze_45.9s; media=60.0s; wall=69.5s; lag=9.5s; freezes=12/45.9s/max7.2s; errors=0; apple:advance_ratio_0.621,total_stall_22.8s,long_stall_22.8s; startup=1.1s; observed=60.0s; advancing=37.3s/0.621; waiting=22.8s; stalls=1/22.8s/max22.8s; discontinuities=1",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/elbilad",
       "min_height": 540,
-      "publish": true,
+      "publish": false,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 2,
+        "failure_streak": 3,
         "success_streak": 0,
-        "last_failure": "2026-10-17T14:15:33Z",
-        "last_evidence": "1:invalid_video_dimensions_0x0; 2:invalid_video_dimensions_0x0; 3:invalid_video_dimensions_0x0; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
+        "last_failure": "2026-10-17T14:52:28Z",
+        "last_evidence": "1:h264/aac 720x576, moving; 2:h264/aac 720x576, moving; 3:h264/aac 720x576, moving; sustained:freeze_events_12,total_freeze_45.9s; media=60.0s; wall=69.5s; lag=9.5s; freezes=12/45.9s/max7.2s; errors=0; apple:advance_ratio_0.621,total_stall_22.8s,long_stall_22.8s; startup=1.1s; observed=60.0s; advancing=37.3s/0.621; waiting=22.8s; stalls=1/22.8s/max22.8s; discontinuities=1",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact live channel retained from the verified lineup behind an always-on public endpoint.",
@@ -391,11 +392,11 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
-        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:ffmpeg_rc8:[in#0 @ 0x123e05340] Error opening input: Server returned 5XX Server Error reply; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
+        "last_evidence": "1:h264/aac 1280x720, moving; 2:motion_rc8:[in#0 @ 0x12c704530] Error opening input: Server returned 5XX Server Error reply; 3:no_video_codec; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "last_recovery": "2026-10-15T07:44:38Z",
-        "last_failure": "2026-10-17T08:35:33Z",
+        "last_failure": "2026-10-17T14:52:28Z",
         "prior_status": "verified_dynamic_apple_relay",
         "prior_reason": "Exact first-party Echorouk News player resolved dynamically through its public challenge/sign flow and proxied through stable Apple-player URLs. The public 720p route passed three moving H.264/AAC decodes, a continuous 60-second transport gate, current NEWS branding/ticker inspection, and 60 seconds of native AVPlayer playback with no stalls."
       }
