@@ -225,10 +225,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 0,
-        "success_streak": 1,
-        "last_failure": "2026-10-17T07:57:02Z",
-        "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:ffmpeg_rc124,short_media_0.0s,buffering_105.0s; media=0.0s; wall=105.0s; lag=105.0s; freezes=0/0.0s/max0.0s; errors=0; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
+        "failure_streak": 1,
+        "success_streak": 0,
+        "last_failure": "2026-10-17T17:03:08Z",
+        "last_evidence": "1:h264/aac 1920x1080, moving; 2:h264/aac 1920x1080, moving; 3:h264/aac 1920x1080, moving; sustained:ffmpeg_rc124,short_media_55.8s,buffering_49.2s; media=55.8s; wall=105.0s; lag=49.2s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.425,total_stall_34.6s,long_stall_34.6s; startup=1.3s; observed=60.1s; advancing=25.5s/0.425; waiting=27.8s; stalls=1/34.6s/max34.6s; discontinuities=1",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact live channel retained from the verified lineup behind an always-on public endpoint.",
@@ -391,11 +391,11 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
-        "last_evidence": "1:h264/aac 1280x720, moving; 2:motion_rc8:[in#0 @ 0x12c704530] Error opening input: Server returned 5XX Server Error reply; 3:no_video_codec; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
+        "last_evidence": "1:h264/aac 1280x720, moving; 2:ffmpeg_rc8:[in#0 @ 0x147804680] Error opening input: Server returned 5XX Server Error reply; 3:ffmpeg_rc8:[in#0 @ 0x13fe05790] Error opening input: Server returned 5XX Server Error reply; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "last_recovery": "2026-10-15T07:44:38Z",
-        "last_failure": "2026-10-17T14:52:28Z",
+        "last_failure": "2026-10-17T17:03:08Z",
         "prior_status": "verified_dynamic_apple_relay",
         "prior_reason": "Exact first-party Echorouk News player resolved dynamically through its public challenge/sign flow and proxied through stable Apple-player URLs. The public 720p route passed three moving H.264/AAC decodes, a continuous 60-second transport gate, current NEWS branding/ticker inspection, and 60 seconds of native AVPlayer playback with no stalls."
       }
