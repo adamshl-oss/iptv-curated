@@ -1,8 +1,8 @@
 {
   "version": 1,
   "created_at": "2026-08-07T15:53:53Z",
-  "updated_at": "2026-10-18T21:22:37Z",
-  "run_count": 2102,
+  "updated_at": "2026-10-18T21:45:05Z",
+  "run_count": 2103,
   "targets": {
     "france::TF1": {
       "families": {
@@ -8558,9 +8558,9 @@
     "algeria::El Bilad TV": {
       "families": {
         "official:page": {
-          "attempts": 26,
-          "last_attempted_at": "2026-10-15T21:33:17Z",
-          "next_eligible_at": "2026-10-18T21:33:17Z",
+          "attempts": 27,
+          "last_attempted_at": "2026-10-18T21:45:05Z",
+          "next_eligible_at": "2026-10-21T21:45:05Z",
           "outcome": "none",
           "candidates_found": 0,
           "new_candidates": 0,
@@ -8890,7 +8890,7 @@
           "last_outcome": "rejected_policy"
         }
       },
-      "last_task_at": "2026-10-18T21:22:37Z"
+      "last_task_at": "2026-10-18T21:45:05Z"
     },
     "algeria::El Hayat TV": {
       "families": {
@@ -11200,115 +11200,6 @@
     }
   },
   "runs": [
-    {
-      "at": "2026-10-12T15:48:27Z",
-      "wide": false,
-      "tasks": [
-        {
-          "country": "france",
-          "target": "6ter",
-          "family": "catalog:schumijo-fr",
-          "candidates_found": 1,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-10-13T15:48:27Z"
-        },
-        {
-          "country": "france",
-          "target": "CStar",
-          "family": "catalog:iptv-org-fr",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-10-13T15:48:27Z"
-        },
-        {
-          "country": "algeria",
-          "target": "Echorouk News",
-          "family": "catalog:free-tv",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-10-13T15:48:27Z"
-        },
-        {
-          "country": "france",
-          "target": "LCI",
-          "family": "github:tvg_id",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-10-19T15:48:27Z"
-        }
-      ],
-      "deferred_targets": [
-        {
-          "country": "france",
-          "target": "France 2",
-          "next_eligible_at": "2026-10-12T21:45:52Z"
-        },
-        {
-          "country": "france",
-          "target": "France 3",
-          "next_eligible_at": "2026-10-12T22:36:04Z"
-        },
-        {
-          "country": "france",
-          "target": "M6",
-          "next_eligible_at": "2026-10-12T19:12:42Z"
-        },
-        {
-          "country": "france",
-          "target": "France 5",
-          "next_eligible_at": "2026-10-12T19:12:42Z"
-        },
-        {
-          "country": "france",
-          "target": "W9",
-          "next_eligible_at": "2026-10-12T21:45:52Z"
-        },
-        {
-          "country": "france",
-          "target": "Canal+",
-          "next_eligible_at": "2026-10-12T21:45:52Z"
-        },
-        {
-          "country": "france",
-          "target": "Gulli",
-          "next_eligible_at": "2026-10-13T00:37:21Z"
-        },
-        {
-          "country": "algeria",
-          "target": "Samira TV",
-          "next_eligible_at": "2026-10-12T21:45:52Z"
-        },
-        {
-          "country": "algeria",
-          "target": "Echorouk TV",
-          "next_eligible_at": "2026-10-12T20:57:36Z"
-        },
-        {
-          "country": "algeria",
-          "target": "Ennahar TV",
-          "next_eligible_at": "2026-10-12T21:45:52Z"
-        },
-        {
-          "country": "algeria",
-          "target": "TV3 / A3",
-          "next_eligible_at": "2026-10-12T18:27:23Z"
-        },
-        {
-          "country": "algeria",
-          "target": "AL24 News",
-          "next_eligible_at": "2026-10-13T01:40:55Z"
-        },
-        {
-          "country": "algeria",
-          "target": "El Bilad TV",
-          "next_eligible_at": "2026-10-13T10:09:14Z"
-        }
-      ]
-    },
     {
       "at": "2026-10-12T17:26:56Z",
       "wide": false,
@@ -40736,6 +40627,78 @@
           "new_candidates": 0,
           "qualified": false,
           "next_eligible_at": "2026-10-19T21:22:37Z"
+        }
+      ],
+      "deferred_targets": [
+        {
+          "country": "france",
+          "target": "France 2",
+          "next_eligible_at": "2026-10-18T23:29:46Z"
+        },
+        {
+          "country": "france",
+          "target": "France 3",
+          "next_eligible_at": "2026-10-18T23:29:46Z"
+        },
+        {
+          "country": "france",
+          "target": "M6",
+          "next_eligible_at": "2026-10-18T23:29:46Z"
+        },
+        {
+          "country": "france",
+          "target": "France 5",
+          "next_eligible_at": "2026-10-18T23:29:46Z"
+        },
+        {
+          "country": "france",
+          "target": "CNEWS",
+          "next_eligible_at": "2026-10-19T00:17:14Z"
+        },
+        {
+          "country": "france",
+          "target": "W9",
+          "next_eligible_at": "2026-10-18T23:29:46Z"
+        },
+        {
+          "country": "france",
+          "target": "6ter",
+          "next_eligible_at": "2026-10-19T00:17:14Z"
+        },
+        {
+          "country": "france",
+          "target": "Canal+",
+          "next_eligible_at": "2026-10-18T23:29:46Z"
+        },
+        {
+          "country": "france",
+          "target": "Gulli",
+          "next_eligible_at": "2026-10-19T01:26:22Z"
+        },
+        {
+          "country": "algeria",
+          "target": "Samira TV",
+          "next_eligible_at": "2026-10-18T23:29:46Z"
+        },
+        {
+          "country": "algeria",
+          "target": "Echorouk TV",
+          "next_eligible_at": "2026-10-18T23:29:46Z"
+        }
+      ]
+    },
+    {
+      "at": "2026-10-18T21:45:05Z",
+      "wide": false,
+      "tasks": [
+        {
+          "country": "algeria",
+          "target": "El Bilad TV",
+          "family": "official:page",
+          "candidates_found": 0,
+          "new_candidates": 0,
+          "qualified": false,
+          "next_eligible_at": "2026-10-21T21:45:05Z"
         }
       ],
       "deferred_targets": [
