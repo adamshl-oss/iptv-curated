@@ -223,7 +223,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 2,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-10-20T00:38:15Z",
         "last_evidence": "1:http_503; 2:http_503; 3:http_503; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
@@ -247,10 +247,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
-        "last_failure": "2026-10-19T21:03:03Z",
-        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:ffmpeg_rc124,short_media_36.9s,buffering_68.1s; media=36.9s; wall=105.0s; lag=68.1s; freezes=1/8.7s/max8.7s; errors=0; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
+        "last_failure": "2026-10-20T01:23:29Z",
+        "last_evidence": "1:invalid_video_dimensions_0x0; 2:invalid_video_dimensions_0x0; 3:invalid_video_dimensions_0x0; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact EPTV flagship service retained from the verified lineup behind an always-on public endpoint.",
