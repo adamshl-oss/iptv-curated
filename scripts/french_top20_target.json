@@ -304,10 +304,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
-        "last_failure": "2026-10-16T10:00:29Z",
-        "last_evidence": "1:no_response; 2:no_response; 3:no_response; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
+        "last_failure": "2026-10-20T08:18:56Z",
+        "last_evidence": "1:no_video_codec; 2:no_video_codec; 3:no_video_codec; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "recovery_allowed": true,
         "prior_status": "verified_static",
         "prior_reason": "Broadcaster CDN HLS passed repeated ffprobe and ffmpeg decode tests.",
