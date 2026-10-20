@@ -69,7 +69,7 @@
     },
     "algeria": {
       "state": "degraded",
-      "published_count": 8,
+      "published_count": 7,
       "required_count": 10,
       "published_names": [
         "El Heddaf TV",
@@ -78,8 +78,7 @@
         "TV2 / Canal Algérie",
         "TV3 / A3",
         "Echorouk News",
-        "El Bilad TV",
-        "AL24 News"
+        "El Bilad TV"
       ],
       "missing": [
         {
@@ -90,6 +89,11 @@
         {
           "rank": 2,
           "name": "Echorouk TV",
+          "status": "quarantined_automated"
+        },
+        {
+          "rank": 10,
+          "name": "AL24 News",
           "status": "quarantined_automated"
         }
       ]
