@@ -161,11 +161,11 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
         "prior_status": "verified_cloud_resolver",
-        "last_failure": "2026-10-16T10:00:29Z",
-        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:ffmpeg_rc124:[in#0/hls @ 0x132f049b0] keepalive request failed for 'https://alive-tf1-hls.cdn-0.diff.tf1.fr/eyJhb,short_media_51.8s,buffering_53.2s,network_errors_2; media=51.8s; wall=105.0s; lag=53.2s; freezes=0/0.0s/max0.0s; errors=2; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
+        "last_failure": "2026-10-21T23:32:31Z",
+        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:buffering_18.6s; media=60.0s; wall=78.6s; lag=18.6s; freezes=0/0.0s/max0.0s; errors=0; apple:player_error:resource unavailable",
         "prior_reason": "Quarantined after two independent 2026-07-30 playback gates proved the current signed official-CDN token is bound to the resolver IP and returns HTTP 403 to IPTVX, Apple TV, and unrelated cloud clients.",
         "candidate_discovered_at": "2026-08-07T14:49:07Z",
         "candidate_source": "paratv-france",
@@ -362,11 +362,11 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
         "prior_status": "verified_cloud_resolver",
         "prior_reason": "Permanent request-time cloud resolver for the exact TFX service, independently verified by moving H.264/AAC media, current TFX branding, and matching current programming.",
-        "last_failure": "2026-10-20T23:35:35Z",
+        "last_failure": "2026-10-21T23:32:31Z",
         "last_evidence": "1:http_502; 2:http_502; 3:http_502; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "last_recovery": "2026-10-12T15:46:41Z"
       }
