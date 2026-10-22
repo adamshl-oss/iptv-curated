@@ -304,10 +304,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
-        "last_failure": "2026-10-20T08:18:56Z",
-        "last_evidence": "1:no_video_codec; 2:no_video_codec; 3:no_video_codec; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
+        "last_failure": "2026-10-22T19:57:18Z",
+        "last_evidence": "1:h264/aac 960x540, moving; 2:h264/aac 960x540, moving; 3:h264/aac 960x540, moving; sustained:sustained_ok; media=60.0s; wall=63.7s; lag=3.7s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.857,total_stall_8.6s,long_stall_8.6s; startup=1.6s; observed=60.2s; advancing=51.6s/0.857; waiting=8.6s; stalls=1/8.6s/max8.6s; discontinuities=1",
         "recovery_allowed": true,
         "prior_status": "verified_static",
         "prior_reason": "Broadcaster CDN HLS passed repeated ffprobe and ffmpeg decode tests.",
