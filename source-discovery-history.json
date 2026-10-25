@@ -1,8 +1,8 @@
 {
   "version": 1,
   "created_at": "2026-08-07T15:53:53Z",
-  "updated_at": "2026-10-25T06:08:19Z",
-  "run_count": 2283,
+  "updated_at": "2026-10-25T06:30:56Z",
+  "run_count": 2284,
   "targets": {
     "france::TF1": {
       "families": {
@@ -8685,11 +8685,11 @@
           "qualified": false
         },
         "github:exact_name_hls": {
-          "attempts": 9,
-          "last_attempted_at": "2026-10-18T06:06:27Z",
-          "next_eligible_at": "2026-10-25T06:06:27Z",
+          "attempts": 10,
+          "last_attempted_at": "2026-10-25T06:30:56Z",
+          "next_eligible_at": "2026-11-01T06:30:56Z",
           "outcome": "candidates_found",
-          "candidates_found": 5,
+          "candidates_found": 3,
           "new_candidates": 0,
           "qualified": false
         },
@@ -8751,18 +8751,18 @@
       "candidates": {
         "502c89560a39affd8dd847d56d9e2faaeb377407be5086147fcb9dcd94d65e8d": {
           "first_seen_at": "2026-08-11T19:45:10Z",
-          "last_seen_at": "2026-10-25T03:43:16Z",
-          "next_eligible_at": "2026-11-01T03:43:16Z",
+          "last_seen_at": "2026-10-25T06:30:56Z",
+          "next_eligible_at": "2026-11-01T06:30:56Z",
           "url": "https://cdn.live.easybroadcast.io/abr_corp/66_al24_u4yga6h/corp/66_al24_u4yga6h_240p/chunks.m3u8",
-          "source": "iptv-org-dz",
+          "source": "github:iptv-org/iptv",
           "last_outcome": "candidate_cooldown"
         },
         "32441af3c1a78d6833944fe1c2f1a3c4a0eb800745925bac71efdda24f1fa92f": {
           "first_seen_at": "2026-08-12T14:05:52Z",
-          "last_seen_at": "2026-10-24T03:45:53Z",
-          "next_eligible_at": "2026-10-31T03:45:53Z",
+          "last_seen_at": "2026-10-25T06:30:56Z",
+          "next_eligible_at": "2026-11-01T06:30:56Z",
           "url": "https://cdn.live.easybroadcast.io/abr_corp/66_al24_u4yga6h/playlist.m3u8",
-          "source": "github:spookyhost1/yarr-stremio",
+          "source": "github:oscarclima/mytv-playlist",
           "last_outcome": "rejected_policy"
         },
         "40d2fda4d183756935bede62d6a7ae477058e3735843fa32e09dfbb305d7cf0d": {
@@ -8831,14 +8831,14 @@
         },
         "5eb4107ebf7567269e5206b15a1391a6b6efc66c8fe1e6f4f7064ce25ca4a977": {
           "first_seen_at": "2026-10-13T17:59:42Z",
-          "last_seen_at": "2026-10-18T06:06:27Z",
-          "next_eligible_at": "2026-10-25T06:06:27Z",
+          "last_seen_at": "2026-10-25T06:30:56Z",
+          "next_eligible_at": "2026-11-01T06:30:56Z",
           "url": "http://apk.arabic-ch.space/live/091/index.m3u8",
           "source": "github:KaneenApp/NeuroSources",
           "last_outcome": "rejected_policy"
         }
       },
-      "last_task_at": "2026-10-25T04:09:23Z"
+      "last_task_at": "2026-10-25T06:30:56Z"
     },
     "algeria::El Bilad TV": {
       "families": {
@@ -9574,9 +9574,9 @@
           "qualified": false
         },
         "catalog:iptv-org-dz": {
-          "attempts": 65,
-          "last_attempted_at": "2026-10-24T04:25:35Z",
-          "next_eligible_at": "2026-10-25T04:25:35Z",
+          "attempts": 66,
+          "last_attempted_at": "2026-10-25T06:30:56Z",
+          "next_eligible_at": "2026-10-26T06:30:56Z",
           "outcome": "none",
           "candidates_found": 0,
           "new_candidates": 0,
@@ -9839,7 +9839,7 @@
           "last_outcome": "rejected_policy"
         }
       },
-      "last_task_at": "2026-10-24T04:56:35Z"
+      "last_task_at": "2026-10-25T06:30:56Z"
     },
     "algeria::TV4 Tamazight": {
       "families": {
@@ -11493,83 +11493,6 @@
     }
   },
   "runs": [
-    {
-      "at": "2026-10-18T04:32:34Z",
-      "wide": false,
-      "tasks": [
-        {
-          "country": "france",
-          "target": "Gulli",
-          "family": "catalog:paratv-canalplus",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-10-19T04:32:34Z"
-        }
-      ],
-      "deferred_targets": [
-        {
-          "country": "france",
-          "target": "France 2",
-          "next_eligible_at": "2026-10-18T05:55:06Z"
-        },
-        {
-          "country": "france",
-          "target": "France 3",
-          "next_eligible_at": "2026-10-18T07:35:44Z"
-        },
-        {
-          "country": "france",
-          "target": "M6",
-          "next_eligible_at": "2026-10-18T13:01:30Z"
-        },
-        {
-          "country": "france",
-          "target": "France 5",
-          "next_eligible_at": "2026-10-18T13:01:30Z"
-        },
-        {
-          "country": "france",
-          "target": "CNEWS",
-          "next_eligible_at": "2026-10-18T05:36:46Z"
-        },
-        {
-          "country": "france",
-          "target": "W9",
-          "next_eligible_at": "2026-10-18T05:55:06Z"
-        },
-        {
-          "country": "france",
-          "target": "6ter",
-          "next_eligible_at": "2026-10-18T14:16:19Z"
-        },
-        {
-          "country": "france",
-          "target": "Canal+",
-          "next_eligible_at": "2026-10-18T05:55:06Z"
-        },
-        {
-          "country": "algeria",
-          "target": "Samira TV",
-          "next_eligible_at": "2026-10-18T23:29:46Z"
-        },
-        {
-          "country": "algeria",
-          "target": "Echorouk TV",
-          "next_eligible_at": "2026-10-18T09:37:44Z"
-        },
-        {
-          "country": "algeria",
-          "target": "TV3 / A3",
-          "next_eligible_at": "2026-10-18T10:47:03Z"
-        },
-        {
-          "country": "algeria",
-          "target": "AL24 News",
-          "next_eligible_at": "2026-10-18T22:21:16Z"
-        }
-      ]
-    },
     {
       "at": "2026-10-18T05:48:09Z",
       "wide": false,
@@ -38699,6 +38622,87 @@
         {
           "country": "france",
           "target": "Canal+",
+          "next_eligible_at": "2026-10-25T18:03:26Z"
+        },
+        {
+          "country": "algeria",
+          "target": "Samira TV",
+          "next_eligible_at": "2026-10-25T23:01:22Z"
+        },
+        {
+          "country": "algeria",
+          "target": "El Heddaf TV",
+          "next_eligible_at": "2026-10-25T15:01:05Z"
+        }
+      ]
+    },
+    {
+      "at": "2026-10-25T06:30:56Z",
+      "wide": false,
+      "tasks": [
+        {
+          "country": "algeria",
+          "target": "Echorouk News",
+          "family": "catalog:iptv-org-dz",
+          "candidates_found": 0,
+          "new_candidates": 0,
+          "qualified": false,
+          "next_eligible_at": "2026-10-26T06:30:56Z"
+        },
+        {
+          "country": "algeria",
+          "target": "AL24 News",
+          "family": "github:exact_name_hls",
+          "candidates_found": 3,
+          "new_candidates": 0,
+          "qualified": false,
+          "next_eligible_at": "2026-11-01T06:30:56Z"
+        }
+      ],
+      "deferred_targets": [
+        {
+          "country": "france",
+          "target": "France 2",
+          "next_eligible_at": "2026-10-25T18:03:26Z"
+        },
+        {
+          "country": "france",
+          "target": "France 3",
+          "next_eligible_at": "2026-10-25T16:32:59Z"
+        },
+        {
+          "country": "france",
+          "target": "M6",
+          "next_eligible_at": "2026-10-25T18:03:26Z"
+        },
+        {
+          "country": "france",
+          "target": "France 5",
+          "next_eligible_at": "2026-10-25T18:03:26Z"
+        },
+        {
+          "country": "france",
+          "target": "CNEWS",
+          "next_eligible_at": "2026-10-25T07:29:51Z"
+        },
+        {
+          "country": "france",
+          "target": "W9",
+          "next_eligible_at": "2026-10-25T18:03:26Z"
+        },
+        {
+          "country": "france",
+          "target": "6ter",
+          "next_eligible_at": "2026-10-25T18:03:26Z"
+        },
+        {
+          "country": "france",
+          "target": "Canal+",
+          "next_eligible_at": "2026-10-25T18:03:26Z"
+        },
+        {
+          "country": "france",
+          "target": "Gulli",
           "next_eligible_at": "2026-10-25T18:03:26Z"
         },
         {
