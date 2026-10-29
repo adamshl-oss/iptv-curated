@@ -335,7 +335,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-10-29T02:43:06Z",
         "last_evidence": "1:no_audio_codec; 2:h264/aac 1024x576, moving; 3:h264/aac 1024x576, moving; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
@@ -362,12 +362,12 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
         "prior_status": "verified_cloud_resolver",
         "prior_reason": "Permanent request-time cloud resolver for the exact TFX service, independently verified by moving H.264/AAC media, current TFX branding, and matching current programming.",
-        "last_failure": "2026-10-27T03:33:50Z",
-        "last_evidence": "1:http_502; 2:http_502; 3:http_502; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
+        "last_failure": "2026-10-29T03:32:29Z",
+        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:ffmpeg_rc8:[in#0 @ 0x142704200] Error opening input: Server returned 5XX Server Error reply; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "last_recovery": "2026-10-12T15:46:41Z"
       }
     },
