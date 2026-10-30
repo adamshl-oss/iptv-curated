@@ -161,7 +161,7 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "prior_status": "verified_cloud_resolver",
         "last_failure": "2026-10-30T06:33:54Z",
@@ -248,21 +248,25 @@
       "name": "ARTE",
       "tvg_id": "ARTE.fr",
       "official_url": "https://www.arte.tv/fr/direct/",
-      "status": "verified_cloud_resolver",
-      "reason": "Permanent request-time cloud resolver for the exact ARTE France service, independently verified by moving H.264/AAC media and current ARTE branding.",
+      "status": "verified_cloud_relay",
+      "reason": "The permanent cloud URL passed the configured public playback gate after candidate qualification; individual transport and player results are recorded separately. IPTVX receives this stable URL, not the upstream candidate.",
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/tf1/arte/live.m3u8",
       "min_height": 720,
       "publish": true,
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "prior_status": "verified_cloud_resolver",
         "prior_reason": "Permanent request-time cloud resolver for the exact ARTE France service, independently verified by moving H.264/AAC media and current ARTE branding.",
         "last_failure": "2026-10-30T06:33:54Z",
         "last_evidence": "1:http_502; 2:http_502; 3:http_502; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
-        "last_recovery": "2026-09-03T15:40:56Z"
+        "last_recovery": "2026-10-30T06:52:35Z",
+        "candidate_discovered_at": "2026-10-30T06:38:12Z",
+        "candidate_source": "iptv-org-fr",
+        "candidate_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving",
+        "last_candidate_url": "https://c9851ec-rbm-hilv-fsly.cdn.redbee.live/L5/3264727f/d0a3cb71.isml/.m3u8"
       }
     },
     {
@@ -278,7 +282,7 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "prior_status": "verified_cloud_resolver",
         "last_failure": "2026-10-30T06:33:54Z",
@@ -362,7 +366,7 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "prior_status": "verified_cloud_resolver",
         "prior_reason": "Permanent request-time cloud resolver for the exact TFX service, independently verified by moving H.264/AAC media, current TFX branding, and matching current programming.",
