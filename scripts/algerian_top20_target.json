@@ -172,12 +172,12 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
         "prior_status": "verified_official_signed_source",
         "prior_reason": "Official Echorouk live-player HLS renewed automatically from the broadcaster's current signed source.",
-        "last_failure": "2026-10-31T02:03:28Z",
-        "last_evidence": "1:http_502; 2:http_502; 3:http_502; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
+        "last_failure": "2026-10-31T05:11:26Z",
+        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:http_502; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "last_recovery": "2026-10-30T03:34:02Z"
       }
     },
@@ -247,10 +247,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 0,
-        "success_streak": 1,
-        "last_failure": "2026-10-30T12:11:08Z",
-        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:ffmpeg_rc124,short_media_0.0s,buffering_105.0s; media=0.0s; wall=105.0s; lag=105.0s; freezes=0/0.0s/max0.0s; errors=0; apple:startup_timeout_12.0s:AVPlayerWaitingToMinimizeStallsReason",
+        "failure_streak": 1,
+        "success_streak": 0,
+        "last_failure": "2026-10-31T05:11:26Z",
+        "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:ffmpeg_rc124,buffering_45.7s; media=59.4s; wall=105.0s; lag=45.7s; freezes=0/0.0s/max0.0s; errors=0; apple:advance_ratio_0.487,total_stall_30.9s,long_stall_30.9s; startup=2.0s; observed=60.1s; advancing=29.3s/0.487; waiting=0.0s; stalls=1/30.9s/max30.9s; discontinuities=2",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact EPTV flagship service retained from the verified lineup behind an always-on public endpoint.",
