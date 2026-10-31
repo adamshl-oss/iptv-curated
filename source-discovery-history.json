@@ -1,8 +1,8 @@
 {
   "version": 1,
   "created_at": "2026-08-07T15:53:53Z",
-  "updated_at": "2026-10-31T07:52:58Z",
-  "run_count": 2424,
+  "updated_at": "2026-10-31T10:46:07Z",
+  "run_count": 2425,
   "targets": {
     "france::TF1": {
       "families": {
@@ -8745,9 +8745,9 @@
           "qualified": false
         },
         "catalog:iptv-org-dz": {
-          "attempts": 25,
-          "last_attempted_at": "2026-10-28T05:50:11Z",
-          "next_eligible_at": "2026-10-29T05:50:11Z",
+          "attempts": 26,
+          "last_attempted_at": "2026-10-31T10:46:07Z",
+          "next_eligible_at": "2026-11-01T10:46:07Z",
           "outcome": "candidates_found",
           "candidates_found": 1,
           "new_candidates": 0,
@@ -8883,8 +8883,8 @@
       "candidates": {
         "502c89560a39affd8dd847d56d9e2faaeb377407be5086147fcb9dcd94d65e8d": {
           "first_seen_at": "2026-08-11T19:45:10Z",
-          "last_seen_at": "2026-10-28T05:50:11Z",
-          "next_eligible_at": "2026-11-04T05:50:11Z",
+          "last_seen_at": "2026-10-31T10:46:07Z",
+          "next_eligible_at": "2026-11-07T10:46:07Z",
           "url": "https://cdn.live.easybroadcast.io/abr_corp/66_al24_u4yga6h/corp/66_al24_u4yga6h_240p/chunks.m3u8",
           "source": "iptv-org-dz",
           "last_outcome": "candidate_cooldown"
@@ -8970,7 +8970,7 @@
           "last_outcome": "rejected_policy"
         }
       },
-      "last_task_at": "2026-10-28T06:35:34Z"
+      "last_task_at": "2026-10-31T10:46:07Z"
     },
     "algeria::El Bilad TV": {
       "families": {
@@ -11625,88 +11625,6 @@
     }
   },
   "runs": [
-    {
-      "at": "2026-10-23T08:06:31Z",
-      "wide": false,
-      "tasks": [
-        {
-          "country": "algeria",
-          "target": "TV2 / Canal Algérie",
-          "family": "catalog:free-tv",
-          "candidates_found": 0,
-          "new_candidates": 0,
-          "qualified": false,
-          "next_eligible_at": "2026-10-24T08:06:31Z"
-        }
-      ],
-      "deferred_targets": [
-        {
-          "country": "france",
-          "target": "France 2",
-          "next_eligible_at": "2026-10-23T17:16:35Z"
-        },
-        {
-          "country": "france",
-          "target": "France 3",
-          "next_eligible_at": "2026-10-23T14:51:22Z"
-        },
-        {
-          "country": "france",
-          "target": "M6",
-          "next_eligible_at": "2026-10-23T17:16:35Z"
-        },
-        {
-          "country": "france",
-          "target": "France 5",
-          "next_eligible_at": "2026-10-23T17:16:35Z"
-        },
-        {
-          "country": "france",
-          "target": "CNEWS",
-          "next_eligible_at": "2026-10-23T19:23:58Z"
-        },
-        {
-          "country": "france",
-          "target": "W9",
-          "next_eligible_at": "2026-10-23T17:16:35Z"
-        },
-        {
-          "country": "france",
-          "target": "6ter",
-          "next_eligible_at": "2026-10-23T17:16:35Z"
-        },
-        {
-          "country": "france",
-          "target": "Canal+",
-          "next_eligible_at": "2026-10-23T17:16:35Z"
-        },
-        {
-          "country": "france",
-          "target": "Gulli",
-          "next_eligible_at": "2026-10-23T17:16:35Z"
-        },
-        {
-          "country": "algeria",
-          "target": "Samira TV",
-          "next_eligible_at": "2026-10-23T22:05:38Z"
-        },
-        {
-          "country": "algeria",
-          "target": "Echorouk TV",
-          "next_eligible_at": "2026-10-23T17:16:35Z"
-        },
-        {
-          "country": "algeria",
-          "target": "TV1 / Programme National",
-          "next_eligible_at": "2026-10-23T12:42:43Z"
-        },
-        {
-          "country": "algeria",
-          "target": "Echorouk News",
-          "next_eligible_at": "2026-10-23T22:05:38Z"
-        }
-      ]
-    },
     {
       "at": "2026-10-23T08:46:10Z",
       "wide": false,
@@ -38432,6 +38350,83 @@
         }
       ],
       "deferred_targets": []
+    },
+    {
+      "at": "2026-10-31T10:46:07Z",
+      "wide": false,
+      "tasks": [
+        {
+          "country": "algeria",
+          "target": "AL24 News",
+          "family": "catalog:iptv-org-dz",
+          "candidates_found": 1,
+          "new_candidates": 0,
+          "qualified": false,
+          "next_eligible_at": "2026-11-01T10:46:07Z"
+        }
+      ],
+      "deferred_targets": [
+        {
+          "country": "france",
+          "target": "France 2",
+          "next_eligible_at": "2026-11-01T00:04:54Z"
+        },
+        {
+          "country": "france",
+          "target": "France 3",
+          "next_eligible_at": "2026-11-01T00:04:54Z"
+        },
+        {
+          "country": "france",
+          "target": "M6",
+          "next_eligible_at": "2026-11-01T00:04:54Z"
+        },
+        {
+          "country": "france",
+          "target": "France 5",
+          "next_eligible_at": "2026-11-01T00:04:54Z"
+        },
+        {
+          "country": "france",
+          "target": "CNEWS",
+          "next_eligible_at": "2026-11-01T00:04:54Z"
+        },
+        {
+          "country": "france",
+          "target": "W9",
+          "next_eligible_at": "2026-11-01T00:04:54Z"
+        },
+        {
+          "country": "france",
+          "target": "6ter",
+          "next_eligible_at": "2026-11-01T00:04:54Z"
+        },
+        {
+          "country": "france",
+          "target": "Canal+",
+          "next_eligible_at": "2026-11-01T00:04:54Z"
+        },
+        {
+          "country": "france",
+          "target": "Gulli",
+          "next_eligible_at": "2026-11-01T00:04:54Z"
+        },
+        {
+          "country": "algeria",
+          "target": "Samira TV",
+          "next_eligible_at": "2026-11-01T01:47:28Z"
+        },
+        {
+          "country": "algeria",
+          "target": "El Heddaf TV",
+          "next_eligible_at": "2026-11-01T01:47:28Z"
+        },
+        {
+          "country": "algeria",
+          "target": "TV1 / Programme National",
+          "next_eligible_at": "2026-11-01T06:43:36Z"
+        }
+      ]
     }
   ]
 }
