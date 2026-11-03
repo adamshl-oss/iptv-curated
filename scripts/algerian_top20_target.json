@@ -130,12 +130,13 @@
     "quarantine_after_failed_gates": 3,
     "recover_after_successful_gates": 1,
     "attempts_per_gate": 3,
-    "published_count": 8,
+    "published_count": 7,
     "required_count": 10,
     "coverage_state": "degraded",
     "missing_targets": [
       "Samira TV",
-      "El Heddaf TV"
+      "El Heddaf TV",
+      "Echorouk News"
     ],
     "sustained_playback_seconds": 60,
     "maximum_wall_lag_seconds": 15.0,
@@ -171,7 +172,7 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 2,
+        "failure_streak": 0,
         "success_streak": 0,
         "prior_status": "verified_official_signed_source",
         "prior_reason": "Official Echorouk live-player HLS renewed automatically from the broadcaster's current signed source.",
@@ -380,19 +381,19 @@
       "playlist_name": "Echorouk News (Cloud Live)",
       "tvg_id": "EchoroukNews.dz",
       "official_url": "https://www.echoroukonline.com/live-news",
-      "status": "verified_dynamic_apple_relay",
-      "reason": "Exact first-party Echorouk News player resolved dynamically through its public challenge/sign flow and proxied through stable Apple-player URLs. The public 720p route passed three moving H.264/AAC decodes, a continuous 60-second transport gate, current NEWS branding/ticker inspection, and 60 seconds of native AVPlayer playback with no stalls.",
-      "publish": true,
+      "status": "quarantined_automated",
+      "reason": "Automatically quarantined after repeated configured playback gate failures: 1:ffmpeg_rc8:[in#0 @ 0x1247040c0] Error opening input: Server returned 5XX Server Error reply; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
+      "publish": false,
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/echorouk/news/live.m3u8",
       "min_height": 720,
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 2,
+        "failure_streak": 3,
         "success_streak": 0,
-        "last_evidence": "1:no_response; 2:no_response; 3:no_response; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
+        "last_evidence": "1:ffmpeg_rc8:[in#0 @ 0x1247040c0] Error opening input: Server returned 5XX Server Error reply; 2:h264/aac 1280x720, moving; 3:h264/aac 1280x720, moving; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "last_recovery": "2026-10-31T04:25:45Z",
-        "last_failure": "2026-11-03T05:02:23Z",
+        "last_failure": "2026-11-03T05:34:20Z",
         "prior_status": "verified_dynamic_apple_relay",
         "prior_reason": "Exact first-party Echorouk News player resolved dynamically through its public challenge/sign flow and proxied through stable Apple-player URLs. The public 720p route passed three moving H.264/AAC decodes, a continuous 60-second transport gate, current NEWS branding/ticker inspection, and 60 seconds of native AVPlayer playback with no stalls."
       }
