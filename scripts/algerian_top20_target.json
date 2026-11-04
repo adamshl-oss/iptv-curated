@@ -130,12 +130,11 @@
     "quarantine_after_failed_gates": 3,
     "recover_after_successful_gates": 1,
     "attempts_per_gate": 3,
-    "published_count": 6,
+    "published_count": 7,
     "required_count": 10,
     "coverage_state": "degraded",
     "missing_targets": [
       "Samira TV",
-      "Echorouk TV",
       "El Heddaf TV",
       "Echorouk News"
     ],
@@ -165,21 +164,21 @@
       "playlist_name": "Echorouk TV (Cloud Live)",
       "tvg_id": "EchoroukTV.dz",
       "official_url": "https://www.echoroukonline.com/live-",
-      "status": "quarantined_automated",
-      "reason": "Automatically quarantined after repeated configured playback gate failures: 1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:ffmpeg_rc8:[in#0 @ 0x122804680] Error opening input: Server returned 5XX Server Error reply; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
-      "publish": false,
+      "status": "verified_official_signed_source",
+      "reason": "Official Echorouk live-player HLS renewed automatically from the broadcaster's current signed source.",
+      "publish": true,
       "stream_url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/echorouk/tv/live.m3u8",
       "min_height": 720,
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 3,
-        "success_streak": 0,
+        "failure_streak": 0,
+        "success_streak": 1,
         "prior_status": "verified_official_signed_source",
         "prior_reason": "Official Echorouk live-player HLS renewed automatically from the broadcaster's current signed source.",
         "last_failure": "2026-11-03T23:02:05Z",
         "last_evidence": "1:h264/aac 1280x720, moving; 2:h264/aac 1280x720, moving; 3:ffmpeg_rc8:[in#0 @ 0x122804680] Error opening input: Server returned 5XX Server Error reply; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
-        "last_recovery": "2026-11-02T05:11:02Z"
+        "last_recovery": "2026-11-04T01:59:24Z"
       }
     },
     {
@@ -344,7 +343,7 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_failure": "2026-11-04T00:49:58Z",
         "last_evidence": "1:h264/aac 720x576, moving; 2:h264/aac 720x576, moving; 3:h264/aac 720x576, moving; sustained:sustained_ok; media=60.0s; wall=68.2s; lag=8.2s; freezes=1/2.1s/max2.1s; errors=0; apple:advance_ratio_0.364,total_stall_38.2s,long_stall_38.2s; startup=1.5s; observed=60.0s; advancing=21.8s/0.364; waiting=0.0s; stalls=1/38.2s/max38.2s; discontinuities=2",
