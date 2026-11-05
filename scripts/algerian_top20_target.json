@@ -171,12 +171,12 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 1,
+        "failure_streak": 2,
         "success_streak": 0,
         "prior_status": "verified_official_signed_source",
         "prior_reason": "Official Echorouk live-player HLS renewed automatically from the broadcaster's current signed source.",
-        "last_failure": "2026-11-05T14:52:27Z",
-        "last_evidence": "1:reprobe_failed; 2:h264/aac 1280x720, moving; 3:no_video_codec; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
+        "last_failure": "2026-11-05T16:35:27Z",
+        "last_evidence": "1:h264/aac 1280x720, moving; 2:http_502; 3:h264/aac 1280x720, moving; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "last_recovery": "2026-11-04T01:59:24Z"
       }
     },
@@ -388,7 +388,7 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 1,
+        "failure_streak": 0,
         "success_streak": 0,
         "last_evidence": "1:h264/aac 1280x720, moving; 2:ffmpeg_rc8:[in#0 @ 0x12fe05810] Error opening input: Server returned 5XX Server Error reply; 3:h264/aac 1280x720, moving; sustained:skipped_after_startup_failure; apple:skipped_after_startup_failure",
         "last_recovery": "2026-11-04T02:45:24Z",
