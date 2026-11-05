@@ -171,7 +171,7 @@
       "auto_healing": {
         "enabled": true,
         "recovery_allowed": true,
-        "failure_streak": 2,
+        "failure_streak": 0,
         "success_streak": 0,
         "prior_status": "verified_official_signed_source",
         "prior_reason": "Official Echorouk live-player HLS renewed automatically from the broadcaster's current signed source.",
@@ -342,10 +342,10 @@
       "publish": true,
       "auto_healing": {
         "enabled": true,
-        "failure_streak": 0,
+        "failure_streak": 1,
         "success_streak": 0,
-        "last_failure": "2026-11-04T19:29:15Z",
-        "last_evidence": "1:h264/aac 720x576, moving; 2:h264/aac 720x576, moving; 3:h264/aac 720x576, moving; sustained:buffering_17.1s,total_freeze_10.5s; media=60.0s; wall=77.1s; lag=17.1s; freezes=3/10.5s/max4.1s; errors=0; apple:advance_ratio_0.311,total_stall_41.6s,long_stall_41.6s; startup=5.5s; observed=60.3s; advancing=18.8s/0.311; waiting=41.6s; stalls=1/41.6s/max41.6s; discontinuities=1",
+        "last_failure": "2026-11-05T17:43:59Z",
+        "last_evidence": "1:h264/aac 720x576, moving; 2:h264/aac 720x576, moving; 3:h264/aac 720x576, moving; sustained:short_media_7.2s,network_errors_6; media=7.2s; wall=15.6s; lag=8.3s; freezes=0/0.0s/max0.0s; errors=6; apple:player_error:resource unavailable",
         "recovery_allowed": true,
         "prior_status": "verified_cloud",
         "prior_reason": "Exact live channel retained from the verified lineup behind an always-on public endpoint.",
