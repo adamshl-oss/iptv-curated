@@ -5,12 +5,12 @@ country. They live at the repo root and are served by GitHub Pages:
 
 | Playlist  | URL                                                                   | Channels |
 |-----------|-----------------------------------------------------------------------|----------|
-| France    | `https://adamshl-oss.github.io/iptv-curated/lume-france.m3u`         | 22       |
-| Algérie   | `https://adamshl-oss.github.io/iptv-curated/lume-algeria.m3u`        | 15       |
+| France    | `https://adamshl-oss.github.io/iptv-curated/lume-france.m3u`         | 21       |
+| Algérie   | `https://adamshl-oss.github.io/iptv-curated/lume-algeria.m3u`        | 14       |
 | USA       | `https://adamshl-oss.github.io/iptv-curated/lume-usa.m3u`            | 26       |
-| EPG       | `https://adamshl-oss.github.io/iptv-curated/lume-epg.xml.gz`          | 63 ch.   |
+| EPG       | `https://adamshl-oss.github.io/iptv-curated/lume-epg.xml.gz`          | 61 ch.   |
 
-Total: **63 channels**, every one verified by real playback.
+Total: **61 channels**, every one verified by real playback.
 
 ## Import into Lume
 
@@ -37,14 +37,40 @@ so players that read it from the manifest alone still resolve the guide.
 
 ## Verification standard
 
-Every channel in these files was **tested, never sampled**. For each one the
-build resolves the HLS master to a variant playlist, fetches an actual media
-segment, and requires HTTP 200 plus more than 512 bytes of MPEG-TS. A URL that
-answers 200 with a playlist instead of media, or that carries a geo-block
-marker, is rejected.
+Every channel in these files was **tested, never sampled**, and tested at three
+independent layers.
+
+**1. Transport.** The HLS master is resolved to a variant playlist, an actual
+media segment is fetched, and it must answer HTTP 200 with more than 512 bytes
+of MPEG-TS. A URL that answers 200 with a playlist instead of media, or that
+carries a geo-block marker, is rejected.
+
+**2. Apple stack.** Every published URL is loaded with **AVFoundation** — the
+same framework tvOS uses — and its real media tracks are inspected: video
+resolution / fps / bitrate, and audio sample rate / channel count. A separate
+**AVPlayer** run then plays the stream for 60 seconds under the strict policy in
+`scripts/stream_health_policy.json` (≤12 s startup, ≥92 % advancing time,
+≤5 s total stall, ≤3 s longest stall, ≤3 stall events). This is the test that
+answers "will it actually watch without lagging".
+
+**3. Audible content.** Every URL is decoded for 10 seconds with ffmpeg and the
+decoded audio is measured with `volumedetect`, so a channel is only accepted
+when it carries real sound and not a silent track.
+
+**H.264 only.** All published renditions are H.264 (`avc1`). Three feeds
+(ABC News, Discovery Channel, National Geographic) were originally served as
+**HEVC-only** variants; AVFoundation can silently fall back to an *audio-only*
+rendition on HEVC, which looks like a working channel to a transport check but
+shows no picture. Those three now point at H.264 renditions that AVFoundation
+confirms carry both a video track and an audio track.
 
 The captured build evidence (segment URL, byte counts, and a decoded frame per
 channel) is in `lume-manifest.json` under `channels[]`.
+
+> The Apple-stack checks run on this Mac, not on Apple TV hardware. They prove
+> the streams decode with real picture and sound through AVFoundation/AVPlayer
+> and play smoothly for 60 s; they are not a substitute for confirming output
+> on the television itself.
 
 Source tiers used for ranking:
 
@@ -63,9 +89,9 @@ served from the public internet, so the Mac can stay off.
 These are **not** substituted with something else. They stay listed, so the gap
 is visible instead of silent (see `lume-manifest.json` → `unsourced_targets`).
 
-* **Algérie** — Samira TV (rank 1), El Heddaf TV, TV6, TV8, TV9, El Hayat TV,
-  Beur TV, Bahia TV, El Fadjer TV, El Watania TV, Zahra TV, Al Anis TV,
-  Al Magharibia, Ennahar Laki, Echorouk Benna.
+* **Algérie** — Samira TV (rank 1), El Heddaf TV, TV5/Coran, TV6, TV8, TV9,
+  El Hayat TV, Beur TV, Bahia TV, El Fadjer TV, El Watania TV, Zahra TV,
+  Al Anis TV, Al Magharibia, Ennahar Laki, Echorouk Benna.
   * The official broadcaster CDN `cdn02.hta.dz` (which carries Samira TV, TV6,
     TV8, TV9, El Heddaf, El Hayat, Beur, Bahia, …) is **NXDOMAIN globally** —
     it resolves neither from the local network nor via DNS-over-HTTPS.
@@ -76,9 +102,11 @@ is visible instead of silent (see `lume-manifest.json` → `unsourced_targets`).
     remaining live tenant codes carry the EPTV national simulcast and cannot
     be attributed to TV6/TV8/TV9 by content, so they are not published under
     guessed names.
-* **USA** — The CW, C-SPAN, NASA TV (no usable iptv-org stream); Telemundo and
-  Univision (candidate streams failed playback).
-* **France** — Canal+ (pay/DRM, out of scope by policy).
+* **USA** — The CW, C-SPAN, NASA TV (no usable iptv-org stream); USA Network,
+  Lifetime, Bravo and TNT (every candidate either stalled or failed under
+  AVPlayer); Telemundo and Univision (candidate streams failed playback).
+* **France** — Canal+ (pay/DRM, out of scope by policy); France 3 Régions (the
+  only source that carries it stalls under AVPlayer).
 
 ## Guide coverage
 

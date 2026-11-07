@@ -7,8 +7,8 @@
  },
  "epg": "https://adamshl-oss.github.io/iptv-curated/lume-epg.xml.gz",
  "counts": {
-  "france": 22,
-  "algeria": 15,
+  "france": 21,
+  "algeria": 14,
   "usa": 26
  },
  "groups": {
@@ -17,7 +17,6 @@
    "France — Général",
    "France — Info",
    "France — Kids",
-   "France — Régions",
    "France — Sport"
   ],
   "algeria": [
@@ -29,7 +28,6 @@
    "USA — Broadcast",
    "USA — Cinéma & séries",
    "USA — Documentaire",
-   "USA — Generaliste",
    "USA — Généraliste",
    "USA — Info",
    "USA — Kids",
@@ -42,12 +40,12 @@
    [
     "Canal+.fr",
     "Canal+",
-    "pay / DRM"
+    "pay / DRM - out of scope by policy"
    ],
    [
-    "France3Regions.fallback",
-    "France 3 Régions (extra feeds)",
-    "regional feeds geo-blocked"
+    "France3Regions.fr",
+    "France 3 Régions",
+    "only source stalls under AVPlayer"
    ]
   ],
   "Algeria": [
@@ -62,9 +60,14 @@
     "relay upstream 503, live.elheddaftv.com 404"
    ],
    [
+    "TV5.dz",
+    "TV5 / Coran",
+    "quarantined in the relay's own status; AVPlayer CoreMediaError"
+   ],
+   [
     "TV6.dz",
     "TV6",
-    "no attributable source (upstream codes 005/008 are ENTV simulcast, not attributable)"
+    "no attributable source (tenant codes 005/008 are ENTV simulcast)"
    ],
    [
     "TV8.dz",
@@ -144,6 +147,26 @@
     "no iptv-org stream"
    ],
    [
+    "USANetwork.us",
+    "USA Network",
+    "every candidate stalls or fails under AVPlayer"
+   ],
+   [
+    "Lifetime.us",
+    "Lifetime",
+    "no AVPlayer-clean source"
+   ],
+   [
+    "Bravo.us",
+    "Bravo",
+    "no AVPlayer-clean source"
+   ],
+   [
+    "TNT.us",
+    "TNT",
+    "no AVPlayer-clean source"
+   ],
+   [
     "Telemundo.us",
     "Telemundo",
     "candidate streams failed playback"
@@ -161,12 +184,12 @@
    "tvg": "TF1.fr",
    "name": "TF1",
    "group": "France — Général",
-   "url": "http://149.62.177.107:9999/TF1/index.m3u8",
-   "tier": 4,
+   "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/tf1/tf1/live.m3u8",
+   "tier": 2,
    "verified": true,
    "segment_bytes": 300000,
    "alternates": [
-    "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/tf1/tf1/live.m3u8"
+    "http://149.62.177.107:9999/TF1/index.m3u8"
    ]
   },
   {
@@ -287,12 +310,12 @@
    "tvg": "TFX.fr",
    "name": "TFX",
    "group": "France — Général",
-   "url": "http://149.62.177.107:9999/TFX/index.m3u8",
-   "tier": 4,
+   "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/tf1/tfx/live.m3u8",
+   "tier": 2,
    "verified": true,
    "segment_bytes": 300000,
    "alternates": [
-    "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/tf1/tfx/live.m3u8"
+    "http://149.62.177.107:9999/TFX/index.m3u8"
    ]
   },
   {
@@ -300,13 +323,13 @@
    "tvg": "CStar.fr",
    "name": "CStar",
    "group": "France — Général",
-   "url": "http://149.62.177.107:9999/CSTAR/index.m3u8",
-   "tier": 4,
+   "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/cstar/live.m3u8",
+   "tier": 2,
    "verified": true,
    "segment_bytes": 300000,
    "alternates": [
-    "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/cstar/live.m3u8",
-    "https://raw.githubusercontent.com/Paradise-91/ParaTV/main/streams/canalplus/cstar-dm.m3u8"
+    "http://149.62.177.107:9999/CSTAR/index.m3u8",
+    "https://raw.githubusercontent.com/Paradise-91/ParaTV/refs/heads/main/streams/canalplus/cstar-dm.m3u8"
    ]
   },
   {
@@ -355,13 +378,13 @@
    "tvg": "CNews.fr",
    "name": "CNews",
    "group": "France — Info",
-   "url": "http://149.62.177.107:9999/CNEWS/index.m3u8",
-   "tier": 4,
+   "url": "https://raw.githubusercontent.com/Paradise-91/ParaTV/main/streams/canalplus/cnews-dm.m3u8",
+   "tier": 3,
    "verified": true,
    "segment_bytes": 300000,
    "alternates": [
     "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/cnews/live.m3u8",
-    "https://raw.githubusercontent.com/Paradise-91/ParaTV/main/streams/canalplus/cnews-dm.m3u8"
+    "http://149.62.177.107:9999/CNEWS/index.m3u8"
    ]
   },
   {
@@ -369,12 +392,12 @@
    "tvg": "LCI.fr",
    "name": "LCI",
    "group": "France — Info",
-   "url": "http://149.62.177.107:9999/LCI/index.m3u8",
+   "url": "http://99.27.51.147:8080/LCI/index.m3u8",
    "tier": 4,
    "verified": true,
    "segment_bytes": 300000,
    "alternates": [
-    "http://99.27.51.147:8080/LCI/index.m3u8",
+    "http://149.62.177.107:9999/LCI/index.m3u8",
     "http://89.187.185.76:8080/LCI/index.m3u8",
     "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/lci/live.m3u8"
    ]
@@ -429,9 +452,8 @@
    "url": "https://sr-m6web.live.6cloud.fr/out/v1/6play/6play-gulli/cmaf_q2hyb21h/hls-short-sd.m3u8",
    "tier": 1,
    "verified": true,
-   "segment_bytes": 300000,
+   "segment_bytes": 182410,
    "alternates": [
-    "https://sr-m6web.live.6cloud.fr/out/v1/6play/6play-gulli/cmaf_q2hyb21h/hls-short-sd.m3u8",
     "http://99.27.51.147:8080/Gulli/index.m3u8",
     "http://89.187.185.76:8080/Gulli/index.m3u8"
    ]
@@ -442,17 +464,6 @@
    "name": "6ter",
    "group": "France — Général",
    "url": "http://149.62.177.107:9999/6ter/index.m3u8",
-   "tier": 4,
-   "verified": true,
-   "segment_bytes": 300000,
-   "alternates": []
-  },
-  {
-   "country": "france",
-   "tvg": "France3Regions.fr",
-   "name": "France 3 Régions",
-   "group": "France — Régions",
-   "url": "http://149.62.177.107:9999/France_3/index.m3u8",
    "tier": 4,
    "verified": true,
    "segment_bytes": 300000,
@@ -512,19 +523,6 @@
   },
   {
    "country": "algeria",
-   "tvg": "TV5.dz",
-   "name": "TV5 / Coran",
-   "group": "Algérie — Public",
-   "url": "http://ar.ycncdn.online/0021012254/004/index.m3u8",
-   "tier": 1,
-   "verified": true,
-   "segment_bytes": 300000,
-   "alternates": [
-    "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv5"
-   ]
-  },
-  {
-   "country": "algeria",
    "tvg": "TV7.dz",
    "name": "TV7 / El Maarifa",
    "group": "Algérie — Public",
@@ -567,12 +565,12 @@
    "tvg": "EchoroukNews.dz",
    "name": "Echorouk News",
    "group": "Algérie — Info",
-   "url": "http://ar.ycncdn.online/0021012254/014/index.m3u8",
-   "tier": 1,
+   "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/echorouk/news/live.m3u8",
+   "tier": 2,
    "verified": true,
    "segment_bytes": 300000,
    "alternates": [
-    "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/echorouk/news/live.m3u8"
+    "http://ar.ycncdn.online/0021012254/014/index.m3u8"
    ]
   },
   {
@@ -704,7 +702,6 @@
    "verified": true,
    "segment_bytes": 300000,
    "alternates": [
-    "https://abcnews-streams.akamaized.net/hls/live/2023560/abcnewshudson1/master.m3u8",
     "https://pb-0n3n2ej0w8pl9.akamaized.net/ABCNewsLive_Disney.m3u8"
    ]
   },
@@ -740,11 +737,13 @@
    "tvg": "CNNInternational.us",
    "name": "CNN International",
    "group": "USA — Info",
-   "url": "https://d3bp6dwmpbdajl.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-ury0meh5m4nzm/index.m3u8",
-   "tier": 1,
+   "url": "http://168.228.44.241:9997/play/a073/index.m3u8",
+   "tier": 4,
    "verified": true,
    "segment_bytes": 300000,
-   "alternates": []
+   "alternates": [
+    "https://d3bp6dwmpbdajl.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-ury0meh5m4nzm/index.m3u8"
+   ]
   },
   {
    "country": "usa",
@@ -869,10 +868,10 @@
   },
   {
    "country": "usa",
-   "tvg": "USANetwork.us",
-   "name": "USA Network",
+   "tvg": "Syfy.us",
+   "name": "Syfy",
    "group": "USA — Généraliste",
-   "url": "http://138.121.15.230:9002/USA/index.m3u8",
+   "url": "http://23.237.104.106:8080/USA_SYFY/index.m3u8",
    "tier": 4,
    "verified": true,
    "segment_bytes": 300000,
@@ -910,24 +909,24 @@
    "tvg": "History.us",
    "name": "History",
    "group": "USA — Documentaire",
-   "url": "https://d1ocru52bkg5e9.cloudfront.net/VICE.m3u8",
-   "tier": 1,
+   "url": "http://23.237.104.106:8080/USA_VICETV/index.m3u8",
+   "tier": 4,
    "verified": true,
    "segment_bytes": 300000,
-   "alternates": [
-    "http://23.237.104.106:8080/USA_VICETV/index.m3u8"
-   ]
+   "alternates": []
   },
   {
    "country": "usa",
    "tvg": "InvestigationDiscovery.us",
    "name": "Investigation Discovery",
    "group": "USA — Documentaire",
-   "url": "http://45.184.109.10/live/69393EAE6ADBC65A68F942022362A202/41.m3u8",
+   "url": "http://212.5.144.156:8080/id/index.m3u8",
    "tier": 4,
    "verified": true,
    "segment_bytes": 300000,
-   "alternates": []
+   "alternates": [
+    "http://45.184.109.10/live/69393EAE6ADBC65A68F942022362A202/41.m3u8"
+   ]
   },
   {
    "country": "usa",
@@ -955,7 +954,7 @@
    "country": "usa",
    "tvg": "FoodNetwork.us",
    "name": "Food Network",
-   "group": "USA — Generaliste",
+   "group": "USA — Généraliste",
    "url": "https://tvsen6.aynaott.com/foodnetwork/index.m3u8",
    "tier": 4,
    "verified": true,
