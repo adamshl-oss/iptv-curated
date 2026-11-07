@@ -5,12 +5,12 @@ country. They live at the repo root and are served by GitHub Pages:
 
 | Playlist  | URL                                                                   | Channels |
 |-----------|-----------------------------------------------------------------------|----------|
-| France    | `https://adamshl-oss.github.io/iptv-curated/lume-france.m3u`         | 21       |
+| France    | `https://adamshl-oss.github.io/iptv-curated/lume-france.m3u`         | 20       |
 | Algérie   | `https://adamshl-oss.github.io/iptv-curated/lume-algeria.m3u`        | 14       |
 | USA       | `https://adamshl-oss.github.io/iptv-curated/lume-usa.m3u`            | 26       |
-| EPG       | `https://adamshl-oss.github.io/iptv-curated/lume-epg.xml.gz`          | 61 ch.   |
+| EPG       | `https://adamshl-oss.github.io/iptv-curated/lume-epg.xml.gz`          | 60 ch.   |
 
-Total: **61 channels**, every one verified by real playback.
+Total: **60 channels**, every one verified by real playback.
 
 ## Import into Lume
 
@@ -57,12 +57,13 @@ answers "will it actually watch without lagging".
 decoded audio is measured with `volumedetect`, so a channel is only accepted
 when it carries real sound and not a silent track.
 
-**H.264 only.** All published renditions are H.264 (`avc1`). Three feeds
-(ABC News, Discovery Channel, National Geographic) were originally served as
-**HEVC-only** variants; AVFoundation can silently fall back to an *audio-only*
-rendition on HEVC, which looks like a working channel to a transport check but
-shows no picture. Those three now point at H.264 renditions that AVFoundation
-confirms carry both a video track and an audio track.
+**H.264 only.** All published renditions are H.264 (`avc1`). Four feeds
+(ABC News, Discovery Channel, National Geographic, Investigation Discovery) were
+originally served as **HEVC-only** variants; AVFoundation can silently fall back
+to an *audio-only* rendition on HEVC, which looks like a working channel to a
+transport check but shows no picture. Those now point at H.264 renditions that
+AVFoundation confirms carry both a video track and an audio track. ABC was
+moved off a 240p Amagi feed onto a 720p Uplynk rendition of the same station.
 
 The captured build evidence (segment URL, byte counts, and a decoded frame per
 channel) is in `lume-manifest.json` under `channels[]`.
@@ -105,8 +106,8 @@ is visible instead of silent (see `lume-manifest.json` → `unsourced_targets`).
 * **USA** — The CW, C-SPAN, NASA TV (no usable iptv-org stream); USA Network,
   Lifetime, Bravo and TNT (every candidate either stalled or failed under
   AVPlayer); Telemundo and Univision (candidate streams failed playback).
-* **France** — Canal+ (pay/DRM, out of scope by policy); France 3 Régions (the
-  only source that carries it stalls under AVPlayer).
+* **France** — Canal+ (pay/DRM, out of scope by policy); France 3 Régions and
+  6ter (no source plays cleanly under AVPlayer).
 
 ## Guide coverage
 
