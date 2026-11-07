@@ -1,0 +1,965 @@
+{
+ "generated_at": "2026-11-07T20:37:42.576265Z",
+ "playlists": {
+  "France": "https://adamshl-oss.github.io/iptv-curated/lume-france.m3u",
+  "Algeria": "https://adamshl-oss.github.io/iptv-curated/lume-algeria.m3u",
+  "USA": "https://adamshl-oss.github.io/iptv-curated/lume-usa.m3u"
+ },
+ "epg": "https://adamshl-oss.github.io/iptv-curated/lume-epg.xml.gz",
+ "counts": {
+  "france": 22,
+  "algeria": 15,
+  "usa": 26
+ },
+ "groups": {
+  "france": [
+   "France — Cinéma & séries",
+   "France — Général",
+   "France — Info",
+   "France — Kids",
+   "France — Régions",
+   "France — Sport"
+  ],
+  "algeria": [
+   "Algérie — Généraliste",
+   "Algérie — Info",
+   "Algérie — Public"
+  ],
+  "usa": [
+   "USA — Broadcast",
+   "USA — Cinéma & séries",
+   "USA — Documentaire",
+   "USA — Generaliste",
+   "USA — Généraliste",
+   "USA — Info",
+   "USA — Kids",
+   "USA — Sport"
+  ]
+ },
+ "verification": "every channel verified by real playback: HLS master resolved to a media playlist, media segment fetched (HTTP 200, >512 bytes of MPEG-TS). No sampling. Geo-blocked and dead targets are listed under unsourced, never silently substituted.",
+ "unsourced_targets": {
+  "France": [
+   [
+    "Canal+.fr",
+    "Canal+",
+    "pay / DRM"
+   ],
+   [
+    "France3Regions.fallback",
+    "France 3 Régions (extra feeds)",
+    "regional feeds geo-blocked"
+   ]
+  ],
+  "Algeria": [
+   [
+    "SamiraTV.dz",
+    "Samira TV",
+    "rank 1 - official CDN cdn02.hta.dz is dead (NXDOMAIN)"
+   ],
+   [
+    "ElHeddafTV.dz",
+    "El Heddaf TV",
+    "relay upstream 503, live.elheddaftv.com 404"
+   ],
+   [
+    "TV6.dz",
+    "TV6",
+    "no attributable source (upstream codes 005/008 are ENTV simulcast, not attributable)"
+   ],
+   [
+    "TV8.dz",
+    "TV8 Adhakira",
+    "no attributable source"
+   ],
+   [
+    "TV9.dz",
+    "TV9 El Barlamaniya",
+    "no attributable source"
+   ],
+   [
+    "ElHayatTV.dz",
+    "El Hayat TV",
+    "no live source found"
+   ],
+   [
+    "BeurTV.dz",
+    "Beur TV",
+    "no live source found"
+   ],
+   [
+    "BahiaTV.dz",
+    "Bahia TV Oran",
+    "no live source found"
+   ],
+   [
+    "ElFadjerTV.dz",
+    "El Fadjer TV",
+    "no live source found"
+   ],
+   [
+    "ElwataniaTV.dz",
+    "El Watania TV",
+    "no live source found"
+   ],
+   [
+    "ZAHRATV.dz",
+    "Zahra TV",
+    "no live source found"
+   ],
+   [
+    "AlAnisTV.dz",
+    "Al Anis TV",
+    "no live source found"
+   ],
+   [
+    "AlmagharibiaTV.uk",
+    "Al Magharibia",
+    "relay upstream unavailable"
+   ],
+   [
+    "EnnaharLaki.dz",
+    "Ennahar Laki",
+    "no live source found"
+   ],
+   [
+    "EchoroukBenna.dz",
+    "Echorouk Benna",
+    "no live source found"
+   ]
+  ],
+  "USA": [
+   [
+    "TheCW.us",
+    "The CW",
+    "no iptv-org stream; farm catalogues lack it"
+   ],
+   [
+    "CSPAN.us",
+    "C-SPAN",
+    "no iptv-org stream"
+   ],
+   [
+    "NASATV.us",
+    "NASA TV",
+    "no iptv-org stream"
+   ],
+   [
+    "Telemundo.us",
+    "Telemundo",
+    "candidate streams failed playback"
+   ],
+   [
+    "Univision.us",
+    "Univision",
+    "candidate streams failed playback"
+   ]
+  ]
+ },
+ "channels": [
+  {
+   "country": "france",
+   "tvg": "TF1.fr",
+   "name": "TF1",
+   "group": "France — Général",
+   "url": "http://149.62.177.107:9999/TF1/index.m3u8",
+   "tier": 4,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": [
+    "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/tf1/tf1/live.m3u8"
+   ]
+  },
+  {
+   "country": "france",
+   "tvg": "France2.fr",
+   "name": "France 2",
+   "group": "France — Général",
+   "url": "http://99.27.51.147:8080/France2/index.m3u8",
+   "tier": 4,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": [
+    "http://89.187.185.76:8080/France2/index.m3u8",
+    "http://149.62.177.107:9999/France_2/index.m3u8"
+   ]
+  },
+  {
+   "country": "france",
+   "tvg": "France3.fr",
+   "name": "France 3",
+   "group": "France — Général",
+   "url": "http://89.187.185.76:8080/France3/index.m3u8",
+   "tier": 4,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": [
+    "http://99.27.51.147:8080/France3/index.m3u8"
+   ]
+  },
+  {
+   "country": "france",
+   "tvg": "France4.fr",
+   "name": "France 4",
+   "group": "France — Général",
+   "url": "http://89.187.185.76:8080/France4/index.m3u8",
+   "tier": 4,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": [
+    "http://99.27.51.147:8080/France4/index.m3u8",
+    "http://149.62.177.107:9999/France_4/index.m3u8"
+   ]
+  },
+  {
+   "country": "france",
+   "tvg": "France5.fr",
+   "name": "France 5",
+   "group": "France — Général",
+   "url": "http://99.27.51.147:8080/France5/index.m3u8",
+   "tier": 4,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": [
+    "http://89.187.185.76:8080/France5/index.m3u8",
+    "http://149.62.177.107:9999/France_5/index.m3u8"
+   ]
+  },
+  {
+   "country": "france",
+   "tvg": "M6.fr",
+   "name": "M6",
+   "group": "France — Général",
+   "url": "http://99.27.51.147:8080/M6/index.m3u8",
+   "tier": 4,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": [
+    "http://89.187.185.76:8080/M6/index.m3u8",
+    "http://149.62.177.107:9999/M6/index.m3u8"
+   ]
+  },
+  {
+   "country": "france",
+   "tvg": "W9.fr",
+   "name": "W9",
+   "group": "France — Général",
+   "url": "http://99.27.51.147:8080/W9/index.m3u8",
+   "tier": 4,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": [
+    "http://89.187.185.76:8080/W9/index.m3u8",
+    "http://149.62.177.107:9999/W9/index.m3u8"
+   ]
+  },
+  {
+   "country": "france",
+   "tvg": "ARTE.fr",
+   "name": "ARTE",
+   "group": "France — Général",
+   "url": "http://89.187.185.76:8080/Arte/index.m3u8",
+   "tier": 4,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": [
+    "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/tf1/arte/live.m3u8",
+    "http://99.27.51.147:8080/Arte/index.m3u8",
+    "http://149.62.177.107:9999/Arte/index.m3u8"
+   ]
+  },
+  {
+   "country": "france",
+   "tvg": "TMC.fr",
+   "name": "TMC",
+   "group": "France — Général",
+   "url": "http://99.27.51.147:8080/TMC/index.m3u8",
+   "tier": 4,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": [
+    "http://89.187.185.76:8080/TMC/index.m3u8",
+    "http://149.62.177.107:9999/TMC/index.m3u8",
+    "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/tf1/tmc/live.m3u8"
+   ]
+  },
+  {
+   "country": "france",
+   "tvg": "TFX.fr",
+   "name": "TFX",
+   "group": "France — Général",
+   "url": "http://149.62.177.107:9999/TFX/index.m3u8",
+   "tier": 4,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": [
+    "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/tf1/tfx/live.m3u8"
+   ]
+  },
+  {
+   "country": "france",
+   "tvg": "CStar.fr",
+   "name": "CStar",
+   "group": "France — Général",
+   "url": "http://149.62.177.107:9999/CSTAR/index.m3u8",
+   "tier": 4,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": [
+    "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/cstar/live.m3u8",
+    "https://raw.githubusercontent.com/Paradise-91/ParaTV/main/streams/canalplus/cstar-dm.m3u8"
+   ]
+  },
+  {
+   "country": "france",
+   "tvg": "TF1SeriesFilms.fr",
+   "name": "TF1 Séries Films",
+   "group": "France — Cinéma & séries",
+   "url": "http://149.62.177.107:9999/TF1_Series_Films/index.m3u8",
+   "tier": 4,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": [
+    "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/tf1/tf1-series-films/live.m3u8"
+   ]
+  },
+  {
+   "country": "france",
+   "tvg": "D17.fr",
+   "name": "D17",
+   "group": "France — Général",
+   "url": "http://89.187.185.76:8080/D17/index.m3u8",
+   "tier": 4,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": [
+    "http://99.27.51.147:8080/D17/index.m3u8"
+   ]
+  },
+  {
+   "country": "france",
+   "tvg": "BFMTV.fr",
+   "name": "BFMTV",
+   "group": "France — Info",
+   "url": "http://89.187.185.76:8080/BFMTV/index.m3u8",
+   "tier": 4,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": [
+    "https://live-cdn-stream-euw1.bfmtv.bct.nextradiotv.com/master.m3u8",
+    "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/linear/france/bfmtv/live.m3u8",
+    "http://149.62.177.107:9999/BFM_TV/index.m3u8"
+   ]
+  },
+  {
+   "country": "france",
+   "tvg": "CNews.fr",
+   "name": "CNews",
+   "group": "France — Info",
+   "url": "http://149.62.177.107:9999/CNEWS/index.m3u8",
+   "tier": 4,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": [
+    "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/cnews/live.m3u8",
+    "https://raw.githubusercontent.com/Paradise-91/ParaTV/main/streams/canalplus/cnews-dm.m3u8"
+   ]
+  },
+  {
+   "country": "france",
+   "tvg": "LCI.fr",
+   "name": "LCI",
+   "group": "France — Info",
+   "url": "http://149.62.177.107:9999/LCI/index.m3u8",
+   "tier": 4,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": [
+    "http://99.27.51.147:8080/LCI/index.m3u8",
+    "http://89.187.185.76:8080/LCI/index.m3u8",
+    "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/lci/live.m3u8"
+   ]
+  },
+  {
+   "country": "france",
+   "tvg": "RMCDecouverte.fr",
+   "name": "RMC Découverte",
+   "group": "France — Info",
+   "url": "https://d16zzycxcd0m0r.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-hixvx5kymecr9/RMC_Decouverte_FR.m3u8",
+   "tier": 1,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": [
+    "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/linear/france/rmc-decouverte/live.m3u8",
+    "http://149.62.177.107:9999/RMC_Decouverte/index.m3u8"
+   ]
+  },
+  {
+   "country": "france",
+   "tvg": "RMCStory.fr",
+   "name": "RMC Story",
+   "group": "France — Info",
+   "url": "https://live-cdn-rmcstor-lg-fr-euw1.rmc.bct.nextradiotv.com/master.m3u8",
+   "tier": 1,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": [
+    "https://d15aro46bnpfm8.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-fqkqiax1078up/RMC_Story_FR.m3u8",
+    "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/linear/france/rmc-story/live.m3u8"
+   ]
+  },
+  {
+   "country": "france",
+   "tvg": "LEquipe.fr",
+   "name": "L'Équipe",
+   "group": "France — Sport",
+   "url": "https://dq37unyetkpcz.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-m04j89j7k5gtp/LEquipe_FR.m3u8",
+   "tier": 1,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": [
+    "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/linear/france/lequipe/live.m3u8",
+    "http://149.62.177.107:9999/LEquipe/index.m3u8"
+   ]
+  },
+  {
+   "country": "france",
+   "tvg": "Gulli.fr",
+   "name": "Gulli",
+   "group": "France — Kids",
+   "url": "https://sr-m6web.live.6cloud.fr/out/v1/6play/6play-gulli/cmaf_q2hyb21h/hls-short-sd.m3u8",
+   "tier": 1,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": [
+    "https://sr-m6web.live.6cloud.fr/out/v1/6play/6play-gulli/cmaf_q2hyb21h/hls-short-sd.m3u8",
+    "http://99.27.51.147:8080/Gulli/index.m3u8",
+    "http://89.187.185.76:8080/Gulli/index.m3u8"
+   ]
+  },
+  {
+   "country": "france",
+   "tvg": "6ter.fr",
+   "name": "6ter",
+   "group": "France — Général",
+   "url": "http://149.62.177.107:9999/6ter/index.m3u8",
+   "tier": 4,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": []
+  },
+  {
+   "country": "france",
+   "tvg": "France3Regions.fr",
+   "name": "France 3 Régions",
+   "group": "France — Régions",
+   "url": "http://149.62.177.107:9999/France_3/index.m3u8",
+   "tier": 4,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": []
+  },
+  {
+   "country": "algeria",
+   "tvg": "TV1.dz",
+   "name": "TV1 / Programme National",
+   "group": "Algérie — Public",
+   "url": "http://ar.ycncdn.online/0021012254/016/index.m3u8",
+   "tier": 1,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": [
+    "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv1"
+   ]
+  },
+  {
+   "country": "algeria",
+   "tvg": "TV2.dz",
+   "name": "TV2 / Canal Algérie",
+   "group": "Algérie — Public",
+   "url": "https://fl-dvr.iptvcdn.tv/chid_347/tracks-v1a1/mono.m3u8",
+   "tier": 1,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": [
+    "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv2"
+   ]
+  },
+  {
+   "country": "algeria",
+   "tvg": "TV3.dz",
+   "name": "TV3 / A3",
+   "group": "Algérie — Public",
+   "url": "http://ar.ycncdn.online/0021012254/002/index.m3u8",
+   "tier": 1,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": [
+    "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv3"
+   ]
+  },
+  {
+   "country": "algeria",
+   "tvg": "TV4.dz",
+   "name": "TV4 / Tamazight",
+   "group": "Algérie — Public",
+   "url": "http://ar.ycncdn.online/0021012254/003/index.m3u8",
+   "tier": 1,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": [
+    "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv4"
+   ]
+  },
+  {
+   "country": "algeria",
+   "tvg": "TV5.dz",
+   "name": "TV5 / Coran",
+   "group": "Algérie — Public",
+   "url": "http://ar.ycncdn.online/0021012254/004/index.m3u8",
+   "tier": 1,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": [
+    "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv5"
+   ]
+  },
+  {
+   "country": "algeria",
+   "tvg": "TV7.dz",
+   "name": "TV7 / El Maarifa",
+   "group": "Algérie — Public",
+   "url": "http://ar.ycncdn.online/0021012254/069/index.m3u8",
+   "tier": 1,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": [
+    "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/tv7"
+   ]
+  },
+  {
+   "country": "algeria",
+   "tvg": "AL24News.dz",
+   "name": "AL24 News",
+   "group": "Algérie — Info",
+   "url": "https://cdn.live.easybroadcast.io/abr_corp/66_al24_u4yga6h/corp/66_al24_u4yga6h_1080p/chunks.m3u8",
+   "tier": 1,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": [
+    "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/al24"
+   ]
+  },
+  {
+   "country": "algeria",
+   "tvg": "EnnaharTV.dz",
+   "name": "Ennahar TV",
+   "group": "Algérie — Info",
+   "url": "http://ar.ycncdn.online/0021012254/092/index.m3u8",
+   "tier": 1,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": [
+    "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/ennahar"
+   ]
+  },
+  {
+   "country": "algeria",
+   "tvg": "EchoroukNews.dz",
+   "name": "Echorouk News",
+   "group": "Algérie — Info",
+   "url": "http://ar.ycncdn.online/0021012254/014/index.m3u8",
+   "tier": 1,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": [
+    "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/echorouk/news/live.m3u8"
+   ]
+  },
+  {
+   "country": "algeria",
+   "tvg": "EchoroukTV.dz",
+   "name": "Echorouk TV",
+   "group": "Algérie — Généraliste",
+   "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/echorouk/tv/live.m3u8",
+   "tier": 2,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": []
+  },
+  {
+   "country": "algeria",
+   "tvg": "ElBiladTV.dz",
+   "name": "El Bilad TV",
+   "group": "Algérie — Généraliste",
+   "url": "http://ar.ycncdn.online/0021012254/009/index.m3u8",
+   "tier": 1,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": [
+    "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/elbilad"
+   ]
+  },
+  {
+   "country": "algeria",
+   "tvg": "AmouYazidTV.dz",
+   "name": "Amou Yazid TV",
+   "group": "Algérie — Généraliste",
+   "url": "http://mkstream.servehttp.com:1940/AmouYazid/ay1/chunklist.m3u8",
+   "tier": 3,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": [
+    "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free/amouyazid"
+   ]
+  },
+  {
+   "country": "algeria",
+   "tvg": "AssalatTV.dz",
+   "name": "Assalat TV (الساعة)",
+   "group": "Algérie — Généraliste",
+   "url": "http://ar.ycncdn.online/0021012254/011/index.m3u8",
+   "tier": 1,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": []
+  },
+  {
+   "country": "algeria",
+   "tvg": "AlTaghirTV.dz",
+   "name": "Al Taghir TV (التغيير)",
+   "group": "Algérie — Généraliste",
+   "url": "http://ar.ycncdn.online/0021012254/023/index.m3u8",
+   "tier": 1,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": []
+  },
+  {
+   "country": "algeria",
+   "tvg": "IkhtyarTV.dz",
+   "name": "Ikhtyar TV (إختيار)",
+   "group": "Algérie — Généraliste",
+   "url": "http://ar.ycncdn.online/0021012254/021/index.m3u8",
+   "tier": 1,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": []
+  },
+  {
+   "country": "usa",
+   "tvg": "CBS.us",
+   "name": "CBS",
+   "group": "USA — Broadcast",
+   "url": "https://content.uplynk.com/channel/328d1434fb51476cb6567c74d5b2cc70.m3u8",
+   "tier": 1,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": [
+    "https://cdn-ue1-prod.tsv2.amagi.tv/linear/amg00327-coxmediagroup-kirobreaking-ono/playlist.m3u8"
+   ]
+  },
+  {
+   "country": "usa",
+   "tvg": "NBC.us",
+   "name": "NBC",
+   "group": "USA — Broadcast",
+   "url": "https://d368vp0qqzvkid.cloudfront.net/11603/88889711/hls/master.m3u8?ads.xumo_channelId=88889711a&ads.xumo_ifaType=&ads.xumo_providerId=3822&ads.xumo_providerName=NBCNBA",
+   "tier": 1,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": []
+  },
+  {
+   "country": "usa",
+   "tvg": "ABC.us",
+   "name": "ABC",
+   "group": "USA — Broadcast",
+   "url": "https://amg01942-amg01942c6-stirr-us-10178.playouts.now.amagi.tv/playlist.m3u8",
+   "tier": 1,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": []
+  },
+  {
+   "country": "usa",
+   "tvg": "Fox.us",
+   "name": "FOX",
+   "group": "USA — Broadcast",
+   "url": "https://content.uplynk.com/channel/8975f81e6efd4e609873c3e8e25c7756.m3u8",
+   "tier": 1,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": [
+    "https://cdn-uw2-prod.tsv2.amagi.tv/linear/amg00488-foxdigital-fox11losangeleskttv-vizious/playlist.m3u8",
+    "https://live.field59.com/kbsi/kbsi1/playlist.m3u8"
+   ]
+  },
+  {
+   "country": "usa",
+   "tvg": "ABCNews.us",
+   "name": "ABC News",
+   "group": "USA — Info",
+   "url": "https://pb-0n3n2ej0w8pl9.akamaized.net/ABCNewsLive_Disney.m3u8",
+   "tier": 1,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": [
+    "https://abcnews-streams.akamaized.net/hls/live/2023560/abcnewshudson1/master.m3u8"
+   ]
+  },
+  {
+   "country": "usa",
+   "tvg": "NBCNewsNOW.us",
+   "name": "NBC News NOW",
+   "group": "USA — Info",
+   "url": "https://xumo-drct-nbcnn-ir8ze.fast.nbcuni.com/live/master.m3u8",
+   "tier": 1,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": [
+    "https://pb-o6czxr182vtiv.akamaized.net/master.m3u8"
+   ]
+  },
+  {
+   "country": "usa",
+   "tvg": "CNN.us",
+   "name": "CNN",
+   "group": "USA — Info",
+   "url": "https://tvsen6.aynaott.com/cnn/index.m3u8",
+   "tier": 4,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": [
+    "https://p13.usnlive.com/stream/cnn.m3u8",
+    "http://212.5.144.156:8080/cnn/index.m3u8"
+   ]
+  },
+  {
+   "country": "usa",
+   "tvg": "CNNInternational.us",
+   "name": "CNN International",
+   "group": "USA — Info",
+   "url": "https://d3bp6dwmpbdajl.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-ury0meh5m4nzm/index.m3u8",
+   "tier": 1,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": []
+  },
+  {
+   "country": "usa",
+   "tvg": "CNBC.us",
+   "name": "CNBC",
+   "group": "USA — Info",
+   "url": "https://tvsen6.aynaott.com/cnbc/index.m3u8",
+   "tier": 4,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": []
+  },
+  {
+   "country": "usa",
+   "tvg": "MSNBC.us",
+   "name": "MSNBC",
+   "group": "USA — Info",
+   "url": "https://tvsen6.aynaott.com/msnbc/index.m3u8",
+   "tier": 4,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": []
+  },
+  {
+   "country": "usa",
+   "tvg": "FoxNews.us",
+   "name": "Fox News",
+   "group": "USA — Info",
+   "url": "https://tvsen6.aynaott.com/foxnews/index.m3u8",
+   "tier": 4,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": [
+    "https://p14.usnlive.com/stream/foxnews.m3u8"
+   ]
+  },
+  {
+   "country": "usa",
+   "tvg": "FoxBusinessNetwork.us",
+   "name": "Fox Business",
+   "group": "USA — Info",
+   "url": "https://tvsen6.aynaott.com/foxbusiness/index.m3u8",
+   "tier": 4,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": []
+  },
+  {
+   "country": "usa",
+   "tvg": "BloombergTV.us",
+   "name": "Bloomberg TV",
+   "group": "USA — Info",
+   "url": "https://bloomberg.com/media-manifest/streams/us.m3u8",
+   "tier": 1,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": [
+    "https://tvsen6.aynaott.com/bloombergtv/index.m3u8"
+   ]
+  },
+  {
+   "country": "usa",
+   "tvg": "SkyNews.us",
+   "name": "Sky News",
+   "group": "USA — Info",
+   "url": "https://tvsen5.aynaott.com/skynews/index.m3u8",
+   "tier": 4,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": []
+  },
+  {
+   "country": "usa",
+   "tvg": "ESPN.us",
+   "name": "ESPN",
+   "group": "USA — Sport",
+   "url": "https://tvsen5.aynaott.com/espn/index.m3u8",
+   "tier": 4,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": [
+    "https://tvsen7.aynascope.net/espn/index.m3u8",
+    "http://212.5.144.156:8080/espn/index.m3u8"
+   ]
+  },
+  {
+   "country": "usa",
+   "tvg": "NFLNetwork.us",
+   "name": "NFL Network",
+   "group": "USA — Sport",
+   "url": "https://tvsen6.aynaott.com/nfl/index.m3u8",
+   "tier": 4,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": []
+  },
+  {
+   "country": "usa",
+   "tvg": "TBS.us",
+   "name": "TBS",
+   "group": "USA — Généraliste",
+   "url": "https://tvsen6.aynaott.com/tbs/index.m3u8",
+   "tier": 4,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": [
+    "https://turnerlive.warnermediacdn.com/hls/live/2023172/tbseast/slate/VIDEO_0_3564000.m3u8"
+   ]
+  },
+  {
+   "country": "usa",
+   "tvg": "AMC.us",
+   "name": "AMC",
+   "group": "USA — Cinéma & séries",
+   "url": "https://tvsen6.aynaott.com/amc/index.m3u8",
+   "tier": 4,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": [
+    "http://23.239.31.26:8989/amc/index.m3u8"
+   ]
+  },
+  {
+   "country": "usa",
+   "tvg": "USANetwork.us",
+   "name": "USA Network",
+   "group": "USA — Généraliste",
+   "url": "http://138.121.15.230:9002/USA/index.m3u8",
+   "tier": 4,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": []
+  },
+  {
+   "country": "usa",
+   "tvg": "DiscoveryChannel.us",
+   "name": "Discovery Channel",
+   "group": "USA — Documentaire",
+   "url": "http://212.5.144.156:8080/discovery/index.m3u8",
+   "tier": 4,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": [
+    "http://45.162.64.114/DISCOVERY_CHANNEL/index.m3u8"
+   ]
+  },
+  {
+   "country": "usa",
+   "tvg": "NationalGeographic.us",
+   "name": "National Geographic",
+   "group": "USA — Documentaire",
+   "url": "http://212.5.144.156:8080/natgeo/index.m3u8",
+   "tier": 4,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": [
+    "https://tvsen6.aynaott.com/natgeo/index.m3u8",
+    "http://15.204.246.24:8080/NatGeoHD/index.m3u8"
+   ]
+  },
+  {
+   "country": "usa",
+   "tvg": "History.us",
+   "name": "History",
+   "group": "USA — Documentaire",
+   "url": "https://d1ocru52bkg5e9.cloudfront.net/VICE.m3u8",
+   "tier": 1,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": [
+    "http://23.237.104.106:8080/USA_VICETV/index.m3u8"
+   ]
+  },
+  {
+   "country": "usa",
+   "tvg": "InvestigationDiscovery.us",
+   "name": "Investigation Discovery",
+   "group": "USA — Documentaire",
+   "url": "http://45.184.109.10/live/69393EAE6ADBC65A68F942022362A202/41.m3u8",
+   "tier": 4,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": []
+  },
+  {
+   "country": "usa",
+   "tvg": "CartoonNetwork.us",
+   "name": "Cartoon Network",
+   "group": "USA — Kids",
+   "url": "https://tvsen5.aynaott.com/cartoonnetwork/index.m3u8",
+   "tier": 4,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": []
+  },
+  {
+   "country": "usa",
+   "tvg": "MTV.us",
+   "name": "MTV",
+   "group": "USA — Généraliste",
+   "url": "https://tvsen6.aynaott.com/mtv/index.m3u8",
+   "tier": 4,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": []
+  },
+  {
+   "country": "usa",
+   "tvg": "FoodNetwork.us",
+   "name": "Food Network",
+   "group": "USA — Generaliste",
+   "url": "https://tvsen6.aynaott.com/foodnetwork/index.m3u8",
+   "tier": 4,
+   "verified": true,
+   "segment_bytes": 300000,
+   "alternates": []
+  }
+ ]
+}
