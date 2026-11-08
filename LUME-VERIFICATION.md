@@ -1,6 +1,6 @@
 # Lume playlists — verification report
 
-Generated 2026-11-08T04:33:07.180507Z · commit `37b3821` on `adamshl-oss/iptv-curated`
+Generated 2026-11-08T04:33:12.508174Z · commit `3f89b66` on `adamshl-oss/iptv-curated`
 
 Three playlists, **69 channels**, each one *tested — never sampled* — at three
 independent layers:
