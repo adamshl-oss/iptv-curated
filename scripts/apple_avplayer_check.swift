@@ -103,6 +103,7 @@ let policy = loadPolicy(CommandLine.arguments[2], url: urlString)
 URLCache.shared = URLCache(memoryCapacity: 0, diskCapacity: 0, diskPath: nil)
 
 let player = AVPlayer(url: url)
+player.isMuted = true   // decode silently: no sound on the test machine's speakers
 player.automaticallyWaitsToMinimizeStalling = true
 
 let processStarted = Date()
