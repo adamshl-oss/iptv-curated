@@ -151,18 +151,21 @@ Apple's frameworks.
 | Check | Result |
 |---|---|
 | Lume imports `lume-france.m3u` | 23 live streams, 6 categories (from `group-title`) |
-| EPG | read automatically from the playlist's `url-tvg` → 3 723 listings |
+| Lume imports `lume-chaines-tv.m3u` | **69 live streams, 18 categories** — the combined playlist, imported and named "Chaines TV" |
+| EPG | read automatically from the playlist's `url-tvg` → 3 723 listings (France) / 6 326 listings (Chaines TV) |
 | Channel logos / names | TF1, France 2, France 3, France 4, France 5, Euronews, BFMTV, CNews, LCI — all match |
 | EPG matching | TF1 → *TFou* 10:50 PM–3:00 AM · France 2 → *Télématin* · Euronews → *News* · France 3 → *Moi à ton âge* |
 
 Playback in Lume's own player (engine `ksPlayer`), verified from the app's diagnostic
 journal and from the decoded on-screen picture:
 
-| Channel | Feed | Join time | On-screen proof |
-|---|---|---|---|
-| France 2 | `99.27.51.147:8080` (cleartext HTTP) | 1.08 s | live picture |
-| Euronews | `cdn-euronews.akamaized.net` (official) | 7.62 s | euronews logo, TASHKENT 11:11, French subtitles |
-| TF1 | project relay (Algerian origin) | 14.68 s | TFou programme, TFOU logo, LIVE badge |
+| Channel | Country | Feed | Join time | On-screen proof |
+|---|---|---|---|---|
+| France 2 | France | `99.27.51.147:8080` (cleartext HTTP) | 1.08 s | live picture |
+| Euronews | France | `cdn-euronews.akamaized.net` (official) | 7.62 s | euronews logo, TASHKENT 11:11, French subtitles |
+| TF1 | France | project relay (Algerian origin) | 14.68 s | TFou programme, TFOU logo, LIVE badge |
+| USA Network | USA | `streaming.onnethn.com` | 7.21 s | live picture, overlay *Chicago Fire · Chaines TV* |
+| AL24 News | Algérie | official Algerian feed | 2.65 s | AL24 logo + *مباشر* (live), Arabic ticker, 07:37 GMT+1 |
 
 One caveat recorded honestly: on the *first* attempt TF1 through the project relay hit
 Lume's 15 s first-frame watchdog and Lume fell back to its second engine, which could
@@ -174,8 +177,16 @@ Lume's own free-tier limit, quoted from **Settings → Playlists**:
 
 > Free includes one playlist. Upgrade to Lume Pro to add more.
 
-So the France playlist works on the free tier; **Algérie and USA need Lume Pro**
-(one playlist per tier).
+So the free tier holds **one** playlist. There are two ways to cover all three countries:
+
+| Option | Playlist | Free? |
+|---|---|---|
+| A — combined | `lume-chaines-tv.m3u` → **"Chaines TV"**, 69 channels | **yes** |
+| B — three country playlists | `lume-france.m3u`, `lume-algeria.m3u`, `lume-usa.m3u` | needs Lume Pro ($9.99, one-time) |
+
+Option A is what is currently installed in Lume on this Mac: the app holds a single
+playlist named **"Chaines TV"** with all 69 channels, and it was verified playing France,
+USA and Algérie channels through Lume's own player (table above).
 
 ## Sources
 
