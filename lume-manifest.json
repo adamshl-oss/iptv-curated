@@ -1,11 +1,23 @@
 {
- "generated_at": "2026-11-08T05:14:22.831035Z",
+ "generated_at": "2026-11-08T06:18:26.496841Z",
  "playlists": {
   "France": "https://adamshl-oss.github.io/iptv-curated/lume-france.m3u",
   "Algeria": "https://adamshl-oss.github.io/iptv-curated/lume-algeria.m3u",
-  "USA": "https://adamshl-oss.github.io/iptv-curated/lume-usa.m3u"
+  "USA": "https://adamshl-oss.github.io/iptv-curated/lume-usa.m3u",
+  "Chaines TV (all three combined)": "https://adamshl-oss.github.io/iptv-curated/lume-chaines-tv.m3u"
  },
  "epg": "https://adamshl-oss.github.io/iptv-curated/lume-epg.xml.gz",
+ "combined_playlist": {
+  "name": "Chaines TV",
+  "url": "https://adamshl-oss.github.io/iptv-curated/lume-chaines-tv.m3u",
+  "channels": 69,
+  "built_from": [
+   "lume-france.m3u",
+   "lume-algeria.m3u",
+   "lume-usa.m3u"
+  ],
+  "note": "same 69 channels as the three country playlists, concatenated for the Lume free tier (one playlist). tvg-chno is renumbered 1..69; tvg-id is unchanged, so the shared EPG covers every channel. No channel was added, dropped or substituted."
+ },
  "counts": {
   "france": 23,
   "algeria": 16,

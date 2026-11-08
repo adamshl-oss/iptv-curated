@@ -8,6 +8,7 @@ country. They live at the repo root and are served by GitHub Pages:
 | France    | `https://adamshl-oss.github.io/iptv-curated/lume-france.m3u`         | 23       |
 | Algérie   | `https://adamshl-oss.github.io/iptv-curated/lume-algeria.m3u`        | 16       |
 | USA       | `https://adamshl-oss.github.io/iptv-curated/lume-usa.m3u`            | 30       |
+| **Chaines TV** (all three combined) | `https://adamshl-oss.github.io/iptv-curated/lume-chaines-tv.m3u` | 69 |
 | EPG       | `https://adamshl-oss.github.io/iptv-curated/lume-epg.xml.gz`          | 69 ch.   |
 
 Total: **69 channels**, every one verified by real playback.
@@ -16,7 +17,8 @@ Total: **69 channels**, every one verified by real playback.
 
 Lume's add-playlist form takes the playlist URL and the guide URL separately:
 
-* Playlist URL → `lume-france.m3u` / `lume-algeria.m3u` / `lume-usa.m3u`
+* Playlist URL → `lume-france.m3u` / `lume-algeria.m3u` / `lume-usa.m3u`, or
+  `lume-chaines-tv.m3u` for all three at once
 * EPG URL → `lume-epg.xml.gz`
 
 Each playlist carries `url-tvg="…/lume-epg.xml.gz"` on the `#EXTM3U` line as well,
@@ -24,6 +26,23 @@ so players that read it from the manifest alone still resolve the guide.
 
 > Lume's free tier is limited to one playlist. Three playlists needs **Lume Pro**
 > ($9.99, one-time — not a subscription).
+
+### "Chaines TV" — the combined playlist
+
+`lume-chaines-tv.m3u` is the same **69 channels** as the three country playlists,
+concatenated into one file, so the free tier covers everything:
+
+* built from the three published files by `scripts/build_lume_chaines_tv.py`
+* `tvg-chno` renumbered `1..69` so ordering is unambiguous across countries;
+  `tvg-id` is untouched, so the one shared EPG still matches every channel
+* `group-title` is untouched — the categories stay country-prefixed
+  (`France — Général`, `Algérie — Public`, `USA — Info`, …)
+* verified at build time: 69 channels, 69 unique `tvg-id`s, 69 unique stream
+  URLs, and every `tvg-id` resolves in `lume-epg.xml.gz`
+* **no channel was added, dropped or substituted** — it is a union, not a new mix
+
+Use it if you would rather not buy Lume Pro; buy Pro only if you want the three
+country playlists side by side in the app.
 
 ## Content policy — no Spanish-language channels in the USA playlist
 
