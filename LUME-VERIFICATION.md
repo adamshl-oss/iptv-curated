@@ -1,6 +1,6 @@
 # Lume playlists — verification report
 
-Generated 2026-11-08T04:33:12.508174Z · commit `3f89b66` on `adamshl-oss/iptv-curated`
+Generated 2026-11-08T05:16:42.696852Z · commit `2b29204` on `adamshl-oss/iptv-curated`
 
 Three playlists, **69 channels**, each one *tested — never sampled* — at three
 independent layers:
@@ -51,10 +51,10 @@ independent layers:
 |---|---|---|---|---|---|---|---|---|
 | TV1 / Programme National | 1280x720 | 48000Hz/2ch | -27.9 dB | 248 | 8.5 s | 60.2 s (1.0) | 0 / 0.0 s | PASS |
 | TV2 / Canal Algérie | 1920x1080 | 0Hz/0ch | -21.6 dB | 245 | 6.5 s | 60.2 s (1.0) | 0 / 0.0 s | PASS |
-| TV3 / A3 | 1920x1080 | 48000Hz/2ch | -24.8 dB | 248 | 6.0 s | 60.2 s (1.0) | 0 / 0.0 s | PASS |
+| TV3 / A3 | 1920x1080 | 48000Hz/2ch | -25.2 dB | 245 | 1.8 s | 60.2 s (1.0) | 0 / 0.0 s | PASS |
 | TV4 / Tamazight | 544x576 | 48000Hz/2ch | -23.2 dB | 240 | 3.5 s | 60.2 s (1.0) | 0 / 0.0 s | PASS |
 | TV6 / EPTV 6 (الشبابية) | 1920x1080 | 48000Hz/2ch | -24.7 dB | 248 | 5.5 s | 60.2 s (1.0) | 0 / 0.0 s | PASS |
-| TV7 / El Maarifa | 720x576 | 48000Hz/2ch | -28.4 dB | 247 | 6.5 s | 60.2 s (1.0) | 0 / 0.0 s | PASS |
+| TV7 / El Maarifa | 720x576 | 48000Hz/2ch | -26.7 dB | 248 | 2.3 s | 60.2 s (1.0) | 0 / 0.0 s | PASS |
 | TV8 / EPTV 8 Adhakira (الذاكرة) | 720x576 | 48000Hz/2ch | -22.1 dB | 243 | 5.3 s | 60.2 s (1.0) | 0 / 0.0 s | PASS |
 | AL24 News | 1920x1080 | 48000Hz/2ch | -30.9 dB | 250 | 0.8 s | 60.2 s (1.0) | 0 / 0.0 s | PASS |
 | Ennahar TV | 1920x1080 | 48000Hz/2ch | -25.8 dB | 491 | 5.3 s | 60.2 s (1.0) | 0 / 0.0 s | PASS |
