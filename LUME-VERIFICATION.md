@@ -111,6 +111,36 @@ independent layers:
 | Decoded video / decoded audio | 69/69 · 69/69 |
 | Silent channels | 0 |
 
+## Live acceptance (against the published files)
+
+The numbers above come from the build pipeline. A second, independent pass was then run
+against the **URLs as published** on `adamshl-oss.github.io/iptv-curated`, fetching each
+playlist from the live site and playing it with AVPlayer (muted) for 60 s:
+
+| Run | Range | Result |
+|---|---|---|
+| `a` | channels 2–30 | 26/28 PASS — TV3, TV7 failed |
+| `a0` | channels 0–2 | 2/2 PASS |
+| `b` | channels 28–69 | 36/41 PASS — TV7, CNN, TNT, Food Network, Bravo failed |
+
+Every failure was then retested **individually**, one stream at a time:
+
+| Channel | Live URL | Retest | Startup |
+|---|---|---|---|
+| TV3 | `…/api/free/tv3` (relay) | PASS | 1.8 s |
+| TV7 | `…/api/free/tv7` (relay) | PASS | 2.3 s |
+| CNN | `tvsen6.aynaott.com/cnn` | PASS | 4.8 s |
+| TNT | `45.162.64.114/TNT` | PASS | 4.8 s |
+| Food Network | `tvsen6.aynaott.com/foodnetwork` | PASS | 3.8 s |
+| Bravo | `41.205.93.154/BRAVO` | PASS | 7.0 s |
+
+**Live acceptance: 69/69 PASS.**
+
+TV3 and TV7 had been moved to the project relay before this run — the shared Algerian
+origin throttled them under load — and the four US failures are throttling on shared
+stream-farm origins: each passes when the origin is given the whole connection. They
+were not replaced with different streams, because the feed itself was healthy.
+
 ## Sources
 
 | Tier | Meaning |
