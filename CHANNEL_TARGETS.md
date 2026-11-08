@@ -69,3 +69,41 @@ as one of: official, licensed provider, or verified authorized distribution.
 Peer-to-peer transport is allowed only when the underlying distribution is
 authorized; it cannot be used to bypass paid access, DRM, geographic controls,
 or broadcaster terms.
+
+## USA — content policy
+
+The USA playlist carries **no Spanish-language channels**. This is a standing
+requirement from the service owner, not a sourcing constraint: Spanish-language
+networks (Telemundo, Univision, UniMás, Canal Uno, América Te Ve, NuvoTV, LATV,
+Entravision, Bandorama, Pdia, TUDN, ESPN Deportes, Fox Deportes, V-me and
+similar) are **excluded by policy** and must never appear in the USA playlist.
+
+They are not "unsourced" either — they are out of scope, and are reported
+separately from the sourcing gaps:
+
+* `lume-manifest.json` → `excluded_by_policy.USA`
+* `lume-manifest.json` → `policy_checks.usa_no_spanish_channels`
+
+The rule is enforced at build time: the playlist generator aborts before
+writing any file if a USA channel matches an excluded id or a Spanish-language
+marker token, so a candidate can never slip in through a later import.
+
+### The rule covers the feed, not only the channel name
+
+A brand can have a US channel and a separate Latin-American channel under the
+same name. A frame-by-frame audit of every published USA feed found that the
+reachable streams for **Discovery Channel**, **Investigation Discovery**,
+**National Geographic** and **History** were the **Spanish (or Portuguese)
+Latin-American editions**, with the language baked into the picture. Publishing
+them would have broken this policy while the playlist said nothing wrong.
+
+Those feeds are therefore not published. The channels are listed in
+`lume-manifest.json` → `unsourced_targets` with the reason, and the US linear
+feeds are TV-provider gated. Where an English equivalent exists it is published
+instead — National Geographic (English), BBC News, HGTV, FOX (the broadcast
+network), CBS News 24/7 and Comedy Central are in the playlist as a result.
+
+The same audit is why three entries were renamed to their factual identity
+(`KIRO 9 (CBS Seattle)`, `ABC 6 (Phoenix)`, `NBC News NOW (Bay Area)`) and why
+`Comedy Central` is published under its own name rather than as "History".
+

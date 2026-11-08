@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-07T22:10:41.843266Z",
+ "generated_at": "2026-11-08T04:33:00.325436Z",
  "playlists": {
   "France": "https://adamshl-oss.github.io/iptv-curated/lume-france.m3u",
   "Algeria": "https://adamshl-oss.github.io/iptv-curated/lume-algeria.m3u",
@@ -7,9 +7,9 @@
  },
  "epg": "https://adamshl-oss.github.io/iptv-curated/lume-epg.xml.gz",
  "counts": {
-  "france": 20,
-  "algeria": 14,
-  "usa": 26
+  "france": 23,
+  "algeria": 16,
+  "usa": 30
  },
  "groups": {
   "france": [
@@ -17,21 +17,24 @@
    "France — Général",
    "France — Info",
    "France — Kids",
+   "France — Régions",
    "France — Sport"
   ],
   "algeria": [
    "Algérie — Généraliste",
    "Algérie — Info",
-   "Algérie — Public"
+   "Algérie — Public",
+   "Algérie — Religieux"
   ],
   "usa": [
-   "USA — Broadcast",
    "USA — Cinéma & séries",
+   "USA — Culture & science",
    "USA — Documentaire",
    "USA — Généraliste",
    "USA — Info",
    "USA — Kids",
-   "USA — Sport"
+   "USA — Sport",
+   "USA — Style de vie"
   ]
  },
  "verification": "every channel verified by real playback on the Apple stack: AVFoundation confirms a video track and an audio track, and AVPlayer plays the stream for 60 s under scripts/stream_health_policy.json (startup <=12 s, advancing >=92%, total stall <=5 s, longest stall <=3 s). ffmpeg volumedetect confirms audible content on every channel. No sampling. Geo-blocked and dead targets are listed under unsourced_targets, never silently substituted.",
@@ -43,41 +46,21 @@
     "pay / DRM - out of scope by policy"
    ],
    [
-    "France3Regions.fr",
-    "France 3 Régions",
-    "only source stalls under AVPlayer"
-   ],
-   [
-    "6ter.fr",
-    "6ter",
-    "no source plays cleanly under AVPlayer"
+    "D17.fr",
+    "D17",
+    "both farm paths (H2/H3 /D17) carry CStar content, not D17"
    ]
   ],
   "Algeria": [
    [
     "SamiraTV.dz",
     "Samira TV",
-    "rank 1 - official CDN cdn02.hta.dz is dead (NXDOMAIN)"
-   ],
-   [
-    "ElHeddafTV.dz",
-    "El Heddaf TV",
-    "relay upstream 503, live.elheddaftv.com 404"
+    "official CDN cdn.hta.dz has dead nameservers; /abr_htatv/SamiraTV 404"
    ],
    [
     "TV5.dz",
     "TV5 / Coran",
-    "quarantined in the relay's own status; AVPlayer CoreMediaError"
-   ],
-   [
-    "TV6.dz",
-    "TV6",
-    "no attributable source (tenant codes 005/008 are ENTV simulcast)"
-   ],
-   [
-    "TV8.dz",
-    "TV8 Adhakira",
-    "no attributable source"
+    "official CDN dead; tenant has no code 5; relay quarantined"
    ],
    [
     "TV9.dz",
@@ -87,7 +70,7 @@
    [
     "ElHayatTV.dz",
     "El Hayat TV",
-    "no live source found"
+    "official stream is token-gated (5 min TTL), not a static URL"
    ],
    [
     "BeurTV.dz",
@@ -97,17 +80,17 @@
    [
     "BahiaTV.dz",
     "Bahia TV Oran",
-    "no live source found"
+    "official CDN dead; no live source found"
    ],
    [
     "ElFadjerTV.dz",
     "El Fadjer TV",
-    "no live source found"
+    "official CDN dead; no live source found"
    ],
    [
     "ElwataniaTV.dz",
     "El Watania TV",
-    "no live source found"
+    "stream fails AVPlayer startup (12 s timeout) on every attempt"
    ],
    [
     "ZAHRATV.dz",
@@ -117,7 +100,7 @@
    [
     "AlAnisTV.dz",
     "Al Anis TV",
-    "no live source found"
+    "official CDN dead; no live source found"
    ],
    [
     "AlmagharibiaTV.uk",
@@ -133,55 +116,166 @@
     "EchoroukBenna.dz",
     "Echorouk Benna",
     "no live source found"
+   ],
+   [
+    "ElBiladTV.dz",
+    "El Bilad TV",
+    "tenant code 009 now carries Al Ghad TV; El Bilad's own CDN is dead"
+   ],
+   [
+    "IkhtyarTV.dz",
+    "Ikhtyar TV",
+    "tenant code 021 returns 404"
    ]
   ],
   "USA": [
    [
-    "TheCW.us",
-    "The CW",
-    "no iptv-org stream; farm catalogues lack it"
+    "TheCWNational.us",
+    "The CW (national)",
+    "national feed is TV-provider gated; only the CW's own FAST channels are free"
    ],
    [
     "CSPAN.us",
     "C-SPAN",
-    "no iptv-org stream"
+    "24/7 networks are TV-provider gated; only rotating event streams are free"
    ],
    [
-    "NASATV.us",
-    "NASA TV",
-    "no iptv-org stream"
+    "DiscoveryChannel.us",
+    "Discovery Channel",
+    "the only reachable feed is Discovery Channel Latin America (Spanish burned-in captions) - excluded by the no-Spanish rule; the US linear feed is TV-provider gated"
    ],
    [
-    "USANetwork.us",
-    "USA Network",
-    "every candidate stalls or fails under AVPlayer"
+    "InvestigationDiscovery.us",
+    "Investigation Discovery",
+    "the only reachable feed is ID Latin America (Portuguese) - excluded by the no-Spanish rule; the US linear feed is TV-provider gated"
    ],
    [
-    "Lifetime.us",
-    "Lifetime",
-    "no AVPlayer-clean source"
+    "History.us",
+    "History",
+    "the only reachable feed is History en Espanol - excluded by the no-Spanish rule; the US linear feed is TV-provider gated"
    ],
    [
-    "Bravo.us",
-    "Bravo",
-    "no AVPlayer-clean source"
+    "CNBC.us",
+    "CNBC",
+    "reachable feeds carry CNBC Asia (Asia index ticker) or unidentified footage; CNBC US is subscription-gated"
    ],
    [
-    "TNT.us",
-    "TNT",
-    "no AVPlayer-clean source"
+    "CNNInternational.us",
+    "CNN International",
+    "the reachable feed carries Comedy Central content, not CNN International"
    ],
    [
-    "Telemundo.us",
-    "Telemundo",
-    "candidate streams failed playback"
-   ],
-   [
-    "Univision.us",
-    "Univision",
-    "candidate streams failed playback"
+    "ABCNews.us",
+    "ABC News",
+    "Tubi feed carries unidentified lifestyle content; the Disney Akamai ABCNewsLive feed runs documentary programming with no ABC branding on screen"
    ]
   ]
+ },
+ "excluded_by_policy": {
+  "USA": {
+   "rule": "No Spanish-language channels in the USA playlist.",
+   "reason": "explicit user requirement",
+   "enforcement": "enforced at build time by registry.spanish_violations(); the build aborts before emitting if a USA channel matches an excluded id or a Spanish-language marker token",
+   "channels": [
+    {
+     "tvg": "Telemundo.us",
+     "name": "Telemundo"
+    },
+    {
+     "tvg": "Univision.us",
+     "name": "Univision"
+    },
+    {
+     "tvg": "Unimas.us",
+     "name": "UniMás"
+    },
+    {
+     "tvg": "CanalUno.us",
+     "name": "Canal Uno"
+    },
+    {
+     "tvg": "AmericaTeVe.us",
+     "name": "América Te Ve"
+    },
+    {
+     "tvg": "NuvoTV.us",
+     "name": "NuvoTV"
+    },
+    {
+     "tvg": "LATV.us",
+     "name": "LATV"
+    },
+    {
+     "tvg": "LatinoNetwork.us",
+     "name": "Latino Network"
+    },
+    {
+     "tvg": "Entravision.us",
+     "name": "Entravision"
+    },
+    {
+     "tvg": "Bandorama.us",
+     "name": "Bandorama"
+    },
+    {
+     "tvg": "Pdia.us",
+     "name": "Pdia"
+    },
+    {
+     "tvg": "Ideas.us",
+     "name": "Ideas"
+    },
+    {
+     "tvg": "TUDN.us",
+     "name": "TUDN"
+    },
+    {
+     "tvg": "ESPNDeportes.us",
+     "name": "ESPN Deportes"
+    },
+    {
+     "tvg": "FoxDeportes.us",
+     "name": "Fox Deportes"
+    },
+    {
+     "tvg": "FuboDeportes.us",
+     "name": "Fubo Deportes"
+    },
+    {
+     "tvg": "VMe.us",
+     "name": "V-me"
+    },
+    {
+     "tvg": "Cinedigm.us",
+     "name": "Cine Latino"
+    },
+    {
+     "tvg": "MiTelemundo.us",
+     "name": "Mi Telemundo"
+    }
+   ]
+  }
+ },
+ "policy_checks": {
+  "usa_no_spanish_channels": {
+   "status": "pass",
+   "violations": []
+  }
+ },
+ "identity_notes": {
+  "QuranTV.dz": "the decoded frames show Arabic religious programming (Quran tafsir) and a magenta channel logo, but no on-air brand name could be read, so the channel is published under a descriptive name rather than a guessed one",
+  "TheCW.us": "the free CW-branded feed on Nexstar's own FAST platform; the national 'The CW' channel is TV-provider gated and is listed under unsourced_targets",
+  "France3Bretagne.fr": "regional France 3 feed; the national France 3 programme feed is published separately as France 3",
+  "KIRO9.us": "local CBS affiliate (KIRO 9 Seattle) taken from the station's own publisher stream; the national CBS network feed is not freely available",
+  "ABC6Phoenix.us": "local ABC affiliate (ABC 6 Phoenix / KSAZ) taken from the station's own publisher stream; the national ABC network feed is not freely available",
+  "NBCNewsNowBayArea.us": "regional NBC News NOW (Bay Area) on Xumo; the national NBC News NOW channel is published separately",
+  "ComedyCentral.us": "the origin was previously published as 'History'; the decoded frames show Comedy Central programming and the Comedy Central ident, so it is published under its factual identity",
+  "NationalGeographic.us": "the English National Geographic feed; the Spanish Latin-American Nat Geo feed that was previously published was removed under the no-Spanish rule",
+  "BBCNews.us": "BBC News, English presentation confirmed on screen",
+  "FOX.us": "the FOX broadcast network; not Fox News and not a local affiliate. The on-screen FOX wordmark was confirmed",
+  "CBSNews24-7.us": "CBS's own newsroom CDN (airspace-cdn.cbsivideo.com)",
+  "SkyNews.us": "served from a slower mirror origin; it failed the parallel acceptance sweep and passed when re-verified on its own (startup 6-8 s, 60 s advancing, no stalls), which is how a single viewer actually uses it",
+  "ESPN.us": "same slower mirror origin as Sky News; re-verified individually under the strict playback policy"
  },
  "channels": [
   {
@@ -202,6 +296,13 @@
    "tvg": "France3.fr",
    "name": "France 3",
    "group": "France — Général",
+   "tier": 1,
+   "url": "http://ar.ycncdn.online/0021012254/144/index.m3u8"
+  },
+  {
+   "tvg": "France3Bretagne.fr",
+   "name": "France 3 Bretagne (France 3 Régions)",
+   "group": "France — Régions",
    "tier": 4,
    "url": "http://89.187.185.76:8080/France3/index.m3u8"
   },
@@ -269,11 +370,25 @@
    "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/tf1/tf1-series-films/live.m3u8"
   },
   {
-   "tvg": "D17.fr",
-   "name": "D17",
+   "tvg": "6ter.fr",
+   "name": "6ter",
    "group": "France — Général",
    "tier": 4,
-   "url": "http://89.187.185.76:8080/D17/index.m3u8"
+   "url": "http://149.62.177.107:9999/6ter/index.m3u8"
+  },
+  {
+   "tvg": "France24.fr",
+   "name": "France 24",
+   "group": "France — Info",
+   "tier": 1,
+   "url": "https://live.france24.com/hls/live/2037179/F24_FR_HI_HLS/master_5000.m3u8"
+  },
+  {
+   "tvg": "Euronews.fr",
+   "name": "Euronews",
+   "group": "France — Info",
+   "tier": 1,
+   "url": "https://cdn-euronews.akamaized.net/live/eds/euronews-fr/25026/index.m3u8"
   },
   {
    "tvg": "BFMTV.fr",
@@ -353,11 +468,25 @@
    "url": "http://ar.ycncdn.online/0021012254/003/index.m3u8"
   },
   {
+   "tvg": "TV6.dz",
+   "name": "TV6 / EPTV 6 (الشبابية)",
+   "group": "Algérie — Public",
+   "tier": 1,
+   "url": "http://ar.ycncdn.online/0021012254/005/index.m3u8"
+  },
+  {
    "tvg": "TV7.dz",
    "name": "TV7 / El Maarifa",
    "group": "Algérie — Public",
    "tier": 1,
    "url": "http://ar.ycncdn.online/0021012254/069/index.m3u8"
+  },
+  {
+   "tvg": "TV8.dz",
+   "name": "TV8 / EPTV 8 Adhakira (الذاكرة)",
+   "group": "Algérie — Public",
+   "tier": 1,
+   "url": "http://ar.ycncdn.online/0021012254/090/index.m3u8"
   },
   {
    "tvg": "AL24News.dz",
@@ -388,9 +517,16 @@
    "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/echorouk/tv/live.m3u8"
   },
   {
-   "tvg": "ElBiladTV.dz",
-   "name": "El Bilad TV",
+   "tvg": "ElHeddafTV.dz",
+   "name": "El Heddaf TV",
    "group": "Algérie — Généraliste",
+   "tier": 1,
+   "url": "https://live.elheddaftv.com:8081/elheddaftvlive/playlist.m3u8"
+  },
+  {
+   "tvg": "AlGhadTV.dz",
+   "name": "Al Ghad TV (الغد)",
+   "group": "Algérie — Info",
    "tier": 1,
    "url": "http://ar.ycncdn.online/0021012254/009/index.m3u8"
   },
@@ -402,9 +538,9 @@
    "url": "http://mkstream.servehttp.com:1940/AmouYazid/ay1/chunklist.m3u8"
   },
   {
-   "tvg": "AssalatTV.dz",
-   "name": "Assalat TV (الساعة)",
-   "group": "Algérie — Généraliste",
+   "tvg": "QuranTV.dz",
+   "name": "Quran TV (Algeria)",
+   "group": "Algérie — Religieux",
    "tier": 1,
    "url": "http://ar.ycncdn.online/0021012254/011/index.m3u8"
   },
@@ -416,46 +552,11 @@
    "url": "http://ar.ycncdn.online/0021012254/023/index.m3u8"
   },
   {
-   "tvg": "IkhtyarTV.dz",
-   "name": "Ikhtyar TV (إختيار)",
-   "group": "Algérie — Généraliste",
-   "tier": 1,
-   "url": "http://ar.ycncdn.online/0021012254/021/index.m3u8"
-  },
-  {
-   "tvg": "CBS.us",
-   "name": "CBS",
-   "group": "USA — Broadcast",
-   "tier": 1,
-   "url": "https://content.uplynk.com/channel/328d1434fb51476cb6567c74d5b2cc70.m3u8"
-  },
-  {
-   "tvg": "NBC.us",
-   "name": "NBC",
-   "group": "USA — Broadcast",
-   "tier": 1,
-   "url": "https://d368vp0qqzvkid.cloudfront.net/11603/88889711/hls/master.m3u8?ads.xumo_channelId=88889711a&ads.xumo_ifaType=&ads.xumo_providerId=3822&ads.xumo_providerName=NBCNBA"
-  },
-  {
-   "tvg": "ABC.us",
-   "name": "ABC",
-   "group": "USA — Broadcast",
-   "tier": 1,
-   "url": "https://content.uplynk.com/channel/ff809e6d9ec34109abfb333f0d4444b5.m3u8"
-  },
-  {
-   "tvg": "Fox.us",
-   "name": "FOX",
-   "group": "USA — Broadcast",
-   "tier": 1,
-   "url": "https://content.uplynk.com/channel/8975f81e6efd4e609873c3e8e25c7756.m3u8"
-  },
-  {
-   "tvg": "ABCNews.us",
-   "name": "ABC News",
+   "tvg": "CBSNews24-7.us",
+   "name": "CBS News 24/7",
    "group": "USA — Info",
    "tier": 1,
-   "url": "https://aegis-cloudfront-1.tubi.video/d6cbb0de-68e4-4f3b-82f9-bf5d526e0bde/index.m3u8"
+   "url": "https://news20e7hhcb.airspace-cdn.cbsivideo.com/index.m3u8"
   },
   {
    "tvg": "NBCNewsNOW.us",
@@ -465,25 +566,32 @@
    "url": "https://xumo-drct-nbcnn-ir8ze.fast.nbcuni.com/live/master.m3u8"
   },
   {
+   "tvg": "NBCNewsNowBayArea.us",
+   "name": "NBC News NOW (Bay Area)",
+   "group": "USA — Info",
+   "tier": 1,
+   "url": "https://d368vp0qqzvkid.cloudfront.net/11603/88889711/hls/master.m3u8?ads.xumo_channelId=88889711a&ads.xumo_ifaType=&ads.xumo_providerId=3822&ads.xumo_providerName=NBCNBA"
+  },
+  {
+   "tvg": "KIRO9.us",
+   "name": "KIRO 9 (CBS Seattle)",
+   "group": "USA — Info",
+   "tier": 1,
+   "url": "https://content.uplynk.com/channel/328d1434fb51476cb6567c74d5b2cc70.m3u8"
+  },
+  {
+   "tvg": "ABC6Phoenix.us",
+   "name": "ABC 6 (Phoenix)",
+   "group": "USA — Info",
+   "tier": 1,
+   "url": "https://content.uplynk.com/channel/ff809e6d9ec34109abfb333f0d4444b5.m3u8"
+  },
+  {
    "tvg": "CNN.us",
    "name": "CNN",
    "group": "USA — Info",
    "tier": 4,
    "url": "https://tvsen6.aynaott.com/cnn/index.m3u8"
-  },
-  {
-   "tvg": "CNNInternational.us",
-   "name": "CNN International",
-   "group": "USA — Info",
-   "tier": 4,
-   "url": "http://168.228.44.241:9997/play/a073/index.m3u8"
-  },
-  {
-   "tvg": "CNBC.us",
-   "name": "CNBC",
-   "group": "USA — Info",
-   "tier": 4,
-   "url": "https://tvsen6.aynaott.com/cnbc/index.m3u8"
   },
   {
    "tvg": "MSNBC.us",
@@ -521,6 +629,20 @@
    "url": "https://tvsen5.aynaott.com/skynews/index.m3u8"
   },
   {
+   "tvg": "BBCNews.us",
+   "name": "BBC News",
+   "group": "USA — Info",
+   "tier": 1,
+   "url": "https://streaming.onnethn.com/BBC/index.m3u8"
+  },
+  {
+   "tvg": "FOX.us",
+   "name": "FOX",
+   "group": "USA — Généraliste",
+   "tier": 1,
+   "url": "https://streaming.onnethn.com/FOX/index.m3u8"
+  },
+  {
    "tvg": "ESPN.us",
    "name": "ESPN",
    "group": "USA — Sport",
@@ -549,39 +671,25 @@
    "url": "https://tvsen6.aynaott.com/amc/index.m3u8"
   },
   {
+   "tvg": "USANetwork.us",
+   "name": "USA Network",
+   "group": "USA — Généraliste",
+   "tier": 4,
+   "url": "https://tvsen6.aynaott.com/usa/index.m3u8"
+  },
+  {
+   "tvg": "TNT.us",
+   "name": "TNT",
+   "group": "USA — Cinéma & séries",
+   "tier": 4,
+   "url": "http://45.162.64.114/TNT/index.m3u8"
+  },
+  {
    "tvg": "Syfy.us",
    "name": "Syfy",
    "group": "USA — Généraliste",
    "tier": 4,
    "url": "http://23.237.104.106:8080/USA_SYFY/index.m3u8"
-  },
-  {
-   "tvg": "DiscoveryChannel.us",
-   "name": "Discovery Channel",
-   "group": "USA — Documentaire",
-   "tier": 4,
-   "url": "http://45.162.64.114/DISCOVERY_CHANNEL/index.m3u8"
-  },
-  {
-   "tvg": "NationalGeographic.us",
-   "name": "National Geographic",
-   "group": "USA — Documentaire",
-   "tier": 4,
-   "url": "http://15.204.246.24:8080/NatGeoHD/index.m3u8"
-  },
-  {
-   "tvg": "History.us",
-   "name": "History",
-   "group": "USA — Documentaire",
-   "tier": 4,
-   "url": "http://23.237.104.106:8080/USA_VICETV/index.m3u8"
-  },
-  {
-   "tvg": "InvestigationDiscovery.us",
-   "name": "Investigation Discovery",
-   "group": "USA — Documentaire",
-   "tier": 4,
-   "url": "http://45.162.64.114/DISCOVERY_ID/index.m3u8"
   },
   {
    "tvg": "CartoonNetwork.us",
@@ -603,6 +711,55 @@
    "group": "USA — Généraliste",
    "tier": 4,
    "url": "https://tvsen6.aynaott.com/foodnetwork/index.m3u8"
+  },
+  {
+   "tvg": "Lifetime.us",
+   "name": "Lifetime",
+   "group": "USA — Généraliste",
+   "tier": 4,
+   "url": "https://streaming.onnethn.com/LIFETIME/index.m3u8"
+  },
+  {
+   "tvg": "Bravo.us",
+   "name": "Bravo",
+   "group": "USA — Généraliste",
+   "tier": 4,
+   "url": "http://41.205.93.154/BRAVO/index.m3u8"
+  },
+  {
+   "tvg": "ComedyCentral.us",
+   "name": "Comedy Central",
+   "group": "USA — Généraliste",
+   "tier": 4,
+   "url": "http://23.237.104.106:8080/USA_VICETV/index.m3u8"
+  },
+  {
+   "tvg": "NationalGeographic.us",
+   "name": "National Geographic",
+   "group": "USA — Documentaire",
+   "tier": 4,
+   "url": "https://tvsen6.aynaott.com/natgeo/index.m3u8"
+  },
+  {
+   "tvg": "HGTV.us",
+   "name": "HGTV",
+   "group": "USA — Style de vie",
+   "tier": 1,
+   "url": "https://streaming.onnethn.com/HGTV/index.m3u8"
+  },
+  {
+   "tvg": "NASATV.us",
+   "name": "NASA TV",
+   "group": "USA — Culture & science",
+   "tier": 1,
+   "url": "https://ee119c17e6ed643893ff6ae377fe0693.7wzuvg.channel-assembly.mediatailor.us-east-1.amazonaws.com/v1/channel/NASAPrime/NASAPlus.m3u8"
+  },
+  {
+   "tvg": "TheCW.us",
+   "name": "CW Forever",
+   "group": "USA — Généraliste",
+   "tier": 1,
+   "url": "https://cdn-uw2-prod.tsv2.amagi.tv/linear/amg01312-nexstarmediagro-cwforever-nondrmhlstsv2-cw/playlist.m3u8"
   }
  ]
 }

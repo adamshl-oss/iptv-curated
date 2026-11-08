@@ -5,12 +5,12 @@ country. They live at the repo root and are served by GitHub Pages:
 
 | Playlist  | URL                                                                   | Channels |
 |-----------|-----------------------------------------------------------------------|----------|
-| France    | `https://adamshl-oss.github.io/iptv-curated/lume-france.m3u`         | 20       |
-| Algérie   | `https://adamshl-oss.github.io/iptv-curated/lume-algeria.m3u`        | 14       |
-| USA       | `https://adamshl-oss.github.io/iptv-curated/lume-usa.m3u`            | 26       |
-| EPG       | `https://adamshl-oss.github.io/iptv-curated/lume-epg.xml.gz`          | 60 ch.   |
+| France    | `https://adamshl-oss.github.io/iptv-curated/lume-france.m3u`         | 23       |
+| Algérie   | `https://adamshl-oss.github.io/iptv-curated/lume-algeria.m3u`        | 16       |
+| USA       | `https://adamshl-oss.github.io/iptv-curated/lume-usa.m3u`            | 30       |
+| EPG       | `https://adamshl-oss.github.io/iptv-curated/lume-epg.xml.gz`          | 69 ch.   |
 
-Total: **60 channels**, every one verified by real playback.
+Total: **69 channels**, every one verified by real playback.
 
 ## Import into Lume
 
@@ -25,13 +25,37 @@ so players that read it from the manifest alone still resolve the guide.
 > Lume's free tier is limited to one playlist. Three playlists needs **Lume Pro**
 > ($9.99, one-time — not a subscription).
 
+## Content policy — no Spanish-language channels in the USA playlist
+
+The USA playlist contains **no Spanish-language channels**: no Telemundo,
+Univision, UniMás, Canal Uno, América Te Ve, NuvoTV, LATV, Entravision,
+Bandorama, Pdia, TUDN, ESPN Deportes, Fox Deportes or V-me. This is a standing
+requirement, not a sourcing accident.
+
+It is enforced at build time: the playlist generator aborts before writing any
+file when a USA channel matches an excluded id or a Spanish-language marker
+token, so a candidate can never slip in through a later import. The result is
+reported in `lume-manifest.json` under `policy_checks.usa_no_spanish_channels`,
+and the excluded list is published under `excluded_by_policy.USA`.
+
+The rule also applies to the *feeds*, not just the channel names. A full
+frame-by-frame audit of every USA entry showed that several feeds carried the
+**Latin-American** edition of a US brand — Discovery Channel, Investigation
+Discovery, National Geographic and History were all serving the Spanish (or
+Portuguese) version with burned-in subtitles. Those feeds were removed and the
+channels are listed under `unsourced_targets` with the reason. Discovery
+Channel, Investigation Discovery and History have no free English linear feed at
+all (TV-provider gated); National Geographic was replaced with the English feed.
+
 ## What the playlists look like
 
 * `group-title` → Lume renders it as a category rail, so one playlist shows
-  `France — Général`, `France — Info`, `France — Kids`, `Algérie — Public`,
-  `USA — Broadcast`, `USA — Sport`, … as separate sections.
+  `France — Général`, `France — Info`, `France — Régions`, `Algérie — Public`,
+  `Algérie — Religieux`, `USA — Info`, `USA — Généraliste`, `USA — Sport`,
+  `USA — Cinéma & séries`, `USA — Documentaire`, … as separate sections.
 * `tvg-id` → matches the channel ids in `lume-epg.xml.gz`.
-* `tvg-logo` → channel logo from the iptv-org logo registry.
+* `tvg-logo` → channel logo from the iptv-org logo registry, Wikimedia
+  Commons, or the broadcaster's own site.
 * No `catchup` attributes are published: none of the selected sources expose a
   usable catch-up/archive window, so advertising one would be a lie.
 
@@ -55,15 +79,46 @@ answers "will it actually watch without lagging".
 
 **3. Audible content.** Every URL is decoded for 10 seconds with ffmpeg and the
 decoded audio is measured with `volumedetect`, so a channel is only accepted
-when it carries real sound and not a silent track.
+when it carries real sound and not a silent track. Segments are downloaded
+whole and decrypted where the CDN uses AES-128, so a silent or encrypted track
+cannot pass as "audible".
 
-**H.264 only.** All published renditions are H.264 (`avc1`). Four feeds
-(ABC News, Discovery Channel, National Geographic, Investigation Discovery) were
-originally served as **HEVC-only** variants; AVFoundation can silently fall back
-to an *audio-only* rendition on HEVC, which looks like a working channel to a
-transport check but shows no picture. Those now point at H.264 renditions that
-AVFoundation confirms carry both a video track and an audio track. ABC was
-moved off a 240p Amagi feed onto a 720p Uplynk rendition of the same station.
+**H.264 only.** All published renditions are H.264 (`avc1`). Some feeds are
+served as **HEVC-only** variants; AVFoundation can silently fall back to an
+*audio-only* rendition on HEVC, which looks like a working channel to a
+transport check but shows no picture. Those are never published.
+
+The codec check is also how **Euronews** was moved: the feed it used first was a
+legacy SD **MPEG-2** rendition, so it was replaced with Euronews's own Akamai
+feed (`cdn-euronews.akamaized.net`), which serves H.264/AAC up to 720p. All 69
+published channels are H.264 video.
+
+**Identity from the picture, not from the label.** Every published channel's
+on-screen logo was read from a decoded frame, and the channel name in the
+playlist is the name that frame actually shows. Several corrections came out of
+that check and are recorded in `lume-manifest.json` → `identity_notes`.
+
+**A full identity audit was run over every channel in all three playlists** —
+frames were decoded from the published URLs and read. It found, and fixed:
+
+| Published as | What the picture actually showed | Action |
+|--------------|----------------------------------|--------|
+| History (USA) | Comedy Central programming + the Comedy Central ident | republished as **Comedy Central** |
+| CNBC (USA) | CNBC **Asia** (Asia index ticker) / unbranded footage | removed — listed under `unsourced_targets` |
+| CNN International (USA) | Comedy Central content | removed |
+| ABC News (USA) | unidentified lifestyle footage (Tubi) / a documentary film with no ABC branding (Disney CDN) | removed |
+| Discovery Channel (USA) | Discovery Channel **Latin America** — Spanish subtitles | removed (policy) |
+| Investigation Discovery (USA) | ID **Latin America** — Portuguese | removed (policy) |
+| National Geographic (USA) | Nat Geo **Latin America** — Spanish | replaced with the English feed |
+| El Bilad TV (Algérie) | Al Ghad TV | renamed to **Al Ghad TV** |
+| France 3 (France) | France 3 **Bretagne** | split into France 3 + France 3 Bretagne |
+| D17 (France) | CStar content on both farm paths | removed |
+| Ikhtyar TV (Algérie) | stream 404 | removed |
+
+Where a brand has several regional editions, the playlist now names the feed
+that is actually on air — e.g. **KIRO 9 (CBS Seattle)**, **ABC 6 (Phoenix)** and
+**NBC News NOW (Bay Area)** are local affiliates taken from the station's own
+publisher stream, and the national feeds are published separately.
 
 The captured build evidence (segment URL, byte counts, and a decoded frame per
 channel) is in `lume-manifest.json` under `channels[]`.
@@ -77,7 +132,7 @@ Source tiers used for ranking:
 
 | Tier | Meaning |
 |------|---------|
-| 1 | first-party broadcaster CDN (`ar.ycncdn.online`, `fl-dvr.iptvcdn.tv`, `cdn.live.easybroadcast.io`, `akamaized.net`, `cloudfront.net`, `nextradiotv.com`, `6cloud.fr`, `uplynk.com`, `bloomberg.com`) |
+| 1 | first-party broadcaster CDN (`ar.ycncdn.online`, `fl-dvr.iptvcdn.tv`, `live.france24.com`, `cdn.live.easybroadcast.io`, `akamaized.net`, `cloudfront.net`, `nextradiotv.com`, `6cloud.fr`, `uplynk.com`, `bloomberg.com`, `mediatailor…amazonaws.com`, `amagi.tv`, `streaming.onnethn.com`, `airspace-cdn.cbsivideo.com`) |
 | 2 | the project's own relay (`algerian-tv-relay-2026.espiiem.chatgpt.site`) |
 | 3 | public repository / CDN mirror (ParaTV, raw.githubusercontent) |
 | 4 | third-party stream farm |
@@ -90,24 +145,50 @@ served from the public internet, so the Mac can stay off.
 These are **not** substituted with something else. They stay listed, so the gap
 is visible instead of silent (see `lume-manifest.json` → `unsourced_targets`).
 
-* **Algérie** — Samira TV (rank 1), El Heddaf TV, TV5/Coran, TV6, TV8, TV9,
+* **Algérie** — Samira TV (rank 1), TV5/Coran, TV9 El Barlamaniya,
   El Hayat TV, Beur TV, Bahia TV, El Fadjer TV, El Watania TV, Zahra TV,
-  Al Anis TV, Al Magharibia, Ennahar Laki, Echorouk Benna.
-  * The official broadcaster CDN `cdn02.hta.dz` (which carries Samira TV, TV6,
-    TV8, TV9, El Heddaf, El Hayat, Beur, Bahia, …) is **NXDOMAIN globally** —
-    it resolves neither from the local network nor via DNS-over-HTTPS.
-  * `live.elheddaftv.com` answers 404; the relay's El Heddaf upstream answers
-    503 with "all sources unavailable".
-  * The Algerian relay/CDN tenant exposes codes for TV1, TV3, TV4, TV5, TV7,
-    El Bilad, Echorouk News and Ennahar, all of which are published here. The
-    remaining live tenant codes carry the EPTV national simulcast and cannot
-    be attributed to TV6/TV8/TV9 by content, so they are not published under
-    guessed names.
-* **USA** — The CW, C-SPAN, NASA TV (no usable iptv-org stream); USA Network,
-  Lifetime, Bravo and TNT (every candidate either stalled or failed under
-  AVPlayer); Telemundo and Univision (candidate streams failed playback).
-* **France** — Canal+ (pay/DRM, out of scope by policy); France 3 Régions and
-  6ter (no source plays cleanly under AVPlayer).
+  Al Anis TV, Al Magharibia, Ennahar Laki, Echorouk Benna, El Bilad TV,
+  Ikhtyar TV.
+  * The official broadcaster CDN `cdn.hta.dz` — which carries Samira TV, TV5,
+    TV6, TV8, TV9, El Heddaf, El Hayat, Beur, Bahia, El Bilad, Echorouk,
+    Ennahar — has **dead nameservers** and does not resolve globally. The
+    channel paths (`/abr_htatv/<NAME>/playlist.m3u8`) are still published by
+    the broadcaster, so those channels come back as soon as the DNS zone is
+    restored.
+  * `live.elheddaftv.com` answers 404 on the stale path; the correct path
+    (`/elheddaftvlive/playlist.m3u8`) works and **El Heddaf TV is published**.
+  * The relay's El Heddaf upstream answers 503 "all sources unavailable".
+  * The Algerian relay/CDN tenant exposes codes for TV1, TV2, TV3, TV4, TV6,
+    TV7, TV8, Canal Algérie, Echorouk News, Ennahar and Al Ghad, all of which
+    are published here. The tenant has **no code for TV5 or TV9**, and the
+    remaining live codes carry international channels, so they are not
+    published under guessed names.
+* **USA** — The CW (national) and C-SPAN: both networks keep their 24/7 feeds
+  behind TV-provider authentication. The free CW-branded FAST channel
+  (**CW Forever**) and **NASA TV** are published instead. The CW national feed
+  runs on Brightcove with a freewheel ad layer, and C-SPAN's networks are
+  "reserved for cable and satellite TV customers"; their public live-event
+  HLS manifests rotate per event and are not stable channel URLs.
+
+  Also unsourced, after the identity audit:
+
+  * **Discovery Channel**, **Investigation Discovery**, **History** — the only
+    reachable feeds are the Latin-American (Spanish/Portuguese) editions, which
+    the no-Spanish rule excludes; the US linear feeds are TV-provider gated.
+  * **CNBC** — the reachable feeds carry CNBC Asia or unbranded footage; the US
+    feed is subscription-gated.
+  * **CNN International** — the reachable feed carries Comedy Central content.
+  * **ABC News** — the Tubi feed carries unidentified lifestyle content, and
+    Disney's own `ABCNewsLive` Akamai manifest runs documentary programming with
+    no ABC branding on screen, so neither can be published as "ABC News".
+
+  Replacements that were found and published instead: **CBS News 24/7** (CBS's
+  own `airspace-cdn` newsroom CDN), **BBC News**, **HGTV**, **FOX** (the
+  broadcast network, not Fox News) and **National Geographic** (English).
+* **France** — Canal+ (pay/DRM, out of scope by policy); D17 (every farm path
+  serves CStar content instead of D17). **France 3 national**, **France 3
+  Bretagne** (a France 3 Régions feed), **France 24** and **Euronews** are all
+  published.
 
 ## Guide coverage
 
