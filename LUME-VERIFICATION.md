@@ -141,6 +141,42 @@ origin throttled them under load — and the four US failures are throttling on 
 stream-farm origins: each passes when the origin is given the whole connection. They
 were not replaced with different streams, because the feed itself was healthy.
 
+## Lume app-level verification (inside the app itself)
+
+The layers above test the streams with AVFoundation/AVPlayer. This section tests them
+**through Lume 3.0.0** (App Store id 6779551584, bundle `com.bilipp.lume`) on macOS, so
+Lume's own M3U parser, its own EPG reader and its own player are exercised — not just
+Apple's frameworks.
+
+| Check | Result |
+|---|---|
+| Lume imports `lume-france.m3u` | 23 live streams, 6 categories (from `group-title`) |
+| EPG | read automatically from the playlist's `url-tvg` → 3 723 listings |
+| Channel logos / names | TF1, France 2, France 3, France 4, France 5, Euronews, BFMTV, CNews, LCI — all match |
+| EPG matching | TF1 → *TFou* 10:50 PM–3:00 AM · France 2 → *Télématin* · Euronews → *News* · France 3 → *Moi à ton âge* |
+
+Playback in Lume's own player (engine `ksPlayer`), verified from the app's diagnostic
+journal and from the decoded on-screen picture:
+
+| Channel | Feed | Join time | On-screen proof |
+|---|---|---|---|
+| France 2 | `99.27.51.147:8080` (cleartext HTTP) | 1.08 s | live picture |
+| Euronews | `cdn-euronews.akamaized.net` (official) | 7.62 s | euronews logo, TASHKENT 11:11, French subtitles |
+| TF1 | project relay (Algerian origin) | 14.68 s | TFou programme, TFOU logo, LIVE badge |
+
+One caveat recorded honestly: on the *first* attempt TF1 through the project relay hit
+Lume's 15 s first-frame watchdog and Lume fell back to its second engine, which could
+not demux the stream. The immediate retry joined in 14.68 s. The relay is therefore
+slow to start inside Lume — expect a few seconds of black on the TF1 family (TF1, TFX,
+CStar, TF1 Séries Films).
+
+Lume's own free-tier limit, quoted from **Settings → Playlists**:
+
+> Free includes one playlist. Upgrade to Lume Pro to add more.
+
+So the France playlist works on the free tier; **Algérie and USA need Lume Pro**
+(one playlist per tier).
+
 ## Sources
 
 | Tier | Meaning |
