@@ -203,3 +203,39 @@ machine in the house, so the Mac can stay off.
 ## Targets deliberately not substituted
 
 See `lume-manifest.json` → `unsourced_targets`.
+
+## Repairs — 2026-11-09 (headless risk sweep)
+
+A headless sweep of all 69 published channels (manifest shape, codecs,
+EXT-X-MAP/AES/MEDIA, first-segment reachability, AVPlayer join time,
+AVFoundation tracks; no screen touched) found 14 channels that could not be
+trusted inside Lume. Each one was re-tested three times and then repaired.
+The findings and the fixes:
+
+| Channel | Diagnosis | Now published |
+|---|---|---|
+| France 3, TV1, TV2, Ennahar TV, AMC, Comedy Central (old feed), Bravo, HGTV | transient origin throttling — all pass on retry | unchanged |
+| 6ter (France) | the H1 farm **dropped** the 6ter slot (HTTP 404 for every request) | same operator's tenant code 156, `6ter` watermark read from the decoded picture |
+| TV4 / Tamazight (Algérie) | tenant feed ships **corrupt H.264** (`non-existing SPS/PPS` on every segment) | replaced by **Maroc TV (المغرب TV)** — Arabic generalist, logo confirmed |
+| Echorouk TV (Algérie) | the broadcaster's own domain no longer resolves anywhere (`echorouk.tv` = NXDOMAIN) and the relay upstream answers HTTP 502 | replaced by **Al Arabyya (العربية)** — Arabic news, logo confirmed |
+| Quran TV (Algeria) | the published tenant feed actually aired **Morocco TV** (`المغرب TV` watermark) | replaced by the official **Sharjah Quran** channel |
+| Fox News (USA) | aynaott path answers HTTP 404 | live mirror, Fox News Channel logo confirmed in the decoded picture |
+| TNT (USA) | old origin refuses connections (`Errno 61`) | **Turner's own CDN** (`turnerlive.warnermediacdn.com`), TNT logo confirmed |
+| HGTV (USA) | the CDN's **default audio rendition is Spanish** (`spa a1`, `DEFAULT=YES`) | pinned to the English rendition (`tracks-v1a2`) |
+| Comedy Central (USA) | the published feed was **VICELAND** (`VIC` watermark) | Pluto TV's Comedy Central channel (Reno 911 confirmed in the segment path) |
+| CStar (France) | relay upstream HTTP 502 | public ParaTV mirror of the same CStar feed, logo confirmed |
+
+Two consequences worth stating plainly:
+
+* **The Algerian roster is no longer 16 Algerian channels.** Echorouk TV and TV4
+  have no surviving public source, so those two slots now carry **Maroc TV**
+  (Morocco) and **Al Arabyya** (pan-Arab), and the religious slot carries
+  **Sharjah Quran**. The playlist stays at 16 Arabic channels and every one of
+  them is a channel that actually plays.
+* **Pluto TV links carry a signed URL.** The Comedy Central entry points at
+  `jmp2.uk`, which re-signs Pluto's playlist on every request; the URL itself
+  stays valid, but the token behind it is refreshed by that service.
+
+Transport verification after the repair: **69/69** (France 23, Algérie 16,
+USA 30), each with a fetched media segment, and the EPG still resolves every
+one of the 69 `tvg-id`s.

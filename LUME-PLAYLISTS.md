@@ -123,6 +123,11 @@ frames were decoded from the published URLs and read. It found, and fixed:
 | Published as | What the picture actually showed | Action |
 |--------------|----------------------------------|--------|
 | History (USA) | Comedy Central programming + the Comedy Central ident | republished as **Comedy Central** |
+| Comedy Central (USA) | **VICELAND** — the `VIC` watermark is burned into the picture | repointed at Pluto TV's Comedy Central (Reno 911 confirmed) |
+| Quran TV (Algérie) | **Morocco TV** (`المغرب TV` watermark) | replaced by the official Sharjah Quran channel |
+| Echorouk TV (Algérie) | the broadcaster's domain no longer resolves; the feed was dead | replaced by **Al Arabyya (العربية)** |
+| TV4 / Tamazight (Algérie) | corrupt H.264 — no frame ever decodes | replaced by **Maroc TV (المغرب TV)** |
+| 6ter (France) | the farm dropped the slot (HTTP 404) | moved to the tenant code that still carries 6ter |
 | CNBC (USA) | CNBC **Asia** (Asia index ticker) / unbranded footage | removed — listed under `unsourced_targets` |
 | CNN International (USA) | Comedy Central content | removed |
 | ABC News (USA) | unidentified lifestyle footage (Tubi) / a documentary film with no ABC branding (Disney CDN) | removed |
