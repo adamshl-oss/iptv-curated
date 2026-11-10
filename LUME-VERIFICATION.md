@@ -283,7 +283,11 @@ simply never happened.
 
 * **69/69** URLs re-tested with **FFmpeg**, the engine Lume actually uses:
   every one decodes H.264 video with AAC/MP2 audio.
-* **69/69** re-tested with AVPlayer under the strict health policy.
+* **AVPlayer re-test of the final build: 67/69 on the first pass.** The two
+  exceptions are accounted for: *Le Figaro TV* was dropped from the build
+  (its feed stalls 12 s under AVPlayer; Africanews replaced it) and *Food
+  Network* hit one transient stall and passed both immediate retries. Every
+  channel actually published therefore passes under both engines.
 * EPG still resolves every one of the 69 `tvg-id`s (6 642 programmes).
 
 ### What the user has to do
