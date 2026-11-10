@@ -9,9 +9,18 @@ country. They live at the repo root and are served by GitHub Pages:
 | Algérie   | `https://adamshl-oss.github.io/iptv-curated/lume-algeria.m3u`        | 16       |
 | USA       | `https://adamshl-oss.github.io/iptv-curated/lume-usa.m3u`            | 30       |
 | **Chaines TV** (all three combined) | `https://adamshl-oss.github.io/iptv-curated/lume-chaines-tv.m3u` | 69 |
+| TF1 trio (optional) | `https://adamshl-oss.github.io/iptv-curated/lume-france-tf1.m3u` | 3 |
 | EPG       | `https://adamshl-oss.github.io/iptv-curated/lume-epg.xml.gz`          | 69 ch.   |
 
-Total: **69 channels**, every one verified by real playback.
+Total: **69 channels**, every one verified by real playback under **both**
+engines: Apple AVPlayer *and* FFmpeg (the engine inside Lume).
+
+> **TF1 note (2026-11-10).** TF1's own CDN answers HTTP 403 to FFmpeg's default
+> user-agent (`Lavf/…`), and Lume plays HLS through FFmpeg — so TF1, TFX and
+> TF1 Séries Films could not start inside Lume. They are published separately
+> in `lume-france-tf1.m3u` (they play in VLC and in Apple TV's native player),
+> while the three slots in `lume-france.m3u` carry **Gong**, **20 Minutes TV**
+> and **Le Figaro TV**, all confirmed from decoded frames.
 
 ## Import into Lume
 

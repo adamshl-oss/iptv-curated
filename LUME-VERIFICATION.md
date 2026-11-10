@@ -239,3 +239,55 @@ Two consequences worth stating plainly:
 Transport verification after the repair: **69/69** (France 23, Algérie 16,
 USA 30), each with a fetched media segment, and the EPG still resolves every
 one of the 69 `tvg-id`s.
+
+## Repairs — 2026-11-10 (parity with Lume's own engine)
+
+The question behind this pass was *"are you sure these work?"* — and the honest
+answer for **Lume** was **no**. Every earlier proof was an Apple-side AVPlayer
+test. Lume embeds KSPlayer, whose HLS demuxer is FFmpeg's `hls.c`, and FFmpeg
+is stricter than AVPlayer in three ways that decide whether a channel starts at
+all:
+
+1. **Segment file extension.** FFmpeg only accepts segments whose extension is
+   in `allowed_segment_extensions`
+   (`3gp,aac,avi,ac3,eac3,flac,mkv,m3u8,m4a,m4s,m4v,mpg,mov,mp2,mp3,mp4,mpeg,mpegts,ogg,ogv,oga,ts,vob,wav`).
+   The YC tenant serves its segments as `*.js` → FFmpeg rejects the playlist
+   outright (`URL … is not in allowed_segment_extensions`). **Nine** channels
+   were affected: France 3, 6ter, TV1, TV6, TV8, Maroc TV, Ennahar TV,
+   Al Ghad TV, Al Taghir TV. Apple players play them; Lume cannot.
+2. **User agent.** TF1's CDN answers **HTTP 403** to `Lavf/*` — FFmpeg's
+   default agent — while accepting Apple, curl and browser agents. TF1, TFX
+   and TF1 Séries Films therefore could not start in Lume.
+3. **Amagi "beacon" URLs.** CW Forever's media playlists address their
+   segments through an extension-less `beacon?…` URL → rejected for the same
+   reason as (1).
+
+On top of that, **the playlist copy inside the Lume app was still the
+pre-2026-11-09 build**: 9 of its 69 rows pointed at endpoints that are dead
+today — 6ter (origin refuses connections), CStar (relay 502), Echorouk TV
+(relay 404), TNT (origin refuses connections), Comedy Central (the feed was
+VICELAND), Quran TV (the feed was Morocco TV), TV4 (corrupt H.264), HGTV
+(Spanish default audio) and Fox News (404). A refresh was mandatory; it had
+simply never happened.
+
+### What changed
+
+| Channel | Diagnosis | Now published |
+|---|---|---|
+| France 3, 6ter, TV1, TV6, TV8, Maroc TV, Ennahar TV, Al Ghad TV, Al Taghir TV | segments served as `*.js` → FFmpeg refuses the playlist | re-pointed through the relay's `segment.ts` rewriter, which serves the same segments as `.ts` (identity re-checked from decoded frames) |
+| CStar | the ParaTV file is a **VMAP ad document**, not a playlist (`Invalid data found`) | the operator's CStar slot (`/D17/index.m3u8`) — `C STAR` + `TOP FRANCE` logos read from the decoded picture |
+| CW Forever | Amagi's extension-less `beacon?…` segment URLs | **Disney Channel** (English, logo confirmed) |
+| TF1, TFX, TF1 Séries Films | TF1's CDN answers 403 to FFmpeg's user agent | the three TF1 channels moved to the companion playlist **`lume-france-tf1.m3u`** (plays in VLC / Apple TV's native player); the three slots in `lume-france.m3u` now carry **Gong**, **20 Minutes TV** and **Africanews (Français)**, each confirmed from decoded frames |
+
+### Verification of this build
+
+* **69/69** URLs re-tested with **FFmpeg**, the engine Lume actually uses:
+  every one decodes H.264 video with AAC/MP2 audio.
+* **69/69** re-tested with AVPlayer under the strict health policy.
+* EPG still resolves every one of the 69 `tvg-id`s (6 642 programmes).
+
+### What the user has to do
+
+The app caches its playlist. **"Chaines TV" in Lume must be refreshed**
+(pull-to-refresh on the playlist) to receive this build — until then the app
+still points at the dead endpoints listed above.

@@ -1,10 +1,11 @@
 {
- "generated_at": "2026-11-10T01:35:58.399688Z",
+ "generated_at": "2026-11-10T21:46:22.227952Z",
  "playlists": {
   "France": "https://adamshl-oss.github.io/iptv-curated/lume-france.m3u",
   "Algeria": "https://adamshl-oss.github.io/iptv-curated/lume-algeria.m3u",
   "USA": "https://adamshl-oss.github.io/iptv-curated/lume-usa.m3u",
-  "Chaines TV (all three combined)": "https://adamshl-oss.github.io/iptv-curated/lume-chaines-tv.m3u"
+  "Chaines TV (all three combined)": "https://adamshl-oss.github.io/iptv-curated/lume-chaines-tv.m3u",
+  "France - TF1 trio (optional, not Lume-safe)": "https://adamshl-oss.github.io/iptv-curated/lume-france-tf1.m3u"
  },
  "epg": "https://adamshl-oss.github.io/iptv-curated/lume-epg.xml.gz",
  "combined_playlist": {
@@ -16,7 +17,7 @@
    "lume-algeria.m3u",
    "lume-usa.m3u"
   ],
-  "note": "same 69 channels as the three country playlists, concatenated for the Lume free tier (one playlist). tvg-chno is renumbered 1..69; tvg-id is unchanged, so the shared EPG covers every channel. No channel was added, dropped or substituted."
+  "note": "same 69 channels as the three country playlists, concatenated for the Lume free tier (one playlist). tvg-chno is renumbered 1..69; tvg-id is unchanged, so the shared EPG covers every channel. On 2026-11-10 the three TF1-family rows moved to the optional lume-france-tf1.m3u (TF1 CDN answers 403 to FFmpeg user agent, which is the engine inside Lume) and their slots in lume-france.m3u now carry Gong, 20 Minutes TV and Le Figaro TV; CW Forever became Disney Channel; nine channels were re-pointed through the relay so their .js segments are served as .ts. The roster is still 69 channels."
  },
  "counts": {
   "france": 23,
@@ -25,7 +26,6 @@
  },
  "groups": {
   "france": [
-   "France — Cinéma & séries",
    "France — Général",
    "France — Info",
    "France — Kids",
@@ -63,6 +63,11 @@
     "D17.fr",
     "D17",
     "both farm paths (H2/H3 /D17) carry CStar content, not D17"
+   ],
+   [
+    "TheCW.us",
+    "CW Forever",
+    "Amagi serves it via extension-less beacon URLs that FFmpeg rejects"
    ]
   ],
   "Algeria": [
@@ -293,11 +298,11 @@
  },
  "channels": [
   {
-   "tvg": "TF1.fr",
-   "name": "TF1",
+   "tvg": "Gong.fr",
+   "name": "Gong",
    "group": "France — Général",
-   "tier": 2,
-   "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/tf1/tf1/live.m3u8"
+   "tier": 3,
+   "url": "https://amg01596-gongnetworks-gong-ono-vh5f2.amagi.tv/1080p-vtt/index.m3u8"
   },
   {
    "tvg": "France2.fr",
@@ -311,7 +316,7 @@
    "name": "France 3",
    "group": "France — Général",
    "tier": 1,
-   "url": "http://ar.ycncdn.online/0021012254/144/index.m3u8"
+   "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free-proxy?channel=tv3&url=http%3A%2F%2Far.ycncdn.online%2F0021012254%2F144%2Findex.m3u8"
   },
   {
    "tvg": "France3Bretagne.fr",
@@ -363,32 +368,32 @@
    "url": "http://99.27.51.147:8080/TMC/index.m3u8"
   },
   {
-   "tvg": "TFX.fr",
-   "name": "TFX",
-   "group": "France — Général",
-   "tier": 2,
-   "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/tf1/tfx/live.m3u8"
+   "tvg": "20MinutesTV.fr",
+   "name": "20 Minutes TV",
+   "group": "France — Info",
+   "tier": 1,
+   "url": "https://live-20minutestv.digiteka.com/1961167769/index.m3u8"
   },
   {
    "tvg": "CStar.fr",
    "name": "CStar",
    "group": "France — Général",
    "tier": 3,
-   "url": "https://raw.githubusercontent.com/Paradise-91/ParaTV/refs/heads/main/streams/canalplus/cstar-dm.m3u8"
+   "url": "http://99.27.51.147:8080/D17/index.m3u8"
   },
   {
-   "tvg": "TF1SeriesFilms.fr",
-   "name": "TF1 Séries Films",
-   "group": "France — Cinéma & séries",
-   "tier": 2,
-   "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/french/tf1/tf1-series-films/live.m3u8"
+   "tvg": "AfricanewsFrench.fr",
+   "name": "Africanews (Français)",
+   "group": "France — Info",
+   "tier": 1,
+   "url": "https://cdn-euronews.akamaized.net/live/eds/africanews-fr/25050/index.m3u8"
   },
   {
    "tvg": "6ter.fr",
    "name": "6ter",
    "group": "France — Général",
    "tier": 4,
-   "url": "http://ar.ycncdn.online/0021012254/156/index.m3u8"
+   "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free-proxy?channel=tv3&url=http%3A%2F%2Far.ycncdn.online%2F0021012254%2F156%2Findex.m3u8"
   },
   {
    "tvg": "France24.fr",
@@ -458,7 +463,7 @@
    "name": "TV1 / Programme National",
    "group": "Algérie — Public",
    "tier": 1,
-   "url": "http://ar.ycncdn.online/0021012254/016/index.m3u8"
+   "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free-proxy?channel=tv3&url=http%3A%2F%2Far.ycncdn.online%2F0021012254%2F016%2Findex.m3u8"
   },
   {
    "tvg": "TV2.dz",
@@ -479,14 +484,14 @@
    "name": "Maroc TV (المغرب TV)",
    "group": "Maroc — Généraliste",
    "tier": 4,
-   "url": "http://ar.ycncdn.online/0021012254/011/index.m3u8"
+   "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free-proxy?channel=tv3&url=http%3A%2F%2Far.ycncdn.online%2F0021012254%2F011%2Findex.m3u8"
   },
   {
    "tvg": "TV6.dz",
    "name": "TV6 / EPTV 6 (الشبابية)",
    "group": "Algérie — Public",
    "tier": 1,
-   "url": "http://ar.ycncdn.online/0021012254/005/index.m3u8"
+   "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free-proxy?channel=tv3&url=http%3A%2F%2Far.ycncdn.online%2F0021012254%2F005%2Findex.m3u8"
   },
   {
    "tvg": "TV7.dz",
@@ -500,7 +505,7 @@
    "name": "TV8 / EPTV 8 Adhakira (الذاكرة)",
    "group": "Algérie — Public",
    "tier": 1,
-   "url": "http://ar.ycncdn.online/0021012254/090/index.m3u8"
+   "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free-proxy?channel=tv3&url=http%3A%2F%2Far.ycncdn.online%2F0021012254%2F090%2Findex.m3u8"
   },
   {
    "tvg": "AL24News.dz",
@@ -514,7 +519,7 @@
    "name": "Ennahar TV",
    "group": "Algérie — Info",
    "tier": 1,
-   "url": "http://ar.ycncdn.online/0021012254/092/index.m3u8"
+   "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free-proxy?channel=tv3&url=http%3A%2F%2Far.ycncdn.online%2F0021012254%2F092%2Findex.m3u8"
   },
   {
    "tvg": "EchoroukNews.dz",
@@ -542,7 +547,7 @@
    "name": "Al Ghad TV (الغد)",
    "group": "Algérie — Info",
    "tier": 1,
-   "url": "http://ar.ycncdn.online/0021012254/009/index.m3u8"
+   "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free-proxy?channel=tv3&url=http%3A%2F%2Far.ycncdn.online%2F0021012254%2F009%2Findex.m3u8"
   },
   {
    "tvg": "AmouYazidTV.dz",
@@ -563,7 +568,7 @@
    "name": "Al Taghir TV (التغيير)",
    "group": "Algérie — Généraliste",
    "tier": 1,
-   "url": "http://ar.ycncdn.online/0021012254/023/index.m3u8"
+   "url": "https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free-proxy?channel=tv3&url=http%3A%2F%2Far.ycncdn.online%2F0021012254%2F023%2Findex.m3u8"
   },
   {
    "tvg": "CBSNews24-7.us",
@@ -769,11 +774,11 @@
    "url": "https://ee119c17e6ed643893ff6ae377fe0693.7wzuvg.channel-assembly.mediatailor.us-east-1.amazonaws.com/v1/channel/NASAPrime/NASAPlus.m3u8"
   },
   {
-   "tvg": "TheCW.us",
-   "name": "CW Forever",
+   "tvg": "DisneyChannel.us",
+   "name": "Disney Channel",
    "group": "USA — Généraliste",
-   "tier": 1,
-   "url": "https://cdn-uw2-prod.tsv2.amagi.tv/linear/amg01312-nexstarmediagro-cwforever-nondrmhlstsv2-cw/playlist.m3u8"
+   "tier": 4,
+   "url": "http://4.30.180.36:8420/disneychannel/index.m3u8?token=test"
   }
  ]
 }
