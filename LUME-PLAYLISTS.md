@@ -9,6 +9,7 @@ country. They live at the repo root and are served by GitHub Pages:
 | Algérie   | `https://adamshl-oss.github.io/iptv-curated/lume-algeria.m3u`        | 16       |
 | USA       | `https://adamshl-oss.github.io/iptv-curated/lume-usa.m3u`            | 30       |
 | **Chaines TV** (all three combined) | `https://adamshl-oss.github.io/iptv-curated/lume-chaines-tv.m3u` | 69 |
+| **Chaines TV v2** (same 69, new URL — use this to defeat app/CDN caching) | `https://adamshl-oss.github.io/iptv-curated/lume-chaines-tv-v2.m3u` | 69 |
 | TF1 trio (optional) | `https://adamshl-oss.github.io/iptv-curated/lume-france-tf1.m3u` | 3 |
 | EPG       | `https://adamshl-oss.github.io/iptv-curated/lume-epg.xml.gz`          | 69 ch.   |
 
