@@ -295,3 +295,116 @@ simply never happened.
 The app caches its playlist. **"Chaines TV" in Lume must be refreshed**
 (pull-to-refresh on the playlist) to receive this build — until then the app
 still points at the dead endpoints listed above.
+
+## Repairs — 2026-11-11 (HTTPS hardening + the Al Arabyya identity fix)
+
+### What the Apple TV report actually was
+
+The report was *"most channels don't play — endless spinner or black screen,
+some play and some don't"*. The cause was not the network and not geo-blocking
+or user-agent filtering; it was that **the copy of the playlist inside the Lume
+app was still the pre-2026-11-10 build** (`default.store`, mtime 2026-11-09
+23:20 — the app had never been refreshed).
+
+Reading the 69 rows the app actually holds, **17 of them cannot start inside
+Lume** and each one was re-probed directly to prove it:
+
+| App row | Direct probe result |
+|---|---|
+| France 3, TV6, TV1, Al Taghir TV, Al Ghad TV, Ennahar TV, TV8, TV4 Tamazight | `URL …/10237.js is not in allowed_segment_extensions` — the YC tenant's `*.js` segments are refused by FFmpeg |
+| 6ter | `Connection to tcp://149.62.177.107:9999 failed` — origin is down |
+| CStar | relay `/api/french/cstar/` → 502 |
+| TFX | relay `/api/french/tf1/tfx/` → no response (route is 404) |
+| TNT | `Connection to tcp://45.162.64.114:80 failed` — origin is down |
+| CW Forever | `URL …/beacon?…` — extension-less segment URL refused |
+| Comedy Central | serves VICELAND, not Comedy Central |
+| Quran TV | the tenant actually airs **Morocco TV** |
+| TF1, TF1 Séries Films | TF1's CDN answers 403 to FFmpeg's `Lavf/*` agent → black picture |
+
+Everything else the app holds is still live, which matches "some play and some
+don't". The fix is not a new source hunt — it is a new playlist URL.
+
+### The identity bug that was hiding in plain sight
+
+The published **Al Arabyya** entry pointed at `http://185.9.2.18/chid_146/…`.
+Decoding that stream shows a rotating-camera ident with a **BITCOIN / market
+ticker** crawl — it is **CNBC Arabia**, not Al Arabyya. The channel was
+misidentified and has been replaced with Al Arabyya's own broadcaster CDN
+(`live.alarabiya.net`, 1080p, `العربية / alarabiya` logo read from the decoded
+picture).
+
+### HTTPS hardening
+
+Seven channels were moved off plain-HTTP and odd-port sources onto HTTPS, each
+one confirmed by decoding a frame and reading the channel identity off the
+picture:
+
+| Channel | Was | Now |
+|---|---|---|
+| Fox News | `http://4.30.180.36:8420/…?token=test` | `https://tvsen6.aynaott.com/foxnews/index.m3u8` |
+| Disney Channel | `http://4.30.180.36:8420/…?token=test` | `https://s6.hopslan.com/disneyX/tracks-v1a1/mono.ts.m3u8` |
+| Al Arabyya | `http://185.9.2.18/chid_146/…` (was CNBC Arabia) | `https://live.alarabiya.net/…/alarabiya_1080p/chunks.m3u8` |
+| Al Ghad TV | relay-wrapped YC tenant (`.js`) | `https://fl-dvr.iptvcdn.tv/chid_1289/tracks-v1a1/mono.m3u8` (`الغد` logo) |
+| Amou Yazid TV | `http://mkstream.servehttp.com:1940/…` | relay `…/api/free/amouyazid` |
+| LCI | `http://99.27.51.147:8080/LCI/…` | relay `…/api/french/lci/live.m3u8` |
+| BFMTV | `http://89.187.185.76:8080/BFMTV/…` | relay `…/api/linear/france/bfmtv/live.m3u8` |
+
+The build is now **58/69 HTTPS**. The remaining **11** are on hosts that publish
+no HTTPS equivalent at all — the French stream farms (France 2, France 3
+Bretagne, France 4, France 5, M6, W9, ARTE, TMC, CStar) and the two US farms
+(Syfy, Bravo). Those were checked individually: france.tv, ARTE's Akamai host,
+6play and SRG all answer **403 to FFmpeg's user agent**, every farm refuses a
+TLS handshake, and the relay's `/api/proxy` enforces an exact-match upstream
+allowlist, so none of them can be upgraded. All eleven play correctly under
+both engines, plain HTTP included — AVPlayer is not blocked by ATS on this
+stack (`http://…:8080/France2/index.m3u8` → PASS, startup 2.0 s).
+
+### Cutting the aynaott single point of failure
+
+Twelve USA channels were all served by one operator (`tvsen5/tvsen6.aynaott.com`).
+When that host was slow, every one of them sat on a spinner — which is exactly
+the symptom reported. Independent hosts were found and adopted, but only after
+the identity of each candidate was read off a decoded frame, which rejected
+several plausible-looking swaps:
+
+| Candidate | Verdict |
+|---|---|
+| `amchls.wns.live` (offered as "AMC") | **Persiana SetMix** — a Persian channel. Rejected. |
+| `bravoohls.wns.live` (offered as "Bravo") | **Iran Republic TV / BBC News Persian**. Rejected. |
+| `tooneast` on Turner's CDN (offered as "Cartoon Network") | corporate/UMGC programming, no Cartoon Network. Rejected. |
+| `aurora.enhanced.live` HGTV / Food Network | audio track is **Italian** (`ita`). Rejected for the USA list. |
+| `p13/p14.usnlive.com` (CNN, MSNBC, Fox News) | 403 from outside the US — cannot be verified. Not published. |
+| **Turner `tbseast` (TBS)** | `tbs` logo confirmed in the picture, startup 0.5 s. **Adopted.** |
+| **onnethn MTV** | MTV logo confirmed, English programme. **Adopted.** |
+
+The build now spreads over **28 distinct hosts**; no host carries more than
+the relay's 14 channels, and aynaott is down to 12.
+
+### Verification of this build
+
+* **FFmpeg** (Lume's engine): 66/69 decode H.264 video with measurable audio
+  from the live stream. The three exceptions — CNews, TNT, Bravo — carry their
+  audio in a **separate HLS rendition** that FFmpeg's demuxer does not attach
+  to the variant it picks; all three pass the AVPlayer gate below, where
+  AVFoundation resolves the alternate-audio group correctly.
+* **AVPlayer**: 68/69 pass the strict playback policy (startup, advancing
+  ratio, stall bounds, video + audio tracks) on a clean serial run. The one
+  exception is **Bravo**, whose free-farm feed stalls intermittently (it
+  passed 2 of 3 runs; audio also measured silent at −104 dB on one run). No
+  alternative source for Bravo exists that survives an identity check — every
+  other candidate resolved to a different channel.
+* EPG: 69 channels, 6 642 programmes, every `tvg-id` resolves.
+
+### What the user has to do
+
+Lume caches its playlist aggressively, so a pull-to-refresh can still serve the
+old copy from the app's own cache. **Delete "Chaines TV" and add the playlist
+again from the new URL**, which is a different filename and therefore a
+different cache key:
+
+* `https://adamshl-oss.github.io/iptv-curated/lume-chaines-tv-v3.m3u` — all 69
+* `https://adamshl-oss.github.io/iptv-curated/lume-diag-v3.m3u` — 12 channels,
+  one per source class, to isolate any channel that still fails
+
+The free tier allows one playlist, so the diagnostic file is a temporary
+second entry: add it, test, then remove it.

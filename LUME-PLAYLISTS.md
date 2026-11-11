@@ -10,6 +10,8 @@ country. They live at the repo root and are served by GitHub Pages:
 | USA       | `https://adamshl-oss.github.io/iptv-curated/lume-usa.m3u`            | 30       |
 | **Chaines TV** (all three combined) | `https://adamshl-oss.github.io/iptv-curated/lume-chaines-tv.m3u` | 69 |
 | **Chaines TV v2** (same 69, new URL — use this to defeat app/CDN caching) | `https://adamshl-oss.github.io/iptv-curated/lume-chaines-tv-v2.m3u` | 69 |
+| **Chaines TV v3** ← **use this one** (2026-11-11 build: 7 channels moved to HTTPS, Al Arabyya identity fixed) | `https://adamshl-oss.github.io/iptv-curated/lume-chaines-tv-v3.m3u` | 69 |
+| Diagnostic (one channel per source class, to isolate a failing source) | `https://adamshl-oss.github.io/iptv-curated/lume-diag-v3.m3u` | 12 |
 | TF1 trio (optional) | `https://adamshl-oss.github.io/iptv-curated/lume-france-tf1.m3u` | 3 |
 | EPG       | `https://adamshl-oss.github.io/iptv-curated/lume-epg.xml.gz`          | 69 ch.   |
 
@@ -53,6 +55,15 @@ concatenated into one file, so the free tier covers everything:
 
 Use it if you would rather not buy Lume Pro; buy Pro only if you want the three
 country playlists side by side in the app.
+
+> **Refresh, do not reuse (2026-11-11).** The copy of the playlist inside Lume
+> was still the pre-2026-11-10 build, and **17 of its 69 rows cannot start in
+> Lume** — the YC tenant's `*.js` segments are refused by FFmpeg, four origins
+> are down, TF1's CDN answers 403 to FFmpeg's user agent, and two channels
+> carried the wrong feed. Lume caches its playlist, so a pull-to-refresh can
+> still serve the old copy. **Delete "Chaines TV" and add it again from
+> `lume-chaines-tv-v3.m3u`** — a different filename is a different cache key.
+> See `LUME-VERIFICATION.md` for the per-channel evidence.
 
 ## Content policy — no Spanish-language channels in the USA playlist
 
