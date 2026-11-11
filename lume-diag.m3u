@@ -1,17 +1,26 @@
 #EXTM3U url-tvg="https://adamshl-oss.github.io/iptv-curated/lume-epg.xml.gz"
-#EXTINF:-1 tvg-name="France 2" group-title="DIAG",France 2
+#EXT-X-VERSION:3
+#EXTINF:-1 tvg-id="France2.fr" tvg-name="France2.fr" tvg-chno="1" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/France_2_2018.svg/960px-France_2_2018.svg.png" group-title="D1 · plain-HTTP stream farm" tvg-country="FR", D1 · plain-HTTP stream farm — France 2
 http://99.27.51.147:8080/France2/index.m3u8
-#EXTINF:-1 tvg-name="France 3" group-title="DIAG",France 3
+#EXTINF:-1 tvg-id="France3.fr" tvg-name="France3.fr" tvg-chno="2" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/1/17/France_3_Franche-Comt%C3%A9_-_Logo_2018.svg" group-title="D2 · own relay (.js -> .ts)" tvg-country="FR", D2 · own relay (.js -> .ts) — France 3
 https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free-proxy?channel=tv3&url=http%3A%2F%2Far.ycncdn.online%2F0021012254%2F144%2Findex.m3u8
-#EXTINF:-1 tvg-name="France 24" group-title="DIAG",France 24
+#EXTINF:-1 tvg-id="BFMTV.fr" tvg-name="BFMTV.fr" tvg-chno="3" tvg-logo="https://i.imgur.com/YJCcczD.png" group-title="D3 · own relay (fixed route)" tvg-country="FR", D3 · own relay (fixed route) — BFMTV
+https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/linear/france/bfmtv/live.m3u8
+#EXTINF:-1 tvg-id="France24.fr" tvg-name="France24.fr" tvg-chno="4" tvg-logo="https://commons.wikimedia.org/wiki/Special:FilePath/France%2024%20logo%20%282013%29.svg?width=300" group-title="D4 · official broadcaster CDN" tvg-country="FR", D4 · official broadcaster CDN — France 24
 https://live.france24.com/hls/live/2037179/F24_FR_HI_HLS/master_5000.m3u8
-#EXTINF:-1 tvg-name="Euronews" group-title="DIAG",Euronews
-https://cdn-euronews.akamaized.net/live/eds/euronews-fr/25026/index.m3u8
-#EXTINF:-1 tvg-name="Gulli" group-title="DIAG",Gulli
+#EXTINF:-1 tvg-id="AfricanewsFrench.fr" tvg-name="AfricanewsFrench.fr" tvg-chno="5" tvg-logo="" group-title="D5 · Akamai CDN" tvg-country="FR", D5 · Akamai CDN — Africanews (Français)
+https://cdn-euronews.akamaized.net/live/eds/africanews-fr/25050/index.m3u8
+#EXTINF:-1 tvg-id="Gulli.fr" tvg-name="Gulli.fr" tvg-chno="6" tvg-logo="https://i.imgur.com/kqYssbW.png" group-title="D6 · 6play CMAF" tvg-country="FR", D6 · 6play CMAF — Gulli
 https://sr-m6web.live.6cloud.fr/out/v1/6play/6play-gulli/cmaf_q2hyb21h/hls-short-sd.m3u8
-#EXTINF:-1 tvg-name="TV1 / Programme National" group-title="DIAG",TV1 / Programme National
-https://algerian-tv-relay-2026.espiiem.chatgpt.site/api/free-proxy?channel=tv3&url=http%3A%2F%2Far.ycncdn.online%2F0021012254%2F016%2Findex.m3u8
-#EXTINF:-1 tvg-name="CNN" group-title="DIAG",CNN
+#EXTINF:-1 tvg-id="CNN.us" tvg-name="CNN.us" tvg-chno="7" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/CNN.svg/960px-CNN.svg.png" group-title="D7 · aynaott" tvg-country="US", D7 · aynaott — CNN
 https://tvsen6.aynaott.com/cnn/index.m3u8
-#EXTINF:-1 tvg-name="Disney Channel" group-title="DIAG",Disney Channel
-http://4.30.180.36:8420/disneychannel/index.m3u8?token=test
+#EXTINF:-1 tvg-id="DisneyChannel.us" tvg-name="DisneyChannel.us" tvg-chno="8" tvg-logo="" group-title="D8 · hopslan" tvg-country="US", D8 · hopslan — Disney Channel
+https://s6.hopslan.com/disneyX/tracks-v1a1/mono.ts.m3u8
+#EXTINF:-1 tvg-id="TV2.dz" tvg-name="TV2.dz" tvg-chno="9" tvg-logo="https://i.imgur.com/VEb631f.png" group-title="D9 · fl-dvr.iptvcdn.tv" tvg-country="DZ", D9 · fl-dvr.iptvcdn.tv — TV2 / Canal Algérie
+https://fl-dvr.iptvcdn.tv/chid_347/tracks-v1a1/mono.m3u8
+#EXTINF:-1 tvg-id="Alarabiya.ae" tvg-name="Alarabiya.ae" tvg-chno="10" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Al-Arabiya_new_logo.svg/960px-Al-Arabiya_new_logo.svg.png" group-title="D10 · Al Arabiya official CDN" tvg-country="DZ", D10 · Al Arabiya official CDN — Al Arabyya (العربية)
+https://live.alarabiya.net/alarabiapublish/alarabiya.smil/alarabiapublish/alarabiya_1080p/chunks.m3u8
+#EXTINF:-1 tvg-id="RMCDecouverte.fr" tvg-name="RMCDecouverte.fr" tvg-chno="11" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Logo_RMC_D%C3%A9couverte_2017.svg/960px-Logo_RMC_D%C3%A9couverte_2017.svg.png" group-title="D11 · CloudFront (media/EPG)" tvg-country="FR", D11 · CloudFront (media/EPG) — RMC Découverte
+https://d16zzycxcd0m0r.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-hixvx5kymecr9/RMC_Decouverte_FR.m3u8
+#EXTINF:-1 tvg-id="BBCNews.us" tvg-name="BBCNews.us" tvg-chno="12" tvg-logo="https://commons.wikimedia.org/wiki/Special:FilePath/BBC%20News%202022%20(Alt).svg?width=300" group-title="D12 · onnethn" tvg-country="US", D12 · onnethn — BBC News
+https://streaming.onnethn.com/BBC/index.m3u8
