@@ -134,11 +134,30 @@ def programme_channel_counts(xml_bytes: bytes) -> dict[str, int]:
     return counts
 
 
+def to_utc(value: str) -> str:
+    """Normalise an XMLTV timestamp to UTC.
+
+    The epgshare feeds mix ``+0000`` and local offsets such as ``+0100``; a
+    guide that mixes both shows every French programme one hour early.
+    """
+    stamp, _, offset = value.strip().partition(" ")
+    moment = datetime.strptime(stamp[:14], "%Y%m%d%H%M%S")
+    if offset:
+        sign = 1 if offset[0] == "+" else -1
+        delta = timedelta(hours=int(offset[1:3]), minutes=int(offset[3:5])) * sign
+        moment -= delta
+    return moment.strftime("%Y%m%d%H%M%S") + " +0000"
+
+
 def build(source_url: str, mapping: dict[str, str], wanted: set[str]) -> tuple[list[ET.Element], dict[str, int]]:
-    """Return the programme elements whose source channel maps to a Lume id."""
+    """Return the programme elements whose source channel maps to a Lume id.
+
+    Duplicates are removed: the feeds repeat the late-night programme on both
+    sides of midnight, which yields two entries with the same start time.
+    The longest entry for a given (channel, start) wins.
+    """
     payload = fetch(source_url)
-    elements: list[ET.Element] = []
-    counts: dict[str, int] = {}
+    best: dict[tuple[str, str], ET.Element] = {}
     with gzip.GzipFile(fileobj=io.BytesIO(payload)) as stream:
         for _, element in ET.iterparse(stream, events=("end",)):
             if element.tag != "programme":
@@ -148,8 +167,22 @@ def build(source_url: str, mapping: dict[str, str], wanted: set[str]) -> tuple[l
                 element.clear()
                 continue
             element.set("channel", target)
-            elements.append(element)
-            counts[target] = counts.get(target, 0) + 1
+            element.set("start", to_utc(element.get("start", "")))
+            element.set("stop", to_utc(element.get("stop", "")))
+            key = (target, element.get("start", ""))
+            current = best.get(key)
+            if current is None:
+                best[key] = element
+                continue
+            if element.get("stop", "") > current.get("stop", ""):
+                best[key] = element
+            else:
+                element.clear()
+
+    elements = sorted(best.values(), key=lambda e: (e.get("channel", ""), e.get("start", "")))
+    counts: dict[str, int] = {}
+    for element in elements:
+        counts[element.get("channel", "")] = counts.get(element.get("channel", ""), 0) + 1
     return elements, counts
 
 
