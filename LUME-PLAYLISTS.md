@@ -269,6 +269,12 @@ is visible instead of silent (see `lume-manifest.json` → `unsourced_targets`).
   The Algerian channels are emitted in the guide with their id, display name and
   logo, but without programme data. They still play; they just have no EPG.
 
+The guide is rebuilt by `scripts/build_lume_epg.py` and published nightly by
+`.github/workflows/refresh-lume-epg.yml`. The builder maps the epgshare source
+ids onto the playlist `tvg-id`s, refuses to publish a guide whose window ends
+more than two days behind today, and is separate from the IPTVX `epg.xml.gz`
+job so the two guides can never overwrite each other.
+
 ## Relationship to the IPTVX releases
 
 `iptvx.m3u` and `chaines-tv.m3u` remain the client-facing IPTVX releases and
