@@ -509,3 +509,65 @@ is `D17` but whose frame carries the **C STAR** logo.
 
 The EPG is unchanged by this pass (same ids, same 6 541 programmes); only two
 stream URLs moved.
+
+### Guide rebuild — 2026-11-19 (evening)
+
+The published guide had stopped at **10 November**, so the app showed no
+programme data for the current day. It is now rebuilt by
+`scripts/build_lume_epg.py` from the same two public feeds the guide already
+used (epgshare FR1 for France, epgshare US2 for the USA), and kept current by
+`.github/workflows/refresh-lume-epg.yml` (nightly, same shape as the IPTVX
+job, separate file so the two guides cannot overwrite each other).
+
+| | Before | Now |
+|---|---|---|
+| Window | 6 – 10 Nov | **18 – 22 Nov** (covers today) |
+| Channels with programme data | 41 | **51** of 69 |
+| Programmes | 6 541 | **7 028** |
+| Timestamps | mixed `+0000` / `+0100` | **all UTC** |
+| Duplicate `(channel, start)` rows | present at every midnight boundary | **none** |
+
+Two defects were fixed in the builder itself:
+
+* the feeds mix UTC and local offsets, so every French programme was shown an
+  hour early — all timestamps are now normalised to UTC;
+* the feeds repeat the late-night entry on both sides of midnight, producing
+  two rows with the same start time and a `UNIQUE` collision in the app's
+  guide table — the longest entry per `(channel, start)` now wins.
+
+The 18 channels without programme data have no public XMLTV source (the
+Algerian channels, `Al Iktisad TV`, `Al Hadath`, `Sharjah Quran Radio`,
+`HGTV`, `Sky News`, `KIRO 9`, `Africanews`). They are still published with
+their id, display name and logo.
+
+### Lume app library — repaired in place — 2026-11-19
+
+The app's own library was the stale copy: it still held the **8 November**
+roster (69 channels, including the dead `TV8`, `Al Ghad TV`, `FOX`, `Lifetime`,
+`Bravo`, `CW Forever`, `TF1`, `TFX`, `TF1 Séries Films` and `TV4 / Tamazight`
+rows) and a guide that ended on 10 November.
+
+The Core Data store
+(`~/Library/Containers/com.bilipp.lume/Data/Library/Application Support/default.store`)
+was rewritten to match the published playlist:
+
+* `ZLIVESTREAM` — 58 rows updated in place (keeping their `ZID`, favourites and
+  watch history), 11 stale rows dropped, 11 new rows inserted; every direct URL
+  is now the audited one (Fox News → `radiovid.foxnews.com`, MTV →
+  `cdn-redge.media`, HGTV → `fullscreen.nz`, Bravo → NBCU Xumo, Lifetime Movie
+  Favorites → `jmp2.uk`, Fox Sports → Tubi, Al Hadath → Al Arabiya, Al Iktisad
+  → relay tenant 069, …).
+* `ZCATEGORY` — 19 groups rebuilt, the two groups that no longer exist
+  (`Algérie — Religieux`, `France — Cinéma & séries`) removed.
+* `ZEPGLISTING` — 7 028 programme rows from the rebuilt guide.
+* `ZPLAYLIST` / `ZEPGSOURCE` — sync timestamps bumped, and
+  `lume.epgLastSyncDate` in the app preferences moved to today so the app
+  refreshes the guide on the next launch.
+
+Checks after the write: `PRAGMA integrity_check` = ok, 69 streams / 19 groups
+/ 7 028 listings, **no orphan** stream, group or listing, no duplicate id,
+URL or `tvg-id`, and every stored URL and name equal to the published
+playlist. The previous store was kept as `default.store.pre-v5.bak`.
+
+The Apple TV is not affected: its app list (63 apps) contains IPTVX but no
+Lume app, so there was no second copy to refresh there.
