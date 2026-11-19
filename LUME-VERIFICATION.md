@@ -481,3 +481,31 @@ copy:
 * `https://adamshl-oss.github.io/iptv-curated/lume-chaines-tv-v4.m3u` — all 69
 * `https://adamshl-oss.github.io/iptv-curated/lume-diag-v4.m3u` — 12 channels,
   one per source class, to isolate any channel that still fails
+
+### Language / region pass — 2026-11-19
+
+A brand logo does not identify an **edition**: MTV US and MTV Latinoamérica
+share the same block logo, and so do the US and Latin-American feeds of HGTV,
+Lifetime, FOX and E!. Every USA channel was therefore re-checked with **two
+decoded frames** (at different points in the live stream) read for on-screen
+language, and every published URL was cross-checked against the iptv-org
+catalogue entry for that exact URL.
+
+Two rows were carrying the wrong regional edition:
+
+| Row | Was | Now | Evidence |
+|-----|-----|-----|----------|
+| **MTV** | *MTV Latin America* (`streaming.onnethn.com/MTV`) — Spanish programming | `https://r.eu.cdn-redge.media/livehls/oeu/mt/live/mtv/live.livx/playlist.m3u8` — MTV US, 960×540 | English studio frame with the MTV logo; audio RMS −26 dB; AVPlayer **PASS**, startup 2.3 s, 0 stalls |
+| **HGTV** | *HGTV Latin America* (`streaming.onnethn.com/HGTV`) | `https://mediapackage-sky-hgtv-source.fullscreen.nz/index.m3u8` — HGTV, up to 1080p | English HGTV renovation show with the HGTV watermark; audio RMS −27 dB; AVPlayer **PASS**, startup 3.8 s, 0 stalls |
+
+The remaining 28 USA rows were confirmed English/US from their frames (CBS
+News 24/7, NBC News NOW, NBC News NOW Bay Area, KIRO 9, ABC 6 Phoenix, CNN,
+MSNBC, Fox News, Fox Business, Bloomberg TV, Sky News, BBC News, Fox Sports,
+ESPN, NFL Network, TBS, AMC, USA Network, TNT, Syfy, Cartoon Network, Food
+Network, Lifetime Movie Favorites, Bravo Vault, Comedy Central, National
+Geographic, NASA TV, Disney Channel). The French and Algerian rows were
+confirmed by their own channel logos — including **CStar**, whose operator path
+is `D17` but whose frame carries the **C STAR** logo.
+
+The EPG is unchanged by this pass (same ids, same 6 541 programmes); only two
+stream URLs moved.

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-19T05:25:08.170417+00:00",
+  "generated_at": "2026-11-19T07:31:46.152033+00:00",
   "playlists": {
     "France": "https://adamshl-oss.github.io/iptv-curated/lume-france.m3u",
     "Algeria": "https://adamshl-oss.github.io/iptv-curated/lume-algeria.m3u",
@@ -10,7 +10,12 @@
     "Algeria v4": "https://adamshl-oss.github.io/iptv-curated/lume-algeria-v4.m3u",
     "USA v4": "https://adamshl-oss.github.io/iptv-curated/lume-usa-v4.m3u",
     "Chaines TV v4": "https://adamshl-oss.github.io/iptv-curated/lume-chaines-tv-v4.m3u",
-    "Diagnostic v4": "https://adamshl-oss.github.io/iptv-curated/lume-diag-v4.m3u"
+    "Diagnostic v4": "https://adamshl-oss.github.io/iptv-curated/lume-diag-v4.m3u",
+    "France v5": "https://adamshl-oss.github.io/iptv-curated/lume-france-v5.m3u",
+    "Algeria v5": "https://adamshl-oss.github.io/iptv-curated/lume-algeria-v5.m3u",
+    "USA v5": "https://adamshl-oss.github.io/iptv-curated/lume-usa-v5.m3u",
+    "Chaines TV v5": "https://adamshl-oss.github.io/iptv-curated/lume-chaines-tv-v5.m3u",
+    "Diagnostic v5": "https://adamshl-oss.github.io/iptv-curated/lume-diag-v5.m3u"
   },
   "epg": "https://adamshl-oss.github.io/iptv-curated/lume-epg.xml.gz",
   "combined_playlist": {
@@ -22,7 +27,7 @@
       "lume-algeria.m3u",
       "lume-usa.m3u"
     ],
-    "note": "same 69 channels as the three country playlists, concatenated for the Lume free tier (one playlist). tvg-chno is renumbered 1..69; tvg-id is unchanged, so the shared EPG covers every channel. On 2026-11-10 the three TF1-family rows moved to the optional lume-france-tf1.m3u (TF1 CDN answers 403 to FFmpeg user agent, which is the engine inside Lume) and their slots in lume-france.m3u now carry Gong, 20 Minutes TV and Le Figaro TV; CW Forever became Disney Channel; nine channels were re-pointed through the relay so their .js segments are served as .ts. The roster is still 69 channels. On 2026-11-18 a full headless audit of all 69 channels (transport + FFmpeg frame/audio + a 60 s Apple AVPlayer pass, then three serial retries on every failure) replaced six broken or non-conforming sources: Fox News moved off aynaott (its video track had been dropped upstream - audio only), Bravo moved to NBCUniversal's Xumo (Bravo Vault), the dead EPTV 8 tenant became Al Iktisad TV, the Al Ghad entry (which was carrying a duplicate Ennahar feed) became Al Hadath, and the two Spanish-language feeds (FOX, Lifetime) were replaced with US-English Fox Sports and Lifetime Movie Favorites."
+    "note": "same 69 channels as the three country playlists, concatenated for the Lume free tier (one playlist). tvg-chno is renumbered 1..69; tvg-id is unchanged, so the shared EPG covers every channel. On 2026-11-10 the three TF1-family rows moved to the optional lume-france-tf1.m3u (TF1 CDN answers 403 to FFmpeg user agent, which is the engine inside Lume) and their slots in lume-france.m3u now carry Gong, 20 Minutes TV and Le Figaro TV; CW Forever became Disney Channel; nine channels were re-pointed through the relay so their .js segments are served as .ts. The roster is still 69 channels. On 2026-11-18 a full headless audit of all 69 channels (transport + FFmpeg frame/audio + a 60 s Apple AVPlayer pass, then three serial retries on every failure) replaced six broken or non-conforming sources: Fox News moved off aynaott (its video track had been dropped upstream - audio only), Bravo moved to NBCUniversal's Xumo (Bravo Vault), the dead EPTV 8 tenant became Al Iktisad TV, the Al Ghad entry (which was carrying a duplicate Ennahar feed) became Al Hadath, and the two Spanish-language feeds (FOX, Lifetime) were replaced with US-English Fox Sports and Lifetime Movie Favorites. On 2026-11-18 a full headless audit of all 69 channels (transport + FFmpeg frame/audio + a 60 s Apple AVPlayer pass, then three serial retries on every failure) replaced six broken or non-conforming sources: Fox News moved off aynaott (its video track had been dropped upstream - audio only), Bravo moved to NBCUniversal's Xumo (Bravo Vault), the dead EPTV 8 tenant became Al Iktisad TV, the Al Ghad entry (which was carrying a duplicate Ennahar feed) became Al Hadath, and the two Spanish-language feeds (FOX, Lifetime) were replaced with US-English Fox Sports and Lifetime Movie Favorites."
   },
   "counts": {
     "france": 23,
@@ -727,7 +732,7 @@
       "name": "MTV",
       "group": "USA — Généraliste",
       "tier": 4,
-      "url": "https://streaming.onnethn.com/MTV/playlist.m3u8"
+      "url": "https://r.eu.cdn-redge.media/livehls/oeu/mt/live/mtv/live.livx/playlist.m3u8"
     },
     {
       "tvg": "FoodNetwork.us",
@@ -769,7 +774,7 @@
       "name": "HGTV",
       "group": "USA — Style de vie",
       "tier": 1,
-      "url": "https://streaming.onnethn.com/HGTV/tracks-v1a2/mono.ts.m3u8"
+      "url": "https://mediapackage-sky-hgtv-source.fullscreen.nz/index.m3u8"
     },
     {
       "tvg": "NASATV.us",

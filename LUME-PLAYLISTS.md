@@ -11,8 +11,9 @@ country. They live at the repo root and are served by GitHub Pages:
 | **Chaines TV** (all three combined) | `https://adamshl-oss.github.io/iptv-curated/lume-chaines-tv.m3u` | 69 |
 | **Chaines TV v2** (same 69, new URL — use this to defeat app/CDN caching) | `https://adamshl-oss.github.io/iptv-curated/lume-chaines-tv-v2.m3u` | 69 |
 | **Chaines TV v3** (2026-11-11 build: 7 channels moved to HTTPS, Al Arabyya identity fixed) | `https://adamshl-oss.github.io/iptv-curated/lume-chaines-tv-v3.m3u` | 69 |
-| **Chaines TV v4** ← **use this one** (2026-11-18 full headless audit: 6 broken/mis-sourced channels replaced) | `https://adamshl-oss.github.io/iptv-curated/lume-chaines-tv-v4.m3u` | 69 |
-| Diagnostic (one channel per source class, to isolate a failing source) | `https://adamshl-oss.github.io/iptv-curated/lume-diag-v4.m3u` | 12 |
+| **Chaines TV v4** (2026-11-18 full headless audit: 6 broken/mis-sourced channels replaced) | `https://adamshl-oss.github.io/iptv-curated/lume-chaines-tv-v4.m3u` | 69 |
+| **Chaines TV v5** ← **use this one** (2026-11-19 language/region pass: MTV and HGTV were Latin-American editions) | `https://adamshl-oss.github.io/iptv-curated/lume-chaines-tv-v5.m3u` | 69 |
+| Diagnostic (one channel per source class, to isolate a failing source) | `https://adamshl-oss.github.io/iptv-curated/lume-diag-v5.m3u` | 12 |
 | TF1 trio (optional) | `https://adamshl-oss.github.io/iptv-curated/lume-france-tf1.m3u` | 3 |
 | EPG       | `https://adamshl-oss.github.io/iptv-curated/lume-epg.xml.gz`          | 69 ch.   |
 
@@ -104,6 +105,13 @@ On **2026-11-18** the same rule caught two more rows: the **FOX** row was
 serving a Latin-American Spanish-language feed (El Chiringuito) and the
 **Lifetime** row was *Lifetime Latin America Mexico*. FOX is now **Fox Sports**
 (US, English) and Lifetime is now **Lifetime Movie Favorites** (US, English).
+
+On **2026-11-19** a second pass — two decoded frames per USA channel, read for
+on-screen language, cross-checked against the iptv-org catalogue — caught two
+more rows carrying the wrong **regional edition** of the brand: **MTV** was
+*MTV Latin America* (Spanish programming) and **HGTV** was *HGTV Latin
+America*. Both now carry the English US feed. A brand logo alone is not proof
+of an edition: MTV US and MTV Latinoamérica use the same block logo.
 
 ## What the playlists look like
 
