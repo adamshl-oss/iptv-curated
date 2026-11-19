@@ -571,3 +571,40 @@ playlist. The previous store was kept as `default.store.pre-v5.bak`.
 
 The Apple TV is not affected: its app list (63 apps) contains IPTVX but no
 Lume app, so there was no second copy to refresh there.
+
+### Syfy slot — the operator withdrew the feed — 2026-11-19
+
+A full re-probe of all 69 published URLs (FFmpeg transport + codec read on
+every channel, then the 60 s AVPlayer pass on anything that looked wrong)
+found **Syfy dead**: the aynaott feed that carried it was pulled from the
+operator's line-up during the day — every path variant
+(`tvsen1…tvsen8.aynaott.com/syfy`, `aynaott.com/syfy`, the
+`23.237.104.106:8080/USA_SYFY` path) answers **HTTP 404**, and AVPlayer
+reports *"the requested URL was not found on this server"*.
+
+Syfy is not carried by Pluto TV, Tubi or Plex either — the iptv-org catalogue
+still lists only the two dead aynaott URLs for `SYFY.us` — so **no free legal
+feed of the network itself is left**. The slot is filled with **Pluto TV
+Sci-Fi** and the row is renamed to say exactly what it is, so the guide can
+never claim it is Syfy:
+
+| | Before | Now |
+|---|---|---|
+| Channel | Syfy (`Syfy.us`) | **Pluto TV Sci-Fi** (`PlutoTVSciFi.us`) |
+| Source | `http://23.237.104.106:8080/USA_SYFY/index.m3u8` (404) | `https://jmp2.uk/plu-5b4fc274694c027be6ed3eea.m3u8` |
+| Evidence | — | H.264 640×360 + AAC, AVPlayer **PASS** (startup 1.0 s, 60 s, 0 stalls), 25 s of decoded audio (mean −39.4 dB, max −17.1 dB), two decoded frames of English-language sci-fi programming (FilmRise *Z Nation*) |
+
+The 78 Syfy guide rows were **dropped**, not re-attached: Pluto TV Sci-Fi is
+not the Syfy network, so the epgshare `Syfy HD` schedule does not describe it.
+
+The other 68 channels were re-probed on the same pass and are healthy; NFL
+Network, which FFmpeg first reported as video-less, passes AVPlayer cleanly
+(startup 3.1 s, 60 s, 0 stalls) — that was an FFmpeg variant-selection
+artefact, not a fault.
+
+The Lume app library was then patched a second time with the corrected
+playlist and guide: 68 rows updated in place, the dead `Syfy` row dropped,
+`Pluto TV Sci-Fi` inserted, 6 950 programme rows loaded. Final state:
+69 streams / 19 groups / 6 950 listings, `PRAGMA integrity_check` = ok, no
+orphan stream, group or listing, and every stored URL, name and logo equal to
+the published playlist.
