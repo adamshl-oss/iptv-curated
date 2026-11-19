@@ -408,3 +408,76 @@ different cache key:
 
 The free tier allows one playlist, so the diagnostic file is a temporary
 second entry: add it, test, then remove it.
+
+---
+
+## Full headless audit — 2026-11-18
+
+Every one of the **69 published channels** was audited against the *live*
+playlist (`lume-chaines-tv-v3.m3u` as served by GitHub Pages), never against a
+local copy, at three layers:
+
+1. **Transport** — master → variant → a real media segment, HTTP 200, >512 B.
+2. **FFmpeg** — one decoded frame (identity) and a 10 s decoded-audio RMS
+   measurement (audibility), H.264 only.
+3. **Apple AVPlayer** — 60 s of playback under
+   `scripts/stream_health_policy.json` (≤12 s startup, ≥92 % advancing,
+   ≤5 s total stall, ≤3 s longest stall).
+
+The 69 channels were sharded **by host** so no operator was hit by several
+workers at once, and every failure got **three serial retries** before it was
+called broken. That is what separated load flakiness from real breakage.
+
+**Result: 61/69 passed first time.** Eight rows failed at least one layer;
+after the serial retries, six of them were genuinely broken or mis-sourced.
+
+### Repairs — 2026-11-18
+
+| Row | Defect found | New source | Evidence |
+|-----|--------------|------------|----------|
+| **Fox News** | aynaott dropped the **video track** upstream: the master advertised `CODECS="mp4a.40.2"` (audio only) and every TS segment carried just AAC. AVPlayer "played" it because audio was there — on a TV it is a **black screen**. | `https://radiovid.foxnews.com/hls/live/661547/RADIOVID/index.m3u8` (Fox News' own feed, 1280×720 + AAC) | Fox News programming decoded from the frame; AVPlayer **PASS**, startup 0.5 s, 60.2 s advancing, 0 stalls |
+| **Bravo** | the free-farm master (`41.205.93.154`) timed out in AVPlayer **3/3** (`AVPlayerWaitingToMinimizeStallsReason`) while FFmpeg was fine | `https://xumo-xumoent-vc-114-x0p7i.fast.nbcuni.com/live/master.m3u8` (NBCUniversal's Xumo — **Bravo Vault**) | "bravo VAULT" logo decoded from the frame; AVPlayer **PASS**, startup 0.5 s, 0 stalls |
+| **TV8 / EPTV 8 Adhakira** | tenant `090` on `ar.ycncdn.online` returns **HTTP 404**; no EPTV 8 feed exists on the tenant host, on the 49 live `fl-dvr` chids, or in iptv-org | **Al Iktisad TV (الاقتصاد)**, tenant `069` via the project relay | الاقتصاد logo decoded from the frame; AVPlayer **PASS**, startup 4.6 s, 60.0 s advancing, 0 stalls |
+| **Al Ghad TV (الغد)** | `fl-dvr` `chid_1289` was serving a **second Ennahar feed** (the النهار watermark and the same Quran broadcast as the Ennahar row), and it 404'd / timed out intermittently | **Al Hadath (المُرصد)** — `https://av.alarabiya.net/alarabiapublish/alhadath.smil/playlist.m3u8` | المُرصد logo decoded from the frame; AVPlayer **PASS**, startup 0.8 s, 0 stalls |
+| **FOX** | the feed was a **Spanish-language** channel (El Chiringuito) — a policy violation in the USA playlist | **Fox Sports** (US) — `https://live-manifest.production-public.tubi.io/live/6035c7fd-efff-4ec7-93dc-aa0c7a58ba47/playlist.m3u8` | English Fox Sports programming decoded; AVPlayer **PASS**, startup 1.3 s, 0 stalls |
+| **Lifetime** | the feed was *Lifetime Latin America Mexico* — **Spanish-language** | **Lifetime Movie Favorites** (US) — `https://jmp2.uk/plu-63335b193583440007c859fb.m3u8` | "Lifetime Holiday Movie Favorites" logo decoded; AVPlayer **PASS**, startup 1.0 s, 0 stalls |
+
+Two rows were **rejected** during the audit because their identity did not
+match their name: `amchls.wns.live` (Persiana SetMix, offered as AMC) and
+`bravoohls.wns.live` (Iran Republic TV, offered as Bravo). Neither is published.
+
+### Rows that failed once but are healthy
+
+| Row | First run | Verdict |
+|-----|-----------|---------|
+| **TV2 / Canal Algérie** | AVPlayer stall (31.3 s) | retries 2 and 3 passed (startup 5.8 s) — the `fl-dvr` CDN is slow, not broken |
+| **Al Ghad TV** | segment HTTP 404 | retry passed — same slow CDN (now replaced anyway) |
+| **TMC** | audio measured at −56 dB | retry passed at −25.8 dB — a silent commercial break, not a mute track |
+| **TNT** | "no audio signal" | retry passed; a direct measurement shows stereo AAC at **−28 dB RMS** — FFmpeg does not attach the separate audio rendition |
+| **Comedy Central** | transport 414 (URI too long on the signed variant) | AVPlayer played it (startup 0.8 s) three times — a verifier artefact, the app is fine |
+
+### Identity audit
+
+Every channel was re-checked by decoding a frame and reading the **on-screen
+logo**, and the frames were assembled into labelled contact sheets. **67 of 69
+channels produced a frame; the two that did not were exactly the two broken
+rows** (TV8 dead, Fox News audio-only) — which is the expected result, not a
+coincidence.
+
+### EPG after the repairs
+
+69 channels, **6 541 programmes** (down from 6 642: the 101 stale *Lifetime
+Latin America* schedule entries were dropped with the channel they belonged
+to). Every `tvg-id` resolves; there are no orphan EPG ids. The four renamed
+channels carry their new ids: `AlIktisadTV.dz`, `AlHadath.ae`, `FoxSports.us`,
+`LifetimeMovies.us`.
+
+### What the user has to do
+
+**Delete "Chaines TV" in Lume and add it again** from the new URL — Lume
+caches playlists by filename, so a pull-to-refresh can still serve the old
+copy:
+
+* `https://adamshl-oss.github.io/iptv-curated/lume-chaines-tv-v4.m3u` — all 69
+* `https://adamshl-oss.github.io/iptv-curated/lume-diag-v4.m3u` — 12 channels,
+  one per source class, to isolate any channel that still fails
